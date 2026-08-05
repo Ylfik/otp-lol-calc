@@ -643,7 +643,11 @@ const DDRAGON_V = "16.15.1";
 const ITEM_ICON = id => `https://ddragon.leagueoflegends.com/cdn/${DDRAGON_V}/img/item/${id}.png`;
 
 /* level-scaled value: a at level 1 -> b at level 18 */
-const lin = (a,b,L) => a + (b-a)/17*(L-1);
+const LVL_CAP = 20;                 /* champion level cap */
+/* Level-scaled values. Riot did not rescale everything when the cap moved to 20:
+   the wiki still lists some effects as reaching their maximum at 18 and others at
+   20, so the top of the ramp is given per call and the value is held once reached. */
+const lin = (a,b,L,top) => { top = top || 18; return a + (b-a)/(top-1)*(Math.min(L,top)-1); };
 
 /* Effects that are actually modelled. Everything follows the
    "nothing or max" rule: a rune is either off, or at full value.
@@ -738,7 +742,7 @@ const ITEM_FX = {
                       {lab:"Shock — ability damage", src:"wiki", type:"phys", hits:1, pctMana:4}],
   "DEAD MAN'S PLATE":[{lab:"Shipwrecker",     src:"wiki", type:"phys",  hits:1, flat:40, pctBaseAD:100},
                       {lab:"Unsinkable",     src:"wiki", gain:() => ({slow:15})}],
-  "KRAKEN SLAYER":   [{lab:"Bring It Down — every 3rd attack", src:"wiki", type:"phys", hits:1, flat:200}],
+  "KRAKEN SLAYER":   [{lab:"Bring It Down — every 3rd attack", src:"wiki", type:"phys", hits:1, lvlFrom:150, lvlTo:200, lvlTop:20}],
   "VOLTAIC CYCLOSWORD":[{lab:"Firmament — first attack, +15 lethality 4s", src:"wiki", type:"phys", hits:1, pctTgtHP:9, cur:true}],
   "STORMRAZOR":      [{lab:"Bolt",            src:"wiki", type:"magic", hits:1, flat:100}],
   "STATIKK SHIV":    [{lab:"Electrospark",    src:"wiki", type:"magic", hits:1, flat:60}],
@@ -859,7 +863,7 @@ const WIKI_TIPS = {
 };
 
 const FX_FIELDS = [
-  ["hits","hits"],["flat","flat"],["pctAD","% bonus AD"],["pctTotAD","% total AD"],["pctBaseAD","% base AD"],
+  ["hits","hits"],["flat","flat"],["lvlFrom","at level 1"],["lvlTo","at max"],["lvlTop","max level"],["pctAD","% bonus AD"],["pctTotAD","% total AD"],["pctBaseAD","% base AD"],
   ["pctBonusHP","% your bonus HP"],["perLeth","per lethality"],["mrRed","% MR shred"],["mrRedFlat","flat MR shred"],
   ["pctAP","% AP"],["pctHP","% your HP"],["pctTgtHP","% target HP"],["pctMana","% your mana"],
   ["amp","% amp"],["armorRed","% armor shred"]
@@ -871,7 +875,9 @@ for(const k in ITEM_FX){ PV[k] = ITEM_FX[k].map(o => Object.assign({}, o)); }
 
 function fxOne(f, ctx, targetHealth){
   if(!f || !f.hits) return 0;
-  const one = (f.flat||0)
+  const one = (f.lvlFrom !== undefined
+                 ? lin(f.lvlFrom, f.lvlTo, ctx.L, f.lvlTop)
+                 : (f.flat||0))
             + (f.pctAD||0)/100     * ctx.bonusAD
             + (f.pctTotAD||0)/100  * ctx.totalAD
             + (f.pctBonusHP||0)/100* ctx.bonusHP
@@ -922,7 +928,7 @@ const T = {
   rSlow:       [15,18,21,24,27,30],
   rAwkSlow:    [20,23,26,29,32,35]
 };
-const lerp = (a,b,lvl) => a + (b-a)/17*(lvl-1);
+const lerp = (a,b,lvl,top) => { top = top || 18; return a + (b-a)/(top-1)*(Math.min(lvl,top)-1); };
 const R1 = (arr,rank) => arr[Math.min(6,Math.max(1,rank))-1];
 
 /* ============================================================
@@ -937,7 +943,7 @@ function msSoftCap(ms){
 }
 
 function computeBuild(b, target){
-  const L  = Math.min(18, Math.max(1, b.level));
+  const L  = Math.min(LVL_CAP, Math.max(1, b.level));
   const gr = (L-1)*(0.7025+0.0175*(L-1));           // courbe de croissance LoL
   const base = {
     hp:664+92*gr, mana:271+50*gr, ad:62+4*gr, ap:0,
@@ -978,7 +984,7 @@ function computeBuild(b, target){
   /* --- shards --- */
   const adaptiveAP = S.ap > S.ad;          /* adaptive force follows your bigger bonus stat */
   if(S.adapt){ adaptiveAP ? S.ap += S.adapt*1.667 : S.ad += S.adapt; }
-  const scaleHp    = lin(10,200,L);
+  const scaleHp    = lin(10,200,L,20);   /* 10 at level 1, 200 at level 20 */
   const SH = {hpPct:0};
   b.shards.forEach((choice, slotIdx) => {
     if(choice == null) return;
@@ -1176,7 +1182,7 @@ function computeBuild(b, target){
   D.ampMul = ampMul;
 
   const fxctx = {bonusAD, totalAD:tot.ad, baseAD:base.ad, bonusHP, ap:tot.ap,
-                 hp:tot.hp, tgtHP:hp, mana:tot.mana, letha:tot.letha};
+                 hp:tot.hp, tgtHP:hp, mana:tot.mana, letha:tot.letha, L};
   D.armorRed = armorRed;
   D.mrRed = mrRed;
 
@@ -1438,7 +1444,7 @@ function card(b, bi, R){
     </div>
 
     <div class="ranks">
-      <div class="rank"><b>LVL</b><input type="number" min="1" max="18" value="${b.level}" data-act="lvl" data-b="${bi}"></div>
+      <div class="rank"><b>LVL</b><input type="number" min="1" max="20" value="${b.level}" data-act="lvl" data-b="${bi}"></div>
       <div class="rank q"><b>Q</b><input type="number" min="1" max="6" value="${b.q}" data-act="q" data-b="${bi}"></div>
       <div class="rank w"><b>W</b><input type="number" min="1" max="6" value="${b.w}" data-act="w" data-b="${bi}"></div>
       <div class="rank e"><b>E</b><input type="number" min="1" max="6" value="${b.e}" data-act="e" data-b="${bi}"></div>
@@ -1678,7 +1684,7 @@ function bind(){
       const v = parseInt(e.target.value,10);
       if(isNaN(v)) return;
       const a = e.target.dataset.act;
-      if(a === "lvl") b.level = Math.min(18,Math.max(1,v));
+      if(a === "lvl") b.level = Math.min(LVL_CAP,Math.max(1,v));
       else b[a] = Math.min(6,Math.max(1,v));
       render();
     });
