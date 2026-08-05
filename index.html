@@ -54,6 +54,8 @@ button{cursor:pointer;background:none;border:none}
   margin:0;text-transform:uppercase;
 }
 .brand h1 span{color:var(--q)}
+.by{font-family:var(--display);font-weight:300;letter-spacing:.22em;font-size:10px;
+  color:var(--ink-faint);text-transform:uppercase;white-space:nowrap}
 .brand small{font-family:var(--display);font-weight:300;letter-spacing:.22em;font-size:10px;color:var(--ink-faint);text-transform:uppercase}
 
 .field{display:flex;flex-direction:column;gap:3px}
@@ -369,6 +371,7 @@ main{max-width:2200px;margin:0 auto;padding:22px 28px 80px}
   <div class="top-in">
     <div class="brand">
       <h1>UDYR<span>·</span>CALC</h1>
+      <small class="by">made by Ylfik</small>
     </div>
     <div class="field"><label>Target HP</label><input id="tHp" type="number" value="2000" min="1" step="50"></div>
     <div class="field"><label>Target Armor</label><input id="tAr" type="number" value="100" min="-100" step="5"></div>
@@ -405,6 +408,9 @@ main{max-width:2200px;margin:0 auto;padding:22px 28px 80px}
        2 awakened. Item and rune values are taken from the League of Legends Wiki item and rune
        data, melee column. Passives follow a nothing-or-max rule and are switched per build with
        the <strong>COND</strong> and <strong>ON/OFF</strong> buttons.</p>
+    <p><strong>Made by Ylfik.</strong> Built from my own Google Sheets calculator and rewritten as a
+       web app with the help of an AI assistant, which wrote the code and cross-checked the values
+       against the official data. The model, the build choices and the testing are mine.</p>
     <p class="legal">Udyr Calc isn't endorsed by Riot Games and doesn't reflect the views or
        opinions of Riot Games or anyone officially involved in producing or managing Riot Games
        properties. Riot Games and all associated properties are trademarks or registered
