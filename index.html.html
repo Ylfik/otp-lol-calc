@@ -1,0 +1,1951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Udyr Calc — Damage Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B1118;
+  --panel:#131C26;
+  --panel-2:#18232F;
+  --line:#243444;
+  --line-soft:#1C2836;
+  --ink:#D7E2EC;
+  --ink-dim:#8DA1B4;
+  --ink-faint:#5E7488;
+  --q:#E8A13C;   /* tiger   */
+  --w:#4EA8C4;   /* turtle  */
+  --e:#8FA85E;   /* bear    */
+  --r:#D2603F;   /* phoenix */
+  --good:#7FBF7F;
+  --bad:#C4685E;
+  --display:"Oswald","Haettenschweiler","Arial Narrow",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:14px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:none}
+
+/* ---------- header ---------- */
+.top{
+  position:sticky;top:0;z-index:40;
+  background:linear-gradient(180deg,#0B1118 70%,rgba(11,17,24,.92));
+  border-bottom:1px solid var(--line);
+  padding:14px 20px 12px;
+}
+.top-in{max-width:2200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:auto}
+.brand h1{
+  font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:.14em;
+  margin:0;text-transform:uppercase;
+}
+.brand h1 span{color:var(--q)}
+.brand small{font-family:var(--display);font-weight:300;letter-spacing:.22em;font-size:10px;color:var(--ink-faint);text-transform:uppercase}
+
+.field{display:flex;flex-direction:column;gap:3px}
+.field label{
+  font-family:var(--display);font-weight:300;font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-faint);
+}
+.field input{
+  width:78px;background:var(--panel);border:1px solid var(--line);border-radius:2px;
+  padding:5px 8px;font-family:var(--mono);font-size:13px;text-align:right;
+}
+.field input:focus{outline:none;border-color:var(--q)}
+
+.seg{display:flex;border:1px solid var(--line);border-radius:2px;overflow:hidden}
+.seg button{
+  padding:6px 12px;font-family:var(--display);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-faint);background:var(--panel);
+}
+.seg button[aria-pressed="true"]{background:var(--q);color:#10161d;font-weight:600}
+.seg button:focus-visible{outline:2px solid var(--q);outline-offset:-2px}
+.bar{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+.bar button{
+  border:1px solid var(--line);background:var(--panel);color:var(--ink-dim);border-radius:2px;
+  padding:5px 9px;font-family:var(--display);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+}
+.bar button:hover{border-color:var(--q);color:var(--q)}
+.bar select{
+  background:var(--panel);border:1px solid var(--line);border-radius:2px;color:var(--ink);
+  padding:5px 6px;font-family:var(--sans);font-size:12px;max-width:170px;
+}
+.savenote{font-family:var(--mono);font-size:11px;color:var(--e);align-self:flex-end;padding-bottom:6px}
+
+/* ---------- layout ---------- */
+main{max-width:2200px;margin:0 auto;padding:22px 28px 80px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.totals{padding:0 14px 14px 17px;display:grid;grid-template-columns:1fr 1fr;gap:14px 20px}
+.tcol{min-width:0}
+
+.card{
+  background:var(--panel);border:1px solid var(--line);border-radius:3px;
+  position:relative;overflow:hidden;
+}
+/* the stance rail — signature element */
+.card::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,var(--q) 0 25%,var(--w) 25% 50%,var(--e) 50% 75%,var(--r) 75% 100%);
+  opacity:.55;
+}
+.card > *{padding-left:17px}
+
+.card-head{display:flex;align-items:center;gap:10px;padding:12px 14px 10px 17px;border-bottom:1px solid var(--line-soft)}
+.card-head h2{
+  font-family:var(--display);font-weight:400;font-size:15px;letter-spacing:.2em;
+  text-transform:uppercase;margin:0;
+}
+.gold{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--q)}
+.gold::after{content:" gold";color:var(--ink-faint);font-size:10px}
+
+.ranks{display:flex;gap:14px;padding:12px 14px 12px 17px;border-bottom:1px solid var(--line-soft);flex-wrap:wrap}
+.rank{display:flex;align-items:center;gap:7px;flex:1;min-width:76px}
+.rank b{
+  font-family:var(--display);font-size:11px;letter-spacing:.12em;color:var(--ink-faint);
+  font-weight:400;min-width:22px;
+}
+.rank input{
+  flex:1;min-width:0;background:var(--panel-2);border:1px solid var(--line);border-radius:2px;
+  padding:6px 8px;font-family:var(--mono);font-size:14px;text-align:center;
+}
+.rank.q b{color:var(--q)} .rank.w b{color:var(--w)}
+.rank.e b{color:var(--e)} .rank.r b{color:var(--r)}
+
+/* items */
+.slots{padding:12px 14px 12px 17px;display:flex;flex-direction:column;gap:4px}
+.slot{
+  display:flex;align-items:center;gap:8px;width:100%;
+  background:var(--panel-2);border:1px solid var(--line-soft);border-radius:2px;
+  padding:6px 8px;text-align:left;transition:border-color .12s,background .12s;
+}
+.slot:hover{border-color:var(--line);background:#1D2A38}
+.slot:focus-visible{outline:2px solid var(--q);outline-offset:1px}
+.slot .num{font-family:var(--mono);font-size:10px;color:var(--ink-faint);min-width:12px;text-align:center}
+.iicon{width:22px;height:22px;border-radius:2px;flex:none;display:block}
+.pitem .iicon{width:26px;height:26px}
+.pitem{align-items:center}
+.slot .nm{font-family:var(--display);font-size:12px;letter-spacing:.06em;text-transform:uppercase;flex:1;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.slot.empty .nm{color:var(--ink-faint);font-weight:300;font-style:italic;text-transform:none;letter-spacing:.02em}
+.slot .cost{font-family:var(--mono);font-size:10px;color:var(--ink-faint)}
+.cond-btn{
+  font-family:var(--mono);font-size:9px;letter-spacing:.06em;padding:2px 5px;border-radius:2px;
+  border:1px solid var(--line);color:var(--ink-faint);background:transparent;
+}
+.cond-btn[aria-pressed="true"]{background:var(--q);border-color:var(--q);color:#10161d;font-weight:600}
+
+.runerow{padding:0 14px 12px 17px;display:flex;gap:9px;flex-wrap:wrap;align-items:flex-start}
+.rslot{display:flex;flex-direction:column;align-items:center;gap:3px}
+.rtog{
+  font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;padding:1px 5px;border-radius:2px;
+  border:1px solid var(--line);color:var(--ink-faint);background:transparent;line-height:1.4;
+}
+.rtog[aria-pressed="true"]{background:var(--q);border-color:var(--q);color:#10161d;font-weight:600}
+.rparam{
+  width:44px;background:var(--panel-2);border:1px solid var(--line);border-radius:2px;
+  padding:1px 4px;font-family:var(--mono);font-size:10px;text-align:center;
+}
+.rparam:focus{outline:none;border-color:var(--q)}
+.rtile{
+  width:40px;height:40px;border-radius:50%;border:1px solid var(--line);
+  background:var(--panel-2);display:grid;place-items:center;overflow:hidden;
+  transition:border-color .12s,transform .12s;padding:0;
+}
+.rtile img{width:100%;height:100%;object-fit:cover;display:block}
+.rtile.key{width:52px;height:52px;border-color:var(--line)}
+.rtile:hover{border-color:var(--q);transform:translateY(-1px)}
+.rtile:focus-visible{outline:2px solid var(--q);outline-offset:2px}
+.rtile.blank img,.rtile.blank{opacity:.45}
+.rtile.live{box-shadow:0 0 0 1px rgba(232,161,60,.45)}
+.ricon-fb{
+  font-family:var(--display);font-size:13px;color:var(--ink-faint);
+  display:grid;place-items:center;width:100%;height:100%;
+}
+.shardrow{padding:0 14px 12px 17px;display:flex;gap:7px;flex-wrap:wrap}
+.stile{
+  display:flex;align-items:center;gap:6px;padding:3px 8px 3px 3px;
+  border:1px solid var(--line-soft);border-radius:16px;background:var(--panel-2);
+}
+.stile img{width:24px;height:24px;border-radius:50%;display:block}
+.stile em{font-style:normal;font-family:var(--mono);font-size:10px;color:var(--ink-dim);white-space:nowrap}
+.stile:hover{border-color:var(--q)}
+.stile:focus-visible{outline:2px solid var(--q);outline-offset:1px}
+.stile.blank{opacity:.5}
+.stile .ricon-fb{width:24px;height:24px;font-size:9px}
+
+/* sections */
+.sect-h{
+  font-family:var(--display);font-weight:300;font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ink-faint);padding:12px 14px 5px 17px;border-top:1px solid var(--line-soft);
+}
+.stats{padding:0 14px 14px 17px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.sgroup{border-left:2px solid var(--line);padding-left:9px}
+.sgroup.off{border-color:var(--q)}
+.sgroup.def{border-color:var(--w)}
+.sgroup.uti{border-color:var(--e)}
+.sgroup h6{
+  font-family:var(--display);font-weight:400;font-size:9.5px;letter-spacing:.2em;
+  text-transform:uppercase;margin:0 0 5px;
+}
+.sgroup.off h6{color:var(--q)}
+.sgroup.def h6{color:var(--w)}
+.sgroup.uti h6{color:var(--e)}
+.stat{display:flex;justify-content:space-between;align-items:baseline;padding:1px 0;font-size:12px;gap:8px}
+.stat span{color:var(--ink-faint);font-family:var(--display);font-weight:300;letter-spacing:.08em;font-size:11px}
+.stat b{font-family:var(--mono);font-weight:500;font-size:12px}
+.stat.z b,.stat.z span{color:var(--ink-faint);font-weight:400;opacity:.6}
+.stat.hi{border-top:1px solid var(--line-soft);margin-top:3px;padding-top:5px}
+.stat.hi span{color:var(--ink-dim)}
+.stat.hi b{font-size:16px;color:var(--q)}
+
+.abil{padding:0 14px 10px 17px}
+.ab{border-left:2px solid var(--line);padding:5px 0 5px 9px;margin-bottom:6px}
+.ab.q{border-color:var(--q)} .ab.w{border-color:var(--w)}
+.ab.e{border-color:var(--e)} .ab.r{border-color:var(--r)}
+.ab h4{
+  font-family:var(--display);font-weight:400;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  margin:0 0 2px;color:var(--ink-dim);
+}
+.ab.q h4{color:var(--q)} .ab.w h4{color:var(--w)}
+.ab.e h4{color:var(--e)} .ab.r h4{color:var(--r)}
+.ab .row{display:flex;justify-content:space-between;gap:8px;font-size:11.5px;padding:1px 0}
+.ab .row i{font-style:normal;color:var(--ink-faint);font-family:var(--display);font-weight:300;letter-spacing:.06em}
+.ab .row b{font-family:var(--mono);font-weight:500}
+.ab .row.awk i,.ab .row.awk b{opacity:.95}
+.ab .row.awk i::before{content:"◈ ";font-size:8px;vertical-align:1px}
+
+/* comparison */
+.compare{margin-top:28px;border:1px solid var(--line);border-radius:3px;background:var(--panel);padding:18px 20px 22px}
+.compare h3{
+  font-family:var(--display);font-weight:400;font-size:14px;letter-spacing:.22em;text-transform:uppercase;
+  margin:0 0 4px;
+}
+.compare p.sub{color:var(--ink-faint);font-size:12px;margin:0 0 18px}
+.cmp-row{margin-bottom:18px}
+.cmp-head{
+  font-family:var(--display);font-weight:400;font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink);margin:22px 0 12px;
+  border-bottom:1px solid var(--line-soft);padding-bottom:6px;
+}
+.cmp-head:first-child{margin-top:0}
+.tcol h6{
+  font-family:var(--display);font-weight:400;font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;margin:0 0 4px;padding-bottom:3px;border-bottom:1px solid var(--line-soft);
+}
+.tcol.qc h6{color:var(--q)} .tcol.wc h6{color:var(--w)}
+.tcol.ec h6{color:var(--e)} .tcol.rc h6{color:var(--r)}
+.runedmg{grid-template-columns:repeat(2,1fr)}
+.fxrow{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--line-soft);flex-wrap:wrap}
+.fxrow:last-child{border-bottom:none}
+.fxname{min-width:210px}
+.fxname b{font-family:var(--display);font-weight:400;font-size:12px;letter-spacing:.08em;display:block}
+.fxname em{font-style:normal;font-size:10.5px;color:var(--ink-faint);font-family:var(--mono)}
+.fxfields{display:flex;gap:10px;flex-wrap:wrap;flex:1}
+.fxc{display:flex;align-items:baseline;gap:5px;background:var(--panel-2);border:1px solid var(--line-soft);
+  border-radius:2px;padding:2px 7px}
+.fxc i{font-style:normal;font-family:var(--display);font-weight:300;font-size:9px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-faint)}
+.fxc b{font-family:var(--mono);font-size:11px;font-weight:500}
+.src{font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;padding:1px 4px;border-radius:2px;
+  border:1px solid var(--line);color:var(--ink-faint);margin-left:5px}
+.src.ok{border-color:var(--e);color:var(--e)}
+.tipbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 12px}
+.tipbtn{border:1px solid var(--q);color:var(--q);background:transparent;border-radius:2px;
+  padding:5px 12px;font-family:var(--display);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.tipbtn:hover{background:var(--q);color:#10161d}
+.tipstat{font-family:var(--mono);font-size:11px;color:var(--ink-faint)}
+.tipfall summary{font-size:11px;color:var(--ink-faint);cursor:pointer}
+.tipfall p{font-size:11.5px;color:var(--ink-dim);margin:6px 0}
+.tipfall textarea{width:100%;max-width:520px;background:var(--panel-2);border:1px solid var(--line);
+  border-radius:2px;color:var(--ink);font-family:var(--mono);font-size:11px;padding:6px;margin-bottom:6px}
+.fxtip{flex-basis:100%;font-size:11px;color:var(--ink-dim);border-left:2px solid var(--e);
+  padding:4px 0 4px 9px;margin-top:6px;line-height:1.45}
+.cmp-row > h5 em{font-style:normal;color:var(--ink-faint);font-size:9.5px;letter-spacing:.1em}
+.cmp-row > h5{
+  font-family:var(--display);font-weight:400;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  margin:0 0 7px;color:var(--ink-dim);
+}
+.bar{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.bar .lbl{font-family:var(--display);font-size:10px;letter-spacing:.14em;color:var(--ink-faint);width:52px;flex:none}
+.bar .track{flex:1;height:16px;background:var(--panel-2);border-radius:1px;position:relative;overflow:hidden}
+.bar .fill{height:100%;transition:width .3s cubic-bezier(.2,.7,.3,1)}
+.bar .val{font-family:var(--mono);font-size:12.5px;font-weight:600;width:66px;text-align:right;flex:none}
+.bar .dlt{font-family:var(--mono);font-size:10.5px;width:58px;text-align:right;flex:none;color:var(--ink-faint)}
+.bar.lead .val{color:var(--q)}
+.dlt.up{color:var(--good)} .dlt.dn{color:var(--bad)}
+
+/* picker */
+.overlay{
+  position:fixed;inset:0;background:rgba(5,9,13,.82);z-index:100;
+  display:none;align-items:flex-start;justify-content:center;padding:6vh 16px;
+}
+.overlay.on{display:flex}
+.picker{
+  background:var(--panel);border:1px solid var(--line);border-radius:3px;
+  width:min(560px,100%);max-height:82vh;display:flex;flex-direction:column;
+}
+.picker header{padding:14px 16px 10px;border-bottom:1px solid var(--line-soft)}
+.picker header .t{font-family:var(--display);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint)}
+.picker input{
+  width:100%;margin-top:8px;background:var(--panel-2);border:1px solid var(--line);border-radius:2px;
+  padding:8px 10px;font-family:var(--sans);font-size:14px;
+}
+.picker input:focus{outline:none;border-color:var(--q)}
+.plist{overflow-y:auto;padding:6px}
+.pitem{
+  display:flex;align-items:baseline;gap:10px;width:100%;padding:7px 9px;border-radius:2px;text-align:left;
+}
+.pitem:hover,.pitem:focus-visible{background:var(--panel-2);outline:none}
+.pitem .nm{font-family:var(--display);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;flex:none}
+.pitem .st{font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);flex:1;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pitem .cost{font-family:var(--mono);font-size:10.5px;color:var(--q)}
+.pitem.clear .nm{color:var(--bad)}
+.pitem.rune{align-items:center}
+.pitem.rune img{width:26px;height:26px;border-radius:50%;flex:none}
+.pitem.rune .nm{min-width:150px}
+.pitem .dot{width:6px;height:6px;border-radius:50%;background:var(--q);flex:none}
+.chips{display:flex;flex-wrap:wrap;gap:4px;padding:6px 3px 9px}
+.chip{
+  border:1px solid var(--line);background:transparent;color:var(--ink-faint);border-radius:10px;
+  padding:2px 9px;font-family:var(--mono);font-size:10px;letter-spacing:.04em;
+}
+.chip:hover{border-color:var(--q);color:var(--q)}
+.pitem .hit{
+  font-family:var(--mono);font-size:10px;color:#10161d;background:var(--q);
+  border-radius:2px;padding:1px 6px;flex:none;font-weight:600;
+}
+.ptree{
+  font-family:var(--display);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ink-faint);padding:10px 9px 4px;
+}
+
+.foot{margin-top:34px;border-top:1px solid var(--line-soft);padding-top:16px;
+  font-size:11.5px;color:var(--ink-faint);line-height:1.6;max-width:900px}
+.foot p{margin:0 0 8px}
+.foot strong{color:var(--ink-dim);font-weight:500}
+.foot .legal{font-size:10.5px;opacity:.75}
+
+@media (min-width:1500px){
+  .grid{gap:20px}
+  .slots{display:grid;grid-template-columns:1fr 1fr;gap:5px 12px}
+  .runes{grid-template-columns:repeat(4,1fr)}
+  .rune.wide{grid-column:auto}
+  .abil{display:grid;grid-template-columns:1fr 1fr;column-gap:18px;align-items:start}
+  .totals{grid-template-columns:repeat(4,1fr);gap:16px 22px}
+  .totals .stat b{font-size:14px}
+}
+@media (min-width:1900px){
+  .abil{grid-template-columns:repeat(4,1fr);column-gap:14px}
+  .card-head h2{font-size:17px}
+}
+
+@media (max-width:980px){
+  .grid{grid-template-columns:1fr}
+  .top-in{gap:14px}
+  .brand{width:100%;margin-right:0}
+  .bar .dlt{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-in">
+    <div class="brand">
+      <h1>UDYR<span>·</span>CALC</h1>
+    </div>
+    <div class="field"><label>Target HP</label><input id="tHp" type="number" value="2000" min="1" step="50"></div>
+    <div class="field"><label>Target Armor</label><input id="tAr" type="number" value="100" min="-100" step="5"></div>
+    <div class="field"><label>Target MR</label><input id="tMr" type="number" value="100" min="-100" step="5"></div>
+    <div class="field">
+      <label>Builds</label>
+      <div class="bar">
+        <select id="slotSel" title="saved build pages"></select>
+        <button id="btnSave">Save</button>
+        <button id="btnDel" title="delete the selected slot">Del</button>
+        <button id="btnExport">Export</button>
+        <button id="btnImport">Import</button>
+        <button id="btnReset">Reset</button>
+        <input id="fileIn" type="file" accept="application/json,.json" hidden>
+      </div>
+    </div>
+    <div class="savenote" id="saveNote"></div>
+  </div>
+</div>
+
+<main>
+  <div class="grid" id="grid"></div>
+
+  <section class="compare">
+    <h3>Comparison</h3>
+    <p class="sub">Damage dealt to the target after armor and magic resist. The reference combo is <strong>2 basic attacks</strong>.</p>
+    <div id="cmp"></div>
+  </section>
+
+  <section class="compare" id="fxPanel"></section>
+
+  <footer class="foot">
+    <p><strong>Udyr Calc</strong> — combo of reference: 4 basic attacks, 2 in the stance then
+       2 awakened. Item and rune values are taken from the League of Legends Wiki item and rune
+       data, melee column. Passives follow a nothing-or-max rule and are switched per build with
+       the <strong>COND</strong> and <strong>ON/OFF</strong> buttons.</p>
+    <p class="legal">Udyr Calc isn't endorsed by Riot Games and doesn't reflect the views or
+       opinions of Riot Games or anyone officially involved in producing or managing Riot Games
+       properties. Riot Games and all associated properties are trademarks or registered
+       trademarks of Riot Games, Inc.</p>
+  </footer>
+
+</main>
+
+<div class="overlay" id="overlay">
+  <div class="picker" role="dialog" aria-modal="true" aria-label="Pick an item">
+    <header>
+      <div class="t" id="pickTitle">Item</div>
+      <input id="pickSearch" type="search" placeholder="name, or stats — try: leth · ad crit · ah&gt;=20" autocomplete="off">
+    </header>
+    <div class="plist" id="pickList"></div>
+  </div>
+</div>
+
+<script>
+"use strict";
+
+/* ============================================================
+   BASE D'ITEMS — reprise telle quelle de l'onglet ITEM DATABASE
+   ============================================================ */
+const ITEMS = [
+{n:"ABYSSAL MASK",g:2650,id:8020,hp:350,mr:45,ah:15},
+{n:"ACTUALIZER",g:2800,id:2522,mana:300,ap:90,ah:10},
+{n:"ARCHANGEL'S STAFF",g:2900,id:3003,mana:600,ap:70,ah:25},
+{n:"ARDENT CENSER",g:2200,id:3504,ap:45,mspct:4,hs:10},
+{n:"ARMORED ADVANCE",g:1200,id:3174,ar:35,ms:45},
+{n:"AXIOM ARC",g:2750,id:6696,ad:55,ah:20,letha:18},
+{n:"BANDLEPIPES",g:2300,id:2524,hp:200,ar:20,mr:20,ah:15,c:"AS:0.3 MS:20"},
+{n:"BANSHEE'S VEIL",g:3000,id:3102,mr:40,ap:105},
+{n:"BASTIONBREAKER",g:3000,id:2520,ad:55,ah:15,letha:22},
+{n:"BERSERKER'S GREAVES",g:1100,id:3006,as:0.25,ms:45},
+{n:"BLACK CLEAVER",g:3000,id:3071,hp:400,ad:40,ah:20},
+{n:"BLACKFIRE TORCH",g:2800,id:2503,mana:600,ap:80,ah:20},
+{n:"BLADE OF THE RUINED KING",g:3200,id:3153,ad:40,as:0.25,ls:10},
+{n:"BLOODLETTER'S CURSE",g:2900,id:8010,hp:400,ap:65,ah:15},
+{n:"BLOODTHIRSTER",g:3400,id:3072,ad:80,ls:15},
+{n:"BOOTS OF SWIFTNESS",g:1000,id:3009,ms:55,slow:25},
+{n:"CHAINLACED CRUSHERS",g:1250,id:3173,mr:30,ms:45,ten:30},
+{n:"CHEMPUNK CHAINSWORD",g:3000,id:6609,hp:450,ad:45,ah:15},
+{n:"COSMIC DRIVE",g:3000,id:4629,hp:350,ap:70,ah:25,mspct:4},
+{n:"CRIMSON LUCIDITY",g:900,id:3171,ah:20,ms:45},
+{n:"CRYPTBLOOM",g:3000,id:3137,ap:75,ah:20,mrpen:30},
+{n:"DAWNCORE",g:2500,id:6621,ap:45,hs:16},
+{n:"DEAD MAN'S PLATE",g:2900,id:3742,hp:350,ar:55,mspct:4,c:"MS:20"},
+{n:"DEATH'S DANCE",g:3300,id:6333,ar:50,ad:60,ah:15},
+{n:"DIADEM OF SONGS",g:2250,id:2530,hp:200,mana:1000,hs:8},
+{n:"DUSK AND DAWN",g:3100,id:2510,hp:300,ap:60,ah:20,as:0.2},
+{n:"ECHOES OF HELIA",g:2200,id:6620,hp:200,ap:35,ah:20},
+{n:"ECLIPSE",g:2900,id:6692,ad:60,ah:15},
+{n:"EDGE OF NIGHT",g:3000,id:3814,hp:250,ad:50,letha:15},
+{n:"ENDLESS HUNGER",g:3100,id:2517,ad:65,ov:5,ten:20,c:"OMNIVAMP:15"},
+{n:"ESSENCE REAVER",g:3050,id:3508,ad:50,ah:20,crit:25},
+{n:"EXPERIMENTAL HEXPLATE",g:3000,id:3073,hp:450,ad:40,as:0.2,c:"AS:0.5 MS%:20"},
+{n:"FIENDHUNTER BOLTS",g:2650,id:2512,as:0.45,crit:25,mspct:4,c:"AS:0.5"},
+{n:"FIMBULWINTER",g:2400,id:3121,hp:550,mana:1000,ah:15},
+{n:"FORCE OF NATURE",g:2800,id:4401,hp:400,mr:55,mspct:4,c:"MR:70 MS%:6"},
+{n:"FROZEN HEART",g:2500,id:3110,mana:400,ar:75,ah:20},
+{n:"GLUTTONOUS GREAVES",g:1000,id:3008,ov:4,ms:45,c:"OMNIVAMP:6"},
+{n:"GUARDIAN ANGEL",g:3200,id:3026,ar:45,ad:55},
+{n:"GUINSOO'S RAGEBLADE",g:3000,id:3124,ad:30,ap:30,as:0.25,c:"AS:0.32"},
+{n:"GUNMETAL GREAVES",g:1100,id:3172,as:0.4,ls:5,ms:45},
+{n:"HEARTSTEEL",g:3000,id:3084,hp:900},
+{n:"HEXOPTICS C44",g:2800,id:2523,ad:55,crit:25},
+{n:"HEXTECH GUNBLADE",g:3000,id:3146,ad:40,ap:80,ov:10},
+{n:"HEXTECH ROCKETBELT",g:2650,id:3152,hp:350,ap:60,ah:20},
+{n:"HOLLOW RADIANCE",g:2800,id:6664,hp:400,mr:40,ah:10},
+{n:"HORIZON FOCUS",g:2700,id:4628,ap:75,ah:25},
+{n:"HUBRIS",g:2800,id:6697,ad:55,ah:10,letha:18},
+{n:"HULLBREAKER",g:3000,id:3181,hp:500,ad:40,mspct:4},
+{n:"ICEBORN GAUNTLET",g:2900,id:6662,hp:300,ar:50,ah:15},
+{n:"IMMORTAL PATH",g:1000,id:3168,ov:4,ms:45},
+{n:"IMMORTAL SHIELDBOW",g:3000,id:6673,ad:55,crit:25},
+{n:"IMPERIAL MANDATE",g:2400,id:4005,ap:60,ah:15},
+{n:"INFINITY EDGE",g:3500,id:3031,ad:75,crit:25,critdmg:30},
+{n:"IONIAN BOOTS OF LUCIDITY",g:900,id:3158,ah:10,ms:45},
+{n:"JAK'SHO, THE PROTEAN",g:3200,id:6665,hp:350,ar:45,mr:45},
+{n:"KAENIC ROOKERN",g:2900,id:2504,hp:400,mr:80},
+{n:"KNIGHT'S VOW",g:2300,id:3109,hp:200,ar:40,ah:10},
+{n:"KRAKEN SLAYER",g:3000,id:6672,ad:45,as:0.4,mspct:4},
+{n:"LIANDRY'S TORMENT",g:3000,id:6653,hp:300,ap:60},
+{n:"LICH BANE",g:2900,id:3100,ap:100,ah:10,mspct:6},
+{n:"LOCKET OF THE IRON SOLARI",g:2200,id:3190,hp:200,ar:30,mr:30,ah:10},
+{n:"LORD DOMINIK'S REGARDS",g:3300,id:3036,ad:35,crit:25,arpen:35},
+{n:"LUDEN'S ECHO",g:2750,id:6655,mana:600,ap:100,ah:10},
+{n:"MALIGNANCE",g:2700,id:3118,mana:600,ap:90,ah:15},
+{n:"MANAMUNE",g:2900,id:3004,mana:500,ad:35,ah:15},
+{n:"MAW OF MALMORTIUS",g:3100,id:3156,mr:40,ad:60,ah:15},
+{n:"MEJAI'S SOULSTEALER",g:1500,id:3041,hp:100,ap:20},
+{n:"MERCURIAL SCIMITAR",g:3200,id:3139,mr:35,ad:50,ls:10},
+{n:"MERCURY'S TREADS",g:1250,id:3111,mr:20,ms:45,ten:30},
+{n:"MIKAEL'S BLESSING",g:2300,id:3222,hp:250,ah:15,hs:12},
+{n:"MOONSTONE RENEWER",g:2200,id:6617,hp:200,ap:25,ah:20},
+{n:"MORELLONOMICON",g:2850,id:3165,hp:350,ap:75,ah:15},
+{n:"MORTAL REMINDER",g:3000,id:3033,ad:35,crit:25,arpen:30},
+{n:"MURAMANA",g:2900,id:3042,mana:1000,ad:35,ah:15},
+{n:"NASHOR'S TOOTH",g:2900,id:3115,ap:80,ah:15,as:0.5},
+{n:"NAVORI FLICKERBLADE",g:2650,id:6675,as:0.4,crit:25,mspct:4},
+{n:"OVERLORD'S BLOODMAIL",g:3300,id:2501,hp:550,ad:30},
+{n:"PHANTOM DANCER",g:2650,id:3046,as:0.65,crit:25,mspct:10},
+{n:"PLATED STEELCAPS",g:1200,id:3047,ar:25,ms:45},
+{n:"PROFANE HYDRA",g:2850,id:6698,ad:55,ah:10,letha:18},
+{n:"PROTOPLASM HARNESS",g:2600,id:2525,hp:600,ah:20,c:"MS%:10 TENACITY:25"},
+{n:"RABADON'S DEATHCAP",g:3500,id:3089,ap:130},
+{n:"RANDUIN'S OMEN",g:2700,id:3143,hp:350,ar:75},
+{n:"RAPID FIRECANNON",g:2650,id:3094,as:0.35,crit:25,mspct:4},
+{n:"RAVENOUS HYDRA",g:3300,id:3074,ad:65,ah:15,ls:12},
+{n:"REDEMPTION",g:2300,id:3107,ap:30,ah:15,hs:10},
+{n:"RIFTMAKER",g:3100,id:4633,hp:350,ap:70,ah:15},
+{n:"ROD OF AGES",g:2600,id:6657,hp:350,mana:500,ap:45},
+{n:"RUNAAN'S HURRICANE",g:2650,id:3085,as:0.4,crit:25,mspct:4},
+{n:"RYLAI'S CRYSTAL SCEPTER",g:2600,id:3116,hp:400,ap:65},
+{n:"SERAPH'S EMBRACE",g:2900,id:3040,mana:1000,ap:70,ah:25},
+{n:"SERPENT'S FANG",g:2500,id:6695,ad:55,letha:15},
+{n:"SERYLDA'S GRUDGE",g:3000,id:6694,ad:45,ah:15,arpen:35},
+{n:"SHADOWFLAME",g:3200,id:4645,ap:110,mrpenflat:15},
+{n:"SHURELYA'S BATTLESONG",g:2200,id:2065,ap:50,ah:15,mspct:4},
+{n:"SORCERER'S SHOES",g:1100,id:3020,mrpenflat:12,ms:45},
+{n:"SPEAR OF SHOJIN",g:3100,id:3161,hp:450,ad:45},
+{n:"SPELLSLINGER'S SHOES",g:1100,id:3175,mrpenflat:18,mrpen:8,ms:45},
+{n:"SPIRIT VISAGE",g:2700,id:3065,hp:400,mr:50,ah:10},
+{n:"STAFF OF FLOWING WATER",g:2250,id:6616,ap:35,ah:10,hs:10},
+{n:"STATIKK SHIV",g:3000,id:3087,ad:45,ap:45,as:0.3,mspct:4},
+{n:"STERAK'S GAGE",g:3200,id:3053,hp:400,ten:20},
+{n:"STORMRAZOR",g:3200,id:3097,ad:50,as:0.2,crit:25},
+{n:"STORMSURGE",g:2800,id:4646,ap:90,mrpenflat:15,mspct:6},
+{n:"STRIDEBREAKER",g:3300,id:6631,hp:450,ad:40,as:0.25},
+{n:"SUNDERED SKY",g:3100,id:6610,hp:400,ad:45,ah:10},
+{n:"SUNFIRE AEGIS",g:2700,id:3068,hp:350,ar:50,ah:10},
+{n:"SWIFTMARCH",g:1000,id:3170,ms:65,slow:40},
+{n:"TERMINUS",g:3000,id:3302,ad:30,as:0.35,c:"AR:24 MR:24 ARPEN%:30 MRPEN%:30"},
+{n:"THE COLLECTOR",g:3000,id:6676,ad:50,crit:25,letha:10},
+{n:"THORNMAIL",g:2450,id:3075,hp:150,ar:75},
+{n:"TITANIC HYDRA",g:3300,id:3748,hp:600,ad:40},
+{n:"TRINITY FORCE",g:3333,id:3078,hp:333,ad:36,ah:15,as:0.3},
+{n:"UMBRAL GLAIVE",g:2800,id:3179,ad:60,ah:15,letha:18},
+{n:"UNENDING DESPAIR",g:2800,id:2502,hp:400,ar:50,ah:15},
+{n:"VOID STAFF",g:3000,id:3135,ap:95,mrpen:40},
+{n:"VOLTAIC CYCLOSWORD",g:3000,id:6699,ad:55,ah:10,letha:10,c:"LETHALITY:15"},
+{n:"WARMOG'S ARMOR",g:3100,id:3083,hp:1000},
+{n:"WINTER'S APPROACH",g:2400,id:3119,hp:550,mana:500,ah:15},
+{n:"WIT'S END",g:2800,id:3091,mr:45,as:0.5,ten:20},
+{n:"YOUMUU'S GHOSTBLADE",g:2800,id:3142,ad:55,letha:18,mspct:4},
+{n:"YUN TAL WILDARROWS",g:3000,id:3032,ad:50,as:0.45,c:"AS:0.3"},
+{n:"ZEKE'S CONVERGENCE",g:2200,id:3050,hp:300,ar:25,mr:25,ah:10},
+{n:"ZHONYA'S HOURGLASS",g:3250,id:3157,ar:50,ap:105}
+];
+
+
+const BY_NAME = {};
+ITEMS.forEach(i => BY_NAME[i.n] = i);
+
+
+
+
+/* ============================================================
+   RUNES — data from Riot's runesReforged.json (names, ids, icons)
+   ============================================================ */
+const RUNES = [
+{id:8005,k:"PressTheAttack",n:"Press the Attack",t:"Precision",s:0,ic:"perk-images/Styles/Precision/PressTheAttack/PressTheAttack.png",tip:"Hitting an enemy champion 3 consecutive times deals bonus damage and amplifies your damage until you leave combat with champions."},
+{id:8008,k:"LethalTempo",n:"Lethal Tempo",t:"Precision",s:0,ic:"perk-images/Styles/Precision/LethalTempo/LethalTempoTemp.png",tip:"Attacking an enemy champion grants you Attack Speed, up to 6 stacks. At max stacks, deal bonus adaptive damage On-Attack."},
+{id:8021,k:"FleetFootwork",n:"Fleet Footwork",t:"Precision",s:0,ic:"perk-images/Styles/Precision/FleetFootwork/FleetFootwork.png",tip:"Attacking and moving builds Energy stacks. At 100 stacks, your next attack heals you and grants increased MS ."},
+{id:8010,k:"Conqueror",n:"Conqueror",t:"Precision",s:0,ic:"perk-images/Styles/Precision/Conqueror/Conqueror.png",tip:"Gain stacks of adaptive force when attacking enemy champions. After reaching 12 stacks, heal for a portion of damage you deal to champions."},
+{id:9101,k:"AbsorbLife",n:"Absorb Life",t:"Precision",s:1,ic:"perk-images/Styles/Precision/AbsorbLife/AbsorbLife.png",tip:"Killing a target heals you."},
+{id:9111,k:"Triumph",n:"Triumph",t:"Precision",s:1,ic:"perk-images/Styles/Precision/Triumph.png",tip:"Takedowns restore 5% of your missing health and grant an additional 20 gold."},
+{id:8009,k:"PresenceOfMind",n:"Presence of Mind",t:"Precision",s:1,ic:"perk-images/Styles/Precision/PresenceOfMind/PresenceOfMind.png",tip:"Restore a small amount of mana or energy when damaging an enemy champion. Takedowns restore mana or energy."},
+{id:9104,k:"LegendAlacrity",n:"Legend: Alacrity",t:"Precision",s:2,ic:"perk-images/Styles/Precision/LegendAlacrity/LegendAlacrity.png",tip:"Takedowns on enemies grant permanent Attack Speed ."},
+{id:9105,k:"LegendHaste",n:"Legend: Haste",t:"Precision",s:2,ic:"perk-images/Styles/Precision/LegendHaste/LegendHaste.png",tip:"Takedowns on enemies grant permanent Basic Ability Haste ."},
+{id:9103,k:"LegendBloodline",n:"Legend: Bloodline",t:"Precision",s:2,ic:"perk-images/Styles/Precision/LegendBloodline/LegendBloodline.png",tip:"Takedowns on enemies grant permanent Life Steal , up to a cap. Once the cap is reached, increase your max health. Weaker earlier but stronger later game than other Legend Runes."},
+{id:8014,k:"CoupDeGrace",n:"Coup de Grace",t:"Precision",s:3,ic:"perk-images/Styles/Precision/CoupDeGrace/CoupDeGrace.png",tip:"Deal more damage to low health enemy champions."},
+{id:8017,k:"CutDown",n:"Cut Down",t:"Precision",s:3,ic:"perk-images/Styles/Precision/CutDown/CutDown.png",tip:"Deal more damage to high health enemy champions."},
+{id:8299,k:"LastStand",n:"Last Stand",t:"Precision",s:3,ic:"perk-images/Styles/Sorcery/LastStand/LastStand.png",tip:"Deal more damage to champions while you are low on health."},
+{id:8112,k:"Electrocute",n:"Electrocute",t:"Domination",s:0,ic:"perk-images/Styles/Domination/Electrocute/Electrocute.png",tip:"Hitting a champion with 3 separate attacks or abilities in 3s deals bonus adaptive damage ."},
+{id:8128,k:"DarkHarvest",n:"Dark Harvest",t:"Domination",s:0,ic:"perk-images/Styles/Domination/DarkHarvest/DarkHarvest.png",tip:"Damaging a low health champion inflicts adaptive damage and harvests a soul from the victim."},
+{id:9923,k:"HailOfBlades",n:"Hail of Blades",t:"Domination",s:0,ic:"perk-images/Styles/Domination/HailOfBlades/HailOfBlades.png",tip:"Gain a large amount of Attack Speed and bonus true damage for the first 3 attacks made against enemy champions."},
+{id:8126,k:"CheapShot",n:"Cheap Shot",t:"Domination",s:1,ic:"perk-images/Styles/Domination/CheapShot/CheapShot.png",tip:"Deal bonus true damage to enemy champions with impaired movement or actions ."},
+{id:8139,k:"TasteOfBlood",n:"Taste of Blood",t:"Domination",s:1,ic:"perk-images/Styles/Domination/TasteOfBlood/GreenTerror_TasteOfBlood.png",tip:"Heal when you damage an enemy champion."},
+{id:8143,k:"SuddenImpact",n:"Sudden Impact",t:"Domination",s:1,ic:"perk-images/Styles/Domination/SuddenImpact/SuddenImpact.png",tip:"Damaging basic attacks and abilities deal bonus true damage to enemy champions after using a dash, leap, blink, teleport, or when leaving stealth."},
+{id:8137,k:"SixthSense",n:"Sixth Sense",t:"Domination",s:2,ic:"perk-images/Styles/Domination/SixthSense/SixthSense.png",tip:"On a long Cooldown, automatically sense a nearby untracked and unseen ward, tracking it for the team. Level 11: Also reveal the ward for 10s."},
+{id:8140,k:"GrislyMementos",n:"Grisly Mementos",t:"Domination",s:2,ic:"perk-images/Styles/Domination/GrislyMementos/GrislyMementos.png",tip:"Collect 1 memento on champion takedowns , up to 18 total. Gain 6 Trinket Haste for each collected."},
+{id:8141,k:"DeepWard",n:"Deep Ward",t:"Domination",s:2,ic:"perk-images/Styles/Domination/DeepWard/DeepWard.png",tip:"Your wards in the enemy jungle are Deep , gaining Health and Duration. Level 9: Wards in the river are also Deep ."},
+{id:8135,k:"TreasureHunter",n:"Treasure Hunter",t:"Domination",s:3,ic:"perk-images/Styles/Domination/TreasureHunter/TreasureHunter.png",tip:"Unique takedowns grant additional gold the first time they are collected."},
+{id:8105,k:"RelentlessHunter",n:"Relentless Hunter",t:"Domination",s:3,ic:"perk-images/Styles/Domination/RelentlessHunter/RelentlessHunter.png",tip:"Unique takedowns grant permanent out of combat MS ."},
+{id:8106,k:"UltimateHunter",n:"Ultimate Hunter",t:"Domination",s:3,ic:"perk-images/Styles/Domination/UltimateHunter/UltimateHunter.png",tip:"Unique takedowns grant permanent cooldown reduction on your Ultimate."},
+{id:8214,k:"SummonAery",n:"Summon Aery",t:"Sorcery",s:0,ic:"perk-images/Styles/Sorcery/SummonAery/SummonAery.png",tip:"Your attacks and abilities send Aery to a target, damaging enemies or shielding allies."},
+{id:8229,k:"ArcaneComet",n:"Arcane Comet",t:"Sorcery",s:0,ic:"perk-images/Styles/Sorcery/ArcaneComet/ArcaneComet.png",tip:"Damaging a champion with an ability hurls a damaging comet at their location."},
+{id:8230,k:"PhaseRush",n:"Stormraider's Surge",t:"Sorcery",s:0,ic:"perk-images/Styles/Sorcery/PhaseRush/StormraidersSurgeRuneIcon2.png",tip:"Dealing 25% of a champion's maximum health grants a burst of MS and Slow Resist."},
+{id:8992,k:"DeathfireTouch",n:"Deathfire Touch",t:"Sorcery",s:0,ic:"perk-images/Styles/Sorcery/DeathfireTouch/DEATHFIRE_TOUCH_KEYSTONE.png",tip:"Damaging a champion with an ability burns them over time."},
+{id:8224,k:"NullifyingOrb",n:"Axiom Arcanist",t:"Sorcery",s:1,ic:"perk-images/Styles/Sorcery/NullifyingOrb/Axiom_Arcanist.png",tip:"Your Ultimate has increased damage, healing, and shielding. Scoring a takedown on an enemy champion reduces your Ultimate's current cooldown."},
+{id:8226,k:"ManaflowBand",n:"Manaflow Band",t:"Sorcery",s:1,ic:"perk-images/Styles/Sorcery/ManaflowBand/ManaflowBand.png",tip:"Hitting an enemy champion with an ability permanently increases your maximum mana by 25, up to 250 mana. After reaching 250 bonus mana, restore 1% of your missing mana every 5 seconds."},
+{id:8275,k:"NimbusCloak",n:"Nimbus Cloak",t:"Sorcery",s:1,ic:"perk-images/Styles/Sorcery/NimbusCloak/6361.png",tip:"After casting a Summoner Spell, gain a short Move Speed increase that allows you to pass through units."},
+{id:8210,k:"Transcendence",n:"Transcendence",t:"Sorcery",s:2,ic:"perk-images/Styles/Sorcery/Transcendence/Transcendence.png",tip:"Gain bonuses upon reaching the following levels: Level 5: +5 Ability Haste Level 8: +5 Ability Haste Level 11: On Champion takedown, reduce the remaining cooldown of basic abilities by 20%."},
+{id:8234,k:"Celerity",n:"Celerity",t:"Sorcery",s:2,ic:"perk-images/Styles/Sorcery/Celerity/CelerityTemp.png",tip:"All Move Speed bonuses are 7% more effective on you and gain 1% Move Speed ."},
+{id:8233,k:"AbsoluteFocus",n:"Absolute Focus",t:"Sorcery",s:2,ic:"perk-images/Styles/Sorcery/AbsoluteFocus/AbsoluteFocus.png",tip:"While above 70% health, gain extra adaptive damage ."},
+{id:8237,k:"Scorch",n:"Scorch",t:"Sorcery",s:3,ic:"perk-images/Styles/Sorcery/Scorch/Scorch.png",tip:"Your first damaging ability hit every 10s burns champions."},
+{id:8232,k:"Waterwalking",n:"Waterwalking",t:"Sorcery",s:3,ic:"perk-images/Styles/Sorcery/Waterwalking/Waterwalking.png",tip:"Gain MS and AP or AD, adaptive in the river."},
+{id:8236,k:"GatheringStorm",n:"Gathering Storm",t:"Sorcery",s:3,ic:"perk-images/Styles/Sorcery/GatheringStorm/GatheringStorm.png",tip:"Gain increasing amounts of AD or AP, adaptive over the course of the game."},
+{id:8437,k:"GraspOfTheUndying",n:"Grasp of the Undying",t:"Resolve",s:0,ic:"perk-images/Styles/Resolve/GraspOfTheUndying/GraspOfTheUndying.png",tip:"Every 4s your next attack on a champion deals bonus magic damage, heals you, and permanently increases your health."},
+{id:8439,k:"Aftershock",n:"Aftershock",t:"Resolve",s:0,ic:"perk-images/Styles/Resolve/VeteranAftershock/VeteranAftershock.png",tip:"After immobilizing an enemy champion gain defenses and later deal a burst of magic damage around you."},
+{id:8465,k:"Guardian",n:"Guardian",t:"Resolve",s:0,ic:"perk-images/Styles/Resolve/Guardian/Guardian.png",tip:"Guard allies you cast spells on and those that are very nearby. If you or a guarded ally would take damage based on level, you're both granted a shield."},
+{id:8446,k:"Demolish",n:"Demolish",t:"Resolve",s:1,ic:"perk-images/Styles/Resolve/Demolish/Demolish.png",tip:"Your third attack against turrets deals bonus damage."},
+{id:8463,k:"FontOfLife",n:"Font of Life",t:"Resolve",s:1,ic:"perk-images/Styles/Resolve/FontOfLife/FontOfLife.png",tip:"Impairing the movement of an enemy champion heals nearby allied champions."},
+{id:8401,k:"ShieldBash",n:"Shield Bash",t:"Resolve",s:1,ic:"perk-images/Styles/Resolve/MirrorShell/MirrorShell.png",tip:"Whenever you gain a shield, your next basic attack against a champion deals bonus adaptive damage."},
+{id:8429,k:"Conditioning",n:"Conditioning",t:"Resolve",s:2,ic:"perk-images/Styles/Resolve/Conditioning/Conditioning.png",tip:"After 12 min gain +8 Armor and +8 Magic Resist and increase your Armor and Magic Resist by 3%."},
+{id:8444,k:"SecondWind",n:"Second Wind",t:"Resolve",s:2,ic:"perk-images/Styles/Resolve/SecondWind/SecondWind.png",tip:"After taking damage from an enemy champion heal back some missing health over time."},
+{id:8473,k:"BonePlating",n:"Bone Plating",t:"Resolve",s:2,ic:"perk-images/Styles/Resolve/BonePlating/BonePlating.png",tip:"After taking damage from an enemy champion, the next 3 spells or attacks you receive from them deal 30-60 (based on level) less damage. Duration: 1.5s Cooldown: 55s"},
+{id:8451,k:"Overgrowth",n:"Overgrowth",t:"Resolve",s:3,ic:"perk-images/Styles/Resolve/Overgrowth/Overgrowth.png",tip:"Gain permanent max health when minions or monsters die near you."},
+{id:8453,k:"Revitalize",n:"Revitalize",t:"Resolve",s:3,ic:"perk-images/Styles/Resolve/Revitalize/Revitalize.png",tip:"Gain 5% Heal and Shield Power. Heals and shields you cast or receive are 10% stronger on targets below 40% health."},
+{id:8242,k:"Unflinching",n:"Unflinching",t:"Resolve",s:3,ic:"perk-images/Styles/Sorcery/Unflinching/Unflinching.png",tip:"Gain Armor and Magic Resist when receiving crowd control."},
+{id:8351,k:"GlacialAugment",n:"Glacial Augment",t:"Inspiration",s:0,ic:"perk-images/Styles/Inspiration/GlacialAugment/GlacialAugment.png",tip:"Immobilizing an enemy champion will cause 3 glacial rays that slow nearby enemies and reduce their damage to your allies."},
+{id:8360,k:"UnsealedSpellbook",n:"Unsealed Spellbook",t:"Inspiration",s:0,ic:"perk-images/Styles/Inspiration/UnsealedSpellbook/UnsealedSpellbook.png",tip:"Swap Summoner Spells while out of combat. Swapping to unique Summoner Spells will increase the rate at which you can make future swaps."},
+{id:8369,k:"FirstStrike",n:"First Strike",t:"Inspiration",s:0,ic:"perk-images/Styles/Inspiration/FirstStrike/FirstStrike.png",tip:"When you initiate champion combat, deal 7% extra damage for 3 seconds and gain gold based on damage dealt."},
+{id:8306,k:"HextechFlashtraption",n:"Hextech Flashtraption",t:"Inspiration",s:1,ic:"perk-images/Styles/Inspiration/HextechFlashtraption/HextechFlashtraption.png",tip:"While Flash is on cooldown it is replaced by Hexflash . Hexflash : Channel, then blink to a new location."},
+{id:8304,k:"MagicalFootwear",n:"Magical Footwear",t:"Inspiration",s:1,ic:"perk-images/Styles/Inspiration/MagicalFootwear/MagicalFootwear.png",tip:"You get free boots at 12 min but you cannot buy boots before then. Each takedown you get makes your boots come 45s sooner."},
+{id:8321,k:"CashBack",n:"Cash Back",t:"Inspiration",s:1,ic:"perk-images/Styles/Inspiration/CashBack/CashBack2.png",tip:"Get some gold back when you purchase Legendary Items."},
+{id:8313,k:"PerfectTiming",n:"Triple Tonic",t:"Inspiration",s:2,ic:"perk-images/Styles/Inspiration/PerfectTiming/AlchemistCabinet.png",tip:"Upon reaching level 3, gain an Elixir of Avarice. Upon reaching level 6, gain an Elixir of Force. Upon reaching level 9, gain an Elixir of Skill."},
+{id:8352,k:"TimeWarpTonic",n:"Time Warp Tonic",t:"Inspiration",s:2,ic:"perk-images/Styles/Inspiration/TimeWarpTonic/TimeWarpTonic.png",tip:"Potions grant some restoration immediately."},
+{id:8345,k:"BiscuitDelivery",n:"Biscuit Delivery",t:"Inspiration",s:2,ic:"perk-images/Styles/Inspiration/BiscuitDelivery/BiscuitDelivery.png",tip:"Gain a free Biscuit every 2 min, until 6 min. Consuming or selling a Biscuit permanently increases your max health and restores health."},
+{id:8347,k:"CosmicInsight",n:"Cosmic Insight",t:"Inspiration",s:3,ic:"perk-images/Styles/Inspiration/CosmicInsight/CosmicInsight.png",tip:"+ 18 Summoner Spell Haste + 10 Item Haste"},
+{id:8410,k:"ApproachVelocity",n:"Approach Velocity",t:"Inspiration",s:3,ic:"perk-images/Styles/Resolve/ApproachVelocity/ApproachVelocity.png",tip:"Bonus MS towards nearby enemy champions that are movement impaired , increased for enemy champions that you impair."},
+{id:8316,k:"JackOfAllTrades",n:"Jack Of All Trades",t:"Inspiration",s:3,ic:"perk-images/Styles/Inspiration/JackOfAllTrades/JackofAllTrades2.png",tip:"For each different stat gained from items, gain one Jack stack. Each stack grants you 1 Ability Haste . Gain bonus Adaptive Force at 5 and 10 stacks."}
+];
+const RUNE_BY_ID = {};
+RUNES.forEach(r => RUNE_BY_ID[r.id] = r);
+const RUNE_ICON = ic => "https://ddragon.leagueoflegends.com/cdn/img/" + ic;
+const DDRAGON_V = "16.15.1";
+const ITEM_ICON = id => `https://ddragon.leagueoflegends.com/cdn/${DDRAGON_V}/img/item/${id}.png`;
+
+/* level-scaled value: a at level 1 -> b at level 18 */
+const lin = (a,b,L) => a + (b-a)/17*(L-1);
+
+/* Effects that are actually modelled. Everything follows the
+   "nothing or max" rule: a rune is either off, or at full value.
+   ctx = { L, bonusAD, bonusHP, ap, hp, bonusASpct, awkShield } */
+const RUNE_FX = {
+  /* --- keystones --- */
+  8005:{cond:"3 consecutive attacks",stats:{},amp:8,  proc:{type:"phys",n:1,dmg:c=>lin(40,160,c.L)}},          /* Press the Attack */
+  8008:{cond:"6 stacks",stats:{as:0.36}, proc:{type:"phys",n:4,dmg:c=>lin(9,30,c.L)*(1+c.bonusASpct/100)}}, /* Lethal Tempo */
+  8021:{heal:c=>lin(10,130,c.L)+0.1*c.bonusAD+0.05*c.ap},                          /* Fleet Footwork */
+  8010:{cond:"12 stacks",stats:{adFn:c=>12*lin(1.8,4,c.L)}},                                        /* Conqueror (12 stacks) */
+  8112:{cond:"3 separate hits",proc:{type:"phys",n:1,dmg:c=>lin(70,240,c.L)+0.1*c.bonusAD+0.05*c.ap}},    /* Electrocute */
+  8128:{cond:"target below 50% HP", param:{lab:"souls", def:0},
+        proc:{type:"phys",n:1,dmg:(c,v)=>30+11*(v||0)+0.1*c.bonusAD+0.05*c.ap}},   /* Dark Harvest */
+  9923:{cond:"first 3 attacks",stats:{as:1.2}, proc:{type:"true",n:3,dmg:c=>lin(4,20,c.L)+0.08*c.bonusAD+0.06*c.ap}}, /* Hail of Blades */
+  8437:{cond:"every 4s in combat",proc:{type:"magic",n:1,dmg:c=>0.035*c.hp}, heal:c=>0.013*c.hp},            /* Grasp of the Undying */
+  8369:{cond:"initiating combat",amp:7},                                                                    /* First Strike */
+  /* --- minor runes --- */
+  9104:{cond:"10 Legend stacks",stats:{as:0.18}},                                                          /* Legend: Alacrity */
+  9105:{cond:"10 Legend stacks",stats:{ah:15}},                                                            /* Legend: Haste */
+  9103:{cond:"15 Legend stacks",stats:{ls:6.75,hp:85}},                                                    /* Legend: Bloodline */
+  8014:{cond:"target below 40% HP",amp:8},                                                                    /* Coup de Grace */
+  8017:{cond:"target above 60% HP",amp:8},                                                                    /* Cut Down */
+  8299:{cond:"you below 30% HP",amp:11},                                                                   /* Last Stand */
+  8126:{cond:"target impaired",proc:{type:"true",n:1,dmg:c=>lin(10,45,c.L)}},                             /* Cheap Shot */
+  8139:{heal:c=>lin(16,40,c.L)+0.1*c.bonusAD+0.05*c.ap},                           /* Taste of Blood */
+  8143:{cond:"after a dash or blink",proc:{type:"true",n:1,dmg:c=>lin(20,80,c.L)}},                             /* Sudden Impact */
+  8401:{cond:"after gaining a shield",proc:{type:"phys",n:1,dmg:c=>lin(5,30,c.L)+0.025*c.bonusHP+0.15*c.awkShield}}, /* Shield Bash */
+  8429:{cond:"after 12 min",stats:{ar:8,mr:8,arPct:3,mrPct:3}},                                        /* Conditioning */
+  8451:{cond:"120 units absorbed",stats:{hp:45,hpPct:3.5}},                                                  /* Overgrowth */
+  8453:{stats:{hs:5}},                                                             /* Revitalize */
+  8210:{cond:"level 8+",stats:{ah:10}},                                                            /* Transcendence */
+  8234:{stats:{msPct:1}},                                                          /* Celerity */
+  8233:{cond:"above 70% HP",stats:{adFn:c=>lin(1.8,18,c.L)}},                                          /* Absolute Focus */
+  8236:{cond:"30 min into the game",stats:{ad:29}},                                                            /* Gathering Storm @30 min */
+  8237:{cond:"first ability hit / 10s",proc:{type:"magic",n:1,dmg:c=>lin(20,40,c.L)}},                            /* Scorch */
+  8226:{cond:"250 bonus mana capped",stats:{mana:250}},                                                         /* Manaflow Band */
+  8316:{cond:"10 stacks",stats:{ah:10,ad:20}}                                                       /* Jack of All Trades */
+};
+const RUNE_MODELLED = id => !!RUNE_FX[id];
+const RUNE_COND    = id => (RUNE_FX[id]||{}).cond || null;
+const RUNE_PARAM   = id => (RUNE_FX[id]||{}).param || null;
+
+/* ============================================================
+   SHARDS — three slots, three options each
+   ============================================================ */
+const SHARD_ICON = ic =>
+  "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/statmods/" + ic + ".png";
+const ADAPTIVE = {k:"adaptive", n:"Adaptive Force", v:"+5.4 AD / +9 AP", ic:"statmodsadaptiveforceicon"};
+const SCALE_HP = {k:"hpScale",  n:"Bonus Health",   v:"+10-200 by level", ic:"statmodshealthplusicon"};
+const SHARD_SLOTS = [
+  {lab:"Offense", opts:[ADAPTIVE,
+    {k:"as",  n:"Attack Speed", v:"+10%", ic:"statmodsattackspeedicon"},
+    {k:"ah",  n:"Ability Haste", v:"+8",  ic:"statmodscdrscalingicon"}]},
+  {lab:"Flex", opts:[ADAPTIVE,
+    {k:"ms",  n:"Move Speed", v:"+2.5%", ic:"statmodsmovementspeedicon"}, SCALE_HP]},
+  {lab:"Defense", opts:[
+    {k:"hp65", n:"Bonus Health", v:"+65", ic:"statmodshealthscalingicon"},
+    {k:"ten",  n:"Tenacity & Slow Resist", v:"+15%", ic:"statmodstenacityicon"}, SCALE_HP]}
+];
+
+
+/* ============================================================
+   ITEM PASSIVES
+   Riot's item.json describes the mechanic but strips most of the
+   numbers, so every value below is editable in the UI. The shape of
+   each passive (what it scales off, how often it fires) comes from
+   the official description; the magnitudes are seeded and meant to be
+   checked against the live patch.
+     hits      = triggers inside one 4-attack combo
+     flat      = flat damage
+     pctAD     = % of bonus AD      pctTotAD  = % of total AD
+     pctBaseAD = % of base AD       pctBonusHP= % of your bonus HP
+     pctAP     = % of AP            pctHP     = % of your max HP
+     pctTgtHP  = % of target max HP pctMana   = % of your max mana
+     amp       = % damage amplification
+     armorRed  = % target armor reduction (applied before penetration)
+   ============================================================ */
+const ITEM_FX = {
+  /* Every value below is read from the wiki's Module:ItemData. Melee values
+     are used throughout, since Udyr is melee. */
+  "TITANIC HYDRA": [
+    {lab:"Cleave cone — other enemies only", src:"wiki", type:"phys", hits:4, pctHP:3, aoe:true},
+    {lab:"Cleave",              src:"wiki", type:"phys", hits:4, pctHP:1},
+    {lab:"Titanic Crescent",    src:"wiki", type:"phys", hits:1, pctHP:4},
+    {lab:"Cleave cone — other enemies only", src:"wiki"}],
+  "WIT'S END":       [{lab:"Fray",            src:"wiki", type:"magic", hits:4, flat:45}],
+  "TERMINUS":        [{lab:"Shadow",          src:"wiki", type:"magic", hits:4, flat:30, pctAD:10, pctAP:10}],
+  "NASHOR'S TOOTH":  [{lab:"Icathian Bite",   src:"wiki", type:"magic", hits:4, flat:15, pctAP:15}],
+  "GUINSOO'S RAGEBLADE":[{lab:"Wrath",        src:"wiki", type:"magic", hits:4, flat:30}],
+  "BLADE OF THE RUINED KING":[{lab:"Mist's Edge", src:"wiki", type:"phys", hits:4, pctTgtHP:9, cur:true}],
+  "MURAMANA":        [{lab:"Shock — on-hit",   src:"wiki", type:"phys",  hits:4, pctMana:1.2},
+                      {lab:"Shock — ability damage", src:"wiki", type:"phys", hits:1, pctMana:4}],
+  "DEAD MAN'S PLATE":[{lab:"Shipwrecker",     src:"wiki", type:"phys",  hits:1, flat:40, pctBaseAD:100},
+                      {lab:"Unsinkable",     src:"wiki", gain:() => ({slow:15})}],
+  "KRAKEN SLAYER":   [{lab:"Bring It Down — every 3rd attack", src:"wiki", type:"phys", hits:1, flat:200}],
+  "VOLTAIC CYCLOSWORD":[{lab:"Firmament — first attack, +15 lethality 4s", src:"wiki", type:"phys", hits:1, pctTgtHP:9, cur:true}],
+  "STORMRAZOR":      [{lab:"Bolt",            src:"wiki", type:"magic", hits:1, flat:100}],
+  "STATIKK SHIV":    [{lab:"Electrospark",    src:"wiki", type:"magic", hits:1, flat:60}],
+  "HULLBREAKER":     [{lab:"Skipper",         src:"wiki", type:"phys",  hits:1, pctBaseAD:120, pctHP:5}],
+  "HEARTSTEEL":      [{lab:"Colossal Consumption", src:"wiki", type:"phys", hits:1, flat:70, pctHP:6}],
+  "ECLIPSE":         [{lab:"Ever Rising Moon",src:"wiki", type:"phys",  hits:1, pctTgtHP:6}],
+  "TRINITY FORCE":   [{lab:"Spellblade",      src:"wiki", type:"phys",  hits:2, pctBaseAD:200}],
+  "ICEBORN GAUNTLET":[{lab:"Spellblade",      src:"wiki", type:"phys",  hits:2, pctBaseAD:150}],
+  "ESSENCE REAVER":  [{lab:"Spellblade",      src:"wiki", type:"phys",  hits:2, pctBaseAD:125}],
+  "LICH BANE":       [{lab:"Spellblade",      src:"wiki", type:"magic", hits:2, pctBaseAD:75, pctAP:45}],
+  "DUSK AND DAWN":   [{lab:"Spellblade",      src:"wiki", type:"magic", hits:2, pctBaseAD:75, pctAP:10}],
+  "RAVENOUS HYDRA":  [{lab:"Ravenous Crescent",src:"wiki",type:"phys",  hits:1, pctTotAD:80},
+                      {lab:"Cleave — other enemies only", src:"wiki", type:"phys", hits:4, pctTotAD:40, aoe:true}],
+  "PROFANE HYDRA":   [{lab:"Heretical Cleave",src:"wiki", type:"phys",  hits:1, pctTotAD:80},
+                      {lab:"Cleave — other enemies only", src:"wiki", type:"phys", hits:4, pctTotAD:40, aoe:true}],
+  "STRIDEBREAKER":   [{lab:"Breaking Shockwave",src:"wiki",type:"phys", hits:1, pctTotAD:80},
+                      {lab:"Cleave — other enemies only", src:"wiki", type:"phys", hits:4, pctTotAD:40, aoe:true}],
+  "SUNFIRE AEGIS":   [{lab:"Immolate",        src:"wiki", type:"magic", hits:4, flat:20, pctBonusHP:1}],
+  "HOLLOW RADIANCE": [{lab:"Immolate",        src:"wiki", type:"magic", hits:4, flat:15, pctBonusHP:1}],
+  "LIANDRY'S TORMENT":[{lab:"Torment",        src:"wiki", type:"magic", hits:1, pctTgtHP:6}],
+  "BLACKFIRE TORCH": [{lab:"Baleful Blaze",   src:"wiki", type:"magic", hits:1, flat:60, pctAP:6}],
+  "SUNDERED SKY":    [{lab:"Lightshield Strike — bonus crit damage", src:"wiki", type:"phys", hits:1, pctTotAD:80}],
+  /* --- ability power items --- */
+  "LUDEN'S ECHO":    [{lab:"Echo — single target, 6 stacks", src:"wiki", type:"magic", hits:1, flat:150, pctAP:10}],
+  "MALIGNANCE":      [{lab:"Hatefog — on ultimate", src:"wiki", type:"magic", hits:1, flat:180, pctAP:15, mrRedFlat:10}],
+  "STORMSURGE":      [{lab:"Squall",            src:"wiki", type:"magic", hits:1, flat:125, pctAP:10}],
+  "HEXTECH GUNBLADE":[{lab:"Lightning Bolt — active", src:"wiki", type:"magic", hits:1, flat:253, pctAP:30}],
+  "HEXTECH ROCKETBELT":[{lab:"Supersonic — active", src:"wiki", type:"magic", hits:1, flat:100, pctAP:10}],
+  "ZEKE'S CONVERGENCE":[{lab:"Frostfire Tempest — on ultimate", src:"wiki", type:"magic", hits:1, flat:150}],
+  "UNENDING DESPAIR":[{lab:"Anguish",           src:"wiki", type:"magic", hits:1, pctBonusHP:3}],
+  "BLOODLETTER'S CURSE":[{lab:"Vile Decay — 4 stacks", src:"wiki", mrRed:30}],
+  "ABYSSAL MASK":    [{lab:"Unmake — magic damage only", src:"wiki", amp:12}],
+  "SHADOWFLAME":     [{lab:"Cinderbloom — magic damage, target under 40%", src:"wiki", amp:20}],
+  "HORIZON FOCUS":   [{lab:"Hypershot",         src:"wiki", amp:10}],
+  "IMPERIAL MANDATE":[{lab:"Command — immobilised target", src:"wiki", amp:7}],
+  "RABADON'S DEATHCAP":[{lab:"Magical Opus — +30% AP", src:"wiki"}],
+  "ARCHANGEL'S STAFF":[{lab:"Awe — AP from bonus mana", src:"wiki"}],
+  "SERAPH'S EMBRACE":[{lab:"Awe — AP from bonus mana", src:"wiki"}],
+  /* --- more attack damage items --- */
+  "LORD DOMINIK'S REGARDS":[{lab:"Giant Slayer — target with bonus health", src:"wiki", amp:15}],
+  "RAPID FIRECANNON":[{lab:"Sharpshooter",      src:"wiki", type:"magic", hits:1, flat:40}],
+  "UMBRAL GLAIVE":   [{lab:"Nightstalker — out of vision", src:"wiki", type:"true", hits:1, flat:50, perLeth:1.5}],
+  "BASTIONBREAKER":  [{lab:"Shaped Charge",     src:"wiki", type:"true", hits:1, flat:50, perLeth:1.5}],
+  "STERAK'S GAGE":   [{lab:"The Claws that Catch", src:"wiki", gain:c => ({ad:0.45*c.baseAD})}],
+  "HUBRIS":          [{lab:"Eminence — 1 stack", src:"wiki", gain:() => ({ad:15})}],
+  "YUN TAL WILDARROWS":[{lab:"Practice Makes Lethal", src:"wiki", gain:() => ({crit:25})}],
+  "MEJAI'S SOULSTEALER":[{lab:"Glory — 25 stacks", src:"wiki", gain:() => ({ap:125, mspct:10})}],
+  "ROD OF AGES":     [{lab:"Timeless — 10 stacks", src:"wiki", gain:() => ({hp:100, mana:300, ap:30})}],
+  "BOOTS OF SWIFTNESS":[{lab:"Fleetfooted",  src:"wiki", gain:() => ({slow:25})}],
+  "SWIFTMARCH":      [{lab:"Fleetfooted",    src:"wiki", gain:() => ({slow:40})}],
+  "BLACK CLEAVER":   [{lab:"Carve — 6% x 5 stacks", src:"wiki", armorRed:30}],
+  "RIFTMAKER":       [{lab:"Void Corruption — 4 stacks", src:"wiki", amp:8},
+                      {lab:"Void Infusion — AP from bonus health", src:"wiki"},
+                      {lab:"Void Corruption — 10% omnivamp at max", src:"wiki", gain:() => ({ov:10})}],
+  "SPEAR OF SHOJIN": [{lab:"Focused Will — 4 stacks",   src:"wiki", amp:12},
+                      {lab:"Dragonforce — 25 ability haste", src:"wiki", gain:() => ({ah:25})}]
+};
+
+/* the wiki's own wording, so the numbers above can be checked in place */
+const WIKI_TIPS = {
+  "TITANIC HYDRA":"Cleave: basic attacks on-hit deal 1% maximum health bonus physical damage to the target, and 3% maximum health to OTHER enemies in a cone. Titanic Crescent: your next basic attack empowers Cleave to deal 4% maximum health bonus physical damage to the primary target.",
+  "WIT'S END":"Fray: basic attacks deal 45 bonus magic damage on-hit.",
+  "TERMINUS":"Shadow: basic attacks deal 30 (+10% bonus AD) (+10% AP) bonus magic damage on-hit. Juxtaposition: Dark hits grant 10% armor and magic penetration, up to 30% at 3 stacks.",
+  "NASHOR'S TOOTH":"Icathian Bite: basic attacks deal 15 (+15% AP) bonus magic damage on-hit.",
+  "GUINSOO'S RAGEBLADE":"Wrath: basic attacks deal 30 bonus magic damage on-hit.",
+  "BLADE OF THE RUINED KING":"Mist's Edge: basic attacks deal bonus physical damage on-hit equal to 9% of the target's current health.",
+  "MURAMANA":"Shock: basic attacks on-hit against champions deal 1.2% maximum mana bonus physical damage. Ability damage deals 4% maximum mana bonus physical damage (once per 6.5s per target). Awe: bonus AD equal to 2% maximum mana.",
+  "DEAD MAN'S PLATE":"Unsinkable: gain 15% slow resist. Shipwrecker: basic attacks consume Momentum stacks to deal up to 40 (+100% base AD) bonus physical damage on-hit.",
+  "KRAKEN SLAYER":"Bring It Down: every third attack deals 150-200 (by level) bonus physical damage on-hit, increased by up to 75% based on the target's missing health.",
+  "VOLTAIC CYCLOSWORD":"Firmament: when fully Energized, your next basic attack grants 15 lethality for 4s and deals bonus physical damage equal to 9% of the target's current health.",
+  "STORMRAZOR":"Bolt: when fully Energized, your next basic attack deals 100 bonus magic damage on-hit and grants 45% bonus move speed.",
+  "STATIKK SHIV":"Electrospark: when fully Energized, your next basic attack forms chain lightning dealing 60 bonus magic damage.",
+  "HULLBREAKER":"Skipper: at 4 stacks, your next basic attack on-hit deals 120% base AD (+5% maximum health) bonus physical damage.",
+  "HEARTSTEEL":"Colossal Consumption: at 3 stacks, your next basic attack deals 70 (+6% maximum health) bonus physical damage on-hit.",
+  "ECLIPSE":"Ever Rising Moon: 2 stacks within 2s deal bonus physical damage equal to 6% of the target's maximum health (6s cooldown).",
+  "TRINITY FORCE":"Spellblade: after using an ability, your next basic attack deals 200% base AD bonus physical damage on-hit (1.5s cooldown).",
+  "ICEBORN GAUNTLET":"Spellblade: after using an ability, your next basic attack deals 150% base AD bonus physical damage on-hit.",
+  "ESSENCE REAVER":"Spellblade: after using an ability, your next basic attack deals 125% base AD (+ crit chance scaling) bonus physical damage on-hit.",
+  "LICH BANE":"Spellblade: after using an ability, your next basic attack deals 75% base AD (+45% AP) bonus magic damage on-hit.",
+  "DUSK AND DAWN":"Spellblade: after using an ability, your next basic attack deals 75% base AD (+10% AP) bonus magic damage and reapplies on-hit effects.",
+  "RAVENOUS HYDRA":"Ravenous Crescent: deal 80% AD physical damage around you (10s cooldown). Cleave: attacks on-hit deal 40% AD to enemies OTHER than your target, so it adds nothing in a duel.",
+  "PROFANE HYDRA":"Heretical Cleave: deal 80% AD physical damage in front of you (10s cooldown). Cleave: damaging attacks deal 40% AD to enemies OTHER than your target, so it adds nothing in a duel.",
+  "STRIDEBREAKER":"Breaking Shockwave: deal 80% AD physical damage and slow by 35% (15s cooldown). Cleave: attacks on-hit deal 40% AD to enemies OTHER than your target, so it adds nothing in a duel.",
+  "SUNFIRE AEGIS":"Immolate: deal 20 (+1% bonus health) magic damage every second to nearby enemies.",
+  "HOLLOW RADIANCE":"Immolate: deal 15 (+1% bonus health) magic damage every second to nearby enemies.",
+  "LIANDRY'S TORMENT":"Torment: ability damage burns for 1% of the target's maximum health every 0.5s over 3s, for 6% total.",
+  "BLACKFIRE TORCH":"Baleful Blaze: ability damage burns for 60 (+6% AP) magic damage over 3s.",
+  "SUNDERED SKY":"Lightshield Strike: your first attack on a champion critically strikes for 80% total critical damage and heals you for 100% base AD (+6% missing health).",
+  "LUDEN'S ECHO":"Echo: ability damage consumes all stacks to deal 75 (+5% AP) bonus magic damage (12s cooldown).",
+  "MALIGNANCE":"Hatefog: your ultimate creates a scorched zone dealing 180 (+15% AP) magic damage over 3s and reducing magic resist by 10.",
+  "STORMSURGE":"Squall: after dealing 25% of a champion's maximum health within 2.5s, strike them for 125 (+10% AP) magic damage.",
+  "HEXTECH GUNBLADE":"Lightning Bolt: active, deals 175-253 (+30% AP) magic damage and slows by 25% (60s cooldown).",
+  "HEXTECH ROCKETBELT":"Supersonic: active dash then rockets dealing 100 (+10% AP) magic damage (50s cooldown).",
+  "ZEKE'S CONVERGENCE":"Frostfire Tempest: on ultimate cast, a storm deals 150 total magic damage over 5s and slows by 30%.",
+  "UNENDING DESPAIR":"Anguish: every 4s in combat, deal magic damage equal to 3% of your bonus health and heal for 250% of it.",
+  "BLOODLETTER'S CURSE":"Vile Decay: magic ability damage applies a stack, up to 4. Each inflicts 7.5% magic resist reduction, up to 30%.",
+  "ABYSSAL MASK":"Unmake: nearby enemy champions take 12% increased magic damage from all sources.",
+  "SHADOWFLAME":"Cinderbloom: your magic and true damage critically strikes for 120% against enemies below 40% maximum health.",
+  "HORIZON FOCUS":"Hypershot: ability damage at 600+ range marks the target for 6s, increasing your damage to them by 10%.",
+  "IMPERIAL MANDATE":"Command: immobilising a champion marks them Vulnerable for 4s, increasing damage they take from all sources by 7%.",
+  "RABADON'S DEATHCAP":"Magical Opus: increase your ability power by 30%.",
+  "ARCHANGEL'S STAFF":"Awe: grants ability power equal to 1% bonus mana.",
+  "SERAPH'S EMBRACE":"Awe: grants ability power equal to 2% bonus mana.",
+  "LORD DOMINIK'S REGARDS":"Giant Slayer: deal up to 15% increased damage against champions, scaling with their bonus health.",
+  "RAPID FIRECANNON":"Sharpshooter: when fully Energized, your next basic attack deals 40 bonus magic damage on-hit.",
+  "UMBRAL GLAIVE":"Nightstalker: after being unseen for 1s, your next attack on a champion deals 50 (+1.5 per lethality) bonus true damage.",
+  "BASTIONBREAKER":"Shaped Charge: your next ability damage to a champion deals 50 (+1.5 per lethality) bonus true damage (20s cooldown).",
+  "STERAK'S GAGE":"The Claws that Catch: gain bonus attack damage equal to 45% base AD.",
+  "HUBRIS":"Eminence: each takedown grants a permanent stack, giving 12 (+3 per stack) bonus attack damage for 90s.",
+  "YUN TAL WILDARROWS":"Practice Makes Lethal: attacks grant 0.4% critical strike chance permanently, capped at 25%.",
+  "MEJAI'S SOULSTEALER":"Glory: 5 ability power per stack, up to 125 at 25 stacks, plus 10% bonus move speed at 10+.",
+  "ROD OF AGES":"Timeless: gains 10 health, 30 mana and 3 ability power per minute, up to 100 / 300 / 30.",
+  "BOOTS OF SWIFTNESS":"Fleetfooted: gain 25% slow resist.",
+  "SWIFTMARCH":"Fleetfooted: gain 40% slow resist. Noxian Fervor: gain adaptive force equal to 5% of your total move speed.",
+  "BLACK CLEAVER":"Carve: physical damage applies a stack for 6s, up to 5. Each inflicts 6% armor reduction, up to 30%.",
+  "RIFTMAKER":"Void Corruption: 2% increased damage per second in combat, up to 4 stacks for 8%. At max stacks, gain 10% omnivamp. Void Infusion: ability power equal to 2% bonus health.",
+  "SPEAR OF SHOJIN":"Dragonforce: gain 25 basic ability haste. Focused Will: ability damage grants a stack, up to 4. Each grants 3% increased ability, pet and proc damage, for 12% total."
+};
+
+const FX_FIELDS = [
+  ["hits","hits"],["flat","flat"],["pctAD","% bonus AD"],["pctTotAD","% total AD"],["pctBaseAD","% base AD"],
+  ["pctBonusHP","% your bonus HP"],["perLeth","per lethality"],["mrRed","% MR shred"],["mrRedFlat","flat MR shred"],
+  ["pctAP","% AP"],["pctHP","% your HP"],["pctTgtHP","% target HP"],["pctMana","% your mana"],
+  ["amp","% amp"],["armorRed","% armor shred"]
+];
+/* live, editable copy */
+const PV = {};
+for(const k in ITEM_FX){ PV[k] = ITEM_FX[k].map(o => Object.assign({}, o)); }
+
+
+function fxOne(f, ctx, targetHealth){
+  if(!f || !f.hits) return 0;
+  const one = (f.flat||0)
+            + (f.pctAD||0)/100     * ctx.bonusAD
+            + (f.pctTotAD||0)/100  * ctx.totalAD
+            + (f.pctBonusHP||0)/100* ctx.bonusHP
+            + (f.pctBaseAD||0)/100 * ctx.baseAD
+            + (f.pctAP||0)/100     * ctx.ap
+            + (f.pctHP||0)/100     * ctx.hp
+            + (f.pctTgtHP||0)/100  * targetHealth
+            + (f.pctMana||0)/100   * ctx.mana
+            + (f.perLeth||0)       * ctx.letha;
+  return one;
+}
+
+/* conditional-bonus key -> internal stat key */
+const COND_MAP = {
+  "AD":"ad","AP":"ap","HP":"hp","AR":"ar","MR":"mr","AH":"ah","AS":"as",
+  "MS":"ms","MS%":"mspct","ARPEN%":"arpen","MRPEN%":"mrpen","MRPEN":"mrpenflat",
+  "LETHALITY":"letha",
+  "OMNIVAMP":"ov","LIFESTEAL":"ls","TENACITY":"ten","CRIT":"crit"
+};
+function parseCond(str){
+  const out = {};
+  if(!str) return out;
+  const re = /([A-Z]+%?):([0-9]+(?:[.,][0-9]+)?)/g;
+  let m;
+  while((m = re.exec(str)) !== null){
+    const key = COND_MAP[m[1]];
+    if(key) out[key] = (out[key]||0) + parseFloat(m[2].replace(",","."));
+  }
+  return out;
+}
+
+/* ============================================================
+   PALIERS PAR RANG — repris de l'onglet CALC SKILL
+   ============================================================ */
+const T = {
+  qOnHit:      [5,13,21,29,37,45],
+  qOnHitPct:   [3,4,5,6,7,8],
+  qBonusAS:    [20,32,44,56,68,80],
+  qNewOnHit:   [6,12,18,24,30,36],
+  qNewHpRatio: [0.012,0.0136,0.0152,0.0168,0.0184,0.02],
+  wFlat:       [45,65,85,105,125,145],
+  wHpPct:      [0.02,0.023,0.026,0.029,0.032,0.035],
+  wLifesteal:  [15,16,17,18,19,20],
+  wAwkLifest:  [30,32,34,36,38,40],
+  wRegenFlat:  [22.5,32.5,42.5,52.5,62.5,72.5],
+  eMs:         [25,31,37,43,49,55],
+  rPerSec:     [10,18,26,34,42,50],
+  rSlow:       [15,18,21,24,27,30],
+  rAwkSlow:    [20,23,26,29,32,35]
+};
+const lerp = (a,b,lvl) => a + (b-a)/17*(lvl-1);
+const R1 = (arr,rank) => arr[Math.min(6,Math.max(1,rank))-1];
+
+/* ============================================================
+   CALCUL
+   ============================================================ */
+/* move speed — official LoL soft caps */
+function msSoftCap(ms){
+  if(ms > 490) return ms*0.5 + 230;
+  if(ms > 415) return ms*0.8 + 83;
+  if(ms < 220) return ms*0.5 + 110;
+  return ms;
+}
+
+function computeBuild(b, target){
+  const L  = Math.min(18, Math.max(1, b.level));
+  const gr = (L-1)*(0.7025+0.0175*(L-1));           // courbe de croissance LoL
+  const base = {
+    hp:664+92*gr, mana:271+50*gr, ad:62+4*gr, ap:0,
+    ar:31+4.7*gr, mr:32+2.05*gr, ah:0, as:0.65, ms:350
+  };
+
+  /* --- item stat totals --- */
+  const S = {hp:0,mana:0,ar:0,mr:0,ad:0,ap:0,ah:0,as:0,crit:0,critdmg:0,letha:0,
+             arpen:0,mrpenflat:0,mrpen:0,ls:0,ov:0,ms:0,mspct:0,hs:0,ten:0,slow:0,adapt:0};
+  let gold = 0;
+  const equipped = [];
+  b.items.forEach((slot,idx) => {
+    if(!slot.name) return;
+    const it = BY_NAME[slot.name];
+    if(!it) return;
+    equipped.push({it, cond:slot.cond, idx});
+    gold += it.g;
+    for(const k in S){ if(typeof it[k] === "number") S[k] += it[k]; }
+    if(slot.cond && it.c){
+      const bonus = parseCond(it.c);
+      for(const k in bonus){ if(k in S) S[k] += bonus[k]; }
+    }
+  });
+  const has     = n => equipped.some(e => e.it.n === n);
+  const hasCond = n => equipped.some(e => e.it.n === n && e.cond);
+
+  /* --- item passives that simply grant stats --- */
+  equipped.forEach(e => {
+    const list = PV[e.it.n];
+    if(!list || !e.cond) return;
+    list.forEach(f => {
+      if(!f.gain) return;
+      const g = f.gain({baseAD:base.ad, L});
+      for(const k in g){ if(k in S) S[k] += g[k]; }
+    });
+  });
+
+  /* --- shards --- */
+  const adaptiveAP = S.ap > S.ad;          /* adaptive force follows your bigger bonus stat */
+  if(S.adapt){ adaptiveAP ? S.ap += S.adapt*1.667 : S.ad += S.adapt; }
+  const scaleHp    = lin(10,200,L);
+  const SH = {hpPct:0};
+  b.shards.forEach((choice, slotIdx) => {
+    if(choice == null) return;
+    const k = SHARD_SLOTS[slotIdx].opts[choice].k;
+    if(k === "adaptive"){ adaptiveAP ? S.ap += 9 : S.ad += 5.4; }
+    else if(k === "as")      S.as += 0.10;
+    else if(k === "ah")      S.ah += 8;
+    else if(k === "ms")      S.mspct += 2.5;
+    else if(k === "hpScale") S.hp += scaleHp;
+    else if(k === "hp65")    S.hp += 65;
+    else if(k === "ten"){    S.ten += 15; S.slow += 15; }
+  });
+
+  /* --- runes: flat stats go in the item pool, % bonuses are applied to totals --- */
+  const runeCtxEarly = {L, bonusAD:S.ad, ap:S.ap};
+  const pct = {hp:0, ar:0, mr:0};
+  let ampMul = 1;
+  const activeRunes = b.runes.filter(r => r && r.id != null);
+  activeRunes.forEach(e => {
+    const fx = RUNE_FX[e.id];
+    if(!fx || !e.on) return;
+    if(fx.amp) ampMul *= (1 + fx.amp/100);
+    const st = fx.stats;
+    if(!st) return;
+    if(st.ad)    S.ad    += st.ad;
+    if(st.adFn)  S.ad    += st.adFn(runeCtxEarly);
+    if(st.hp)    S.hp    += st.hp;
+    if(st.ar)    S.ar    += st.ar;
+    if(st.mr)    S.mr    += st.mr;
+    if(st.ah)    S.ah    += st.ah;
+    if(st.as)    S.as    += st.as;
+    if(st.ls)    S.ls    += st.ls;
+    if(st.hs)    S.hs    += st.hs;
+    if(st.mana)  S.mana  += st.mana;
+    if(st.msPct) S.mspct += st.msPct;
+    if(st.hpPct) pct.hp  += st.hpPct;
+    if(st.arPct) pct.ar  += st.arPct;
+    if(st.mrPct) pct.mr  += st.mrPct;
+  });
+
+  /* --- passives that modify bonus stats (sheet: STATS APRES PASSIF) --- */
+  let bonusHP = S.hp;
+  if(has("FIMBULWINTER") || has("WINTER'S APPROACH")) bonusHP += S.mana * 0.15;   /* Awe */
+  if(hasCond("WARMOG'S ARMOR"))  bonusHP += S.hp * 0.12;
+
+  const bonusMana = S.mana;
+  const totalMana = base.mana + bonusMana;
+
+  let bonusAD = S.ad;
+  if(has("OVERLORD'S BLOODMAIL")) bonusAD += bonusHP * 0.025;
+  if(has("MURAMANA") || has("MANAMUNE")) bonusAD += totalMana * 0.02;              /* Awe */
+  if(hasCond("OVERLORD'S BLOODMAIL")) bonusAD /= 0.88;
+
+  const jak = hasCond("JAK'SHO, THE PROTEAN") ? 1.3 : 1;
+  const bonusAP = S.ap;
+  const bonusAR = S.ar * jak;
+  const bonusMR = S.mr * jak;
+  const bonusADraw = bonusAD;
+  let   bonusAH = S.ah;
+  if(has("ENDLESS HUNGER")) bonusAH += 5 + bonusADraw * 0.13;   /* Famine, wiki */
+  const bonusAS = S.as;
+
+  /* --- ability ranks --- */
+  const qr = Math.min(6,Math.max(1,b.q)), wr = Math.min(6,Math.max(1,b.w));
+  const er = Math.min(6,Math.max(1,b.e)), rr = Math.min(6,Math.max(1,b.r));
+
+  const qBonusAS    = R1(T.qBonusAS, qr);
+  const qAwkBonusAS = lerp(20,70,L) + qBonusAS;
+
+  /* total attack speed: base + items + (Q stance if active) */
+  let stanceAS = 0;
+  if(b.stance === "q")   stanceAS = qBonusAS/100;
+  if(b.stance === "qa")  stanceAS = qAwkBonusAS/100;
+
+  const tot = {
+    hp:   base.hp + bonusHP,
+    mana: totalMana,
+    ad:   base.ad + bonusAD,
+    ap:   base.ap + bonusAP,
+    ar:   base.ar + bonusAR,
+    mr:   base.mr + bonusMR,
+    ah:   base.ah + bonusAH,
+    as:   base.as + bonusAS + stanceAS,
+    ms:   base.ms + S.ms,
+    mspct:S.mspct, crit:S.crit, critdmg:S.critdmg,
+    letha:S.letha, arpen:S.arpen, mrpenflat:S.mrpenflat, mrpen:S.mrpen,
+    ls:S.ls, ov:S.ov, hs:S.hs, ten:S.ten, slow:S.slow,
+    bonusHP, bonusAD, bonusAP
+  };
+
+  /* ability power passives that read from the finished totals */
+  if(has("ARCHANGEL'S STAFF")) tot.ap += 0.01 * bonusMana;
+  if(has("SERAPH'S EMBRACE"))  tot.ap += 0.02 * bonusMana;
+  if(has("RIFTMAKER"))         tot.ap += 0.02 * bonusHP;      /* Void Infusion */
+  if(has("RABADON'S DEATHCAP"))tot.ap *= 1.30;                /* Magical Opus */
+  if(has("SWIFTMARCH")){                                      /* Noxian Fervor, adaptive */
+    tot.ad += 0.05 * msSoftCap((base.ms + S.ms) * (1 + tot.mspct/100));
+  }
+
+  /* percentage rune bonuses apply on top of the totals */
+  tot.hp *= (1 + pct.hp/100);
+  tot.ar *= (1 + pct.ar/100);
+  tot.mr *= (1 + pct.mr/100);
+
+  /* --- item passives: shred and amplification --- */
+  let armorRed = 0, mrRed = 0, mrRedFlat = 0;
+  equipped.forEach(e => {
+    const list = PV[e.it.n];
+    if(!list || !e.cond) return;
+    list.forEach(f => {
+      if(f.armorRed) armorRed += f.armorRed;
+      if(f.mrRed)    mrRed    += f.mrRed;
+      if(f.mrRedFlat) mrRedFlat += f.mrRedFlat;
+      if(f.amp)      ampMul  *= (1 + f.amp/100);
+    });
+  });
+  const shredAr = target.ar * (1 - Math.min(100, armorRed)/100);
+  const shredMr = target.mr * (1 - Math.min(100, mrRed)/100) - mrRedFlat;
+
+  /* --- mitigation (armor shred first, then lethality, then % penetration) --- */
+  const effAr = shredAr - tot.letha - (tot.arpen > 0 ? tot.arpen*0.01*shredAr : 0);
+  const effMr = shredMr - tot.mrpenflat - (tot.mrpen > 0 ? tot.mrpen*0.01*shredMr : 0);
+  const pMul  = 100/(100+effAr);
+  const mMul  = 100/(100+effMr);
+
+  /* --- abilities --- */
+  const A = {};
+  A.qOnHit  = R1(T.qNewOnHit,qr) + 0.2*bonusAD + R1(T.qNewHpRatio,qr)*bonusHP;
+  A.qPct    = R1(T.qOnHitPct,qr) + 0.035*bonusAD;
+  A.qAwkPct = A.qPct + lerp(2,4,L) + 0.01*bonusAD + 0.001*bonusHP;
+  A.qLightning = lerp(1.5,3,L) + 0.006*tot.ap;
+  A.qBonusAS = qBonusAS;
+  A.qAwkAS   = qAwkBonusAS;
+
+  const sv = has("SPIRIT VISAGE") ? 1.25 : 1;
+  A.wShield    = (R1(T.wFlat,wr) + R1(T.wHpPct,wr)*tot.hp + 0.4*tot.ap + 0.5*bonusAD) * sv;
+  A.wHeal      = (0.012*tot.hp + 0.08*tot.ap) * sv;
+  A.wLifesteal = R1(T.wLifesteal,wr);
+  A.wAwkShield = (lerp(20,150,L) + R1(T.wFlat,wr) + 0.65*tot.ap + 0.08*tot.hp + 1.0*bonusAD) * sv;
+  A.wAwkRegen  = (lerp(10,75,L) + R1(T.wRegenFlat,wr) + 0.325*tot.ap + 0.04*tot.hp + 0.5*bonusAD) * sv;
+  A.wAwkHeal   = (0.024*tot.hp + 0.16*tot.ap) * sv;
+  A.wAwkLifest = R1(T.wAwkLifest,wr);
+
+  A.eMs    = R1(T.eMs,er) + 0.05*bonusAD;
+  A.eAwkMs = lerp(30,40,L) + 0.1*bonusAD;
+  /* real move speed: (base + flat) x (1 + summed %), then soft caps */
+  A.msIdle = msSoftCap((base.ms + S.ms) * (1 + tot.mspct/100));
+  A.msE    = msSoftCap((base.ms + S.ms) * (1 + (tot.mspct + A.eMs)/100));
+  A.msEAwk = msSoftCap((base.ms + S.ms) * (1 + (tot.mspct + A.eMs + A.eAwkMs)/100));
+
+  A.rOnHit    = lerp(10,40,L) + 0.35*tot.ap;
+  A.rPerTick  = R1(T.rPerSec,rr) + 0.175*tot.ap;
+  A.rTotal    = A.rPerTick * 8;
+  A.rSlow     = R1(T.rSlow,rr);
+  A.rAwkTick  = lerp(1, 14/8, L) + 0.004375*tot.ap;
+  A.rAwkTotal = A.rAwkTick * 8;
+  A.rAwkSlow  = R1(T.rAwkSlow,rr);
+
+  /* --- on-target totals: 2 basic attack combo --- */
+  /* crit: in-game formula - 1 + chance x (0.75 + bonus crit damage) */
+  const critMul = 1 + Math.min(100, tot.crit)*0.01 * (0.75 + tot.critdmg*0.01);
+  const autoAD  = tot.ad * critMul;
+  const hp      = target.hp;
+
+  /* --- combos ---
+     One combo = 4 basic attacks in a stance: 2 normal, then 2 awakened.
+     Every stance produces damage (the attacks themselves), and each adds
+     its own layer on top. */
+  const D = {};
+  const autoHit = autoAD * pMul;          /* one basic attack, AD only, post-mitigation */
+  const autoAll = 4 * autoHit;            /* the 4 attacks of a combo */
+
+  /* --- rune procs over that same 4-attack window --- */
+  const rctx = {L, bonusAD, bonusHP, ap:tot.ap, hp:tot.hp,
+                bonusASpct:(tot.as - base.as)*100, awkShield:A.wAwkShield};
+  let runeDmg = 0, runeHeal = 0;
+  const runeLines = [], runeHealLines = [];
+  activeRunes.forEach(e => {
+    const fx = RUNE_FX[e.id]; if(!fx || !e.on) return;
+    if(fx.proc){
+      const raw = fx.proc.dmg(rctx, e.val) * fx.proc.n;
+      const mul = fx.proc.type === "phys" ? pMul : fx.proc.type === "magic" ? mMul : 1;
+      runeDmg += raw * mul;
+      runeLines.push({n:RUNE_BY_ID[e.id].n, v:raw*mul});
+    }
+    if(fx.heal){
+      const h = fx.heal(rctx);
+      runeHeal += h;
+      runeHealLines.push({n:RUNE_BY_ID[e.id].n, v:h});
+    }
+  });
+  D.runeDmg = runeDmg;
+  D.runeLines = runeLines;
+  D.runeHealLines = runeHealLines;
+  D.ampMul = ampMul;
+
+  const fxctx = {bonusAD, totalAD:tot.ad, baseAD:base.ad, bonusHP, ap:tot.ap,
+                 hp:tot.hp, tgtHP:hp, mana:tot.mana, letha:tot.letha};
+  D.armorRed = armorRed;
+  D.mrRed = mrRed;
+
+  const hsMul = 1 + tot.hs/100;           /* heal & shield power, on cast heals only */
+
+  /* One combo = 4 basic attacks: 2 in the stance, then 2 awakened.
+     The attacks are stepped through one at a time, because passives that
+     scale off the target's CURRENT health hit for less as the target drops. */
+  function makeCombo(stance){
+    let cur = hp;                          /* target's remaining health */
+    let dmg = 0, shield = 0, heal = 0, extraLS = 0, autoAll = 0;
+    const lines = {};
+    const add = (k,v) => { lines[k] = (lines[k]||0) + v; };
+
+    for(let a = 1; a <= 4; a++){
+      const awakened = a > 2;
+      let d = autoHit;                     /* the attack's own AD, post-mitigation */
+      autoAll += autoHit;
+
+      if(stance === "q"){
+        d += (A.qOnHit + hp*(awakened ? A.qAwkPct : A.qPct)*0.01) * pMul;
+      }
+      if(stance === "r") d += A.rOnHit * mMul;
+      if(stance === "w"){
+        extraLS += autoHit * (awakened ? A.wAwkLifest : A.wLifesteal)/100;
+      }
+
+      equipped.forEach(e => {
+        const list = PV[e.it.n];
+        if(!list || !e.cond) return;
+        list.forEach(f => {
+          if(!f.hits || f.aoe || a > f.hits) return;  /* aoe passives miss a lone target */
+          const mul = f.type === "phys" ? pMul : f.type === "magic" ? mMul : 1;
+          const v = fxOne(f, fxctx, f.cur ? cur : hp) * mul;
+          if(!v) return;
+          d += v;
+          add(e.it.n + " — " + f.lab, v);
+        });
+      });
+
+      cur = Math.max(0, cur - d);
+      dmg += d;
+    }
+
+    /* effects that land once per combo rather than per attack */
+    if(stance === "q") dmg += hp*A.qLightning*0.01*6 * mMul;   /* 6 lightning bolts */
+    if(stance === "r") dmg += A.rTotal*mMul + hp*A.rAwkTotal*0.01*mMul;
+    if(stance === "w"){
+      shield = (A.wShield + A.wAwkShield) * hsMul;
+      heal  += (2*A.wHeal + 2*A.wAwkHeal + A.wAwkRegen) * hsMul;
+    }
+
+    dmg = (dmg + runeDmg) * ampMul;
+
+    /* lifesteal only heals off basic attack damage; omnivamp heals off everything */
+    const lsHeal = autoAll * tot.ls/100 + extraLS;
+    const ovHeal = dmg * tot.ov/100;
+    heal += lsHeal + ovHeal + runeHeal*hsMul;
+
+    return {dmg, heal, shield, lsHeal, ovHeal,
+            ms: stance === "e" ? A.msEAwk : A.msIdle,
+            sustain: heal + shield,
+            lines: Object.keys(lines).map(k => ({n:k, v:lines[k]})),
+            leftover: cur};
+  }
+
+  D.combo = {q:makeCombo("q"), w:makeCombo("w"), e:makeCombo("e"), r:makeCombo("r")};
+  D.itemLines = D.combo.q.lines;
+  D.itemDmg   = D.itemLines.reduce((t,l) => t + l.v, 0);
+
+  /* post-mitigation values shown in the ability breakdown */
+  const M = {
+    qOnHit: A.qOnHit*pMul, qPct: A.qPct*pMul, qAwkPct: A.qAwkPct*pMul,
+    qLightning: A.qLightning*mMul,
+    rOnHit: A.rOnHit*mMul, rTotal: A.rTotal*mMul, rAwkTotal: A.rAwkTotal*mMul
+  };
+
+  return {tot, A, D, M, gold, pMul, mMul, effAr, effMr,
+          ehpAr: tot.hp*(1+tot.ar/100), ehpMr: tot.hp*(1+tot.mr/100)};
+}
+
+/* ============================================================
+   STATE
+   ============================================================ */
+const mk = name => ({
+  name, level:1, q:1, w:1, e:1, r:1, stance:"none",
+  runes:[null,null,null,null,null,null].map(id => ({id, on:true, val:0})),
+  shards:[null, null, null],
+  items: Array(6).fill(null).map(() => ({name:null, cond:true}))
+});
+const freshState = () => ({
+  target:{hp:2000, ar:100, mr:100},
+  builds:[mk("Build 1"), mk("Build 2"), mk("Build 3")]
+});
+const state = freshState();
+
+/* ============================================================
+   SAVING
+   Two independent routes, because a page opened from a local file
+   cannot always rely on browser storage: named slots kept in
+   localStorage, and a plain .json file you can move around or share.
+   ============================================================ */
+const SAVE_KEY = "udyr-calc-saves";
+let saveNote = "";
+
+function readSaves(){
+  try{ return JSON.parse(localStorage.getItem(SAVE_KEY) || "{}"); }
+  catch(err){ return {}; }
+}
+function writeSaves(obj){
+  try{ localStorage.setItem(SAVE_KEY, JSON.stringify(obj)); return true; }
+  catch(err){ return false; }
+}
+function snapshot(){
+  return {v:1, saved:new Date().toISOString(), target:state.target, builds:state.builds};
+}
+function restore(data){
+  if(!data || !Array.isArray(data.builds)) throw new Error("not a build file");
+  const blank = freshState();
+  state.target = Object.assign(blank.target, data.target || {});
+  state.builds = blank.builds.map((b, i) => {
+    const d = data.builds[i];
+    if(!d) return b;
+    return {
+      name:  d.name  || b.name,
+      level: d.level || 1,
+      q:d.q||1, w:d.w||1, e:d.e||1, r:d.r||1, stance:d.stance || "none",
+      runes: (d.runes  || b.runes ).slice(0,6).map(r => r && typeof r === "object"
+               ? {id:r.id ?? null, on:r.on !== false, val:r.val || 0}
+               : {id:null, on:true, val:0}),
+      shards:(d.shards || b.shards).slice(0,3).map(x => (x === 0 || x === 1 || x === 2) ? x : null),
+      items: (d.items  || b.items ).slice(0,6).map(it => it && it.name && BY_NAME[it.name]
+               ? {name:it.name, cond:it.cond !== false}
+               : {name:null, cond:true})
+    };
+  });
+}
+
+function saveSlot(){
+  const name = (prompt("Name this build page:", "") || "").trim();
+  if(!name) return;
+  const all = readSaves();
+  all[name] = snapshot();
+  saveNote = writeSaves(all)
+    ? `saved as "${name}"`
+    : "browser storage is blocked here — use Export instead";
+  render();
+}
+function loadSlot(name){
+  const all = readSaves();
+  if(!all[name]) return;
+  try{ restore(all[name]); saveNote = `loaded "${name}"`; }
+  catch(err){ saveNote = "could not read that slot"; }
+  render();
+}
+function deleteSlot(name){
+  const all = readSaves();
+  delete all[name];
+  writeSaves(all);
+  saveNote = `deleted "${name}"`;
+  render();
+}
+function exportFile(){
+  const blob = new Blob([JSON.stringify(snapshot(), null, 2)], {type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "udyr-builds.json";
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  saveNote = "exported udyr-builds.json";
+  render();
+}
+function importFile(file){
+  const fr = new FileReader();
+  fr.onload = () => {
+    try{ restore(JSON.parse(fr.result)); saveNote = "imported " + file.name; }
+    catch(err){ saveNote = "that file could not be read"; }
+    render();
+  };
+  fr.readAsText(file);
+}
+function resetAll(){
+  const blank = freshState();
+  state.target = blank.target;
+  state.builds = blank.builds;
+  saveNote = "reset";
+  render();
+}
+
+/* ============================================================
+   FORMATTING
+   ============================================================ */
+const nf0 = new Intl.NumberFormat("en-US",{maximumFractionDigits:0});
+const nf1 = new Intl.NumberFormat("en-US",{minimumFractionDigits:1,maximumFractionDigits:1});
+const nf2 = new Intl.NumberFormat("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+const n0 = v => nf0.format(Math.round(v));
+const n1 = v => nf1.format(v);
+const pc = v => nf1.format(v)+"%";
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function itemSummary(it){
+  const parts = [];
+  const push = (k,lab,f) => { if(it[k]) parts.push((f?f(it[k]):it[k]) + " " + lab); };
+  push("ad","AD"); push("ap","AP"); push("hp","HP"); push("mana","MANA");
+  push("ar","AR"); push("mr","MR"); push("ah","AH");
+  push("as","AS", v => nf2.format(v));
+  push("crit","CRIT", v => v+"%"); push("critdmg","CRIT DMG", v => v+"%");
+  push("letha","LETH"); push("arpen","ARPEN", v => v+"%");
+  push("mrpenflat","MPEN"); push("mrpen","MPEN", v => v+"%");
+  push("ls","LS", v => v+"%"); push("ov","OV", v => v+"%");
+  push("ms","MS"); push("mspct","MS", v => v+"%");
+  push("ten","TEN", v => v+"%"); push("adapt","ADAPTIVE");
+  return parts.join(" · ");
+}
+
+/* ============================================================
+   RENDERING
+   ============================================================ */
+const grid = document.getElementById("grid");
+const cmp  = document.getElementById("cmp");
+
+function render(){
+  const res = state.builds.map(b => computeBuild(b, state.target));
+  grid.innerHTML = state.builds.map((b,i) => card(b,i,res[i])).join("");
+  cmp.innerHTML  = comparison(res);
+  document.getElementById("fxPanel").innerHTML = passivePanel();
+  bind();
+  refreshSlots();
+}
+
+function card(b, bi, R){
+  const t = R.tot, A = R.A, M = R.M, D = R.D;
+
+  const slots = b.items.map((s,si) => {
+    const it = s.name ? BY_NAME[s.name] : null;
+    return `<div style="display:flex;gap:5px;align-items:center">
+      <button class="slot ${it?"":"empty"}" data-act="pick" data-b="${bi}" data-s="${si}">
+        ${it && it.id ? `<img class="iicon" src="${ITEM_ICON(it.id)}" alt="" loading="lazy"
+             onerror="this.style.visibility='hidden'">` : `<span class="num">${si+1}</span>`}
+        <span class="nm">${it ? esc(it.n) : "empty slot"}</span>
+        <span class="cost">${it ? n0(it.g) : ""}</span>
+      </button>
+      ${it && (it.c || PV[it.n]) ? `<button class="cond-btn" data-act="cond" data-b="${bi}" data-s="${si}"
+          aria-pressed="${s.cond?"true":"false"}"
+          title="${esc([(PV[it.n]||[]).map(f=>f.lab).join(" + "), it.c || ""].filter(Boolean).join(" · "))} — click to toggle">COND</button>` : ""}
+    </div>`;
+  }).join("");
+
+  const stat = (lab,val,dim) =>
+    `<div class="stat ${dim?"z":""}"><span>${lab}</span><b>${val}</b></div>`;
+  const statHi = (lab,val) =>
+    `<div class="stat hi"><span>${lab}</span><b>${val}</b></div>`;
+
+  return `
+  <section class="card">
+    <div class="card-head">
+      <h2>${esc(b.name)}</h2>
+      <div class="gold">${n0(R.gold)}</div>
+    </div>
+
+    <div class="ranks">
+      <div class="rank"><b>LVL</b><input type="number" min="1" max="18" value="${b.level}" data-act="lvl" data-b="${bi}"></div>
+      <div class="rank q"><b>Q</b><input type="number" min="1" max="6" value="${b.q}" data-act="q" data-b="${bi}"></div>
+      <div class="rank w"><b>W</b><input type="number" min="1" max="6" value="${b.w}" data-act="w" data-b="${bi}"></div>
+      <div class="rank e"><b>E</b><input type="number" min="1" max="6" value="${b.e}" data-act="e" data-b="${bi}"></div>
+      <div class="rank r"><b>R</b><input type="number" min="1" max="6" value="${b.r}" data-act="r" data-b="${bi}"></div>
+    </div>
+
+    <div class="slots">${slots}</div>
+
+    <div class="sect-h">Runes</div>
+    <div class="runerow">
+      ${b.runes.map((e,ri) => {
+        const r = e && e.id != null ? RUNE_BY_ID[e.id] : null;
+        const modelled = r && RUNE_MODELLED(r.id);
+        const cond = r ? RUNE_COND(r.id) : null;
+        const par  = r ? RUNE_PARAM(r.id) : null;
+        return `<div class="rslot">
+          <button class="rtile ${ri===0?"key":""} ${r?"":"blank"} ${modelled&&e.on?"live":""}"
+              data-act="rune" data-b="${bi}" data-r="${ri}"
+              title="${r ? esc(r.n)+" — "+esc(r.tip) : (ri===0?"Keystone":"Rune")+" slot"}">
+            ${r ? `<img src="${RUNE_ICON(r.ic)}" alt="${esc(r.n)}" loading="lazy"
+                     onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'ricon-fb',textContent:'${esc(r.n[0])}'}))">`
+                : `<span class="ricon-fb">${ri===0?"◆":"+"}</span>`}
+          </button>
+          ${cond ? `<button class="rtog" data-act="runetog" data-b="${bi}" data-r="${ri}"
+              aria-pressed="${e.on?"true":"false"}"
+              title="${esc(cond)} — click to toggle">${e.on?"ON":"OFF"}</button>` : ""}
+          ${par ? `<input class="rparam" type="number" min="0" value="${e.val}"
+              data-act="runeval" data-b="${bi}" data-r="${ri}" title="${esc(par.lab)}">` : ""}
+        </div>`;
+      }).join("")}
+    </div>
+
+    <div class="sect-h">Shards</div>
+    <div class="shardrow">
+      ${b.shards.map((choice,si) => {
+        const slot = SHARD_SLOTS[si];
+        const o = choice != null ? slot.opts[choice] : null;
+        return `<button class="stile ${o?"":"blank"}" data-act="shard" data-b="${bi}" data-s="${si}"
+            title="${slot.lab}: ${o ? esc(o.n)+" "+esc(o.v) : "none"} (click to cycle)">
+          ${o ? `<img src="${SHARD_ICON(o.ic)}" alt="${esc(o.n)}" loading="lazy"
+                   onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'ricon-fb',textContent:'${esc(o.v.replace('+','').slice(0,3))}'}))">`
+              : `<span class="ricon-fb">–</span>`}
+          <em>${o ? esc(o.v) : "none"}</em>
+        </button>`;
+      }).join("")}
+    </div>
+
+    <div class="sect-h">Total Stats</div>
+    <div class="stats">
+      <div class="sgroup off">
+        <h6>Offense</h6>
+        ${stat("AD", n0(t.ad))}
+        ${stat("AP", n0(t.ap), t.ap===0)}
+        ${stat("AS", nf2.format(t.as))}
+        ${stat("CRIT", n0(t.crit)+"%", t.crit===0)}
+        ${stat("CRIT DMG", "+"+n0(t.critdmg)+"%", t.critdmg===0)}
+        ${stat("LETH", n0(t.letha), t.letha===0)}
+        ${stat("ARPEN", n0(t.arpen)+"%", t.arpen===0)}
+        ${stat("MPEN", n0(t.mrpenflat), t.mrpenflat===0)}
+        ${stat("MPEN%", n0(t.mrpen)+"%", t.mrpen===0)}
+        ${stat("EFF AR", n0(R.effAr))}
+        ${stat("EFF MR", n0(R.effMr))}
+      </div>
+      <div class="sgroup def">
+        <h6>Defense</h6>
+        ${stat("HP", n0(t.hp))}
+        ${stat("AR", n0(t.ar))}
+        ${stat("MR", n0(t.mr))}
+        ${stat("EHP-P", n0(R.ehpAr))}
+        ${stat("EHP-M", n0(R.ehpMr))}
+        ${stat("LS", n0(t.ls)+"%", t.ls===0)}
+        ${stat("OV", n0(t.ov)+"%", t.ov===0)}
+        ${stat("H&S", "+"+n0(t.hs)+"%", t.hs===0)}
+      </div>
+      <div class="sgroup uti">
+        <h6>Utility</h6>
+        ${stat("MANA", n0(t.mana))}
+        ${stat("AH", n0(t.ah), t.ah===0)}
+        ${stat("MS", n0(A.msIdle))}
+        ${stat("MS%", "+"+n1(t.mspct)+"%", t.mspct===0)}
+        ${stat("TEN", n0(t.ten)+"%", t.ten===0)}
+        ${stat("SLOWRES", n0(t.slow)+"%", t.slow===0)}
+      </div>
+    </div>
+
+    <div class="sect-h">Abilities</div>
+    <div class="abil">
+      <div class="ab q">
+        <h4>Q · Wilding Claw</h4>
+        <div class="row"><i>on-hit</i><b>${n0(M.qOnHit)}</b></div>
+        <div class="row"><i>on-hit % max HP</i><b>${pc(M.qPct)}</b></div>
+        <div class="row awk"><i>awakened on-hit %</i><b>${pc(M.qAwkPct)}</b></div>
+        <div class="row awk"><i>lightning ×6</i><b>${pc(M.qLightning)}</b></div>
+        <div class="row"><i>bonus AS / awakened</i><b>${n0(A.qBonusAS)} / ${n0(A.qAwkAS)}%</b></div>
+      </div>
+      <div class="ab w">
+        <h4>W · Iron Mantle</h4>
+        <div class="row"><i>shield</i><b>${n0(A.wShield)}</b></div>
+        <div class="row"><i>heal on-hit</i><b>${n0(A.wHeal)}</b></div>
+        <div class="row awk"><i>awakened shield</i><b>${n0(A.wAwkShield)}</b></div>
+        <div class="row awk"><i>regen over 4s</i><b>${n0(A.wAwkRegen)}</b></div>
+        <div class="row awk"><i>awakened heal on-hit</i><b>${n0(A.wAwkHeal)}</b></div>
+      </div>
+      <div class="ab e">
+        <h4>E · Blazing Stampede</h4>
+        <div class="row"><i>move speed bonus</i><b>+${pc(A.eMs)}</b></div>
+        <div class="row"><i>move speed with E</i><b>${n0(A.msE)}</b></div>
+        <div class="row awk"><i>awakened bonus</i><b>+${pc(A.eMs + A.eAwkMs)}</b></div>
+        <div class="row awk"><i>awakened move speed</i><b>${n0(A.msEAwk)}</b></div>
+      </div>
+      <div class="ab r">
+        <h4>R · Wingborne Storm</h4>
+        <div class="row"><i>on-hit</i><b>${n0(M.rOnHit)}</b></div>
+        <div class="row"><i>total over 4s</i><b>${n0(M.rTotal)}</b></div>
+        <div class="row awk"><i>awakened total % max HP</i><b>${pc(M.rAwkTotal)}</b></div>
+        <div class="row"><i>slow / awakened</i><b>${n0(A.rSlow)} / ${n0(A.rAwkSlow)}%</b></div>
+      </div>
+    </div>
+
+    <div class="sect-h">Combos — 2 attacks, then 2 awakened</div>
+    <div class="totals">
+      <div class="tcol qc">
+        <h6>Q · Wilding Claw</h6>
+        ${statHi("damage", n0(D.combo.q.dmg))}
+        ${stat("healing", n0(D.combo.q.heal))}
+        ${stat("&nbsp;&nbsp;from lifesteal", n0(D.combo.q.lsHeal), D.combo.q.lsHeal<1)}
+        ${stat("&nbsp;&nbsp;from omnivamp", n0(D.combo.q.ovHeal), D.combo.q.ovHeal<1)}
+      </div>
+      <div class="tcol wc">
+        <h6>W · Iron Mantle</h6>
+        ${statHi("damage", n0(D.combo.w.dmg))}
+        ${stat("healing", n0(D.combo.w.heal))}
+        ${stat("shielding", n0(D.combo.w.shield))}
+        ${stat("healing + shield", n0(D.combo.w.sustain))}
+      </div>
+      <div class="tcol ec">
+        <h6>E · Blazing Stampede</h6>
+        ${statHi("damage", n0(D.combo.e.dmg))}
+        ${stat("healing", n0(D.combo.e.heal))}
+        ${stat("move speed", n0(D.combo.e.ms))}
+        ${stat("attack speed", nf2.format(t.as))}
+      </div>
+      <div class="tcol rc">
+        <h6>R · Wingborne Storm</h6>
+        ${statHi("damage", n0(D.combo.r.dmg))}
+        ${stat("healing", n0(D.combo.r.heal))}
+        ${stat("slow", n0(A.rSlow)+" / "+n0(A.rAwkSlow)+"%")}
+        ${stat("amp from runes", "x"+nf2.format(D.ampMul), D.ampMul===1)}
+      </div>
+    </div>
+
+    ${(D.runeLines.length || D.runeHealLines.length || D.itemLines.length) ? `<div class="sect-h">Passive output over the combo</div>
+    <div class="totals runedmg">
+      ${D.itemLines.map(l => stat(esc(l.n), n0(l.v)+" dmg")).join("")}
+      ${D.runeLines.map(l => stat(esc(l.n), n0(l.v)+" dmg")).join("")}
+      ${D.runeHealLines.map(l => stat(esc(l.n), n0(l.v)+" heal")).join("")}
+      ${D.armorRed ? stat("target armor shred", n0(D.armorRed)+"%") : ""}
+      ${D.mrRed ? stat("target MR shred", n0(D.mrRed)+"%") : ""}
+    </div>` : ""}
+  </section>`;
+}
+
+const CMP_ROWS = [
+  {head:"Damage per combo"},
+  {lab:"Q · Wilding Claw",     col:"var(--q)", get:r => r.D.combo.q.dmg},
+  {lab:"W · Iron Mantle",      col:"var(--w)", get:r => r.D.combo.w.dmg},
+  {lab:"E · Blazing Stampede", col:"var(--e)", get:r => r.D.combo.e.dmg},
+  {lab:"R · Wingborne Storm",  col:"var(--r)", get:r => r.D.combo.r.dmg},
+  {head:"Healing per combo"},
+  {lab:"Q · Wilding Claw",     col:"var(--q)", get:r => r.D.combo.q.heal},
+  {lab:"W · Iron Mantle (heal + shield)", col:"var(--w)", get:r => r.D.combo.w.sustain},
+  {lab:"E · Blazing Stampede", col:"var(--e)", get:r => r.D.combo.e.heal},
+  {lab:"R · Wingborne Storm",  col:"var(--r)", get:r => r.D.combo.r.heal}
+];
+
+function passivePanel(){
+  /* only show passives of items actually equipped somewhere */
+  const used = [];
+  state.builds.forEach(b => b.items.forEach(sl => {
+    if(sl.name && PV[sl.name] && !used.includes(sl.name)) used.push(sl.name);
+  }));
+  if(!used.length) return "";
+  const rows = used.map(nm => {
+    const it = BY_NAME[nm];
+    return PV[nm].map((f,fi) => {
+      const chips = FX_FIELDS.filter(([k]) => f[k] !== undefined)
+        .map(([k,lab]) => `<span class="fxc"><i>${lab}</i><b>${f[k]}</b></span>`).join("");
+      return `<div class="fxrow">
+        ${it && it.id && fi === 0 ? `<img class="iicon" src="${ITEM_ICON(it.id)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">` : `<span class="iicon"></span>`}
+        <div class="fxname"><b>${fi === 0 ? esc(nm) : ""}</b><em>${esc(f.lab)}${f.type ? " · " + f.type : ""} <span class="src ok">wiki</span></em></div>
+        <div class="fxfields">${chips}</div>
+        ${fi === 0 && WIKI_TIPS[nm] ? `<div class="fxtip">${esc(WIKI_TIPS[nm])}</div>` : ""}
+      </div>`;
+    }).join("");
+  }).join("");
+  return `<h3>Item passives</h3>
+    <p class="sub">All values are taken from the wiki's item data, melee column. Each passive is switched on or off per build with its <strong>COND</strong> button.</p>
+    ${rows}`;
+}
+
+function comparison(res){
+  return CMP_ROWS.map(row => {
+    if(row.head) return `<h4 class="cmp-head">${row.head}</h4>`;
+    const vals = res.map(row.get);
+    const max  = Math.max(...vals, 1);
+    const base = row.base || 0;
+    const span = Math.max(max - base, 1);
+    const ref  = vals[0];
+    const bars = vals.map((v,i) => {
+      const lead = v === max && max > 0;
+      let dlt;
+      if(i > 0 && ref > 0){
+        const d = (v-ref)/ref*100;
+        dlt = `<span class="dlt ${d>=0?"up":"dn"}">${d>=0?"+":"−"}${n1(Math.abs(d))} %</span>`;
+      }else{
+        dlt = `<span class="dlt">base</span>`;
+      }
+      const w = Math.max(0, Math.min(100, (v-base)/span*100));
+      return `<div class="bar ${lead?"lead":""}">
+        <span class="lbl">BUILD ${i+1}</span>
+        <span class="track"><span class="fill" style="width:${w.toFixed(1)}%;background:${row.col};opacity:${lead?1:.42}"></span></span>
+        <span class="val">${n0(v)}${row.unit||""}</span>${dlt}
+      </div>`;
+    }).join("");
+    const scale = base ? ` <em>(scale starts at ${base})</em>` : "";
+    return `<div class="cmp-row"><h5>${row.lab}${scale}</h5>${bars}</div>`;
+  }).join("");
+}
+
+/* ============================================================
+   INTERACTIONS
+   ============================================================ */
+function bind(){
+  grid.querySelectorAll('input[data-act="lvl"],input[data-act="q"],input[data-act="w"],input[data-act="e"],input[data-act="r"]').forEach(inp => {
+    inp.addEventListener("change", e => {
+      const b = state.builds[+e.target.dataset.b];
+      const v = parseInt(e.target.value,10);
+      if(isNaN(v)) return;
+      const a = e.target.dataset.act;
+      if(a === "lvl") b.level = Math.min(18,Math.max(1,v));
+      else b[a] = Math.min(6,Math.max(1,v));
+      render();
+    });
+  });
+  grid.querySelectorAll('button[data-act="rune"]').forEach(el => {
+    el.addEventListener("click", () => openRunePicker(+el.dataset.b, +el.dataset.r));
+  });
+  grid.querySelectorAll('button[data-act="runetog"]').forEach(el => {
+    el.addEventListener("click", () => {
+      const e = state.builds[+el.dataset.b].runes[+el.dataset.r];
+      e.on = !e.on;
+      render();
+    });
+  });
+  grid.querySelectorAll('input[data-act="runeval"]').forEach(el => {
+    el.addEventListener("change", ev => {
+      const v = parseInt(ev.target.value,10);
+      state.builds[+el.dataset.b].runes[+el.dataset.r].val = isNaN(v) ? 0 : Math.max(0,v);
+      render();
+    });
+  });
+  grid.querySelectorAll('button[data-act="shard"]').forEach(el => {
+    el.addEventListener("click", () => {          /* click cycles the three options */
+      const b = state.builds[+el.dataset.b], si = +el.dataset.s;
+      const cur = b.shards[si];
+      b.shards[si] = cur == null ? 0 : (cur === 2 ? null : cur + 1);
+      render();
+    });
+  });
+  grid.querySelectorAll('[data-act="pick"]').forEach(el => {
+    el.addEventListener("click", () => openPicker(+el.dataset.b, +el.dataset.s));
+  });
+  grid.querySelectorAll('[data-act="cond"]').forEach(el => {
+    el.addEventListener("click", () => {
+      const slot = state.builds[+el.dataset.b].items[+el.dataset.s];
+      slot.cond = !slot.cond;
+      render();
+    });
+  });
+}
+
+/* --- picker --- */
+const overlay = document.getElementById("overlay");
+const pickList = document.getElementById("pickList");
+const pickSearch = document.getElementById("pickSearch");
+const pickTitle = document.getElementById("pickTitle");
+let pickCtx = null;
+let pickMode = "item";
+
+function openRunePicker(bi, ri){
+  pickCtx = {bi, ri};
+  pickMode = "rune";
+  pickTitle.textContent = `${state.builds[bi].name} — ${ri === 0 ? "keystone" : "rune " + ri}`;
+  pickSearch.value = "";
+  drawRuneList("");
+  overlay.classList.add("on");
+  pickSearch.focus();
+}
+
+function drawRuneList(q){
+  const needle = q.trim().toLowerCase();
+  const keystone = pickCtx.ri === 0;
+  const list = RUNES.filter(r =>
+    (keystone ? r.s === 0 : r.s > 0) &&
+    (!needle || r.n.toLowerCase().includes(needle) || r.t.toLowerCase().includes(needle)));
+  const trees = [];
+  list.forEach(r => { if(!trees.includes(r.t)) trees.push(r.t); });
+  pickList.innerHTML =
+    `<button class="pitem clear" data-i="-1"><span class="nm">Clear this slot</span><span class="st"></span></button>` +
+    trees.map(t => `<div class="ptree">${t}</div>` + list.filter(r => r.t === t).map(r => `
+      <button class="pitem rune" data-i="${r.id}">
+        <img src="${RUNE_ICON(r.ic)}" alt="" loading="lazy"
+             onerror="this.style.visibility='hidden'">
+        <span class="nm">${esc(r.n)}</span>
+        <span class="st">${esc(r.tip)}</span>
+        ${RUNE_MODELLED(r.id) ? `<span class="dot" title="effect included in the maths"></span>` : ""}
+      </button>`).join("")).join("");
+  pickList.querySelectorAll(".pitem").forEach(el => {
+    el.addEventListener("click", () => {
+      if(!pickCtx) return;
+      const id = +el.dataset.i;
+      state.builds[pickCtx.bi].runes[pickCtx.ri] =
+        id < 0 ? {id:null, on:true, val:0} : {id, on:true, val:0};
+      closePicker();
+      render();
+    });
+  });
+}
+
+function openPicker(bi, si){
+  pickMode = "item";
+  pickCtx = {bi, si};
+  pickTitle.textContent = `${state.builds[bi].name} — slot ${si+1}`;
+  pickSearch.value = "";
+  drawList("");
+  overlay.classList.add("on");
+  pickSearch.focus();
+}
+function closePicker(){
+  overlay.classList.remove("on");
+  pickCtx = null;
+}
+/* ------------------------------------------------------------
+   Item search understands stats as well as names.
+     "leth"        every item with lethality, best first
+     "ad crit"     items carrying both
+     "ah>=20"      items with at least 20 ability haste
+     "hydra"       plain name search, as before
+   ------------------------------------------------------------ */
+const STAT_TOKENS = {
+  ad:{k:"ad"}, attackdamage:{k:"ad"},
+  ap:{k:"ap"}, abilitypower:{k:"ap"},
+  hp:{k:"hp"}, health:{k:"hp"},
+  mana:{k:"mana"},
+  ar:{k:"ar"}, armor:{k:"ar"},
+  mr:{k:"mr"}, magicresist:{k:"mr"},
+  ah:{k:"ah"}, haste:{k:"ah"}, abilityhaste:{k:"ah"},
+  as:{k:"as", scale:0.01}, attackspeed:{k:"as", scale:0.01},
+  crit:{k:"crit"}, critdmg:{k:"critdmg"}, critdamage:{k:"critdmg"},
+  leth:{k:"letha"}, lethality:{k:"letha"},
+  arpen:{k:"arpen"}, armorpen:{k:"arpen"},
+  mpen:{k:"mrpenflat"}, magicpen:{k:"mrpenflat"}, "mpen%":{k:"mrpen"},
+  ls:{k:"ls"}, lifesteal:{k:"ls"},
+  ov:{k:"ov"}, omnivamp:{k:"ov"},
+  ms:{k:"ms"}, movespeed:{k:"ms"}, "ms%":{k:"mspct"},
+  hs:{k:"hs"}, healshield:{k:"hs"},
+  ten:{k:"ten"}, tenacity:{k:"ten"},
+  slow:{k:"slow"}, slowresist:{k:"slow"},
+  adaptive:{k:"adapt"},
+  gold:{k:"g"}, cost:{k:"g"}
+};
+const QUICK_TOKENS = ["ad","ap","ah","as","crit","leth","arpen","mpen","hp","ar","mr","ls","ov","passive"];
+
+function parseQuery(q){
+  const stats = [], words = [];
+  let passiveOnly = false;
+  q.toLowerCase().split(/\s+/).filter(Boolean).forEach(t => {
+    if(t === "passive" || t === "proc"){ passiveOnly = true; return; }
+    const m = t.match(/^([a-z%]+)(>=|<=|>|<|=)?(\d+(?:\.\d+)?)?$/);
+    const def = m && STAT_TOKENS[m[1]];
+    if(def){
+      const scale = def.scale || 1;
+      stats.push({key:def.k,
+                  op:  m[2] || ">",
+                  val: m[3] !== undefined ? parseFloat(m[3]) * scale : 0,
+                  label:m[1]});
+    }else{
+      words.push(t);
+    }
+  });
+  return {stats, words, passiveOnly};
+}
+const CMP = {">":(a,b)=>a>b, ">=":(a,b)=>a>=b, "<":(a,b)=>a<b, "<=":(a,b)=>a<=b, "=":(a,b)=>a===b};
+
+function matches(it, q){
+  if(q.passiveOnly && !PV[it.n]) return false;
+  for(const w of q.words){ if(!it.n.toLowerCase().includes(w)) return false; }
+  for(const st of q.stats){
+    const v = it[st.key] || 0;
+    if(!CMP[st.op](v, st.val)) return false;
+  }
+  return true;
+}
+
+function drawList(raw){
+  const q = parseQuery(raw.trim());
+  let list = ITEMS.filter(i => matches(i, q));
+  const sortKey = q.stats.length ? q.stats[0].key : null;
+  if(sortKey){
+    /* "ah>=20" wants the biggest first, "gold<1300" wants the cheapest first */
+    const asc = q.stats[0].op === "<" || q.stats[0].op === "<=";
+    list = list.slice().sort((a,b) =>
+      asc ? (a[sortKey]||0) - (b[sortKey]||0) : (b[sortKey]||0) - (a[sortKey]||0));
+  }
+
+  const badge = i => {
+    if(!sortKey) return "";
+    const v = i[sortKey] || 0;
+    const shown = sortKey === "as" ? nf2.format(v) : n0(v);
+    return `<span class="hit">${esc(q.stats[0].label)} ${shown}</span>`;
+  };
+  const chips = QUICK_TOKENS.map(t =>
+    `<button class="chip" data-tok="${t}">${t}</button>`).join("");
+
+  pickList.innerHTML =
+    `<div class="chips">${chips}</div>` +
+    `<button class="pitem clear" data-i="-1"><span class="nm">Clear slot</span><span class="st"></span></button>` +
+    (list.length ? list.map(i => `<button class="pitem" data-i="${ITEMS.indexOf(i)}">
+        ${i.id ? `<img class="iicon" src="${ITEM_ICON(i.id)}" alt="" loading="lazy"
+             onerror="this.style.visibility='hidden'">` : ""}
+        <span class="nm">${esc(i.n)}</span>
+        ${badge(i)}
+        <span class="st">${esc(itemSummary(i))}</span>
+        <span class="cost">${n0(i.g)}</span>
+      </button>`).join("")
+      : `<div class="ptree">nothing matches that</div>`);
+
+  pickList.querySelectorAll(".chip").forEach(el => {
+    el.addEventListener("click", ev => {
+      ev.stopPropagation();
+      const cur = pickSearch.value.trim().split(/\s+/).filter(Boolean);
+      const tok = el.dataset.tok;
+      const at = cur.indexOf(tok);
+      if(at >= 0) cur.splice(at, 1); else cur.push(tok);
+      pickSearch.value = cur.join(" ");
+      drawList(pickSearch.value);
+      pickSearch.focus();
+    });
+  });
+  pickList.querySelectorAll(".pitem").forEach(el => {
+    el.addEventListener("click", () => {
+      if(!pickCtx) return;
+      const idx = +el.dataset.i;
+      const slot = state.builds[pickCtx.bi].items[pickCtx.si];
+      slot.name = idx < 0 ? null : ITEMS[idx].n;
+      slot.cond = true;
+      closePicker();
+      render();
+    });
+  });
+}
+pickSearch.addEventListener("input", e =>
+  pickMode === "rune" ? drawRuneList(e.target.value) : drawList(e.target.value));
+pickSearch.addEventListener("keydown", e => {
+  if(e.key === "Enter"){
+    const first = pickList.querySelector(".pitem:not(.clear)");
+    if(first) first.click();
+  }
+});
+overlay.addEventListener("click", e => { if(e.target === overlay) closePicker(); });
+document.addEventListener("keydown", e => { if(e.key === "Escape" && pickCtx) closePicker(); });
+
+/* --- stats de la cible --- */
+["tHp","tAr","tMr"].forEach(id => {
+  document.getElementById(id).addEventListener("input", e => {
+    const v = parseFloat(e.target.value);
+    if(isNaN(v)) return;
+    state.target[{tHp:"hp",tAr:"ar",tMr:"mr"}[id]] = v;
+    render();
+  });
+});
+
+/* --- build saving --- */
+function refreshSlots(){
+  const sel = document.getElementById("slotSel");
+  if(!sel) return;
+  const names = Object.keys(readSaves()).sort();
+  sel.innerHTML = names.length
+    ? `<option value="">— saved pages —</option>` + names.map(n => `<option value="${esc(n)}">${esc(n)}</option>`).join("")
+    : `<option value="">no saved pages yet</option>`;
+  const note = document.getElementById("saveNote");
+  if(note) note.textContent = saveNote;
+}
+const on = (id, ev, fn) => {
+  const el = document.getElementById(id);
+  if(el) el.addEventListener(ev, fn);
+};
+on("slotSel", "change", e => { if(e.target.value) loadSlot(e.target.value); });
+on("btnSave", "click", saveSlot);
+on("btnDel", "click", () => {
+  const sel = document.getElementById("slotSel");
+  const v = sel && sel.value;
+  if(v && confirm(`Delete the saved page "${v}"?`)) deleteSlot(v);
+});
+on("btnExport", "click", exportFile);
+on("btnImport", "click", () => { const f = document.getElementById("fileIn"); if(f) f.click(); });
+on("fileIn", "change", e => {
+  if(e.target.files && e.target.files[0]) importFile(e.target.files[0]);
+  e.target.value = "";
+});
+on("btnReset", "click", () => { if(confirm("Clear all three builds?")) resetAll(); });
+
+render();
+</script>
+</body>
+</html>
