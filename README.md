@@ -5,7 +5,6 @@ A damage and sustain calculator for Udyr on Summoner's Rift, comparing three bui
 Single HTML file, no build step, no server. Open it and it runs.
 
 **[Live version](https://ylfik.github.io/udyr-calc/)**
-
 ---
 
 ## What it does
@@ -103,7 +102,11 @@ format of exchange.
 
 ## Credits
 
-Built from a Google Sheets calculator made by me, rewritten as a web app.
+Made by **Ylfik**.
+
+Built from my own Google Sheets calculator and rewritten as a web app with the help of an AI
+assistant, which wrote the code and cross-checked every value against the official item and rune
+data. The damage model, the build choices and the testing are mine.
 
 Udyr Calc isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or
 anyone officially involved in producing or managing Riot Games properties. Riot Games and all
