@@ -429,6 +429,7 @@ body:not([data-lang="fr"]) .help-fr{display:none}
       <div class="bar">
         <select id="slotSel" title="saved build pages"></select>
         <button id="btnSave" data-i18n="save">Save</button>
+        <button id="btnSaveAs" data-i18n="saveAs">Save as</button>
         <button id="btnDel" data-i18n="del">Del</button>
         <button id="btnExport" data-i18n="exportB">Export</button>
         <button id="btnImport" data-i18n="importB">Import</button>
@@ -1017,6 +1018,37 @@ const ITEM_FX = {
   "ZEKE'S CONVERGENCE":[{lab:"Frostfire Tempest — on ultimate", src:"wiki", type:"magic", hits:1, flat:150}],
   "UNENDING DESPAIR":[{lab:"Anguish",           src:"wiki", type:"magic", hits:1, pctBonusHP:3}],
   /* --- defensive passives: they land in the effective health numbers --- */
+  /* --- the last 26: some carry real numbers, others genuinely cannot --- */
+  "ARDENT CENSER":  [{lab:"Sanctify — after healing or shielding an ally", src:"wiki",
+                      type:"magic", hits:4, flat:20, gain:() => ({as:0.25})}],
+  "STAFF OF FLOWING WATER":[{lab:"Rapids — after healing or shielding an ally", src:"wiki",
+                      gain:() => ({ap:40, ah:15})}],
+  "COSMIC DRIVE":   [{lab:"Spelldance — after damaging a champion", src:"wiki", gain:() => ({ms:20})}],
+  "CRIMSON LUCIDITY":[{lab:"Noxian Haste — after an ability or summoner", src:"wiki", gain:() => ({mspct:10})}],
+  "LOCKET OF THE IRON SOLARI":[{lab:"Devotion — active shield", src:"wiki",
+                      def:c => ({shield:lin(290,360,c.L)})}],
+  "REDEMPTION":     [{lab:"Intervention — active", src:"wiki", type:"true", hits:1, pctTgtHP:10}],
+  "YOUMUU'S GHOSTBLADE":[{lab:"Wraith Step — active, +20% move speed", src:"wiki",
+                      gain:() => ({mspct:20})}],
+  "AXIOM ARC":      [{lab:"Flux — ultimate cooldown refund", src:"wiki"}],
+  "NAVORI FLICKERBLADE":[{lab:"Transcendence — ability cooldowns", src:"wiki"}],
+  "PHANTOM DANCER": [{lab:"Spectral Waltz — ghosting", src:"wiki"}],
+  "SERPENT'S FANG": [{lab:"Shield Reaver — cuts enemy shields", src:"wiki"}],
+  "CRYPTBLOOM":     [{lab:"Life From Death — heal on takedown", src:"wiki"}],
+  "ECHOES OF HELIA":[{lab:"Soul Siphon — heals an ally", src:"wiki"}],
+  "MOONSTONE RENEWER":[{lab:"Starlit Grace — chains to an ally", src:"wiki"}],
+  "MIKAEL'S BLESSING":[{lab:"Purify — cleanse and heal an ally", src:"wiki"}],
+  "KNIGHT'S VOW":   [{lab:"Sacrifice — redirects an ally's damage", src:"wiki"}],
+  "SHURELYA'S BATTLESONG":[{lab:"Inspiring Speech — team move speed", src:"wiki"}],
+  "DAWNCORE":       [{lab:"First Light — scales on mana regeneration", src:"wiki"}],
+  "IONIAN BOOTS OF LUCIDITY":[{lab:"Ionian Insight — summoner spell haste", src:"wiki"}],
+  "SORCERER'S SHOES":[{lab:"Magic penetration, counted in the stats", src:"wiki"}],
+  "SPELLSLINGER'S SHOES":[{lab:"Magic penetration, counted in the stats", src:"wiki"}],
+  "MERCURY'S TREADS":[{lab:"Tenacity, counted in the stats", src:"wiki"}],
+  "BERSERKER'S GREAVES":[{lab:"No passive — stats only", src:"wiki"}],
+  "GUNMETAL GREAVES":[{lab:"No passive — stats only", src:"wiki"}],
+  "INFINITY EDGE":  [{lab:"No passive — stats only", src:"wiki"}],
+  "RUNAAN'S HURRICANE":[{lab:"Wind's Fury — ranged champions only", src:"wiki"}],
   "PLATED STEELCAPS":[{lab:"Plating — 10% less basic damage", src:"wiki", def:() => ({drPhys:10, drMagic:10})}],
   "ARMORED ADVANCE":[{lab:"Plating + Noxian Endurance", src:"wiki",
                       def:c => ({drPhys:10, drMagic:10, shield:lin(100,200,c.L) + 0.08*c.bonusHP})}],
@@ -1128,6 +1160,32 @@ const WIKI_TIPS = {
   "PROTOPLASM HARNESS":"Lifeline: below 30% health, gain 100-300 bonus health and heal for 100-400 (+175% bonus armor) (+175% bonus magic resist), plus 10% move speed and 25% tenacity.",
   "GLUTTONOUS GREAVES":"Slay: each takedown grants 0.6% omnivamp, up to 6% at 10 stacks.",
   "BANDLEPIPES":"Fanfare: slowing or immobilising a champion grants 20 bonus move speed and 30% bonus attack speed for 8s.",
+  "ARDENT CENSER":"Sanctify: healing or shielding an allied champion, excluding yourself, grants you and them 25% bonus attack speed and 20 bonus magic damage on-hit for 6s.",
+  "STAFF OF FLOWING WATER":"Rapids: healing or shielding an allied champion, excluding yourself, grants you and them 40 ability power and 15 ability haste for 6s.",
+  "COSMIC DRIVE":"Spelldance: dealing magic or true damage to a champion grants 20 bonus move speed for 4s.",
+  "CRIMSON LUCIDITY":"Ionian Lucidity: 20 summoner spell haste. Noxian Haste: damaging abilities, buffing an ally or using a summoner spell grants 10% bonus move speed for 4s.",
+  "LOCKET OF THE IRON SOLARI":"Devotion: active, shields you and nearby allies for 290-360 by level, decaying over 2.5s (90s cooldown).",
+  "REDEMPTION":"Intervention: active, a beam heals allies and deals true damage equal to 10% of enemy maximum health. Usable while dead.",
+  "YOUMUU'S GHOSTBLADE":"Wraith Step: active, 20% bonus move speed and ghosting for 6s. Haunt: 20 bonus move speed out of combat.",
+  "AXIOM ARC":"Flux: a takedown within 3s of damaging a champion refunds 10% (+0.25% per lethality) of your ultimate's total cooldown.",
+  "NAVORI FLICKERBLADE":"Transcendence: basic attacks reduce the remaining cooldowns of your basic abilities by 15%.",
+  "PHANTOM DANCER":"Spectral Waltz: permanently ghosted.",
+  "SERPENT'S FANG":"Shield Reaver: damaging a champion reduces shields they gain by 50% for 3s, and cuts their active shields by the same.",
+  "CRYPTBLOOM":"Life From Death: a takedown summons a nova healing you and nearby allies for 100 (+20% AP) (60s cooldown).",
+  "ECHOES OF HELIA":"Soul Siphon: stores 30% of damage dealt to champions as Soul Charges; healing or shielding an ally spends them to heal that ally.",
+  "MOONSTONE RENEWER":"Starlit Grace: healing or shielding an ally chains 30% of the heal or 35% of the shield to another nearby ally.",
+  "MIKAEL'S BLESSING":"Purify: active, removes most crowd control from an ally and heals them for 100-250 by level.",
+  "KNIGHT'S VOW":"Sacrifice: redirects 14% of a tethered ally's incoming damage to you, and heals you for 12% of the damage they deal to champions.",
+  "SHURELYA'S BATTLESONG":"Inspiring Speech: active, grants you and nearby allies 30% bonus move speed for 4s (75s cooldown).",
+  "DAWNCORE":"First Light: 2% heal and shield power and 10 ability power for every additional 100% base mana regeneration.",
+  "IONIAN BOOTS OF LUCIDITY":"Ionian Insight: 10 summoner spell haste. No effect on damage.",
+  "SORCERER'S SHOES":"Flat magic penetration, already counted in the stat block rather than as a passive.",
+  "SPELLSLINGER'S SHOES":"Flat and percentage magic penetration, already counted in the stat block.",
+  "MERCURY'S TREADS":"Tenacity, already counted in the stat block rather than as a passive.",
+  "BERSERKER'S GREAVES":"No passive: attack speed and move speed only.",
+  "GUNMETAL GREAVES":"No passive: attack speed, life steal and move speed only.",
+  "INFINITY EDGE":"No passive: attack damage, critical strike chance and critical strike damage only.",
+  "RUNAAN'S HURRICANE":"Wind's Fury: extra bolts at nearby enemies. The item can only be bought by ranged champions, so Udyr can never own it.",
   "PLATED STEELCAPS":"Plating: reduces all incoming basic damage by 10%, excluding turret attacks.",
   "ARMORED ADVANCE":"Plating, plus Noxian Endurance: taking physical damage grants a shield absorbing 100-200 (+8% bonus health) for 5s (15s cooldown).",
   "CHAINLACED CRUSHERS":"Noxian Persistence: taking magic damage grants a shield absorbing 100-200 (+8% bonus health) for 5s (15s cooldown).",
@@ -1384,13 +1442,19 @@ function computeBuild(b, target){
     ar:   base.ar + bonusAR,
     mr:   base.mr + bonusMR,
     ah:   base.ah + bonusAH,
-    as:   base.as + bonusAS + stanceAS,
+    as:   0,          /* filled in just below, once the bonus is summed */
     ms:   base.ms + S.ms,
     mspct:S.mspct, crit:S.crit, critdmg:S.critdmg,
     letha:S.letha, arpen:S.arpen, mrpenflat:S.mrpenflat, mrpen:S.mrpen,
     ls:S.ls, ov:S.ov, hs:S.hs, ten:S.ten, slow:S.slow,
     bonusHP, bonusAD, bonusAP
   };
+
+  /* Attack speed is not additive: bonuses are a percentage of base attack speed,
+     they include 3% per level of growth, and the total is capped at 2.5. */
+  const bonusASpct = (bonusAS + stanceAS)*100 + 3*gr;
+  tot.as = Math.min(2.5, base.as * (1 + bonusASpct/100));
+  tot.bonusASpct = bonusASpct;
 
   /* ability power passives that read from the finished totals */
   if(has("ARCHANGEL'S STAFF")) tot.ap += 0.01 * bonusMana;
@@ -1479,7 +1543,7 @@ function computeBuild(b, target){
 
   /* --- rune procs over that same 4-attack window --- */
   const rctx = {L, bonusAD, bonusHP, ap:tot.ap, hp:tot.hp,
-                bonusASpct:(tot.as - base.as)*100, awkShield:A.wAwkShield};
+                bonusASpct:tot.bonusASpct, awkShield:A.wAwkShield};
   let runeDmg = 0, runeHeal = 0;
   const runeLines = [], runeHealLines = [];
   activeRunes.forEach(e => {
@@ -1522,6 +1586,12 @@ function computeBuild(b, target){
   });
   drPhys = Math.min(80, drPhys); drMagic = Math.min(80, drMagic);
   D.drPhys = drPhys; D.drMagic = drMagic; D.shieldPool = shieldPool;
+
+  /* every stance is a flat 6s at all ranks; haste shortens it */
+  A.stanceCD = 6 / (1 + tot.ah/100);
+  /* four attacks at the current attack speed */
+  A.comboTime = 4 / tot.as;
+  A.attackEvery = 1 / tot.as;
 
   const hsMul = 1 + tot.hs/100;           /* heal & shield power, on cast heals only */
 
@@ -1580,6 +1650,7 @@ function computeBuild(b, target){
     heal += lsHeal + ovHeal + runeHeal*hsMul;
 
     return {dmg, heal, shield, lsHeal, ovHeal,
+            dps: dmg / A.comboTime, hps: heal / A.comboTime,
             ms: stance === "e" ? A.msEAwk : A.msIdle,
             sustain: heal + shield,
             lines: Object.keys(lines).map(k => ({n:k, v:lines[k]})),
@@ -1666,6 +1737,18 @@ const FR_SUFFIX = {
 const L10N = {
   targetHp:["Target HP","PV cible"], targetAr:["Target Armor","Armure cible"], targetMr:["Target MR","RM cible"],
   builds:["Builds","Builds"], save:["Save","Sauver"], del:["Del","Suppr"], exportB:["Export","Exporter"],
+  saveAs:["Save as","Enregistrer sous"], update:["Update","Mettre à jour"],
+  updateTitle:["overwrite the page \"%s\"","écraser la page « %s »"],
+  saveTitle:["save these builds under a name","enregistrer ces builds sous un nom"],
+  namePrompt:["Name this build page:","Nom de cette page de builds :"],
+  overwrite:["A page called \"%s\" already exists. Replace it?","Une page « %s » existe déjà. La remplacer ?"],
+  savedAs:["saved as %s","enregistré : %s"], loaded:["loaded %s","chargé : %s"],
+  deleted:["deleted %s","supprimé : %s"], imported:["imported","importé"],
+  exported:["exported udyr-builds.json","exporté udyr-builds.json"],
+  wasReset:["reset","réinitialisé"], slotUnreadable:["could not read that slot","page illisible"],
+  fileUnreadable:["that file could not be read","fichier illisible"],
+  storageBlocked:["browser storage is blocked here — use Export instead",
+                  "le stockage du navigateur est bloqué ici — utilisez Exporter"],
   importB:["Import","Importer"], reset:["Reset","Réinit."], help:["How it works","Mode d'emploi"],
   savedPages:["saved build pages","pages sauvegardées"], noPages:["no saved pages yet","aucune page sauvegardée"],
   pagesHead:["— saved pages —","— pages sauvegardées —"],
@@ -1686,7 +1769,9 @@ const L10N = {
   searchPh:["name, or stats — try: leth · ad crit · ah>=20","nom, ou stats — essayez : leth · ad crit · ah>=20"],
   keystone:["keystone","rune clé"], rune:["rune","rune"], slot:["slot","emplacement"],
   primary:["primary tree","arbre primaire"], secondary:["secondary tree","arbre secondaire"],
-  row:["row","ligne"], pickKeystone:["pick a keystone first","choisissez d'abord une rune clé"],
+  row:["row","ligne"], cooldown:["cooldown","recharge"],
+  comboTime:["combo time","durée du combo"], dps:["damage / sec","dégâts / sec"],
+  hps:["healing / sec","soins / sec"], dpsPer:["Damage per second","Dégâts par seconde"], pickKeystone:["pick a keystone first","choisissez d'abord une rune clé"],
   modelled:["effect included in the maths","effet pris en compte dans le calcul"],
   clickToggle:["click to toggle","cliquer pour activer"],
   damage:["damage","dégâts"], healing:["healing","soins"], shielding:["shielding","boucliers"],
@@ -1771,6 +1856,32 @@ const FR_TIPS = {
 "PROTOPLASM HARNESS": "Bouée de sauvetage : sous 30 % de PV, gagne 100-300 PV bonus et se soigne de 100-400 (+175 % d'armure bonus) (+175 % de résistance magique bonus), plus 10 % de vitesse et 25 % de ténacité.",
 "GLUTTONOUS GREAVES": "Massacre : chaque takedown donne 0,6 % d'omnivampirisme, jusqu'à 6 % à 10 charges.",
 "BANDLEPIPES": "Fanfare : ralentir ou immobiliser un champion donne 20 de vitesse de déplacement bonus et 30 % de vitesse d'attaque bonus pendant 8 s.",
+"ARDENT CENSER": "Encensoir ardent : soigner ou protéger un allié, vous excepté, vous donne à tous les deux 25 % de vitesse d'attaque bonus et 20 dégâts magiques bonus à l'impact pendant 6 s.",
+"STAFF OF FLOWING WATER": "Rapides : soigner ou protéger un allié, vous excepté, vous donne à tous les deux 40 de puissance et 15 d'accélération de compétences pendant 6 s.",
+"COSMIC DRIVE": "Danse des sorts : infliger des dégâts magiques ou bruts à un champion donne 20 de vitesse de déplacement bonus pendant 4 s.",
+"CRIMSON LUCIDITY": "Lucidité ionienne : 20 d'accélération de sorts d'invocateur. Hâte noxienne : les compétences offensives, les buffs sur un allié et les sorts d'invocateur donnent 10 % de vitesse de déplacement bonus pendant 4 s.",
+"LOCKET OF THE IRON SOLARI": "Dévotion : actif, vous protège ainsi que les alliés proches de 290-360 selon le niveau, se dissipant sur 2,5 s (90 s de recharge).",
+"REDEMPTION": "Intervention : actif, un rayon soigne les alliés et inflige des dégâts bruts égaux à 10 % des PV max des ennemis. Utilisable même mort.",
+"YOUMUU'S GHOSTBLADE": "Pas spectral : actif, 20 % de vitesse de déplacement bonus et traversée pendant 6 s. Hantise : 20 de vitesse bonus hors combat.",
+"AXIOM ARC": "Flux : un takedown dans les 3 s après avoir blessé un champion rembourse 10 % (+0,25 % par point de létalité) de la recharge totale de votre ultime.",
+"NAVORI FLICKERBLADE": "Transcendance : les attaques réduisent de 15 % la recharge restante de vos compétences de base.",
+"PHANTOM DANCER": "Valse spectrale : traversée permanente.",
+"SERPENT'S FANG": "Faucheur de boucliers : blesser un champion réduit de 50 % les boucliers qu'il obtient pendant 3 s, et ampute d'autant ses boucliers actifs.",
+"CRYPTBLOOM": "La vie par la mort : un takedown déclenche une nova qui vous soigne, vous et les alliés proches, de 100 (+20 % de puissance) (60 s de recharge).",
+"ECHOES OF HELIA": "Siphon d'âmes : stocke 30 % des dégâts infligés aux champions ; soigner ou protéger un allié consomme les charges pour le soigner.",
+"MOONSTONE RENEWER": "Grâce étoilée : soigner ou protéger un allié répercute 30 % du soin ou 35 % du bouclier sur un autre allié proche.",
+"MIKAEL'S BLESSING": "Purification : actif, retire la plupart des contrôles d'un allié et le soigne de 100-250 selon son niveau.",
+"KNIGHT'S VOW": "Sacrifice : redirige vers vous 14 % des dégâts subis par l'allié lié, et vous soigne de 12 % des dégâts qu'il inflige aux champions.",
+"SHURELYA'S BATTLESONG": "Discours galvanisant : actif, vous donne ainsi qu'aux alliés proches 30 % de vitesse de déplacement bonus pendant 4 s (75 s de recharge).",
+"DAWNCORE": "Première lueur : 2 % de puissance de soins et boucliers et 10 de puissance par tranche de 100 % de régénération de mana de base supplémentaire.",
+"IONIAN BOOTS OF LUCIDITY": "Perspicacité ionienne : 10 d'accélération de sorts d'invocateur. Aucun effet sur les dégâts.",
+"SORCERER'S SHOES": "Pénétration magique plate, déjà comptée dans les stats et non comme un passif.",
+"SPELLSLINGER'S SHOES": "Pénétration magique plate et en pourcentage, déjà comptée dans les stats.",
+"MERCURY'S TREADS": "Ténacité, déjà comptée dans les stats et non comme un passif.",
+"BERSERKER'S GREAVES": "Aucun passif : vitesse d'attaque et de déplacement uniquement.",
+"GUNMETAL GREAVES": "Aucun passif : vitesse d'attaque, vol de vie et vitesse de déplacement uniquement.",
+"INFINITY EDGE": "Aucun passif : dégâts d'attaque, chance et dégâts de critique uniquement.",
+"RUNAAN'S HURRICANE": "Furie du vent : projectiles supplémentaires sur les ennemis proches. L'item ne peut être acheté que par les champions à distance, donc Udyr ne peut jamais le posséder.",
 "PLATED STEELCAPS": "Blindage : réduit de 10 % tous les dégâts de base reçus, hors attaques de tourelle.",
 "ARMORED ADVANCE": "Blindage, plus Endurance noxienne : subir des dégâts physiques donne un bouclier absorbant 100-200 (+8 % des PV bonus) pendant 5 s (15 s de recharge).",
 "CHAINLACED CRUSHERS": "Persévérance noxienne : subir des dégâts magiques donne un bouclier absorbant 100-200 (+8 % des PV bonus) pendant 5 s (15 s de recharge).",
@@ -1864,6 +1975,7 @@ const state = freshState();
    ============================================================ */
 const SAVE_KEY = "udyr-calc-saves";
 let saveNote = "";
+let currentSlot = null;   /* the saved page currently loaded, if any */
 
 function readSaves(){
   try{ return JSON.parse(localStorage.getItem(SAVE_KEY) || "{}"); }
@@ -1898,28 +2010,43 @@ function restore(data){
   });
 }
 
-function saveSlot(){
-  const name = (prompt("Name this build page:", "") || "").trim();
-  if(!name) return;
+function writeSlot(name){
   const all = readSaves();
   all[name] = snapshot();
-  saveNote = writeSaves(all)
-    ? `saved as "${name}"`
-    : "browser storage is blocked here — use Export instead";
+  if(writeSaves(all)){
+    currentSlot = name;
+    saveNote = TR("savedAs").replace("%s", name);
+  }else{
+    saveNote = TR("storageBlocked");
+  }
   render();
+}
+/* overwrite the page that is open; ask for a name only if none is */
+function saveSlot(){
+  if(currentSlot) writeSlot(currentSlot);
+  else saveSlotAs();
+}
+function saveSlotAs(){
+  const suggested = currentSlot || "";
+  const name = (prompt(TR("namePrompt"), suggested) || "").trim();
+  if(!name) return;
+  if(readSaves()[name] && name !== currentSlot &&
+     !confirm(TR("overwrite").replace("%s", name))) return;
+  writeSlot(name);
 }
 function loadSlot(name){
   const all = readSaves();
   if(!all[name]) return;
-  try{ restore(all[name]); saveNote = `loaded "${name}"`; }
-  catch(err){ saveNote = "could not read that slot"; }
+  try{ restore(all[name]); currentSlot = name; saveNote = TR("loaded").replace("%s", name); }
+  catch(err){ saveNote = TR("slotUnreadable"); }
   render();
 }
 function deleteSlot(name){
   const all = readSaves();
   delete all[name];
   writeSaves(all);
-  saveNote = `deleted "${name}"`;
+  if(currentSlot === name) currentSlot = null;
+  saveNote = TR("deleted").replace("%s", name);
   render();
 }
 function exportFile(){
@@ -1929,14 +2056,14 @@ function exportFile(){
   a.download = "udyr-builds.json";
   a.click();
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-  saveNote = "exported udyr-builds.json";
+  saveNote = TR("exported");
   render();
 }
 function importFile(file){
   const fr = new FileReader();
   fr.onload = () => {
-    try{ restore(JSON.parse(fr.result)); saveNote = "imported " + file.name; }
-    catch(err){ saveNote = "that file could not be read"; }
+    try{ restore(JSON.parse(fr.result)); currentSlot = null; saveNote = TR("imported") + " " + file.name; }
+    catch(err){ saveNote = TR("fileUnreadable"); }
     render();
   };
   fr.readAsText(file);
@@ -1945,7 +2072,8 @@ function resetAll(){
   const blank = freshState();
   state.target = blank.target;
   state.builds = blank.builds;
-  saveNote = "reset";
+  currentSlot = null;
+  saveNote = TR("wasReset");
   render();
 }
 
@@ -2120,6 +2248,7 @@ function card(b, bi, R){
         <div class="row awk"><i>${TR("awkOnHit")}</i><b>${pc(M.qAwkPct)}</b></div>
         <div class="row awk"><i>${TR("lightning")}</i><b>${pc(M.qLightning)}</b></div>
         <div class="row"><i>${TR("bonusAsAwk")}</i><b>${n0(A.qBonusAS)} / ${n0(A.qAwkAS)}%</b></div>
+        <div class="row"><i>${TR("cooldown")}</i><b>${nf1.format(A.stanceCD)} s</b></div>
       </div>
       <div class="ab w">
         <h4>W · ${isFR()?FR_ABIL[1]:"Iron Mantle"}</h4>
@@ -2128,6 +2257,7 @@ function card(b, bi, R){
         <div class="row awk"><i>${TR("awkShield")}</i><b>${n0(A.wAwkShield)}</b></div>
         <div class="row awk"><i>${TR("regen4s")}</i><b>${n0(A.wAwkRegen)}</b></div>
         <div class="row awk"><i>${TR("awkOnHitHeal")}</i><b>${n0(A.wAwkHeal)}</b></div>
+        <div class="row"><i>${TR("cooldown")}</i><b>${nf1.format(A.stanceCD)} s</b></div>
       </div>
       <div class="ab e">
         <h4>E · ${isFR()?FR_ABIL[2]:"Blazing Stampede"}</h4>
@@ -2135,6 +2265,7 @@ function card(b, bi, R){
         <div class="row"><i>${TR("msWithE")}</i><b>${n0(A.msE)}</b></div>
         <div class="row awk"><i>${TR("awkBonus")}</i><b>+${pc(A.eMs + A.eAwkMs)}</b></div>
         <div class="row awk"><i>${TR("awkMs")}</i><b>${n0(A.msEAwk)}</b></div>
+        <div class="row"><i>${TR("cooldown")}</i><b>${nf1.format(A.stanceCD)} s</b></div>
       </div>
       <div class="ab r">
         <h4>R · ${isFR()?FR_ABIL[3]:"Wingborne Storm"}</h4>
@@ -2142,6 +2273,7 @@ function card(b, bi, R){
         <div class="row"><i>${TR("total4s")}</i><b>${n0(M.rTotal)}</b></div>
         <div class="row awk"><i>${TR("awkTotalPct")}</i><b>${pc(M.rAwkTotal)}</b></div>
         <div class="row"><i>${TR("slow")}</i><b>${n0(A.rSlow)} / ${n0(A.rAwkSlow)}%</b></div>
+        <div class="row"><i>${TR("cooldown")}</i><b>${nf1.format(A.stanceCD)} s</b></div>
       </div>
     </div>
 
@@ -2150,6 +2282,7 @@ function card(b, bi, R){
       <div class="tcol qc">
         <h6>Q · ${isFR()?FR_ABIL[0]:"Wilding Claw"}</h6>
         ${statHi(TR("damage"), n0(D.combo.q.dmg))}
+        ${stat(TR("dps"), n0(D.combo.q.dps))}
         ${stat(TR("healing"), n0(D.combo.q.heal))}
         ${stat("&nbsp;&nbsp;"+TR("fromLS"), n0(D.combo.q.lsHeal), D.combo.q.lsHeal<1)}
         ${stat("&nbsp;&nbsp;"+TR("fromOV"), n0(D.combo.q.ovHeal), D.combo.q.ovHeal<1)}
@@ -2157,6 +2290,7 @@ function card(b, bi, R){
       <div class="tcol wc">
         <h6>W · ${isFR()?FR_ABIL[1]:"Iron Mantle"}</h6>
         ${statHi(TR("damage"), n0(D.combo.w.dmg))}
+        ${stat(TR("hps"), n0(D.combo.w.hps))}
         ${stat(TR("healing"), n0(D.combo.w.heal))}
         ${stat(TR("shielding"), n0(D.combo.w.shield))}
         ${stat(TR("healShield"), n0(D.combo.w.sustain))}
@@ -2167,10 +2301,12 @@ function card(b, bi, R){
         ${stat(TR("healing"), n0(D.combo.e.heal))}
         ${stat(TR("moveSpeed"), n0(D.combo.e.ms))}
         ${stat(TR("attackSpeed"), nf2.format(t.as))}
+        ${stat(TR("comboTime"), nf1.format(A.comboTime)+" s")}
       </div>
       <div class="tcol rc">
         <h6>R · ${isFR()?FR_ABIL[3]:"Wingborne Storm"}</h6>
         ${statHi(TR("damage"), n0(D.combo.r.dmg))}
+        ${stat(TR("dps"), n0(D.combo.r.dps))}
         ${stat(TR("healing"), n0(D.combo.r.heal))}
         ${stat(TR("slow"), n0(A.rSlow)+" / "+n0(A.rAwkSlow)+"%")}
         ${stat(TR("ampRunes"), "x"+nf2.format(D.ampMul), D.ampMul===1)}
@@ -2194,6 +2330,9 @@ const CMP_ROWS = [
   {lab:"W · Iron Mantle",      col:"var(--w)", get:r => r.D.combo.w.dmg},
   {lab:"E · Blazing Stampede", col:"var(--e)", get:r => r.D.combo.e.dmg},
   {lab:"R · Wingborne Storm",  col:"var(--r)", get:r => r.D.combo.r.dmg},
+  {head:() => TR("dpsPer")},
+  {lab:"Q", col:"var(--q)", get:r => r.D.combo.q.dps},
+  {lab:"R", col:"var(--r)", get:r => r.D.combo.r.dps},
   {head:() => TR("healPer")},
   {lab:"Q · Wilding Claw",     col:"var(--q)", get:r => r.D.combo.q.heal},
   {lab:"W · Iron Mantle (heal + shield)", col:"var(--w)", get:r => r.D.combo.w.sustain},
@@ -2573,8 +2712,15 @@ function refreshSlots(){
   sel.innerHTML = names.length
     ? `<option value="">${TR("pagesHead")}</option>` + names.map(n => `<option value="${esc(n)}">${esc(n)}</option>`).join("")
     : `<option value="">${TR("noPages")}</option>`;
+  if(currentSlot && names.includes(currentSlot)) sel.value = currentSlot;
+  const btn = document.getElementById("btnSave");
+  if(btn){
+    btn.textContent = currentSlot ? TR("update") : TR("save");
+    btn.title = currentSlot ? TR("updateTitle").replace("%s", currentSlot) : TR("saveTitle");
+    btn.removeAttribute("data-i18n");
+  }
   const note = document.getElementById("saveNote");
-  if(note) note.textContent = saveNote;
+  if(note) note.textContent = saveNote + (currentSlot ? "  ·  " + currentSlot : "");
 }
 const on = (id, ev, fn) => {
   const el = document.getElementById(id);
@@ -2582,6 +2728,7 @@ const on = (id, ev, fn) => {
 };
 on("slotSel", "change", e => { if(e.target.value) loadSlot(e.target.value); });
 on("btnSave", "click", saveSlot);
+on("btnSaveAs", "click", saveSlotAs);
 on("btnDel", "click", () => {
   const sel = document.getElementById("slotSel");
   const v = sel && sel.value;
