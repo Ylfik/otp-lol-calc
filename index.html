@@ -22,6 +22,7 @@
   --e:#8FA85E;   /* bear    */
   --r:#D2603F;   /* phoenix */
   --good:#7FBF7F;
+  --tank:#9B8AD4;
   --bad:#C4685E;
   --display:"Oswald","Haettenschweiler","Arial Narrow",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
@@ -41,11 +42,36 @@ button,input,select{font:inherit;color:inherit}
 button{cursor:pointer;background:none;border:none}
 
 /* ---------- header ---------- */
+.hero{
+  position:relative;
+  min-height:clamp(170px, 22vw, 280px);
+  display:flex;align-items:flex-end;
+  /* Spirit Guard Udyr, skin 3 */
+  background:
+    url("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Udyr_3.jpg")
+    50% 28% / cover no-repeat,
+    #0B1118;
+}
+/* dark only where the text sits, so the art stays visible */
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(180deg, rgba(11,17,24,.35) 0%, rgba(11,17,24,0) 35%, rgba(11,17,24,.85) 100%),
+    linear-gradient(90deg, rgba(11,17,24,.75) 0%, rgba(11,17,24,.15) 55%, rgba(11,17,24,0) 100%);
+}
+.hero-in{
+  position:relative;width:100%;max-width:2200px;margin:0 auto;
+  padding:0 28px 18px;display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap;
+}
+.hero-act{margin-left:auto;display:flex;align-items:center;gap:8px}
+.hero .brand h1{font-size:clamp(30px, 4vw, 48px)}
+
 .top{
   position:sticky;top:0;z-index:40;
-  background:linear-gradient(180deg,#0B1118 70%,rgba(11,17,24,.92));
+  background:linear-gradient(180deg,#0B1118 70%,rgba(11,17,24,.94));
+  border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
-  padding:14px 20px 12px;
+  padding:12px 20px 11px;
 }
 .top-in{max-width:2200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end}
 .brand{display:flex;align-items:baseline;gap:10px;margin-right:auto}
@@ -59,12 +85,13 @@ button{cursor:pointer;background:none;border:none}
 .brand small{font-family:var(--display);font-weight:300;letter-spacing:.22em;font-size:10px;color:var(--ink-faint);text-transform:uppercase}
 
 .field{display:flex;flex-direction:column;gap:3px}
+.top .field label{text-shadow:0 1px 6px rgba(0,0,0,.95)}
 .field label{
   font-family:var(--display);font-weight:300;font-size:10px;letter-spacing:.16em;
   text-transform:uppercase;color:var(--ink-faint);
 }
 .field input{
-  width:78px;background:var(--panel);border:1px solid var(--line);border-radius:2px;
+  width:78px;background:rgba(19,28,38,.85);border:1px solid var(--line);border-radius:2px;
   padding:5px 8px;font-family:var(--mono);font-size:13px;text-align:right;
 }
 .field input:focus{outline:none;border-color:var(--q)}
@@ -72,21 +99,21 @@ button{cursor:pointer;background:none;border:none}
 .seg{display:flex;border:1px solid var(--line);border-radius:2px;overflow:hidden}
 .seg button{
   padding:6px 12px;font-family:var(--display);font-size:11px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--ink-faint);background:var(--panel);
+  text-transform:uppercase;color:var(--ink-faint);background:rgba(19,28,38,.85);
 }
 .seg button[aria-pressed="true"]{background:var(--q);color:#10161d;font-weight:600}
 .seg button:focus-visible{outline:2px solid var(--q);outline-offset:-2px}
 .bar{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
 .bar button{
-  border:1px solid var(--line);background:var(--panel);color:var(--ink-dim);border-radius:2px;
+  border:1px solid var(--line);background:rgba(19,28,38,.85);color:var(--ink-dim);border-radius:2px;
   padding:5px 9px;font-family:var(--display);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
 }
 .bar button:hover{border-color:var(--q);color:var(--q)}
 .bar select{
-  background:var(--panel);border:1px solid var(--line);border-radius:2px;color:var(--ink);
+  background:rgba(19,28,38,.9);border:1px solid var(--line);border-radius:2px;color:var(--ink);
   padding:5px 6px;font-family:var(--sans);font-size:12px;max-width:170px;
 }
-.savenote{font-family:var(--mono);font-size:11px;color:var(--e);align-self:flex-end;padding-bottom:6px}
+.savenote{font-family:var(--mono);font-size:11px;color:var(--e);text-shadow:0 1px 6px rgba(0,0,0,.9);align-self:flex-end;padding-bottom:6px}
 
 /* ---------- layout ---------- */
 main{max-width:2200px;margin:0 auto;padding:22px 28px 80px}
@@ -111,6 +138,17 @@ main{max-width:2200px;margin:0 auto;padding:22px 28px 80px}
   font-family:var(--display);font-weight:400;font-size:15px;letter-spacing:.2em;
   text-transform:uppercase;margin:0;
 }
+.bmini{display:flex;gap:3px;align-items:center;margin-left:8px}
+.bmini select{
+  background:var(--panel-2);border:1px solid var(--line-soft);border-radius:2px;color:var(--ink-dim);
+  font-family:var(--sans);font-size:10.5px;padding:2px 4px;max-width:112px;
+}
+.bmini button{
+  border:1px solid var(--line-soft);background:var(--panel-2);color:var(--ink-faint);
+  border-radius:2px;width:20px;height:20px;font-family:var(--mono);font-size:12px;line-height:1;
+}
+.bmini button:hover{border-color:var(--q);color:var(--q)}
+.bmini select:focus{outline:none;border-color:var(--q)}
 .gold{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--q)}
 .gold::after{content:" gold";color:var(--ink-faint);font-size:10px}
 
@@ -130,15 +168,16 @@ main{max-width:2200px;margin:0 auto;padding:22px 28px 80px}
 /* items */
 .slots{padding:12px 14px 12px 17px;display:flex;flex-direction:column;gap:4px}
 .slot{
-  display:flex;align-items:center;gap:8px;width:100%;
+  display:flex;align-items:center;gap:9px;width:100%;min-height:44px;
   background:var(--panel-2);border:1px solid var(--line-soft);border-radius:2px;
   padding:6px 8px;text-align:left;transition:border-color .12s,background .12s;
 }
 .slot:hover{border-color:var(--line);background:#1D2A38}
 .slot:focus-visible{outline:2px solid var(--q);outline-offset:1px}
 .slot .num{font-family:var(--mono);font-size:10px;color:var(--ink-faint);min-width:12px;text-align:center}
-.iicon{width:22px;height:22px;border-radius:2px;flex:none;display:block}
-.pitem .iicon{width:26px;height:26px}
+.iicon{width:32px;height:32px;border-radius:3px;flex:none;display:block;
+  border:1px solid var(--line-soft)}
+.pitem .iicon{width:30px;height:30px}
 .pitem{align-items:center}
 .slot .nm{font-family:var(--display);font-size:12px;letter-spacing:.06em;text-transform:uppercase;flex:1;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -341,11 +380,12 @@ main{max-width:2200px;margin:0 auto;padding:22px 28px 80px}
 }
 
 .helpbtn{
-  border:1px solid var(--q);color:var(--q);background:transparent;border-radius:2px;
+  border:1px solid var(--q);color:var(--q);background:rgba(11,17,24,.6);border-radius:2px;
   padding:4px 11px;font-family:var(--display);font-size:10px;letter-spacing:.16em;
   text-transform:uppercase;margin-left:4px;
 }
 .helpbtn:hover{background:var(--q);color:#10161d}
+a.helpbtn{text-decoration:none;display:inline-block}
 .help{
   background:var(--panel);border:1px solid var(--line);border-radius:3px;
   width:min(820px,100%);max-height:86vh;display:flex;flex-direction:column;
@@ -392,7 +432,7 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
 .brk-h th{font-family:var(--display);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
   color:var(--q);padding-top:10px}
 .brk-amp td,.brk-left td{color:var(--ink-faint);font-size:11.5px}
-.brk .iicon{width:20px;height:20px}
+.brk .iicon{width:22px;height:22px}
 .foot{margin-top:34px;border-top:1px solid var(--line-soft);padding-top:16px;
   font-size:11.5px;color:var(--ink-faint);line-height:1.6;max-width:900px}
 .foot p{margin:0 0 8px}
@@ -424,24 +464,29 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
 </head>
 <body>
 
-<div class="top">
-  <div class="top-in">
+<div class="hero">
+  <div class="hero-in">
     <div class="brand">
       <h1>UDYR<span>·</span>CALC</h1>
       <small class="by">made by Ylfik</small>
+    </div>
+    <div class="hero-act">
       <button class="helpbtn" id="btnHelp" data-i18n="help">How it works</button>
+      <a class="helpbtn" id="btnReport" data-i18n="report"
+         href="https://github.com/Ylfik/udyr-calc/issues/new" target="_blank" rel="noopener">Report</a>
       <div class="seg" id="langSeg"><button data-l="en" aria-pressed="true">EN</button><button data-l="fr" aria-pressed="false">FR</button></div>
     </div>
+  </div>
+</div>
+
+<div class="top">
+  <div class="top-in">
     <div class="field"><label data-i18n="targetHp">Target HP</label><input id="tHp" type="number" value="2000" min="1" step="50"></div>
     <div class="field"><label data-i18n="targetAr">Target Armor</label><input id="tAr" type="number" value="100" min="-100" step="5"></div>
     <div class="field"><label data-i18n="targetMr">Target MR</label><input id="tMr" type="number" value="100" min="-100" step="5"></div>
     <div class="field">
       <label data-i18n="builds">Builds</label>
       <div class="bar">
-        <select id="slotSel" title="saved build pages"></select>
-        <button id="btnSave" data-i18n="save">Save</button>
-        <button id="btnSaveAs" data-i18n="saveAs">Save as</button>
-        <button id="btnDel" data-i18n="del">Del</button>
         <button id="btnExport" data-i18n="exportB">Export</button>
         <button id="btnImport" data-i18n="importB">Import</button>
         <button id="btnReset" data-i18n="reset">Reset</button>
@@ -1822,6 +1867,12 @@ const L10N = {
   updateTitle:["overwrite the page \"%s\"","écraser la page « %s »"],
   saveTitle:["save these builds under a name","enregistrer ces builds sous un nom"],
   namePrompt:["Name this build page:","Nom de cette page de builds :"],
+  nameBuild:["Name this build:","Nom de ce build :"],
+  saveBuild:["save this build on its own","enregistrer ce build seul"],
+  loadBuild:["load one of your builds here","charger un de vos builds ici"],
+  delBuild:["delete the selected build","supprimer le build sélectionné"],
+  delConfirm:["Delete the build \"%s\"?","Supprimer le build « %s » ?"],
+  myBuilds:["— my builds —","— mes builds —"], noBuilds:["no saved builds","aucun build enregistré"],
   overwrite:["A page called \"%s\" already exists. Replace it?","Une page « %s » existe déjà. La remplacer ?"],
   savedAs:["saved as %s","enregistré : %s"], loaded:["loaded %s","chargé : %s"],
   deleted:["deleted %s","supprimé : %s"], imported:["imported","importé"],
@@ -1831,6 +1882,7 @@ const L10N = {
   storageBlocked:["browser storage is blocked here — use Export instead",
                   "le stockage du navigateur est bloqué ici — utilisez Exporter"],
   importB:["Import","Importer"], reset:["Reset","Réinit."], help:["How it works","Mode d'emploi"],
+  report:["Report a bug","Signaler un bug"],
   savedPages:["saved build pages","pages sauvegardées"], noPages:["no saved pages yet","aucune page sauvegardée"],
   pagesHead:["— saved pages —","— pages sauvegardées —"],
   lvl:["LVL","NIV"], emptySlot:["empty slot","emplacement vide"],
@@ -1858,7 +1910,10 @@ const L10N = {
   awakenAtk:["AWAKEN IN ATK","ÉVEIL EN ATQ"], awakenReal:["AWAKEN WHILE HITTING","ÉVEIL EN TAPANT"],
   comboTime:["4 attacks","4 attaques"], attackEvery:["1 attack","1 attaque"], dps:["damage / sec","dégâts / sec"],
   hps:["healing / sec","soins / sec"], dpsPer:["Damage per second","Dégâts par seconde"],
-  msPer:["Move speed","Vitesse de déplacement"], shieldPer:["Shielding per combo","Boucliers par combo"],
+  msPer:["Move speed","Vitesse de déplacement"],
+  tankPer:["Tankiness","Résistance"],
+  ehpPhys:["Effective HP vs physical","PV effectifs vs physique"],
+  ehpMagic:["Effective HP vs magic","PV effectifs vs magique"], shieldPer:["Shielding per combo","Boucliers par combo"],
   scaleFrom:["(scale starts at %s)","(échelle à partir de %s)"], pickKeystone:["pick a keystone first","choisissez d'abord une rune clé"],
   modelled:["effect included in the maths","effet pris en compte dans le calcul"],
   clickToggle:["click to toggle","cliquer pour activer"],
@@ -2065,20 +2120,48 @@ const state = freshState();
    cannot always rely on browser storage: named slots kept in
    localStorage, and a plain .json file you can move around or share.
    ============================================================ */
-const SAVE_KEY = "udyr-calc-saves";
+const BUILD_KEY = "udyr-calc-builds";   /* the build library */
 let saveNote = "";
-let currentSlot = null;   /* the saved page currently loaded, if any */
 
-function readSaves(){
-  try{ return JSON.parse(localStorage.getItem(SAVE_KEY) || "{}"); }
+/* ---- one build on its own, so a good build can be reused anywhere ---- */
+function readBuilds(){
+  try{ return JSON.parse(localStorage.getItem(BUILD_KEY) || "{}"); }
   catch(err){ return {}; }
 }
-function writeSaves(obj){
-  try{ localStorage.setItem(SAVE_KEY, JSON.stringify(obj)); return true; }
+function writeBuilds(obj){
+  try{ localStorage.setItem(BUILD_KEY, JSON.stringify(obj)); return true; }
   catch(err){ return false; }
 }
+function saveOneBuild(bi){
+  const name = (prompt(TR("nameBuild"), state.builds[bi].name) || "").trim();
+  if(!name) return;
+  const all = readBuilds();
+  if(all[name] && !confirm(TR("overwrite").replace("%s", name))) return;
+  all[name] = JSON.parse(JSON.stringify(state.builds[bi]));
+  saveNote = writeBuilds(all) ? TR("savedAs").replace("%s", name) : TR("storageBlocked");
+  render();
+}
+function loadOneBuild(bi, name){
+  const src = readBuilds()[name];
+  if(!src) return;
+  const blank = mk(state.builds[bi].name);
+  const one = restoreBuild(blank, src);
+  one.name = name;
+  state.builds[bi] = one;
+  saveNote = TR("loaded").replace("%s", name);
+  render();
+}
+function deleteOneBuild(name){
+  const all = readBuilds();
+  delete all[name];
+  writeBuilds(all);
+  saveNote = TR("deleted").replace("%s", name);
+  render();
+}
+
 function snapshot(){
-  return {v:1, saved:new Date().toISOString(), target:state.target, builds:state.builds};
+  return {v:2, saved:new Date().toISOString(),
+          target:state.target, builds:state.builds, library:readBuilds()};
 }
 function restore(data){
   if(!data || !Array.isArray(data.builds)) throw new Error("not a build file");
@@ -2087,7 +2170,21 @@ function restore(data){
   state.builds = blank.builds.map((b, i) => {
     const d = data.builds[i];
     if(!d) return b;
-    return {
+    return restoreBuild(b, d);
+  });
+  /* an exported file also carries the build library, merged back in on import */
+  if(data.library && typeof data.library === "object"){
+    const all = readBuilds();
+    for(const k in data.library){
+      const blank2 = mk(k);
+      all[k] = restoreBuild(blank2, data.library[k]);
+    }
+    writeBuilds(all);
+  }
+}
+
+function restoreBuild(b, d){
+  return {
       name:  d.name  || b.name,
       level: d.level || 1,
       q:d.q||1, w:d.w||1, e:d.e||1, r:d.r||1, stance:d.stance || "none",
@@ -2098,49 +2195,10 @@ function restore(data){
       items: (d.items  || b.items ).slice(0,6).map(it => it && it.name && BY_NAME[it.name]
                ? {name:it.name, cond:it.cond !== false}
                : {name:null, cond:true})
-    };
-  });
+  };
 }
 
-function writeSlot(name){
-  const all = readSaves();
-  all[name] = snapshot();
-  if(writeSaves(all)){
-    currentSlot = name;
-    saveNote = TR("savedAs").replace("%s", name);
-  }else{
-    saveNote = TR("storageBlocked");
-  }
-  render();
-}
 /* overwrite the page that is open; ask for a name only if none is */
-function saveSlot(){
-  if(currentSlot) writeSlot(currentSlot);
-  else saveSlotAs();
-}
-function saveSlotAs(){
-  const suggested = currentSlot || "";
-  const name = (prompt(TR("namePrompt"), suggested) || "").trim();
-  if(!name) return;
-  if(readSaves()[name] && name !== currentSlot &&
-     !confirm(TR("overwrite").replace("%s", name))) return;
-  writeSlot(name);
-}
-function loadSlot(name){
-  const all = readSaves();
-  if(!all[name]) return;
-  try{ restore(all[name]); currentSlot = name; saveNote = TR("loaded").replace("%s", name); }
-  catch(err){ saveNote = TR("slotUnreadable"); }
-  render();
-}
-function deleteSlot(name){
-  const all = readSaves();
-  delete all[name];
-  writeSaves(all);
-  if(currentSlot === name) currentSlot = null;
-  saveNote = TR("deleted").replace("%s", name);
-  render();
-}
 function exportFile(){
   const blob = new Blob([JSON.stringify(snapshot(), null, 2)], {type:"application/json"});
   const a = document.createElement("a");
@@ -2164,7 +2222,6 @@ function resetAll(){
   const blank = freshState();
   state.target = blank.target;
   state.builds = blank.builds;
-  currentSlot = null;
   saveNote = TR("wasReset");
   render();
 }
@@ -2207,7 +2264,8 @@ function render(){
   cmp.innerHTML  = comparison(res);
   document.getElementById("fxPanel").innerHTML = passivePanel();
   bind();
-  refreshSlots();
+  const note = document.getElementById("saveNote");
+  if(note) note.textContent = saveNote;
   applyStatic();
 }
 
@@ -2238,6 +2296,11 @@ function card(b, bi, R){
   <section class="card">
     <div class="card-head">
       <h2>${esc(b.name)}</h2>
+      <div class="bmini">
+        <select data-bload="${bi}" title="${TR("loadBuild")}"></select>
+        <button data-bsave="${bi}" title="${TR("saveBuild")}">+</button>
+        <button data-bdel="${bi}" title="${TR("delBuild")}">×</button>
+      </div>
       <div class="gold">${n0(R.gold)}</div>
     </div>
 
@@ -2438,6 +2501,9 @@ const CMP_ROWS = [
   {lab:() => "R · " + abName(3), col:"var(--good)", get:r => r.D.combo.r.heal},
   {head:() => TR("shieldPer"), col:"var(--w)"},
   {lab:() => "W · " + abName(1), col:"var(--w)", get:r => r.D.combo.w.shield},
+  {head:() => TR("tankPer"), col:"var(--tank)"},
+  {lab:() => TR("ehpPhys"),  col:"var(--tank)", get:r => r.ehpAr},
+  {lab:() => TR("ehpMagic"), col:"var(--tank)", get:r => r.ehpMr},
   {head:() => TR("msPer"), col:"var(--e)"},
   {lab:() => TR("msWithE"), col:"var(--e)", get:r => r.A.msE,    base:300, unit:" MS"},
   {lab:() => TR("awkMs"),   col:"var(--e)", get:r => r.A.msEAwk, base:300, unit:" MS"}
@@ -2559,6 +2625,26 @@ function bind(){
       if(a === "lvl") b.level = Math.min(LVL_CAP,Math.max(1,v));
       else b[a] = Math.min(6,Math.max(1,v));
       render();
+    });
+  });
+  grid.querySelectorAll("select[data-bload]").forEach(sel => {
+    const names = Object.keys(readBuilds()).sort();
+    sel.innerHTML = names.length
+      ? `<option value="">${TR("myBuilds")}</option>` +
+        names.map(n => `<option value="${esc(n)}">${esc(n)}</option>`).join("")
+      : `<option value="">${TR("noBuilds")}</option>`;
+    sel.addEventListener("change", e => {
+      if(e.target.value) loadOneBuild(+sel.dataset.bload, e.target.value);
+    });
+  });
+  grid.querySelectorAll("button[data-bsave]").forEach(el => {
+    el.addEventListener("click", () => saveOneBuild(+el.dataset.bsave));
+  });
+  grid.querySelectorAll("button[data-bdel]").forEach(el => {
+    el.addEventListener("click", () => {
+      const sel = grid.querySelector(`select[data-bload="${el.dataset.bdel}"]`);
+      const v = sel && sel.value;
+      if(v && confirm(TR("delConfirm").replace("%s", v))) deleteOneBuild(v);
     });
   });
   grid.querySelectorAll('button[data-brk]').forEach(el => {
@@ -2883,35 +2969,10 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && pickCtx) cl
 });
 
 /* --- build saving --- */
-function refreshSlots(){
-  const sel = document.getElementById("slotSel");
-  if(!sel) return;
-  const names = Object.keys(readSaves()).sort();
-  sel.innerHTML = names.length
-    ? `<option value="">${TR("pagesHead")}</option>` + names.map(n => `<option value="${esc(n)}">${esc(n)}</option>`).join("")
-    : `<option value="">${TR("noPages")}</option>`;
-  if(currentSlot && names.includes(currentSlot)) sel.value = currentSlot;
-  const btn = document.getElementById("btnSave");
-  if(btn){
-    btn.textContent = currentSlot ? TR("update") : TR("save");
-    btn.title = currentSlot ? TR("updateTitle").replace("%s", currentSlot) : TR("saveTitle");
-    btn.removeAttribute("data-i18n");
-  }
-  const note = document.getElementById("saveNote");
-  if(note) note.textContent = saveNote + (currentSlot ? "  ·  " + currentSlot : "");
-}
 const on = (id, ev, fn) => {
   const el = document.getElementById(id);
   if(el) el.addEventListener(ev, fn);
 };
-on("slotSel", "change", e => { if(e.target.value) loadSlot(e.target.value); });
-on("btnSave", "click", saveSlot);
-on("btnSaveAs", "click", saveSlotAs);
-on("btnDel", "click", () => {
-  const sel = document.getElementById("slotSel");
-  const v = sel && sel.value;
-  if(v && confirm(`Delete the saved page "${v}"?`)) deleteSlot(v);
-});
 on("btnExport", "click", exportFile);
 on("btnImport", "click", () => { const f = document.getElementById("fileIn"); if(f) f.click(); });
 on("fileIn", "change", e => {
