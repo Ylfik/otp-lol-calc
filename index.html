@@ -885,7 +885,7 @@ const RUNE_FX = {
   8021:{heal:c=>lin(10,130,c.L)+0.1*c.bonusAD+0.05*c.ap},                          /* Fleet Footwork */
   8010:{cond:"12 stacks",stats:{adFn:c=>12*lin(1.8,4,c.L)}},                                        /* Conqueror (12 stacks) */
   8112:{cond:"3 separate hits",proc:{type:"phys",n:1,dmg:c=>lin(70,240,c.L)+0.1*c.bonusAD+0.05*c.ap}},    /* Electrocute */
-  8128:{cond:"target below 50% HP", param:{lab:"souls", def:0},
+  8128:{cond:"target below 50% HP", param:{lab:"souls", def:0}, needBelow:50,
         proc:{type:"phys",n:1,dmg:(c,v)=>30+11*(v||0)+0.1*c.bonusAD+0.05*c.ap}},   /* Dark Harvest */
   9923:{cond:"first 3 attacks",stats:{as:1.2}, proc:{type:"true",n:3,dmg:c=>lin(4,20,c.L)+0.08*c.bonusAD+0.06*c.ap}}, /* Hail of Blades */
   8437:{cond:"every 4s in combat",proc:{type:"magic",n:1,dmg:c=>0.035*c.hp}, heal:c=>0.013*c.hp},            /* Grasp of the Undying */
@@ -894,9 +894,9 @@ const RUNE_FX = {
   9104:{cond:"10 Legend stacks",stats:{as:0.18}},                                                          /* Legend: Alacrity */
   9105:{cond:"10 Legend stacks",stats:{ah:15}},                                                            /* Legend: Haste */
   9103:{cond:"15 Legend stacks",stats:{ls:6.75,hp:85}},                                                    /* Legend: Bloodline */
-  8014:{cond:"target below 40% HP",amp:8},                                                                    /* Coup de Grace */
-  8017:{cond:"target above 60% HP",amp:8},                                                                    /* Cut Down */
-  8299:{cond:"you below 30% HP",amp:11},                                                                   /* Last Stand */
+  8014:{cond:"target below 40% HP",ampBelow40:8},                                                                    /* Coup de Grace */
+  8017:{cond:"target above 60% HP",ampAbove60:8},                                                                    /* Cut Down */
+  8299:{cond:"you below 60% HP, max at 30%",amp:11},                                                                   /* Last Stand */
   8126:{cond:"target impaired",proc:{type:"true",n:1,dmg:c=>lin(10,45,c.L)}},                             /* Cheap Shot */
   8139:{heal:c=>lin(16,40,c.L)+0.1*c.bonusAD+0.05*c.ap},                           /* Taste of Blood */
   8143:{cond:"after a dash or blink",proc:{type:"true",n:1,dmg:c=>lin(20,80,c.L)}},                             /* Sudden Impact */
@@ -1083,7 +1083,7 @@ const ITEM_FX = {
                         type:"phys", hits:3, pctTotAD:80}],
   "BLOODLETTER'S CURSE":[{lab:"Vile Decay — 4 stacks", src:"wiki", mrRed:30}],
   "ABYSSAL MASK":    [{lab:"Unmake — magic damage only", src:"wiki", amp:12}],
-  "SHADOWFLAME":     [{lab:"Cinderbloom — magic damage, target under 40%", src:"wiki", amp:20}],
+  "SHADOWFLAME":     [{lab:"Cinderbloom — magic damage, target under 40%", src:"wiki", ampBelow40:20}],
   "HORIZON FOCUS":   [{lab:"Hypershot",         src:"wiki", amp:10}],
   "IMPERIAL MANDATE":[{lab:"Command — immobilised target", src:"wiki", amp:7}],
   "RABADON'S DEATHCAP":[{lab:"Magical Opus — +30% AP", src:"wiki"}],
@@ -1376,12 +1376,14 @@ function computeBuild(b, target){
   /* --- runes: flat stats go in the item pool, % bonuses are applied to totals --- */
   const runeCtxEarly = {L, bonusAD:S.ad, ap:S.ap};
   const pct = {hp:0, ar:0, mr:0};
-  let ampMul = 1;
+  let ampMul = 1, ampLow = 1, ampHigh = 1;
   const activeRunes = b.runes.filter(r => r && r.id != null);
   activeRunes.forEach(e => {
     const fx = RUNE_FX[e.id];
     if(!fx || !e.on) return;
-    if(fx.amp) ampMul *= (1 + fx.amp/100);
+    if(fx.amp)        ampMul   *= (1 + fx.amp/100);
+    if(fx.ampBelow40) ampLow   *= (1 + fx.ampBelow40/100);
+    if(fx.ampAbove60) ampHigh  *= (1 + fx.ampAbove60/100);
     const st = fx.stats;
     if(!st) return;
     if(st.ad)    S.ad    += st.ad;
@@ -1482,7 +1484,9 @@ function computeBuild(b, target){
       if(f.armorRed) armorRed += f.armorRed;
       if(f.mrRed)    mrRed    += f.mrRed;
       if(f.mrRedFlat) mrRedFlat += f.mrRedFlat;
-      if(f.amp)      ampMul  *= (1 + f.amp/100);
+      if(f.amp)        ampMul  *= (1 + f.amp/100);
+      if(f.ampBelow40) ampLow  *= (1 + f.ampBelow40/100);
+      if(f.ampAbove60) ampHigh *= (1 + f.ampAbove60/100);
     });
   });
   const shredAr = target.ar * (1 - Math.min(100, armorRed)/100);
@@ -1544,14 +1548,14 @@ function computeBuild(b, target){
   /* --- rune procs over that same 4-attack window --- */
   const rctx = {L, bonusAD, bonusHP, ap:tot.ap, hp:tot.hp,
                 bonusASpct:tot.bonusASpct, awkShield:A.wAwkShield};
-  let runeDmg = 0, runeHeal = 0;
+  let runeDmg = 0, runeDmgLow = 0, runeHeal = 0;
   const runeLines = [], runeHealLines = [];
   activeRunes.forEach(e => {
     const fx = RUNE_FX[e.id]; if(!fx || !e.on) return;
     if(fx.proc){
       const raw = fx.proc.dmg(rctx, e.val) * fx.proc.n;
       const mul = fx.proc.type === "phys" ? pMul : fx.proc.type === "magic" ? mMul : 1;
-      runeDmg += raw * mul;
+      if(fx.needBelow) runeDmgLow += raw * mul; else runeDmg += raw * mul;
       runeLines.push({n:rName(RUNE_BY_ID[e.id]), v:raw*mul});
     }
     if(fx.heal){
@@ -1593,6 +1597,14 @@ function computeBuild(b, target){
   A.comboTime = 4 / tot.as;
   A.attackEvery = 1 / tot.as;
 
+  /* Coup de Grace only pays under 40% of the target's health, Cut Down only above
+     60%. Since the combo is stepped attack by attack we can read the target's
+     health at the moment of each hit instead of amplifying the whole combo. */
+  const ampAt = c => ampMul
+    * (c < 0.40*hp ? ampLow  : 1)
+    * (c > 0.60*hp ? ampHigh : 1);
+  D.ampMul = ampMul; D.ampLow = ampLow; D.ampHigh = ampHigh;
+
   const hsMul = 1 + tot.hs/100;           /* heal & shield power, on cast heals only */
 
   /* One combo = 4 basic attacks: 2 in the stance, then 2 awakened.
@@ -1630,19 +1642,21 @@ function computeBuild(b, target){
         });
       });
 
+      d *= ampAt(cur);              /* thresholds read before this hit lands */
       cur = Math.max(0, cur - d);
       dmg += d;
     }
 
-    /* effects that land once per combo rather than per attack */
-    if(stance === "q") dmg += hp*A.qLightning*0.01*6 * mMul;   /* 6 lightning bolts */
-    if(stance === "r") dmg += A.rTotal*mMul + hp*A.rAwkTotal*0.01*mMul;
+    /* effects that land once per combo, amplified by the state at that point */
+    const lateAmp = ampAt(cur);
+    if(stance === "q") dmg += hp*A.qLightning*0.01*6 * mMul * lateAmp;
+    if(stance === "r") dmg += (A.rTotal*mMul + hp*A.rAwkTotal*0.01*mMul) * lateAmp;
+    dmg += runeDmg * lateAmp;
+    if(cur < 0.50*hp) dmg += runeDmgLow * lateAmp;   /* Dark Harvest needs the target low */
     if(stance === "w"){
       shield = (A.wShield + A.wAwkShield) * hsMul;
       heal  += (2*A.wHeal + 2*A.wAwkHeal + A.wAwkRegen) * hsMul;
     }
-
-    dmg = (dmg + runeDmg) * ampMul;
 
     /* lifesteal only heals off basic attack damage; omnivamp heals off everything */
     const lsHeal = autoAll * tot.ls/100 + extraLS;
@@ -1770,7 +1784,7 @@ const L10N = {
   keystone:["keystone","rune clé"], rune:["rune","rune"], slot:["slot","emplacement"],
   primary:["primary tree","arbre primaire"], secondary:["secondary tree","arbre secondaire"],
   row:["row","ligne"], cooldown:["cooldown","recharge"],
-  comboTime:["combo time","durée du combo"], dps:["damage / sec","dégâts / sec"],
+  comboTime:["4 attacks","4 attaques"], attackEvery:["1 attack","1 attaque"], dps:["damage / sec","dégâts / sec"],
   hps:["healing / sec","soins / sec"], dpsPer:["Damage per second","Dégâts par seconde"], pickKeystone:["pick a keystone first","choisissez d'abord une rune clé"],
   modelled:["effect included in the maths","effet pris en compte dans le calcul"],
   clickToggle:["click to toggle","cliquer pour activer"],
@@ -1778,7 +1792,10 @@ const L10N = {
   fromLS:["from lifesteal","dont vol de vie"], fromOV:["from omnivamp","dont omnivampirisme"],
   healShield:["healing + shield","soins + bouclier"],
   moveSpeed:["move speed","vitesse de dépl."], attackSpeed:["attack speed","vitesse d'attaque"],
-  slow:["slow","ralentissement"], ampRunes:["amp from runes","amplification runes"],
+  slow:["slow","ralentissement"],
+  amp:["amp — items & runes","amplif. — items et runes"],
+  ampLow:["amp — target <40%","amplif. — cible <40 %"],
+  ampHigh:["amp — target >60%","amplif. — cible >60 %"],
   onHit:["on-hit","à l'impact"], onHitPct:["on-hit % max HP","à l'impact % PV max"],
   awkOnHit:["awakened on-hit %","à l'impact % éveillé"], lightning:["lightning ×6","éclair ×6"],
   bonusAsAwk:["bonus AS / awakened","vit. atq bonus / éveillée"],
@@ -2205,12 +2222,17 @@ function card(b, bi, R){
         ${stat("AD", n0(t.ad))}
         ${stat("AP", n0(t.ap), t.ap===0)}
         ${stat("AS", nf2.format(t.as))}
+        ${stat(TR("attackEvery"), nf2.format(A.attackEvery)+" s")}
+        ${stat(TR("comboTime"), nf1.format(A.comboTime)+" s")}
         ${stat("CRIT", n0(t.crit)+"%", t.crit===0)}
         ${stat("CRIT DMG", "+"+n0(t.critdmg)+"%", t.critdmg===0)}
         ${stat("LETH", n0(t.letha), t.letha===0)}
         ${stat("ARPEN", n0(t.arpen)+"%", t.arpen===0)}
         ${stat("MPEN", n0(t.mrpenflat), t.mrpenflat===0)}
         ${stat("MPEN%", n0(t.mrpen)+"%", t.mrpen===0)}
+        ${stat(TR("amp"), "x"+nf2.format(D.ampMul), D.ampMul===1)}
+        ${stat(TR("ampLow"), "x"+nf2.format(D.ampLow), D.ampLow===1)}
+        ${stat(TR("ampHigh"), "x"+nf2.format(D.ampHigh), D.ampHigh===1)}
         ${stat("EFF AR", n0(R.effAr))}
         ${stat("EFF MR", n0(R.effMr))}
       </div>
@@ -2299,9 +2321,8 @@ function card(b, bi, R){
         <h6>E · ${isFR()?FR_ABIL[2]:"Blazing Stampede"}</h6>
         ${statHi(TR("damage"), n0(D.combo.e.dmg))}
         ${stat(TR("healing"), n0(D.combo.e.heal))}
-        ${stat(TR("moveSpeed"), n0(D.combo.e.ms))}
-        ${stat(TR("attackSpeed"), nf2.format(t.as))}
-        ${stat(TR("comboTime"), nf1.format(A.comboTime)+" s")}
+        ${stat(TR("msWithE"), n0(A.msE))}
+        ${stat(TR("awkMs"), n0(A.msEAwk))}
       </div>
       <div class="tcol rc">
         <h6>R · ${isFR()?FR_ABIL[3]:"Wingborne Storm"}</h6>
@@ -2309,7 +2330,6 @@ function card(b, bi, R){
         ${stat(TR("dps"), n0(D.combo.r.dps))}
         ${stat(TR("healing"), n0(D.combo.r.heal))}
         ${stat(TR("slow"), n0(A.rSlow)+" / "+n0(A.rAwkSlow)+"%")}
-        ${stat(TR("ampRunes"), "x"+nf2.format(D.ampMul), D.ampMul===1)}
       </div>
     </div>
 
