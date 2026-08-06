@@ -240,8 +240,9 @@ main{max-width:2200px;margin:0 auto;padding:22px 28px 80px}
 .cmp-row{margin-bottom:18px}
 .cmp-head{
   font-family:var(--display);font-weight:400;font-size:11px;letter-spacing:.22em;
-  text-transform:uppercase;color:var(--ink);margin:22px 0 12px;
-  border-bottom:1px solid var(--line-soft);padding-bottom:6px;
+  text-transform:uppercase;margin:26px 0 12px;padding:0 0 6px 10px;
+  border-bottom:1px solid;border-left:3px solid;border-color:inherit;
+  opacity:.95;
 }
 .cmp-head:first-child{margin-top:0}
 .tcol h6{
@@ -382,6 +383,16 @@ body:not([data-lang="fr"]) .help-fr{display:none}
 .helpbody td:last-child{color:var(--ink)}
 .helpbody .legal{font-size:11px;opacity:.7;margin-top:12px}
 
+.brkbtn{background:none;border:none;padding:0;font:inherit;color:inherit;cursor:pointer;letter-spacing:inherit}
+.brkbtn:hover{text-decoration:underline}
+table.brk{width:100%;border-collapse:collapse;font-size:12.5px;margin-bottom:10px}
+table.brk td,table.brk th{padding:3px 8px 3px 0;border-bottom:1px solid var(--line-soft);text-align:left}
+table.brk td:first-child,table.brk th:first-child{width:26px}
+table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var(--mono);white-space:nowrap}
+.brk-h th{font-family:var(--display);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--q);padding-top:10px}
+.brk-amp td,.brk-left td{color:var(--ink-faint);font-size:11.5px}
+.brk .iicon{width:20px;height:20px}
 .foot{margin-top:34px;border-top:1px solid var(--line-soft);padding-top:16px;
   font-size:11.5px;color:var(--ink-faint);line-height:1.6;max-width:900px}
 .foot p{margin:0 0 8px}
@@ -438,6 +449,16 @@ body:not([data-lang="fr"]) .help-fr{display:none}
       </div>
     </div>
     <div class="savenote" id="saveNote"></div>
+  </div>
+</div>
+
+<div class="overlay" id="brkOverlay">
+  <div class="help" role="dialog" aria-modal="true" aria-label="Combo breakdown">
+    <header>
+      <h2 id="brkTitle"></h2>
+      <button class="closebtn" id="brkClose" aria-label="Close">esc</button>
+    </header>
+    <div class="helpbody" id="brkBody"></div>
   </div>
 </div>
 
@@ -623,7 +644,7 @@ body:not([data-lang="fr"]) .help-fr{display:none}
 
   <section class="compare">
     <h3 data-i18n="comparison">Comparison</h3>
-    <p class="sub">Damage dealt to the target after armor and magic resist. The reference combo is <strong>2 auto attacks in stance and 2 auto attacks awaken</strong>.</p>
+    <p class="sub" data-i18n="cmpSub">Damage and sustain over the same combo: 2 attacks in the stance, then 2 awakened.</p>
     <div id="cmp"></div>
   </section>
 
@@ -880,7 +901,7 @@ const lin = (a,b,L,top) => { top = top || 18; return a + (b-a)/(top-1)*(Math.min
    ctx = { L, bonusAD, bonusHP, ap, hp, bonusASpct, awkShield } */
 const RUNE_FX = {
   /* --- keystones --- */
-  8005:{cond:"3 consecutive attacks",stats:{},amp:8,  proc:{type:"phys",n:1,dmg:c=>lin(40,160,c.L)}},          /* Press the Attack */
+  8005:{cond:"3 consecutive attacks",stats:{},ampFrom:{from:4,pct:8}, proc:{type:"phys",n:1,dmg:c=>lin(40,160,c.L)}},          /* Press the Attack */
   8008:{cond:"6 stacks",stats:{as:0.36}, proc:{type:"phys",n:4,dmg:c=>lin(9,30,c.L)*(1+c.bonusASpct/100)}}, /* Lethal Tempo */
   8021:{heal:c=>lin(10,130,c.L)+0.1*c.bonusAD+0.05*c.ap},                          /* Fleet Footwork */
   8010:{cond:"12 stacks",stats:{adFn:c=>12*lin(1.8,4,c.L)}},                                        /* Conqueror (12 stacks) */
@@ -910,7 +931,8 @@ const RUNE_FX = {
   8236:{cond:"30 min into the game",stats:{ad:29}},                                                            /* Gathering Storm @30 min */
   8237:{cond:"first ability hit / 10s",proc:{type:"magic",n:1,dmg:c=>lin(20,40,c.L)}},                            /* Scorch */
   8226:{cond:"250 bonus mana capped",stats:{mana:250}},                                                         /* Manaflow Band */
-  8316:{cond:"10 stacks",stats:{ah:10,ad:20}}                                                       /* Jack of All Trades */
+  8316:{cond:"10 stacks",stats:{ah:10,ad:20}},
+  8106:{cond:"5 Bounty Hunter stacks",stats:{uh:31}}                                                       /* Jack of All Trades */
 };
 const RUNE_MODELLED = id => !!RUNE_FX[id];
 const RUNE_COND    = id => (RUNE_FX[id]||{}).cond || null;
@@ -978,7 +1000,8 @@ const ITEM_FX = {
   "ENDLESS HUNGER":  [{lab:"Famine — ability haste from bonus AD", src:"wiki"},
                       {lab:"Feast — 15% omnivamp after a takedown", src:"wiki"}],
   "FORCE OF NATURE": [{lab:"Steadfast — 8 stacks", src:"wiki"}],
-  "EXPERIMENTAL HEXPLATE":[{lab:"Overdrive — after your ultimate", src:"wiki"}],
+  "EXPERIMENTAL HEXPLATE":[{lab:"Hexcharged — 30 ultimate haste", src:"wiki", always:true, gain:() => ({uh:30})},
+                      {lab:"Overdrive — after your ultimate", src:"wiki"}],
   "WHISPERING CIRCLET":[{lab:"Harmony — heal and shield from bonus mana", src:"wiki"}],
   "DIADEM OF SONGS":[{lab:"Harmony — heal and shield from bonus mana", src:"wiki"}],
   "PROTOPLASM HARNESS":[{lab:"Lifeline — under 30% health", src:"wiki"}],
@@ -986,18 +1009,18 @@ const ITEM_FX = {
   "BANDLEPIPES":     [{lab:"Fanfare — after a slow or immobilise", src:"wiki"}],
   "DEAD MAN'S PLATE":[{lab:"Shipwrecker",     src:"wiki", type:"phys",  hits:1, flat:40, pctBaseAD:100},
                       {lab:"Unsinkable",     src:"wiki", gain:() => ({slow:15})}],
-  "KRAKEN SLAYER":   [{lab:"Bring It Down — every 3rd attack", src:"wiki", type:"phys", hits:1, lvlFrom:150, lvlTo:200, lvlTop:20}],
+  "KRAKEN SLAYER":   [{lab:"Bring It Down — every 3rd attack", src:"wiki", type:"phys", hits:1, at:3, lvlFrom:150, lvlTo:200, lvlTop:20}],
   "VOLTAIC CYCLOSWORD":[{lab:"Firmament — first attack, +15 lethality 4s", src:"wiki", type:"phys", hits:1, pctTgtHP:9, cur:true}],
   "STORMRAZOR":      [{lab:"Bolt",            src:"wiki", type:"magic", hits:1, flat:100}],
   "STATIKK SHIV":    [{lab:"Electrospark",    src:"wiki", type:"magic", hits:1, flat:60}],
-  "HULLBREAKER":     [{lab:"Skipper",         src:"wiki", type:"phys",  hits:1, pctBaseAD:120, pctHP:5}],
+  "HULLBREAKER":     [{lab:"Skipper",         src:"wiki", type:"phys", hits:1, at:4, pctBaseAD:120, pctHP:5}],
   "HEARTSTEEL":      [{lab:"Colossal Consumption", src:"wiki", type:"phys", hits:1, flat:70, pctHP:6}],
-  "ECLIPSE":         [{lab:"Ever Rising Moon",src:"wiki", type:"phys",  hits:1, pctTgtHP:6}],
-  "TRINITY FORCE":   [{lab:"Spellblade",      src:"wiki", type:"phys",  hits:2, pctBaseAD:200}],
-  "ICEBORN GAUNTLET":[{lab:"Spellblade",      src:"wiki", type:"phys",  hits:2, pctBaseAD:150}],
-  "ESSENCE REAVER":  [{lab:"Spellblade",      src:"wiki", type:"phys",  hits:2, pctBaseAD:125}],
-  "LICH BANE":       [{lab:"Spellblade",      src:"wiki", type:"magic", hits:2, pctBaseAD:75, pctAP:45}],
-  "DUSK AND DAWN":   [{lab:"Spellblade",      src:"wiki", type:"magic", hits:2, pctBaseAD:75, pctAP:10}],
+  "ECLIPSE":         [{lab:"Ever Rising Moon",src:"wiki", type:"phys", hits:1, at:2, pctTgtHP:6}],
+  "TRINITY FORCE":   [{lab:"Spellblade",      src:"wiki", type:"phys",  hits:2, at:[1,3], pctBaseAD:200}],
+  "ICEBORN GAUNTLET":[{lab:"Spellblade",      src:"wiki", type:"phys",  hits:2, at:[1,3], pctBaseAD:150}],
+  "ESSENCE REAVER":  [{lab:"Spellblade",      src:"wiki", type:"phys",  hits:2, at:[1,3], pctBaseAD:125}],
+  "LICH BANE":       [{lab:"Spellblade",      src:"wiki", type:"magic", hits:2, at:[1,3], pctBaseAD:75, pctAP:45}],
+  "DUSK AND DAWN":   [{lab:"Spellblade",      src:"wiki", type:"magic", hits:2, at:[1,3], pctBaseAD:75, pctAP:10}],
   "RAVENOUS HYDRA":  [{lab:"Ravenous Crescent",src:"wiki",type:"phys",  hits:1, pctTotAD:80},
                       {lab:"Cleave — other enemies only", src:"wiki", type:"phys", hits:4, pctTotAD:40, aoe:true}],
   "PROFANE HYDRA":   [{lab:"Heretical Cleave",src:"wiki", type:"phys",  hits:1, pctTotAD:80},
@@ -1011,11 +1034,13 @@ const ITEM_FX = {
   "SUNDERED SKY":    [{lab:"Lightshield Strike — bonus crit damage", src:"wiki", type:"phys", hits:1, pctTotAD:80}],
   /* --- ability power items --- */
   "LUDEN'S ECHO":    [{lab:"Echo — single target, 6 stacks", src:"wiki", type:"magic", hits:1, flat:150, pctAP:10}],
-  "MALIGNANCE":      [{lab:"Hatefog — on ultimate", src:"wiki", type:"magic", hits:1, flat:180, pctAP:15, mrRedFlat:10}],
+  "MALIGNANCE":      [{lab:"Scorn — 20 ultimate haste", src:"wiki", always:true, gain:() => ({uh:20})},
+                      {lab:"Hatefog — on ultimate", src:"wiki", type:"magic", hits:1, flat:180, pctAP:15, mrRedFlat:10}],
   "STORMSURGE":      [{lab:"Squall",            src:"wiki", type:"magic", hits:1, flat:125, pctAP:10}],
   "HEXTECH GUNBLADE":[{lab:"Lightning Bolt — active", src:"wiki", type:"magic", hits:1, flat:253, pctAP:30}],
   "HEXTECH ROCKETBELT":[{lab:"Supersonic — active", src:"wiki", type:"magic", hits:1, flat:100, pctAP:10}],
-  "ZEKE'S CONVERGENCE":[{lab:"Frostfire Tempest — on ultimate", src:"wiki", type:"magic", hits:1, flat:150}],
+  "ZEKE'S CONVERGENCE":[{lab:"Cryocombustion — 15 ultimate haste", src:"wiki", always:true, gain:() => ({uh:15})},
+                      {lab:"Frostfire Tempest — on ultimate", src:"wiki", type:"magic", hits:1, flat:150}],
   "UNENDING DESPAIR":[{lab:"Anguish",           src:"wiki", type:"magic", hits:1, pctBonusHP:3}],
   /* --- defensive passives: they land in the effective health numbers --- */
   /* --- the last 26: some carry real numbers, others genuinely cannot --- */
@@ -1057,7 +1082,7 @@ const ITEM_FX = {
   "RANDUIN'S OMEN":[{lab:"Resilience — against critical strikes", src:"wiki", def:() => ({drPhys:30})}],
   "DEATH'S DANCE": [{lab:"Ignore Pain — 30% deferred, not removed", src:"wiki", def:() => ({drPhys:30, drMagic:30})}],
   "FROZEN HEART":  [{lab:"Winter's Caress — enemy attack speed crippled", src:"wiki", def:() => ({drPhys:20})}],
-  "STERAK'S GAGE": [{lab:"The Claws that Catch", src:"wiki", gain:c => ({ad:0.45*c.baseAD})},
+  "STERAK'S GAGE": [{lab:"The Claws that Catch", src:"wiki", always:true, gain:c => ({ad:0.45*c.baseAD})},
                     {lab:"Lifeline — shield from bonus health", src:"wiki", def:c => ({shield:0.60*c.bonusHP})}],
   "IMMORTAL SHIELDBOW":[{lab:"Lifeline — under 30% health", src:"wiki", def:c => ({shield:lin(400,700,c.L)})}],
   "MAW OF MALMORTIUS":[{lab:"Lifeline — magic shield", src:"wiki", def:c => ({shield:200 + 1.5*c.bonusAD})}],
@@ -1079,7 +1104,8 @@ const ITEM_FX = {
   "VOID STAFF":    [{lab:"40% magic penetration, in the stats", src:"wiki"}],
   "HEXOPTICS C44":   [{lab:"Magnification — at range",   src:"wiki", amp:10}],
   "ACTUALIZER":      [{lab:"Mana Made Real — empowered", src:"wiki", amp:15}],
-  "FIENDHUNTER BOLTS":[{lab:"Opening Barrage — 3 attacks after your ultimate", src:"wiki",
+  "FIENDHUNTER BOLTS":[{lab:"Night Vigil — 30 ultimate haste", src:"wiki", always:true, gain:() => ({uh:30})},
+                      {lab:"Opening Barrage — 3 attacks after your ultimate", src:"wiki",
                         type:"phys", hits:3, pctTotAD:80}],
   "BLOODLETTER'S CURSE":[{lab:"Vile Decay — 4 stacks", src:"wiki", mrRed:30}],
   "ABYSSAL MASK":    [{lab:"Unmake — magic damage only", src:"wiki", amp:12}],
@@ -1327,7 +1353,7 @@ function computeBuild(b, target){
 
   /* --- item stat totals --- */
   const S = {hp:0,mana:0,ar:0,mr:0,ad:0,ap:0,ah:0,as:0,crit:0,critdmg:0,letha:0,
-             arpen:0,mrpenflat:0,mrpen:0,ls:0,ov:0,ms:0,mspct:0,hs:0,ten:0,slow:0,adapt:0};
+             arpen:0,mrpenflat:0,mrpen:0,ls:0,ov:0,ms:0,mspct:0,hs:0,ten:0,slow:0,adapt:0,uh:0};
   let gold = 0;
   const equipped = [];
   b.items.forEach((slot,idx) => {
@@ -1348,9 +1374,9 @@ function computeBuild(b, target){
   /* --- item passives that simply grant stats --- */
   equipped.forEach(e => {
     const list = PV[e.it.n];
-    if(!list || !e.cond) return;
+    if(!list) return;
     list.forEach(f => {
-      if(!f.gain) return;
+      if(!f.gain || !(e.cond || f.always)) return;
       const g = f.gain({baseAD:base.ad, L});
       for(const k in g){ if(k in S) S[k] += g[k]; }
     });
@@ -1377,11 +1403,13 @@ function computeBuild(b, target){
   const runeCtxEarly = {L, bonusAD:S.ad, ap:S.ap};
   const pct = {hp:0, ar:0, mr:0};
   let ampMul = 1, ampLow = 1, ampHigh = 1;
+  const ampStage = [];
   const activeRunes = b.runes.filter(r => r && r.id != null);
   activeRunes.forEach(e => {
     const fx = RUNE_FX[e.id];
     if(!fx || !e.on) return;
     if(fx.amp)        ampMul   *= (1 + fx.amp/100);
+    if(fx.ampFrom)    ampStage.push({from:fx.ampFrom.from, mul:1 + fx.ampFrom.pct/100});
     if(fx.ampBelow40) ampLow   *= (1 + fx.ampBelow40/100);
     if(fx.ampAbove60) ampHigh  *= (1 + fx.ampAbove60/100);
     const st = fx.stats;
@@ -1392,6 +1420,7 @@ function computeBuild(b, target){
     if(st.ar)    S.ar    += st.ar;
     if(st.mr)    S.mr    += st.mr;
     if(st.ah)    S.ah    += st.ah;
+    if(st.uh)    S.uh    += st.uh;
     if(st.as)    S.as    += st.as;
     if(st.ls)    S.ls    += st.ls;
     if(st.hs)    S.hs    += st.hs;
@@ -1448,7 +1477,7 @@ function computeBuild(b, target){
     ms:   base.ms + S.ms,
     mspct:S.mspct, crit:S.crit, critdmg:S.critdmg,
     letha:S.letha, arpen:S.arpen, mrpenflat:S.mrpenflat, mrpen:S.mrpen,
-    ls:S.ls, ov:S.ov, hs:S.hs, ten:S.ten, slow:S.slow,
+    ls:S.ls, ov:S.ov, hs:S.hs, ten:S.ten, slow:S.slow, uh:S.uh,
     bonusHP, bonusAD, bonusAP
   };
 
@@ -1479,8 +1508,9 @@ function computeBuild(b, target){
   let armorRed = 0, mrRed = 0, mrRedFlat = 0;
   equipped.forEach(e => {
     const list = PV[e.it.n];
-    if(!list || !e.cond) return;
+    if(!list) return;
     list.forEach(f => {
+      if(!(e.cond || f.always)) return;
       if(f.armorRed) armorRed += f.armorRed;
       if(f.mrRed)    mrRed    += f.mrRed;
       if(f.mrRedFlat) mrRedFlat += f.mrRedFlat;
@@ -1591,8 +1621,19 @@ function computeBuild(b, target){
   drPhys = Math.min(80, drPhys); drMagic = Math.min(80, drMagic);
   D.drPhys = drPhys; D.drMagic = drMagic; D.shieldPool = shieldPool;
 
-  /* every stance is a flat 6s at all ranks; haste shortens it */
+  /* every stance is a flat 6s at all ranks; ability haste shortens it */
   A.stanceCD = 6 / (1 + tot.ah/100);
+  /* Bridge Between: the awaken cooldown steps down every five levels,
+     50s at 1-5, 40s at 6-10, 30s at 11-15, 20s at 16-20, cut by ultimate haste */
+  A.awakenBase = L >= 16 ? 20 : L >= 11 ? 30 : L >= 6 ? 40 : 50;
+  A.awakenCD   = A.awakenBase / (1 + tot.uh/100);
+  /* Each basic attack in a stance also strips 5% of the awaken cooldown.
+     An attack therefore advances the timer twice: once by the time it takes
+     (1 / attack speed) and once by the flat 5% it removes. */
+  const perAttack = 1/tot.as + 0.05*A.awakenCD;
+  A.awakenAttacks = A.awakenCD / perAttack;      /* attacks needed while attacking */
+  A.awakenReal    = A.awakenAttacks / tot.as;    /* how long that actually takes */
+  A.awakenSaved   = A.awakenCD - A.awakenReal;
   /* four attacks at the current attack speed */
   A.comboTime = 4 / tot.as;
   A.attackEvery = 1 / tot.as;
@@ -1600,7 +1641,12 @@ function computeBuild(b, target){
   /* Coup de Grace only pays under 40% of the target's health, Cut Down only above
      60%. Since the combo is stepped attack by attack we can read the target's
      health at the moment of each hit instead of amplifying the whole combo. */
-  const ampAt = c => ampMul
+  /* a passive fires either on its first N attacks, or on one named attack */
+  const fires = (f, a) => f.at
+    ? (Array.isArray(f.at) ? f.at.indexOf(a) >= 0 : f.at === a)
+    : (!!f.hits && a <= f.hits);
+
+  const ampAt = (c, a) => ampStage.reduce((m, x) => m * (a >= x.from ? x.mul : 1), 1) * ampMul
     * (c < 0.40*hp ? ampLow  : 1)
     * (c > 0.60*hp ? ampHigh : 1);
   D.ampMul = ampMul; D.ampLow = ampLow; D.ampHigh = ampHigh;
@@ -1616,15 +1662,21 @@ function computeBuild(b, target){
     const lines = {};
     const add = (k,v) => { lines[k] = (lines[k]||0) + v; };
 
+    const steps = [];
     for(let a = 1; a <= 4; a++){
       const awakened = a > 2;
       let d = autoHit;                     /* the attack's own AD, post-mitigation */
       autoAll += autoHit;
+      const parts = [{n:"basicAttack", v:autoHit}];
 
       if(stance === "q"){
-        d += (A.qOnHit + hp*(awakened ? A.qAwkPct : A.qPct)*0.01) * pMul;
+        const flat = A.qOnHit * pMul;
+        const pct  = hp*(awakened ? A.qAwkPct : A.qPct)*0.01 * pMul;
+        d += flat + pct;
+        parts.push({n:"qOnHit", v:flat});
+        parts.push({n:awakened ? "qAwkPct" : "qPct", v:pct});
       }
-      if(stance === "r") d += A.rOnHit * mMul;
+      if(stance === "r"){ d += A.rOnHit * mMul; parts.push({n:"rOnHit", v:A.rOnHit*mMul}); }
       if(stance === "w"){
         extraLS += autoHit * (awakened ? A.wAwkLifest : A.wLifesteal)/100;
       }
@@ -1633,26 +1685,40 @@ function computeBuild(b, target){
         const list = PV[e.it.n];
         if(!list || !e.cond) return;
         list.forEach(f => {
-          if(!f.hits || f.aoe || a > f.hits) return;  /* aoe passives miss a lone target */
+          if(f.aoe || !fires(f, a)) return;   /* aoe passives miss a lone target */
           const mul = f.type === "phys" ? pMul : f.type === "magic" ? mMul : 1;
           const v = fxOne(f, fxctx, f.cur ? cur : hp) * mul;
           if(!v) return;
           d += v;
           add(e.it.n + " — " + f.lab, v);
+          parts.push({item:e.it, n:f.lab, v});
         });
       });
 
-      d *= ampAt(cur);              /* thresholds read before this hit lands */
+      const amp = ampAt(cur, a);
+      d *= amp;                     /* thresholds read before this hit lands */
+      steps.push({n:a, awakened, amp, before:cur, total:d,
+                  parts:parts.map(x => ({...x, v:x.v*amp}))});
       cur = Math.max(0, cur - d);
       dmg += d;
     }
 
     /* effects that land once per combo, amplified by the state at that point */
-    const lateAmp = ampAt(cur);
-    if(stance === "q") dmg += hp*A.qLightning*0.01*6 * mMul * lateAmp;
-    if(stance === "r") dmg += (A.rTotal*mMul + hp*A.rAwkTotal*0.01*mMul) * lateAmp;
-    dmg += runeDmg * lateAmp;
-    if(cur < 0.50*hp) dmg += runeDmgLow * lateAmp;   /* Dark Harvest needs the target low */
+    const lateAmp = ampAt(cur, 5);   /* after every attack has landed */
+    const finals = [];
+    if(stance === "q"){
+      const v = hp*A.qLightning*0.01*6 * mMul * lateAmp;
+      dmg += v; finals.push({n:"lightning", v});
+    }
+    if(stance === "r"){
+      const v1 = A.rTotal*mMul*lateAmp, v2 = hp*A.rAwkTotal*0.01*mMul*lateAmp;
+      dmg += v1 + v2;
+      finals.push({n:"rStorm", v:v1}); finals.push({n:"rAwkStorm", v:v2});
+    }
+    if(runeDmg){ dmg += runeDmg * lateAmp; finals.push({n:"runeProcs", v:runeDmg*lateAmp}); }
+    if(cur < 0.50*hp && runeDmgLow){
+      dmg += runeDmgLow * lateAmp; finals.push({n:"runeLow", v:runeDmgLow*lateAmp});
+    }
     if(stance === "w"){
       shield = (A.wShield + A.wAwkShield) * hsMul;
       heal  += (2*A.wHeal + 2*A.wAwkHeal + A.wAwkRegen) * hsMul;
@@ -1668,6 +1734,7 @@ function computeBuild(b, target){
             ms: stance === "e" ? A.msEAwk : A.msIdle,
             sustain: heal + shield,
             lines: Object.keys(lines).map(k => ({n:k, v:lines[k]})),
+            steps, finals, lateAmp,
             leftover: cur};
   }
 
@@ -1773,7 +1840,7 @@ const L10N = {
   combos:["Combos — 2 attacks, then 2 awakened","Combos — 2 attaques, puis 2 éveillées"],
   passiveOut:["Passive output over the combo","Effet des passifs sur le combo"],
   comparison:["Comparison","Comparaison"],
-  cmpSub:["Damage and sustain over the same 4-attack combo.","Dégâts et survie sur le même combo de 4 attaques."],
+  cmpSub:["Damage and sustain over the same combo: 2 attacks in the stance, then 2 awakened.","Dégâts et survie sur le même combo : 2 attaques dans la posture, puis 2 éveillées."],
   dmgPer:["Damage per combo","Dégâts par combo"], healPer:["Healing per combo","Soins par combo"],
   itemPassives:["Item passives","Passifs d'items"],
   fxSub:["All values are taken from the wiki's item data, melee column. Each passive is switched on or off per build with its COND button.",
@@ -1784,8 +1851,15 @@ const L10N = {
   keystone:["keystone","rune clé"], rune:["rune","rune"], slot:["slot","emplacement"],
   primary:["primary tree","arbre primaire"], secondary:["secondary tree","arbre secondaire"],
   row:["row","ligne"], cooldown:["cooldown","recharge"],
+  attack:["Attack","Attaque"], awakened:["awakened","éveillée"],
+  targetLeft:["target left","PV restants"], perAttack:["Attack by attack","Attaque par attaque"],
+  endOfCombo:["Once per combo","Une fois par combo"], summary:["Total","Total"],
+  breakdownOf:["%s — full breakdown","%s — détail complet"], ultHaste:["ULT HASTE","ACCÉL. ULT"], awakenCD:["AWAKEN CD","RECHARGE ÉVEIL"],
+  awakenAtk:["AWAKEN IN ATK","ÉVEIL EN ATQ"], awakenReal:["AWAKEN WHILE HITTING","ÉVEIL EN TAPANT"],
   comboTime:["4 attacks","4 attaques"], attackEvery:["1 attack","1 attaque"], dps:["damage / sec","dégâts / sec"],
-  hps:["healing / sec","soins / sec"], dpsPer:["Damage per second","Dégâts par seconde"], pickKeystone:["pick a keystone first","choisissez d'abord une rune clé"],
+  hps:["healing / sec","soins / sec"], dpsPer:["Damage per second","Dégâts par seconde"],
+  msPer:["Move speed","Vitesse de déplacement"], shieldPer:["Shielding per combo","Boucliers par combo"],
+  scaleFrom:["(scale starts at %s)","(échelle à partir de %s)"], pickKeystone:["pick a keystone first","choisissez d'abord une rune clé"],
   modelled:["effect included in the maths","effet pris en compte dans le calcul"],
   clickToggle:["click to toggle","cliquer pour activer"],
   damage:["damage","dégâts"], healing:["healing","soins"], shielding:["shielding","boucliers"],
@@ -1956,6 +2030,7 @@ let LANG = "en";
 const isFR = () => LANG === "fr";
 
 /* display name of an item or a rune in the current language */
+const abName = i => isFR() ? FR_ABIL[i] : ["Wilding Claw","Iron Mantle","Blazing Stampede","Wingborne Storm"][i];
 const iName = it => (isFR() && it && FR_ITEM[it.id]) ? FR_ITEM[it.id] : (it ? it.n : "");
 const rName = r  => (isFR() && r && FR_RUNE[r.id])  ? FR_RUNE[r.id]  : (r ? r.n : "");
 const tName = t  => (isFR() && FR_TREE[t]) ? FR_TREE[t] : t;
@@ -2116,7 +2191,7 @@ function itemSummary(it){
   push("mrpenflat","MPEN"); push("mrpen","MPEN", v => v+"%");
   push("ls","LS", v => v+"%"); push("ov","OV", v => v+"%");
   push("ms","MS"); push("mspct","MS", v => v+"%");
-  push("ten","TEN", v => v+"%"); push("adapt","ADAPTIVE");
+  push("ten","TEN", v => v+"%"); push("adapt","ADAPTIVE"); push("uh","ULT HASTE");
   return parts.join(" · ");
 }
 
@@ -2254,6 +2329,10 @@ function card(b, bi, R){
         <h6>${TR("utility")}</h6>
         ${stat("MANA", n0(t.mana))}
         ${stat("AH", n0(t.ah), t.ah===0)}
+        ${stat(TR("ultHaste"), n0(t.uh), t.uh===0)}
+        ${stat(TR("awakenCD"), nf1.format(A.awakenCD)+" s")}
+        ${stat(TR("awakenAtk"), nf1.format(A.awakenAttacks))}
+        ${stat(TR("awakenReal"), nf1.format(A.awakenReal)+" s")}
         ${stat("MS", n0(A.msIdle))}
         ${stat("MS%", "+"+n1(t.mspct)+"%", t.mspct===0)}
         ${stat("TEN", n0(t.ten)+"%", t.ten===0)}
@@ -2302,7 +2381,7 @@ function card(b, bi, R){
     <div class="sect-h">${TR("combos")}</div>
     <div class="totals">
       <div class="tcol qc">
-        <h6>Q · ${isFR()?FR_ABIL[0]:"Wilding Claw"}</h6>
+        <h6><button class="brkbtn" data-brk="q" data-b="${bi}">Q · ${isFR()?FR_ABIL[0]:"Wilding Claw"} ▸</button></h6>
         ${statHi(TR("damage"), n0(D.combo.q.dmg))}
         ${stat(TR("dps"), n0(D.combo.q.dps))}
         ${stat(TR("healing"), n0(D.combo.q.heal))}
@@ -2310,7 +2389,7 @@ function card(b, bi, R){
         ${stat("&nbsp;&nbsp;"+TR("fromOV"), n0(D.combo.q.ovHeal), D.combo.q.ovHeal<1)}
       </div>
       <div class="tcol wc">
-        <h6>W · ${isFR()?FR_ABIL[1]:"Iron Mantle"}</h6>
+        <h6><button class="brkbtn" data-brk="w" data-b="${bi}">W · ${isFR()?FR_ABIL[1]:"Iron Mantle"} ▸</button></h6>
         ${statHi(TR("damage"), n0(D.combo.w.dmg))}
         ${stat(TR("hps"), n0(D.combo.w.hps))}
         ${stat(TR("healing"), n0(D.combo.w.heal))}
@@ -2318,14 +2397,14 @@ function card(b, bi, R){
         ${stat(TR("healShield"), n0(D.combo.w.sustain))}
       </div>
       <div class="tcol ec">
-        <h6>E · ${isFR()?FR_ABIL[2]:"Blazing Stampede"}</h6>
-        ${statHi(TR("damage"), n0(D.combo.e.dmg))}
-        ${stat(TR("healing"), n0(D.combo.e.heal))}
-        ${stat(TR("msWithE"), n0(A.msE))}
+        <h6><button class="brkbtn" data-brk="e" data-b="${bi}">E · ${isFR()?FR_ABIL[2]:"Blazing Stampede"} ▸</button></h6>
+        ${statHi(TR("msWithE"), n0(A.msE))}
         ${stat(TR("awkMs"), n0(A.msEAwk))}
+        ${stat(TR("msBonus"), "+"+pc(A.eMs))}
+        ${stat(TR("awkBonus"), "+"+pc(A.eMs + A.eAwkMs))}
       </div>
       <div class="tcol rc">
-        <h6>R · ${isFR()?FR_ABIL[3]:"Wingborne Storm"}</h6>
+        <h6><button class="brkbtn" data-brk="r" data-b="${bi}">R · ${isFR()?FR_ABIL[3]:"Wingborne Storm"} ▸</button></h6>
         ${statHi(TR("damage"), n0(D.combo.r.dmg))}
         ${stat(TR("dps"), n0(D.combo.r.dps))}
         ${stat(TR("healing"), n0(D.combo.r.heal))}
@@ -2345,19 +2424,23 @@ function card(b, bi, R){
 }
 
 const CMP_ROWS = [
-  {head:() => TR("dmgPer")},
-  {lab:"Q · Wilding Claw",     col:"var(--q)", get:r => r.D.combo.q.dmg},
-  {lab:"W · Iron Mantle",      col:"var(--w)", get:r => r.D.combo.w.dmg},
-  {lab:"E · Blazing Stampede", col:"var(--e)", get:r => r.D.combo.e.dmg},
-  {lab:"R · Wingborne Storm",  col:"var(--r)", get:r => r.D.combo.r.dmg},
-  {head:() => TR("dpsPer")},
-  {lab:"Q", col:"var(--q)", get:r => r.D.combo.q.dps},
-  {lab:"R", col:"var(--r)", get:r => r.D.combo.r.dps},
-  {head:() => TR("healPer")},
-  {lab:"Q · Wilding Claw",     col:"var(--q)", get:r => r.D.combo.q.heal},
-  {lab:"W · Iron Mantle (heal + shield)", col:"var(--w)", get:r => r.D.combo.w.sustain},
-  {lab:"E · Blazing Stampede", col:"var(--e)", get:r => r.D.combo.e.heal},
-  {lab:"R · Wingborne Storm",  col:"var(--r)", get:r => r.D.combo.r.heal}
+  /* The E stance adds no damage of its own, so it is compared on what it
+     actually produces: movement. The W is compared on sustain, not damage. */
+  {head:() => TR("dmgPer"), col:"var(--q)"},
+  {lab:() => "Q · " + abName(0), col:"var(--q)", get:r => r.D.combo.q.dmg},
+  {lab:() => "R · " + abName(3), col:"var(--r)", get:r => r.D.combo.r.dmg},
+  {head:() => TR("dpsPer"), col:"var(--r)"},
+  {lab:() => "Q · " + abName(0), col:"var(--q)", get:r => r.D.combo.q.dps},
+  {lab:() => "R · " + abName(3), col:"var(--r)", get:r => r.D.combo.r.dps},
+  {head:() => TR("healPer"), col:"var(--good)"},
+  {lab:() => "Q · " + abName(0), col:"var(--good)", get:r => r.D.combo.q.heal},
+  {lab:() => "W · " + abName(1), col:"var(--good)", get:r => r.D.combo.w.heal},
+  {lab:() => "R · " + abName(3), col:"var(--good)", get:r => r.D.combo.r.heal},
+  {head:() => TR("shieldPer"), col:"var(--w)"},
+  {lab:() => "W · " + abName(1), col:"var(--w)", get:r => r.D.combo.w.shield},
+  {head:() => TR("msPer"), col:"var(--e)"},
+  {lab:() => TR("msWithE"), col:"var(--e)", get:r => r.A.msE,    base:300, unit:" MS"},
+  {lab:() => TR("awkMs"),   col:"var(--e)", get:r => r.A.msEAwk, base:300, unit:" MS"}
 ];
 
 function passivePanel(){
@@ -2385,9 +2468,58 @@ function passivePanel(){
     ${rows}`;
 }
 
+function breakdown(bi, stance){
+  const R = computeBuild(state.builds[bi], state.target);
+  const c = R.D.combo[stance], A = R.A;
+  const K = {basicAttack:["basic attack","auto-attaque"], qOnHit:["Q on-hit","Q à l'impact"],
+             qPct:["Q % max HP","Q % PV max"], qAwkPct:["Q awakened % max HP","Q % PV max éveillé"],
+             rOnHit:["R on-hit","R à l'impact"], lightning:["lightning x6","éclair x6"],
+             rStorm:["R storm over 4s","tempête du R sur 4 s"],
+             rAwkStorm:["R awakened storm","tempête éveillée du R"],
+             runeProcs:["rune procs","procs de runes"], runeLow:["Dark Harvest","Moisson noire"]};
+  const nm = k => { const v = K[k]; return v ? (isFR() ? v[1] : v[0]) : k; };
+
+  const rows = c.steps.map(st => `
+    <tr class="brk-h"><th colspan="2">${TR("attack")} ${st.n}${st.awakened ? " · " + TR("awakened") : ""}</th>
+        <th>${n0(st.total)}</th></tr>
+    ${st.parts.filter(p => p.v > 0.5).map(p => `<tr>
+        <td>${p.item ? `<img class="iicon" src="${ITEM_ICON(p.item.id)}" alt="" loading="lazy"
+             onerror="this.style.visibility='hidden'">` : ""}</td>
+        <td>${p.item ? esc(iName(p.item)) + " — " + esc(fxLabel(p.n)) : esc(nm(p.n))}</td>
+        <td>${n0(p.v)}</td></tr>`).join("")}
+    ${st.amp !== 1 ? `<tr class="brk-amp"><td></td><td>${TR("amp")}</td><td>x${nf2.format(st.amp)}</td></tr>` : ""}
+    <tr class="brk-left"><td></td><td>${TR("targetLeft")}</td><td>${n0(Math.max(0, st.before - st.total))}</td></tr>
+  `).join("");
+
+  const fin = c.finals.filter(f => f.v > 0.5).map(f =>
+    `<tr><td></td><td>${esc(nm(f.n))}</td><td>${n0(f.v)}</td></tr>`).join("");
+
+  if(stance === "e"){
+    return `<h3>${TR("summary")}</h3>
+    <table class="brk">
+      <tr><td></td><td>${TR("msWithE")}</td><td>${n0(A.msE)} MS</td></tr>
+      <tr><td></td><td>${TR("awkMs")}</td><td>${n0(A.msEAwk)} MS</td></tr>
+      <tr><td></td><td>${TR("msBonus")}</td><td>+${pc(A.eMs)}</td></tr>
+      <tr><td></td><td>${TR("awkBonus")}</td><td>+${pc(A.eMs + A.eAwkMs)}</td></tr>
+      <tr><td></td><td>${TR("cooldown")}</td><td>${nf1.format(A.stanceCD)} s</td></tr>
+    </table>`;
+  }
+  return `<h3>${TR("perAttack")}</h3>
+    <table class="brk">${rows}</table>
+    ${fin ? `<h3>${TR("endOfCombo")}</h3><table class="brk">${fin}</table>` : ""}
+    <h3>${TR("summary")}</h3>
+    <table class="brk">
+      <tr><td></td><td>${TR("damage")}</td><td>${n0(c.dmg)}</td></tr>
+      <tr><td></td><td>${TR("dps")}</td><td>${n0(c.dps)}</td></tr>
+      <tr><td></td><td>${TR("healing")}</td><td>${n0(c.heal)}</td></tr>
+      ${c.shield ? `<tr><td></td><td>${TR("shielding")}</td><td>${n0(c.shield)}</td></tr>` : ""}
+      <tr><td></td><td>${TR("comboTime")}</td><td>${nf1.format(A.comboTime)} s</td></tr>
+    </table>`;
+}
+
 function comparison(res){
   return CMP_ROWS.map(row => {
-    if(row.head) return `<h4 class="cmp-head">${row.head()}</h4>`;
+    if(row.head) return `<h4 class="cmp-head" style="color:${row.col};border-color:${row.col}">${row.head()}</h4>`;
     const vals = res.map(row.get);
     const max  = Math.max(...vals, 1);
     const base = row.base || 0;
@@ -2409,8 +2541,8 @@ function comparison(res){
         <span class="val">${n0(v)}${row.unit||""}</span>${dlt}
       </div>`;
     }).join("");
-    const scale = base ? ` <em>(scale starts at ${base})</em>` : "";
-    return `<div class="cmp-row"><h5>${row.lab}${scale}</h5>${bars}</div>`;
+    const scale = base ? ` <em>${TR("scaleFrom").replace("%s", base)}</em>` : "";
+    return `<div class="cmp-row"><h5>${esc(row.lab())}${scale}</h5>${bars}</div>`;
   }).join("");
 }
 
@@ -2427,6 +2559,15 @@ function bind(){
       if(a === "lvl") b.level = Math.min(LVL_CAP,Math.max(1,v));
       else b[a] = Math.min(6,Math.max(1,v));
       render();
+    });
+  });
+  grid.querySelectorAll('button[data-brk]').forEach(el => {
+    el.addEventListener("click", () => {
+      const bi = +el.dataset.b, st = el.dataset.brk;
+      document.getElementById("brkTitle").textContent =
+        TR("breakdownOf").replace("%s", state.builds[bi].name + " · " + abName("qwer".indexOf(st)));
+      document.getElementById("brkBody").innerHTML = breakdown(bi, st);
+      document.getElementById("brkOverlay").classList.add("on");
     });
   });
   grid.querySelectorAll('button[data-act="rune"]').forEach(el => {
@@ -2611,9 +2752,10 @@ const STAT_TOKENS = {
   ten:{k:"ten"}, tenacity:{k:"ten"},
   slow:{k:"slow"}, slowresist:{k:"slow"},
   adaptive:{k:"adapt"},
+  uh:{k:"uh"}, ulthaste:{k:"uh"}, ultimatehaste:{k:"uh"},
   gold:{k:"g"}, cost:{k:"g"}
 };
-const QUICK_TOKENS = ["ad","ap","ah","as","crit","leth","arpen","mpen","hp","ar","mr","ls","ov","passive"];
+const QUICK_TOKENS = ["ad","ap","ah","uh","as","crit","leth","arpen","mpen","hp","ar","mr","ls","ov","passive"];
 
 function parseQuery(q){
   const stats = [], words = [];
@@ -2636,11 +2778,25 @@ function parseQuery(q){
 }
 const CMP = {">":(a,b)=>a>b, ">=":(a,b)=>a>=b, "<":(a,b)=>a<b, "<=":(a,b)=>a<=b, "=":(a,b)=>a===b};
 
+/* an item's searchable stats include what its always-on passives grant */
+function searchStats(it){
+  if(it._ss) return it._ss;
+  const o = Object.assign({}, it);
+  (PV[it.n] || []).forEach(f => {
+    if(!f.gain) return;
+    const g = f.gain({baseAD:130, L:18});
+    for(const k in g) o[k] = (o[k] || 0) + g[k];
+  });
+  it._ss = o;
+  return o;
+}
+
 function matches(it, q){
   if(q.passiveOnly && !PV[it.n]) return false;
   for(const w of q.words){ if(!it.n.toLowerCase().includes(w)) return false; }
+  const stats = searchStats(it);
   for(const st of q.stats){
-    const v = it[st.key] || 0;
+    const v = stats[st.key] || 0;
     if(!CMP[st.op](v, st.val)) return false;
   }
   return true;
@@ -2653,13 +2809,15 @@ function drawList(raw){
   if(sortKey){
     /* "ah>=20" wants the biggest first, "gold<1300" wants the cheapest first */
     const asc = q.stats[0].op === "<" || q.stats[0].op === "<=";
-    list = list.slice().sort((a,b) =>
-      asc ? (a[sortKey]||0) - (b[sortKey]||0) : (b[sortKey]||0) - (a[sortKey]||0));
+    list = list.slice().sort((a,b) => {
+      const va = searchStats(a)[sortKey]||0, vb = searchStats(b)[sortKey]||0;
+      return asc ? va - vb : vb - va;
+    });
   }
 
   const badge = i => {
     if(!sortKey) return "";
-    const v = i[sortKey] || 0;
+    const v = searchStats(i)[sortKey] || 0;
     const shown = sortKey === "as" ? nf2.format(v) : n0(v);
     return `<span class="hit">${esc(q.stats[0].label)} ${shown}</span>`;
   };
@@ -2784,6 +2942,11 @@ try{
   }
 }catch(err){}
 on("helpClose", "click", closeHelp);
+const brkOverlay = document.getElementById("brkOverlay");
+const closeBrk = () => brkOverlay && brkOverlay.classList.remove("on");
+on("brkClose", "click", closeBrk);
+if(brkOverlay) brkOverlay.addEventListener("click", e => { if(e.target === brkOverlay) closeBrk(); });
+document.addEventListener("keydown", e => { if(e.key === "Escape") closeBrk(); });
 if(helpOverlay) helpOverlay.addEventListener("click", e => { if(e.target === helpOverlay) closeHelp(); });
 document.addEventListener("keydown", e => { if(e.key === "Escape") closeHelp(); });
 
