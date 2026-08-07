@@ -433,6 +433,23 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
   color:var(--q);padding-top:10px}
 .brk-amp td,.brk-left td{color:var(--ink-faint);font-size:11.5px}
 .brk .iicon{width:22px;height:22px}
+.lbbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0 14px}
+.lbrow{display:flex;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line-soft)}
+.lbrank{font-family:var(--display);font-size:16px;color:var(--ink-faint);width:26px;text-align:right}
+.lbmain{flex:1;min-width:0}
+.lbmain b{font-family:var(--display);font-size:13px;letter-spacing:.06em;display:block;color:var(--ink)}
+.lbmain em{font-style:normal;font-size:10.5px;color:var(--ink-faint);font-family:var(--mono)}
+.lbold{color:var(--bad)}
+.lbitems{display:flex;gap:3px;margin-top:4px}
+.lbitems .iicon{width:26px;height:26px}
+.lbacts{display:flex;gap:5px;align-items:center;flex:none}
+.lbacts select,.lbacts button{
+  background:var(--panel-2);border:1px solid var(--line-soft);border-radius:2px;color:var(--ink-dim);
+  font-family:var(--sans);font-size:11px;padding:3px 6px;
+}
+.lblike{font-family:var(--mono)!important;white-space:nowrap}
+.lblike.on{border-color:var(--r)!important;color:var(--r)!important}
+.lbacts button:hover,.lbacts select:hover{border-color:var(--q);color:var(--q)}
 .foot{margin-top:34px;border-top:1px solid var(--line-soft);padding-top:16px;
   font-size:11.5px;color:var(--ink-faint);line-height:1.6;max-width:900px}
 .foot p{margin:0 0 8px}
@@ -461,6 +478,7 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 </head>
 <body>
 
@@ -472,6 +490,7 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
     </div>
     <div class="hero-act">
       <button class="helpbtn" id="btnHelp" data-i18n="help">How it works</button>
+      <button class="helpbtn" id="btnBoard" data-i18n="board">Leaderboard</button>
       <a class="helpbtn" id="btnReport" data-i18n="report"
          href="https://github.com/Ylfik/udyr-calc/issues/new" target="_blank" rel="noopener">Report</a>
       <div class="seg" id="langSeg"><button data-l="en" aria-pressed="true">EN</button><button data-l="fr" aria-pressed="false">FR</button></div>
@@ -494,6 +513,16 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
       </div>
     </div>
     <div class="savenote" id="saveNote"></div>
+  </div>
+</div>
+
+<div class="overlay" id="lbOverlay">
+  <div class="help" role="dialog" aria-modal="true" aria-label="Leaderboard">
+    <header>
+      <h2 data-i18n="board">Leaderboard</h2>
+      <button class="closebtn" id="lbClose" aria-label="Close">esc</button>
+    </header>
+    <div class="helpbody" id="lbBody"></div>
   </div>
 </div>
 
@@ -1882,7 +1911,17 @@ const L10N = {
   storageBlocked:["browser storage is blocked here — use Export instead",
                   "le stockage du navigateur est bloqué ici — utilisez Exporter"],
   importB:["Import","Importer"], reset:["Reset","Réinit."], help:["How it works","Mode d'emploi"],
-  report:["Report a bug","Signaler un bug"],
+  report:["Report a bug","Signaler un bug"], board:["Leaderboard","Classement"],
+  signInDiscord:["Sign in with Discord","Se connecter avec Discord"],
+  signInWhy:["needed to publish or like","nécessaire pour publier ou liker"],
+  signOut:["Sign out","Déconnexion"], signInFirst:["sign in to like","connectez-vous pour liker"],
+  publish:["Publish build","Publier le build"], published:["published","publié"],
+  updateFrom:["update from…","mettre à jour depuis…"], loadInto:["load into…","charger dans…"],
+  updatedOn:["updated, now on patch %s","mis à jour, patch %s"],
+  patch:["patch","patch"], boardEmpty:["nothing published yet","rien de publié pour l'instant"],
+  notSetUp:["Leaderboard not configured","Classement non configuré"],
+  notSetUpText:["The site owner has not added the database keys yet. Everything else works normally.",
+                "Le propriétaire du site n'a pas encore renseigné les clés de la base. Tout le reste fonctionne normalement."],
   savedPages:["saved build pages","pages sauvegardées"], noPages:["no saved pages yet","aucune page sauvegardée"],
   pagesHead:["— saved pages —","— pages sauvegardées —"],
   lvl:["LVL","NIV"], emptySlot:["empty slot","emplacement vide"],
@@ -2099,6 +2138,104 @@ function fxLabel(lab){
   return [head, ...tail].join(" — ");
 }
 
+
+/* ============================================================
+   LEADERBOARD
+   Optional. With no keys below the site runs exactly as before
+   and the board simply says it is not configured.
+   ============================================================ */
+const SUPA_URL = "";   /* <- paste your Supabase project URL */
+const SUPA_KEY = "";   /* <- paste your anon public key */
+
+/* Data Dragon still numbers patches the old way; the live patch is +10 */
+const GAME_PATCH = (() => {
+  const p = DDRAGON_V.split(".");
+  return (Number(p[0]) + 10) + "." + p[1];
+})();
+
+let sb = null, me = null, board = [], myLikes = new Set(), boardNote = "";
+const lbReady = () => !!sb;
+
+function lbInit(){
+  if(!SUPA_URL || !SUPA_KEY || !window.supabase) return;
+  sb = window.supabase.createClient(SUPA_URL, SUPA_KEY);
+  sb.auth.getSession().then(({data}) => {
+    me = data.session ? data.session.user : null;
+    if(me) lbLoad();
+  });
+  sb.auth.onAuthStateChange((_e, session) => {
+    me = session ? session.user : null;
+    lbRender();
+  });
+}
+const meName = () => {
+  if(!me) return "";
+  const m = me.user_metadata || {};
+  return m.full_name || m.name || m.user_name || "anonymous";
+};
+
+async function lbSignIn(){
+  await sb.auth.signInWithOAuth({provider:"discord", options:{redirectTo:location.href}});
+}
+async function lbSignOut(){ await sb.auth.signOut(); me = null; lbRender(); }
+
+async function lbLoad(){
+  if(!lbReady()) return;
+  const {data, error} = await sb.from("leaderboard").select("*")
+    .order("likes", {ascending:false}).order("created_at", {ascending:false}).limit(100);
+  if(error){ boardNote = error.message; lbRender(); return; }
+  board = data || [];
+  myLikes = new Set();
+  if(me){
+    const {data:mine} = await sb.from("likes").select("build_id").eq("user_id", me.id);
+    (mine || []).forEach(r => myLikes.add(r.build_id));
+  }
+  lbRender();
+}
+
+async function lbPublish(bi){
+  if(!me) return;
+  const b = state.builds[bi];
+  const name = (prompt(TR("nameBuild"), b.name) || "").trim();
+  if(!name) return;
+  const {error} = await sb.from("builds").insert({
+    owner:me.id, author:meName(), name, patch:GAME_PATCH,
+    data:JSON.parse(JSON.stringify(b))
+  });
+  boardNote = error ? error.message : TR("published");
+  lbLoad();
+}
+
+/* republishing an existing entry keeps its likes and stamps the current patch */
+async function lbUpdate(id, bi){
+  if(!me) return;
+  const b = state.builds[bi];
+  const {error} = await sb.from("builds")
+    .update({data:JSON.parse(JSON.stringify(b)), patch:GAME_PATCH}).eq("id", id);
+  boardNote = error ? error.message : TR("updatedOn").replace("%s", GAME_PATCH);
+  lbLoad();
+}
+async function lbDelete(id){
+  if(!me || !confirm(TR("delConfirm").replace("%s", ""))) return;
+  await sb.from("builds").delete().eq("id", id);
+  lbLoad();
+}
+async function lbLike(id){
+  if(!me){ boardNote = TR("signInFirst"); lbRender(); return; }
+  if(myLikes.has(id)) await sb.from("likes").delete().eq("build_id", id).eq("user_id", me.id);
+  else                await sb.from("likes").insert({build_id:id, user_id:me.id});
+  lbLoad();
+}
+function lbUse(id, bi){
+  const row = board.find(x => x.id === id);
+  if(!row) return;
+  const one = restoreBuild(mk(row.name), row.data);
+  one.name = row.name;
+  state.builds[bi] = one;
+  render();
+  document.getElementById("lbOverlay").classList.remove("on");
+}
+
 /* ============================================================
    STATE
    ============================================================ */
@@ -2212,7 +2349,7 @@ function exportFile(){
 function importFile(file){
   const fr = new FileReader();
   fr.onload = () => {
-    try{ restore(JSON.parse(fr.result)); currentSlot = null; saveNote = TR("imported") + " " + file.name; }
+    try{ restore(JSON.parse(fr.result)); saveNote = TR("imported") + " " + file.name; }
     catch(err){ saveNote = TR("fileUnreadable"); }
     render();
   };
@@ -2532,6 +2669,72 @@ function passivePanel(){
   return `<h3>${TR("itemPassives")}</h3>
     <p class="sub">All values are taken from the wiki's item data, melee column. Each passive is switched on or off per build with its <strong>COND</strong> button.</p>
     ${rows}`;
+}
+
+function lbRender(){
+  const el = document.getElementById("lbBody");
+  if(!el) return;
+  if(!lbReady()){
+    el.innerHTML = `<h3>${TR("notSetUp")}</h3><p>${TR("notSetUpText")}</p>`;
+    return;
+  }
+  const head = me
+    ? `<div class="lbbar"><span>${esc(meName())}</span>
+         <button class="tipbtn" id="lbOut">${TR("signOut")}</button></div>`
+    : `<div class="lbbar"><button class="tipbtn" id="lbIn">${TR("signInDiscord")}</button>
+         <span class="tipstat">${TR("signInWhy")}</span></div>`;
+
+  const pub = me ? `<div class="lbbar">${[0,1,2].map(i =>
+      `<button class="tipbtn" data-pub="${i}">${TR("publish")} ${i+1}</button>`).join("")}</div>` : "";
+
+  const rows = board.map((r, i) => {
+    const mine = me && r.owner === me.id;
+    const old  = r.patch !== GAME_PATCH;
+    return `<div class="lbrow">
+      <div class="lbrank">${i+1}</div>
+      <div class="lbmain">
+        <b>${esc(r.name)}</b>
+        <em>${esc(r.author)} · <span class="${old ? "lbold" : ""}">${TR("patch")} ${esc(r.patch)}</span></em>
+        <div class="lbitems">${(r.data.items || []).filter(x => x && x.name).map(x => {
+          const it = BY_NAME[x.name];
+          return it && it.id
+            ? `<img class="iicon" src="${ITEM_ICON(it.id)}" alt="${esc(iName(it))}"
+                 title="${esc(iName(it))}" loading="lazy" onerror="this.style.visibility='hidden'">`
+            : "";
+        }).join("")}</div>
+      </div>
+      <div class="lbacts">
+        <button class="lblike ${myLikes.has(r.id) ? "on" : ""}" data-like="${r.id}">
+          ♥ ${r.likes}</button>
+        <select data-use="${r.id}">
+          <option value="">${TR("loadInto")}</option>
+          <option value="0">1</option><option value="1">2</option><option value="2">3</option>
+        </select>
+        ${mine ? `<select data-upd="${r.id}">
+            <option value="">${TR("updateFrom")}</option>
+            <option value="0">1</option><option value="1">2</option><option value="2">3</option>
+          </select>
+          <button data-del="${r.id}">×</button>` : ""}
+      </div>
+    </div>`;
+  }).join("");
+
+  el.innerHTML = head + pub +
+    (boardNote ? `<p class="tipstat">${esc(boardNote)}</p>` : "") +
+    (rows || `<p>${TR("boardEmpty")}</p>`);
+
+  const on2 = (sel, ev, fn) => el.querySelectorAll(sel).forEach(x => x.addEventListener(ev, fn));
+  const bIn = el.querySelector("#lbIn");  if(bIn)  bIn.addEventListener("click", lbSignIn);
+  const bOut = el.querySelector("#lbOut"); if(bOut) bOut.addEventListener("click", lbSignOut);
+  on2("button[data-pub]", "click", e => lbPublish(+e.currentTarget.dataset.pub));
+  on2("button[data-like]", "click", e => lbLike(e.currentTarget.dataset.like));
+  on2("button[data-del]", "click", e => lbDelete(e.currentTarget.dataset.del));
+  on2("select[data-use]", "change", e => {
+    if(e.target.value !== "") lbUse(e.target.dataset.use, +e.target.value);
+  });
+  on2("select[data-upd]", "change", e => {
+    if(e.target.value !== "") lbUpdate(e.target.dataset.upd, +e.target.value);
+  });
 }
 
 function breakdown(bi, stance){
@@ -3006,6 +3209,16 @@ on("helpClose", "click", closeHelp);
 const brkOverlay = document.getElementById("brkOverlay");
 const closeBrk = () => brkOverlay && brkOverlay.classList.remove("on");
 on("brkClose", "click", closeBrk);
+const lbOverlay = document.getElementById("lbOverlay");
+const closeLb = () => lbOverlay && lbOverlay.classList.remove("on");
+on("lbClose", "click", closeLb);
+if(lbOverlay) lbOverlay.addEventListener("click", e => { if(e.target === lbOverlay) closeLb(); });
+document.addEventListener("keydown", e => { if(e.key === "Escape") closeLb(); });
+on("btnBoard", "click", () => {
+  lbOverlay.classList.add("on");
+  if(lbReady()) lbLoad(); else lbRender();
+});
+lbInit();
 if(brkOverlay) brkOverlay.addEventListener("click", e => { if(e.target === brkOverlay) closeBrk(); });
 document.addEventListener("keydown", e => { if(e.key === "Escape") closeBrk(); });
 if(helpOverlay) helpOverlay.addEventListener("click", e => { if(e.target === helpOverlay) closeHelp(); });
