@@ -478,7 +478,7 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@base/base-js@2/dist/umd/base.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 </head>
 <body>
 
@@ -490,7 +490,7 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
     </div>
     <div class="hero-act">
       <button class="helpbtn" id="btnHelp" data-i18n="help">How it works</button>
-      <button class="helpbtn" id="btnBoard" data-i18n="board">board</button>
+      <button class="helpbtn" id="btnBoard" data-i18n="board">Leaderboard</button>
       <a class="helpbtn" id="btnReport" data-i18n="report"
          href="https://github.com/Ylfik/udyr-calc/issues/new" target="_blank" rel="noopener">Report</a>
       <div class="seg" id="langSeg"><button data-l="en" aria-pressed="true">EN</button><button data-l="fr" aria-pressed="false">FR</button></div>
@@ -517,9 +517,9 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
 </div>
 
 <div class="overlay" id="lbOverlay">
-  <div class="help" role="dialog" aria-modal="true" aria-label="board">
+  <div class="help" role="dialog" aria-modal="true" aria-label="Leaderboard">
     <header>
-      <h2 data-i18n="board">board</h2>
+      <h2 data-i18n="board">Leaderboard</h2>
       <button class="closebtn" id="lbClose" aria-label="Close">esc</button>
     </header>
     <div class="helpbody" id="lbBody"></div>
@@ -1911,7 +1911,7 @@ const L10N = {
   storageBlocked:["browser storage is blocked here — use Export instead",
                   "le stockage du navigateur est bloqué ici — utilisez Exporter"],
   importB:["Import","Importer"], reset:["Reset","Réinit."], help:["How it works","Mode d'emploi"],
-  report:["Report a bug","Signaler un bug"], board:["board","Classement"],
+  report:["Report a bug","Signaler un bug"], board:["Leaderboard","Classement"],
   signInDiscord:["Sign in with Discord","Se connecter avec Discord"],
   signInWhy:["needed to publish or like","nécessaire pour publier ou liker"],
   signOut:["Sign out","Déconnexion"], signInFirst:["sign in to like","connectez-vous pour liker"],
@@ -1919,9 +1919,12 @@ const L10N = {
   updateFrom:["update from…","mettre à jour depuis…"], loadInto:["load into…","charger dans…"],
   updatedOn:["updated, now on patch %s","mis à jour, patch %s"],
   patch:["patch","patch"], boardEmpty:["nothing published yet","rien de publié pour l'instant"],
-  notSetUp:["board not configured","Classement non configuré"],
-  notSetUpText:["The site owner has not added the database keys yet. Everything else works normally.",
-                "Le propriétaire du site n'a pas encore renseigné les clés de la base. Tout le reste fonctionne normalement."],
+  notSetUp:["Leaderboard not configured","Classement non configuré"],
+  notSetUpText:["Not configured.","Non configuré."],
+  failKeys:["The database keys are missing from the page source.",
+            "Les clés de la base ne sont pas renseignées dans le code de la page."],
+  failLib:["The Supabase library did not load — check your connection or an ad blocker, then reload.",
+           "La bibliothèque Supabase ne s'est pas chargée — vérifiez la connexion ou un bloqueur de publicité, puis rechargez."],
   savedPages:["saved build pages","pages sauvegardées"], noPages:["no saved pages yet","aucune page sauvegardée"],
   pagesHead:["— saved pages —","— pages sauvegardées —"],
   lvl:["LVL","NIV"], emptySlot:["empty slot","emplacement vide"],
@@ -2146,6 +2149,7 @@ function fxLabel(lab){
    ============================================================ */
 const SUPA_URL = "https://ohgxdwrybdqkjcxvskjo.supabase.co";
 const SUPA_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9oZ3hkd3J5YmRxa2pjeHZza2pvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYwOTY4MjUsImV4cCI6MjEwMTY3MjgyNX0.tIUzWum3uu4tu6KF4PjP0QlgyffU64yM5eqQV9bmvKw";
+
 /* Data Dragon still numbers patches the old way; the live patch is +10 */
 const GAME_PATCH = (() => {
   const p = DDRAGON_V.split(".");
@@ -2155,9 +2159,13 @@ const GAME_PATCH = (() => {
 let sb = null, me = null, board = [], myLikes = new Set(), boardNote = "";
 const lbReady = () => !!sb;
 
+let lbFail = "";
 function lbInit(){
-  if(!SUPA_URL || !SUPA_KEY || !window.supabase) return;
-  sb = window.supabase.createClient(SUPA_URL, SUPA_KEY);
+  if(!SUPA_URL || !SUPA_KEY){ lbFail = "keys"; return; }
+  if(!window.supabase){ lbFail = "lib"; return; }
+  try{
+    sb = window.supabase.createClient(SUPA_URL, SUPA_KEY);
+  }catch(err){ lbFail = "client:" + err.message; return; }
   sb.auth.getSession().then(({data}) => {
     me = data.session ? data.session.user : null;
     if(me) lbLoad();
@@ -2674,7 +2682,12 @@ function lbRender(){
   const el = document.getElementById("lbBody");
   if(!el) return;
   if(!lbReady()){
-    el.innerHTML = `<h3>${TR("notSetUp")}</h3><p>${TR("notSetUpText")}</p>`;
+    const why = lbFail === "keys" ? TR("failKeys")
+              : lbFail === "lib"  ? TR("failLib")
+              : lbFail ? lbFail : TR("failKeys");
+    el.innerHTML = `<h3>${TR("notSetUp")}</h3><p>${esc(why)}</p>
+      <p class="tipstat">url: ${SUPA_URL ? "ok" : "—"} · key: ${SUPA_KEY ? "ok" : "—"} ·
+         lib: ${window.supabase ? "ok" : "—"}</p>`;
     return;
   }
   const head = me
@@ -2973,7 +2986,7 @@ function drawRuneList(q){
   const b = state.builds[pickCtx.bi], ri = pickCtx.ri;
   const list = RUNES.filter(r =>
     runeAllowed(b, ri, r) &&
-    (!needle || rName(r).toLowerCase().includes(needle) || tName(r.t).toLowerCase().includes(needle)));
+    (!needle || noAccent((r.n + " " + rName(r) + " " + tName(r.t)).toLowerCase()).includes(noAccent(needle))));
   const trees = [];
   list.forEach(r => { if(!trees.includes(r.t)) trees.push(r.t); });
   pickList.innerHTML =
@@ -3043,13 +3056,14 @@ const STAT_TOKENS = {
   uh:{k:"uh"}, ulthaste:{k:"uh"}, ultimatehaste:{k:"uh"},
   gold:{k:"g"}, cost:{k:"g"}
 };
-const QUICK_TOKENS = ["ad","ap","ah","uh","as","crit","leth","arpen","mpen","hp","ar","mr","ls","ov","passive"];
+const QUICK_TOKENS = ["ad","ap","ah","uh","as","crit","leth","arpen","mpen","hp","ar","mr","ls","ov","boots","passive"];
 
 function parseQuery(q){
   const stats = [], words = [];
-  let passiveOnly = false;
+  let passiveOnly = false, bootsOnly = false;
   q.toLowerCase().split(/\s+/).filter(Boolean).forEach(t => {
     if(t === "passive" || t === "proc"){ passiveOnly = true; return; }
+    if(t === "boots" || t === "bottes"){ bootsOnly = true; return; }
     const m = t.match(/^([a-z%]+)(>=|<=|>|<|=)?(\d+(?:\.\d+)?)?$/);
     const def = m && STAT_TOKENS[m[1]];
     if(def){
@@ -3062,11 +3076,17 @@ function parseQuery(q){
       words.push(t);
     }
   });
-  return {stats, words, passiveOnly};
+  return {stats, words, passiveOnly, bootsOnly};
 }
 const CMP = {">":(a,b)=>a>b, ">=":(a,b)=>a>=b, "<":(a,b)=>a<b, "<=":(a,b)=>a<=b, "=":(a,b)=>a===b};
 
 /* an item's searchable stats include what its always-on passives grant */
+const noAccent = t => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+const BOOTS = new Set(["PLATED STEELCAPS","MERCURY'S TREADS","IONIAN BOOTS OF LUCIDITY",
+  "GLUTTONOUS GREAVES","BOOTS OF SWIFTNESS","BERSERKER'S GREAVES","SORCERER'S SHOES",
+  "SWIFTMARCH","GUNMETAL GREAVES","ARMORED ADVANCE","CHAINLACED CRUSHERS",
+  "CRIMSON LUCIDITY","SPELLSLINGER'S SHOES","IMMORTAL PATH"]);
+
 function searchStats(it){
   if(it._ss) return it._ss;
   const o = Object.assign({}, it);
@@ -3081,7 +3101,10 @@ function searchStats(it){
 
 function matches(it, q){
   if(q.passiveOnly && !PV[it.n]) return false;
-  for(const w of q.words){ if(!it.n.toLowerCase().includes(w)) return false; }
+  if(q.bootsOnly && !BOOTS.has(it.n)) return false;
+  /* look in both the English name and the one on screen, accents ignored */
+  const hay = noAccent((it.n + " " + iName(it)).toLowerCase());
+  for(const w of q.words){ if(!hay.includes(noAccent(w))) return false; }
   const stats = searchStats(it);
   for(const st of q.stats){
     const v = stats[st.key] || 0;
@@ -3217,7 +3240,8 @@ on("btnBoard", "click", () => {
   lbOverlay.classList.add("on");
   if(lbReady()) lbLoad(); else lbRender();
 });
-lbInit();
+if(window.supabase) lbInit();
+else window.addEventListener("load", () => { lbInit(); lbRender(); });
 if(brkOverlay) brkOverlay.addEventListener("click", e => { if(e.target === brkOverlay) closeBrk(); });
 document.addEventListener("keydown", e => { if(e.key === "Escape") closeBrk(); });
 if(helpOverlay) helpOverlay.addEventListener("click", e => { if(e.target === helpOverlay) closeHelp(); });
