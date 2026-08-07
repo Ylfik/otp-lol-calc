@@ -147,7 +147,8 @@ main{max-width:2200px;margin:0 auto;padding:22px 28px 80px}
   border:1px solid var(--line-soft);background:var(--panel-2);color:var(--ink-faint);
   border-radius:2px;width:20px;height:20px;font-family:var(--mono);font-size:12px;line-height:1;
 }
-.bmini button:hover{border-color:var(--q);color:var(--q)}
+.bmini button:hover:not(:disabled){border-color:var(--q);color:var(--q)}
+.bmini button:disabled{opacity:.35;cursor:default}
 .bmini select:focus{outline:none;border-color:var(--q)}
 .gold{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--q)}
 .gold::after{content:" gold";color:var(--ink-faint);font-size:10px}
@@ -433,6 +434,24 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
   color:var(--q);padding-top:10px}
 .brk-amp td,.brk-left td{color:var(--ink-faint);font-size:11.5px}
 .brk .iicon{width:22px;height:22px}
+.lbpub{margin:10px 0 6px}
+.lbpub summary{font-family:var(--display);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--q);cursor:pointer;padding:4px 0}
+.lbform{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 12px;padding:8px 0 12px}
+.lbform label{display:flex;flex-direction:column;gap:3px;font-size:10.5px;color:var(--ink-faint);
+  font-family:var(--display);letter-spacing:.12em;text-transform:uppercase}
+.lbform label.wide{grid-column:1/-1}
+.lbform input,.lbform select,.lbform textarea{
+  background:var(--panel-2);border:1px solid var(--line);border-radius:2px;color:var(--ink);
+  font-family:var(--sans);font-size:12.5px;padding:5px 7px;text-transform:none;letter-spacing:0;
+}
+.lbform button{grid-column:1/-1;justify-self:start}
+.lbsel{display:flex;align-items:center;gap:5px;font-family:var(--display);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+.lbsel select{background:var(--panel-2);border:1px solid var(--line);border-radius:2px;color:var(--ink);
+  font-family:var(--sans);font-size:12px;padding:3px 6px;text-transform:none;letter-spacing:0}
+.lbnotes{margin:4px 0 0;font-size:11.5px;color:var(--ink-dim);line-height:1.45}
+.lbrk{color:var(--q)}
 .lbbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0 14px}
 .lbrow{display:flex;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line-soft)}
 .lbrank{font-family:var(--display);font-size:16px;color:var(--ink-faint);width:26px;text-align:right}
@@ -1899,7 +1918,8 @@ const L10N = {
   nameBuild:["Name this build:","Nom de ce build :"],
   saveBuild:["save this build on its own","enregistrer ce build seul"],
   loadBuild:["load one of your builds here","charger un de vos builds ici"],
-  delBuild:["delete the selected build","supprimer le build sélectionné"],
+  delBuild:["delete","supprimer"], updBuild:["update this build","mettre à jour ce build"],
+  delNothing:["pick one of your builds first","sélectionnez d'abord un de vos builds"],
   delConfirm:["Delete the build \"%s\"?","Supprimer le build « %s » ?"],
   myBuilds:["— my builds —","— mes builds —"], noBuilds:["no saved builds","aucun build enregistré"],
   overwrite:["A page called \"%s\" already exists. Replace it?","Une page « %s » existe déjà. La remplacer ?"],
@@ -1918,7 +1938,14 @@ const L10N = {
   publish:["Publish build","Publier le build"], published:["published","publié"],
   updateFrom:["update from…","mettre à jour depuis…"], loadInto:["load into…","charger dans…"],
   updatedOn:["updated, now on patch %s","mis à jour, patch %s"],
-  patch:["patch","patch"], boardEmpty:["nothing published yet","rien de publié pour l'instant"],
+  patch:["patch","patch"], notes:["Description","Description"],
+  notesPh:["what the build is for, when to take it…","à quoi sert le build, quand le prendre…"],
+  editNotes:["Description:","Description :"],
+  whichBuild:["Build","Build"], buildName:["Name","Nom"],
+  summoner:["Summoner name","Pseudo LoL"], rank:["Rank","Rang"],
+  sortBy:["Sort","Tri"], sortLikes:["most liked","plus likés"], sortRecent:["newest","plus récents"],
+  sortAuthor:["author","auteur"], sortRank:["rank","rang"],
+  filterRank:["Rank","Rang"], allRanks:["all ranks","tous rangs"], boardEmpty:["nothing published yet","rien de publié pour l'instant"],
   notSetUp:["Leaderboard not configured","Classement non configuré"],
   notSetUpText:["Not configured.","Non configuré."],
   failKeys:["The database keys are missing from the page source.",
@@ -2156,7 +2183,9 @@ const GAME_PATCH = (() => {
   return (Number(p[0]) + 10) + "." + p[1];
 })();
 
+const RANKS = ["Iron","Bronze","Silver","Gold","Platinum","Emerald","Diamond","Master","Grandmaster","Challenger"];
 let sb = null, me = null, board = [], myLikes = new Set(), boardNote = "";
+let lbSort = "likes", lbRank = "";
 const lbReady = () => !!sb;
 
 let lbFail = "";
@@ -2188,8 +2217,13 @@ async function lbSignOut(){ await sb.auth.signOut(); me = null; lbRender(); }
 
 async function lbLoad(){
   if(!lbReady()) return;
-  const {data, error} = await sb.from("leaderboard").select("*")
-    .order("likes", {ascending:false}).order("created_at", {ascending:false}).limit(100);
+  let q = sb.from("leaderboard").select("*");
+  if(lbRank) q = q.eq("rank", lbRank);
+  if(lbSort === "likes")   q = q.order("likes", {ascending:false}).order("created_at", {ascending:false});
+  if(lbSort === "recent")  q = q.order("created_at", {ascending:false});
+  if(lbSort === "author")  q = q.order("author", {ascending:true});
+  if(lbSort === "rank")    q = q.order("rank", {ascending:false}).order("likes", {ascending:false});
+  const {data, error} = await q.limit(100);
   if(error){ boardNote = error.message; lbRender(); return; }
   board = data || [];
   myLikes = new Set();
@@ -2200,13 +2234,17 @@ async function lbLoad(){
   lbRender();
 }
 
-async function lbPublish(bi){
+async function lbPublish(){
   if(!me) return;
+  const g = id => (document.getElementById(id) || {}).value || "";
+  const bi = +g("pubSlot");
   const b = state.builds[bi];
-  const name = (prompt(TR("nameBuild"), b.name) || "").trim();
-  if(!name) return;
+  const name = g("pubName").trim() || b.name;
   const {error} = await sb.from("builds").insert({
     owner:me.id, author:meName(), name, patch:GAME_PATCH,
+    notes:g("pubNotes").trim().slice(0, 400),
+    summoner:g("pubSummoner").trim().slice(0, 40),
+    rank:g("pubRank"),
     data:JSON.parse(JSON.stringify(b))
   });
   boardNote = error ? error.message : TR("published");
@@ -2217,8 +2255,11 @@ async function lbPublish(bi){
 async function lbUpdate(id, bi){
   if(!me) return;
   const b = state.builds[bi];
-  const {error} = await sb.from("builds")
-    .update({data:JSON.parse(JSON.stringify(b)), patch:GAME_PATCH}).eq("id", id);
+  const row = board.find(x => x.id === id) || {};
+  const notes = prompt(TR("editNotes"), row.notes || "");
+  const patch = {data:JSON.parse(JSON.stringify(b)), patch:GAME_PATCH};
+  if(notes !== null) patch.notes = notes.slice(0, 400);
+  const {error} = await sb.from("builds").update(patch).eq("id", id);
   boardNote = error ? error.message : TR("updatedOn").replace("%s", GAME_PATCH);
   lbLoad();
 }
@@ -2247,7 +2288,7 @@ function lbUse(id, bi){
    STATE
    ============================================================ */
 const mk = name => ({
-  name, level:1, q:1, w:1, e:1, r:1, stance:"none",
+  name, libName:null, level:1, q:1, w:1, e:1, r:1, stance:"none",
   runes:[null,null,null,null,null,null].map(id => ({id, on:true, val:0})),
   shards:[null, null, null],
   items: Array(6).fill(null).map(() => ({name:null, cond:true}))
@@ -2276,11 +2317,22 @@ function writeBuilds(obj){
   try{ localStorage.setItem(BUILD_KEY, JSON.stringify(obj)); return true; }
   catch(err){ return false; }
 }
+/* overwrite the library entry this slot came from */
+function updateOneBuild(bi){
+  const name = state.builds[bi].libName;
+  if(!name) return;
+  const all = readBuilds();
+  all[name] = JSON.parse(JSON.stringify(state.builds[bi]));
+  saveNote = writeBuilds(all) ? TR("savedAs").replace("%s", name) : TR("storageBlocked");
+  render();
+}
 function saveOneBuild(bi){
   const name = (prompt(TR("nameBuild"), state.builds[bi].name) || "").trim();
   if(!name) return;
   const all = readBuilds();
   if(all[name] && !confirm(TR("overwrite").replace("%s", name))) return;
+  state.builds[bi].libName = name;
+  state.builds[bi].name = name;
   all[name] = JSON.parse(JSON.stringify(state.builds[bi]));
   saveNote = writeBuilds(all) ? TR("savedAs").replace("%s", name) : TR("storageBlocked");
   render();
@@ -2291,6 +2343,7 @@ function loadOneBuild(bi, name){
   const blank = mk(state.builds[bi].name);
   const one = restoreBuild(blank, src);
   one.name = name;
+  one.libName = name;
   state.builds[bi] = one;
   saveNote = TR("loaded").replace("%s", name);
   render();
@@ -2299,6 +2352,7 @@ function deleteOneBuild(name){
   const all = readBuilds();
   delete all[name];
   writeBuilds(all);
+  state.builds.forEach(b => { if(b.libName === name) b.libName = null; });
   saveNote = TR("deleted").replace("%s", name);
   render();
 }
@@ -2442,6 +2496,7 @@ function card(b, bi, R){
       <h2>${esc(b.name)}</h2>
       <div class="bmini">
         <select data-bload="${bi}" title="${TR("loadBuild")}"></select>
+        <button data-bupd="${bi}" title="${TR("updBuild")}">&#10227;</button>
         <button data-bsave="${bi}" title="${TR("saveBuild")}">+</button>
         <button data-bdel="${bi}" title="${TR("delBuild")}">×</button>
       </div>
@@ -2696,8 +2751,31 @@ function lbRender(){
     : `<div class="lbbar"><button class="tipbtn" id="lbIn">${TR("signInDiscord")}</button>
          <span class="tipstat">${TR("signInWhy")}</span></div>`;
 
-  const pub = me ? `<div class="lbbar">${[0,1,2].map(i =>
-      `<button class="tipbtn" data-pub="${i}">${TR("publish")} ${i+1}</button>`).join("")}</div>` : "";
+  const pub = me ? `<details class="lbpub"><summary>${TR("publish")}</summary>
+      <div class="lbform">
+        <label>${TR("whichBuild")}<select id="pubSlot">${[0,1,2].map(i =>
+          `<option value="${i}">${esc(state.builds[i].name)}</option>`).join("")}</select></label>
+        <label>${TR("buildName")}<input id="pubName" maxlength="60" value="${esc(state.builds[0].name)}"></label>
+        <label>${TR("summoner")}<input id="pubSummoner" maxlength="40" placeholder="Ylfik#EUW"></label>
+        <label>${TR("rank")}<select id="pubRank"><option value="">—</option>${RANKS.map(r =>
+          `<option value="${r}">${r}</option>`).join("")}</select></label>
+        <label class="wide">${TR("notes")}<textarea id="pubNotes" rows="2" maxlength="400"
+          placeholder="${TR("notesPh")}"></textarea></label>
+        <button class="tipbtn" id="pubGo">${TR("publish")}</button>
+      </div></details>` : "";
+
+  const tools = `<div class="lbbar">
+      <label class="lbsel">${TR("sortBy")}
+        <select id="lbSort">
+          <option value="likes">${TR("sortLikes")}</option>
+          <option value="recent">${TR("sortRecent")}</option>
+          <option value="author">${TR("sortAuthor")}</option>
+          <option value="rank">${TR("sortRank")}</option>
+        </select></label>
+      <label class="lbsel">${TR("filterRank")}
+        <select id="lbRank"><option value="">${TR("allRanks")}</option>${RANKS.map(r =>
+          `<option value="${r}">${r}</option>`).join("")}</select></label>
+    </div>`;
 
   const rows = board.map((r, i) => {
     const mine = me && r.owner === me.id;
@@ -2706,7 +2784,10 @@ function lbRender(){
       <div class="lbrank">${i+1}</div>
       <div class="lbmain">
         <b>${esc(r.name)}</b>
-        <em>${esc(r.author)} · <span class="${old ? "lbold" : ""}">${TR("patch")} ${esc(r.patch)}</span></em>
+        <em>${esc(r.author)}${r.summoner ? " · " + esc(r.summoner) : ""}${r.rank ? ` · <span class="lbrk">${esc(r.rank)}</span>` : ""}
+            · <span class="${old ? "lbold" : ""}">${TR("patch")} ${esc(r.patch)}</span>
+            · ${new Date(r.created_at).toLocaleDateString()}</em>
+        ${r.notes ? `<p class="lbnotes">${esc(r.notes)}</p>` : ""}
         <div class="lbitems">${(r.data.items || []).filter(x => x && x.name).map(x => {
           const it = BY_NAME[x.name];
           return it && it.id
@@ -2731,14 +2812,22 @@ function lbRender(){
     </div>`;
   }).join("");
 
-  el.innerHTML = head + pub +
+  el.innerHTML = head + pub + tools +
     (boardNote ? `<p class="tipstat">${esc(boardNote)}</p>` : "") +
     (rows || `<p>${TR("boardEmpty")}</p>`);
 
   const on2 = (sel, ev, fn) => el.querySelectorAll(sel).forEach(x => x.addEventListener(ev, fn));
   const bIn = el.querySelector("#lbIn");  if(bIn)  bIn.addEventListener("click", lbSignIn);
   const bOut = el.querySelector("#lbOut"); if(bOut) bOut.addEventListener("click", lbSignOut);
-  on2("button[data-pub]", "click", e => lbPublish(+e.currentTarget.dataset.pub));
+  const go = el.querySelector("#pubGo"); if(go) go.addEventListener("click", lbPublish);
+  const slotSel = el.querySelector("#pubSlot"), nameIn = el.querySelector("#pubName");
+  if(slotSel && nameIn) slotSel.addEventListener("change", () => {
+    nameIn.value = state.builds[+slotSel.value].name;
+  });
+  const so = el.querySelector("#lbSort");
+  if(so){ so.value = lbSort; so.addEventListener("change", e => { lbSort = e.target.value; lbLoad(); }); }
+  const rk = el.querySelector("#lbRank");
+  if(rk){ rk.value = lbRank; rk.addEventListener("change", e => { lbRank = e.target.value; lbLoad(); }); }
   on2("button[data-like]", "click", e => lbLike(e.currentTarget.dataset.like));
   on2("button[data-del]", "click", e => lbDelete(e.currentTarget.dataset.del));
   on2("select[data-use]", "change", e => {
@@ -2848,18 +2937,30 @@ function bind(){
       ? `<option value="">${TR("myBuilds")}</option>` +
         names.map(n => `<option value="${esc(n)}">${esc(n)}</option>`).join("")
       : `<option value="">${TR("noBuilds")}</option>`;
+    const cur = state.builds[+sel.dataset.bload].libName;
+    if(cur && names.includes(cur)) sel.value = cur;
     sel.addEventListener("change", e => {
       if(e.target.value) loadOneBuild(+sel.dataset.bload, e.target.value);
+      else { state.builds[+sel.dataset.bload].libName = null; render(); }
     });
+  });
+  grid.querySelectorAll("button[data-bupd]").forEach(el => {
+    const bi = +el.dataset.bupd, cur = state.builds[bi].libName;
+    el.disabled = !cur;
+    el.title = cur ? TR("updBuild") + " — " + cur : TR("delNothing");
+    el.addEventListener("click", () => updateOneBuild(bi));
   });
   grid.querySelectorAll("button[data-bsave]").forEach(el => {
     el.addEventListener("click", () => saveOneBuild(+el.dataset.bsave));
   });
   grid.querySelectorAll("button[data-bdel]").forEach(el => {
+    const bi = +el.dataset.bdel;
+    const sel = grid.querySelector(`select[data-bload="${bi}"]`);
+    const target = (sel && sel.value) || state.builds[bi].libName || "";
+    el.disabled = !target;
+    el.title = target ? TR("delBuild") + " — " + target : TR("delNothing");
     el.addEventListener("click", () => {
-      const sel = grid.querySelector(`select[data-bload="${el.dataset.bdel}"]`);
-      const v = sel && sel.value;
-      if(v && confirm(TR("delConfirm").replace("%s", v))) deleteOneBuild(v);
+      if(target && confirm(TR("delConfirm").replace("%s", target))) deleteOneBuild(target);
     });
   });
   grid.querySelectorAll('button[data-brk]').forEach(el => {
