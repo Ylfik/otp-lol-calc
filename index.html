@@ -459,7 +459,7 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
 .lbnotes{margin:4px 0 0;font-size:11.5px;color:var(--ink-dim);line-height:1.45}
 .lbrk{color:var(--q)}
 .lbvip{color:var(--e);font-weight:700}
-.lbstream{color:var(--r);font-weight:700}
+.lbstream{width:12px;height:12px;color:#a970ff;vertical-align:-1px;display:inline-block}
 .lbsel input{accent-color:var(--q)}
 .lbbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0 14px}
 .lbrow{display:flex;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line-soft)}
@@ -1965,6 +1965,8 @@ const L10N = {
   sortBy:["Sort","Tri"], sortLikes:["most liked","plus likés"], sortRecent:["newest","plus récents"],
   sortAuthor:["author","auteur"], sortRank:["rank","rang"],
   filterRank:["Rank","Rang"], verifiedOnly:["verified only","validés seulement"],
+  streamerOnly:["streamers only","streamers seulement"],
+  streamerWhy:["content creator","créateur de contenu"],
   verifiedWhy:["account marked as trusted by the site owner",
                "compte marqué comme fiable par le propriétaire du site"], allRanks:["all ranks","tous rangs"], boardEmpty:["nothing published yet","rien de publié pour l'instant"],
   notSetUp:["Leaderboard not configured","Classement non configuré"],
@@ -2806,7 +2808,9 @@ function lbRender(){
           <option value="rank">${TR("sortRank")}</option>
         </select></label>
       <label class="lbsel"><input type="checkbox" id="lbVip" ${lbVip ? "checked" : ""}> ${TR("verifiedOnly")}</label>
-      <label class="lbsel"><input type="checkbox" id="lbStream" ${lbStream ? "checked" : ""}> ${TR("streamerOnly")}</label>
+      <label class="lbsel"><input type="checkbox" id="lbStream" ${lbStream ? "checked" : ""}> <svg class="lbstream" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor"
+        d="M4.3 3 3 6.2v13h4.5V22h2.5l2.7-2.8h3.6L21 14.4V3H4.3zm2 1.8h13v8.7l-2.6 2.6h-4.2L10.2 18.6V16.1H6.3V4.8zm4.4 3v5.1h1.8V7.8h-1.8zm4.9 0v5.1h1.8V7.8h-1.8z"/></svg>
+      ${TR("streamerOnly")}</label>
       <label class="lbsel">${TR("filterRank")}
         <select id="lbRank"><option value="">${TR("allRanks")}</option>${RANKS.map(r =>
           `<option value="${r}">${r}</option>`).join("")}</select></label>
@@ -2819,7 +2823,9 @@ function lbRender(){
       <div class="lbrank">${i+1}</div>
       <div class="lbmain">
         <b>${esc(r.name)}</b>
-        <em>${r.streamer ? `<span class="lbstream" title="${TR("streamerWhy")}">▶</span> ` : ""}${r.verified ? `<span class="lbvip" title="${TR("verifiedWhy")}">✔</span> ` : ""}${esc(r.author)}${r.summoner ? " · " + esc(r.summoner) : ""}${r.rank ? ` · <span class="lbrk">${esc(r.rank)}</span>` : ""}
+        <em>${r.streamer ? `<svg class="lbstream" viewBox="0 0 24 24" aria-hidden="true"><title>${TR("streamerWhy")}</title>
+             <path fill="currentColor" d="M4.3 3 3 6.2v13h4.5V22h2.5l2.7-2.8h3.6L21 14.4V3H4.3zm2 1.8h13v8.7l-2.6 2.6h-4.2L10.2 18.6V16.1H6.3V4.8zm4.4 3v5.1h1.8V7.8h-1.8zm4.9 0v5.1h1.8V7.8h-1.8z"/>
+           </svg> ` : ""}${r.verified ? `<span class="lbvip" title="${TR("verifiedWhy")}">✔</span> ` : ""}${esc(r.author)}${r.summoner ? " · " + esc(r.summoner) : ""}${r.rank ? ` · <span class="lbrk">${esc(r.rank)}</span>` : ""}
             · <span class="${old ? "lbold" : ""}">${TR("patch")} ${esc(r.patch)}</span>
             · ${new Date(r.created_at).toLocaleDateString()}</em>
         ${r.notes ? `<p class="lbnotes">${esc(r.notes)}</p>` : ""}
