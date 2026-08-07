@@ -478,7 +478,7 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@base/base-js@2/dist/umd/base.js"></script>
 </head>
 <body>
 
@@ -2144,8 +2144,8 @@ function fxLabel(lab){
    Optional. With no keys below the site runs exactly as before
    and the board simply says it is not configured.
    ============================================================ */
-const SUPA_URL = "";
-const SUPA_KEY = "";
+const SUPA_URL = "https://ohgxdwrybdqkjcxvskjo.supabase.co";
+const SUPA_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9oZ3hkd3J5YmRxa2pjeHZza2pvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYwOTY4MjUsImV4cCI6MjEwMTY3MjgyNX0.tIUzWum3uu4tu6KF4PjP0QlgyffU64yM5eqQV9bmvKw";
 /* Data Dragon still numbers patches the old way; the live patch is +10 */
 const GAME_PATCH = (() => {
   const p = DDRAGON_V.split(".");
