@@ -456,6 +456,9 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
   letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
 .lbsel select{background:var(--panel-2);border:1px solid var(--line);border-radius:2px;color:var(--ink);
   font-family:var(--sans);font-size:12px;padding:3px 6px;text-transform:none;letter-spacing:0}
+.fbchk{flex-direction:row!important;align-items:center;gap:7px;text-transform:none!important;
+  letter-spacing:0!important;font-family:var(--sans)!important;font-size:12px!important;color:var(--ink-dim)!important}
+.fbchk input{accent-color:var(--q)}
 .lbnotes{margin:4px 0 0;font-size:11.5px;color:var(--ink-dim);line-height:1.45}
 .lbrk{color:var(--q)}
 .lbvip{color:var(--e);font-weight:700}
@@ -468,8 +471,12 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
 .lbmain b{font-family:var(--display);font-size:13px;letter-spacing:.06em;display:block;color:var(--ink)}
 .lbmain em{font-style:normal;font-size:10.5px;color:var(--ink-faint);font-family:var(--mono)}
 .lbold{color:var(--bad)}
-.lbitems{display:flex;gap:3px;margin-top:4px}
+.lbitems{display:flex;gap:3px;margin-top:5px;align-items:center;flex-wrap:wrap}
 .lbitems .iicon{width:26px;height:26px}
+.lbitems .ricon{width:22px;height:22px;border-radius:50%;background:var(--panel-2)}
+.lbitems .ricon.key{width:28px;height:28px}
+.lbitems .sicon{width:17px;height:17px;border-radius:50%;background:var(--panel-2)}
+.lbsep{width:1px;height:20px;background:var(--line);margin:0 4px;flex:none}
 .lbacts{display:flex;gap:5px;align-items:center;flex:none}
 .lbacts select,.lbacts button{
   background:var(--panel-2);border:1px solid var(--line-soft);border-radius:2px;color:var(--ink-dim);
@@ -519,8 +526,7 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
     <div class="hero-act">
       <button class="helpbtn" id="btnHelp" data-i18n="help">How it works</button>
       <button class="helpbtn" id="btnBoard" data-i18n="board">Leaderboard</button>
-      <a class="helpbtn" id="btnReport" data-i18n="report"
-         href="https://github.com/Ylfik/udyr-calc/issues/new" target="_blank" rel="noopener">Report</a>
+      <button class="helpbtn" id="btnReport" data-i18n="report">Feedback</button>
       <div class="seg" id="langSeg"><button data-l="en" aria-pressed="true">EN</button><button data-l="fr" aria-pressed="false">FR</button></div>
     </div>
   </div>
@@ -541,6 +547,33 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
       </div>
     </div>
     <div class="savenote" id="saveNote"></div>
+  </div>
+</div>
+
+<div class="overlay" id="fbOverlay">
+  <div class="help" role="dialog" aria-modal="true" aria-label="Feedback">
+    <header>
+      <h2 data-i18n="report">Feedback</h2>
+      <button class="closebtn" id="fbClose" aria-label="Close">esc</button>
+    </header>
+    <div class="helpbody">
+      <p data-i18n="fbIntro">Tell me what is broken, or what you would like the tool to do. No account needed.</p>
+      <div class="lbform">
+        <label data-i18n-wrap><span data-i18n="fbKind">Kind</span>
+          <select id="fbKind">
+            <option value="bug" data-i18n="fbBug">Something is wrong</option>
+            <option value="idea" data-i18n="fbIdea">An idea to improve it</option>
+          </select></label>
+        <label><span data-i18n="fbContact">Contact, optional</span>
+          <input id="fbContact" maxlength="80" placeholder="Discord"></label>
+        <label class="wide"><span data-i18n="fbMsg">Message</span>
+          <textarea id="fbMsg" rows="5" maxlength="2000"></textarea></label>
+        <label class="wide fbchk"><input type="checkbox" id="fbAttach" checked>
+          <span data-i18n="fbAttach">Attach my three builds, it helps a lot for bugs</span></label>
+        <button class="tipbtn" id="fbSend" data-i18n="fbSend">Send</button>
+      </div>
+      <p class="tipstat" id="fbNote"></p>
+    </div>
   </div>
 </div>
 
@@ -1950,7 +1983,18 @@ const L10N = {
   storageBlocked:["browser storage is blocked here — use Export instead",
                   "le stockage du navigateur est bloqué ici — utilisez Exporter"],
   importB:["Import","Importer"], reset:["Reset","Réinit."], help:["How it works","Mode d'emploi"],
-  report:["Report a bug","Signaler un bug"], board:["Leaderboard","Classement"],
+  report:["Feedback","Un retour"],
+  fbIntro:["Tell me what is broken, or what you would like the tool to do. No account needed.",
+           "Dites-moi ce qui ne va pas, ou ce que vous aimeriez que l'outil fasse. Aucun compte nécessaire."],
+  fbKind:["Kind","Type"], fbBug:["Something is wrong","Quelque chose ne va pas"],
+  fbIdea:["An idea to improve it","Une idée d'amélioration"],
+  fbContact:["Contact, optional","Contact, facultatif"], fbMsg:["Message","Message"],
+  fbAttach:["Attach my three builds, it helps a lot for bugs",
+            "Joindre mes trois builds, très utile pour les bugs"],
+  fbSend:["Send","Envoyer"], fbSending:["sending…","envoi…"],
+  fbThanks:["Sent — thank you.","Envoyé — merci."],
+  fbTooShort:["Please write a little more.","Écrivez un peu plus, s'il vous plaît."],
+  fbNoDb:["The database is unreachable right now.","La base est injoignable pour le moment."], board:["Leaderboard","Classement"],
   signInDiscord:["Sign in with Discord","Se connecter avec Discord"],
   signInWhy:["needed to publish or like","nécessaire pour publier ou liker"],
   signOut:["Sign out","Déconnexion"], signInFirst:["sign in to like","connectez-vous pour liker"],
@@ -2829,13 +2873,37 @@ function lbRender(){
             · <span class="${old ? "lbold" : ""}">${TR("patch")} ${esc(r.patch)}</span>
             · ${new Date(r.created_at).toLocaleDateString()}</em>
         ${r.notes ? `<p class="lbnotes">${esc(r.notes)}</p>` : ""}
-        <div class="lbitems">${(r.data.items || []).filter(x => x && x.name).map(x => {
-          const it = BY_NAME[x.name];
-          return it && it.id
-            ? `<img class="iicon" src="${ITEM_ICON(it.id)}" alt="${esc(iName(it))}"
-                 title="${esc(iName(it))}" loading="lazy" onerror="this.style.visibility='hidden'">`
-            : "";
-        }).join("")}</div>
+        <div class="lbitems">
+          ${(r.data.items || []).filter(x => x && x.name).map(x => {
+            const it = BY_NAME[x.name];
+            return it && it.id
+              ? `<img class="iicon" src="${ITEM_ICON(it.id)}" alt="${esc(iName(it))}"
+                   title="${esc(iName(it))}" loading="lazy" onerror="this.style.visibility='hidden'">`
+              : "";
+          }).join("")}
+          ${(() => {
+            const rn = (r.data.runes || []).filter(x => x && x.id != null);
+            if(!rn.length) return "";
+            return `<span class="lbsep"></span>` + rn.map((x, i) => {
+              const ru = RUNE_BY_ID[x.id];
+              if(!ru) return "";
+              return `<img class="ricon ${i === 0 ? "key" : ""}" src="${RUNE_ICON(ru.ic)}"
+                       alt="${esc(rName(ru))}" title="${esc(rName(ru))} — ${esc(rTip(ru))}"
+                       loading="lazy" onerror="this.style.visibility='hidden'">`;
+            }).join("");
+          })()}
+          ${(() => {
+            const sh = r.data.shards || [];
+            if(!sh.some(x => x !== null && x !== undefined)) return "";
+            return `<span class="lbsep"></span>` + sh.map((c, si) => {
+              if(c === null || c === undefined || !SHARD_SLOTS[si]) return "";
+              const o = SHARD_SLOTS[si].opts[c];
+              return o ? `<img class="sicon" src="${SHARD_ICON(o.ic)}" alt="${esc(TR(o.nk))}"
+                           title="${esc(TR(o.nk))} ${esc(o.vk ? TR(o.vk) : o.v)}"
+                           loading="lazy" onerror="this.style.visibility='hidden'">` : "";
+            }).join("");
+          })()}
+        </div>
       </div>
       <div class="lbacts">
         <button class="lblike ${myLikes.has(r.id) ? "on" : ""}" data-like="${r.id}">
@@ -3404,6 +3472,32 @@ const closeLb = () => lbOverlay && lbOverlay.classList.remove("on");
 on("lbClose", "click", closeLb);
 if(lbOverlay) lbOverlay.addEventListener("click", e => { if(e.target === lbOverlay) closeLb(); });
 document.addEventListener("keydown", e => { if(e.key === "Escape") closeLb(); });
+const fbOverlay = document.getElementById("fbOverlay");
+const closeFb = () => fbOverlay && fbOverlay.classList.remove("on");
+on("fbClose", "click", closeFb);
+if(fbOverlay) fbOverlay.addEventListener("click", e => { if(e.target === fbOverlay) closeFb(); });
+document.addEventListener("keydown", e => { if(e.key === "Escape") closeFb(); });
+on("btnReport", "click", () => { fbOverlay.classList.add("on"); });
+on("fbSend", "click", async () => {
+  const note = document.getElementById("fbNote");
+  const msg  = document.getElementById("fbMsg").value.trim();
+  if(msg.length < 5){ note.textContent = TR("fbTooShort"); return; }
+  if(!lbReady()){ note.textContent = TR("fbNoDb"); return; }
+  note.textContent = TR("fbSending");
+  const row = {
+    kind: document.getElementById("fbKind").value,
+    message: msg.slice(0, 2000),
+    contact: document.getElementById("fbContact").value.trim().slice(0, 80),
+    patch: GAME_PATCH, lang: LANG,
+    build: document.getElementById("fbAttach").checked
+      ? JSON.parse(JSON.stringify({target:state.target, builds:state.builds})) : null,
+    user_id: me ? me.id : null
+  };
+  const {error} = await sb.from("feedback").insert(row);
+  if(error){ note.textContent = error.message; return; }
+  document.getElementById("fbMsg").value = "";
+  note.textContent = TR("fbThanks");
+});
 on("btnBoard", "click", () => {
   lbOverlay.classList.add("on");
   if(lbReady()) lbLoad(); else lbRender();
