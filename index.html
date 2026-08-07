@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Udyr Calc — Damage Calculator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -236,6 +237,12 @@ main{max-width:2200px;margin:0 auto;padding:22px 28px 80px}
 .stile .ricon-fb{width:24px;height:24px;font-size:9px}
 
 /* sections */
+.emptyhint{
+  margin:0 14px 14px 17px;padding:11px 13px;border:1px dashed var(--line);border-radius:3px;
+  background:rgba(232,161,60,.04);
+}
+.emptyhint p{margin:0;font-size:12px;color:var(--ink-dim);line-height:1.5}
+.emptyhint .dim{margin-top:5px;font-size:11px;color:var(--ink-faint)}
 .sect-h{
   font-family:var(--display);font-weight:300;font-size:10px;letter-spacing:.22em;text-transform:uppercase;
   color:var(--ink-faint);padding:12px 14px 5px 17px;border-top:1px solid var(--line-soft);
@@ -431,8 +438,15 @@ body:not([data-lang="fr"]) .help-fr{display:none}
 .helpbody td:last-child{color:var(--ink)}
 .helpbody .legal{font-size:11px;opacity:.7;margin-top:12px}
 
-.brkbtn{background:none;border:none;padding:0;font:inherit;color:inherit;cursor:pointer;letter-spacing:inherit}
-.brkbtn:hover{text-decoration:underline}
+.brkbtn{
+  background:none;border:none;padding:0;font:inherit;color:inherit;cursor:pointer;
+  letter-spacing:inherit;display:flex;align-items:baseline;gap:5px;width:100%;text-align:left;
+}
+.brkbtn .lab{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brkbtn .arw{flex:none;font-size:9px;opacity:.55}
+.brkbtn:hover .lab{text-decoration:underline}
+.brkbtn:hover .arw{opacity:1}
+.tcol h6{font-size:9.5px;letter-spacing:.12em}
 table.brk{width:100%;border-collapse:collapse;font-size:12.5px;margin-bottom:10px}
 table.brk td,table.brk th{padding:3px 8px 3px 0;border-bottom:1px solid var(--line-soft);text-align:left}
 table.brk td:first-child,table.brk th:first-child{width:26px}
@@ -510,6 +524,18 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
 .lblike:hover{border-color:var(--r)!important;color:var(--r)!important}
 .lblike.on{border-color:var(--r)!important;color:#10161d!important;background:var(--r)!important;font-weight:600}
 .lbacts button:hover,.lbacts select:hover{border-color:var(--q);color:var(--q)}
+#updBar{
+  position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:200;
+  display:flex;align-items:center;gap:12px;
+  background:var(--panel);border:1px solid var(--q);border-radius:3px;
+  padding:10px 14px;font-size:12.5px;color:var(--ink);
+  box-shadow:0 6px 24px rgba(0,0,0,.6);
+}
+#updBar button{
+  border:1px solid var(--q);background:var(--q);color:#10161d;border-radius:2px;
+  padding:4px 11px;font-family:var(--display);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+}
+.foot .ver{font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);opacity:.7}
 .foot{margin-top:34px;border-top:1px solid var(--line-soft);padding-top:16px;
   font-size:11.5px;color:var(--ink-faint);line-height:1.6;max-width:900px}
 .foot p{margin:0 0 8px}
@@ -562,6 +588,14 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
     <div class="field"><label data-i18n="targetHp">Target HP</label><input id="tHp" type="number" value="2000" min="1" step="50"></div>
     <div class="field"><label data-i18n="targetAr">Target Armor</label><input id="tAr" type="number" value="100" min="-100" step="5"></div>
     <div class="field"><label data-i18n="targetMr">Target MR</label><input id="tMr" type="number" value="100" min="-100" step="5"></div>
+    <div class="field">
+      <label data-i18n="preset">Preset</label>
+      <div class="seg" id="presetSeg">
+        <button data-p="squishy" data-i18n="pSquishy">Squishy</button>
+        <button data-p="bruiser" data-i18n="pBruiser">Bruiser</button>
+        <button data-p="tank" data-i18n="pTank">Tank</button>
+      </div>
+    </div>
     <div class="field">
       <label data-i18n="builds">Builds</label>
       <div class="bar">
@@ -835,6 +869,7 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
   <section class="compare" id="fxPanel"></section>
 
   <footer class="foot">
+    <p class="ver" id="verLine"></p>
     <p><strong>Udyr Calc</strong> — combo of reference: 4 basic attacks, 2 in the stance then
        2 awakened. Item and rune values are taken from the League of Legends Wiki item and rune
        data, melee column. Passives follow a nothing-or-max rule and are switched per build with
@@ -1529,7 +1564,9 @@ function msSoftCap(ms){
 
 function computeBuild(b, target){
   const L  = Math.min(LVL_CAP, Math.max(1, b.level));
-  const gr = (L-1)*(0.7025+0.0175*(L-1));           // courbe de croissance LoL
+  const gr = (L-1)*(0.7025+0.0175*(L-1));           // LoL growth curve
+  /* 62 + 4 per level gives 130 AD at level 18, confirmed in game.
+     Riot's champion file reports 0 AD per level for Udyr, which is wrong. */
   const base = {
     hp:664+92*gr, mana:271+50*gr, ad:62+4*gr, ap:0,
     ar:31+4.7*gr, mr:32+2.05*gr, ah:0, as:0.65, ms:350
@@ -2001,6 +2038,8 @@ const FR_SUFFIX = {
 /* interface strings */
 const L10N = {
   targetHp:["Target HP","PV cible"], targetAr:["Target Armor","Armure cible"], targetMr:["Target MR","RM cible"],
+  preset:["Target type","Type de cible"],
+  pSquishy:["Squishy","Fragile"], pBruiser:["Bruiser","Bruiser"], pTank:["Tank","Tank"],
   builds:["Builds","Builds"], save:["Save","Sauver"], del:["Del","Suppr"], exportB:["Export","Exporter"],
   saveAs:["Save as","Enregistrer sous"], update:["Update","Mettre à jour"],
   updateTitle:["overwrite the page \"%s\"","écraser la page « %s »"],
@@ -2088,6 +2127,13 @@ const L10N = {
   keystone:["keystone","rune clé"], rune:["rune","rune"], slot:["slot","emplacement"],
   primary:["primary tree","arbre primaire"], secondary:["secondary tree","arbre secondaire"],
   row:["row","ligne"], cooldown:["cooldown","recharge"],
+  openBrk:["see the full breakdown","voir le détail complet"],
+  hint1:["Click a slot above to add an item, then a circle to pick your runes.",
+         "Cliquez sur un emplacement ci-dessus pour ajouter un item, puis sur un rond pour choisir vos runes."],
+  hint2:["Set the level and ability ranks at the top of the card, and pick a target type in the bar above.",
+         "Réglez le niveau et les rangs de compétences en haut de la carte, et choisissez un type de cible dans la barre du dessus."],
+  newVersion:["A newer version of the page is available.","Une version plus récente de la page est disponible."],
+  reload:["Reload","Recharger"],
   attack:["Attack","Attaque"], awakened:["awakened","éveillée"],
   targetLeft:["target left","PV restants"], perAttack:["Attack by attack","Attaque par attaque"],
   endOfCombo:["Once per combo","Une fois par combo"], summary:["Total","Total"],
@@ -2290,6 +2336,40 @@ function fxLabel(lab){
    Optional. With no keys below the site runs exactly as before
    and the board simply says it is not configured.
    ============================================================ */
+/* ============================================================
+   VERSION AND CACHE
+   GitHub Pages serves the HTML from a CDN, so a returning visitor can
+   sit on an old copy without knowing. Nothing here needs maintaining:
+   the browser already knows when the page it loaded was last modified,
+   and the server will say the same about the current one. If the server
+   is newer, the copy on screen is stale.
+   ============================================================ */
+const LOADED_AT = new Date(document.lastModified);
+
+async function checkVersion(){
+  try{
+    const res = await fetch(location.pathname + "?cb=" + Date.now(), {method:"HEAD", cache:"no-store"});
+    const lm = res.headers.get("last-modified");
+    if(!lm) return;                                  /* server not saying, leave it alone */
+    const live = new Date(lm);
+    if(live - LOADED_AT > 60000) showUpdate();       /* a minute of slack for clock drift */
+  }catch(err){ /* offline, or opened straight from a file */ }
+}
+function showUpdate(){
+  if(document.getElementById("updBar")) return;
+  const bar = document.createElement("div");
+  bar.id = "updBar";
+  bar.innerHTML = `<span>${TR("newVersion")}</span><button id="updGo">${TR("reload")}</button>`;
+  document.body.appendChild(bar);
+  document.getElementById("updGo").addEventListener("click", () => {
+    location.replace(location.pathname + "?v=" + Date.now());
+  });
+}
+const versionLabel = () => {
+  const d = LOADED_AT;
+  return isNaN(d) ? "" : d.toISOString().slice(0, 10).replace(/-/g, ".");
+};
+
 const SUPA_URL = "https://ohgxdwrybdqkjcxvskjo.supabase.co";
 const SUPA_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9oZ3hkd3J5YmRxa2pjeHZza2pvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYwOTY4MjUsImV4cCI6MjEwMTY3MjgyNX0.tIUzWum3uu4tu6KF4PjP0QlgyffU64yM5eqQV9bmvKw";
 
@@ -2645,6 +2725,11 @@ function card(b, bi, R){
     </div>
 
     <div class="slots">${slots}</div>
+    ${b.items.every(x => !x.name) && b.runes.every(x => !x || x.id == null) ? `
+      <div class="emptyhint">
+        <p>${TR("hint1")}</p>
+        <p class="dim">${TR("hint2")}</p>
+      </div>` : ""}
 
     <div class="sect-h">${TR("runes")}</div>
     <div class="runerow">
@@ -2776,7 +2861,7 @@ function card(b, bi, R){
     <div class="sect-h">${TR("combos")}</div>
     <div class="totals">
       <div class="tcol qc">
-        <h6><button class="brkbtn" data-brk="q" data-b="${bi}">Q · ${isFR()?FR_ABIL[0]:"Wilding Claw"} ▸</button></h6>
+        <h6><button class="brkbtn" data-brk="q" data-b="${bi}" title="${TR('openBrk')}"><span class="lab">Q · ${isFR()?FR_ABIL[0]:"Wilding Claw"}</span><span class="arw">&#9656;</span></button></h6>
         ${statHi(TR("damage"), n0(D.combo.q.dmg))}
         ${stat(TR("dps"), n0(D.combo.q.dps))}
         ${stat(TR("healing"), n0(D.combo.q.heal))}
@@ -2784,7 +2869,7 @@ function card(b, bi, R){
         ${stat("&nbsp;&nbsp;"+TR("fromOV"), n0(D.combo.q.ovHeal), D.combo.q.ovHeal<1)}
       </div>
       <div class="tcol wc">
-        <h6><button class="brkbtn" data-brk="w" data-b="${bi}">W · ${isFR()?FR_ABIL[1]:"Iron Mantle"} ▸</button></h6>
+        <h6><button class="brkbtn" data-brk="w" data-b="${bi}" title="${TR('openBrk')}"><span class="lab">W · ${isFR()?FR_ABIL[1]:"Iron Mantle"}</span><span class="arw">&#9656;</span></button></h6>
         ${statHi(TR("damage"), n0(D.combo.w.dmg))}
         ${stat(TR("hps"), n0(D.combo.w.hps))}
         ${stat(TR("healing"), n0(D.combo.w.heal))}
@@ -2792,14 +2877,14 @@ function card(b, bi, R){
         ${stat(TR("healShield"), n0(D.combo.w.sustain))}
       </div>
       <div class="tcol ec">
-        <h6><button class="brkbtn" data-brk="e" data-b="${bi}">E · ${isFR()?FR_ABIL[2]:"Blazing Stampede"} ▸</button></h6>
+        <h6><button class="brkbtn" data-brk="e" data-b="${bi}" title="${TR('openBrk')}"><span class="lab">E · ${isFR()?FR_ABIL[2]:"Blazing Stampede"}</span><span class="arw">&#9656;</span></button></h6>
         ${statHi(TR("msWithE"), n0(A.msE))}
         ${stat(TR("awkMs"), n0(A.msEAwk))}
         ${stat(TR("msBonus"), "+"+pc(A.eMs))}
         ${stat(TR("awkBonus"), "+"+pc(A.eMs + A.eAwkMs))}
       </div>
       <div class="tcol rc">
-        <h6><button class="brkbtn" data-brk="r" data-b="${bi}">R · ${isFR()?FR_ABIL[3]:"Wingborne Storm"} ▸</button></h6>
+        <h6><button class="brkbtn" data-brk="r" data-b="${bi}" title="${TR('openBrk')}"><span class="lab">R · ${isFR()?FR_ABIL[3]:"Wingborne Storm"}</span><span class="arw">&#9656;</span></button></h6>
         ${statHi(TR("damage"), n0(D.combo.r.dmg))}
         ${stat(TR("dps"), n0(D.combo.r.dps))}
         ${stat(TR("healing"), n0(D.combo.r.heal))}
@@ -3502,6 +3587,31 @@ const helpOverlay = document.getElementById("helpOverlay");
 const openHelp  = () => helpOverlay && helpOverlay.classList.add("on");
 const closeHelp = () => helpOverlay && helpOverlay.classList.remove("on");
 on("btnHelp", "click", openHelp);
+/* rough level-18 profiles, meant as common ground rather than exact champions */
+const PRESETS = {
+  squishy:{hp:2100, ar:95,  mr:55},    /* marksman, mage or assassin with no defensive item */
+  bruiser:{hp:3300, ar:165, mr:110},   /* a few health items, sometimes one resistance */
+  tank:   {hp:4300, ar:250, mr:190}    /* stacked resistances and health */
+};
+document.querySelectorAll("#presetSeg button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const p = PRESETS[btn.dataset.p];
+    state.target = {hp:p.hp, ar:p.ar, mr:p.mr};
+    document.getElementById("tHp").value = p.hp;
+    document.getElementById("tAr").value = p.ar;
+    document.getElementById("tMr").value = p.mr;
+    document.querySelectorAll("#presetSeg button").forEach(b =>
+      b.setAttribute("aria-pressed", String(b === btn)));
+    render();
+  });
+});
+/* typing your own numbers clears the preset highlight */
+["tHp","tAr","tMr"].forEach(id => {
+  const el = document.getElementById(id);
+  if(el) el.addEventListener("input", () => {
+    document.querySelectorAll("#presetSeg button").forEach(b => b.setAttribute("aria-pressed", "false"));
+  });
+});
 document.querySelectorAll("#langSeg button").forEach(btn => {
   btn.addEventListener("click", () => {
     LANG = btn.dataset.l;
@@ -3558,6 +3668,11 @@ on("btnBoard", "click", () => {
   lbOverlay.classList.add("on");
   if(lbReady()) lbLoad(); else lbRender();
 });
+const vl = document.getElementById("verLine");
+if(vl) vl.textContent = versionLabel();
+checkVersion();
+setInterval(checkVersion, 15 * 60 * 1000);
+
 if(window.supabase) lbInit();
 else window.addEventListener("load", () => { lbInit(); lbRender(); });
 if(brkOverlay) brkOverlay.addEventListener("click", e => { if(e.target === brkOverlay) closeBrk(); });
