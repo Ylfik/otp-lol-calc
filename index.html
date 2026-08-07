@@ -589,6 +589,10 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
     <div class="field"><label data-i18n="targetAr">Target Armor</label><input id="tAr" type="number" value="100" min="-100" step="5"></div>
     <div class="field"><label data-i18n="targetMr">Target MR</label><input id="tMr" type="number" value="100" min="-100" step="5"></div>
     <div class="field">
+      <label data-i18n="economy">Gold / min</label>
+      <input id="tGpm" type="number" value="400" min="0" step="10" data-i18n-title="gpmWhy">
+    </div>
+    <div class="field">
       <label data-i18n="preset">Preset</label>
       <div class="seg" id="presetSeg">
         <button data-p="squishy" data-i18n="pSquishy">Squishy</button>
@@ -1548,6 +1552,22 @@ const T = {
   rSlow:       [15,18,21,24,27,30],
   rAwkSlow:    [20,23,26,29,32,35]
 };
+/* ------------------------------------------------------------
+   Rough economy model, so a build can be judged against what you
+   could actually afford at that point. These are estimates, not
+   measurements: adjust GOLD_PER_MIN if your games say otherwise.
+   ------------------------------------------------------------ */
+const LEVEL_MINUTE = [0, 0, 1.5, 2.5, 3.5, 4.5, 5.75, 7, 8.25, 9.5, 11,
+                      12.5, 14, 15.5, 17, 18.5, 20, 22, 24, 27, 30];
+const START_GOLD = 500;
+/* 400 is a rough all-in income: the passive trickle everyone gets is about
+   122 a minute, the rest is farm and objectives. It is an indicator, not a
+   ceiling — a fed game leaves it far behind, a rough one never reaches it. */
+function goldAt(level, gpm){
+  const t = LEVEL_MINUTE[Math.min(20, Math.max(1, level))] || 0;
+  return {minute:t, gold:START_GOLD + (gpm || 400) * t};
+}
+
 const lerp = (a,b,lvl,top) => { top = top || 18; return a + (b-a)/(top-1)*(Math.min(lvl,top)-1); };
 const R1 = (arr,rank) => arr[Math.min(6,Math.max(1,rank))-1];
 
@@ -1970,7 +1990,8 @@ function computeBuild(b, target){
     rOnHit: A.rOnHit*mMul, rTotal: A.rTotal*mMul, rAwkTotal: A.rAwkTotal*mMul
   };
 
-  return {tot, A, D, M, gold, pMul, mMul, effAr, effMr,
+  const budget = goldAt(L, state.gpm);
+  return {tot, A, D, M, gold, budget, pMul, mMul, effAr, effMr,
           drPhys, drMagic, shieldPool,
           ehpAr: (tot.hp + shieldPool)*(1+tot.ar/100)/(1 - drPhys/100),
           ehpMr: (tot.hp + shieldPool)*(1+tot.mr/100)/(1 - drMagic/100)};
@@ -2038,7 +2059,12 @@ const FR_SUFFIX = {
 /* interface strings */
 const L10N = {
   targetHp:["Target HP","PV cible"], targetAr:["Target Armor","Armure cible"], targetMr:["Target MR","RM cible"],
-  preset:["Target type","Type de cible"],
+  preset:["Target type","Type de cible"], economy:["Gold / min","Or / min"],
+  gpmWhy:["Rough all-in income per minute. The passive trickle alone is about 122; the rest is farm and objectives. An indicator, not a ceiling.",
+          "Revenu global approximatif par minute. Le seul revenu passif tourne autour de 122 ; le reste vient du farm et des objectifs. Un indicateur, pas un plafond."],
+  goldTitle:["build cost, next to a rough idea of the gold available at this level",
+             "coût du build, à côté d'un ordre d'idée de l'or disponible à ce niveau"],
+  timing:["TIMING","TIMING"], budget:["GOLD AT THIS LEVEL","OR À CE NIVEAU"],
   pSquishy:["Squishy","Fragile"], pBruiser:["Bruiser","Bruiser"], pTank:["Tank","Tank"],
   builds:["Builds","Builds"], save:["Save","Sauver"], del:["Del","Suppr"], exportB:["Export","Exporter"],
   saveAs:["Save as","Enregistrer sous"], update:["Update","Mettre à jour"],
@@ -2179,6 +2205,7 @@ const TR = k => { const v = L10N[k]; return v ? (isFR() ? v[1] : v[0]) : k; };
 function applyStatic(){
   document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = TR(el.dataset.i18n); });
   document.querySelectorAll("[data-i18n-ph]").forEach(el => { el.placeholder = TR(el.dataset.i18nPh); });
+  document.querySelectorAll("[data-i18n-title]").forEach(el => { el.title = TR(el.dataset.i18nTitle); });
   document.documentElement.lang = LANG;
 }
 
@@ -2505,6 +2532,7 @@ const mk = name => ({
   items: Array(6).fill(null).map(() => ({name:null, cond:true}))
 });
 const freshState = () => ({
+  gpm:400,
   target:{hp:2000, ar:100, mr:100},
   builds:[mk("Build 1"), mk("Build 2"), mk("Build 3")]
 });
@@ -2569,13 +2597,14 @@ function deleteOneBuild(name){
 }
 
 function snapshot(){
-  return {v:2, saved:new Date().toISOString(),
+  return {v:2, saved:new Date().toISOString(), gpm:state.gpm,
           target:state.target, builds:state.builds, library:readBuilds()};
 }
 function restore(data){
   if(!data || !Array.isArray(data.builds)) throw new Error("not a build file");
   const blank = freshState();
   state.target = Object.assign(blank.target, data.target || {});
+  state.gpm = data.gpm || 400;
   state.builds = blank.builds.map((b, i) => {
     const d = data.builds[i];
     if(!d) return b;
@@ -2705,7 +2734,7 @@ function card(b, bi, R){
   <section class="card">
     <div class="card-head">
       <h2>${esc(b.name)}</h2>
-      <div class="gold">${n0(R.gold)}</div>
+      <div class="gold" title="${TR("goldTitle")}">${n0(R.gold)}<span class="budget">&nbsp;~${n0(R.budget.gold)}</span></div>
     </div>
 
     <div class="blib">
@@ -2813,6 +2842,8 @@ function card(b, bi, R){
         ${stat(TR("awakenCD"), nf1.format(A.awakenCD)+" s")}
         ${stat(TR("awakenAtk"), nf1.format(A.awakenAttacks))}
         ${stat(TR("awakenReal"), nf1.format(A.awakenReal)+" s")}
+        ${stat(TR("timing"), "~"+nf0.format(Math.round(R.budget.minute))+" min")}
+        ${stat(TR("budget"), "~"+n0(R.budget.gold))}
         ${stat("MS", n0(A.msIdle))}
         ${stat("MS%", "+"+n1(t.mspct)+"%", t.mspct===0)}
         ${stat("TEN", n0(t.ten)+"%", t.ten===0)}
@@ -3593,6 +3624,11 @@ const PRESETS = {
   bruiser:{hp:3300, ar:165, mr:110},   /* a few health items, sometimes one resistance */
   tank:   {hp:4300, ar:250, mr:190}    /* stacked resistances and health */
 };
+const gpmIn = document.getElementById("tGpm");
+if(gpmIn) gpmIn.addEventListener("input", e => {
+  const v = parseFloat(e.target.value);
+  if(!isNaN(v)) { state.gpm = v; render(); }
+});
 document.querySelectorAll("#presetSeg button").forEach(btn => {
   btn.addEventListener("click", () => {
     const p = PRESETS[btn.dataset.p];
