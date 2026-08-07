@@ -490,7 +490,7 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
     </div>
     <div class="hero-act">
       <button class="helpbtn" id="btnHelp" data-i18n="help">How it works</button>
-      <button class="helpbtn" id="btnBoard" data-i18n="board">Leaderboard</button>
+      <button class="helpbtn" id="btnBoard" data-i18n="board">board</button>
       <a class="helpbtn" id="btnReport" data-i18n="report"
          href="https://github.com/Ylfik/udyr-calc/issues/new" target="_blank" rel="noopener">Report</a>
       <div class="seg" id="langSeg"><button data-l="en" aria-pressed="true">EN</button><button data-l="fr" aria-pressed="false">FR</button></div>
@@ -517,9 +517,9 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
 </div>
 
 <div class="overlay" id="lbOverlay">
-  <div class="help" role="dialog" aria-modal="true" aria-label="Leaderboard">
+  <div class="help" role="dialog" aria-modal="true" aria-label="board">
     <header>
-      <h2 data-i18n="board">Leaderboard</h2>
+      <h2 data-i18n="board">board</h2>
       <button class="closebtn" id="lbClose" aria-label="Close">esc</button>
     </header>
     <div class="helpbody" id="lbBody"></div>
@@ -1911,7 +1911,7 @@ const L10N = {
   storageBlocked:["browser storage is blocked here — use Export instead",
                   "le stockage du navigateur est bloqué ici — utilisez Exporter"],
   importB:["Import","Importer"], reset:["Reset","Réinit."], help:["How it works","Mode d'emploi"],
-  report:["Report a bug","Signaler un bug"], board:["Leaderboard","Classement"],
+  report:["Report a bug","Signaler un bug"], board:["board","Classement"],
   signInDiscord:["Sign in with Discord","Se connecter avec Discord"],
   signInWhy:["needed to publish or like","nécessaire pour publier ou liker"],
   signOut:["Sign out","Déconnexion"], signInFirst:["sign in to like","connectez-vous pour liker"],
@@ -1919,7 +1919,7 @@ const L10N = {
   updateFrom:["update from…","mettre à jour depuis…"], loadInto:["load into…","charger dans…"],
   updatedOn:["updated, now on patch %s","mis à jour, patch %s"],
   patch:["patch","patch"], boardEmpty:["nothing published yet","rien de publié pour l'instant"],
-  notSetUp:["Leaderboard not configured","Classement non configuré"],
+  notSetUp:["board not configured","Classement non configuré"],
   notSetUpText:["The site owner has not added the database keys yet. Everything else works normally.",
                 "Le propriétaire du site n'a pas encore renseigné les clés de la base. Tout le reste fonctionne normalement."],
   savedPages:["saved build pages","pages sauvegardées"], noPages:["no saved pages yet","aucune page sauvegardée"],
@@ -2144,10 +2144,8 @@ function fxLabel(lab){
    Optional. With no keys below the site runs exactly as before
    and the board simply says it is not configured.
    ============================================================ */
-const SUPA_URL = "https://ohgxdwrybdqkjcxvskjo.supabase.co
-";   /* <- paste your Supabase project URL */
-const SUPA_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9oZ3hkd3J5YmRxa2pjeHZza2pvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYwOTY4MjUsImV4cCI6MjEwMTY3MjgyNX0.tIUzWum3uu4tu6KF4PjP0QlgyffU64yM5eqQV9bmvKw";   /* <- paste your anon public key */
-
+const SUPA_URL = "";
+const SUPA_KEY = "";
 /* Data Dragon still numbers patches the old way; the live patch is +10 */
 const GAME_PATCH = (() => {
   const p = DDRAGON_V.split(".");
