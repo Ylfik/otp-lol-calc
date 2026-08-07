@@ -470,9 +470,9 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
 .lbrow{
   display:flex;gap:14px;align-items:center;padding:10px 14px 10px 11px;margin-bottom:7px;
   background:var(--panel-2);border:1px solid var(--line-soft);border-left:3px solid var(--rk);
-  border-radius:3px;transition:border-color .12s,transform .12s,background .12s;
+  border-radius:3px;transition:border-color .12s,background .12s;
 }
-.lbrow:hover{background:#1D2A38;transform:translateX(2px)}
+.lbrow:hover{background:#1D2A38;border-color:var(--line)}
 .lbrow.mine{border-color:var(--line);box-shadow:inset 0 0 0 1px rgba(232,161,60,.18)}
 .lbrow.top1,.lbrow.top2,.lbrow.top3{background:linear-gradient(90deg,rgba(232,161,60,.09),transparent 55%)}
 .lbrank{
@@ -481,6 +481,12 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
 .top1 .lbrank{color:#f0c860;font-size:26px}
 .top2 .lbrank{color:#c8d4da;font-size:23px}
 .top3 .lbrank{color:#c08552;font-size:21px}
+.lbwho{font-family:var(--display);letter-spacing:.06em;color:var(--ink-dim);font-size:11px}
+.top1 .lbwho{font-size:16px;color:#f0c860}
+.top2 .lbwho{font-size:14px;color:#c8d4da}
+.top3 .lbwho{font-size:13px;color:#c08552}
+.top1 .lbmain b{font-size:15px}
+.top2 .lbmain b{font-size:14px}
 .lbmain{flex:1;min-width:0}
 .lbmain b{font-family:var(--display);font-size:13px;letter-spacing:.06em;display:block;color:var(--ink)}
 .lbmain em{font-style:normal;font-size:10.5px;color:var(--ink-faint);font-family:var(--mono)}
@@ -623,78 +629,88 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
       <button class="closebtn" id="helpClose" aria-label="Close">esc</button>
     </header>
     <div class="helpbody help-en">
+      <h3>What this is</h3>
+      <p>A build comparison tool for Udyr on Summoner's Rift. Three builds side by side, with item and
+         rune passives folded into the maths rather than left as text.</p>
 
       <h3>The combo of reference</h3>
-      <p>Every number on this page is measured over the same sequence:
-         <strong>4 basic attacks — 2 in the stance, then 2 awakened.</strong>
-         It is the standard in-game pattern, and it decides how often each passive fires.</p>
+      <p>Every number is measured over the same sequence:
+         <strong>4 basic attacks — 2 in the stance, then 2 awakened.</strong> That decides how often
+         each passive fires.</p>
       <table>
         <tr><th>Passive type</th><th>Triggers</th></tr>
-        <tr><td>On-hit — Fray, Cleave, Mist's Edge, Shock…</td><td>4</td></tr>
-        <tr><td>Spellblade</td><td>2, one per stance cast</td></tr>
-        <tr><td>Every third attack — Kraken Slayer</td><td>1</td></tr>
-        <tr><td>Energized — Voltaic, Stormrazor, Statikk</td><td>1, charged before the fight, no time to recharge</td></tr>
-        <tr><td>Actives and once-per-combo effects</td><td>1</td></tr>
+        <tr><td>On-hit — Fray, Cleave, Mist's Edge…</td><td>every attack</td></tr>
+        <tr><td>Spellblade</td><td>attacks 1 and 3, one per stance cast</td></tr>
+        <tr><td>Every third attack — Kraken Slayer</td><td>attack 3</td></tr>
+        <tr><td>Energized — Voltaic, Stormrazor</td><td>attack 1, charged before the fight</td></tr>
+        <tr><td>Actives and once-per-combo effects</td><td>once</td></tr>
       </table>
-      <p>The combo is stepped through <strong>one attack at a time</strong>, because passives that scale
-         off the target's <em>current</em> health hit for less as the target drops. Blade of the Ruined
-         King is the clearest case: computing 4 × 9% of maximum health overstates it by more than double.</p>
-      <p>Damage keeps accruing after the target would have died. The number measures output, not time to kill.</p>
+      <p>The combo is stepped through <strong>one attack at a time</strong>. Passives that scale off the
+         target's <em>current</em> health hit for less as it drops, and thresholds are read at the moment
+         of each hit — Coup de Grace only pays once the target is actually under 40%.</p>
+      <p><strong>Click any stance name</strong> in a build to open the full breakdown: what every attack was
+         made of, the target's remaining health after each one, and the totals.</p>
 
       <h3>Where the numbers come from</h3>
       <table>
-        <tr><th>Data</th><th>Source</th></tr>
-        <tr><td>Item stats, costs, passive values</td><td>League of Legends Wiki, Module:ItemData</td></tr>
-        <tr><td>Rune values</td><td>Riot runesReforged data</td></tr>
-        <tr><td>Icons</td><td>Riot Data Dragon</td></tr>
+        <tr><td>Item stats, costs and passive values</td><td>League of Legends Wiki</td></tr>
+        <tr><td>Rune values, names and icons</td><td>Riot Data Dragon</td></tr>
         <tr><td>Ability formulas</td><td>Ported from the original spreadsheet, verified value by value</td></tr>
       </table>
-      <p><strong>Melee values throughout</strong>, since Udyr is melee. Where the wiki splits melee and
-         ranged — Mist's Edge 9% / 6%, Titanic Cleave 1% / 0.5%, Fanfare 30% / 20% attack speed — the
-         melee figure is used. Only items flagged as Summoner's Rift 5v5 are included.</p>
+      <p><strong>Melee values throughout.</strong> All 124 Summoner's Rift items have an entry; 99 have an
+         effect in the maths, the rest are listed with their text so you can see why they do nothing here.</p>
 
       <h3>Conventions</h3>
-      <p><strong>Nothing or max.</strong> A conditional passive is either off, or counted at full value —
-         Conqueror at 12 stacks, Black Cleaver at 5, Legend runes capped. Every one has its own toggle:
-         <strong>COND</strong> on items, <strong>ON / OFF</strong> under runes.</p>
-      <p><strong>Penetration order:</strong> armor shred first, then lethality, then percentage penetration.</p>
-      <p><strong>Crit</strong> uses the in-game formula, <code>1 + chance × (0.75 + bonus crit damage)</code>.</p>
-      <p><strong>Move speed</strong> applies the real soft caps: ×0.8 + 83 above 415, ×0.5 + 230 above 490.</p>
-      <p><strong>Champion level goes to 20.</strong> Level ramps are not global — some effects still peak at
-         18 (Hullbreaker, Immortal Shieldbow), others at 20 (Kraken Slayer, Bloodthirster, the scaling
-         health shard), so each ramp is set individually.</p>
-      <p><strong>Healing</strong> separates its two sources, because they behave differently: life steal only
-         heals off basic attack damage, omnivamp heals off everything. Heal and shield power boosts cast
-         heals and shields, not vampirism.</p>
-      <p><strong>Effective health</strong> folds in shields and damage reduction:
-         <code>(health + shields) × (1 + resistance / 100) ÷ (1 − reduction)</code>.</p>
+      <p><strong>Nothing or max.</strong> A conditional passive is either off or at full value. Items use the
+         <strong>COND</strong> button, runes use <strong>ON / OFF</strong>.</p>
+      <p><strong>Penetration order:</strong> shred, then lethality, then percentage penetration.</p>
+      <p><strong>Crit</strong> follows the game: <code>1 + chance × (0.75 + bonus crit damage)</code>.
+         <strong>Attack speed</strong> is multiplicative on base and includes 3% growth per level, capped at 2.5.
+         <strong>Move speed</strong> applies the real soft caps.</p>
+      <p><strong>Level goes to 20.</strong> Ramps are set per effect, because some still peak at 18.</p>
+      <p><strong>Healing</strong> splits its sources: life steal only heals off basic attack damage, omnivamp
+         off everything. <strong>Effective health</strong> folds in shields and damage reduction.</p>
 
       <h3>Searching for items</h3>
-      <p>The item search reads stats as well as names.</p>
+      <p>The search reads stats and names, in either language, accents ignored.</p>
       <table>
         <tr><td><code>leth</code></td><td>every item with lethality, best first</td></tr>
         <tr><td><code>ad crit</code></td><td>items carrying both</td></tr>
         <tr><td><code>ah&gt;=20</code></td><td>at least 20 ability haste</td></tr>
-        <tr><td><code>gold&lt;1300</code></td><td>cheapest first</td></tr>
+        <tr><td><code>boots</code></td><td>every pair of boots</td></tr>
         <tr><td><code>passive</code></td><td>only items whose passive is in the maths</td></tr>
       </table>
 
-      <h3>Saving your builds</h3>
-      <p>Two routes. <strong>Save / Del</strong> keeps named pages in your browser. <strong>Export / Import</strong>
-         writes a portable <code>udyr-builds.json</code> you can move between machines or share.</p>
-      <p>Saves are tied to one browser and one address, so they do not follow you from a local copy to the
-         hosted version. Export is the format of exchange.</p>
+      <h3>Saving builds</h3>
+      <p>Under each card: <strong>Save as</strong> puts that build in your library, <strong>Update</strong>
+         overwrites it, <strong>Delete</strong> removes it, <strong>Empty</strong> clears the card without
+         touching your saved copies. Any saved build can be loaded into any of the three slots.</p>
+      <p>Saves live in your browser, tied to one address. <strong>Export</strong> writes a portable file that
+         carries your whole library — use it to move between machines or as a backup.</p>
+
+      <h3>Leaderboard</h3>
+      <p>Sign in with Discord to publish a build, and to like others. The board is ranked by likes, and can be
+         sorted by date, author or rank, or filtered to verified accounts and streamers.</p>
+      <p>Each entry shows its items, runes and shards, a description, and <strong>the patch it was saved on</strong>
+         — a patch that is no longer current shows in red. You can load any build into one of your slots to
+         compare it with yours, and update your own entries without losing their likes.</p>
+      <p>Summoner names and ranks are <strong>declared by their author and not verified</strong>. The badges,
+         on the other hand, are given by the site owner.</p>
+
+      <h3>Feedback</h3>
+      <p>The <strong>Feedback</strong> button takes a bug report or an idea, with no account needed. Leaving the
+         attachment box ticked sends your three builds along, which is usually what makes a bug reproducible.</p>
 
       <h3>Known limits</h3>
       <ul>
-        <li>Effects that only hit secondary targets — the Hydra family's Cleave — are listed but deal nothing,
-            since this measures single-target output.</li>
-        <li>Abyssal Mask and Shadowflame amplify magic damage only; the engine applies their amp to the whole
-            combo, so switch them off on an AD build.</li>
-        <li>Terminus alternates Light and Dark hits: over 4 attacks you get 2 stacks of each, not 3.</li>
-        <li>Spear of Shojin amplifies ability, pet and proc damage, not basic attacks.</li>
+        <li>Effects that only hit secondary targets, like the Hydra family's Cleave, deal nothing here — this
+            measures single-target output.</li>
+        <li>Abyssal Mask and Shadowflame amplify magic damage only; the engine applies their amp to everything,
+            so switch them off on an AD build.</li>
+        <li>Terminus alternates Light and Dark: over 4 attacks you get 2 stacks of each, not 3.</li>
         <li>Death's Dance defers damage rather than removing it — generous outside burst.</li>
-        <li>Base stat growth is extrapolated to levels 19 and 20 from the standard curve.</li>
+        <li>Base stat growth is extrapolated to levels 19 and 20.</li>
+        <li>Damage keeps accruing after the target would have died: this measures output, not time to kill.</li>
       </ul>
 
       <h3>Credits</h3>
@@ -706,80 +722,94 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
          associated properties are trademarks or registered trademarks of Riot Games, Inc.</p>
     </div>
     <div class="helpbody help-fr">
+      <h3>Ce que c'est</h3>
+      <p>Un comparateur de builds pour Udyr sur la Faille de l'invocateur. Trois builds côte à côte, avec les
+         passifs d'items et de runes intégrés au calcul et non laissés en texte.</p>
+
       <h3>Le combo de référence</h3>
-      <p>Tous les chiffres de cette page sont mesurés sur la même séquence :
-         <strong>4 auto-attaques — 2 dans la posture, puis 2 éveillées.</strong>
-         C'est le schéma standard en jeu, et il détermine la fréquence de chaque passif.</p>
+      <p>Tous les chiffres sont mesurés sur la même séquence :
+         <strong>4 auto-attaques — 2 dans la posture, puis 2 éveillées.</strong> C'est ce qui détermine la
+         fréquence de chaque passif.</p>
       <table>
         <tr><th>Type de passif</th><th>Déclenchements</th></tr>
-        <tr><td>À l'impact — Conflit, Fendoir, Fil de brume, Choc…</td><td>4</td></tr>
-        <tr><td>Lame enchantée</td><td>2, un par cast de posture</td></tr>
-        <tr><td>Toutes les 3 attaques — Tueur de krakens</td><td>1</td></tr>
-        <tr><td>Énergisé — Voltaic, Rasoir de tempête, Statikk</td><td>1, chargé avant le combat, pas le temps de se recharger</td></tr>
-        <tr><td>Actifs et effets à usage unique</td><td>1</td></tr>
+        <tr><td>À l'impact — Conflit, Fendoir, Fil de brume…</td><td>chaque attaque</td></tr>
+        <tr><td>Lame enchantée</td><td>attaques 1 et 3, une par cast de posture</td></tr>
+        <tr><td>Toutes les 3 attaques — Tueur de krakens</td><td>attaque 3</td></tr>
+        <tr><td>Énergisé — Voltaic, Rasoir de tempête</td><td>attaque 1, chargé avant le combat</td></tr>
+        <tr><td>Actifs et effets à usage unique</td><td>une fois</td></tr>
       </table>
-      <p>Le combo est déroulé <strong>attaque par attaque</strong>, parce que les passifs qui scalent sur les
-         PV <em>actuels</em> de la cible tapent moins fort à mesure qu'elle descend. La Lame du roi déchu est
-         le cas le plus net : calculer 4 × 9 % des PV max la surestime de plus du double.</p>
-      <p>Les dégâts continuent d'être comptés après la mort théorique de la cible. Le chiffre mesure la
-         puissance brute, pas un temps de kill.</p>
+      <p>Le combo est déroulé <strong>attaque par attaque</strong>. Les passifs qui scalent sur les PV
+         <em>actuels</em> tapent moins fort à mesure que la cible descend, et les seuils sont lus au moment de
+         chaque coup — Coup de Grâce ne paie qu'une fois la cible réellement sous 40 %.</p>
+      <p><strong>Cliquez sur le nom d'une posture</strong> dans un build pour ouvrir le détail complet : la
+         composition de chaque attaque, les PV restants de la cible après chacune, et les totaux.</p>
 
       <h3>D'où viennent les chiffres</h3>
       <table>
-        <tr><th>Données</th><th>Source</th></tr>
-        <tr><td>Stats, prix et valeurs de passifs</td><td>Wiki League of Legends, Module:ItemData</td></tr>
-        <tr><td>Valeurs des runes</td><td>Données runesReforged de Riot</td></tr>
-        <tr><td>Icônes et noms traduits</td><td>Riot Data Dragon</td></tr>
+        <tr><td>Stats, prix et valeurs de passifs</td><td>Wiki League of Legends</td></tr>
+        <tr><td>Valeurs, noms et icônes des runes</td><td>Riot Data Dragon</td></tr>
         <tr><td>Formules des compétences</td><td>Portées du tableur d'origine, vérifiées une à une</td></tr>
       </table>
-      <p><strong>Valeurs mêlée partout</strong>, puisque Udyr est un corps-à-corps. Quand le wiki distingue
-         mêlée et distance — Fil de brume 9 % / 6 %, Fendoir titanesque 1 % / 0,5 %, Fanfare 30 % / 20 % de
-         vitesse d'attaque — c'est la valeur mêlée qui est retenue. Seuls les items de Faille de l'invocateur
-         en 5v5 sont inclus.</p>
+      <p><strong>Valeurs mêlée partout.</strong> Les 124 items de la Faille ont une fiche ; 99 ont un effet
+         calculé, les autres sont listés avec leur texte pour que vous voyiez pourquoi ils ne font rien ici.</p>
 
       <h3>Conventions</h3>
-      <p><strong>Rien ou le maximum.</strong> Un passif conditionnel est soit coupé, soit compté à fond —
-         Conquérant à 12 charges, Couperet noir à 5, runes Légende au plafond. Chacun a son interrupteur :
-         <strong>COND</strong> sur les items, <strong>ON / OFF</strong> sous les runes.</p>
-      <p><strong>Ordre de pénétration :</strong> réduction d'armure d'abord, puis létalité, puis pénétration en pourcentage.</p>
-      <p><strong>Le crit</strong> suit la formule du jeu, <code>1 + chance × (0,75 + bonus de dégâts critiques)</code>.</p>
-      <p><strong>La vitesse de déplacement</strong> applique les vrais paliers : ×0,8 + 83 au-dessus de 415, ×0,5 + 230 au-dessus de 490.</p>
-      <p><strong>Le niveau monte à 20.</strong> Les rampes ne sont pas uniformes — certains effets plafonnent
-         encore à 18 (Hullbreaker, Arc-bouclier immortel), d'autres à 20 (Tueur de krakens, Buveur de sang,
-         le fragment de PV scalants), donc chaque rampe est réglée individuellement.</p>
-      <p><strong>Les soins</strong> séparent leurs deux sources, parce qu'elles ne fonctionnent pas pareil : le
-         vol de vie ne se déclenche que sur les dégâts d'auto-attaque, l'omnivampirisme sur tous les dégâts.
-         La puissance de soins et boucliers majore les soins lancés, pas le vampirisme.</p>
-      <p><strong>Les PV effectifs</strong> intègrent boucliers et réduction de dégâts :
-         <code>(PV + boucliers) × (1 + résistance / 100) ÷ (1 − réduction)</code>.</p>
+      <p><strong>Rien ou le maximum.</strong> Un passif conditionnel est soit coupé, soit compté à fond. Les
+         items utilisent le bouton <strong>COND</strong>, les runes <strong>ON / OFF</strong>.</p>
+      <p><strong>Ordre de pénétration :</strong> réduction, puis létalité, puis pénétration en pourcentage.</p>
+      <p><strong>Le crit</strong> suit le jeu : <code>1 + chance × (0,75 + bonus de dégâts critiques)</code>.
+         <strong>La vitesse d'attaque</strong> est multiplicative sur la base et inclut 3 % de croissance par
+         niveau, plafonnée à 2,5. <strong>La vitesse de déplacement</strong> applique les vrais paliers.</p>
+      <p><strong>Le niveau monte à 20.</strong> Les rampes sont réglées effet par effet, certains plafonnant
+         encore à 18.</p>
+      <p><strong>Les soins</strong> séparent leurs sources : le vol de vie ne se déclenche que sur les dégâts
+         d'auto-attaque, l'omnivampirisme sur tout. <strong>Les PV effectifs</strong> intègrent boucliers et
+         réduction de dégâts.</p>
 
       <h3>Rechercher un item</h3>
-      <p>La recherche comprend les stats autant que les noms.</p>
+      <p>La recherche lit les stats et les noms, dans les deux langues, accents ignorés.</p>
       <table>
         <tr><td><code>leth</code></td><td>tous les items avec de la létalité, le meilleur en premier</td></tr>
         <tr><td><code>ad crit</code></td><td>les items qui portent les deux</td></tr>
         <tr><td><code>ah&gt;=20</code></td><td>au moins 20 d'accélération de compétences</td></tr>
-        <tr><td><code>gold&lt;1300</code></td><td>les moins chers d'abord</td></tr>
+        <tr><td><code>bottes</code></td><td>toutes les bottes</td></tr>
         <tr><td><code>passive</code></td><td>uniquement les items dont le passif est calculé</td></tr>
       </table>
 
-      <h3>Sauvegarder ses builds</h3>
-      <p>Deux voies. <strong>Sauver / Suppr</strong> garde des pages nommées dans le navigateur.
-         <strong>Exporter / Importer</strong> écrit un fichier <code>udyr-builds.json</code> transportable,
-         que tu peux déplacer d'une machine à l'autre ou partager.</p>
-      <p>Les sauvegardes sont liées à un navigateur et à une adresse : elles ne suivent donc pas d'une copie
-         locale vers la version en ligne. L'export est le format d'échange.</p>
+      <h3>Enregistrer ses builds</h3>
+      <p>Sous chaque carte : <strong>Enregistrer sous</strong> place le build dans votre bibliothèque,
+         <strong>Mettre à jour</strong> l'écrase, <strong>Supprimer</strong> le retire, <strong>Vider</strong>
+         nettoie la carte sans toucher aux copies enregistrées. N'importe quel build enregistré se charge dans
+         n'importe lequel des trois emplacements.</p>
+      <p>Les sauvegardes vivent dans votre navigateur, liées à une adresse. <strong>Exporter</strong> écrit un
+         fichier transportable qui emporte toute votre bibliothèque — pour changer de machine ou faire une
+         copie de sécurité.</p>
+
+      <h3>Classement</h3>
+      <p>Connectez-vous avec Discord pour publier un build et liker ceux des autres. Le classement se fait par
+         likes, avec des tris par date, auteur ou rang, et des filtres sur les comptes validés et les streamers.</p>
+      <p>Chaque entrée montre ses items, runes et fragments, une description, et <strong>le patch sur lequel
+         elle a été enregistrée</strong> — un patch dépassé s'affiche en rouge. Vous pouvez charger n'importe
+         quel build dans un de vos emplacements pour le comparer au vôtre, et mettre à jour les vôtres sans
+         perdre leurs likes.</p>
+      <p>Les pseudos et les rangs sont <strong>déclarés par leur auteur et non vérifiés</strong>. Les badges,
+         eux, sont attribués par le propriétaire du site.</p>
+
+      <h3>Retours</h3>
+      <p>Le bouton <strong>Un retour</strong> reçoit un bug ou une idée, sans aucun compte. En laissant la case
+         cochée, vos trois builds sont joints — c'est en général ce qui rend un bug reproductible.</p>
 
       <h3>Limites connues</h3>
       <ul>
-        <li>Les effets qui ne touchent que les cibles secondaires — le Fendoir de la famille Hydre — sont
-            listés mais n'infligent rien, puisqu'on mesure la cible unique.</li>
+        <li>Les effets qui ne touchent que les cibles secondaires, comme le Fendoir des Hydre, n'infligent rien
+            ici — on mesure la cible unique.</li>
         <li>Masque abyssal et Flamme d'ombre n'amplifient que le magique, alors que le moteur applique leur
-            bonus à tout le combo : coupe-les sur un build AD.</li>
-        <li>Terminus alterne Lumière et Ténèbres : sur 4 attaques tu obtiens 2 charges de chaque, pas 3.</li>
-        <li>Lance de Shojin amplifie les dégâts de compétence, de familier et de proc, pas les auto-attaques.</li>
+            bonus à tout : coupez-les sur un build AD.</li>
+        <li>Terminus alterne Lumière et Ténèbres : sur 4 attaques, 2 charges de chaque, pas 3.</li>
         <li>Danse macabre diffère les dégâts au lieu de les supprimer — généreux hors burst.</li>
-        <li>La croissance des stats de base est extrapolée aux niveaux 19 et 20 depuis la courbe standard.</li>
+        <li>La croissance des stats de base est extrapolée aux niveaux 19 et 20.</li>
+        <li>Les dégâts continuent d'être comptés après la mort théorique de la cible : on mesure la puissance,
+            pas un temps de kill.</li>
       </ul>
 
       <h3>Crédits</h3>
@@ -2895,7 +2925,7 @@ function lbRender(){
         <b>${esc(r.name)}</b>
         <em>${r.streamer ? `<svg class="lbstream" viewBox="0 0 24 24" aria-hidden="true"><title>${TR("streamerWhy")}</title>
              <path fill="currentColor" d="M4.3 3 3 6.2v13h4.5V22h2.5l2.7-2.8h3.6L21 14.4V3H4.3zm2 1.8h13v8.7l-2.6 2.6h-4.2L10.2 18.6V16.1H6.3V4.8zm4.4 3v5.1h1.8V7.8h-1.8zm4.9 0v5.1h1.8V7.8h-1.8z"/>
-           </svg> ` : ""}${r.verified ? `<span class="lbvip" title="${TR("verifiedWhy")}">✔</span> ` : ""}${esc(r.author)}${r.summoner ? " · " + esc(r.summoner) : ""}${r.rank ? ` <span class="lbrk" style="color:${RANK_COLOR[r.rank] || "var(--q)"};border-color:${RANK_COLOR[r.rank] || "var(--q)"}">${esc(r.rank)}</span>` : ""}
+           </svg> ` : ""}${r.verified ? `<span class="lbvip" title="${TR("verifiedWhy")}">✔</span> ` : ""}<span class="lbwho">${esc(r.author)}${r.summoner ? " · " + esc(r.summoner) : ""}</span>${r.rank ? ` <span class="lbrk" style="color:${RANK_COLOR[r.rank] || "var(--q)"};border-color:${RANK_COLOR[r.rank] || "var(--q)"}">${esc(r.rank)}</span>` : ""}
             · <span class="${old ? "lbold" : ""}">${TR("patch")} ${esc(r.patch)}</span>
             · ${new Date(r.created_at).toLocaleDateString()}</em>
         ${r.notes ? `<p class="lbnotes">${esc(r.notes)}</p>` : ""}
