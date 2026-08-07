@@ -138,18 +138,24 @@ main{max-width:2200px;margin:0 auto;padding:22px 28px 80px}
   font-family:var(--display);font-weight:400;font-size:15px;letter-spacing:.2em;
   text-transform:uppercase;margin:0;
 }
-.bmini{display:flex;gap:3px;align-items:center;margin-left:8px}
-.bmini select{
+.blib{
+  display:flex;gap:5px;align-items:center;flex-wrap:wrap;
+  padding:8px 14px 8px 17px;border-bottom:1px solid var(--line-soft);
+}
+.blib select{
   background:var(--panel-2);border:1px solid var(--line-soft);border-radius:2px;color:var(--ink-dim);
-  font-family:var(--sans);font-size:10.5px;padding:2px 4px;max-width:112px;
+  font-family:var(--sans);font-size:11px;padding:3px 5px;max-width:130px;flex:1;min-width:88px;
 }
-.bmini button{
-  border:1px solid var(--line-soft);background:var(--panel-2);color:var(--ink-faint);
-  border-radius:2px;width:20px;height:20px;font-family:var(--mono);font-size:12px;line-height:1;
+.blib select:focus{outline:none;border-color:var(--q)}
+.blib button{
+  border:1px solid var(--line-soft);background:var(--panel-2);color:var(--ink-faint);border-radius:2px;
+  padding:3px 8px;font-family:var(--display);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
 }
-.bmini button:hover:not(:disabled){border-color:var(--q);color:var(--q)}
-.bmini button:disabled{opacity:.35;cursor:default}
-.bmini select:focus{outline:none;border-color:var(--q)}
+.blib button:hover:not(:disabled){border-color:var(--q);color:var(--q)}
+.blib button:disabled{opacity:.3;cursor:default}
+.blib .danger:hover:not(:disabled){border-color:var(--bad);color:var(--bad)}
+.blib .clearb{margin-left:auto;border-color:var(--line)}
+.blib .clearb:hover{border-color:var(--bad);color:var(--bad)}
 .gold{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--q)}
 .gold::after{content:" gold";color:var(--ink-faint);font-size:10px}
 
@@ -452,6 +458,9 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
   font-family:var(--sans);font-size:12px;padding:3px 6px;text-transform:none;letter-spacing:0}
 .lbnotes{margin:4px 0 0;font-size:11.5px;color:var(--ink-dim);line-height:1.45}
 .lbrk{color:var(--q)}
+.lbvip{color:var(--e);font-weight:700}
+.lbstream{color:var(--r);font-weight:700}
+.lbsel input{accent-color:var(--q)}
 .lbbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0 14px}
 .lbrow{display:flex;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line-soft)}
 .lbrank{font-family:var(--display);font-size:16px;color:var(--ink-faint);width:26px;text-align:right}
@@ -1916,10 +1925,20 @@ const L10N = {
   saveTitle:["save these builds under a name","enregistrer ces builds sous un nom"],
   namePrompt:["Name this build page:","Nom de cette page de builds :"],
   nameBuild:["Name this build:","Nom de ce build :"],
-  saveBuild:["save this build on its own","enregistrer ce build seul"],
+  saveBuild:["save this build under a new name","enregistrer ce build sous un nouveau nom"],
   loadBuild:["load one of your builds here","charger un de vos builds ici"],
-  delBuild:["delete","supprimer"], updBuild:["update this build","mettre à jour ce build"],
+  delBuild:["Delete","Supprimer"],
+  clearBuild:["Empty","Vider"], saveAsNew:["Save as","Enregistrer sous"],
+  clearConfirm:["Empty \"%s\"? Saved copies are kept.","Vider « %s » ? Les copies enregistrées sont conservées."],
+  cleared:["build emptied","build vidé"],
+  clearBuild:["Empty","Vider"], saveAsNew:["Save as","Enregistrer sous"],
+  clearConfirm:["Empty \"%s\"? Items, runes and shards will be cleared.",
+                "Vider « %s » ? Items, runes et fragments seront effacés."], updBuild:["Update","Mettre à jour"],
   delNothing:["pick one of your builds first","sélectionnez d'abord un de vos builds"],
+  updTitle:["overwrite \"%s\" in your library","écraser « %s » dans votre bibliothèque"],
+  delTitle:["remove \"%s\" from your library","retirer « %s » de votre bibliothèque"],
+  clearTitle:["empty the three item slots, runes and levels of this card",
+              "vider les items, runes et niveaux de cette carte"],
   delConfirm:["Delete the build \"%s\"?","Supprimer le build « %s » ?"],
   myBuilds:["— my builds —","— mes builds —"], noBuilds:["no saved builds","aucun build enregistré"],
   overwrite:["A page called \"%s\" already exists. Replace it?","Une page « %s » existe déjà. La remplacer ?"],
@@ -1945,7 +1964,9 @@ const L10N = {
   summoner:["Summoner name","Pseudo LoL"], rank:["Rank","Rang"],
   sortBy:["Sort","Tri"], sortLikes:["most liked","plus likés"], sortRecent:["newest","plus récents"],
   sortAuthor:["author","auteur"], sortRank:["rank","rang"],
-  filterRank:["Rank","Rang"], allRanks:["all ranks","tous rangs"], boardEmpty:["nothing published yet","rien de publié pour l'instant"],
+  filterRank:["Rank","Rang"], verifiedOnly:["verified only","validés seulement"],
+  verifiedWhy:["account marked as trusted by the site owner",
+               "compte marqué comme fiable par le propriétaire du site"], allRanks:["all ranks","tous rangs"], boardEmpty:["nothing published yet","rien de publié pour l'instant"],
   notSetUp:["Leaderboard not configured","Classement non configuré"],
   notSetUpText:["Not configured.","Non configuré."],
   failKeys:["The database keys are missing from the page source.",
@@ -2185,7 +2206,7 @@ const GAME_PATCH = (() => {
 
 const RANKS = ["Iron","Bronze","Silver","Gold","Platinum","Emerald","Diamond","Master","Grandmaster","Challenger"];
 let sb = null, me = null, board = [], myLikes = new Set(), boardNote = "";
-let lbSort = "likes", lbRank = "";
+let lbSort = "likes", lbRank = "", lbVip = false, lbStream = false;
 const lbReady = () => !!sb;
 
 let lbFail = "";
@@ -2197,12 +2218,20 @@ function lbInit(){
   }catch(err){ lbFail = "client:" + err.message; return; }
   sb.auth.getSession().then(({data}) => {
     me = data.session ? data.session.user : null;
-    if(me) lbLoad();
+    if(me) lbTouchProfile();
+    lbLoad();
   });
   sb.auth.onAuthStateChange((_e, session) => {
     me = session ? session.user : null;
+    if(me) lbTouchProfile();
     lbRender();
   });
+}
+/* first sign-in creates the row the moderation flags live on */
+async function lbTouchProfile(){
+  if(!me) return;
+  try{ await sb.from("profiles").insert({id:me.id, handle:meName()}); }
+  catch(err){ /* already there, which is fine */ }
 }
 const meName = () => {
   if(!me) return "";
@@ -2219,6 +2248,8 @@ async function lbLoad(){
   if(!lbReady()) return;
   let q = sb.from("leaderboard").select("*");
   if(lbRank) q = q.eq("rank", lbRank);
+  if(lbVip)  q = q.eq("verified", true);
+  if(lbStream) q = q.eq("streamer", true);
   if(lbSort === "likes")   q = q.order("likes", {ascending:false}).order("created_at", {ascending:false});
   if(lbSort === "recent")  q = q.order("created_at", {ascending:false});
   if(lbSort === "author")  q = q.order("author", {ascending:true});
@@ -2494,13 +2525,15 @@ function card(b, bi, R){
   <section class="card">
     <div class="card-head">
       <h2>${esc(b.name)}</h2>
-      <div class="bmini">
-        <select data-bload="${bi}" title="${TR("loadBuild")}"></select>
-        <button data-bupd="${bi}" title="${TR("updBuild")}">&#10227;</button>
-        <button data-bsave="${bi}" title="${TR("saveBuild")}">+</button>
-        <button data-bdel="${bi}" title="${TR("delBuild")}">×</button>
-      </div>
       <div class="gold">${n0(R.gold)}</div>
+    </div>
+
+    <div class="blib">
+      <select data-bload="${bi}" title="${TR("loadBuild")}"></select>
+      <button data-bupd="${bi}">${TR("updBuild")}</button>
+      <button data-bsave="${bi}" title="${TR("saveBuild")}">${TR("saveAsNew")}</button>
+      <button data-bdel="${bi}" class="danger">${TR("delBuild")}</button>
+      <button data-bclear="${bi}" class="clearb">${TR("clearBuild")}</button>
     </div>
 
     <div class="ranks">
@@ -2772,6 +2805,8 @@ function lbRender(){
           <option value="author">${TR("sortAuthor")}</option>
           <option value="rank">${TR("sortRank")}</option>
         </select></label>
+      <label class="lbsel"><input type="checkbox" id="lbVip" ${lbVip ? "checked" : ""}> ${TR("verifiedOnly")}</label>
+      <label class="lbsel"><input type="checkbox" id="lbStream" ${lbStream ? "checked" : ""}> ${TR("streamerOnly")}</label>
       <label class="lbsel">${TR("filterRank")}
         <select id="lbRank"><option value="">${TR("allRanks")}</option>${RANKS.map(r =>
           `<option value="${r}">${r}</option>`).join("")}</select></label>
@@ -2784,7 +2819,7 @@ function lbRender(){
       <div class="lbrank">${i+1}</div>
       <div class="lbmain">
         <b>${esc(r.name)}</b>
-        <em>${esc(r.author)}${r.summoner ? " · " + esc(r.summoner) : ""}${r.rank ? ` · <span class="lbrk">${esc(r.rank)}</span>` : ""}
+        <em>${r.streamer ? `<span class="lbstream" title="${TR("streamerWhy")}">▶</span> ` : ""}${r.verified ? `<span class="lbvip" title="${TR("verifiedWhy")}">✔</span> ` : ""}${esc(r.author)}${r.summoner ? " · " + esc(r.summoner) : ""}${r.rank ? ` · <span class="lbrk">${esc(r.rank)}</span>` : ""}
             · <span class="${old ? "lbold" : ""}">${TR("patch")} ${esc(r.patch)}</span>
             · ${new Date(r.created_at).toLocaleDateString()}</em>
         ${r.notes ? `<p class="lbnotes">${esc(r.notes)}</p>` : ""}
@@ -2826,6 +2861,10 @@ function lbRender(){
   });
   const so = el.querySelector("#lbSort");
   if(so){ so.value = lbSort; so.addEventListener("change", e => { lbSort = e.target.value; lbLoad(); }); }
+  const st = el.querySelector("#lbStream");
+  if(st) st.addEventListener("change", e => { lbStream = e.target.checked; lbLoad(); });
+  const vp = el.querySelector("#lbVip");
+  if(vp) vp.addEventListener("change", e => { lbVip = e.target.checked; lbLoad(); });
   const rk = el.querySelector("#lbRank");
   if(rk){ rk.value = lbRank; rk.addEventListener("change", e => { lbRank = e.target.value; lbLoad(); }); }
   on2("button[data-like]", "click", e => lbLike(e.currentTarget.dataset.like));
@@ -2944,10 +2983,32 @@ function bind(){
       else { state.builds[+sel.dataset.bload].libName = null; render(); }
     });
   });
+  grid.querySelectorAll("button[data-bclr]").forEach(el => {
+    el.addEventListener("click", () => {
+      const bi = +el.dataset.bclr;
+      if(!confirm(TR("clearConfirm").replace("%s", state.builds[bi].name))) return;
+      const fresh = mk("Build " + (bi + 1));
+      fresh.level = state.builds[bi].level;   /* level and ranks are worth keeping */
+      fresh.q = state.builds[bi].q; fresh.w = state.builds[bi].w;
+      fresh.e = state.builds[bi].e; fresh.r = state.builds[bi].r;
+      state.builds[bi] = fresh;
+      render();
+    });
+  });
+  grid.querySelectorAll("button[data-bclear]").forEach(el => {
+    el.title = TR("clearTitle");
+    el.addEventListener("click", () => {
+      const bi = +el.dataset.bclear;
+      if(!confirm(TR("clearConfirm").replace("%s", state.builds[bi].name))) return;
+      state.builds[bi] = mk("Build " + (bi + 1));
+      saveNote = TR("cleared");
+      render();
+    });
+  });
   grid.querySelectorAll("button[data-bupd]").forEach(el => {
     const bi = +el.dataset.bupd, cur = state.builds[bi].libName;
     el.disabled = !cur;
-    el.title = cur ? TR("updBuild") + " — " + cur : TR("delNothing");
+    el.title = cur ? TR("updTitle").replace("%s", cur) : TR("delNothing");
     el.addEventListener("click", () => updateOneBuild(bi));
   });
   grid.querySelectorAll("button[data-bsave]").forEach(el => {
@@ -2958,7 +3019,7 @@ function bind(){
     const sel = grid.querySelector(`select[data-bload="${bi}"]`);
     const target = (sel && sel.value) || state.builds[bi].libName || "";
     el.disabled = !target;
-    el.title = target ? TR("delBuild") + " — " + target : TR("delNothing");
+    el.title = target ? TR("delTitle").replace("%s", target) : TR("delNothing");
     el.addEventListener("click", () => {
       if(target && confirm(TR("delConfirm").replace("%s", target))) deleteOneBuild(target);
     });
