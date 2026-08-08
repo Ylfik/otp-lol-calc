@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B1118">
 <title>Udyr Calc — Damage Calculator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -562,6 +563,75 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
   .brand{width:100%;margin-right:0}
   .bar .dlt{display:none}
 }
+
+/* ------------------------------------------------------------
+   Phones. Most people arriving from a Discord link are on one.
+   ------------------------------------------------------------ */
+@media (max-width:720px){
+  main{padding:14px 12px 60px}
+
+  .hero{min-height:130px}
+  .hero-in{padding:0 14px 12px;gap:8px}
+  .hero .brand h1{font-size:26px}
+  .hero-act{margin-left:0;width:100%;gap:6px}
+  .helpbtn{padding:4px 9px;font-size:9.5px}
+
+  .top{padding:10px 12px}
+  .top-in{gap:10px}
+  .field input{width:64px}
+  .sepv{display:none}
+  .seg button{padding:5px 9px;font-size:10px}
+
+  /* one card at a time, with everything inside it in a single column */
+  .grid{gap:14px}
+  .card-head{padding:10px 12px 8px 14px;flex-wrap:wrap}
+  .card-head h2{font-size:14px}
+  .gold{font-size:11px}
+  .blib{padding:7px 12px 7px 14px}
+  .blib select{max-width:none;min-width:70px}
+  .blib button{padding:3px 6px;font-size:9px}
+
+  .ranks{gap:8px;padding:10px 12px}
+  .rank{min-width:60px}
+  .slots{padding:10px 12px 10px 14px}
+  .runerow,.shardrow,.stats,.abil,.totals,.emptyhint{padding-left:14px;padding-right:12px}
+  .stats{grid-template-columns:1fr 1fr;gap:12px}
+  .totals{grid-template-columns:1fr}
+  .rtile{width:38px;height:38px}
+  .rtile.key{width:46px;height:46px}
+
+  /* the comparison keeps its bars but loses the side numbers */
+  .compare{padding:14px 12px 16px}
+  .bar .lbl{width:44px;font-size:9px}
+  .bar .val{width:56px;font-size:11.5px}
+
+  /* full-bleed panels, they were sized for a desktop window */
+  .overlay{padding:0;align-items:stretch}
+  .picker,.help,.help.wide{width:100%;max-height:100%;border-radius:0;border:none}
+  .helpbody{padding:4px 14px 22px}
+  .helpbody table{font-size:11.5px}
+  .lbform{grid-template-columns:1fr}
+
+  /* a board row stacks: who, then the build, then the actions */
+  .lbrow{flex-wrap:wrap;gap:8px;padding:10px}
+  .lbrank{width:auto;font-size:15px}
+  .lbmain{flex:1 1 100%;order:2}
+  .lbacts{flex:1 1 100%;order:3;justify-content:flex-start;flex-wrap:wrap}
+  .lbacts select,.lbacts button{font-size:11px}
+  .lbitems .iicon{width:30px;height:30px}
+  .lbitems .ricon{width:25px;height:25px}
+  .lbitems .ricon.key{width:29px;height:29px}
+
+  #updBar{left:12px;right:12px;transform:none;justify-content:space-between}
+  .foot{margin-top:24px}
+}
+
+@media (max-width:420px){
+  .stats{grid-template-columns:1fr}
+  .hero .brand h1{font-size:22px}
+  .by{font-size:9px}
+}
+
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
@@ -1972,7 +2042,8 @@ function computeBuild(b, target){
   }
 
   D.combo = {q:makeCombo("q"), w:makeCombo("w"), e:makeCombo("e"), r:makeCombo("r")};
-  D.itemLines = D.combo.q.lines;
+  D.itemLines = D.combo.q.lines.slice().sort((a,b) => b.v - a.v);
+  D.comboRef  = D.combo.q.dmg;
   D.itemDmg   = D.itemLines.reduce((t,l) => t + l.v, 0);
 
   /* post-mitigation values shown in the ability breakdown */
@@ -2716,6 +2787,7 @@ function card(b, bi, R){
 
   const stat = (lab,val,dim) =>
     `<div class="stat ${dim?"z":""}"><span>${lab}</span><b>${val}</b></div>`;
+  const share = v => D.comboRef > 0 ? `  ${nf0.format(Math.round(v / D.comboRef * 100))}%` : "";
   const statHi = (lab,val) =>
     `<div class="stat hi"><span>${lab}</span><b>${val}</b></div>`;
 
@@ -2913,8 +2985,8 @@ function card(b, bi, R){
 
     ${(D.runeLines.length || D.runeHealLines.length || D.itemLines.length) ? `<div class="sect-h">${TR("passiveOut")}</div>
     <div class="totals runedmg">
-      ${D.itemLines.map(l => stat(esc(l.n), n0(l.v)+" dmg")).join("")}
-      ${D.runeLines.map(l => stat(esc(l.n), n0(l.v)+" dmg")).join("")}
+      ${D.itemLines.map(l => stat(esc(l.n), n0(l.v)+share(l.v))).join("")}
+      ${D.runeLines.slice().sort((a,b) => b.v - a.v).map(l => stat(esc(l.n), n0(l.v)+share(l.v))).join("")}
       ${D.runeHealLines.map(l => stat(esc(l.n), n0(l.v)+" heal")).join("")}
       ${D.armorRed ? stat(TR("shredAr"), n0(D.armorRed)+"%") : ""}
       ${D.mrRed ? stat(TR("shredMr"), n0(D.mrRed)+"%") : ""}
