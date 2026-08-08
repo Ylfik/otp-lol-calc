@@ -5,7 +5,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0B1118">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230B1118'/%3E%3Crect x='10' y='10' width='8' height='44' rx='4' fill='%23E8A13C'/%3E%3Crect x='22' y='10' width='8' height='44' rx='4' fill='%234EA8C4'/%3E%3Crect x='34' y='10' width='8' height='44' rx='4' fill='%238FA85E'/%3E%3Crect x='46' y='10' width='8' height='44' rx='4' fill='%23D2603F'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1118'/%3E%3Cg stroke='%23E8A13C' stroke-width='7' stroke-linecap='round' fill='none'%3E%3Cpath d='M17 12 C24 26 26 40 23 53'/%3E%3Cpath d='M32 10 C39 25 41 40 38 54'/%3E%3Cpath d='M47 13 C54 27 55 40 52 52'/%3E%3C/g%3E%3C/svg%3E">
 <title>Udyr Calc — Damage Calculator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -250,6 +250,11 @@ main{max-width:2200px;margin:0 auto;padding:22px 28px 80px}
 }
 .emptyhint p{margin:0;font-size:12px;color:var(--ink-dim);line-height:1.5}
 .emptyhint .dim{margin-top:5px;font-size:11px;color:var(--ink-faint)}
+.hintbtn{
+  margin-top:9px;border:1px solid var(--q);background:transparent;color:var(--q);border-radius:2px;
+  padding:4px 11px;font-family:var(--display);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+}
+.hintbtn:hover{background:var(--q);color:#10161d}
 .sect-h{
   font-family:var(--display);font-weight:300;font-size:10px;letter-spacing:.22em;text-transform:uppercase;
   color:var(--ink-faint);padding:12px 14px 5px 17px;border-top:1px solid var(--line-soft);
@@ -422,6 +427,8 @@ table.fxout tr.dim td{color:var(--ink-faint)}
 }
 .helpbtn:hover{background:var(--q);color:#10161d}
 a.helpbtn{text-decoration:none;display:inline-block}
+.helpbtn.primary{background:var(--q);color:#10161d;font-weight:600}
+.helpbtn.primary:hover{background:#f2b155}
 .help{
   background:var(--panel);border:1px solid var(--line);border-radius:3px;
   width:min(820px,100%);max-height:86vh;display:flex;flex-direction:column;
@@ -519,6 +526,14 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
 .lbstream{width:12px;height:12px;color:#a970ff;vertical-align:-1px;display:inline-block}
 .lbsel input{accent-color:var(--q)}
 .lbme{font-family:var(--display);letter-spacing:.08em;color:var(--ink)}
+.lbban{
+  border:1px solid var(--bad);border-left:3px solid var(--bad);border-radius:3px;
+  background:rgba(196,104,94,.08);padding:11px 14px;margin:10px 0 14px;
+}
+.lbban b{color:var(--bad);font-family:var(--display);letter-spacing:.08em;font-size:13px}
+.lbban p{margin:6px 0 0;font-size:12.5px;color:var(--ink-dim)}
+.lbban .dim{color:var(--ink-faint);font-size:11.5px}
+.lbadmin{border-color:var(--bad)!important;color:var(--bad)!important}
 .lbbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0 14px}
 .lbrow{
   display:flex;gap:14px;align-items:center;padding:10px 14px 10px 11px;margin-bottom:7px;
@@ -683,7 +698,7 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
       <small class="by">made by Ylfik</small>
     </div>
     <div class="hero-act">
-      <button class="helpbtn" id="btnHelp" data-i18n="help">How it works</button>
+      <button class="helpbtn primary" id="btnHelp" data-i18n="help">How it works</button>
       <button class="helpbtn" id="btnBoard" data-i18n="board">Leaderboard</button>
       <button class="helpbtn" id="btnReport" data-i18n="report">Feedback</button>
       <div class="seg" id="langSeg"><button data-l="en" aria-pressed="true">EN</button><button data-l="fr" aria-pressed="false">FR</button></div>
@@ -2264,6 +2279,11 @@ const L10N = {
   signInDiscord:["Sign in with Discord","Se connecter avec Discord"],
   signInWhy:["needed to publish or like","nécessaire pour publier ou liker"],
   signOut:["Sign out","Déconnexion"],
+  youAreBanned:["Your account can no longer publish or like.",
+                "Votre compte ne peut plus publier ni liker."],
+  bannedHow:["If you think this is a mistake, use the Feedback button and leave a contact.",
+             "Si vous pensez qu'il s'agit d'une erreur, utilisez le bouton Un retour en laissant un contact."],
+  adminDel:["remove this build","retirer ce build"],
   changeName:["Change name","Changer de pseudo"],
   chooseName:["Name shown on the leaderboard:","Pseudo affiché sur le classement :"],
   nameSaved:["name saved","pseudo enregistré"], signInFirst:["sign in to like","connectez-vous pour liker"],
@@ -2313,6 +2333,7 @@ const L10N = {
   openBrk:["see the full breakdown","voir le détail complet"],
   hint1:["Click a slot above to add an item, then a circle to pick your runes.",
          "Cliquez sur un emplacement ci-dessus pour ajouter un item, puis sur un rond pour choisir vos runes."],
+  hint3:["New here? Read the guide","Nouveau ? Lisez le mode d'emploi"],
   hint2:["Set the level and ability ranks at the top of the card, and pick a target type in the bar above.",
          "Réglez le niveau et les rangs de compétences en haut de la carte, et choisissez un type de cible dans la barre du dessus."],
   newVersion:["A newer version of the page is available.","Une version plus récente de la page est disponible."],
@@ -2574,6 +2595,7 @@ const RANK_COLOR = {
 };
 const RANKS = ["Iron","Bronze","Silver","Gold","Platinum","Emerald","Diamond","Master","Grandmaster","Challenger"];
 let sb = null, me = null, board = [], myLikes = new Set(), boardNote = "", myName = "";
+let myFlags = {banned:false, ban_reason:"", admin:false};
 let lbSort = "likes", lbRank = "", lbVip = false, lbStream = false;
 const lbReady = () => !!sb;
 
@@ -2601,9 +2623,12 @@ async function lbTouchProfile(){
   try{ await sb.from("profiles").insert({id:me.id, handle:discordName()}); }
   catch(err){ /* already there, which is fine */ }
   try{
-    const {data} = await sb.from("profiles").select("display_name").eq("id", me.id).single();
-    myName = (data && data.display_name) || "";
-  }catch(err){ myName = ""; }
+    const {data} = await sb.from("profiles")
+      .select("display_name, banned, ban_reason, admin").eq("id", me.id).single();
+    myName  = (data && data.display_name) || "";
+    myFlags = {banned:!!(data && data.banned), ban_reason:(data && data.ban_reason) || "",
+               admin:!!(data && data.admin)};
+  }catch(err){ myName = ""; myFlags = {banned:false, ban_reason:"", admin:false}; }
 }
 /* the name shown on the board: chosen if there is one, Discord otherwise */
 async function lbRename(){
@@ -2679,7 +2704,8 @@ async function lbUpdate(id, bi){
   lbLoad();
 }
 async function lbDelete(id){
-  if(!me || !confirm(TR("delConfirm").replace("%s", ""))) return;
+  const row = board.find(x => x.id === id);
+  if(!me || !confirm(TR("delConfirm").replace("%s", row ? row.name : ""))) return;
   await sb.from("builds").delete().eq("id", id);
   lbLoad();
 }
@@ -2942,6 +2968,7 @@ function card(b, bi, R){
       <div class="emptyhint">
         <p>${TR("hint1")}</p>
         <p class="dim">${TR("hint2")}</p>
+        <button class="hintbtn" data-openhelp>${TR("hint3")}</button>
       </div>` : ""}
 
     <div class="sect-h">${TR("runes")}</div>
@@ -3185,7 +3212,13 @@ function lbRender(){
     : `<div class="lbbar"><button class="tipbtn" id="lbIn">${TR("signInDiscord")}</button>
          <span class="tipstat">${TR("signInWhy")}</span></div>`;
 
-  const pub = me ? `<details class="lbpub" open><summary><span class="pubplus">+</span> ${TR("publishTitle")}</summary>
+  const banned = me && myFlags.banned ? `<div class="lbban">
+      <b>${TR("youAreBanned")}</b>
+      ${myFlags.ban_reason ? `<p>${esc(myFlags.ban_reason)}</p>` : ""}
+      <p class="dim">${TR("bannedHow")}</p>
+    </div>` : "";
+
+  const pub = me && !myFlags.banned ? `<details class="lbpub" open><summary><span class="pubplus">+</span> ${TR("publishTitle")}</summary>
       <div class="lbform">
         <label>${TR("whichBuild")}<select id="pubSlot">${[0,1,2].map(i =>
           `<option value="${i}">${esc(state.builds[i].name)}</option>`).join("")}</select></label>
@@ -3269,6 +3302,8 @@ function lbRender(){
           <option value="">${TR("loadInto")}</option>
           <option value="0">1</option><option value="1">2</option><option value="2">3</option>
         </select>
+        ${!mine && myFlags.admin ? `<button data-del="${r.id}" class="lbadmin"
+            title="${TR("adminDel")}">×</button>` : ""}
         ${mine ? `<select data-upd="${r.id}">
             <option value="">${TR("updateFrom")}</option>
             <option value="0">1</option><option value="1">2</option><option value="2">3</option>
@@ -3278,7 +3313,7 @@ function lbRender(){
     </div>`;
   }).join("");
 
-  el.innerHTML = head + pub + tools +
+  el.innerHTML = head + banned + pub + tools +
     (boardNote ? `<p class="tipstat">${esc(boardNote)}</p>` : "") +
     (rows || `<p>${TR("boardEmpty")}</p>`);
 
@@ -3470,6 +3505,12 @@ function bind(){
     el.title = target ? TR("delTitle").replace("%s", target) : TR("delNothing");
     el.addEventListener("click", () => {
       if(target && confirm(TR("delConfirm").replace("%s", target))) deleteOneBuild(target);
+    });
+  });
+  grid.querySelectorAll("button[data-openhelp]").forEach(el => {
+    el.addEventListener("click", () => {
+      const o = document.getElementById("helpOverlay");
+      if(o) o.classList.add("on");
     });
   });
   grid.querySelectorAll('button[data-brk]').forEach(el => {
