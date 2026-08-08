@@ -305,7 +305,22 @@ main{max-width:2200px;margin:0 auto;padding:22px 28px 80px}
 }
 .tcol.qc h6{color:var(--q)} .tcol.wc h6{color:var(--w)}
 .tcol.ec h6{color:var(--e)} .tcol.rc h6{color:var(--r)}
-.runedmg{grid-template-columns:repeat(2,1fr)}
+table.fxout{width:100%;border-collapse:collapse;margin:0 14px 14px 17px;width:calc(100% - 31px)}
+table.fxout th{
+  font-family:var(--display);font-weight:300;font-size:9px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-faint);text-align:left;padding:0 8px 4px 0;border-bottom:1px solid var(--line-soft);
+}
+table.fxout td{
+  font-size:11.5px;color:var(--ink-dim);padding:3px 8px 3px 0;border-bottom:1px solid var(--line-soft);
+}
+table.fxout tr:last-child td{border-bottom:none}
+table.fxout th:nth-child(2),table.fxout td:nth-child(2),
+table.fxout th:nth-child(3),table.fxout td:nth-child(3){
+  text-align:right;font-family:var(--mono);white-space:nowrap;width:74px;
+}
+table.fxout td:nth-child(2){color:var(--ink)}
+table.fxout td:nth-child(3){color:var(--q)}
+table.fxout tr.dim td{color:var(--ink-faint)}
 .fxrow{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--line-soft);flex-wrap:wrap}
 .fxrow:last-child{border-bottom:none}
 .fxname{min-width:210px}
@@ -2225,7 +2240,11 @@ const L10N = {
   attack:["Attack","Attaque"], awakened:["awakened","éveillée"],
   targetLeft:["target left","PV restants"], perAttack:["Attack by attack","Attaque par attaque"],
   endOfCombo:["Once per combo","Une fois par combo"], summary:["Total","Total"],
-  breakdownOf:["%s — full breakdown","%s — détail complet"], ultHaste:["ULT HASTE","ACCÉL. ULT"], awakenCD:["AWAKEN CD","RECHARGE ÉVEIL"],
+  breakdownOf:["%s — full breakdown","%s — détail complet"],
+  source:["Source","Source"], shareHead:["% of Q combo","% du combo Q"],
+  shareWhy:["share of the full Q combo damage this line accounts for",
+            "part des dégâts du combo Q complet que représente cette ligne"],
+  ultHaste:["ULT HASTE","ACCÉL. ULT"], awakenCD:["AWAKEN CD","RECHARGE ÉVEIL"],
   awakenAtk:["AWAKEN IN ATK","ÉVEIL EN ATQ"], awakenReal:["AWAKEN WHILE HITTING","ÉVEIL EN TAPANT"],
   comboTime:["4 attacks","4 attaques"], attackEvery:["1 attack","1 attaque"], dps:["damage / sec","dégâts / sec"],
   hps:["healing / sec","soins / sec"], dpsPer:["Damage per second","Dégâts par seconde"],
@@ -2787,7 +2806,7 @@ function card(b, bi, R){
 
   const stat = (lab,val,dim) =>
     `<div class="stat ${dim?"z":""}"><span>${lab}</span><b>${val}</b></div>`;
-  const share = v => D.comboRef > 0 ? `  ${nf0.format(Math.round(v / D.comboRef * 100))}%` : "";
+  const share = v => D.comboRef > 0 ? nf1.format(v / D.comboRef * 100) + " %" : "—";
   const statHi = (lab,val) =>
     `<div class="stat hi"><span>${lab}</span><b>${val}</b></div>`;
 
@@ -2984,13 +3003,15 @@ function card(b, bi, R){
     </div>
 
     ${(D.runeLines.length || D.runeHealLines.length || D.itemLines.length) ? `<div class="sect-h">${TR("passiveOut")}</div>
-    <div class="totals runedmg">
-      ${D.itemLines.map(l => stat(esc(l.n), n0(l.v)+share(l.v))).join("")}
-      ${D.runeLines.slice().sort((a,b) => b.v - a.v).map(l => stat(esc(l.n), n0(l.v)+share(l.v))).join("")}
-      ${D.runeHealLines.map(l => stat(esc(l.n), n0(l.v)+" heal")).join("")}
-      ${D.armorRed ? stat(TR("shredAr"), n0(D.armorRed)+"%") : ""}
-      ${D.mrRed ? stat(TR("shredMr"), n0(D.mrRed)+"%") : ""}
-    </div>` : ""}
+    <table class="fxout">
+      <tr><th>${TR("source")}</th><th>${TR("damage")}</th><th title="${TR("shareWhy")}">${TR("shareHead")}</th></tr>
+      ${[...D.itemLines, ...D.runeLines].sort((a,b) => b.v - a.v).map(l => `
+        <tr><td>${esc(l.n)}</td><td>${n0(l.v)}</td><td>${share(l.v)}</td></tr>`).join("")}
+      ${D.runeHealLines.map(l => `
+        <tr class="dim"><td>${esc(l.n)}</td><td>${n0(l.v)} ${TR("healing")}</td><td></td></tr>`).join("")}
+      ${D.armorRed ? `<tr class="dim"><td>${TR("shredAr")}</td><td>${n0(D.armorRed)}%</td><td></td></tr>` : ""}
+      ${D.mrRed ? `<tr class="dim"><td>${TR("shredMr")}</td><td>${n0(D.mrRed)}%</td><td></td></tr>` : ""}
+    </table>` : ""}
   </section>`;
 }
 
