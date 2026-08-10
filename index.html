@@ -5,7 +5,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0B1118">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1118'/%3E%3Cg stroke='%23E8A13C' stroke-width='7' stroke-linecap='round' fill='none'%3E%3Cpath d='M17 12 C24 26 26 40 23 53'/%3E%3Cpath d='M32 10 C39 25 41 40 38 54'/%3E%3Cpath d='M47 13 C54 27 55 40 52 52'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%230B1118'/%3E%3Cg rx='2'%3E%3Crect x='8'  y='9'  width='48' height='11' rx='2' fill='%23E8A13C'/%3E%3Crect x='8'  y='24' width='14' height='12' rx='2' fill='%234EA8C4'/%3E%3Crect x='25' y='24' width='14' height='12' rx='2' fill='%238FA85E'/%3E%3Crect x='42' y='24' width='14' height='12' rx='2' fill='%23D2603F'/%3E%3Crect x='8'  y='40' width='14' height='12' rx='2' fill='%232C3A48'/%3E%3Crect x='25' y='40' width='14' height='12' rx='2' fill='%234EA8C4' opacity='.55'/%3E%3Crect x='42' y='40' width='14' height='12' rx='2' fill='%23E8A13C' opacity='.55'/%3E%3C/g%3E%3C/svg%3E">
 <title>Udyr Calc — Damage Calculator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -525,7 +525,18 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
 .lbvip{color:var(--e);font-weight:700}
 .lbstream{width:12px;height:12px;color:#a970ff;vertical-align:-1px;display:inline-block}
 .lbsel input{accent-color:var(--q)}
-.lbme{font-family:var(--display);letter-spacing:.08em;color:var(--ink)}
+.acct{display:flex;align-items:center;gap:6px}
+.acctname{
+  font-family:var(--display);font-size:15px;letter-spacing:.1em;color:var(--q);
+  text-shadow:0 1px 6px rgba(0,0,0,.9);padding-right:2px;
+}
+.acctbtn{
+  border:1px solid var(--line);background:rgba(11,17,24,.6);color:var(--ink-faint);border-radius:2px;
+  padding:4px 9px;font-family:var(--display);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+}
+.acctbtn:hover{border-color:var(--q);color:var(--q)}
+.acctbtn.in{border-color:#5865F2;color:#8b93f5}
+.acctbtn.in:hover{background:#5865F2;color:#fff}
 .lbban{
   border:1px solid var(--bad);border-left:3px solid var(--bad);border-radius:3px;
   background:rgba(196,104,94,.08);padding:11px 14px;margin:10px 0 14px;
@@ -626,7 +637,10 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
   .hero{min-height:130px}
   .hero-in{padding:0 14px 12px;gap:8px}
   .hero .brand h1{font-size:26px}
-  .hero-act{margin-left:0;width:100%;gap:6px}
+  .hero-act{margin-left:0;width:100%;gap:6px;flex-wrap:wrap}
+  .acct{flex-wrap:wrap;gap:5px}
+  .acctname{font-size:13px}
+  .acctbtn{padding:3px 7px;font-size:9px}
   .helpbtn{padding:4px 9px;font-size:9.5px}
 
   .top{padding:10px 12px}
@@ -699,8 +713,10 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
     </div>
     <div class="hero-act">
       <button class="helpbtn primary" id="btnHelp" data-i18n="help">How it works</button>
+      <button class="helpbtn" id="btnNotes" data-i18n="patchNotes">Patch notes</button>
       <button class="helpbtn" id="btnBoard" data-i18n="board">Leaderboard</button>
       <button class="helpbtn" id="btnReport" data-i18n="report">Feedback</button>
+      <div class="acct" id="acctBar"></div>
       <div class="seg" id="langSeg"><button data-l="en" aria-pressed="true">EN</button><button data-l="fr" aria-pressed="false">FR</button></div>
     </div>
   </div>
@@ -725,6 +741,26 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
       <input id="tGpm" type="number" value="400" min="0" step="10" data-i18n-title="gpmWhy">
     </div>
 
+  </div>
+</div>
+
+<div class="overlay" id="pnOverlay">
+  <div class="help" role="dialog" aria-modal="true" aria-label="Patch notes">
+    <header>
+      <h2 data-i18n="patchNotes">Patch notes</h2>
+      <button class="closebtn" id="pnClose" aria-label="Close">esc</button>
+    </header>
+    <div class="helpbody" id="pnBody"></div>
+  </div>
+</div>
+
+<div class="overlay" id="pnOverlay">
+  <div class="help" role="dialog" aria-modal="true" aria-label="Patch notes">
+    <header>
+      <h2 data-i18n="patchNotes">Patch notes</h2>
+      <button class="closebtn" id="pnClose" aria-label="Close">esc</button>
+    </header>
+    <div class="helpbody" id="pnBody"></div>
   </div>
 </div>
 
@@ -807,6 +843,12 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
          of the <strong>full Q combo</strong> each one accounts for. It is the quickest way to see which item is
          actually carrying a build.</p>
 
+      <h3>Level and skill points</h3>
+      <p>Points follow the game: one per level, rank 2 at level 3, rank 3 at level 5, up to rank 6 at level 11.
+         Udyr has no ultimate, so all four stances share the same rules. A counter next to the ranks shows what
+         you have spent against what your level allows, and the ranks trim themselves if you go over or drop a
+         level. <strong>Triple Tonic</strong> adds a point at level 9.</p>
+
       <h3>Cost and timing</h3>
       <p>Each card shows its cost next to a rough idea of the gold you would have at that level, and the
          minute that level usually lands on: <code>6,300 / ~6,700 gold &nbsp; ~16 min</code>.</p>
@@ -862,11 +904,16 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
          — a patch that is no longer current shows in red. You can load any build into one of your slots to
          compare it with yours, and update your own entries without losing their likes.</p>
       <p>Summoner names and ranks are <strong>declared by their author and not verified</strong>. The badges,
-         on the other hand, are given by the site owner.</p>
+         on the other hand, are given by the site owner. You can also choose the name shown on your builds
+         rather than keep your Discord handle.</p>
+      <p>Builds that break the spirit of the place are removed, and an account can be barred from publishing.
+         Anyone barred is told why on this panel.</p>
 
       <h3>Feedback</h3>
       <p>The <strong>Feedback</strong> button takes a bug report or an idea, with no account needed. Leaving the
          attachment box ticked sends your three builds along, which is usually what makes a bug reproducible.</p>
+      <p><strong>Patch notes</strong>, next to it, lists what changed and when — so you can see whether what you
+         asked for has landed.</p>
 
       <h3>Known limits</h3>
       <ul>
@@ -914,6 +961,13 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
       <p>Sous chaque carte, un tableau liste les items et runes ayant infligé des dégâts, du plus lourd au plus
          léger, avec la part du <strong>combo Q complet</strong> que chacun représente. C'est le moyen le plus
          rapide de voir quel item porte réellement un build.</p>
+
+      <h3>Niveau et points de compétence</h3>
+      <p>Les points suivent le jeu : un par niveau, rang 2 au niveau 3, rang 3 au niveau 5, jusqu'au rang 6 au
+         niveau 11. Udyr n'a pas d'ultime, les quatre postures obéissent donc aux mêmes règles. Un compteur à
+         côté des rangs indique ce que vous avez dépensé sur ce que votre niveau autorise, et les rangs se
+         réajustent si vous dépassez ou redescendez de niveau. <strong>Triple tonique</strong> ajoute un point
+         au niveau 9.</p>
 
       <h3>Coût et timing</h3>
       <p>Chaque carte affiche son coût à côté d'un ordre d'idée de l'or dont vous disposeriez à ce niveau, et
@@ -977,11 +1031,16 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
          quel build dans un de vos emplacements pour le comparer au vôtre, et mettre à jour les vôtres sans
          perdre leurs likes.</p>
       <p>Les pseudos et les rangs sont <strong>déclarés par leur auteur et non vérifiés</strong>. Les badges,
-         eux, sont attribués par le propriétaire du site.</p>
+         eux, sont attribués par le propriétaire du site. Vous pouvez aussi choisir le pseudo affiché sur vos
+         builds plutôt que garder votre pseudo Discord.</p>
+      <p>Les builds qui sortent de l'esprit du lieu sont retirés, et un compte peut être privé de publication.
+         La personne concernée en connaît la raison sur ce panneau.</p>
 
       <h3>Retours</h3>
       <p>Le bouton <strong>Un retour</strong> reçoit un bug ou une idée, sans aucun compte. En laissant la case
          cochée, vos trois builds sont joints — c'est en général ce qui rend un bug reproductible.</p>
+      <p><strong>Nouveautés</strong>, juste à côté, liste ce qui a changé et quand — de quoi voir si ce que vous
+         avez demandé est arrivé.</p>
 
       <h3>Limites connues</h3>
       <ul>
@@ -1021,13 +1080,6 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
 
   <footer class="foot">
     <p class="ver" id="verLine"></p>
-    <p><strong>Udyr Calc</strong> — combo of reference: 4 basic attacks, 2 in the stance then
-       2 awakened. Item and rune values are taken from the League of Legends Wiki item and rune
-       data, melee column. Passives follow a nothing-or-max rule and are switched per build with
-       the <strong>COND</strong> and <strong>ON/OFF</strong> buttons.</p>
-    <p><strong>Made by Ylfik.</strong> Built from my own Google Sheets calculator and rewritten as a
-       web app with the help of an AI assistant, which wrote the code and cross-checked the values
-       against the official data. The model, the build choices and the testing are mine.</p>
     <p class="legal">Udyr Calc isn't endorsed by Riot Games and doesn't reflect the views or
        opinions of Riot Games or anyone officially involved in producing or managing Riot Games
        properties. Riot Games and all associated properties are trademarks or registered
@@ -2264,7 +2316,7 @@ const L10N = {
   storageBlocked:["browser storage is blocked here — use Export instead",
                   "le stockage du navigateur est bloqué ici — utilisez Exporter"],
   importB:["Import","Importer"], reset:["Reset","Réinit."], help:["How it works","Mode d'emploi"],
-  report:["Feedback","Un retour"],
+  report:["Feedback","Un retour"], patchNotes:["Patch notes","Nouveautés"], notes:["Patch notes","Notes de version"],
   fbIntro:["Tell me what is broken, or what you would like the tool to do. No account needed.",
            "Dites-moi ce qui ne va pas, ou ce que vous aimeriez que l'outil fasse. Aucun compte nécessaire."],
   fbKind:["Kind","Type"], fbBug:["Something is wrong","Quelque chose ne va pas"],
@@ -2553,6 +2605,66 @@ function fxLabel(lab){
    and the server will say the same about the current one. If the server
    is newer, the copy on screen is stale.
    ============================================================ */
+
+/* ============================================================
+   PATCH NOTES
+   Newest first. Add an entry at the top of the list on each update:
+   date, then one line per change in English and French.
+   ============================================================ */
+const PATCH_NOTES = [
+  {date:"2026.08.07", items:[
+    ["Leaderboard: publish, like, sort by likes, date, author or rank, filter on verified accounts and streamers.",
+     "Classement : publication, likes, tri par likes, date, auteur ou rang, filtres sur les comptes validés et les streamers."],
+    ["You choose the name shown on the board instead of being stuck with your Discord handle.",
+     "Vous choisissez le pseudo affiché sur le classement au lieu de subir votre pseudo Discord."],
+    ["Feedback button: report a bug or an idea without an account, with your builds attached.",
+     "Bouton Un retour : signaler un bug ou une idée sans compte, avec vos builds joints."],
+    ["Skill points are now limited by level, and Triple Tonic adds one at level 9.",
+     "Les points de compétence sont limités par le niveau, et Triple tonique en ajoute un au niveau 9."],
+    ["Magical Footwear was missing: your boots now gain their 10 move speed.",
+     "Chaussures magiques manquait : vos bottes gagnent bien leurs 10 de vitesse."],
+    ["Build cost is shown against a rough idea of the gold available at that level.",
+     "Le coût du build s'affiche face à un ordre d'idée de l'or disponible à ce niveau."],
+    ["A table under each card ranks items and runes by how much of the combo they carry.",
+     "Un tableau sous chaque carte classe items et runes selon leur part du combo."],
+    ["Target presets: squishy, bruiser, tank.",
+     "Préréglages de cible : fragile, bruiser, tank."],
+    ["The page now tells you when a newer version is online, instead of leaving you on a cached copy.",
+     "La page signale qu'une version plus récente est en ligne, au lieu de vous laisser sur une copie en cache."],
+    ["Phone layout.", "Mise en page pour téléphone."]
+  ]},
+  {date:"2026.08.06", items:[
+    ["Attack speed was additive and ignored level growth. It now follows the game, capped at 2.5.",
+     "La vitesse d'attaque était additive et ignorait la croissance par niveau. Elle suit le jeu, plafonnée à 2,5."],
+    ["Stance cooldowns, awaken cooldown by level bracket, and the 5% cut per attack.",
+     "Recharges des postures, recharge de l'éveil par palier de niveau, et les 5 % retirés par attaque."],
+    ["Coup de Grace and Cut Down are read at each hit rather than amplifying the whole combo.",
+     "Coup de Grâce et Abattage sont lus à chaque coup au lieu d'amplifier tout le combo."],
+    ["Press the Attack lands on the third attack, and its 8% only applies afterwards.",
+     "Coup de Poing tombe à la troisième attaque, et ses 8 % ne s'appliquent qu'ensuite."],
+    ["Click a stance name to see the combo broken down attack by attack.",
+     "Cliquez sur le nom d'une posture pour voir le combo décortiqué attaque par attaque."]
+  ]},
+  {date:"2026.08.05", items:[
+    ["Full French version, using Riot's own item, rune and ability names.",
+     "Version française complète, avec les noms d'items, de runes et de sorts de Riot."],
+    ["All 124 Summoner's Rift items have an entry; 99 have an effect in the maths.",
+     "Les 124 items de la Faille ont une fiche ; 99 ont un effet calculé."],
+    ["Black Cleaver was counted twice, as armour reduction and as penetration.",
+     "Couperet noir était compté deux fois, en réduction d'armure et en pénétration."],
+    ["Effective health now folds in shields and damage reduction.",
+     "Les PV effectifs intègrent boucliers et réduction de dégâts."],
+    ["Rune pages follow the client's rules: one rune per row, secondary tree separate.",
+     "Les pages de runes suivent les règles du client : une rune par ligne, arbre secondaire séparé."]
+  ]}
+];
+
+
+/* ============================================================
+   PATCH NOTES
+   Newest first. Add an entry at the top when you ship something.
+   ============================================================ */
+
 const LOADED_AT = new Date(document.lastModified);
 
 async function checkVersion(){
@@ -2903,10 +3015,13 @@ function render(){
   const res = state.builds.map(b => computeBuild(b, state.target));
   grid.innerHTML = state.builds.map((b,i) => card(b,i,res[i])).join("");
   cmp.innerHTML  = comparison(res);
-  document.getElementById("fxPanel").innerHTML = passivePanel();
+  const fx = document.getElementById("fxPanel");
+  const fxHtml = passivePanel();
+  fx.innerHTML = fxHtml;
+  fx.style.display = fxHtml ? "" : "none";
   bind();
   applyStatic();
-  if(typeof lbRender === "function") lbRender();
+  if(typeof acctRender === "function") acctRender();
 }
 
 function card(b, bi, R){
@@ -3193,7 +3308,24 @@ function passivePanel(){
     ${rows}`;
 }
 
+/* the account block lives in the banner, so signing in does not need the board open */
+function acctRender(){
+  const el = document.getElementById("acctBar");
+  if(!el) return;
+  if(!lbReady()){ el.innerHTML = ""; return; }
+  el.innerHTML = me
+    ? `<span class="acctname">${esc(meName())}</span>
+       <button class="acctbtn" id="acRen" title="${TR("changeName")}">${TR("changeName")}</button>
+       <button class="acctbtn" id="acOut" title="${TR("signOut")}">${TR("signOut")}</button>`
+    : `<button class="acctbtn in" id="acIn">${TR("signInDiscord")}</button>`;
+  const a = id => el.querySelector("#" + id);
+  if(a("acIn"))  a("acIn").addEventListener("click", lbSignIn);
+  if(a("acRen")) a("acRen").addEventListener("click", lbRename);
+  if(a("acOut")) a("acOut").addEventListener("click", lbSignOut);
+}
+
 function lbRender(){
+  acctRender();
   const el = document.getElementById("lbBody");
   if(!el) return;
   if(!lbReady()){
@@ -3205,12 +3337,9 @@ function lbRender(){
          lib: ${window.supabase ? "ok" : "—"}</p>`;
     return;
   }
-  const head = me
-    ? `<div class="lbbar"><span class="lbme">${esc(meName())}</span>
-         <button class="tipbtn" id="lbRen">${TR("changeName")}</button>
-         <button class="tipbtn" id="lbOut">${TR("signOut")}</button></div>`
-    : `<div class="lbbar"><button class="tipbtn" id="lbIn">${TR("signInDiscord")}</button>
-         <span class="tipstat">${TR("signInWhy")}</span></div>`;
+  const head = me ? "" :
+    `<div class="lbbar"><button class="tipbtn" id="lbIn">${TR("signInDiscord")}</button>
+       <span class="tipstat">${TR("signInWhy")}</span></div>`;
 
   const banned = me && myFlags.banned ? `<div class="lbban">
       <b>${TR("youAreBanned")}</b>
@@ -3916,6 +4045,18 @@ on("fbClose", "click", closeFb);
 if(fbOverlay) fbOverlay.addEventListener("click", e => { if(e.target === fbOverlay) closeFb(); });
 document.addEventListener("keydown", e => { if(e.key === "Escape") closeFb(); });
 on("btnReport", "click", () => { fbOverlay.classList.add("on"); });
+
+const pnOverlay = document.getElementById("pnOverlay");
+const closePn = () => pnOverlay && pnOverlay.classList.remove("on");
+on("pnClose", "click", closePn);
+if(pnOverlay) pnOverlay.addEventListener("click", e => { if(e.target === pnOverlay) closePn(); });
+document.addEventListener("keydown", e => { if(e.key === "Escape") closePn(); });
+on("btnNotes", "click", () => {
+  document.getElementById("pnBody").innerHTML = PATCH_NOTES.map(n => `
+    <h3>${esc(n.date)}</h3>
+    <ul>${n.items.map(it => `<li>${esc(isFR() ? it[1] : it[0])}</li>`).join("")}</ul>`).join("");
+  pnOverlay.classList.add("on");
+});
 on("fbSend", "click", async () => {
   const note = document.getElementById("fbNote");
   const msg  = document.getElementById("fbMsg").value.trim();
