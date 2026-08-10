@@ -782,7 +782,7 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
             <option value="idea" data-i18n="fbIdea">An idea to improve it</option>
           </select></label>
         <label><span data-i18n="fbContact">Contact, optional</span>
-          <input id="fbContact" maxlength="80" placeholder="Discord"></label>
+          <input id="fbContact" maxlength="80" data-i18n-ph="fbContactPh"></label>
         <label class="wide"><span data-i18n="fbMsg">Message</span>
           <textarea id="fbMsg" rows="5" maxlength="2000"></textarea></label>
         <label class="wide fbchk"><input type="checkbox" id="fbAttach" checked>
@@ -1982,8 +1982,10 @@ function computeBuild(b, target){
   /* --- mitigation (armor shred first, then lethality, then % penetration) --- */
   const effAr = shredAr - tot.letha - (tot.arpen > 0 ? tot.arpen*0.01*shredAr : 0);
   const effMr = shredMr - tot.mrpenflat - (tot.mrpen > 0 ? tot.mrpen*0.01*shredMr : 0);
-  const pMul  = 100/(100+effAr);
-  const mMul  = 100/(100+effMr);
+  /* the game does not simply divide once a resistance goes below zero */
+  const resistMul = r => r >= 0 ? 100/(100+r) : 2 - 100/(100-r);
+  const pMul  = resistMul(effAr);
+  const mMul  = resistMul(effMr);
 
   /* --- abilities --- */
   const A = {};
@@ -2324,7 +2326,10 @@ const L10N = {
            "Dites-moi ce qui ne va pas, ou ce que vous aimeriez que l'outil fasse. Aucun compte nécessaire."],
   fbKind:["Kind","Type"], fbBug:["Something is wrong","Quelque chose ne va pas"],
   fbIdea:["An idea to improve it","Une idée d'amélioration"],
-  fbContact:["Contact, optional","Contact, facultatif"], fbMsg:["Message","Message"],
+  fbContact:["Your Discord, so Ylfik can reply — optional",
+             "Votre Discord, pour que Ylfik puisse vous répondre — facultatif"],
+  fbContactPh:["ylfik or ylfik#0000","ylfik ou ylfik#0000"],
+  fbWait:["wait %ss","patientez %s s"], fbMsg:["Message","Message"],
   fbAttach:["Attach my three builds, it helps a lot for bugs",
             "Joindre mes trois builds, très utile pour les bugs"],
   fbSend:["Send","Envoyer"], fbSending:["sending…","envoi…"],
@@ -3962,9 +3967,17 @@ function drawList(raw){
     el.addEventListener("click", () => {
       if(!pickCtx) return;
       const idx = +el.dataset.i;
-      const slot = state.builds[pickCtx.bi].items[pickCtx.si];
+      const bb = state.builds[pickCtx.bi];
+      const slot = bb.items[pickCtx.si];
       slot.name = idx < 0 ? null : ITEMS[idx].n;
       slot.cond = true;
+      /* belt and braces: clear any copy left in another slot */
+      if(slot.name) bb.items.forEach((sl, i) => {
+        if(i === pickCtx.si || !sl.name) return;
+        if(sl.name === slot.name || (BOOTS.has(sl.name) && BOOTS.has(slot.name))){
+          sl.name = null; sl.cond = true;
+        }
+      });
       closePicker();
       render();
     });
@@ -3983,12 +3996,16 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && pickCtx) cl
 
 /* --- stats de la cible --- */
 ["tHp","tAr","tMr"].forEach(id => {
-  document.getElementById(id).addEventListener("input", e => {
-    const v = parseFloat(e.target.value);
+  const el = document.getElementById(id);
+  if(!el) return;
+  const key = {tHp:"hp", tAr:"ar", tMr:"mr"}[id];
+  const floor = key === "hp" ? 1 : 0;   /* a champion never has negative health or resistances */
+  el.min = floor;
+  el.addEventListener("input", e => {
+    let v = parseFloat(e.target.value);
     if(isNaN(v)) return;
-    const key = {tHp:"hp", tAr:"ar", tMr:"mr"}[id];
-    const floor = key === "hp" ? 1 : 0;      /* typing a negative is not a build choice */
-    state.target[key] = Math.max(floor, v);
+    if(v < floor){ v = floor; e.target.value = floor; }   /* correct the field, not just the model */
+    state.target[key] = v;
     render();
   });
 });
@@ -4011,8 +4028,10 @@ const PRESETS = {
 };
 const gpmIn = document.getElementById("tGpm");
 if(gpmIn) gpmIn.addEventListener("input", e => {
-  const v = parseFloat(e.target.value);
-  if(!isNaN(v)) { state.gpm = v; render(); }
+  let v = parseFloat(e.target.value);
+  if(isNaN(v)) return;
+  if(v < 0){ v = 0; e.target.value = 0; }
+  state.gpm = v; render();
 });
 document.querySelectorAll("#presetSeg button").forEach(btn => {
   btn.addEventListener("click", () => {
@@ -4064,7 +4083,7 @@ const closeFb = () => fbOverlay && fbOverlay.classList.remove("on");
 on("fbClose", "click", closeFb);
 if(fbOverlay) fbOverlay.addEventListener("click", e => { if(e.target === fbOverlay) closeFb(); });
 document.addEventListener("keydown", e => { if(e.key === "Escape") closeFb(); });
-on("btnReport", "click", () => { fbOverlay.classList.add("on"); });
+on("btnReport", "click", () => { fbOverlay.classList.add("on"); fbCooldown(); });
 
 const pnOverlay = document.getElementById("pnOverlay");
 const closePn = () => pnOverlay && pnOverlay.classList.remove("on");
@@ -4077,9 +4096,25 @@ on("btnNotes", "click", () => {
     <ul>${n.items.map(it => `<li>${esc(isFR() ? it[1] : it[0])}</li>`).join("")}</ul>`).join("");
   pnOverlay.classList.add("on");
 });
+const FB_WAIT = 60000;                       /* one minute between two reports */
+const fbLast = () => { try{ return +localStorage.getItem("udyr-fb-last") || 0; }catch(e){ return 0; } };
+function fbCooldown(){
+  const btn = document.getElementById("fbSend");
+  if(!btn) return;
+  const left = Math.ceil((fbLast() + FB_WAIT - Date.now()) / 1000);
+  if(left > 0){
+    btn.disabled = true;
+    btn.textContent = TR("fbWait").replace("%s", left);
+    setTimeout(fbCooldown, 1000);
+  }else{
+    btn.disabled = false;
+    btn.textContent = TR("fbSend");
+  }
+}
 on("fbSend", "click", async () => {
   const note = document.getElementById("fbNote");
   const msg  = document.getElementById("fbMsg").value.trim();
+  if(Date.now() - fbLast() < FB_WAIT){ fbCooldown(); return; }
   if(msg.length < 5){ note.textContent = TR("fbTooShort"); return; }
   if(!lbReady()){ note.textContent = TR("fbNoDb"); return; }
   note.textContent = TR("fbSending");
@@ -4092,10 +4127,17 @@ on("fbSend", "click", async () => {
       ? JSON.parse(JSON.stringify({target:state.target, builds:state.builds})) : null,
     user_id: me ? me.id : null
   };
+  document.getElementById("fbSend").disabled = true;
   const {error} = await sb.from("feedback").insert(row);
-  if(error){ note.textContent = error.message; return; }
+  if(error){
+    note.textContent = error.message;
+    document.getElementById("fbSend").disabled = false;
+    return;
+  }
+  try{ localStorage.setItem("udyr-fb-last", String(Date.now())); }catch(e){}
   document.getElementById("fbMsg").value = "";
   note.textContent = TR("fbThanks");
+  fbCooldown();
 });
 on("btnBoard", "click", () => {
   lbOverlay.classList.add("on");
