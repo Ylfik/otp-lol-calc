@@ -525,7 +525,10 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
 .lbvip{color:var(--e);font-weight:700}
 .lbstream{width:12px;height:12px;color:#a970ff;vertical-align:-1px;display:inline-block}
 .lbsel input{accent-color:var(--q)}
-.acct{display:flex;align-items:center;gap:6px}
+.acct{
+  position:absolute;top:14px;right:22px;z-index:2;
+  display:flex;align-items:center;gap:7px;
+}
 .acctname{
   font-family:var(--display);font-size:15px;letter-spacing:.1em;color:var(--q);
   text-shadow:0 1px 6px rgba(0,0,0,.9);padding-right:2px;
@@ -638,7 +641,7 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
   .hero-in{padding:0 14px 12px;gap:8px}
   .hero .brand h1{font-size:26px}
   .hero-act{margin-left:0;width:100%;gap:6px;flex-wrap:wrap}
-  .acct{flex-wrap:wrap;gap:5px}
+  .acct{position:static;justify-content:flex-end;width:100%;padding:8px 14px 0;flex-wrap:wrap;gap:5px}
   .acctname{font-size:13px}
   .acctbtn{padding:3px 7px;font-size:9px}
   .helpbtn{padding:4px 9px;font-size:9.5px}
@@ -706,6 +709,7 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
 <body>
 
 <div class="hero">
+  <div class="acct" id="acctBar"></div>
   <div class="hero-in">
     <div class="brand">
       <h1>UDYR<span>·</span>CALC</h1>
@@ -716,7 +720,6 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
       <button class="helpbtn" id="btnNotes" data-i18n="patchNotes">Patch notes</button>
       <button class="helpbtn" id="btnBoard" data-i18n="board">Leaderboard</button>
       <button class="helpbtn" id="btnReport" data-i18n="report">Feedback</button>
-      <div class="acct" id="acctBar"></div>
       <div class="seg" id="langSeg"><button data-l="en" aria-pressed="true">EN</button><button data-l="fr" aria-pressed="false">FR</button></div>
     </div>
   </div>
@@ -725,8 +728,8 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
 <div class="top">
   <div class="top-in">
     <div class="field"><label data-i18n="targetHp">Target HP</label><input id="tHp" type="number" value="2000" min="1" step="50"></div>
-    <div class="field"><label data-i18n="targetAr">Target Armor</label><input id="tAr" type="number" value="100" min="-100" step="5"></div>
-    <div class="field"><label data-i18n="targetMr">Target MR</label><input id="tMr" type="number" value="100" min="-100" step="5"></div>
+    <div class="field"><label data-i18n="targetAr">Target Armor</label><input id="tAr" type="number" value="100" min="0" step="5"></div>
+    <div class="field"><label data-i18n="targetMr">Target MR</label><input id="tMr" type="number" value="100" min="0" step="5"></div>
     <div class="field">
       <label data-i18n="preset">Preset</label>
       <div class="seg" id="presetSeg">
@@ -2945,9 +2948,18 @@ function restoreBuild(b, d){
                ? {id:r.id ?? null, on:r.on !== false, val:r.val || 0}
                : {id:null, on:true, val:0}),
       shards:(d.shards || b.shards).slice(0,3).map(x => (x === 0 || x === 1 || x === 2) ? x : null),
-      items: (d.items  || b.items ).slice(0,6).map(it => it && it.name && BY_NAME[it.name]
-               ? {name:it.name, cond:it.cond !== false}
-               : {name:null, cond:true})
+      items: (() => {
+        const seen = new Set();
+        let boots = false;
+        return (d.items || b.items).slice(0,6).map(it => {
+          const n = it && it.name;
+          if(!n || !BY_NAME[n] || seen.has(n) || (boots && BOOTS.has(n)))
+            return {name:null, cond:true};
+          seen.add(n);
+          if(BOOTS.has(n)) boots = true;
+          return {name:n, cond:it.cond !== false};
+        });
+      })()
   };
 }
 
@@ -3895,7 +3907,13 @@ function matches(it, q){
 
 function drawList(raw){
   const q = parseQuery(raw.trim());
-  let list = ITEMS.filter(i => matches(i, q));
+  /* the shop rules: you cannot own the same item twice, nor two pairs of boots */
+  const b = pickCtx ? state.builds[pickCtx.bi] : null;
+  const si = pickCtx ? pickCtx.si : -1;
+  const elsewhere = b ? b.items.filter((x, idx) => idx !== si && x.name).map(x => x.name) : [];
+  const hasBoots  = elsewhere.some(n => BOOTS.has(n));
+  const allowed = i => !elsewhere.includes(i.n) && !(hasBoots && BOOTS.has(i.n));
+  let list = ITEMS.filter(i => allowed(i) && matches(i, q));
   const sortKey = q.stats.length ? q.stats[0].key : null;
   if(sortKey){
     /* "ah>=20" wants the biggest first, "gold<1300" wants the cheapest first */
@@ -3968,7 +3986,9 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && pickCtx) cl
   document.getElementById(id).addEventListener("input", e => {
     const v = parseFloat(e.target.value);
     if(isNaN(v)) return;
-    state.target[{tHp:"hp",tAr:"ar",tMr:"mr"}[id]] = v;
+    const key = {tHp:"hp", tAr:"ar", tMr:"mr"}[id];
+    const floor = key === "hp" ? 1 : 0;      /* typing a negative is not a build choice */
+    state.target[key] = Math.max(floor, v);
     render();
   });
 });
