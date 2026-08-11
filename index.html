@@ -520,6 +520,12 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
   letter-spacing:0!important;font-family:var(--sans)!important;font-size:12px!important;color:var(--ink-dim)!important}
 .fbchk input{accent-color:var(--q)}
 .lbnotes{margin:4px 0 0;font-size:11.5px;color:var(--ink-dim);line-height:1.45}
+.lbrole{
+  border:1px solid var(--line);border-radius:9px;padding:0 7px;font-size:9.5px;letter-spacing:.1em;
+  text-transform:uppercase;font-family:var(--display);color:var(--ink-dim);white-space:nowrap;
+}
+.lbupd{color:var(--e)}
+.lbitems .start{border-color:var(--q)}
 .lbrk{border:1px solid;border-radius:9px;padding:0 7px;font-size:9.5px;letter-spacing:.1em;
   text-transform:uppercase;font-family:var(--display);white-space:nowrap}
 .lbvip{color:var(--e);font-weight:700}
@@ -2355,6 +2361,8 @@ const L10N = {
   editNotes:["Description:","Description :"],
   whichBuild:["Build","Build"], buildName:["Name","Nom"],
   summoner:["Summoner name","Pseudo LoL"], rank:["Rank","Rang"],
+  role:["Role","Rôle"], starter:["Starting item","Item de départ"],
+  updatedOnDate:["updated","mis à jour le"],
   sortBy:["Sort","Tri"], sortLikes:["most liked","plus likés"], sortRecent:["newest","plus récents"],
   sortAuthor:["author","auteur"], sortRank:["rank","rang"],
   filterRank:["Rank","Rang"], verifiedOnly:["verified only","validés seulement"],
@@ -2708,6 +2716,35 @@ const GAME_PATCH = (() => {
   return (Number(p[0]) + 10) + "." + p[1];
 })();
 
+const ROLES = [
+  {k:"top",     en:"Top",     fr:"Top"},
+  {k:"jungle",  en:"Jungle",  fr:"Jungle"},
+  {k:"mid",     en:"Mid",     fr:"Mid"},
+  {k:"bot",     en:"Bot",     fr:"Bot"},
+  {k:"support", en:"Support", fr:"Support"}
+];
+const roleName = k => { const r = ROLES.find(x => x.k === k); return r ? (isFR() ? r.fr : r.en) : ""; };
+/* what you can open on: lane starters, the three jungle companions, the support quest */
+const STARTERS = [
+  {id:1055, k:"blade"},  {id:1054, k:"shield"}, {id:1056, k:"ring"},
+  {id:1083, k:"cull"},   {id:1082, k:"seal"},   {id:3070, k:"tear"},
+  {id:1101, k:"red"},    {id:1102, k:"blue"},   {id:1103, k:"green"},
+  {id:3865, k:"atlas"}
+];
+const STARTER_NAME = {
+  blade:["Doran's Blade","Lame de Doran"], shield:["Doran's Shield","Bouclier de Doran"],
+  ring:["Doran's Ring","Anneau de Doran"], cull:["Cull","Abatteur"],
+  seal:["Dark Seal","Sceau noir"], tear:["Tear of the Goddess","Larme de la déesse"],
+  red:["Scorchclaw Pup","Bébé Chardent"], blue:["Gustwalker Hatchling","Bébé Saute-nuages"],
+  green:["Mosstomper Seedling","Bébé Ixamandre"], atlas:["World Atlas","Atlas"]
+};
+const starterName = k => { const v = STARTER_NAME[k]; return v ? (isFR() ? v[1] : v[0]) : ""; };
+const starterId   = k => { const v = STARTERS.find(x => x.k === k); return v ? v.id : null; };
+/* the jungle opens on a companion, the lanes on the rest */
+const startersFor = role => role === "jungle"
+  ? STARTERS.filter(x => ["red","blue","green"].includes(x.k))
+  : STARTERS.filter(x => !["red","blue","green"].includes(x.k));
+
 const RANK_COLOR = {
   Iron:"#7a6a60", Bronze:"#a9714b", Silver:"#b9c9d1", Gold:"#f0c860", Platinum:"#59d6c0",
   Emerald:"#3ec97f", Diamond:"#7fb0ff", Master:"#b06fe6", Grandmaster:"#e04a4d",
@@ -2803,6 +2840,7 @@ async function lbPublish(){
   const {error} = await sb.from("builds").insert({
     owner:me.id, author:meName(), name, patch:GAME_PATCH,
     notes:g("pubNotes").trim().slice(0, 400),
+    role:g("pubRole"), starter:g("pubStarter"),
     summoner:g("pubSummoner").trim().slice(0, 40),
     rank:g("pubRank"),
     data:JSON.parse(JSON.stringify(b))
@@ -3372,6 +3410,11 @@ function lbRender(){
         <label>${TR("summoner")}<input id="pubSummoner" maxlength="40" placeholder="Ylfik#EUW"></label>
         <label>${TR("rank")}<select id="pubRank"><option value="">—</option>${RANKS.map(r =>
           `<option value="${r}">${r}</option>`).join("")}</select></label>
+        <label>${TR("role")}<select id="pubRole"><option value="">—</option>${ROLES.map(r =>
+          `<option value="${r.k}">${esc(isFR() ? r.fr : r.en)}</option>`).join("")}</select></label>
+        <label>${TR("starter")}<select id="pubStarter"><option value="">—</option>${
+          STARTERS.map(x => `<option value="${x.k}">${esc(starterName(x.k))}</option>`).join("")
+        }</select></label>
         <label class="wide">${TR("notes")}<textarea id="pubNotes" rows="2" maxlength="400"
           placeholder="${TR("notesPh")}"></textarea></label>
         <button class="tipbtn" id="pubGo">${TR("publish")}</button>
@@ -3405,11 +3448,18 @@ function lbRender(){
         <b>${esc(r.name)}</b>
         <em>${r.streamer ? `<svg class="lbstream" viewBox="0 0 24 24" aria-hidden="true"><title>${TR("streamerWhy")}</title>
              <path fill="currentColor" d="M4.3 3 3 6.2v13h4.5V22h2.5l2.7-2.8h3.6L21 14.4V3H4.3zm2 1.8h13v8.7l-2.6 2.6h-4.2L10.2 18.6V16.1H6.3V4.8zm4.4 3v5.1h1.8V7.8h-1.8zm4.9 0v5.1h1.8V7.8h-1.8z"/>
-           </svg> ` : ""}${r.verified ? `<span class="lbvip" title="${TR("verifiedWhy")}">✔</span> ` : ""}<span class="lbwho">${esc(r.author)}${r.summoner ? " · " + esc(r.summoner) : ""}</span>${r.rank ? ` <span class="lbrk" style="color:${RANK_COLOR[r.rank] || "var(--q)"};border-color:${RANK_COLOR[r.rank] || "var(--q)"}">${esc(r.rank)}</span>` : ""}
+           </svg> ` : ""}${r.verified ? `<span class="lbvip" title="${TR("verifiedWhy")}">✔</span> ` : ""}<span class="lbwho">${esc(r.author)}${r.summoner ? " · " + esc(r.summoner) : ""}</span>${r.role ? ` <span class="lbrole">${esc(roleName(r.role))}</span>` : ""}${r.rank ? ` <span class="lbrk" style="color:${RANK_COLOR[r.rank] || "var(--q)"};border-color:${RANK_COLOR[r.rank] || "var(--q)"}">${esc(r.rank)}</span>` : ""}
             · <span class="${old ? "lbold" : ""}">${TR("patch")} ${esc(r.patch)}</span>
-            · ${new Date(r.created_at).toLocaleDateString()}</em>
+            · ${new Date(r.created_at).toLocaleDateString()}${
+              r.updated_at && new Date(r.updated_at) - new Date(r.created_at) > 60000
+                ? ` · <span class="lbupd">${TR("updatedOnDate")} ${new Date(r.updated_at).toLocaleDateString()}</span>` : ""
+            }</em>
         ${r.notes ? `<p class="lbnotes">${esc(r.notes)}</p>` : ""}
         <div class="lbitems">
+          ${r.starter && starterId(r.starter) ? `<img class="iicon start"
+             src="${ITEM_ICON(starterId(r.starter))}" alt="${esc(starterName(r.starter))}"
+             title="${TR("starter")}: ${esc(starterName(r.starter))}" loading="lazy"
+             onerror="this.style.visibility='hidden'"><span class="lbsep"></span>` : ""}
           ${(r.data.items || []).filter(x => x && x.name).map(x => {
             const it = BY_NAME[x.name];
             return it && it.id
@@ -3471,6 +3521,12 @@ function lbRender(){
   const slotSel = el.querySelector("#pubSlot"), nameIn = el.querySelector("#pubName");
   if(slotSel && nameIn) slotSel.addEventListener("change", () => {
     nameIn.value = state.builds[+slotSel.value].name;
+  });
+  const roleSel = el.querySelector("#pubRole"), stSel = el.querySelector("#pubStarter");
+  if(roleSel && stSel) roleSel.addEventListener("change", () => {
+    const list = startersFor(roleSel.value);
+    stSel.innerHTML = `<option value="">—</option>` +
+      list.map(x => `<option value="${x.k}">${esc(starterName(x.k))}</option>`).join("");
   });
   const so = el.querySelector("#lbSort");
   if(so){ so.value = lbSort; so.addEventListener("change", e => { lbSort = e.target.value; lbLoad(); }); }
