@@ -159,6 +159,11 @@ main{max-width:2200px;margin:0 auto;padding:22px 28px 80px}
 .blib button:disabled{opacity:.3;cursor:default}
 .blib .danger:hover:not(:disabled){border-color:var(--bad);color:var(--bad)}
 .blib .clearb{margin-left:auto;border-color:var(--line)}
+.blib .swapb{border-color:var(--e);color:var(--e)}
+.blib .swapb:hover{background:var(--e);color:#10161d}
+.swbar{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:8px 0 6px}
+.swup{color:var(--e)} .swdown{color:var(--bad)}
+tr.swcur td{background:rgba(232,161,60,.09)}
 .blib .clearb:hover{border-color:var(--bad);color:var(--bad)}
 .gold{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--q)}
 
@@ -519,6 +524,17 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
 .fbchk{flex-direction:row!important;align-items:center;gap:7px;text-transform:none!important;
   letter-spacing:0!important;font-family:var(--sans)!important;font-size:12px!important;color:var(--ink-dim)!important}
 .fbchk input{accent-color:var(--q)}
+.optkeep{display:flex;gap:5px;flex-wrap:wrap}
+.kchk{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer}
+.kchk input{accent-color:var(--q)}
+.kempty{width:32px;height:32px;display:grid;place-items:center;border:1px dashed var(--line);
+  border-radius:3px;color:var(--ink-faint);font-family:var(--mono);font-size:11px}
+.optrow{display:flex;gap:5px;margin:8px 0 12px;flex-wrap:wrap}
+.optrow .iicon{width:42px;height:42px}
+.optswap{border-top:1px solid var(--line-soft);padding:10px 0 4px}
+.optcur{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.optcur b{font-family:var(--display);font-size:12px;letter-spacing:.06em}
+table.brk .up{color:var(--e)}
 .lbnotes{margin:4px 0 0;font-size:11.5px;color:var(--ink-dim);line-height:1.45}
 .lbrole{
   border:1px solid var(--line);border-radius:9px;padding:0 7px;font-size:9.5px;letter-spacing:.1em;
@@ -725,6 +741,7 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
       <button class="helpbtn primary" id="btnHelp" data-i18n="help">How it works</button>
       <button class="helpbtn" id="btnNotes" data-i18n="patchNotes">Patch notes</button>
       <button class="helpbtn" id="btnBoard" data-i18n="board">Leaderboard</button>
+      <button class="helpbtn" id="btnOpt" data-i18n="optimiser">Optimiser</button>
       <button class="helpbtn" id="btnReport" data-i18n="report">Feedback</button>
       <div class="seg" id="langSeg"><button data-l="en" aria-pressed="true">EN</button><button data-l="fr" aria-pressed="false">FR</button></div>
     </div>
@@ -753,6 +770,26 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
   </div>
 </div>
 
+<div class="overlay" id="optOverlay">
+  <div class="help wide" role="dialog" aria-modal="true" aria-label="Optimiser">
+    <header>
+      <h2 data-i18n="optimiser">Optimiser</h2>
+      <button class="closebtn" id="optClose" aria-label="Close">esc</button>
+    </header>
+    <div class="helpbody" id="optBody"></div>
+  </div>
+</div>
+
+<div class="overlay" id="swOverlay">
+  <div class="help wide" role="dialog" aria-modal="true" aria-label="Item swaps">
+    <header>
+      <h2 id="swTitle"></h2>
+      <button class="closebtn" id="swClose" aria-label="Close">esc</button>
+    </header>
+    <div class="helpbody" id="swBody"></div>
+  </div>
+</div>
+
 <div class="overlay" id="pnOverlay">
   <div class="help" role="dialog" aria-modal="true" aria-label="Patch notes">
     <header>
@@ -760,6 +797,26 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
       <button class="closebtn" id="pnClose" aria-label="Close">esc</button>
     </header>
     <div class="helpbody" id="pnBody"></div>
+  </div>
+</div>
+
+<div class="overlay" id="optOverlay">
+  <div class="help wide" role="dialog" aria-modal="true" aria-label="Optimiser">
+    <header>
+      <h2 data-i18n="optimiser">Optimiser</h2>
+      <button class="closebtn" id="optClose" aria-label="Close">esc</button>
+    </header>
+    <div class="helpbody" id="optBody"></div>
+  </div>
+</div>
+
+<div class="overlay" id="swOverlay">
+  <div class="help wide" role="dialog" aria-modal="true" aria-label="Item swaps">
+    <header>
+      <h2 id="swTitle"></h2>
+      <button class="closebtn" id="swClose" aria-label="Close">esc</button>
+    </header>
+    <div class="helpbody" id="swBody"></div>
   </div>
 </div>
 
@@ -1243,6 +1300,12 @@ const ITEMS = [
 
 const BY_NAME = {};
 ITEMS.forEach(i => BY_NAME[i.n] = i);
+
+/* one pair of boots only, in the picker and in the optimiser */
+const BOOTS = new Set(["PLATED STEELCAPS","MERCURY'S TREADS","IONIAN BOOTS OF LUCIDITY",
+  "GLUTTONOUS GREAVES","BOOTS OF SWIFTNESS","BERSERKER'S GREAVES","SORCERER'S SHOES",
+  "SWIFTMARCH","GUNMETAL GREAVES","ARMORED ADVANCE","CHAINLACED CRUSHERS",
+  "CRIMSON LUCIDITY","SPELLSLINGER'S SHOES","IMMORTAL PATH"]);
 
 
 
@@ -2327,7 +2390,20 @@ const L10N = {
   storageBlocked:["browser storage is blocked here — use Export instead",
                   "le stockage du navigateur est bloqué ici — utilisez Exporter"],
   importB:["Import","Importer"], reset:["Reset","Réinit."], help:["How it works","Mode d'emploi"],
-  report:["Feedback","Un retour"], patchNotes:["Patch notes","Nouveautés"], notes:["Patch notes","Notes de version"],
+  report:["Feedback","Un retour"], optimiser:["Optimiser","Optimiseur"],
+  optIntro:["Two questions: what a good build would look like for a given goal, and whether swapping one item in yours would help.",
+            "Deux questions : à quoi ressemblerait un bon build pour un objectif donné, et si remplacer un item du vôtre aiderait."],
+  optBuild:["Build","Build"], optGoal:["Optimise for","Optimiser pour"],
+  optBudget:["Gold limit, 0 for none","Limite d'or, 0 pour aucune"],
+  optKeep:["Keep these items","Garder ces items"],
+  optRun:["Build one for me","Construis-en un"], optSwapRun:["Check my items","Vérifie mes items"],
+  optNote:["Built one slot at a time against your current target and level. Change the target above and the answer changes.",
+           "Construit emplacement par emplacement, face à votre cible et votre niveau actuels. Changez la cible ci-dessus et la réponse change."],
+  optWorking:["working…","calcul…"], optResult:["Suggested build","Build proposé"],
+  optSwapResult:["Better options, slot by slot","Meilleures options, emplacement par emplacement"],
+  optCost:["Cost","Coût"], optApply:["Load it into that build","Charger dans ce build"],
+  optBestAlready:["nothing beats what you have here","rien ne bat ce que vous avez ici"],
+  optNoItems:["that build has no items yet","ce build n'a pas encore d'items"], patchNotes:["Patch notes","Nouveautés"], notes:["Patch notes","Notes de version"],
   fbIntro:["Tell me what is broken, or what you would like the tool to do. No account needed.",
            "Dites-moi ce qui ne va pas, ou ce que vous aimeriez que l'outil fasse. Aucun compte nécessaire."],
   fbKind:["Kind","Type"], fbBug:["Something is wrong","Quelque chose ne va pas"],
@@ -2410,6 +2486,10 @@ const L10N = {
   targetLeft:["target left","PV restants"], perAttack:["Attack by attack","Attaque par attaque"],
   endOfCombo:["Once per combo","Une fois par combo"], summary:["Total","Total"],
   breakdownOf:["%s — full breakdown","%s — détail complet"],
+  swaps:["Swaps","Alternatives"], swapsOf:["%s — item swaps","%s — alternatives d'items"],
+  swSlot:["Slot","Emplacement"], swMetric:["Ranked on","Classé sur"],
+  swBudget:["within budget","dans le budget"], swNow:["Currently","Actuellement"],
+  swDelta:["Change","Écart"], swGold:["Cost","Coût"],
   source:["Source","Source"], shareHead:["% of Q combo","% du combo Q"],
   shareWhy:["share of the full Q combo damage this line accounts for",
             "part des dégâts du combo Q complet que représente cette ligne"],
@@ -2783,8 +2863,10 @@ async function lbTouchProfile(){
     const {data} = await sb.from("profiles")
       .select("display_name, banned, ban_reason, admin").eq("id", me.id).single();
     myName  = (data && data.display_name) || "";
+    const wasAdmin = myFlags.admin;
     myFlags = {banned:!!(data && data.banned), ban_reason:(data && data.ban_reason) || "",
                admin:!!(data && data.admin)};
+    if(myFlags.admin !== wasAdmin) render();   /* the swap button lives on the cards */
   }catch(err){ myName = ""; myFlags = {banned:false, ban_reason:"", admin:false}; }
 }
 /* the name shown on the board: chosen if there is one, Discord otherwise */
@@ -3060,6 +3142,84 @@ function itemSummary(it){
   return parts.join(" · ");
 }
 
+
+/* ============================================================
+   OPTIMISER
+   Two questions, one engine.
+     - what would a good build look like, given what I care about
+     - I have a build: would swapping one item make it better
+
+   Brute force is out: choosing 6 items from 124 is about five
+   billion combinations. Instead the build is grown one slot at a
+   time, keeping the best item at each step. Six passes of ~124
+   trials each — instant, and close to optimal in practice because
+   item synergies are re-evaluated at every step against what is
+   already equipped.
+   ============================================================ */
+const GOALS = {
+  qDamage:  {en:"Q combo damage",    fr:"dégâts du combo Q",     f:r => r.D.combo.q.dmg},
+  rDamage:  {en:"R combo damage",    fr:"dégâts du combo R",     f:r => r.D.combo.r.dmg},
+  dps:      {en:"damage per second", fr:"dégâts par seconde",    f:r => r.D.combo.q.dps},
+  ehpPhys:  {en:"effective HP vs physical", fr:"PV effectifs vs physique", f:r => r.ehpAr},
+  ehpMagic: {en:"effective HP vs magic",    fr:"PV effectifs vs magique",  f:r => r.ehpMr},
+  sustain:  {en:"healing and shielding",    fr:"soins et boucliers",
+             f:r => r.D.combo.w.heal + r.D.combo.w.shield},
+  balanced: {en:"damage and survival together", fr:"dégâts et survie ensemble",
+             f:r => Math.sqrt(r.D.combo.q.dmg * (r.ehpAr + r.ehpMr) / 2)}
+};
+
+/* a build is only worth considering if you could pay for it */
+function optScore(b, goal, budget){
+  const r = computeBuild(b, state.target);
+  if(budget && r.gold > budget) return -1;
+  return GOALS[goal].f(r);
+}
+
+function optClone(b){ return JSON.parse(JSON.stringify(b)); }
+
+/* grow a build slot by slot, best item first */
+function optBuild(base, goal, slots, budget){
+  const b = optClone(base);
+  for(let i = 0; i < 6; i++) if(slots.includes(i)) b.items[i] = {name:null, cond:true};
+
+  const targets = slots.slice();
+  for(const si of targets){
+    let best = null, bestScore = optScore(b, goal, budget);
+    const taken = new Set(b.items.map(x => x.name).filter(Boolean));
+    const wearsBoots = b.items.some(x => x.name && BOOTS.has(x.name));
+    for(const it of ITEMS){
+      if(taken.has(it.n) || (wearsBoots && BOOTS.has(it.n))) continue;
+      b.items[si] = {name:it.n, cond:true};
+      const sc = optScore(b, goal, budget);
+      if(sc > bestScore){ bestScore = sc; best = it.n; }
+    }
+    b.items[si] = {name:best, cond:true};
+  }
+  return b;
+}
+
+/* for one slot: what else could go there, and by how much */
+function optSwaps(bi, si, goal){
+  const base = state.builds[bi];
+  const cur  = base.items[si].name;
+  const b    = optClone(base);
+  const now  = optScore(b, goal, 0);
+
+  const taken = new Set(b.items.map((x, i) => i === si ? null : x.name).filter(Boolean));
+  const wearsBoots = b.items.some((x, i) => i !== si && x.name && BOOTS.has(x.name));
+
+  const out = [];
+  for(const it of ITEMS){
+    if(taken.has(it.n) || (wearsBoots && BOOTS.has(it.n))) continue;
+    b.items[si] = {name:it.n, cond:true};
+    const sc = optScore(b, goal, 0);
+    out.push({name:it.n, score:sc, delta:sc - now, gold:it.g - (cur && BY_NAME[cur] ? BY_NAME[cur].g : 0)});
+  }
+  b.items[si] = {name:cur, cond:true};
+  out.sort((a, c) => c.delta - a.delta);
+  return {current:cur, now, list:out};
+}
+
 /* ============================================================
    RENDERING
    ============================================================ */
@@ -3117,6 +3277,7 @@ function card(b, bi, R){
       <button data-bsave="${bi}" title="${TR("saveBuild")}">${TR("saveAsNew")}</button>
       <button data-bdel="${bi}" class="danger">${TR("delBuild")}</button>
       <button data-bclear="${bi}" class="clearb">${TR("clearBuild")}</button>
+      ${myFlags.admin ? `<button data-swap="${bi}" class="swapb">${TR("swaps")}</button>` : ""}
     </div>
 
     <div class="ranks" data-pts="${(() => {
@@ -3546,6 +3707,203 @@ function lbRender(){
   });
 }
 
+function optRender(){
+  const el = document.getElementById("optBody");
+  if(!el) return;
+  const goals = Object.keys(GOALS).map(k =>
+    `<option value="${k}">${esc(isFR() ? GOALS[k].fr : GOALS[k].en)}</option>`).join("");
+  const builds = state.builds.map((b, i) =>
+    `<option value="${i}">${esc(b.name)}</option>`).join("");
+  el.innerHTML = `
+    <p>${TR("optIntro")}</p>
+    <div class="lbform">
+      <label>${TR("optBuild")}<select id="optB">${builds}</select></label>
+      <label>${TR("optGoal")}<select id="optG">${goals}</select></label>
+      <label>${TR("optBudget")}<input id="optGold" type="number" min="0" step="500" value="0"></label>
+      <label>${TR("optKeep")}<span class="optkeep" id="optKeep"></span></label>
+      <button class="tipbtn" id="optGo">${TR("optRun")}</button>
+      <button class="tipbtn" id="optSwapGo">${TR("optSwapRun")}</button>
+    </div>
+    <p class="tipstat">${TR("optNote")}</p>
+    <div id="optOut"></div>`;
+
+  const bSel = el.querySelector("#optB");
+  const drawKeep = () => {
+    const b = state.builds[+bSel.value];
+    el.querySelector("#optKeep").innerHTML = b.items.map((sl, i) => {
+      const it = sl.name ? BY_NAME[sl.name] : null;
+      return `<label class="kchk"><input type="checkbox" data-keep="${i}" ${it ? "" : "disabled"}>
+        ${it ? `<img class="iicon" src="${ITEM_ICON(it.id)}" alt="" title="${esc(iName(it))}"
+             onerror="this.style.visibility='hidden'">` : `<span class="kempty">${i+1}</span>`}</label>`;
+    }).join("");
+  };
+  drawKeep();
+  bSel.addEventListener("change", drawKeep);
+
+  const kept = () => [...el.querySelectorAll("input[data-keep]:checked")].map(x => +x.dataset.keep);
+
+  el.querySelector("#optGo").addEventListener("click", () => {
+    const bi = +bSel.value, goal = el.querySelector("#optG").value;
+    const budget = parseFloat(el.querySelector("#optGold").value) || 0;
+    const keep = kept();
+    const slots = [0,1,2,3,4,5].filter(i => !keep.includes(i));
+    const out = el.querySelector("#optOut");
+    out.innerHTML = `<p class="tipstat">${TR("optWorking")}</p>`;
+    setTimeout(() => {
+      const res = optBuild(state.builds[bi], goal, slots, budget);
+      const before = computeBuild(state.builds[bi], state.target);
+      const after  = computeBuild(res, state.target);
+      const g = GOALS[goal].f;
+      out.innerHTML = `
+        <h3>${TR("optResult")}</h3>
+        <div class="optrow">${res.items.map(sl => {
+          const it = sl.name ? BY_NAME[sl.name] : null;
+          return it ? `<img class="iicon" src="${ITEM_ICON(it.id)}" alt="${esc(iName(it))}"
+                        title="${esc(iName(it))}" onerror="this.style.visibility='hidden'">` : "";
+        }).join("")}</div>
+        <table class="brk">
+          <tr><td>${esc(isFR() ? GOALS[goal].fr : GOALS[goal].en)}</td>
+              <td>${n0(g(before))} → ${n0(g(after))}</td>
+              <td>${g(before) > 0 ? (g(after) >= g(before) ? "+" : "−") +
+                    nf1.format(Math.abs(g(after) - g(before)) / g(before) * 100) + " %" : ""}</td></tr>
+          <tr><td>${TR("optCost")}</td><td>${n0(after.gold)}</td><td></td></tr>
+        </table>
+        <button class="tipbtn" id="optApply">${TR("optApply")}</button>`;
+      out.querySelector("#optApply").addEventListener("click", () => {
+        state.builds[bi] = res;
+        document.getElementById("optOverlay").classList.remove("on");
+        render();
+      });
+    }, 20);
+  });
+
+  el.querySelector("#optSwapGo").addEventListener("click", () => {
+    const bi = +bSel.value, goal = el.querySelector("#optG").value;
+    const b = state.builds[bi];
+    const out = el.querySelector("#optOut");
+    const filled = b.items.map((sl, i) => sl.name ? i : -1).filter(i => i >= 0);
+    if(!filled.length){ out.innerHTML = `<p class="tipstat">${TR("optNoItems")}</p>`; return; }
+    out.innerHTML = `<p class="tipstat">${TR("optWorking")}</p>`;
+    setTimeout(() => {
+      out.innerHTML = `<h3>${TR("optSwapResult")}</h3>` + filled.map(si => {
+        const r = optSwaps(bi, si, goal);
+        const it = BY_NAME[r.current];
+        const top = r.list.filter(x => x.delta > 0).slice(0, 3);
+        return `<div class="optswap">
+          <div class="optcur">
+            ${it ? `<img class="iicon" src="${ITEM_ICON(it.id)}" alt="" onerror="this.style.visibility='hidden'">` : ""}
+            <b>${esc(it ? iName(it) : "")}</b>
+          </div>
+          ${top.length ? `<table class="brk">${top.map(x => {
+            const t = BY_NAME[x.name];
+            return `<tr><td>${t && t.id ? `<img class="iicon" src="${ITEM_ICON(t.id)}" alt=""
+                       onerror="this.style.visibility='hidden'">` : ""}</td>
+              <td>${esc(t ? iName(t) : x.name)}</td>
+              <td class="up">+${nf1.format(x.delta / Math.max(1, r.now) * 100)} %</td>
+              <td>${x.gold >= 0 ? "+" : "−"}${n0(Math.abs(x.gold))}</td></tr>`;
+          }).join("")}</table>` : `<p class="tipstat">${TR("optBestAlready")}</p>`}
+        </div>`;
+      }).join("");
+    }, 20);
+  });
+}
+
+
+/* ============================================================
+   ITEM SWAPS — admin only for now
+   Takes the build as it stands, drops one item, and tries every
+   legal replacement in that slot. About 74 ms for one slot, so it
+   can run on a click without any waiting.
+   ============================================================ */
+const SWAP_METRICS = {
+  qdmg:  {label:["Q combo damage","Dégâts du combo Q"],   get:r => r.D.combo.q.dmg},
+  qdps:  {label:["Q damage per second","Dégâts par seconde du Q"], get:r => r.D.combo.q.dps},
+  rdmg:  {label:["R combo damage","Dégâts du combo R"],   get:r => r.D.combo.r.dmg},
+  ehpP:  {label:["Effective HP vs physical","PV effectifs vs physique"], get:r => r.ehpAr},
+  ehpM:  {label:["Effective HP vs magic","PV effectifs vs magique"],     get:r => r.ehpMr},
+  heal:  {label:["Healing over the Q combo","Soins sur le combo Q"],     get:r => r.D.combo.q.heal},
+  mix:   {label:["Damage and survival balanced","Dégâts et survie équilibrés"],
+          get:r => Math.sqrt(r.D.combo.q.dmg * (r.ehpAr + r.ehpMr) / 2)}
+};
+let swapSlot = 0, swapMetric = "qdmg", swapBudget = false;
+
+/* one build, one number, without touching what is on screen */
+function scoreWith(build, slot, itemName, metric){
+  const copy = JSON.parse(JSON.stringify(build));
+  copy.items[slot] = {name:itemName, cond:true};
+  const r = computeBuild(copy, state.target);
+  return {score:SWAP_METRICS[metric].get(r), gold:r.gold, budget:r.budget.gold};
+}
+
+function swapPanel(bi){
+  const b = state.builds[bi];
+  const base = scoreWith(b, swapSlot, b.items[swapSlot].name, swapMetric);
+
+  /* what is already worn cannot come back, and only one pair of boots */
+  const taken = new Set(), wearsBoots = b.items.some((sl, i) =>
+    i !== swapSlot && sl.name && BOOTS.has(sl.name));
+  b.items.forEach((sl, i) => { if(i !== swapSlot && sl.name) taken.add(sl.name); });
+
+  const rows = ITEMS
+    .filter(it => !taken.has(it.n) && !(wearsBoots && BOOTS.has(it.n)))
+    .map(it => {
+      const s = scoreWith(b, swapSlot, it.n, swapMetric);
+      return {n:it.n, it, score:s.score, gold:s.gold,
+              over:swapBudget && s.gold > s.budget,
+              delta:base.score > 0 ? (s.score - base.score) / base.score * 100 : 0};
+    })
+    .filter(x => !x.over)
+    .sort((a, b2) => b2.score - a.score)
+    .slice(0, 12);
+
+  const cur = b.items[swapSlot].name ? BY_NAME[b.items[swapSlot].name] : null;
+  return `
+    <div class="swbar">
+      <label class="lbsel">${TR("swSlot")}
+        <select id="swSlot">${b.items.map((sl, i) =>
+          `<option value="${i}" ${i === swapSlot ? "selected" : ""}>${i + 1}. ${
+            sl.name ? esc(iName(BY_NAME[sl.name])) : TR("emptySlot")}</option>`).join("")}</select></label>
+      <label class="lbsel">${TR("swMetric")}
+        <select id="swMetric">${Object.keys(SWAP_METRICS).map(k =>
+          `<option value="${k}" ${k === swapMetric ? "selected" : ""}>${
+            esc(isFR() ? SWAP_METRICS[k].label[1] : SWAP_METRICS[k].label[0])}</option>`).join("")}</select></label>
+      <label class="lbsel"><input type="checkbox" id="swBudget" ${swapBudget ? "checked" : ""}>
+        ${TR("swBudget")}</label>
+    </div>
+    <p class="sub">${TR("swNow")} <strong>${cur ? esc(iName(cur)) : TR("emptySlot")}</strong> —
+       ${n0(base.score)}</p>
+    <table class="brk">
+      <tr class="brk-h"><th></th><th>${TR("source")}</th><th>${
+        esc(isFR() ? SWAP_METRICS[swapMetric].label[1] : SWAP_METRICS[swapMetric].label[0])}</th>
+        <th>${TR("swDelta")}</th><th>${TR("swGold")}</th></tr>
+      ${rows.map(x => `<tr class="${x.n === (cur && cur.n) ? "swcur" : ""}">
+        <td>${x.it.id ? `<img class="iicon" src="${ITEM_ICON(x.it.id)}" alt="" loading="lazy"
+             onerror="this.style.visibility='hidden'">` : ""}</td>
+        <td>${esc(iName(x.it))}</td>
+        <td>${n0(x.score)}</td>
+        <td class="${x.delta > 0.05 ? "swup" : x.delta < -0.05 ? "swdown" : ""}">${
+          x.delta > 0 ? "+" : ""}${nf1.format(x.delta)} %</td>
+        <td>${n0(x.gold)}</td></tr>`).join("")}
+    </table>`;
+}
+
+let swapFor = 0;
+function openSwaps(bi){
+  swapFor = bi;
+  document.getElementById("swTitle").textContent =
+    TR("swapsOf").replace("%s", state.builds[bi].name);
+  drawSwaps();
+  document.getElementById("swOverlay").classList.add("on");
+}
+function drawSwaps(){
+  const el = document.getElementById("swBody");
+  el.innerHTML = swapPanel(swapFor);
+  const on2 = (id, ev, fn) => { const x = el.querySelector("#" + id); if(x) x.addEventListener(ev, fn); };
+  on2("swSlot", "change", e => { swapSlot = +e.target.value; drawSwaps(); });
+  on2("swMetric", "change", e => { swapMetric = e.target.value; drawSwaps(); });
+  on2("swBudget", "change", e => { swapBudget = e.target.checked; drawSwaps(); });
+}
+
 function breakdown(bi, stance){
   const R = computeBuild(state.builds[bi], state.target);
   const c = R.D.combo[stance], A = R.A;
@@ -3679,6 +4037,9 @@ function bind(){
       state.builds[bi] = fresh;
       render();
     });
+  });
+  grid.querySelectorAll("button[data-swap]").forEach(el => {
+    el.addEventListener("click", () => openSwaps(+el.dataset.swap));
   });
   grid.querySelectorAll("button[data-bclear]").forEach(el => {
     el.title = TR("clearTitle");
@@ -3935,10 +4296,6 @@ const CMP = {">":(a,b)=>a>b, ">=":(a,b)=>a>=b, "<":(a,b)=>a<b, "<=":(a,b)=>a<=b,
 
 /* an item's searchable stats include what its always-on passives grant */
 const noAccent = t => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-const BOOTS = new Set(["PLATED STEELCAPS","MERCURY'S TREADS","IONIAN BOOTS OF LUCIDITY",
-  "GLUTTONOUS GREAVES","BOOTS OF SWIFTNESS","BERSERKER'S GREAVES","SORCERER'S SHOES",
-  "SWIFTMARCH","GUNMETAL GREAVES","ARMORED ADVANCE","CHAINLACED CRUSHERS",
-  "CRIMSON LUCIDITY","SPELLSLINGER'S SHOES","IMMORTAL PATH"]);
 
 function searchStats(it){
   if(it._ss) return it._ss;
@@ -4144,8 +4501,20 @@ on("btnReport", "click", () => { fbOverlay.classList.add("on"); fbCooldown(); })
 const pnOverlay = document.getElementById("pnOverlay");
 const closePn = () => pnOverlay && pnOverlay.classList.remove("on");
 on("pnClose", "click", closePn);
+const swOverlay = document.getElementById("swOverlay");
+const closeSw = () => swOverlay && swOverlay.classList.remove("on");
+on("swClose", "click", closeSw);
+if(swOverlay) swOverlay.addEventListener("click", e => { if(e.target === swOverlay) closeSw(); });
+document.addEventListener("keydown", e => { if(e.key === "Escape") closeSw(); });
 if(pnOverlay) pnOverlay.addEventListener("click", e => { if(e.target === pnOverlay) closePn(); });
 document.addEventListener("keydown", e => { if(e.key === "Escape") closePn(); });
+const optOverlay = document.getElementById("optOverlay");
+const closeOpt = () => optOverlay && optOverlay.classList.remove("on");
+on("optClose", "click", closeOpt);
+if(optOverlay) optOverlay.addEventListener("click", e => { if(e.target === optOverlay) closeOpt(); });
+document.addEventListener("keydown", e => { if(e.key === "Escape") closeOpt(); });
+on("btnOpt", "click", () => { optRender(); optOverlay.classList.add("on"); });
+
 on("btnNotes", "click", () => {
   document.getElementById("pnBody").innerHTML = PATCH_NOTES.map(n => `
     <h3>${esc(n.date)}</h3>
