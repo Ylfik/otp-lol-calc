@@ -161,7 +161,18 @@ main{max-width:2200px;margin:0 auto;padding:22px 28px 80px}
 .blib .clearb{margin-left:auto;border-color:var(--line)}
 .blib .swapb{border-color:var(--e);color:var(--e)}
 .blib .swapb:hover{background:var(--e);color:#10161d}
-.swbar{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:8px 0 6px}
+.swbar{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin:10px 0 8px}
+.swslots{display:flex;gap:5px;align-items:center}
+.swlab{font-family:var(--display);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-faint);margin-right:3px}
+.swslot{
+  width:40px;height:40px;padding:0;border:1px solid var(--line);border-radius:3px;
+  background:var(--panel-2);display:grid;place-items:center;overflow:hidden;
+}
+.swslot img{width:100%;height:100%;object-fit:cover;display:block}
+.swslot.on{border-color:var(--q);box-shadow:0 0 0 1px var(--q)}
+.swslot:hover{border-color:var(--q)}
+.swempty{font-family:var(--mono);font-size:12px;color:var(--ink-faint)}
 .swup{color:var(--e)} .swdown{color:var(--bad)}
 tr.swcur td{background:rgba(232,161,60,.09)}
 .blib .clearb:hover{border-color:var(--bad);color:var(--bad)}
@@ -1302,6 +1313,28 @@ const BY_NAME = {};
 ITEMS.forEach(i => BY_NAME[i.n] = i);
 
 /* one pair of boots only, in the picker and in the optimiser */
+/* the shop refuses a second item from the same family */
+const ITEM_LIMIT = {
+  Spellblade:["TRINITY FORCE","ICEBORN GAUNTLET","ESSENCE REAVER","LICH BANE","DUSK AND DAWN"],
+  Fatality:["BLACK CLEAVER","LORD DOMINIK'S REGARDS","MORTAL REMINDER","SERYLDA'S GRUDGE","TERMINUS"],
+  Blight:["BLOODLETTER'S CURSE","CRYPTBLOOM","TERMINUS","VOID STAFF"],
+  Hydra:["PROFANE HYDRA","RAVENOUS HYDRA","STRIDEBREAKER","TITANIC HYDRA"],
+  Lifeline:["MAW OF MALMORTIUS","STERAK'S GAGE","IMMORTAL SHIELDBOW","PROTOPLASM HARNESS",
+            "SERAPH'S EMBRACE","ARCHANGEL'S STAFF"],
+  Annul:["BANSHEE'S VEIL","EDGE OF NIGHT"],
+  Immolate:["SUNFIRE AEGIS","HOLLOW RADIANCE"],
+  Manaflow:["ARCHANGEL'S STAFF","MANAMUNE","WINTER'S APPROACH","MURAMANA","FIMBULWINTER",
+            "SERAPH'S EMBRACE","DIADEM OF SONGS"]
+};
+const LIMIT_OF = {};
+for(const g in ITEM_LIMIT) ITEM_LIMIT[g].forEach(n => (LIMIT_OF[n] = LIMIT_OF[n] || []).push(g));
+/* can this item sit alongside what is already worn? */
+function itemAllowed(name, worn){
+  const mine = LIMIT_OF[name];
+  if(!mine) return true;
+  return !worn.some(w => w && w !== name && (LIMIT_OF[w] || []).some(g => mine.includes(g)));
+}
+
 const BOOTS = new Set(["PLATED STEELCAPS","MERCURY'S TREADS","IONIAN BOOTS OF LUCIDITY",
   "GLUTTONOUS GREAVES","BOOTS OF SWIFTNESS","BERSERKER'S GREAVES","SORCERER'S SHOES",
   "SWIFTMARCH","GUNMETAL GREAVES","ARMORED ADVANCE","CHAINLACED CRUSHERS",
@@ -1814,14 +1847,14 @@ const T = {
   qOnHitPct:   [3,4,5,6,7,8],
   qBonusAS:    [20,32,44,56,68,80],
   qNewOnHit:   [6,12,18,24,30,36],
-  qNewHpRatio: [0.012,0.0136,0.0152,0.0168,0.0184,0.02],
+  qNewHpRatio: [0.01,0.012,0.014,0.016,0.018,0.02],   /* 1 to 2% bonus health, wiki */
   wFlat:       [45,65,85,105,125,145],
   wHpPct:      [0.02,0.023,0.026,0.029,0.032,0.035],
   wLifesteal:  [15,16,17,18,19,20],
   wAwkLifest:  [30,32,34,36,38,40],
   wRegenFlat:  [22.5,32.5,42.5,52.5,62.5,72.5],
   eMs:         [25,31,37,43,49,55],
-  rPerSec:     [10,18,26,34,42,50],
+  rPerSec:     [10,19,28,37,46,55],   /* 80/152/224/296/368/440 over 8 ticks, wiki */
   rSlow:       [15,18,21,24,27,30],
   rAwkSlow:    [20,23,26,29,32,35]
 };
@@ -1862,7 +1895,9 @@ function msSoftCap(ms){
 }
 
 function computeBuild(b, target){
+  target = target || state.target;
   const L  = Math.min(LVL_CAP, Math.max(1, b.level));
+  if(state.preset) target = targetAt(L);
   const gr = (L-1)*(0.7025+0.0175*(L-1));           // LoL growth curve
   /* 62 + 4 per level gives 130 AD at level 18, confirmed in game.
      Riot's champion file reports 0 AD per level for Udyr, which is wrong. */
@@ -2060,8 +2095,8 @@ function computeBuild(b, target){
   const A = {};
   A.qOnHit  = R1(T.qNewOnHit,qr) + 0.2*bonusAD + R1(T.qNewHpRatio,qr)*bonusHP;
   A.qPct    = R1(T.qOnHitPct,qr) + 0.035*bonusAD;
-  A.qAwkPct = A.qPct + lerp(2,4,L) + 0.01*bonusAD + 0.001*bonusHP;
-  A.qLightning = lerp(1.5,3,L) + 0.006*tot.ap;
+  A.qAwkPct = A.qPct + lerp(2,4.24,L) + 0.015*bonusAD + 0.001*bonusHP;
+  A.qLightning = lerp(1.5,3.18,L) + 0.006*tot.ap;
   if(!learned.q){ A.qOnHit = 0; A.qPct = 0; A.qAwkPct = 0; A.qLightning = 0; }
   A.qBonusAS = qBonusAS;
   A.qAwkAS   = qAwkBonusAS;
@@ -2089,7 +2124,7 @@ function computeBuild(b, target){
   A.rPerTick  = R1(T.rPerSec,rr) + 0.175*tot.ap;
   A.rTotal    = A.rPerTick * 8;
   A.rSlow     = R1(T.rSlow,rr);
-  A.rAwkTick  = lerp(1, 14/8, L) + 0.004375*tot.ap;
+  A.rAwkTick  = lerp(1, 1.84, L) + 0.0044*tot.ap;
   A.rAwkTotal = A.rAwkTick * 8;
   A.rAwkSlow  = R1(T.rAwkSlow,rr);
 
@@ -2169,8 +2204,14 @@ function computeBuild(b, target){
   A.awakenReal    = A.awakenAttacks / tot.as;    /* how long that actually takes */
   A.awakenSaved   = A.awakenCD - A.awakenReal;
   /* four attacks at the current attack speed */
-  A.comboTime = 4 / tot.as;
-  A.attackEvery = 1 / tot.as;
+  /* Monk Training gives the two attacks after a cast 30% bonus attack speed.
+     The combo is cast, two attacks, awaken, two attacks — so all four are
+     empowered, and the whole sequence runs at that faster rate. */
+  A.comboAS = learned.q || learned.w || learned.e || learned.r
+    ? Math.min(2.5, base.as * (1 + (tot.bonusASpct + 30)/100))
+    : tot.as;
+  A.comboTime = 4 / A.comboAS;
+  A.attackEvery = 1 / A.comboAS;
 
   /* Coup de Grace only pays under 40% of the target's health, Cut Down only above
      60%. Since the combo is stepped attack by attack we can read the target's
@@ -2197,6 +2238,7 @@ function computeBuild(b, target){
     const add = (k,v) => { lines[k] = (lines[k]||0) + v; };
 
     const steps = [];
+    let stanceDmg = 0;          /* the stance's own damage, without the attacks */
     for(let a = 1; a <= 4; a++){
       const awakened = a > 2;
       let d = autoHit;                     /* the attack's own AD, post-mitigation */
@@ -2207,10 +2249,14 @@ function computeBuild(b, target){
         const flat = A.qOnHit * pMul;
         const pct  = hp*(awakened ? A.qAwkPct : A.qPct)*0.01 * pMul;
         d += flat + pct;
+        stanceDmg += flat + pct;
         parts.push({n:"qOnHit", v:flat});
         parts.push({n:awakened ? "qAwkPct" : "qPct", v:pct});
       }
-      if(stance === "r"){ d += A.rOnHit * mMul; parts.push({n:"rOnHit", v:A.rOnHit*mMul}); }
+      if(stance === "r"){
+        d += A.rOnHit * mMul; stanceDmg += A.rOnHit * mMul;
+        parts.push({n:"rOnHit", v:A.rOnHit*mMul});
+      }
       if(stance === "w"){
         extraLS += autoHit * (awakened ? A.wAwkLifest : A.wLifesteal)/100;
       }
@@ -2230,7 +2276,7 @@ function computeBuild(b, target){
       });
 
       const amp = ampAt(cur, a);
-      d *= amp;                     /* thresholds read before this hit lands */
+      d *= amp; stanceDmg *= 1;   /* the running total is scaled below, per hit */                     /* thresholds read before this hit lands */
       steps.push({n:a, awakened, amp, before:cur, total:d,
                   parts:parts.map(x => ({...x, v:x.v*amp}))});
       cur = Math.max(0, cur - d);
@@ -2242,11 +2288,11 @@ function computeBuild(b, target){
     const finals = [];
     if(stance === "q"){
       const v = hp*A.qLightning*0.01*6 * mMul * lateAmp;
-      dmg += v; finals.push({n:"lightning", v});
+      dmg += v; stanceDmg += v; finals.push({n:"lightning", v});
     }
     if(stance === "r"){
       const v1 = A.rTotal*mMul*lateAmp, v2 = hp*A.rAwkTotal*0.01*mMul*lateAmp;
-      dmg += v1 + v2;
+      dmg += v1 + v2; stanceDmg += v1 + v2;
       finals.push({n:"rStorm", v:v1}); finals.push({n:"rAwkStorm", v:v2});
     }
     if(runeDmg){ dmg += runeDmg * lateAmp; finals.push({n:"runeProcs", v:runeDmg*lateAmp}); }
@@ -2263,7 +2309,7 @@ function computeBuild(b, target){
     const ovHeal = dmg * tot.ov/100;
     heal += lsHeal + ovHeal + runeHeal*hsMul;
 
-    return {dmg, heal, shield, lsHeal, ovHeal,
+    return {dmg, heal, shield, lsHeal, ovHeal, stanceDmg,
             dps: dmg / A.comboTime, hps: heal / A.comboTime,
             ms: stance === "e" ? A.msEAwk : A.msIdle,
             sustain: heal + shield,
@@ -2488,7 +2534,7 @@ const L10N = {
   breakdownOf:["%s — full breakdown","%s — détail complet"],
   swaps:["Swaps","Alternatives"], swapsOf:["%s — item swaps","%s — alternatives d'items"],
   swSlot:["Slot","Emplacement"], swMetric:["Ranked on","Classé sur"],
-  swBudget:["within budget","dans le budget"], swNow:["Currently","Actuellement"],
+ swNow:["Currently","Actuellement"],
   swDelta:["Change","Écart"], swGold:["Cost","Coût"],
   source:["Source","Source"], shareHead:["% of Q combo","% du combo Q"],
   shareWhy:["share of the full Q combo damage this line accounts for",
@@ -2975,7 +3021,7 @@ const mk = name => ({
   items: Array(6).fill(null).map(() => ({name:null, cond:true}))
 });
 const freshState = () => ({
-  gpm:400,
+  gpm:400, preset:null,
   target:{hp:2000, ar:100, mr:100},
   builds:[mk("Build 1"), mk("Build 2"), mk("Build 3")]
 });
@@ -3040,7 +3086,7 @@ function deleteOneBuild(name){
 }
 
 function snapshot(){
-  return {v:2, saved:new Date().toISOString(), gpm:state.gpm,
+  return {v:2, saved:new Date().toISOString(), gpm:state.gpm, preset:state.preset,
           target:state.target, builds:state.builds, library:readBuilds()};
 }
 function restore(data){
@@ -3048,6 +3094,7 @@ function restore(data){
   const blank = freshState();
   state.target = Object.assign(blank.target, data.target || {});
   state.gpm = data.gpm || 400;
+  state.preset = data.preset || null;
   state.builds = blank.builds.map((b, i) => {
     const d = data.builds[i];
     if(!d) return b;
@@ -3189,6 +3236,7 @@ function optBuild(base, goal, slots, budget){
     const wearsBoots = b.items.some(x => x.name && BOOTS.has(x.name));
     for(const it of ITEMS){
       if(taken.has(it.n) || (wearsBoots && BOOTS.has(it.n))) continue;
+      if(!itemAllowed(it.n, [...taken])) continue;
       b.items[si] = {name:it.n, cond:true};
       const sc = optScore(b, goal, budget);
       if(sc > bestScore){ bestScore = sc; best = it.n; }
@@ -3211,6 +3259,7 @@ function optSwaps(bi, si, goal){
   const out = [];
   for(const it of ITEMS){
     if(taken.has(it.n) || (wearsBoots && BOOTS.has(it.n))) continue;
+    if(!itemAllowed(it.n, [...taken])) continue;
     b.items[si] = {name:it.n, cond:true};
     const sc = optScore(b, goal, 0);
     out.push({name:it.n, score:sc, delta:sc - now, gold:it.g - (cur && BY_NAME[cur] ? BY_NAME[cur].g : 0)});
@@ -3816,16 +3865,27 @@ function optRender(){
    can run on a click without any waiting.
    ============================================================ */
 const SWAP_METRICS = {
-  qdmg:  {label:["Q combo damage","Dégâts du combo Q"],   get:r => r.D.combo.q.dmg},
-  qdps:  {label:["Q damage per second","Dégâts par seconde du Q"], get:r => r.D.combo.q.dps},
-  rdmg:  {label:["R combo damage","Dégâts du combo R"],   get:r => r.D.combo.r.dmg},
-  ehpP:  {label:["Effective HP vs physical","PV effectifs vs physique"], get:r => r.ehpAr},
-  ehpM:  {label:["Effective HP vs magic","PV effectifs vs magique"],     get:r => r.ehpMr},
-  heal:  {label:["Healing over the Q combo","Soins sur le combo Q"],     get:r => r.D.combo.q.heal},
-  mix:   {label:["Damage and survival balanced","Dégâts et survie équilibrés"],
-          get:r => Math.sqrt(r.D.combo.q.dmg * (r.ehpAr + r.ehpMr) / 2)}
+  /* damage */
+  qdmg:  {grp:"dmg", label:["Q combo","Combo Q"],                 get:r => r.D.combo.q.dmg},
+  rdmg:  {grp:"dmg", label:["R combo","Combo R"],                 get:r => r.D.combo.r.dmg},
+  qabil: {grp:"dmg", label:["Q ability alone","Q seul, sans les autos"], get:r => r.D.combo.q.stanceDmg},
+  rabil: {grp:"dmg", label:["R ability alone","R seul, sans les autos"], get:r => r.D.combo.r.stanceDmg},
+  /* staying alive */
+  ehp:   {grp:"def", label:["Effective HP, both types","PV effectifs, les deux types"],
+          get:r => 2 / (1/r.ehpAr + 1/r.ehpMr)},
+  ehpP:  {grp:"def", label:["Effective HP vs physical","PV effectifs vs physique"], get:r => r.ehpAr},
+  ehpM:  {grp:"def", label:["Effective HP vs magic","PV effectifs vs magique"],     get:r => r.ehpMr},
+  heal:  {grp:"def", label:["Healing over the Q combo","Soins sur le combo Q"],     get:r => r.D.combo.q.heal},
+  /* both at once */
+  mixQ:  {grp:"mix", label:["Q damage and survival","Dégâts du Q et survie"],
+          get:r => Math.sqrt(r.D.combo.q.dmg * (2 / (1/r.ehpAr + 1/r.ehpMr)))},
+  mixR:  {grp:"mix", label:["R damage and survival","Dégâts du R et survie"],
+          get:r => Math.sqrt(r.D.combo.r.dmg * (2 / (1/r.ehpAr + 1/r.ehpMr)))}
 };
-let swapSlot = 0, swapMetric = "qdmg", swapBudget = false;
+const METRIC_GROUP = {dmg:["Damage","Dégâts"], def:["Staying alive","Survie"],
+                      mix:["Both at once","Les deux à la fois"]};
+
+let swapSlot = 0, swapMetric = "qdmg";
 
 /* one build, one number, without touching what is on screen */
 function scoreWith(build, slot, itemName, metric){
@@ -3844,31 +3904,38 @@ function swapPanel(bi){
     i !== swapSlot && sl.name && BOOTS.has(sl.name));
   b.items.forEach((sl, i) => { if(i !== swapSlot && sl.name) taken.add(sl.name); });
 
+  const wornList = b.items.map((sl, i) => i === swapSlot ? null : sl.name);
   const rows = ITEMS
-    .filter(it => !taken.has(it.n) && !(wearsBoots && BOOTS.has(it.n)))
+    .filter(it => !taken.has(it.n) && !(wearsBoots && BOOTS.has(it.n)) && itemAllowed(it.n, wornList))
     .map(it => {
       const s = scoreWith(b, swapSlot, it.n, swapMetric);
       return {n:it.n, it, score:s.score, gold:s.gold,
-              over:swapBudget && s.gold > s.budget,
               delta:base.score > 0 ? (s.score - base.score) / base.score * 100 : 0};
     })
-    .filter(x => !x.over)
     .sort((a, b2) => b2.score - a.score)
     .slice(0, 12);
 
   const cur = b.items[swapSlot].name ? BY_NAME[b.items[swapSlot].name] : null;
   return `
     <div class="swbar">
-      <label class="lbsel">${TR("swSlot")}
-        <select id="swSlot">${b.items.map((sl, i) =>
-          `<option value="${i}" ${i === swapSlot ? "selected" : ""}>${i + 1}. ${
-            sl.name ? esc(iName(BY_NAME[sl.name])) : TR("emptySlot")}</option>`).join("")}</select></label>
+      <div class="swslots">
+        <span class="swlab">${TR("swSlot")}</span>
+        ${b.items.map((sl, i) => {
+          const it = sl.name ? BY_NAME[sl.name] : null;
+          return `<button class="swslot ${i === swapSlot ? "on" : ""}" data-slot="${i}"
+                    title="${it ? esc(iName(it)) : TR("emptySlot")}">
+            ${it && it.id ? `<img src="${ITEM_ICON(it.id)}" alt="" loading="lazy"
+                 onerror="this.style.visibility='hidden'">` : `<span class="swempty">${i + 1}</span>`}
+          </button>`;
+        }).join("")}
+      </div>
       <label class="lbsel">${TR("swMetric")}
-        <select id="swMetric">${Object.keys(SWAP_METRICS).map(k =>
-          `<option value="${k}" ${k === swapMetric ? "selected" : ""}>${
-            esc(isFR() ? SWAP_METRICS[k].label[1] : SWAP_METRICS[k].label[0])}</option>`).join("")}</select></label>
-      <label class="lbsel"><input type="checkbox" id="swBudget" ${swapBudget ? "checked" : ""}>
-        ${TR("swBudget")}</label>
+        <select id="swMetric">${Object.keys(METRIC_GROUP).map(g =>
+          `<optgroup label="${esc(isFR() ? METRIC_GROUP[g][1] : METRIC_GROUP[g][0])}">${
+            Object.keys(SWAP_METRICS).filter(k => SWAP_METRICS[k].grp === g).map(k =>
+              `<option value="${k}" ${k === swapMetric ? "selected" : ""}>${
+                esc(isFR() ? SWAP_METRICS[k].label[1] : SWAP_METRICS[k].label[0])}</option>`).join("")
+          }</optgroup>`).join("")}</select></label>
     </div>
     <p class="sub">${TR("swNow")} <strong>${cur ? esc(iName(cur)) : TR("emptySlot")}</strong> —
        ${n0(base.score)}</p>
@@ -3889,6 +3956,7 @@ function swapPanel(bi){
 
 let swapFor = 0;
 function openSwaps(bi){
+  if(!myFlags.admin) return;   /* a UI gate, not a secret: see the note in the guide */
   swapFor = bi;
   document.getElementById("swTitle").textContent =
     TR("swapsOf").replace("%s", state.builds[bi].name);
@@ -3899,9 +3967,9 @@ function drawSwaps(){
   const el = document.getElementById("swBody");
   el.innerHTML = swapPanel(swapFor);
   const on2 = (id, ev, fn) => { const x = el.querySelector("#" + id); if(x) x.addEventListener(ev, fn); };
-  on2("swSlot", "change", e => { swapSlot = +e.target.value; drawSwaps(); });
+  el.querySelectorAll("button[data-slot]").forEach(x =>
+    x.addEventListener("click", () => { swapSlot = +x.dataset.slot; drawSwaps(); }));
   on2("swMetric", "change", e => { swapMetric = e.target.value; drawSwaps(); });
-  on2("swBudget", "change", e => { swapBudget = e.target.checked; drawSwaps(); });
 }
 
 function breakdown(bi, stance){
@@ -4330,7 +4398,8 @@ function drawList(raw){
   const si = pickCtx ? pickCtx.si : -1;
   const elsewhere = b ? b.items.filter((x, idx) => idx !== si && x.name).map(x => x.name) : [];
   const hasBoots  = elsewhere.some(n => BOOTS.has(n));
-  const allowed = i => !elsewhere.includes(i.n) && !(hasBoots && BOOTS.has(i.n));
+  const allowed = i => !elsewhere.includes(i.n) && !(hasBoots && BOOTS.has(i.n))
+                       && itemAllowed(i.n, elsewhere);
   let list = ITEMS.filter(i => allowed(i) && matches(i, q));
   const sortKey = q.stats.length ? q.stats[0].key : null;
   if(sortKey){
@@ -4387,7 +4456,10 @@ function drawList(raw){
       /* belt and braces: clear any copy left in another slot */
       if(slot.name) bb.items.forEach((sl, i) => {
         if(i === pickCtx.si || !sl.name) return;
-        if(sl.name === slot.name || (BOOTS.has(sl.name) && BOOTS.has(slot.name))){
+        const clash = sl.name === slot.name
+          || (BOOTS.has(sl.name) && BOOTS.has(slot.name))
+          || !itemAllowed(slot.name, [sl.name]);
+        if(clash){
           sl.name = null; sl.cond = true;
         }
       });
@@ -4418,6 +4490,7 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && pickCtx) cl
     let v = parseFloat(e.target.value);
     if(isNaN(v)) return;
     if(v < floor){ v = floor; e.target.value = floor; }   /* correct the field, not just the model */
+    state.preset = null;                 /* a typed number wins over a profile */
     state.target[key] = v;
     render();
   });
@@ -4434,11 +4507,20 @@ const openHelp  = () => helpOverlay && helpOverlay.classList.add("on");
 const closeHelp = () => helpOverlay && helpOverlay.classList.remove("on");
 on("btnHelp", "click", openHelp);
 /* rough level-18 profiles, meant as common ground rather than exact champions */
+/* A preset is a profile, not a fixed number: an enemy at level 6 does not
+   have a level 18 health bar. Values run from level 1 to level 18 and are
+   read against the level of the build being measured. */
 const PRESETS = {
-  squishy:{hp:2100, ar:95,  mr:55},    /* marksman, mage or assassin with no defensive item */
-  bruiser:{hp:3300, ar:165, mr:110},   /* a few health items, sometimes one resistance */
-  tank:   {hp:4300, ar:250, mr:190}    /* stacked resistances and health */
+  squishy:{hp:[600,2100],  ar:[25,95],  mr:[30,55]},
+  bruiser:{hp:[650,3300],  ar:[32,165], mr:[32,110]},
+  tank:   {hp:[680,4300],  ar:[40,250], mr:[32,190]}
 };
+function targetAt(L){
+  const p = PRESETS[state.preset];
+  if(!p) return state.target;                       /* typed by hand, left alone */
+  const at = ([a, b2]) => Math.round(a + (b2 - a) * (Math.min(18, Math.max(1, L)) - 1) / 17);
+  return {hp:at(p.hp), ar:at(p.ar), mr:at(p.mr)};
+}
 const gpmIn = document.getElementById("tGpm");
 if(gpmIn) gpmIn.addEventListener("input", e => {
   let v = parseFloat(e.target.value);
@@ -4448,11 +4530,12 @@ if(gpmIn) gpmIn.addEventListener("input", e => {
 });
 document.querySelectorAll("#presetSeg button").forEach(btn => {
   btn.addEventListener("click", () => {
-    const p = PRESETS[btn.dataset.p];
-    state.target = {hp:p.hp, ar:p.ar, mr:p.mr};
-    document.getElementById("tHp").value = p.hp;
-    document.getElementById("tAr").value = p.ar;
-    document.getElementById("tMr").value = p.mr;
+    state.preset = btn.dataset.p;
+    const t18 = targetAt(18);
+    state.target = t18;
+    document.getElementById("tHp").value = t18.hp;
+    document.getElementById("tAr").value = t18.ar;
+    document.getElementById("tMr").value = t18.mr;
     document.querySelectorAll("#presetSeg button").forEach(b =>
       b.setAttribute("aria-pressed", String(b === btn)));
     render();
