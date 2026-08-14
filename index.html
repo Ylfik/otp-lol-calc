@@ -162,6 +162,19 @@ main{max-width:2200px;margin:0 auto;padding:22px 28px 80px}
 .blib .swapb{border-color:var(--e);color:var(--e)}
 .blib .swapb:hover{background:var(--e);color:#10161d}
 .swbar{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin:10px 0 8px}
+.optexcl{margin:10px 0}
+.optexcl summary{font-family:var(--display);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--q);cursor:pointer;padding:4px 0}
+.optexcl input{width:100%;max-width:340px;background:var(--panel-2);border:1px solid var(--line);
+  border-radius:2px;color:var(--ink);font-size:12.5px;padding:5px 7px;margin:4px 0 8px}
+.exlist{display:flex;flex-wrap:wrap;gap:5px}
+.exitem{display:flex;align-items:center;gap:6px;border:1px solid var(--line-soft);border-radius:3px;
+  background:var(--panel-2);color:var(--ink-dim);padding:3px 8px 3px 3px;font-size:11.5px}
+.exitem img{width:22px;height:22px;border-radius:2px}
+.exitem:hover{border-color:var(--q)}
+.exitem.off{border-color:var(--bad);color:var(--bad);opacity:.75;text-decoration:line-through}
+.acctbtn.adm{border-color:var(--e);color:var(--e)}
+.acctbtn.adm:hover{background:var(--e);color:#10161d}
 .swslots{display:flex;gap:5px;align-items:center}
 .swlab{font-family:var(--display);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
   color:var(--ink-faint);margin-right:3px}
@@ -752,7 +765,7 @@ table.brk .up{color:var(--e)}
       <button class="helpbtn primary" id="btnHelp" data-i18n="help">How it works</button>
       <button class="helpbtn" id="btnNotes" data-i18n="patchNotes">Patch notes</button>
       <button class="helpbtn" id="btnBoard" data-i18n="board">Leaderboard</button>
-      <button class="helpbtn" id="btnOpt" data-i18n="optimiser">Optimiser</button>
+      
       <button class="helpbtn" id="btnReport" data-i18n="report">Feedback</button>
       <div class="seg" id="langSeg"><button data-l="en" aria-pressed="true">EN</button><button data-l="fr" aria-pressed="false">FR</button></div>
     </div>
@@ -811,15 +824,6 @@ table.brk .up{color:var(--e)}
   </div>
 </div>
 
-<div class="overlay" id="optOverlay">
-  <div class="help wide" role="dialog" aria-modal="true" aria-label="Optimiser">
-    <header>
-      <h2 data-i18n="optimiser">Optimiser</h2>
-      <button class="closebtn" id="optClose" aria-label="Close">esc</button>
-    </header>
-    <div class="helpbody" id="optBody"></div>
-  </div>
-</div>
 
 <div class="overlay" id="swOverlay">
   <div class="help wide" role="dialog" aria-modal="true" aria-label="Item swaps">
@@ -2533,6 +2537,10 @@ const L10N = {
   endOfCombo:["Once per combo","Une fois par combo"], summary:["Total","Total"],
   breakdownOf:["%s — full breakdown","%s — détail complet"],
   swaps:["Swaps","Alternatives"], swapsOf:["%s — item swaps","%s — alternatives d'items"],
+  optExclude:["Items to leave out","Items à écarter"],
+  optExcludeWhy:["Search an item and click it to keep both tools from suggesting it.",
+                 "Cherchez un item et cliquez dessus pour que les deux outils cessent de le proposer."],
+  optExcludeNone:["Nothing set aside. Search to add one.","Rien d'écarté. Cherchez pour en ajouter un."],
   swSlot:["Slot","Emplacement"], swMetric:["Ranked on","Classé sur"],
  swNow:["Currently","Actuellement"],
   swDelta:["Change","Écart"], swGold:["Cost","Coût"],
@@ -3204,15 +3212,20 @@ function itemSummary(it){
    already equipped.
    ============================================================ */
 const GOALS = {
-  qDamage:  {en:"Q combo damage",    fr:"dégâts du combo Q",     f:r => r.D.combo.q.dmg},
-  rDamage:  {en:"R combo damage",    fr:"dégâts du combo R",     f:r => r.D.combo.r.dmg},
-  dps:      {en:"damage per second", fr:"dégâts par seconde",    f:r => r.D.combo.q.dps},
-  ehpPhys:  {en:"effective HP vs physical", fr:"PV effectifs vs physique", f:r => r.ehpAr},
-  ehpMagic: {en:"effective HP vs magic",    fr:"PV effectifs vs magique",  f:r => r.ehpMr},
-  sustain:  {en:"healing and shielding",    fr:"soins et boucliers",
+  qDamage:  {en:"Q combo",   fr:"combo Q",   grp:"dmg", f:r => r.D.combo.q.dmg},
+  rDamage:  {en:"R combo",   fr:"combo R",   grp:"dmg", f:r => r.D.combo.r.dmg},
+  rAbility: {en:"R ability alone", fr:"R seul, sans les autos", grp:"dmg",
+             f:r => r.D.combo.r.stanceDmg},
+  ehp:      {en:"Effective HP, both types", fr:"PV effectifs, les deux types", grp:"def",
+             f:r => 2 / (1/r.ehpAr + 1/r.ehpMr)},
+  ehpPhys:  {en:"Effective HP vs physical", fr:"PV effectifs vs physique", grp:"def", f:r => r.ehpAr},
+  ehpMagic: {en:"Effective HP vs magic",    fr:"PV effectifs vs magique",  grp:"def", f:r => r.ehpMr},
+  sustain:  {en:"Healing and shielding",    fr:"Soins et boucliers",       grp:"def",
              f:r => r.D.combo.w.heal + r.D.combo.w.shield},
-  balanced: {en:"damage and survival together", fr:"dégâts et survie ensemble",
-             f:r => Math.sqrt(r.D.combo.q.dmg * (r.ehpAr + r.ehpMr) / 2)}
+  mixQ:     {en:"Q damage and survival", fr:"Dégâts du Q et survie", grp:"mix",
+             f:r => Math.sqrt(r.D.combo.q.dmg * (2 / (1/r.ehpAr + 1/r.ehpMr)))},
+  mixR:     {en:"R damage and survival", fr:"Dégâts du R et survie", grp:"mix",
+             f:r => Math.sqrt(r.D.combo.r.dmg * (2 / (1/r.ehpAr + 1/r.ehpMr)))}
 };
 
 /* a build is only worth considering if you could pay for it */
@@ -3221,6 +3234,10 @@ function optScore(b, goal, budget){
   if(budget && r.gold > budget) return -1;
   return GOALS[goal].f(r);
 }
+
+/* items you never want either tool to suggest */
+const excluded = new Set();
+const isExcluded = n => excluded.has(n);
 
 function optClone(b){ return JSON.parse(JSON.stringify(b)); }
 
@@ -3236,7 +3253,7 @@ function optBuild(base, goal, slots, budget){
     const wearsBoots = b.items.some(x => x.name && BOOTS.has(x.name));
     for(const it of ITEMS){
       if(taken.has(it.n) || (wearsBoots && BOOTS.has(it.n))) continue;
-      if(!itemAllowed(it.n, [...taken])) continue;
+      if(!itemAllowed(it.n, [...taken]) || isExcluded(it.n)) continue;
       b.items[si] = {name:it.n, cond:true};
       const sc = optScore(b, goal, budget);
       if(sc > bestScore){ bestScore = sc; best = it.n; }
@@ -3259,7 +3276,7 @@ function optSwaps(bi, si, goal){
   const out = [];
   for(const it of ITEMS){
     if(taken.has(it.n) || (wearsBoots && BOOTS.has(it.n))) continue;
-    if(!itemAllowed(it.n, [...taken])) continue;
+    if(!itemAllowed(it.n, [...taken]) || isExcluded(it.n)) continue;
     b.items[si] = {name:it.n, cond:true};
     const sc = optScore(b, goal, 0);
     out.push({name:it.n, score:sc, delta:sc - now, gold:it.g - (cur && BY_NAME[cur] ? BY_NAME[cur].g : 0)});
@@ -3581,12 +3598,18 @@ function acctRender(){
   el.innerHTML = me
     ? `<span class="acctname">${esc(meName())}</span>
        <button class="acctbtn" id="acRen" title="${TR("changeName")}">${TR("changeName")}</button>
+       ${myFlags.admin ? `<button class="acctbtn adm" id="acOpt">${TR("optimiser")}</button>` : ""}
        <button class="acctbtn" id="acOut" title="${TR("signOut")}">${TR("signOut")}</button>`
     : `<button class="acctbtn in" id="acIn">${TR("signInDiscord")}</button>`;
   const a = id => el.querySelector("#" + id);
   if(a("acIn"))  a("acIn").addEventListener("click", lbSignIn);
   if(a("acRen")) a("acRen").addEventListener("click", lbRename);
   if(a("acOut")) a("acOut").addEventListener("click", lbSignOut);
+  if(a("acOpt")) a("acOpt").addEventListener("click", () => {
+    if(!myFlags.admin) return;
+    optRender();
+    document.getElementById("optOverlay").classList.add("on");
+  });
 }
 
 function lbRender(){
@@ -3758,9 +3781,12 @@ function lbRender(){
 
 function optRender(){
   const el = document.getElementById("optBody");
-  if(!el) return;
-  const goals = Object.keys(GOALS).map(k =>
-    `<option value="${k}">${esc(isFR() ? GOALS[k].fr : GOALS[k].en)}</option>`).join("");
+  if(!el || !myFlags.admin) return;
+  const goals = Object.keys(METRIC_GROUP).map(g =>
+    `<optgroup label="${esc(isFR() ? METRIC_GROUP[g][1] : METRIC_GROUP[g][0])}">${
+      Object.keys(GOALS).filter(k => GOALS[k].grp === g).map(k =>
+        `<option value="${k}">${esc(isFR() ? GOALS[k].fr : GOALS[k].en)}</option>`).join("")
+    }</optgroup>`).join("");
   const builds = state.builds.map((b, i) =>
     `<option value="${i}">${esc(b.name)}</option>`).join("");
   el.innerHTML = `
@@ -3774,7 +3800,36 @@ function optRender(){
       <button class="tipbtn" id="optSwapGo">${TR("optSwapRun")}</button>
     </div>
     <p class="tipstat">${TR("optNote")}</p>
+    <details class="optexcl"><summary>${TR("optExclude")} (${excluded.size})</summary>
+      <p class="tipstat">${TR("optExcludeWhy")}</p>
+      <input id="optExFind" placeholder="${TR("searchPh")}">
+      <div class="exlist" id="optExList"></div>
+    </details>
     <div id="optOut"></div>`;
+
+  const exList = el.querySelector("#optExList"), exFind = el.querySelector("#optExFind");
+  const drawEx = () => {
+    const needle = noAccent((exFind.value || "").trim().toLowerCase());
+    const shown = ITEMS.filter(i => excluded.has(i.n) ||
+      (needle && noAccent((i.n + " " + iName(i)).toLowerCase()).includes(needle)));
+    exList.innerHTML = shown.slice(0, 40).map(i =>
+      `<button class="exitem ${excluded.has(i.n) ? "off" : ""}" data-ex="${esc(i.n)}"
+         title="${esc(iName(i))}">
+        ${i.id ? `<img src="${ITEM_ICON(i.id)}" alt="" loading="lazy"
+             onerror="this.style.visibility='hidden'">` : ""}
+        <span>${esc(iName(i))}</span></button>`).join("")
+      || `<p class="tipstat">${TR("optExcludeNone")}</p>`;
+    exList.querySelectorAll("button[data-ex]").forEach(x =>
+      x.addEventListener("click", () => {
+        const n = x.dataset.ex;
+        excluded.has(n) ? excluded.delete(n) : excluded.add(n);
+        el.querySelector(".optexcl > summary").textContent =
+          TR("optExclude") + " (" + excluded.size + ")";
+        drawEx();
+      }));
+  };
+  drawEx();
+  exFind.addEventListener("input", drawEx);
 
   const bSel = el.querySelector("#optB");
   const drawKeep = () => {
@@ -3868,7 +3923,6 @@ const SWAP_METRICS = {
   /* damage */
   qdmg:  {grp:"dmg", label:["Q combo","Combo Q"],                 get:r => r.D.combo.q.dmg},
   rdmg:  {grp:"dmg", label:["R combo","Combo R"],                 get:r => r.D.combo.r.dmg},
-  qabil: {grp:"dmg", label:["Q ability alone","Q seul, sans les autos"], get:r => r.D.combo.q.stanceDmg},
   rabil: {grp:"dmg", label:["R ability alone","R seul, sans les autos"], get:r => r.D.combo.r.stanceDmg},
   /* staying alive */
   ehp:   {grp:"def", label:["Effective HP, both types","PV effectifs, les deux types"],
@@ -3906,7 +3960,8 @@ function swapPanel(bi){
 
   const wornList = b.items.map((sl, i) => i === swapSlot ? null : sl.name);
   const rows = ITEMS
-    .filter(it => !taken.has(it.n) && !(wearsBoots && BOOTS.has(it.n)) && itemAllowed(it.n, wornList))
+    .filter(it => !taken.has(it.n) && !(wearsBoots && BOOTS.has(it.n))
+                  && itemAllowed(it.n, wornList) && !isExcluded(it.n))
     .map(it => {
       const s = scoreWith(b, swapSlot, it.n, swapMetric);
       return {n:it.n, it, score:s.score, gold:s.gold,
@@ -4596,7 +4651,7 @@ const closeOpt = () => optOverlay && optOverlay.classList.remove("on");
 on("optClose", "click", closeOpt);
 if(optOverlay) optOverlay.addEventListener("click", e => { if(e.target === optOverlay) closeOpt(); });
 document.addEventListener("keydown", e => { if(e.key === "Escape") closeOpt(); });
-on("btnOpt", "click", () => { optRender(); optOverlay.classList.add("on"); });
+
 
 on("btnNotes", "click", () => {
   document.getElementById("pnBody").innerHTML = PATCH_NOTES.map(n => `
