@@ -162,6 +162,21 @@ main{max-width:2200px;margin:0 auto;padding:22px 28px 80px}
 .blib .swapb{border-color:var(--e);color:var(--e)}
 .blib .swapb:hover{background:var(--e);color:#10161d}
 .swbar{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin:10px 0 8px}
+.mixsl,.mixrow{gap:8px!important}
+.mixsl input[type=range],.mixrow input[type=range]{accent-color:var(--q);width:150px}
+.mixval{font-family:var(--mono);font-size:10.5px;color:var(--q);min-width:96px;text-transform:none;letter-spacing:0}
+.mixbar{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:2px 0 10px}
+.mixbar input[type=range]{width:190px;accent-color:var(--q)}
+.mixend{font-family:var(--display);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
+.mixval{font-family:var(--mono);font-size:11px;color:var(--q);min-width:52px}
+.mixname{font-style:normal;font-family:var(--display);font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-dim)}
+.mixpre{display:flex;gap:4px;flex-wrap:wrap}
+.mixpre button{border:1px solid var(--line-soft);background:var(--panel-2);color:var(--ink-faint);
+  border-radius:10px;padding:2px 9px;font-family:var(--display);font-size:9px;letter-spacing:.1em;
+  text-transform:uppercase}
+.mixpre button:hover{border-color:var(--q);color:var(--q)}
+.mixpre button.on{background:var(--q);border-color:var(--q);color:#10161d;font-weight:600}
 .optexcl{margin:10px 0}
 .optexcl summary{font-family:var(--display);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
   color:var(--q);cursor:pointer;padding:4px 0}
@@ -173,8 +188,8 @@ main{max-width:2200px;margin:0 auto;padding:22px 28px 80px}
 .exitem img{width:22px;height:22px;border-radius:2px}
 .exitem:hover{border-color:var(--q)}
 .exitem.off{border-color:var(--bad);color:var(--bad);opacity:.75;text-decoration:line-through}
-.acctbtn.adm{border-color:var(--e);color:var(--e)}
-.acctbtn.adm:hover{background:var(--e);color:#10161d}
+.helpbtn.adm{border-color:var(--e);color:var(--e);background:rgba(11,17,24,.6)}
+.helpbtn.adm:hover{background:var(--e);color:#10161d}
 .swslots{display:flex;gap:5px;align-items:center}
 .swlab{font-family:var(--display);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
   color:var(--ink-faint);margin-right:3px}
@@ -764,6 +779,8 @@ table.brk .up{color:var(--e)}
     <div class="hero-act">
       <button class="helpbtn primary" id="btnHelp" data-i18n="help">How it works</button>
       <button class="helpbtn" id="btnNotes" data-i18n="patchNotes">Patch notes</button>
+      <button class="helpbtn" id="btnOpt" data-i18n="optimiser" hidden>Optimiser</button>
+      <button class="helpbtn adm" id="btnOpt" data-i18n="optimiser" hidden>Optimiser</button>
       <button class="helpbtn" id="btnBoard" data-i18n="board">Leaderboard</button>
       
       <button class="helpbtn" id="btnReport" data-i18n="report">Feedback</button>
@@ -2537,6 +2554,11 @@ const L10N = {
   endOfCombo:["Once per combo","Une fois par combo"], summary:["Total","Total"],
   breakdownOf:["%s — full breakdown","%s — détail complet"],
   swaps:["Swaps","Alternatives"], swapsOf:["%s — item swaps","%s — alternatives d'items"],
+  mixLean:["Leaning","Orientation"],
+  mixDmgOnly:["damage only","dégâts seuls"], mixBruiser:["bruiser","bruiser"],
+  mixEven:["even","équilibré"], mixTanky:["tanky bruiser","bruiser tanky"],
+  mixTankOnly:["survival only","survie seule"],
+  mixLean:["Leaning","Orientation"], mixOff:["damage","dégâts"], mixDef:["survival","survie"],
   optExclude:["Items to leave out","Items à écarter"],
   optExcludeWhy:["Search an item and click it to keep both tools from suggesting it.",
                  "Cherchez un item et cliquez dessus pour que les deux outils cessent de le proposer."],
@@ -3222,10 +3244,10 @@ const GOALS = {
   ehpMagic: {en:"Effective HP vs magic",    fr:"PV effectifs vs magique",  grp:"def", f:r => r.ehpMr},
   sustain:  {en:"Healing and shielding",    fr:"Soins et boucliers",       grp:"def",
              f:r => r.D.combo.w.heal + r.D.combo.w.shield},
-  mixQ:     {en:"Q damage and survival", fr:"Dégâts du Q et survie", grp:"mix",
-             f:r => Math.sqrt(r.D.combo.q.dmg * (2 / (1/r.ehpAr + 1/r.ehpMr)))},
-  mixR:     {en:"R damage and survival", fr:"Dégâts du R et survie", grp:"mix",
-             f:r => Math.sqrt(r.D.combo.r.dmg * (2 / (1/r.ehpAr + 1/r.ehpMr)))}
+  mixQ:     {en:"Q damage and survival", fr:"Dégâts du Q et survie", grp:"mix", weighted:true,
+             f:r => blend(r.D.combo.q.dmg, ehpBoth(r))},
+  mixR:     {en:"R damage and survival", fr:"Dégâts du R et survie", grp:"mix", weighted:true,
+             f:r => blend(r.D.combo.r.dmg, ehpBoth(r))}
 };
 
 /* a build is only worth considering if you could pay for it */
@@ -3598,18 +3620,14 @@ function acctRender(){
   el.innerHTML = me
     ? `<span class="acctname">${esc(meName())}</span>
        <button class="acctbtn" id="acRen" title="${TR("changeName")}">${TR("changeName")}</button>
-       ${myFlags.admin ? `<button class="acctbtn adm" id="acOpt">${TR("optimiser")}</button>` : ""}
        <button class="acctbtn" id="acOut" title="${TR("signOut")}">${TR("signOut")}</button>`
     : `<button class="acctbtn in" id="acIn">${TR("signInDiscord")}</button>`;
   const a = id => el.querySelector("#" + id);
   if(a("acIn"))  a("acIn").addEventListener("click", lbSignIn);
   if(a("acRen")) a("acRen").addEventListener("click", lbRename);
   if(a("acOut")) a("acOut").addEventListener("click", lbSignOut);
-  if(a("acOpt")) a("acOpt").addEventListener("click", () => {
-    if(!myFlags.admin) return;
-    optRender();
-    document.getElementById("optOverlay").classList.add("on");
-  });
+  const ob = document.getElementById("btnOpt");
+  if(ob) ob.hidden = !myFlags.admin;
 }
 
 function lbRender(){
@@ -3794,6 +3812,9 @@ function optRender(){
     <div class="lbform">
       <label>${TR("optBuild")}<select id="optB">${builds}</select></label>
       <label>${TR("optGoal")}<select id="optG">${goals}</select></label>
+      <label class="wide mixrow">${TR("mixLean")}
+        <input type="range" id="optMix" min="0" max="100" step="5" value="${mixWeight}">
+        <span class="mixval" id="optMixVal">${mixLabel()}</span></label>
       <label>${TR("optBudget")}<input id="optGold" type="number" min="0" step="500" value="0"></label>
       <label>${TR("optKeep")}<span class="optkeep" id="optKeep"></span></label>
       <button class="tipbtn" id="optGo">${TR("optRun")}</button>
@@ -3831,6 +3852,11 @@ function optRender(){
   drawEx();
   exFind.addEventListener("input", drawEx);
 
+  const mx = el.querySelector("#optMix");
+  if(mx) mx.addEventListener("input", e => {
+    mixWeight = +e.target.value;
+    el.querySelector("#optMixVal").textContent = mixLabel();
+  });
   const bSel = el.querySelector("#optB");
   const drawKeep = () => {
     const b = state.builds[+bSel.value];
@@ -3919,6 +3945,26 @@ function optRender(){
    legal replacement in that slot. About 74 ms for one slot, so it
    can run on a click without any waiting.
    ============================================================ */
+/* Both types at once: a harmonic mean, so a build strong against one and
+   naked against the other does not come out looking solid. */
+const ehpBoth = r => 2 / (1/r.ehpAr + 1/r.ehpMr);
+
+/* How much damage matters against survival, 0 to 100. 50 weighs a relative
+   gain on each side equally, which is what a bruiser is after. */
+let mixWeight = 50;
+/* A weighted geometric mean. Working in logs, a move is judged on its
+   percentage gain, so neither side can run away with the score just by
+   being the bigger number. */
+function blend(dmg, ehp){
+  const w = mixWeight / 100;
+  return Math.pow(Math.max(dmg, 1), w) * Math.pow(Math.max(ehp, 1), 1 - w);
+}
+const mixLabel = () => mixWeight >= 80 ? TR("mixDmgOnly")
+                     : mixWeight >= 60 ? TR("mixBruiser")
+                     : mixWeight >= 40 ? TR("mixEven")
+                     : mixWeight >= 20 ? TR("mixTanky")
+                     : TR("mixTankOnly");
+
 const SWAP_METRICS = {
   /* damage */
   qdmg:  {grp:"dmg", label:["Q combo","Combo Q"],                 get:r => r.D.combo.q.dmg},
@@ -3931,15 +3977,25 @@ const SWAP_METRICS = {
   ehpM:  {grp:"def", label:["Effective HP vs magic","PV effectifs vs magique"],     get:r => r.ehpMr},
   heal:  {grp:"def", label:["Healing over the Q combo","Soins sur le combo Q"],     get:r => r.D.combo.q.heal},
   /* both at once */
-  mixQ:  {grp:"mix", label:["Q damage and survival","Dégâts du Q et survie"],
-          get:r => Math.sqrt(r.D.combo.q.dmg * (2 / (1/r.ehpAr + 1/r.ehpMr)))},
-  mixR:  {grp:"mix", label:["R damage and survival","Dégâts du R et survie"],
-          get:r => Math.sqrt(r.D.combo.r.dmg * (2 / (1/r.ehpAr + 1/r.ehpMr)))}
+  mixQ:  {grp:"mix", weighted:true, label:["Q damage vs survival","Dégâts du Q vs survie"],
+          get:r => blend(r.D.combo.q.dmg, ehpBoth(r))},
+  mixR:  {grp:"mix", weighted:true, label:["R damage vs survival","Dégâts du R vs survie"],
+          get:r => blend(r.D.combo.r.dmg, ehpBoth(r))}
 };
 const METRIC_GROUP = {dmg:["Damage","Dégâts"], def:["Staying alive","Survie"],
                       mix:["Both at once","Les deux à la fois"]};
 
 let swapSlot = 0, swapMetric = "qdmg";
+/* 0 = all survival, 100 = all damage. The score is a weighted geometric mean,
+   so a 1% gain on either side counts the same at 50, and the weight tilts it
+   from there. Presets are just points on this line. */
+const MIX_PRESETS = [
+  {w:100, en:"Pure damage",   fr:"Dégâts purs"},
+  {w:70,  en:"Bruiser",       fr:"Bruiser"},
+  {w:50,  en:"Balanced",      fr:"Équilibré"},
+  {w:30,  en:"Tanky bruiser", fr:"Bruiser tank"},
+  {w:0,   en:"Pure survival", fr:"Survie pure"}
+];
 
 /* one build, one number, without touching what is on screen */
 function scoreWith(build, slot, itemName, metric){
@@ -3947,6 +4003,25 @@ function scoreWith(build, slot, itemName, metric){
   copy.items[slot] = {name:itemName, cond:true};
   const r = computeBuild(copy, state.target);
   return {score:SWAP_METRICS[metric].get(r), gold:r.gold, budget:r.budget.gold};
+}
+
+function mixSlider(){
+  return `<div class="mixbar">
+      <span class="swlab">${TR("mixLean")}</span>
+      <span class="mixend">${TR("mixDef")}</span>
+      <input type="range" id="mixW" min="0" max="100" step="5" value="${mixWeight}">
+      <span class="mixend">${TR("mixOff")}</span>
+      <b class="mixval">${mixWeight} / ${100 - mixWeight}</b><em class="mixname">${mixLabel()}</em>
+      <span class="mixpre">${MIX_PRESETS.map(p =>
+        `<button data-mix="${p.w}" class="${p.w === mixWeight ? "on" : ""}">${
+          esc(isFR() ? p.fr : p.en)}</button>`).join("")}</span>
+    </div>`;
+}
+function bindMix(el, redraw){
+  const r = el.querySelector("#mixW");
+  if(r) r.addEventListener("input", e => { mixWeight = +e.target.value; redraw(); });
+  el.querySelectorAll("button[data-mix]").forEach(x =>
+    x.addEventListener("click", () => { mixWeight = +x.dataset.mix; redraw(); }));
 }
 
 function swapPanel(bi){
@@ -3992,6 +4067,7 @@ function swapPanel(bi){
                 esc(isFR() ? SWAP_METRICS[k].label[1] : SWAP_METRICS[k].label[0])}</option>`).join("")
           }</optgroup>`).join("")}</select></label>
     </div>
+    ${SWAP_METRICS[swapMetric].weighted ? mixSlider() : ""}
     <p class="sub">${TR("swNow")} <strong>${cur ? esc(iName(cur)) : TR("emptySlot")}</strong> —
        ${n0(base.score)}</p>
     <table class="brk">
@@ -4025,6 +4101,8 @@ function drawSwaps(){
   el.querySelectorAll("button[data-slot]").forEach(x =>
     x.addEventListener("click", () => { swapSlot = +x.dataset.slot; drawSwaps(); }));
   on2("swMetric", "change", e => { swapMetric = e.target.value; drawSwaps(); });
+  bindMix(el, drawSwaps);
+  on2("swMix", "input", e => { mixWeight = +e.target.value; drawSwaps(); });
 }
 
 function breakdown(bi, stance){
@@ -4646,6 +4724,16 @@ if(swOverlay) swOverlay.addEventListener("click", e => { if(e.target === swOverl
 document.addEventListener("keydown", e => { if(e.key === "Escape") closeSw(); });
 if(pnOverlay) pnOverlay.addEventListener("click", e => { if(e.target === pnOverlay) closePn(); });
 document.addEventListener("keydown", e => { if(e.key === "Escape") closePn(); });
+on("btnOpt", "click", () => {
+  if(!myFlags.admin) return;
+  optRender();
+  document.getElementById("optOverlay").classList.add("on");
+});
+on("btnOpt", "click", () => {
+  if(!myFlags.admin) return;
+  optRender();
+  document.getElementById("optOverlay").classList.add("on");
+});
 const optOverlay = document.getElementById("optOverlay");
 const closeOpt = () => optOverlay && optOverlay.classList.remove("on");
 on("optClose", "click", closeOpt);
