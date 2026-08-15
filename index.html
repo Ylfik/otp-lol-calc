@@ -1447,7 +1447,8 @@ const RUNE_FX = {
   /* --- keystones --- */
   8005:{cond:"3 consecutive attacks",stats:{},ampFrom:{from:4,pct:8}, proc:{type:"phys",n:1,dmg:c=>lin(40,160,c.L)}},          /* Press the Attack */
   8008:{cond:"6 stacks",stats:{as:0.36}, proc:{type:"phys",n:4,dmg:c=>lin(9,30,c.L)*(1+c.bonusASpct/100)}}, /* Lethal Tempo */
-  8021:{heal:c=>lin(10,130,c.L)+0.1*c.bonusAD+0.05*c.ap},                          /* Fleet Footwork */
+  8021:{cond:"energized attack, 1s", stats:{msPct:20},
+        heal:c=>lin(10,130,c.L)+0.1*c.bonusAD+0.05*c.ap},   /* full value for melee */                          /* Fleet Footwork */
   8010:{cond:"12 stacks",stats:{adFn:c=>12*lin(1.8,4,c.L)}},                                        /* Conqueror (12 stacks) */
   8112:{cond:"3 separate hits",proc:{type:"phys",n:1,dmg:c=>lin(70,240,c.L)+0.1*c.bonusAD+0.05*c.ap}},    /* Electrocute */
   8128:{cond:"target below 50% HP", param:{lab:"souls", def:0}, needBelow:50,
@@ -1476,6 +1477,7 @@ const RUNE_FX = {
   8237:{cond:"first ability hit / 10s",proc:{type:"magic",n:1,dmg:c=>lin(20,40,c.L)}},                            /* Scorch */
   8226:{cond:"250 bonus mana capped",stats:{mana:250}},                                                         /* Manaflow Band */
   8316:{cond:"10 stacks",stats:{ah:10,ad:20}},
+  8410:{cond:"moving towards a target you slowed — the R does it",stats:{msPct:15}},
   8106:{cond:"5 Bounty Hunter stacks",stats:{uh:31}},
   8304:{cond:"free boots at 12 min",bootsMs:10},
   8313:{cond:"Elixir of Skill at level 9, +1 skill point"}                                                       /* Jack of All Trades */
@@ -1620,19 +1622,19 @@ const ITEM_FX = {
   "GUNMETAL GREAVES":[{lab:"No passive — stats only", src:"wiki"}],
   "INFINITY EDGE":  [{lab:"No passive — stats only", src:"wiki"}],
   "RUNAAN'S HURRICANE":[{lab:"Wind's Fury — ranged champions only", src:"wiki"}],
-  "PLATED STEELCAPS":[{lab:"Plating — 10% less basic damage", src:"wiki", def:() => ({drPhys:10, drMagic:10})}],
+  "PLATED STEELCAPS":[{lab:"Plating — 10% less basic attack damage", src:"wiki", def:() => ({drPhys:10})}],
   "ARMORED ADVANCE":[{lab:"Plating + Noxian Endurance", src:"wiki",
-                      def:c => ({drPhys:10, drMagic:10, shield:lin(100,200,c.L) + 0.08*c.bonusHP})}],
+                      def:c => ({drPhys:10, shieldP:lin(100,200,c.L) + 0.08*c.bonusHP})}],
   "CHAINLACED CRUSHERS":[{lab:"Noxian Persistence — magic shield", src:"wiki",
-                      def:c => ({shield:lin(100,200,c.L) + 0.08*c.bonusHP})}],
+                      def:c => ({shieldM:lin(100,200,c.L) + 0.08*c.bonusHP})}],
   "RANDUIN'S OMEN":[{lab:"Resilience — against critical strikes", src:"wiki", def:() => ({drPhys:30})}],
   "DEATH'S DANCE": [{lab:"Ignore Pain — 30% deferred, not removed", src:"wiki", def:() => ({drPhys:30, drMagic:30})}],
   "FROZEN HEART":  [{lab:"Winter's Caress — enemy attack speed crippled", src:"wiki", def:() => ({drPhys:20})}],
   "STERAK'S GAGE": [{lab:"The Claws that Catch", src:"wiki", always:true, gain:c => ({ad:0.45*c.baseAD})},
                     {lab:"Lifeline — shield from bonus health", src:"wiki", def:c => ({shield:0.60*c.bonusHP})}],
   "IMMORTAL SHIELDBOW":[{lab:"Lifeline — under 30% health", src:"wiki", def:c => ({shield:lin(400,700,c.L)})}],
-  "MAW OF MALMORTIUS":[{lab:"Lifeline — magic shield", src:"wiki", def:c => ({shield:200 + 1.5*c.bonusAD})}],
-  "KAENIC ROOKERN":[{lab:"Magebane — 15% of maximum health", src:"wiki", def:c => ({shield:0.15*c.hp})}],
+  "MAW OF MALMORTIUS":[{lab:"Lifeline — magic shield", src:"wiki", def:c => ({shieldM:200 + 1.5*c.bonusAD})}],
+  "KAENIC ROOKERN":[{lab:"Magebane — 15% of maximum health", src:"wiki", def:c => ({shieldM:0.15*c.hp})}],
   "BLOODTHIRSTER": [{lab:"Ichorshield — lifesteal overflow", src:"wiki", def:c => ({shield:lin(165,315,c.L,20)})}],
   "GUARDIAN ANGEL":[{lab:"Rebirth — 50% of base health", src:"wiki", def:c => ({shield:0.50*c.baseHP})}],
   "THORNMAIL":     [{lab:"Thorns — reflects, does not protect", src:"wiki"}],
@@ -2197,7 +2199,7 @@ function computeBuild(b, target){
   D.mrRed = mrRed;
 
   /* --- defensive passives --- */
-  let drPhys = 0, drMagic = 0, shieldPool = 0;
+  let drPhys = 0, drMagic = 0, shieldPool = 0, shieldP = 0, shieldM = 0;
   const defctx = {L, hp:tot.hp, baseHP:base.hp, bonusHP, bonusAD, bonusAR, bonusMR};
   equipped.forEach(e => {
     const list = PV[e.it.n];
@@ -2208,10 +2210,12 @@ function computeBuild(b, target){
       drPhys     += g.drPhys || 0;
       drMagic    += g.drMagic || 0;
       shieldPool += g.shield || 0;
+      shieldP    += g.shieldP || 0;    /* only soaks physical */
+      shieldM    += g.shieldM || 0;    /* only soaks magic */
     });
   });
   drPhys = Math.min(80, drPhys); drMagic = Math.min(80, drMagic);
-  D.drPhys = drPhys; D.drMagic = drMagic; D.shieldPool = shieldPool;
+  D.drPhys = drPhys; D.drMagic = drMagic; D.shieldPool = shieldPool + shieldP + shieldM;
 
   /* every stance is a flat 6s at all ranks; ability haste shortens it */
   if(!learned.r){ A.rOnHit = 0; A.rPerTick = 0; A.rTotal = 0;
@@ -2357,9 +2361,9 @@ function computeBuild(b, target){
 
   const budget = goldAt(L, state.gpm);
   return {tot, A, D, M, gold, budget, pMul, mMul, effAr, effMr,
-          drPhys, drMagic, shieldPool,
-          ehpAr: (tot.hp + shieldPool)*(1+tot.ar/100)/(1 - drPhys/100),
-          ehpMr: (tot.hp + shieldPool)*(1+tot.mr/100)/(1 - drMagic/100)};
+          drPhys, drMagic, shieldPool:shieldPool + shieldP + shieldM,
+          ehpAr: (tot.hp + shieldPool + shieldP)*(1+tot.ar/100)/(1 - drPhys/100),
+          ehpMr: (tot.hp + shieldPool + shieldM)*(1+tot.mr/100)/(1 - drMagic/100)};
 }
 
 
