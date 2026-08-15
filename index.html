@@ -3264,8 +3264,16 @@ function optScore(b, goal, budget){
 
 /* items you never want either tool to suggest */
 const EXCL_KEY = "udyr-calc-excluded";
+/* The upgraded boots each mirror a basic pair at the same price. They belong to
+   a different kind of game plan, so both tools leave them out by default —
+   untick any of them in the list below to bring it back. */
+const TIER3_BOOTS = ["CRIMSON LUCIDITY","SWIFTMARCH","IMMORTAL PATH","GUNMETAL GREAVES",
+                     "SPELLSLINGER'S SHOES","ARMORED ADVANCE","CHAINLACED CRUSHERS"];
 const excluded = new Set((() => {
-  try{ return JSON.parse(localStorage.getItem(EXCL_KEY) || "[]"); }catch(err){ return []; }
+  try{
+    const saved = localStorage.getItem(EXCL_KEY);
+    return saved === null ? TIER3_BOOTS : JSON.parse(saved);
+  }catch(err){ return TIER3_BOOTS; }
 })());
 function saveExcluded(){
   try{ localStorage.setItem(EXCL_KEY, JSON.stringify([...excluded])); }catch(err){}
@@ -3967,6 +3975,7 @@ function optRender(){
     const needle = noAccent((exFind.value || "").trim().toLowerCase());
     const shown = ITEMS.filter(i => excluded.has(i.n) ||
       (needle && noAccent((i.n + " " + iName(i)).toLowerCase()).includes(needle)));
+    shown.sort((a, b) => (excluded.has(b.n) ? 1 : 0) - (excluded.has(a.n) ? 1 : 0));
     exList.innerHTML = shown.slice(0, 40).map(i =>
       `<button class="exitem ${excluded.has(i.n) ? "off" : ""}" data-ex="${esc(i.n)}"
          title="${esc(iName(i))}">
