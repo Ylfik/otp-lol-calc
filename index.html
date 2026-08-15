@@ -932,6 +932,10 @@ table.brk .up{color:var(--e)}
       <h3>Cost and timing</h3>
       <p>Each card shows its cost next to a rough idea of the gold you would have at that level, and the
          minute that level usually lands on: <code>6,300 / ~6,700 gold &nbsp; ~16 min</code>.</p>
+      <p>The three target profiles in the bar — squishy, bruiser, tank — <strong>follow the level of the
+         build being measured</strong>. An enemy at level 6 does not carry a level 18 health bar, and
+         percentage-health items would look far stronger than they are if it did. Typing your own numbers
+         overrides the profile.</p>
       <p>The estimate is <strong>500 starting gold plus the gold per minute set in the bar above</strong>,
          multiplied by the minute for that level. The default of 400 is a rough all-in income — the passive
          trickle everyone receives is around 122 a minute, the rest comes from farm and objectives. Change it
@@ -1006,6 +1010,9 @@ table.brk .up{color:var(--e)}
         <li>Base stat growth is extrapolated to levels 19 and 20.</li>
         <li>Damage keeps accruing after the target would have died: this measures output, not time to kill.</li>
         <li>The gold estimate assumes a steady income and ignores kills, objectives and farm swings.</li>
+        <li>Item passives come from the wiki, which publishes melee and ranged values but not every
+            interaction: a handful of effects are listed with their text and no number, because they only
+            matter with an ally or a second target.</li>
       </ul>
 
       <h3>Credits</h3>
@@ -1053,6 +1060,10 @@ table.brk .up{color:var(--e)}
       <p>Chaque carte affiche son coût à côté d'un ordre d'idée de l'or dont vous disposeriez à ce niveau, et
          de la minute à laquelle ce niveau tombe en général :
          <code>6 300 / ~6 700 or &nbsp; ~16 min</code>.</p>
+      <p>Les trois profils de cible de la barre — fragile, bruiser, tank — <strong>suivent le niveau du
+         build mesuré</strong>. Un ennemi au niveau 6 n'a pas la barre de vie d'un niveau 18, et les items
+         en pourcentage de PV paraîtraient bien plus forts qu'ils ne le sont. Taper vos propres chiffres
+         remplace le profil.</p>
       <p>L'estimation vaut <strong>500 d'or de départ plus l'or par minute réglé dans la barre du haut</strong>,
          multiplié par la minute correspondant au niveau. Les 400 par défaut sont un revenu global approximatif
          — le seul revenu passif que tout le monde touche tourne autour de 122 par minute, le reste vient du
@@ -1134,6 +1145,9 @@ table.brk .up{color:var(--e)}
         <li>Les dégâts continuent d'être comptés après la mort théorique de la cible : on mesure la puissance,
             pas un temps de kill.</li>
         <li>L'estimation d'or suppose un revenu régulier et ignore les kills, les objectifs et les écarts de farm.</li>
+        <li>Les passifs viennent du wiki, qui publie les valeurs mêlée et distance mais pas toutes les
+            interactions : quelques effets sont listés avec leur texte et sans chiffre, parce qu'ils ne
+            comptent qu'avec un allié ou une seconde cible.</li>
       </ul>
 
       <h3>Crédits</h3>
@@ -2789,6 +2803,20 @@ function fxLabel(lab){
    date, then one line per change in English and French.
    ============================================================ */
 const PATCH_NOTES = [
+  {date:"2026.08.12", items:[
+    ["Blazing Stampede now shows the move speed you keep after its 1.5s decay, not just the opening burst.",
+     "Piétinement flamboyant affiche la vitesse conservée après son decay de 1,5 s, et non plus seulement la pointe de départ."],
+    ["Target profiles follow the level of the build being measured, so percentage-health items are no longer overrated early.",
+     "Les profils de cible suivent le niveau du build mesuré : les items en pourcentage de PV ne sont plus surévalués tôt."],
+    ["Item families are enforced: one pair of boots, and one item per restricted family.",
+     "Les familles d'items sont respectées : une paire de bottes, et un item par famille limitée."],
+    ["Skill points are capped by level, with an extra one from Triple Tonic at level 9.",
+     "Les points de compétence sont limités par le niveau, avec un point supplémentaire de Triple tonique au niveau 9."],
+    ["Monk Training's 30% attack speed on the two attacks after a cast is now counted.",
+     "Les 30 % de vitesse d'attaque de l'Entraînement du moine sur les deux attaques suivant un cast sont désormais comptés."],
+    ["Several ability values corrected against the wiki, including the R's damage per tick.",
+     "Plusieurs valeurs de compétences corrigées d'après le wiki, dont les dégâts par tick du R."]
+  ]},
   {date:"2026.08.07", items:[
     ["Leaderboard: publish, like, sort by likes, date, author or rank, filter on verified accounts and streamers.",
      "Classement : publication, likes, tri par likes, date, auteur ou rang, filtres sur les comptes validés et les streamers."],
