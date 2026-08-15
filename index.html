@@ -780,7 +780,7 @@ table.brk .up{color:var(--e)}
       <button class="helpbtn primary" id="btnHelp" data-i18n="help">How it works</button>
       <button class="helpbtn" id="btnNotes" data-i18n="patchNotes">Patch notes</button>
       <button class="helpbtn" id="btnOpt" data-i18n="optimiser" hidden>Optimiser</button>
-      <button class="helpbtn adm" id="btnOpt" data-i18n="optimiser" hidden>Optimiser</button>
+      
       <button class="helpbtn" id="btnBoard" data-i18n="board">Leaderboard</button>
       
       <button class="helpbtn" id="btnReport" data-i18n="report">Feedback</button>
@@ -842,25 +842,7 @@ table.brk .up{color:var(--e)}
 </div>
 
 
-<div class="overlay" id="swOverlay">
-  <div class="help wide" role="dialog" aria-modal="true" aria-label="Item swaps">
-    <header>
-      <h2 id="swTitle"></h2>
-      <button class="closebtn" id="swClose" aria-label="Close">esc</button>
-    </header>
-    <div class="helpbody" id="swBody"></div>
-  </div>
-</div>
 
-<div class="overlay" id="pnOverlay">
-  <div class="help" role="dialog" aria-modal="true" aria-label="Patch notes">
-    <header>
-      <h2 data-i18n="patchNotes">Patch notes</h2>
-      <button class="closebtn" id="pnClose" aria-label="Close">esc</button>
-    </header>
-    <div class="helpbody" id="pnBody"></div>
-  </div>
-</div>
 
 <div class="overlay" id="fbOverlay">
   <div class="help" role="dialog" aria-modal="true" aria-label="Feedback">
@@ -2554,11 +2536,20 @@ const L10N = {
   endOfCombo:["Once per combo","Une fois par combo"], summary:["Total","Total"],
   breakdownOf:["%s — full breakdown","%s — détail complet"],
   swaps:["Swaps","Alternatives"], swapsOf:["%s — item swaps","%s — alternatives d'items"],
+  swExcluded:["%s item(s) set aside — manage them in the Optimiser.",
+              "%s item(s) écarté(s) — gérez-les dans l'Optimiseur."],
   mixLean:["Leaning","Orientation"],
   mixDmgOnly:["damage only","dégâts seuls"], mixBruiser:["bruiser","bruiser"],
   mixEven:["even","équilibré"], mixTanky:["tanky bruiser","bruiser tanky"],
   mixTankOnly:["survival only","survie seule"],
+  swExcluded:["%s item(s) set aside — manage them in the Optimiser.",
+              "%s item(s) écarté(s) — gérez-les dans l'Optimiseur."],
   mixLean:["Leaning","Orientation"], mixOff:["damage","dégâts"], mixDef:["survival","survie"],
+  optDepth:["Search","Recherche"],
+  optW1:["Fast, one item at a time","Rapide, un item à la fois"],
+  optW6:["Wider","Plus large"],
+  optW12:["Recommended","Recommandé"],
+  optW24:["Thorough, slower","Approfondie, plus lente"],
   optExclude:["Items to leave out","Items à écarter"],
   optExcludeWhy:["Search an item and click it to keep both tools from suggesting it.",
                  "Cherchez un item et cliquez dessus pour que les deux outils cessent de le proposer."],
@@ -3258,33 +3249,56 @@ function optScore(b, goal, budget){
 }
 
 /* items you never want either tool to suggest */
-const excluded = new Set();
+const EXCL_KEY = "udyr-calc-excluded";
+const excluded = new Set((() => {
+  try{ return JSON.parse(localStorage.getItem(EXCL_KEY) || "[]"); }catch(err){ return []; }
+})());
+function saveExcluded(){
+  try{ localStorage.setItem(EXCL_KEY, JSON.stringify([...excluded])); }catch(err){}
+}
 const isExcluded = n => excluded.has(n);
 
 function optClone(b){ return JSON.parse(JSON.stringify(b)); }
 
-/* grow a build slot by slot, best item first */
-function optBuild(base, goal, slots, budget){
-  const b = optClone(base);
-  for(let i = 0; i < 6; i++) if(slots.includes(i)) b.items[i] = {name:null, cond:true};
+/* Filling one slot at a time and keeping only the best choice each time misses
+   anything that needs a partner: Muramana is worthless without mana, and a
+   balanced goal ends up alternating one extreme damage item with one extreme
+   tank item rather than picking hybrids. So instead of carrying one build
+   forward, carry the best few and let them compete. Builds reached in a
+   different order are the same build, so they are folded together. */
+let optWidth = 12;
 
-  const targets = slots.slice();
-  for(const si of targets){
-    let best = null, bestScore = optScore(b, goal, budget);
-    const taken = new Set(b.items.map(x => x.name).filter(Boolean));
-    const wearsBoots = b.items.some(x => x.name && BOOTS.has(x.name));
-    for(const it of ITEMS){
-      if(taken.has(it.n) || (wearsBoots && BOOTS.has(it.n))) continue;
-      if(!itemAllowed(it.n, [...taken]) || isExcluded(it.n)) continue;
-      b.items[si] = {name:it.n, cond:true};
-      const sc = optScore(b, goal, budget);
-      if(sc > bestScore){ bestScore = sc; best = it.n; }
+function optBuild(base, goal, slots, budget, onStep){
+  const start = optClone(base);
+  slots.forEach(i => { start.items[i] = {name:null, cond:true}; });
+
+  let states = [{b:start, s:optScore(start, goal, budget)}];
+  let evals = 0;
+
+  for(const si of slots){
+    const next = [], seen = new Set();
+    for(const st of states){
+      const worn = st.b.items.map(x => x.name).filter(Boolean);
+      const wearsBoots = worn.some(n => BOOTS.has(n));
+      for(const it of ITEMS){
+        if(worn.includes(it.n) || (wearsBoots && BOOTS.has(it.n))) continue;
+        if(!itemAllowed(it.n, worn) || isExcluded(it.n)) continue;
+        const nb = optClone(st.b);
+        nb.items[si] = {name:it.n, cond:true};
+        const key = nb.items.map(x => x.name).filter(Boolean).sort().join("|");
+        if(seen.has(key)) continue;
+        seen.add(key);
+        next.push({b:nb, s:optScore(nb, goal, budget)});
+        evals++;
+      }
     }
-    b.items[si] = {name:best, cond:true};
+    if(!next.length) break;
+    next.sort((a, c) => c.s - a.s);
+    states = next.slice(0, optWidth);
+    if(onStep) onStep(evals);
   }
-  return b;
+  return states[0].b;
 }
-
 /* for one slot: what else could go there, and by how much */
 function optSwaps(bi, si, goal){
   const base = state.builds[bi];
@@ -3816,6 +3830,12 @@ function optRender(){
         <input type="range" id="optMix" min="0" max="100" step="5" value="${mixWeight}">
         <span class="mixval" id="optMixVal">${mixLabel()}</span></label>
       <label>${TR("optBudget")}<input id="optGold" type="number" min="0" step="500" value="0"></label>
+      <label>${TR("optDepth")}<select id="optW">
+        <option value="1">${TR("optW1")}</option>
+        <option value="6">${TR("optW6")}</option>
+        <option value="12" selected>${TR("optW12")}</option>
+        <option value="24">${TR("optW24")}</option>
+      </select></label>
       <label>${TR("optKeep")}<span class="optkeep" id="optKeep"></span></label>
       <button class="tipbtn" id="optGo">${TR("optRun")}</button>
       <button class="tipbtn" id="optSwapGo">${TR("optSwapRun")}</button>
@@ -3844,6 +3864,7 @@ function optRender(){
       x.addEventListener("click", () => {
         const n = x.dataset.ex;
         excluded.has(n) ? excluded.delete(n) : excluded.add(n);
+        saveExcluded();
         el.querySelector(".optexcl > summary").textContent =
           TR("optExclude") + " (" + excluded.size + ")";
         drawEx();
@@ -3875,6 +3896,7 @@ function optRender(){
   el.querySelector("#optGo").addEventListener("click", () => {
     const bi = +bSel.value, goal = el.querySelector("#optG").value;
     const budget = parseFloat(el.querySelector("#optGold").value) || 0;
+    optWidth = +el.querySelector("#optW").value || 12;
     const keep = kept();
     const slots = [0,1,2,3,4,5].filter(i => !keep.includes(i));
     const out = el.querySelector("#optOut");
@@ -3975,7 +3997,8 @@ const SWAP_METRICS = {
           get:r => 2 / (1/r.ehpAr + 1/r.ehpMr)},
   ehpP:  {grp:"def", label:["Effective HP vs physical","PV effectifs vs physique"], get:r => r.ehpAr},
   ehpM:  {grp:"def", label:["Effective HP vs magic","PV effectifs vs magique"],     get:r => r.ehpMr},
-  heal:  {grp:"def", label:["Healing over the Q combo","Soins sur le combo Q"],     get:r => r.D.combo.q.heal},
+  heal:  {grp:"def", label:["Healing and shielding","Soins et boucliers"],
+          get:r => r.D.combo.w.heal + r.D.combo.w.shield},
   /* both at once */
   mixQ:  {grp:"mix", weighted:true, label:["Q damage vs survival","Dégâts du Q vs survie"],
           get:r => blend(r.D.combo.q.dmg, ehpBoth(r))},
@@ -4068,6 +4091,7 @@ function swapPanel(bi){
           }</optgroup>`).join("")}</select></label>
     </div>
     ${SWAP_METRICS[swapMetric].weighted ? mixSlider() : ""}
+    ${excluded.size ? `<p class="tipstat">${TR("swExcluded").replace("%s", excluded.size)}</p>` : ""}
     <p class="sub">${TR("swNow")} <strong>${cur ? esc(iName(cur)) : TR("emptySlot")}</strong> —
        ${n0(base.score)}</p>
     <table class="brk">
