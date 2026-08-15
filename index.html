@@ -3289,6 +3289,8 @@ let optStop = false;      /* set by the Cancel button */
    try every arrangement of those exhaustively. Nothing inside that pool is
    missed, including pairs that only work together. */
 function optPool(work, slots, goal, size){
+  /* boots are compulsory, so a few are always kept in the pool no matter how
+     they score on their own — a build without them is not a build */
   const kept = work.items.map(x => x.name).filter(Boolean);
   const wearsBoots = kept.some(n => BOOTS.has(n));
   const slot = slots[0];
@@ -3301,7 +3303,12 @@ function optPool(work, slots, goal, size){
   }
   work.items[slot] = {name:null, cond:true};
   out.sort((a, b) => b.s - a.s);
-  return out.slice(0, size).map(x => x.n);
+  const chosen = out.slice(0, size).map(x => x.n);
+  if(!kept.some(n => BOOTS.has(n)) && !chosen.some(n => BOOTS.has(n))){
+    const bestBoots = out.filter(x => BOOTS.has(x.n)).slice(0, 3).map(x => x.n);
+    chosen.push(...bestBoots);
+  }
+  return chosen;
 }
 const nCk = (n, k) => { let r = 1; for(let i = 0; i < k; i++) r = r * (n - i) / (i + 1); return Math.round(r); };
 
@@ -3315,15 +3322,20 @@ function optExhaustive(base, goal, slots, budget, poolSize, onProgress){
     if(!k){ resolve({build:work, tried:0, total:0}); return; }
 
     const kept = work.items.map(x => x.name).filter(Boolean);
-    const total = nCk(pool.length, k);
-    let best = null, bestS = -Infinity, tried = 0;
-    const idx = Array.from({length:k}, (_, i) => i);
+    /* Every build wears boots. Rather than let the enumeration stumble on
+       combinations holding two pairs or none, one pair is fixed and the rest
+       of the pool fills the remaining slots. It also cuts the count by half. */
+    const hasBoots = kept.some(n => BOOTS.has(n));
+    const bootsPool = hasBoots ? [null] : pool.filter(n => BOOTS.has(n));
+    const rest = pool.filter(n => !BOOTS.has(n));
+    if(!hasBoots && !bootsPool.length) bootsPool.push(null);
+    const kRest = hasBoots ? k : Math.max(0, k - 1);
+    const total = bootsPool.length * nCk(rest.length, kRest);
+
+    let best = null, bestS = -Infinity, tried = 0, bootI = 0;
+    let idx = Array.from({length:kRest}, (_, i) => i);
 
     const legalSet = names => {
-      let boots = kept.some(n => BOOTS.has(n));
-      for(const n of names){
-        if(BOOTS.has(n)){ if(boots) return false; boots = true; }
-      }
       const all = kept.concat(names);
       return names.every(n => itemAllowed(n, all.filter(x => x !== n)));
     };
@@ -3331,7 +3343,9 @@ function optExhaustive(base, goal, slots, budget, poolSize, onProgress){
     function slice(){
       const until = Date.now() + 40;      /* keep each slice short enough to feel smooth */
       while(Date.now() < until){
-        const names = idx.map(i => pool[i]);
+        const boot = bootsPool[bootI];
+        const names = idx.map(i => rest[i]);
+        if(boot) names.push(boot);
         if(legalSet(names)){
           slots.forEach((sl, i) => { work.items[sl] = {name:names[i] || null, cond:true}; });
           const sc = optScore(work, goal, budget);
@@ -3339,11 +3353,16 @@ function optExhaustive(base, goal, slots, budget, poolSize, onProgress){
         }
         tried++;
         /* next combination */
-        let i = k - 1;
-        while(i >= 0 && idx[i] === pool.length - k + i) i--;
-        if(i < 0){ resolve({build:best || work, tried, total}); return; }
-        idx[i]++;
-        for(let j = i + 1; j < k; j++) idx[j] = idx[j - 1] + 1;
+        let i = kRest - 1;
+        while(i >= 0 && idx[i] === rest.length - kRest + i) i--;
+        if(i < 0){
+          bootI++;
+          if(bootI >= bootsPool.length){ resolve({build:best || work, tried, total}); return; }
+          idx = Array.from({length:kRest}, (_, j) => j);
+        }else{
+          idx[i]++;
+          for(let j = i + 1; j < kRest; j++) idx[j] = idx[j - 1] + 1;
+        }
       }
       if(optStop){ resolve({build:best || work, tried, total, stopped:true}); return; }
       if(onProgress) onProgress(tried, total);
@@ -3900,13 +3919,16 @@ function lbRender(){
   });
 }
 
+let optGoal = "qDamage";
 function optRender(){
   const el = document.getElementById("optBody");
   if(!el || !myFlags.admin) return;
+  if(!GOALS[optGoal]) optGoal = "qDamage";
   const goals = Object.keys(METRIC_GROUP).map(g =>
     `<optgroup label="${esc(isFR() ? METRIC_GROUP[g][1] : METRIC_GROUP[g][0])}">${
       Object.keys(GOALS).filter(k => GOALS[k].grp === g).map(k =>
-        `<option value="${k}">${esc(isFR() ? GOALS[k].fr : GOALS[k].en)}</option>`).join("")
+        `<option value="${k}" ${k === optGoal ? "selected" : ""}>${
+          esc(isFR() ? GOALS[k].fr : GOALS[k].en)}</option>`).join("")
     }</optgroup>`).join("");
   const builds = state.builds.map((b, i) =>
     `<option value="${i}">${esc(b.name)}</option>`).join("");
@@ -3915,7 +3937,8 @@ function optRender(){
     <div class="lbform">
       <label>${TR("optBuild")}<select id="optB">${builds}</select></label>
       <label>${TR("optGoal")}<select id="optG">${goals}</select></label>
-      <label class="wide mixrow">${TR("mixLean")}
+      <label class="wide mixrow" id="optMixRow" ${GOALS[optGoal] && GOALS[optGoal].weighted ? "" : "hidden"}>
+        ${TR("mixLean")}
         <input type="range" id="optMix" min="0" max="100" step="5" value="${mixWeight}">
         <span class="mixval" id="optMixVal">${mixLabel()}</span></label>
       <label>${TR("optBudget")}<input id="optGold" type="number" min="0" step="500" value="0"></label>
@@ -3981,6 +4004,13 @@ function optRender(){
   };
   drawKeep();
   bSel.addEventListener("change", drawKeep);
+
+  const gSel = el.querySelector("#optG");
+  gSel.addEventListener("change", () => {
+    optGoal = gSel.value;
+    const row = el.querySelector("#optMixRow");
+    if(row) row.hidden = !(GOALS[optGoal] && GOALS[optGoal].weighted);
+  });
 
   const kept = () => [...el.querySelectorAll("input[data-keep]:checked")].map(x => +x.dataset.keep);
 
