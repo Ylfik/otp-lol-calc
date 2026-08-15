@@ -2121,8 +2121,16 @@ function computeBuild(b, target){
   A.msIdle = msSoftCap((base.ms + S.ms) * (1 + tot.mspct/100));
   A.msE    = msSoftCap((base.ms + S.ms) * (1 + (tot.mspct + A.eMs)/100));
   A.msEAwk = msSoftCap((base.ms + S.ms) * (1 + (tot.mspct + A.eMs + A.eAwkMs)/100));
+  /* Blazing Stampede decays over 1.5s down to 30% of the bonus it started with,
+     so the burst figure above is only true for a moment. */
+  const DECAY = 0.3;
+  A.eMsDecay    = A.eMs * DECAY;
+  A.eAwkMsDecay = (A.eMs + A.eAwkMs) * DECAY;
+  A.msEDecay    = msSoftCap((base.ms + S.ms) * (1 + (tot.mspct + A.eMsDecay)/100));
+  A.msEAwkDecay = msSoftCap((base.ms + S.ms) * (1 + (tot.mspct + A.eAwkMsDecay)/100));
 
-  if(!learned.e){ A.eMs = 0; A.eAwkMs = 0; }
+  if(!learned.e){ A.eMs = 0; A.eAwkMs = 0; A.eMsDecay = 0; A.eAwkMsDecay = 0;
+                  A.msEDecay = A.msIdle; A.msEAwkDecay = A.msIdle; }
   A.rOnHit    = lerp(10,40,L) + 0.35*tot.ap;
   A.rPerTick  = R1(T.rPerSec,rr) + 0.175*tot.ap;
   A.rTotal    = A.rPerTick * 8;
@@ -2546,10 +2554,16 @@ const L10N = {
               "%s item(s) écarté(s) — gérez-les dans l'Optimiseur."],
   mixLean:["Leaning","Orientation"], mixOff:["damage","dégâts"], mixDef:["survival","survie"],
   optDepth:["Search","Recherche"],
-  optW1:["Fast, one item at a time","Rapide, un item à la fois"],
-  optW6:["Wider","Plus large"],
-  optW12:["Recommended","Recommandé"],
-  optW24:["Thorough, slower","Approfondie, plus lente"],
+  optW1:["Fast — one item at a time","Rapide — un item à la fois"],
+  optW12:["Balanced — keeps 12 builds in play","Équilibrée — garde 12 builds en lice"],
+  optW24:["Deep — keeps 24 builds in play","Profonde — garde 24 builds en lice"],
+  optX18:["Every combination of the 18 best items","Toutes les combinaisons des 18 meilleurs items"],
+  optX26:["Every combination of the 26 best items","Toutes les combinaisons des 26 meilleurs items"],
+  optX34:["Every combination of the 34 best items — long","Toutes les combinaisons des 34 meilleurs items — long"],
+  optCancel:["Stop and keep the best so far","Arrêter et garder le meilleur trouvé"],
+  optStopped:["stopped early","arrêté en cours"],
+  optProgress:["%d of %t combinations · %s s","%d combinaisons sur %t · %s s"],
+  optTried:["%d combinations examined in %s s","%d combinaisons examinées en %s s"],
   optExclude:["Items to leave out","Items à écarter"],
   optExcludeWhy:["Search an item and click it to keep both tools from suggesting it.",
                  "Cherchez un item et cliquez dessus pour que les deux outils cessent de le proposer."],
@@ -3267,6 +3281,77 @@ function optClone(b){ return JSON.parse(JSON.stringify(b)); }
    forward, carry the best few and let them compete. Builds reached in a
    different order are the same build, so they are folded together. */
 let optWidth = 12;
+let optStop = false;      /* set by the Cancel button */
+
+/* Every six-item build out of 124 is about five billion combinations, which no
+   browser will ever finish. What is reachable is every combination of the items
+   that actually matter: score each item on its own, keep the best handful, then
+   try every arrangement of those exhaustively. Nothing inside that pool is
+   missed, including pairs that only work together. */
+function optPool(work, slots, goal, size){
+  const kept = work.items.map(x => x.name).filter(Boolean);
+  const wearsBoots = kept.some(n => BOOTS.has(n));
+  const slot = slots[0];
+  const out = [];
+  for(const it of ITEMS){
+    if(kept.includes(it.n) || (wearsBoots && BOOTS.has(it.n))) continue;
+    if(!itemAllowed(it.n, kept) || isExcluded(it.n)) continue;
+    work.items[slot] = {name:it.n, cond:true};
+    out.push({n:it.n, s:optScore(work, goal, 0)});
+  }
+  work.items[slot] = {name:null, cond:true};
+  out.sort((a, b) => b.s - a.s);
+  return out.slice(0, size).map(x => x.n);
+}
+const nCk = (n, k) => { let r = 1; for(let i = 0; i < k; i++) r = r * (n - i) / (i + 1); return Math.round(r); };
+
+/* walked in slices so the page keeps answering while it runs */
+function optExhaustive(base, goal, slots, budget, poolSize, onProgress){
+  return new Promise(resolve => {
+    const work = optClone(base);
+    slots.forEach(i => { work.items[i] = {name:null, cond:true}; });
+    const pool = optPool(work, slots, goal, poolSize);
+    const k = Math.min(slots.length, pool.length);
+    if(!k){ resolve({build:work, tried:0, total:0}); return; }
+
+    const kept = work.items.map(x => x.name).filter(Boolean);
+    const total = nCk(pool.length, k);
+    let best = null, bestS = -Infinity, tried = 0;
+    const idx = Array.from({length:k}, (_, i) => i);
+
+    const legalSet = names => {
+      let boots = kept.some(n => BOOTS.has(n));
+      for(const n of names){
+        if(BOOTS.has(n)){ if(boots) return false; boots = true; }
+      }
+      const all = kept.concat(names);
+      return names.every(n => itemAllowed(n, all.filter(x => x !== n)));
+    };
+
+    function slice(){
+      const until = Date.now() + 40;      /* keep each slice short enough to feel smooth */
+      while(Date.now() < until){
+        const names = idx.map(i => pool[i]);
+        if(legalSet(names)){
+          slots.forEach((sl, i) => { work.items[sl] = {name:names[i] || null, cond:true}; });
+          const sc = optScore(work, goal, budget);
+          if(sc > bestS){ bestS = sc; best = optClone(work); }
+        }
+        tried++;
+        /* next combination */
+        let i = k - 1;
+        while(i >= 0 && idx[i] === pool.length - k + i) i--;
+        if(i < 0){ resolve({build:best || work, tried, total}); return; }
+        idx[i]++;
+        for(let j = i + 1; j < k; j++) idx[j] = idx[j - 1] + 1;
+      }
+      if(optStop){ resolve({build:best || work, tried, total, stopped:true}); return; }
+      if(onProgress) onProgress(tried, total);
+      setTimeout(slice, 0);
+    }
+    slice();
+  });
+}
 
 function optBuild(base, goal, slots, budget, onStep){
   const start = optClone(base);
@@ -3517,8 +3602,10 @@ function card(b, bi, R){
         <h4>E · ${isFR()?FR_ABIL[2]:"Blazing Stampede"}</h4>
         <div class="row"><i>${TR("msBonus")}</i><b>+${pc(A.eMs)}</b></div>
         <div class="row"><i>${TR("msWithE")}</i><b>${n0(A.msE)}</b></div>
+        <div class="row"><i>${TR("msDecay")}</i><b>${n0(A.msEDecay)}</b></div>
         <div class="row awk"><i>${TR("awkBonus")}</i><b>+${pc(A.eMs + A.eAwkMs)}</b></div>
         <div class="row awk"><i>${TR("awkMs")}</i><b>${n0(A.msEAwk)}</b></div>
+        <div class="row awk"><i>${TR("awkMsDecay")}</i><b>${n0(A.msEAwkDecay)}</b></div>
         <div class="row"><i>${TR("cooldown")}</i><b>${nf1.format(A.stanceCD)} s</b></div>
       </div>
       <div class="ab r">
@@ -3553,8 +3640,9 @@ function card(b, bi, R){
         <h6><button class="brkbtn" data-brk="e" data-b="${bi}" title="${TR('openBrk')}"><span class="lab">E · ${isFR()?FR_ABIL[2]:"Blazing Stampede"}</span><span class="arw">&#9656;</span></button></h6>
         ${statHi(TR("msWithE"), n0(A.msE))}
         ${stat(TR("awkMs"), n0(A.msEAwk))}
-        ${stat(TR("msBonus"), "+"+pc(A.eMs))}
-        ${stat(TR("awkBonus"), "+"+pc(A.eMs + A.eAwkMs))}
+        ${stat(TR("msDecay"), n0(A.msEDecay))}
+        ${stat(TR("awkMsDecay"), n0(A.msEAwkDecay))}
+        ${stat(TR("msBonus"), "+"+pc(A.eMs)+" / "+pc(A.eMsDecay))}
       </div>
       <div class="tcol rc">
         <h6><button class="brkbtn" data-brk="r" data-b="${bi}" title="${TR('openBrk')}"><span class="lab">R · ${isFR()?FR_ABIL[3]:"Wingborne Storm"}</span><span class="arw">&#9656;</span></button></h6>
@@ -3598,7 +3686,8 @@ const CMP_ROWS = [
   {lab:() => TR("ehpMagic"), col:"var(--tank)", get:r => r.ehpMr},
   {head:() => TR("msPer"), col:"var(--e)"},
   {lab:() => TR("msWithE"), col:"var(--e)", get:r => r.A.msE,    base:300, unit:" MS"},
-  {lab:() => TR("awkMs"),   col:"var(--e)", get:r => r.A.msEAwk, base:300, unit:" MS"}
+  {lab:() => TR("awkMs"),   col:"var(--e)", get:r => r.A.msEAwk, base:300, unit:" MS"},
+  {lab:() => TR("msDecay"),  col:"var(--e)", get:r => r.A.msEDecay, base:300, unit:" MS"}
 ];
 
 function passivePanel(){
@@ -3832,9 +3921,11 @@ function optRender(){
       <label>${TR("optBudget")}<input id="optGold" type="number" min="0" step="500" value="0"></label>
       <label>${TR("optDepth")}<select id="optW">
         <option value="1">${TR("optW1")}</option>
-        <option value="6">${TR("optW6")}</option>
         <option value="12" selected>${TR("optW12")}</option>
         <option value="24">${TR("optW24")}</option>
+        <option value="x18">${TR("optX18")}</option>
+        <option value="x26">${TR("optX26")}</option>
+        <option value="x34">${TR("optX34")}</option>
       </select></label>
       <label>${TR("optKeep")}<span class="optkeep" id="optKeep"></span></label>
       <button class="tipbtn" id="optGo">${TR("optRun")}</button>
@@ -3896,18 +3987,43 @@ function optRender(){
   el.querySelector("#optGo").addEventListener("click", () => {
     const bi = +bSel.value, goal = el.querySelector("#optG").value;
     const budget = parseFloat(el.querySelector("#optGold").value) || 0;
-    optWidth = +el.querySelector("#optW").value || 12;
+    const wRaw = el.querySelector("#optW").value;
+    const exhaustive = wRaw.charAt(0) === "x";
+    optWidth = exhaustive ? 12 : (+wRaw || 12);
     const keep = kept();
     const slots = [0,1,2,3,4,5].filter(i => !keep.includes(i));
     const out = el.querySelector("#optOut");
+    const started = Date.now();
+
+    if(exhaustive){
+      const poolSize = +wRaw.slice(1);
+      optStop = false;
+      out.innerHTML = `<p class="tipstat" id="optProg">${TR("optWorking")}</p>
+        <button class="tipbtn" id="optCancel">${TR("optCancel")}</button>`;
+      out.querySelector("#optCancel").addEventListener("click", () => { optStop = true; });
+      optExhaustive(state.builds[bi], goal, slots, budget, poolSize, (n, t) => {
+        const p = out.querySelector("#optProg");
+        if(p) p.textContent = TR("optProgress")
+          .replace("%d", n.toLocaleString()).replace("%t", t.toLocaleString())
+          .replace("%s", Math.round((Date.now() - started) / 1000));
+      }).then(r => show(r.build, r));
+      return;
+    }
     out.innerHTML = `<p class="tipstat">${TR("optWorking")}</p>`;
     setTimeout(() => {
-      const res = optBuild(state.builds[bi], goal, slots, budget);
+      show(optBuild(state.builds[bi], goal, slots, budget));
+    }, 20);
+
+    function show(res, info){
+      const elapsed = Math.round((Date.now() - started) / 1000);
       const before = computeBuild(state.builds[bi], state.target);
       const after  = computeBuild(res, state.target);
       const g = GOALS[goal].f;
       out.innerHTML = `
         <h3>${TR("optResult")}</h3>
+        ${info ? `<p class="tipstat">${TR("optTried")
+          .replace("%d", info.tried.toLocaleString())
+          .replace("%s", elapsed)}${info.stopped ? " · " + TR("optStopped") : ""}</p>` : ""}
         <div class="optrow">${res.items.map(sl => {
           const it = sl.name ? BY_NAME[sl.name] : null;
           return it ? `<img class="iicon" src="${ITEM_ICON(it.id)}" alt="${esc(iName(it))}"
@@ -3926,7 +4042,7 @@ function optRender(){
         document.getElementById("optOverlay").classList.remove("on");
         render();
       });
-    }, 20);
+    }
   });
 
   el.querySelector("#optSwapGo").addEventListener("click", () => {
@@ -4160,8 +4276,9 @@ function breakdown(bi, stance){
     <table class="brk">
       <tr><td></td><td>${TR("msWithE")}</td><td>${n0(A.msE)} MS</td></tr>
       <tr><td></td><td>${TR("awkMs")}</td><td>${n0(A.msEAwk)} MS</td></tr>
-      <tr><td></td><td>${TR("msBonus")}</td><td>+${pc(A.eMs)}</td></tr>
-      <tr><td></td><td>${TR("awkBonus")}</td><td>+${pc(A.eMs + A.eAwkMs)}</td></tr>
+      <tr><td></td><td>${TR("msDecay")}</td><td>${n0(A.msEDecay)} MS</td></tr>
+      <tr><td></td><td>${TR("awkMsDecay")}</td><td>${n0(A.msEAwkDecay)} MS</td></tr>
+      <tr><td></td><td>${TR("msBonus")}</td><td>+${pc(A.eMs)} → +${pc(A.eMsDecay)}</td></tr>
       <tr><td></td><td>${TR("cooldown")}</td><td>${nf1.format(A.stanceCD)} s</td></tr>
     </table>`;
   }
