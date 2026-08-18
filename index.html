@@ -3571,7 +3571,13 @@ const discordName = () => {
 const meName = () => myName || discordName();
 
 async function lbSignIn(){
-  await sb.auth.signInWithOAuth({provider:"discord", options:{redirectTo:location.href}});
+  /* come back to the bare page: the session arrives in the hash, and the site
+     uses the hash for routing, so the two must not be asked to share it */
+  try{ sessionStorage.setItem("udyr-return", location.hash || "#/"); }catch(err){}
+  await sb.auth.signInWithOAuth({
+    provider:"discord",
+    options:{redirectTo:location.origin + location.pathname}
+  });
 }
 async function lbSignOut(){ await sb.auth.signOut(); me = null; lbRender(); }
 
@@ -5580,7 +5586,17 @@ function drawHome(){
 }
 
 function route(){
-  const key = (location.hash.replace(/^#\/?/, "") || "").toLowerCase();
+  const raw = location.hash || "";
+  /* the address bar may be holding a sign-in reply rather than a route */
+  if(/access_token|error_description|error=/.test(raw)){
+    let back = "#/";
+    try{ back = sessionStorage.getItem("udyr-return") || "#/"; sessionStorage.removeItem("udyr-return"); }
+    catch(err){}
+    /* give Supabase a moment to read the reply, then put the route back */
+    setTimeout(() => { history.replaceState(null, "", location.pathname + back); route(); }, 400);
+    return;
+  }
+  const key = (raw.replace(/^#\/?/, "") || "").toLowerCase();
   const champ = ROSTER.find(c => c.key === key && c.ready);
   if(champ){
     CHAMP = CHAMPIONS[champ.key] || CHAMPIONS.udyr;
