@@ -3052,6 +3052,8 @@ const L10N = {
   fbTooShort:["Please write a little more.","Écrivez un peu plus, s'il vous plaît."],
   fbNoDb:["The database is unreachable right now.","La base est injoignable pour le moment."], board:["Leaderboard","Classement"],
   signInDiscord:["Sign in with Discord","Se connecter avec Discord"],
+  signingIn:["Opening Discord…","Ouverture de Discord…"],
+  signingIn:["Opening Discord…","Ouverture de Discord…"],
   signInWhy:["needed to publish or like","nécessaire pour publier ou liker"],
   signOut:["Sign out","Déconnexion"],
   youAreBanned:["Your account can no longer publish or like.",
@@ -3448,13 +3450,23 @@ const PATCH_NOTES = [
 
 const LOADED_AT = new Date(document.lastModified);
 
+let skipVersionOnce = false;
 async function checkVersion(){
+  /* a page that has just come back from the sign-in round trip was very likely
+     served from cache, so comparing it against the server only cries wolf */
+  if(skipVersionOnce){ skipVersionOnce = false; return; }
+  try{
+    if(sessionStorage.getItem("udyr-justauth")){
+      sessionStorage.removeItem("udyr-justauth");
+      return;
+    }
+  }catch(err){}
   try{
     const res = await fetch(location.pathname + "?cb=" + Date.now(), {method:"HEAD", cache:"no-store"});
     const lm = res.headers.get("last-modified");
     if(!lm) return;                                  /* server not saying, leave it alone */
     const live = new Date(lm);
-    if(live - LOADED_AT > 60000) showUpdate();       /* a minute of slack for clock drift */
+    if(live - LOADED_AT > 300000) showUpdate();      /* five minutes of slack: caches lag */
   }catch(err){ /* offline, or opened straight from a file */ }
 }
 function showUpdate(){
@@ -3532,6 +3544,10 @@ function lbInit(){
     me = data.session ? data.session.user : null;
     if(me) lbTouchProfile();
     lbLoad();
+    /* the reply may have been consumed before the listener below was attached */
+    let pending = null;
+    try{ pending = sessionStorage.getItem("udyr-return"); }catch(err){}
+    if(pending) goBackAfterAuth();
   });
   sb.auth.onAuthStateChange((_e, session) => {
     me = session ? session.user : null;
@@ -3575,10 +3591,15 @@ const discordName = () => {
 };
 const meName = () => myName || discordName();
 
-async function lbSignIn(){
+async function lbSignIn(ev){
+  const btn = ev && ev.currentTarget;
+  if(btn){ btn.disabled = true; btn.textContent = TR("signingIn"); }
   /* come back to the bare page: the session arrives in the hash, and the site
      uses the hash for routing, so the two must not be asked to share it */
-  try{ sessionStorage.setItem("udyr-return", location.hash || "#/"); }catch(err){}
+  try{
+    sessionStorage.setItem("udyr-return", location.hash || "#/");
+    sessionStorage.setItem("udyr-justauth", "1");
+  }catch(err){}
   await sb.auth.signInWithOAuth({
     provider:"discord",
     options:{redirectTo:location.origin + location.pathname}
@@ -5606,7 +5627,9 @@ function route(){
   const raw = location.hash || "";
   /* the address bar may be holding a sign-in reply rather than a route */
   if(/access_token|error_description|error=|[?&]code=/.test(raw + location.search)){
-    /* a sign-in reply, not a route: strip it and go back where we came from */
+    /* a sign-in reply, not a route: strip it and go back where we came from.
+       The page has just been fetched, so it cannot be an old copy. */
+    skipVersionOnce = true;
     goBackAfterAuth();
     return;
   }
