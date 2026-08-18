@@ -472,6 +472,8 @@ table.fxout tr.dim td{color:var(--ink-faint)}
 .helpbtn:hover{background:var(--q);color:#10161d}
 a.helpbtn{text-decoration:none;display:inline-block}
 .helpbtn.primary{background:var(--q);color:#10161d;font-weight:600}
+.helpbtn.back{border-color:var(--line);color:var(--ink-faint)}
+.helpbtn.back:hover{border-color:var(--q);color:var(--q);background:transparent}
 .helpbtn.primary:hover{background:#f2b155}
 .help{
   background:var(--panel);border:1px solid var(--line);border-radius:3px;
@@ -528,6 +530,9 @@ table.brk td:last-child,table.brk th:last-child{text-align:right;font-family:var
   color:var(--q);padding-top:10px}
 .brk-amp td,.brk-left td{color:var(--ink-faint);font-size:11.5px}
 .brk .iicon{width:22px;height:22px}
+.pk{display:inline-block;min-width:20px;text-align:center;font-family:var(--display);font-size:9px;
+  letter-spacing:.08em;color:#10161d;background:var(--ink-faint);border-radius:2px;padding:0 4px;
+  margin-right:6px;vertical-align:1px}
 .lbpub{
   margin:12px 0 16px;border:1px solid var(--q);border-radius:3px;
   background:rgba(232,161,60,.05);
@@ -801,7 +806,7 @@ body[data-view="home"] #app{display:none}
 .champ .art{position:absolute;inset:0;background-size:cover;opacity:.72}
 .champ .veil{position:absolute;inset:0;
   background:linear-gradient(0deg,rgba(11,17,24,.97) 18%,rgba(11,17,24,.35) 70%,rgba(11,17,24,.1))}
-.champ .lab{position:relative;padding:14px 16px;margin-top:134px}
+.champ .lab{position:relative;padding:14px 16px;margin-top:134px;text-align:center}
 .champ .lab b{display:block;font-family:var(--display);font-size:19px;letter-spacing:.16em;
   text-transform:uppercase;color:var(--ink)}
 .champ.soon{cursor:default;opacity:.55}
@@ -826,11 +831,13 @@ body[data-view="home"] #app{display:none}
 .home-foot p{margin:0 0 5px}
 
 .backhome{
-  font-family:var(--display);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--ink-faint);text-decoration:none;border-bottom:1px solid transparent;
-  text-shadow:0 1px 6px rgba(0,0,0,.95);
+  display:inline-block;font-family:var(--display);font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-dim);text-decoration:none;
+  border:1px solid var(--line);border-radius:2px;padding:4px 10px;
+  background:rgba(11,17,24,.6);margin-left:10px;
 }
-.backhome:hover{color:var(--q);border-color:var(--q)}
+.backhome::before{content:"‹ ";font-size:13px;line-height:0}
+.backhome:hover{border-color:var(--q);color:var(--q)}
 
 @media (max-width:720px){
   .home-in{padding:22px 14px 30px}
@@ -898,6 +905,7 @@ body[data-view="home"] #app{display:none}
       <a class="backhome" href="#/" data-i18n="backHome">All champions</a>
     </div>
     <div class="hero-act">
+      <a class="helpbtn back" href="#/" data-i18n="backHome">All champions</a>
       <button class="helpbtn primary" id="btnHelp" data-i18n="help">How it works</button>
       <button class="helpbtn" id="btnNotes" data-i18n="patchNotes">Patch notes</button>
       <button class="helpbtn" id="btnOpt" data-i18n="optimiser" hidden>Optimiser</button>
@@ -2000,6 +2008,7 @@ function parseCond(str){
 const CHAMPIONS = {
   udyr:{
     key:"udyr", name:"Udyr", splash:3,
+    comboNote:["2 attacks, then 2 awakened","2 attaques, puis 2 éveillées"],
     base:{hp:[664,92], mana:[271,50], ad:[62,4], ar:[31,4.7], mr:[32,2.05],
           as:0.65, asPerLevel:3, ms:350},
     abilities_meta:[
@@ -2169,6 +2178,7 @@ const CHAMPIONS = {
   },
   elise:{
     key:"elise", name:"Elise", splash:15,
+    comboNote:["one form, then the other","une forme, puis l\u2019autre"],
     base:{hp:[620,109], mana:[324,50], ad:[55,3], ar:[30,4.5], mr:[30,1.3],
           as:0.625, asPerLevel:1.75, ms:330},
     /* Spider form is melee at 125 range and adds 25 base move speed */
@@ -2300,6 +2310,7 @@ const CHAMPIONS = {
   },
   ekko:{
     key:"ekko", name:"Ekko", splash:19,
+    comboNote:["Resonance triggers on the third mark","la Résonance part à la troisième marque"],
     base:{hp:[655,99], mana:[280,70], ad:[58,3], ar:[32,4.2], mr:[32,2.05],
           as:0.688, asPerLevel:3.3, ms:340},
     abilities_meta:[
@@ -2841,7 +2852,8 @@ function computeBuild(b, target){
       if(st.kind === "attack") charged = false;
       const amp = ampAt(cur, a || 1);
       d *= amp;
-      steps.push({n:si + 1, atk:a, awakened:!!st.awakened, kind:st.kind, label:st.label,
+      steps.push({n:si + 1, atk:a, awakened:!!st.awakened, kind:st.kind,
+                  label:st.label || st.id, id:st.id,
                   amp, before:cur, total:d, parts:parts.map(x => ({...x, v:x.v*amp}))});
       cur = Math.max(0, cur - d);
       dmg += d;
@@ -3095,10 +3107,10 @@ const L10N = {
   runes:["Runes","Runes"], shards:["Shards","Fragments"], totalStats:["Total Stats","Stats totales"],
   offense:["Offense","Offense"], defense:["Defense","Défense"], utility:["Utility","Utilitaire"],
   abilities:["Abilities","Compétences"],
-  combos:["Combos — 2 attacks, then 2 awakened","Combos — 2 attaques, puis 2 éveillées"],
+  combos:["Combos","Combos"],
   passiveOut:["Passive output over the combo","Effet des passifs sur le combo"],
   comparison:["Comparison","Comparaison"],
-  cmpSub:["Damage and sustain over the same combo: 2 attacks in the stance, then 2 awakened.","Dégâts et survie sur le même combo : 2 attaques dans la posture, puis 2 éveillées."],
+  cmpSub:["Damage and sustain over the same sequences, step by step.","Dégâts et survie sur les mêmes séquences, étape par étape."],
   dmgPer:["Damage per combo","Dégâts par combo"], healPer:["Healing per combo","Soins par combo"],
   itemPassives:["Item passives","Passifs d'items"],
   fxSub:["All values are taken from the wiki's item data, melee column. Each passive is switched on or off per build with its COND button.",
@@ -3118,6 +3130,7 @@ const L10N = {
   newVersion:["A newer version of the page is available.","Une version plus récente de la page est disponible."],
   reload:["Reload","Recharger"],
   attack:["Attack","Attaque"], awakened:["awakened","éveillée"],
+  autoAttack:["Auto","Auto"], stepCast:["cast","lancé"], stepSpell:["ability","compétence"],
   targetLeft:["target left","PV restants"], perAttack:["Attack by attack","Attaque par attaque"],
   endOfCombo:["Once per combo","Une fois par combo"], summary:["Total","Total"],
   breakdownOf:["%s — full breakdown","%s — détail complet"],
@@ -3609,7 +3622,7 @@ async function lbSignOut(){ await sb.auth.signOut(); me = null; lbRender(); }
 
 async function lbLoad(){
   if(!lbReady()) return;
-  let q = sb.from("leaderboard").select("*");
+  let q = sb.from("leaderboard").select("*").eq("champion", CHAMP.key);
   if(lbRank) q = q.eq("rank", lbRank);
   if(lbVip)  q = q.eq("verified", true);
   if(lbStream) q = q.eq("streamer", true);
@@ -3635,7 +3648,7 @@ async function lbPublish(){
   const b = state.builds[bi];
   const name = g("pubName").trim() || b.name;
   const {error} = await sb.from("builds").insert({
-    owner:me.id, author:meName(), name, patch:GAME_PATCH,
+    owner:me.id, author:meName(), name, patch:GAME_PATCH, champion:CHAMP.key,
     notes:g("pubNotes").trim().slice(0, 400),
     role:g("pubRole"), starter:g("pubStarter"),
     summoner:g("pubSummoner").trim().slice(0, 40),
@@ -3673,6 +3686,7 @@ async function lbLike(id){
 function lbUse(id, bi){
   const row = board.find(x => x.id === id);
   if(!row) return;
+  if(row.champion && row.champion !== CHAMP.key){ boardNote = TR("wrongChamp"); lbRender(); return; }
   const one = restoreBuild(mk(row.name), row.data);
   one.name = row.name;
   state.builds[bi] = one;
@@ -3702,16 +3716,31 @@ const state = freshState();
    cannot always rely on browser storage: named slots kept in
    localStorage, and a plain .json file you can move around or share.
    ============================================================ */
-const BUILD_KEY = "udyr-calc-builds";   /* the build library */
+/* one library per champion: an Udyr build loaded onto Ekko is meaningless */
+const buildKey = () => "otp-calc-builds:" + (CHAMP ? CHAMP.key : "udyr");
 let saveNote = "";
 
 /* ---- one build on its own, so a good build can be reused anywhere ---- */
-function readBuilds(){
-  try{ return JSON.parse(localStorage.getItem(BUILD_KEY) || "{}"); }
+function readBuildsAll(){
+  try{ return JSON.parse(localStorage.getItem(buildKey()) || "{}"); }
   catch(err){ return {}; }
 }
+/* only the builds made for the champion on screen: an Udyr page of runes and
+   items means nothing on Ekko */
+function readBuilds(){
+  const all = readBuildsAll(), out = {};
+  for(const k in all){
+    const champ = all[k].champ || "udyr";     /* saved before champions existed */
+    if(champ === CHAMP.key) out[k] = all[k];
+  }
+  return out;
+}
 function writeBuilds(obj){
-  try{ localStorage.setItem(BUILD_KEY, JSON.stringify(obj)); return true; }
+  /* merge back over the other champions' entries rather than replacing them */
+  const all = readBuildsAll();
+  for(const k in all) if((all[k].champ || "udyr") === CHAMP.key) delete all[k];
+  Object.assign(all, obj);
+  try{ localStorage.setItem(buildKey(), JSON.stringify(all)); return true; }
   catch(err){ return false; }
 }
 /* overwrite the library entry this slot came from */
@@ -3719,7 +3748,9 @@ function updateOneBuild(bi){
   const name = state.builds[bi].libName;
   if(!name) return;
   const all = readBuilds();
-  all[name] = JSON.parse(JSON.stringify(state.builds[bi]));
+  const copy = JSON.parse(JSON.stringify(state.builds[bi]));
+  copy.champ = CHAMP.key;               /* a build belongs to the champion it was made for */
+  all[name] = copy;
   saveNote = writeBuilds(all) ? TR("savedAs").replace("%s", name) : TR("storageBlocked");
   render();
 }
@@ -3730,7 +3761,9 @@ function saveOneBuild(bi){
   if(all[name] && !confirm(TR("overwrite").replace("%s", name))) return;
   state.builds[bi].libName = name;
   state.builds[bi].name = name;
-  all[name] = JSON.parse(JSON.stringify(state.builds[bi]));
+  const copy = JSON.parse(JSON.stringify(state.builds[bi]));
+  copy.champ = CHAMP.key;               /* a build belongs to the champion it was made for */
+  all[name] = copy;
   saveNote = writeBuilds(all) ? TR("savedAs").replace("%s", name) : TR("storageBlocked");
   render();
 }
@@ -4248,7 +4281,7 @@ function card(b, bi, R){
         </div>`).join("")}
     </div>
 
-    <div class="sect-h">${TR("combos")}</div>
+    <div class="sect-h">${TR("combos")}${CHAMP.comboNote ? " — " + esc(isFR() ? CHAMP.comboNote[1] : CHAMP.comboNote[0]) : ""}</div>
     <div class="totals">
       ${(CHAMP.combos || []).map((cb, ci) => {
         const c = D.combo[cb.key] || {};
@@ -4882,14 +4915,30 @@ function breakdown(bi, stance){
              rAwkStorm:["R awakened storm","tempête éveillée du R"],
              runeProcs:["rune procs","procs de runes"], runeLow:["Dark Harvest","Moisson noire"]};
   const nm = k => { const v = K[k]; return v ? (isFR() ? v[1] : v[0]) : k; };
+  /* a build is read in keys, so each line is tagged with the one it came from */
+  const PART_KEY = {
+    basicAttack:"AA",
+    qOnHit:"Q", qPct:"Q", qAwkPct:"Q", lightning:"Q", qHuman:"Q", qSpider:"Q", timewinder:"Q",
+    wHuman:"W", rOnHit:"R", rStorm:"R", rAwkStorm:"R", chronobreak:"R",
+    phaseDive:"E", spiderQueen:"P", resonance:"P"
+  };
+  const tag = k => PART_KEY[k] ? `<b class="pk">${PART_KEY[k]}</b> ` : "";
+  /* the step header: an attack is numbered, a cast shows its key */
+  const KEYOF = {q:"Q", w:"W", e:"E", r:"R", sq:"Q", sw:"W", se:"E"};
+  const stepName = st => {
+    if(st.kind === "attack") return TR("autoAttack") + " " + st.atk +
+      (st.awakened ? " · " + TR("awakened") : "");
+    const k = KEYOF[st.id] || (st.label || "").toUpperCase() || "?";
+    return k + " · " + (st.kind === "cast" ? TR("stepCast") : TR("stepSpell"));
+  };
 
   const rows = c.steps.map(st => `
-    <tr class="brk-h"><th colspan="2">${TR("attack")} ${st.n}${st.awakened ? " · " + TR("awakened") : ""}</th>
+    <tr class="brk-h"><th colspan="2">${stepName(st)}</th>
         <th>${n0(st.total)}</th></tr>
     ${st.parts.filter(p => p.v > 0.5).map(p => `<tr>
         <td>${p.item ? `<img class="iicon" src="${ITEM_ICON(p.item.id)}" alt="" loading="lazy"
              onerror="this.style.visibility='hidden'">` : ""}</td>
-        <td>${p.item ? esc(iName(p.item)) + " — " + esc(fxLabel(p.n)) : esc(nm(p.n))}</td>
+        <td>${p.item ? esc(iName(p.item)) + " — " + esc(fxLabel(p.n)) : tag(p.n) + esc(nm(p.n))}</td>
         <td>${n0(p.v)}</td></tr>`).join("")}
     ${st.amp !== 1 ? `<tr class="brk-amp"><td></td><td>${TR("amp")}</td><td>x${nf2.format(st.amp)}</td></tr>` : ""}
     <tr class="brk-left"><td></td><td>${TR("targetLeft")}</td><td>${n0(Math.max(0, st.before - st.total))}</td></tr>
