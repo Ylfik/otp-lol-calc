@@ -52,7 +52,7 @@ button{cursor:pointer;background:none;border:none}
   /* Spirit Guard Udyr, skin 3 */
   background:
     var(--splash, url("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Udyr_3.jpg"))
-    50% 28% / cover no-repeat,
+    var(--splashpos, 50% 28%) / cover no-repeat,
     #0B1118;
 }
 /* dark only where the text sits, so the art stays visible */
@@ -798,7 +798,7 @@ body[data-view="home"] #app{display:none}
   min-height:190px;padding:0;transition:border-color .15s,transform .15s;
 }
 .champ:hover{border-color:var(--q);transform:translateY(-2px)}
-.champ .art{position:absolute;inset:0;background-size:cover;background-position:52% 22%;opacity:.72}
+.champ .art{position:absolute;inset:0;background-size:cover;opacity:.72}
 .champ .veil{position:absolute;inset:0;
   background:linear-gradient(0deg,rgba(11,17,24,.97) 18%,rgba(11,17,24,.35) 70%,rgba(11,17,24,.1))}
 .champ .lab{position:relative;padding:14px 16px;margin-top:134px}
@@ -1472,6 +1472,9 @@ function itemAllowed(name, worn){
   return !worn.some(w => w && w !== name && (LIMIT_OF[w] || []).some(g => mine.includes(g)));
 }
 
+/* items that make on-hit effects land twice on the empowered attack */
+const REAPPLY = new Set(["DUSK AND DAWN","GUINSOO'S RAGEBLADE"]);
+
 const BOOTS = new Set(["PLATED STEELCAPS","MERCURY'S TREADS","IONIAN BOOTS OF LUCIDITY",
   "GLUTTONOUS GREAVES","BOOTS OF SWIFTNESS","BERSERKER'S GREAVES","SORCERER'S SHOES",
   "SWIFTMARCH","GUNMETAL GREAVES","ARMORED ADVANCE","CHAINLACED CRUSHERS",
@@ -1684,11 +1687,11 @@ const ITEM_FX = {
   "HULLBREAKER":     [{lab:"Skipper",         src:"wiki", type:"phys", hits:1, at:4, pctBaseAD:120, pctHP:5, rng:{pctBaseAD:84, pctHP:3.5}}],
   "HEARTSTEEL":      [{lab:"Colossal Consumption", src:"wiki", type:"phys", hits:1, flat:70, pctHP:6}],
   "ECLIPSE":         [{lab:"Ever Rising Moon",src:"wiki", type:"phys", hits:1, at:2, pctTgtHP:6, rng:{pctTgtHP:3.75}}],
-  "TRINITY FORCE":   [{lab:"Spellblade",      src:"wiki", type:"phys",  hits:2, at:[1,3], pctBaseAD:200}],
-  "ICEBORN GAUNTLET":[{lab:"Spellblade",      src:"wiki", type:"phys",  hits:2, at:[1,3], pctBaseAD:150}],
-  "ESSENCE REAVER":  [{lab:"Spellblade",      src:"wiki", type:"phys",  hits:2, at:[1,3], pctBaseAD:125}],
-  "LICH BANE":       [{lab:"Spellblade",      src:"wiki", type:"magic", hits:2, at:[1,3], pctBaseAD:75, pctAP:45}],
-  "DUSK AND DAWN":   [{lab:"Spellblade",      src:"wiki", type:"magic", hits:2, at:[1,3], pctBaseAD:75, pctAP:10}],
+  "TRINITY FORCE":   [{lab:"Spellblade",      src:"wiki", type:"phys",  hits:2, spellblade:true, pctBaseAD:200}],
+  "ICEBORN GAUNTLET":[{lab:"Spellblade",      src:"wiki", type:"phys",  hits:2, spellblade:true, pctBaseAD:150}],
+  "ESSENCE REAVER":  [{lab:"Spellblade",      src:"wiki", type:"phys",  hits:2, spellblade:true, pctBaseAD:125}],
+  "LICH BANE":       [{lab:"Spellblade",      src:"wiki", type:"magic", hits:2, spellblade:true, pctBaseAD:75, pctAP:45}],
+  "DUSK AND DAWN":   [{lab:"Spellblade",      src:"wiki", type:"magic", hits:2, spellblade:true, pctBaseAD:75, pctAP:10}],
   "RAVENOUS HYDRA":  [{lab:"Ravenous Crescent",src:"wiki",type:"phys",  hits:1, pctTotAD:80, rng:{pctTotAD:40}},
                       {lab:"Cleave — other enemies only", src:"wiki", type:"phys", hits:4, pctTotAD:40, aoe:true}],
   "PROFANE HYDRA":   [{lab:"Heretical Cleave",src:"wiki", type:"phys",  hits:1, pctTotAD:80, rng:{pctTotAD:40}},
@@ -2062,17 +2065,18 @@ const CHAMPIONS = {
     /* Two attacks in the stance, then two awakened. */
     combos:[
       {key:"q", en:"Wilding Claw",     fr:"Griffe sauvage",
-       steps:[{kind:"attack"},{kind:"attack"},{kind:"attack",awakened:true},{kind:"attack",awakened:true}]},
+       steps:[{kind:"cast"},{kind:"attack"},{kind:"attack"},{kind:"cast"},{kind:"attack",awakened:true},{kind:"attack",awakened:true}]},
       {key:"w", en:"Iron Mantle",      fr:"Cape de fer",
-       steps:[{kind:"attack"},{kind:"attack"},{kind:"attack",awakened:true},{kind:"attack",awakened:true}]},
+       steps:[{kind:"cast"},{kind:"attack"},{kind:"attack"},{kind:"cast"},{kind:"attack",awakened:true},{kind:"attack",awakened:true}]},
       {key:"e", en:"Blazing Stampede", fr:"Piétinement flamboyant", ms:A => A.msEAwk,
-       steps:[{kind:"attack"},{kind:"attack"},{kind:"attack",awakened:true},{kind:"attack",awakened:true}]},
+       steps:[{kind:"cast"},{kind:"attack"},{kind:"attack"},{kind:"cast"},{kind:"attack",awakened:true},{kind:"attack",awakened:true}]},
       {key:"r", en:"Wingborne Storm",  fr:"Tempête spirituelle",
-       steps:[{kind:"attack"},{kind:"attack"},{kind:"attack",awakened:true},{kind:"attack",awakened:true}]}
+       steps:[{kind:"cast"},{kind:"attack"},{kind:"attack"},{kind:"cast"},{kind:"attack",awakened:true},{kind:"attack",awakened:true}]}
     ],
     /* what the stance adds to a single attack */
     onStep(key, st, c){
       const {A, hp} = c, out = {parts:[], ls:0};
+      if(st.kind !== "attack") return out;   /* the stance rides on attacks only */
       if(key === "q"){
         out.parts.push({n:"qOnHit", v:A.qOnHit, type:"phys"});
         out.parts.push({n:st.awakened ? "qAwkPct" : "qPct",
@@ -2162,7 +2166,7 @@ const CHAMPIONS = {
     }
   },
   elise:{
-    key:"elise", name:"Elise", splash:0,
+    key:"elise", name:"Elise", splash:15,
     base:{hp:[620,109], mana:[324,50], ad:[55,3], ar:[30,4.5], mr:[30,1.3],
           as:0.625, asPerLevel:1.75, ms:330},
     /* Spider form is melee at 125 range and adds 25 base move speed */
@@ -2291,6 +2295,121 @@ const CHAMPIONS = {
       return out;
     },
     comboEnd(key, c){ return {parts:[]}; }
+  },
+  ekko:{
+    key:"ekko", name:"Ekko", splash:19,
+    base:{hp:[655,99], mana:[280,70], ad:[58,3], ar:[32,4.2], mr:[32,2.05],
+          as:0.688, asPerLevel:3.3, ms:340},
+    abilities_meta:[
+      {k:"q", en:"Timewinder",     fr:"Remonteur du temps"},
+      {k:"w", en:"Parallel Convergence", fr:"Convergence parallèle"},
+      {k:"e", en:"Phase Dive",     fr:"Plongée fantomatique"},
+      {k:"r", en:"Chronobreak",    fr:"Chronorupture"}
+    ],
+    rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
+    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    maxRank: 5,
+    ranks:{
+      qOut:   [80,95,110,125,140],   qOutAP:0.30,
+      qBack:  [40,65,90,115,140],    qBackAP:0.60,
+      qSlow:  [40,45,50,55,60],
+      wShield:[100,120,140,160,180], wAP:1.50,
+      eDmg:   [50,75,100,125,150],   eAP:0.40,
+      rDmg:   [200,350,500],         rAP:1.75,
+      rHealMin:[100,150,200],        rHealMinAP:0.60,
+      rHealMax:[400,600,800],        rHealMaxAP:2.40,
+      qCd:[9,8.5,8,7.5,7], wCd:[22,20,18,16,14], eCd:[9,8.5,8,7.5,7], rCd:[110,80,50]
+    },
+    abilities(c){
+      const {A, T, L, qr, wr, er, rr, tot, lerp, learned} = c;
+      const R = (a,n) => a[Math.max(0, Math.min(a.length-1, n-1))] || 0;
+      const ap = tot.ap;
+      A.qOut   = R(T.qOut,qr)  + T.qOutAP*ap;
+      A.qBack  = R(T.qBack,qr) + T.qBackAP*ap;
+      A.qTotal = A.qOut + A.qBack;
+      A.qSlow  = R(T.qSlow,qr);
+      A.wShield= R(T.wShield,wr) + T.wAP*ap;
+      A.eDmg   = R(T.eDmg,er)  + T.eAP*ap;
+      A.rDmg   = R(T.rDmg,rr)  + T.rAP*ap;
+      A.rHealMin = R(T.rHealMin,rr) + T.rHealMinAP*ap;
+      A.rHealMax = R(T.rHealMax,rr) + T.rHealMaxAP*ap;
+      /* Z-Drive Resonance: the third stack consumes them all */
+      A.reso   = lerp(30,150,L) + 0.80*ap;
+      A.resoMs = L >= 16 ? 80 : L >= 11 ? 70 : L >= 6 ? 60 : 50;
+      const ah = 1 + tot.ah/100;
+      A.qCd = R(T.qCd,qr)/ah; A.wCd = R(T.wCd,wr)/ah;
+      A.eCd = R(T.eCd,er)/ah; A.rCd = R(T.rCd,rr)/(1 + tot.uh/100);
+      if(!learned.q){ A.qOut=0; A.qBack=0; A.qTotal=0; }
+      if(!learned.w) A.wShield=0;
+      if(!learned.e) A.eDmg=0;
+      if(!learned.r){ A.rDmg=0; A.rHealMin=0; A.rHealMax=0; }
+      A.msIdle = c.msSoftCap((c.base.ms + c.S.ms) * (1 + tot.mspct/100));
+      return A;
+    },
+    /* Resonance counts hits, so the combo needs a memory */
+    newState(){ return {stacks:0}; },
+    combos:[
+      {key:"basic", en:"E, Q, auto", fr:"E, Q, auto",
+       steps:[{kind:"cast", label:"E"},
+              {kind:"attack", dive:true},
+              {kind:"spell", id:"q"},
+              {kind:"attack"}]},
+      {key:"dusk", en:"E, auto — with Dusk and Dawn", fr:"E, auto — avec Aube et crépuscule",
+       steps:[{kind:"cast", label:"E"},
+              {kind:"attack", dive:true},
+              {kind:"attack"}]},
+      {key:"ult", en:"Chronobreak", fr:"Chronorupture",
+       steps:[{kind:"spell", id:"r"}]}
+    ],
+    onStep(key, st, c){
+      const {A, memo, onHits} = c, out = {parts:[]};
+      let marks = 0;
+      if(st.kind === "attack"){
+        marks = onHits;                                   /* doubled by Dusk and Dawn */
+        if(st.dive) out.parts.push({n:"phaseDive", v:A.eDmg, type:"magic"});
+      }
+      if(st.kind === "spell"){
+        marks = 1;
+        if(st.id === "q") out.parts.push({n:"timewinder", v:A.qTotal, type:"magic"});
+        if(st.id === "r"){
+          out.parts.push({n:"chronobreak", v:A.rDmg, type:"magic"});
+          out.heal = A.rHealMin;                          /* the floor; the ceiling is shown apart */
+        }
+      }
+      /* every third mark consumes the set */
+      for(let i = 0; i < marks; i++){
+        memo.stacks++;
+        if(memo.stacks >= 3){
+          memo.stacks = 0;
+          out.parts.push({n:"resonance", v:A.reso, type:"magic"});
+        }
+      }
+      return out;
+    },
+    comboEnd(){ return {parts:[]}; },
+    abilityRows(c){
+      const {A, TR, n0, pc, nf1} = c;
+      return [
+        [{lab:TR("kQout"), val:n0(A.qOut)}, {lab:TR("kQback"), val:n0(A.qBack)},
+         {lab:TR("kQtotal"), val:n0(A.qTotal), awk:true},
+         {lab:TR("slow"), val:pc(A.qSlow)}, {lab:TR("cooldown"), val:nf1.format(A.qCd)+" s"}],
+        [{lab:TR("shield"), val:n0(A.wShield)}, {lab:TR("cooldown"), val:nf1.format(A.wCd)+" s"}],
+        [{lab:TR("kEdmg"), val:n0(A.eDmg)}, {lab:TR("cooldown"), val:nf1.format(A.eCd)+" s"}],
+        [{lab:TR("damage"), val:n0(A.rDmg)},
+         {lab:TR("kRmin"), val:n0(A.rHealMin), awk:true},
+         {lab:TR("kRmax"), val:n0(A.rHealMax), awk:true},
+         {lab:TR("cooldown"), val:nf1.format(A.rCd)+" s"}]
+      ];
+    },
+    comboRows(key, x){
+      const {c, A, TR, n0} = x;
+      return [
+        {lab:TR("damage"), val:n0(c.dmg), hi:true},
+        {lab:TR("dps"), val:n0(c.dps)},
+        {lab:TR("healing"), val:n0(c.heal), dim:c.heal < 1},
+        {lab:TR("kReso"), val:n0(A.reso)},
+        {lab:TR("targetLeft"), val:n0(c.leftover)}];
+    }
   }
 };
 let CHAMP = CHAMPIONS.udyr;
@@ -2665,9 +2784,14 @@ function computeBuild(b, target){
 
     let a = 0;                         /* how many basic attacks have landed */
     let asNow = A.comboAS, time = 0;   /* an ability may speed up the attacks that follow */
+    let charged = false;               /* a cast is waiting to be spent on the next attack */
+    const memo = CHAMP.newState ? CHAMP.newState() : {};   /* the champion's own counter */
     seq.forEach((st, si) => {
       let d = 0;
       const parts = [];
+
+      if(st.kind === "cast" || st.kind === "spell") charged = true;
+      const spendsCharge = st.kind === "attack" && charged;
 
       if(st.kind === "attack"){
         a++;
@@ -2677,7 +2801,12 @@ function computeBuild(b, target){
       }
 
       /* what the champion adds on this step */
-      const rid = CHAMP.onStep ? CHAMP.onStep(key, st, {A, hp, cur, a, pMul, mMul, tot}) : null;
+      /* how many times on-hit effects land on this attack: some items repeat them */
+      const onHits = st.kind === "attack"
+        ? 1 + (spendsCharge && equipped.some(e => e.cond && REAPPLY.has(e.it.n)) ? 1 : 0)
+        : 0;
+      const rid = CHAMP.onStep
+        ? CHAMP.onStep(key, st, {A, hp, cur, a, pMul, mMul, tot, memo, onHits, charged}) : null;
       if(rid){
         (rid.parts || []).forEach(x => {
           const v = x.v * mulOf(x.type);
@@ -2696,7 +2825,8 @@ function computeBuild(b, target){
           const list = PV[e.it.n];
           if(!list || !e.cond) return;
           list.forEach(f => {
-            if(f.aoe || !fires(f, a)) return;   /* aoe passives miss a lone target */
+            if(f.aoe) return;                       /* aoe passives miss a lone target */
+            if(f.spellblade ? !spendsCharge : !fires(f, a)) return;
             const v = fxOne(f, fxctx, f.cur ? cur : hp, !!st.ranged) * mulOf(f.type);
             if(!v) return;
             d += v;
@@ -2706,6 +2836,7 @@ function computeBuild(b, target){
         });
       }
 
+      if(st.kind === "attack") charged = false;
       const amp = ampAt(cur, a || 1);
       d *= amp;
       steps.push({n:si + 1, atk:a, awakened:!!st.awakened, kind:st.kind, label:st.label,
@@ -3040,6 +3171,12 @@ const L10N = {
   eQhuman:["Neurotoxin","Neurotoxine"], eQspider:["Venomous Bite","Morsure venimeuse"],
   eWhuman:["Volatile Spiderling","Araignée volatile"], eWspider:["Skittering Frenzy, attack speed","Frénésie grouillante, vitesse d'attaque"],
   eStun:["Cocoon, stun","Cocon, étourdissement"],
+  kQout:["Timewinder, outward","Remonteur, aller"], kQback:["Timewinder, return","Remonteur, retour"],
+  kQtotal:["Timewinder, both hits","Remonteur, les deux coups"],
+  kEdmg:["Phase Dive attack","Attaque de la Plongée"],
+  kRmin:["Chronobreak, minimum heal","Chronorupture, soin minimum"],
+  kRmax:["Chronobreak, maximum heal","Chronorupture, soin maximum"],
+  kReso:["Resonance, third mark","Résonance, troisième marque"],
   eCd:["Cocoon cooldown","Recharge du Cocon"], eRappel:["Rappel cooldown","Recharge du Rappel"],
   ePassive:["Spider Queen, on-hit","Reine araignée, à l'impact"],
   ePassiveHeal:["Spider Queen, heal","Reine araignée, soin"],
@@ -5411,9 +5548,11 @@ document.addEventListener("keydown", e => { if(e.key === "Escape") closeHelp(); 
    calculator, anything else lands on the shelf.
    ============================================================ */
 const ROSTER = [
-  {key:"udyr",  name:"Udyr",  splash:3, ready:true,
+  {key:"udyr",  name:"Udyr",  splash:3, ready:true, focus:"50% 32%",
    en:"124 items, 62 runes, four stances", fr:"124 items, 62 runes, quatre postures"},
-  {key:"elise", name:"Elise", splash:0, ready:true,
+  {key:"ekko",  name:"Ekko",  splash:19, ready:true, focus:"62% 16%",
+   en:"Resonance marks and time rewind", fr:"Marques de Résonance et rembobinage"},
+  {key:"elise", name:"Elise", splash:15, ready:true, focus:"58% 14%",
    en:"Human and spider forms", fr:"Formes humaine et araignée"}
 ];
 const SPLASH = c => `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${
@@ -5431,7 +5570,7 @@ function drawHome(){
     .replace("%t", ROSTER.length);
   el.innerHTML = (list.length ? list : []).map(c => `
     <a class="champ ${c.ready ? "" : "soon"}" ${c.ready ? `href="#/${c.key}"` : ""}>
-      <span class="art" style="background-image:url('${SPLASH(c)}')"></span>
+      <span class="art" style="background-image:url('${SPLASH(c)}');background-position:${c.focus || "52% 22%"}"></span>
       <span class="veil"></span>
       <span class="tagsoon ${c.ready ? "tagnew" : ""}">${c.ready ? TR("homeReady") : TR("homeSoon")}</span>
       <span class="lab"><b>${esc(c.name)}</b></span>
@@ -5450,6 +5589,8 @@ function route(){
     document.title = champ.name + " Calc";
     document.documentElement.style.setProperty("--splash",
       `url("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champ.name}_${champ.splash}.jpg")`);
+    /* each splash puts the face somewhere different; centre the banner on it */
+    document.documentElement.style.setProperty("--splashpos", champ.focus || "50% 28%");
     render();
   }else{
     document.body.dataset.view = "home";
