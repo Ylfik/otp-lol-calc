@@ -1,1 +1,1 @@
-**[UDYR CALC](https://ylfik.github.io/udyr-calc/)**
+**[OTP LOL CALC](https://ylfik.github.io/otp-lol-calc/)**
