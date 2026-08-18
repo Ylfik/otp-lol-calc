@@ -841,7 +841,9 @@ body[data-view="home"] #app{display:none}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://ddragon.leagueoflegends.com" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 </head>
 <body>
 
@@ -3535,6 +3537,9 @@ function lbInit(){
     me = session ? session.user : null;
     if(me) lbTouchProfile();
     lbRender();
+    let pending = null;
+    try{ pending = sessionStorage.getItem("udyr-return"); }catch(err){}
+    if(me && pending) goBackAfterAuth();
   });
 }
 /* first sign-in creates the row the moderation flags live on */
@@ -5585,28 +5590,39 @@ function drawHome(){
   if(hv) hv.textContent = versionLabel();
 }
 
+/* Supabase strips the reply out of the address the moment it reads it, so the
+   route we left from is kept aside rather than recovered from the URL. */
+function goBackAfterAuth(){
+  let back = "#/";
+  try{
+    back = sessionStorage.getItem("udyr-return") || "#/";
+    sessionStorage.removeItem("udyr-return");
+  }catch(err){}
+  history.replaceState(null, "", location.pathname + back);
+  route();
+}
+
 function route(){
   const raw = location.hash || "";
   /* the address bar may be holding a sign-in reply rather than a route */
-  if(/access_token|error_description|error=/.test(raw)){
-    let back = "#/";
-    try{ back = sessionStorage.getItem("udyr-return") || "#/"; sessionStorage.removeItem("udyr-return"); }
-    catch(err){}
-    /* give Supabase a moment to read the reply, then put the route back */
-    setTimeout(() => { history.replaceState(null, "", location.pathname + back); route(); }, 400);
+  if(/access_token|error_description|error=|[?&]code=/.test(raw + location.search)){
+    /* a sign-in reply, not a route: strip it and go back where we came from */
+    goBackAfterAuth();
     return;
   }
   const key = (raw.replace(/^#\/?/, "") || "").toLowerCase();
   const champ = ROSTER.find(c => c.key === key && c.ready);
   if(champ){
+    /* the splash is a large image; showing the page first feels much faster */
     CHAMP = CHAMPIONS[champ.key] || CHAMPIONS.udyr;
     T = CHAMP.ranks;
     document.body.dataset.view = "app";
     document.title = champ.name + " Calc";
-    document.documentElement.style.setProperty("--splash",
-      `url("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champ.name}_${champ.splash}.jpg")`);
-    /* each splash puts the face somewhere different; centre the banner on it */
     document.documentElement.style.setProperty("--splashpos", champ.focus || "50% 28%");
+    const art = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champ.name}_${champ.splash}.jpg`;
+    const pre = new Image();
+    pre.onload = () => document.documentElement.style.setProperty("--splash", `url("${art}")`);
+    pre.src = art;
     render();
   }else{
     document.body.dataset.view = "home";
