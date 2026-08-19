@@ -806,9 +806,14 @@ body[data-view="home"] #app{display:none}
 .champ .art{position:absolute;inset:0;background-size:cover;opacity:.72}
 .champ .veil{position:absolute;inset:0;
   background:linear-gradient(0deg,rgba(11,17,24,.97) 18%,rgba(11,17,24,.35) 70%,rgba(11,17,24,.1))}
-.champ .lab{position:relative;padding:14px 22px;margin-top:134px;text-align:left}
-.champ .lab b{display:block;font-family:var(--display);font-size:19px;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--ink)}
+.champ .lab{display:block;position:relative;padding:16px 30px 18px;margin-top:126px;text-align:left}
+.champ .lab b{
+  display:block;font-family:var(--display);font-weight:300;
+  font-size:clamp(24px, 2.4vw, 30px);letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ink);line-height:1.05;
+  text-shadow:0 2px 14px rgba(0,0,0,.9);
+}
+.champ:hover .lab b{color:var(--q)}
 .champ.soon{cursor:default;opacity:.55}
 .champ.soon:hover{border-color:var(--line);transform:none}
 .champ .tagsoon{
