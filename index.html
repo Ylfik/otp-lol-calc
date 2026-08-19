@@ -806,7 +806,7 @@ body[data-view="home"] #app{display:none}
 .champ .art{position:absolute;inset:0;background-size:cover;opacity:.72}
 .champ .veil{position:absolute;inset:0;
   background:linear-gradient(0deg,rgba(11,17,24,.97) 18%,rgba(11,17,24,.35) 70%,rgba(11,17,24,.1))}
-.champ .lab{position:relative;padding:14px 16px;margin-top:134px;text-align:center}
+.champ .lab{position:relative;padding:14px 22px;margin-top:134px;text-align:left}
 .champ .lab b{display:block;font-family:var(--display);font-size:19px;letter-spacing:.16em;
   text-transform:uppercase;color:var(--ink)}
 .champ.soon{cursor:default;opacity:.55}
@@ -831,10 +831,10 @@ body[data-view="home"] #app{display:none}
 .home-foot p{margin:0 0 5px}
 
 .backhome{
-  display:inline-block;font-family:var(--display);font-size:9.5px;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--ink-dim);text-decoration:none;
-  border:1px solid var(--line);border-radius:2px;padding:4px 10px;
-  background:rgba(11,17,24,.6);margin-left:10px;
+  position:absolute;top:14px;left:22px;z-index:3;
+  font-family:var(--display);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-dim);text-decoration:none;border:1px solid var(--line);border-radius:2px;
+  padding:4px 10px;background:rgba(11,17,24,.7);
 }
 .backhome::before{content:"‹ ";font-size:13px;line-height:0}
 .backhome:hover{border-color:var(--q);color:var(--q)}
@@ -898,14 +898,13 @@ body[data-view="home"] #app{display:none}
 <div id="app">
 <div class="hero">
   <div class="acct" id="acctBar"></div>
+  <a class="backhome" href="#/" data-i18n="backHome">All champions</a>
   <div class="hero-in">
     <div class="brand">
       <h1>UDYR<span>·</span>CALC</h1>
       <small class="by">made by Ylfik</small>
-      <a class="backhome" href="#/" data-i18n="backHome">All champions</a>
     </div>
     <div class="hero-act">
-      <a class="helpbtn back" href="#/" data-i18n="backHome">All champions</a>
       <button class="helpbtn primary" id="btnHelp" data-i18n="help">How it works</button>
       <button class="helpbtn" id="btnNotes" data-i18n="patchNotes">Patch notes</button>
       <button class="helpbtn" id="btnOpt" data-i18n="optimiser" hidden>Optimiser</button>
@@ -2085,6 +2084,10 @@ const CHAMPIONS = {
        steps:[{kind:"cast"},{kind:"attack"},{kind:"attack"},{kind:"cast"},{kind:"attack",awakened:true},{kind:"attack",awakened:true}]}
     ],
     /* what the stance adds to a single attack */
+    castNote(st, key){
+      const n = {q:"Q", w:"W", e:"E", r:"R"}[key] || "";
+      return isFR() ? n + " — changement de posture" : n + " — stance swap";
+    },
     onStep(key, st, c){
       const {A, hp} = c, out = {parts:[], ls:0};
       if(st.kind !== "attack") return out;   /* the stance rides on attacks only */
@@ -2306,7 +2309,13 @@ const CHAMPIONS = {
       }
       return out;
     },
-    comboEnd(key, c){ return {parts:[]}; }
+    comboEnd(key, c){ return {parts:[]}; },
+    spellNote(st){
+      if(st.id === "e")  return isFR() ? "Cocon — étourdit, aucun dégât" : "Cocoon — stun, no damage";
+      if(st.id === "sw") return isFR() ? "Frénésie grouillante — vitesse d'attaque"
+                                       : "Skittering Frenzy — attack speed";
+      return isFR() ? "aucun dégât propre" : "no damage of its own";
+    }
   },
   ekko:{
     key:"ekko", name:"Ekko", splash:19,
@@ -2400,6 +2409,10 @@ const CHAMPIONS = {
       return out;
     },
     comboEnd(){ return {parts:[]}; },
+    castNote(){
+      return isFR() ? "Plongée — dash, prépare l'attaque suivante"
+                    : "Phase Dive — dash, empowers the next attack";
+    },
     abilityRows(c){
       const {A, TR, n0, pc, nf1} = c;
       return [
@@ -3568,7 +3581,8 @@ function lbInit(){
     lbRender();
     let pending = null;
     try{ pending = sessionStorage.getItem("udyr-return"); }catch(err){}
-    if(me && pending) goBackAfterAuth();
+    if(pending && !me){ try{ sessionStorage.removeItem("udyr-return"); }catch(err){} }
+    else if(me && pending) goBackAfterAuth();
   });
 }
 /* first sign-in creates the row the moderation flags live on */
@@ -3613,10 +3627,16 @@ async function lbSignIn(ev){
     sessionStorage.setItem("udyr-return", location.hash || "#/");
     sessionStorage.setItem("udyr-justauth", "1");
   }catch(err){}
-  await sb.auth.signInWithOAuth({
-    provider:"discord",
-    options:{redirectTo:location.origin + location.pathname}
-  });
+  try{
+    const {error} = await sb.auth.signInWithOAuth({
+      provider:"discord",
+      options:{redirectTo:location.origin + location.pathname}
+    });
+    if(error){ boardNote = error.message; restore(); lbRender(); }
+  }catch(err){
+    boardNote = String(err && err.message || err);
+    restore(); lbRender();
+  }
 }
 async function lbSignOut(){ await sb.auth.signOut(); me = null; lbRender(); }
 
@@ -4928,8 +4948,16 @@ function breakdown(bi, stance){
   const stepName = st => {
     if(st.kind === "attack") return TR("autoAttack") + " " + st.atk +
       (st.awakened ? " · " + TR("awakened") : "");
-    const k = KEYOF[st.id] || (st.label || "").toUpperCase() || "?";
+    const k = KEYOF[st.id] || (st.label || "").toUpperCase()
+              || (KEYOF[stance] || stance.toUpperCase().slice(0,1));
     return k + " · " + (st.kind === "cast" ? TR("stepCast") : TR("stepSpell"));
+  };
+
+  /* what a step that deals nothing was actually for */
+  const stepNote = st => {
+    if(st.kind === "cast") return CHAMP.castNote ? CHAMP.castNote(st, stance) : TR("stepNoDamage");
+    if(st.kind === "spell") return CHAMP.spellNote ? CHAMP.spellNote(st, stance) : TR("stepNoDamage");
+    return TR("stepNoDamage");
   };
 
   const rows = c.steps.map(st => `
@@ -4940,6 +4968,8 @@ function breakdown(bi, stance){
              onerror="this.style.visibility='hidden'">` : ""}</td>
         <td>${p.item ? esc(iName(p.item)) + " — " + esc(fxLabel(p.n)) : tag(p.n) + esc(nm(p.n))}</td>
         <td>${n0(p.v)}</td></tr>`).join("")}
+    ${st.parts.filter(p => p.v > 0.5).length ? "" :
+      `<tr class="brk-amp"><td></td><td>${esc(stepNote(st))}</td><td>—</td></tr>`}
     ${st.amp !== 1 ? `<tr class="brk-amp"><td></td><td>${TR("amp")}</td><td>x${nf2.format(st.amp)}</td></tr>` : ""}
     <tr class="brk-left"><td></td><td>${TR("targetLeft")}</td><td>${n0(Math.max(0, st.before - st.total))}</td></tr>
   `).join("");
