@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0B1118">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%230B1118'/%3E%3Cg rx='2'%3E%3Crect x='8'  y='9'  width='48' height='11' rx='2' fill='%23E8A13C'/%3E%3Crect x='8'  y='24' width='14' height='12' rx='2' fill='%234EA8C4'/%3E%3Crect x='25' y='24' width='14' height='12' rx='2' fill='%238FA85E'/%3E%3Crect x='42' y='24' width='14' height='12' rx='2' fill='%23D2603F'/%3E%3Crect x='8'  y='40' width='14' height='12' rx='2' fill='%232C3A48'/%3E%3Crect x='25' y='40' width='14' height='12' rx='2' fill='%234EA8C4' opacity='.55'/%3E%3Crect x='42' y='40' width='14' height='12' rx='2' fill='%23E8A13C' opacity='.55'/%3E%3C/g%3E%3C/svg%3E">
-<title>Udyr Calc — Damage Calculator</title>
+<title>OTP LoL Calc — Build calculators for one-trick players</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
@@ -867,7 +867,7 @@ body[data-view="home"] #app{display:none}
 <div id="home">
   <div class="home-in">
     <header class="home-head">
-      <h1>LOL<span>·</span>CALC</h1>
+      <h1>OTP<span>·</span>LOL<span>·</span>CALC</h1>
       <p class="home-sub" data-i18n="homeSub">Build calculators for one-trick players, built one champion at a time.</p>
       <div class="home-act">
         <div class="seg" id="homeLang"><button data-l="en" aria-pressed="true">EN</button><button data-l="fr" aria-pressed="false">FR</button></div>
@@ -1032,7 +1032,7 @@ body[data-view="home"] #app{display:none}
     </header>
     <div class="helpbody help-en">
       <h3>What this is</h3>
-      <p>A build comparison tool for Udyr on Summoner's Rift. Three builds side by side, with item and
+      <p>A build comparison tool on Summoner's Rift, one champion at a time — Udyr, Ekko and Elise so far. Three builds side by side, with item and
          rune passives folded into the maths rather than left as text.</p>
 
       <h3>The combo of reference</h3>
@@ -1111,6 +1111,8 @@ body[data-view="home"] #app{display:none}
       <p>Under each card: <strong>Save as</strong> puts that build in your library, <strong>Update</strong>
          overwrites it, <strong>Delete</strong> removes it, <strong>Empty</strong> clears the card without
          touching your saved copies. Any saved build can be loaded into any of the three slots.</p>
+      <p><strong>Each champion keeps its own library</strong>, and the leaderboard shows only the builds
+         published for the champion you are looking at.</p>
       <p>Saves live in your browser, tied to one address. <strong>Export</strong> writes a portable file that
          carries your whole library — use it to move between machines or as a backup.</p>
 
@@ -1158,7 +1160,8 @@ body[data-view="home"] #app{display:none}
     </div>
     <div class="helpbody help-fr">
       <h3>Ce que c'est</h3>
-      <p>Un comparateur de builds pour Udyr sur la Faille de l'invocateur. Trois builds côte à côte, avec les
+      <p>Un comparateur de builds sur la Faille de l'invocateur, un champion à la fois — Udyr, Ekko et
+         Elise pour l'instant. Trois builds côte à côte, avec les
          passifs d'items et de runes intégrés au calcul et non laissés en texte.</p>
 
       <h3>Le combo de référence</h3>
@@ -1243,6 +1246,8 @@ body[data-view="home"] #app{display:none}
          <strong>Mettre à jour</strong> l'écrase, <strong>Supprimer</strong> le retire, <strong>Vider</strong>
          nettoie la carte sans toucher aux copies enregistrées. N'importe quel build enregistré se charge dans
          n'importe lequel des trois emplacements.</p>
+      <p><strong>Chaque champion a sa propre bibliothèque</strong>, et le classement n'affiche que les
+         builds publiés pour le champion consulté.</p>
       <p>Les sauvegardes vivent dans votre navigateur, liées à une adresse. <strong>Exporter</strong> écrit un
          fichier transportable qui emporte toute votre bibliothèque — pour changer de machine ou faire une
          copie de sécurité.</p>
@@ -1700,7 +1705,7 @@ const ITEM_FX = {
   "STATIKK SHIV":    [{lab:"Electrospark",    src:"wiki", type:"magic", hits:1, flat:60}],
   "HULLBREAKER":     [{lab:"Skipper",         src:"wiki", type:"phys", hits:1, at:4, pctBaseAD:120, pctHP:5, rng:{pctBaseAD:84, pctHP:3.5}}],
   "HEARTSTEEL":      [{lab:"Colossal Consumption", src:"wiki", type:"phys", hits:1, flat:70, pctHP:6}],
-  "ECLIPSE":         [{lab:"Ever Rising Moon",src:"wiki", type:"phys", hits:1, at:2, pctTgtHP:6, rng:{pctTgtHP:3.75}}],
+  "ECLIPSE":         [{lab:"Ever Rising Moon",src:"wiki", type:"phys", hits:1, at:2, pctTgtHP:8, rng:{pctTgtHP:5}}],
   "TRINITY FORCE":   [{lab:"Spellblade",      src:"wiki", type:"phys",  hits:2, spellblade:true, pctBaseAD:200}],
   "ICEBORN GAUNTLET":[{lab:"Spellblade",      src:"wiki", type:"phys",  hits:2, spellblade:true, pctBaseAD:150}],
   "ESSENCE REAVER":  [{lab:"Spellblade",      src:"wiki", type:"phys",  hits:2, spellblade:true, pctBaseAD:125}],
@@ -3223,6 +3228,10 @@ const L10N = {
   awkShield:["awakened shield","bouclier éveillé"], regen4s:["regen over 4s","régén. sur 4 s"],
   awkOnHitHeal:["awakened on-hit heal","soin à l'impact éveillé"],
   msBonus:["MS bonus","bonus de vitesse"], msWithE:["MS with E","vitesse avec E"],
+  msDecay:["MS after the decay","vitesse après le decay"],
+  awkMsDecay:["awakened MS after the decay","vitesse éveillée après le decay"],
+  wrongChamp:["that build belongs to another champion","ce build appartient à un autre champion"],
+  stepNoDamage:["no damage of its own","aucun dégât propre"],
   awkBonus:["awakened bonus","bonus éveillé"], awkMs:["awakened MS","vitesse éveillée"],
   total4s:["total over 4s","total sur 4 s"], awkTotalPct:["awakened total % max HP","total éveillé % PV max"],
   shredAr:["target armor shred","armure réduite"], shredMr:["target MR shred","RM réduite"],
@@ -3412,7 +3421,35 @@ function fxLabel(lab){
    date, then one line per change in English and French.
    ============================================================ */
 const PATCH_NOTES = [
-  {date:"2026.08.12", items:[
+  {date:"2026.08.20", items:[
+    ["Builds and the leaderboard are kept separately for each champion.",
+     "Les builds et le classement sont séparés par champion."],
+    ["Every step of a combo is labelled with its key, and steps that deal no damage say what they were for.",
+     "Chaque étape d'un combo porte sa touche, et les étapes sans dégâts indiquent à quoi elles servent."],
+    ["Eclipse corrected to 8% of maximum health, from 6%.",
+     "Éclipse corrigé à 8 % des PV max, au lieu de 6 %."],
+    ["Discord sign-in repaired: the reply was being wiped from the address before it could be read.",
+     "Connexion Discord réparée : la réponse était effacée de l'adresse avant d'avoir pu être lue."]
+  ]},
+  {date:"2026.08.19", items:[
+    ["Ekko joins, with Resonance counting its marks step by step and Dusk and Dawn doubling them on the empowered attack.",
+     "Ekko arrive, avec la Résonance qui compte ses marques étape par étape et Aube et crépuscule qui les double sur l'attaque améliorée."],
+    ["Melee and ranged item values are both used: Elise is ranged in human form, melee as a spider.",
+     "Les valeurs d'items mêlée et distance sont toutes deux utilisées : Elise est à distance en humaine, en mêlée en araignée."],
+    ["Spellblade now fires on the first attack after a cast rather than on a fixed attack number.",
+     "La Lame enchantée se déclenche sur la première attaque après un cast, et non plus sur un numéro d'attaque figé."]
+  ]},
+  {date:"2026.08.18", items:[
+    ["A home page: the site opens on a shelf of champions with a search box, rather than on one calculator.",
+     "Une page d'accueil : le site s'ouvre sur une vitrine de champions avec une barre de recherche, au lieu d'un seul calculateur."],
+    ["Elise joins, with her human and spider sequences.",
+     "Elise arrive, avec ses séquences humaine et araignée."],
+    ["Combos are described by each champion rather than fixed, so a form swap or a mark counter can be modelled.",
+     "Les combos sont décrits par chaque champion au lieu d'être figés, ce qui permet de modéliser un changement de forme ou un compteur de marques."],
+    ["Seven item values brought in line with the current patch, including Black Cleaver at 45 attack damage.",
+     "Sept valeurs d'items alignées sur le patch courant, dont Couperet noir à 45 d'AD."]
+  ]},
+  {date:"2026.08.11", items:[
     ["Blazing Stampede now shows the move speed you keep after its 1.5s decay, not just the opening burst.",
      "Piétinement flamboyant affiche la vitesse conservée après son decay de 1,5 s, et non plus seulement la pointe de départ."],
     ["Target profiles follow the level of the build being measured, so percentage-health items are no longer overrated early.",
@@ -5724,7 +5761,7 @@ function route(){
     CHAMP = CHAMPIONS[champ.key] || CHAMPIONS.udyr;
     T = CHAMP.ranks;
     document.body.dataset.view = "app";
-    document.title = champ.name + " Calc";
+    document.title = champ.name + " — OTP LoL Calc";
     document.documentElement.style.setProperty("--splashpos", champ.focus || "50% 28%");
     const art = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champ.name}_${champ.splash}.jpg`;
     const pre = new Image();
@@ -5733,7 +5770,7 @@ function route(){
     render();
   }else{
     document.body.dataset.view = "home";
-    document.title = "LoL Calc";
+    document.title = "OTP LoL Calc";
     applyStatic();          /* the home labels are static markup like the rest */
     drawHome();
   }
