@@ -242,6 +242,12 @@ tr.swcur td{background:rgba(232,161,60,.09)}
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .slot.empty .nm{color:var(--ink-faint);font-weight:300;font-style:italic;text-transform:none;letter-spacing:.02em}
 .slot .cost{font-family:var(--mono);font-size:10px;color:var(--ink-faint)}
+.stk{display:flex;align-items:center;flex:none}
+.stk input{
+  width:44px;background:var(--panel-2);border:1px solid var(--line);border-radius:2px;
+  color:var(--q);font-family:var(--mono);font-size:11px;padding:3px 4px;text-align:center;
+}
+.stk input:focus{outline:none;border-color:var(--q)}
 .cond-btn{
   font-family:var(--mono);font-size:9px;letter-spacing:.06em;padding:2px 5px;border-radius:2px;
   border:1px solid var(--line);color:var(--ink-faint);background:transparent;
@@ -911,7 +917,7 @@ body[data-view="home"] #app{display:none}
     </div>
     <div class="hero-act">
       <button class="helpbtn primary" id="btnHelp" data-i18n="help">How it works</button>
-      <button class="helpbtn" id="btnNotes" data-i18n="patchNotes">Patch notes</button>
+
       <button class="helpbtn" id="btnOpt" data-i18n="optimiser" hidden>Optimiser</button>
       
       <button class="helpbtn" id="btnBoard" data-i18n="board">Leaderboard</button>
@@ -964,15 +970,6 @@ body[data-view="home"] #app{display:none}
   </div>
 </div>
 
-<div class="overlay" id="pnOverlay">
-  <div class="help" role="dialog" aria-modal="true" aria-label="Patch notes">
-    <header>
-      <h2 data-i18n="patchNotes">Patch notes</h2>
-      <button class="closebtn" id="pnClose" aria-label="Close">esc</button>
-    </header>
-    <div class="helpbody" id="pnBody"></div>
-  </div>
-</div>
 
 
 
@@ -1036,13 +1033,17 @@ body[data-view="home"] #app{display:none}
          rune passives folded into the maths rather than left as text.</p>
 
       <h3>The combo of reference</h3>
-      <p>Every number is measured over the same sequence:
-         <strong>4 basic attacks — 2 in the stance, then 2 awakened.</strong> That decides how often
-         each passive fires.</p>
+      <p>Every number on a champion's page is measured over the sequences that champion declares, and they
+         differ from one to the next: Udyr swings four times, twice in a stance then twice awakened; Elise
+         opens in human form and follows up as a spider; Ekko shields, dashes, casts and attacks. Each page
+         names its own above the combo columns.</p>
+      <p>Whatever the sequence, it is walked <strong>one step at a time</strong>, with the target's health
+         falling as it goes. That is what decides how often each passive fires, and when a threshold is
+         crossed.</p>
       <table>
         <tr><th>Passive type</th><th>Triggers</th></tr>
         <tr><td>On-hit — Fray, Cleave, Mist's Edge…</td><td>every attack</td></tr>
-        <tr><td>Spellblade</td><td>attacks 1 and 3, one per stance cast</td></tr>
+        <tr><td>Spellblade</td><td>the first attack after any cast</td></tr>
         <tr><td>Every third attack — Kraken Slayer</td><td>attack 3</td></tr>
         <tr><td>Energized — Voltaic, Stormrazor</td><td>attack 1, charged before the fight</td></tr>
         <tr><td>Actives and once-per-combo effects</td><td>once</td></tr>
@@ -1165,13 +1166,17 @@ body[data-view="home"] #app{display:none}
          passifs d'items et de runes intégrés au calcul et non laissés en texte.</p>
 
       <h3>Le combo de référence</h3>
-      <p>Tous les chiffres sont mesurés sur la même séquence :
-         <strong>4 auto-attaques — 2 dans la posture, puis 2 éveillées.</strong> C'est ce qui détermine la
-         fréquence de chaque passif.</p>
+      <p>Les chiffres d'un champion sont mesurés sur les séquences qu'il déclare, et elles diffèrent d'un
+         champion à l'autre : Udyr frappe quatre fois, deux dans la posture puis deux éveillées ; Elise
+         ouvre en forme humaine et enchaîne en araignée ; Ekko pose son bouclier, dash, lance et frappe.
+         Chaque page indique la sienne au-dessus des colonnes de combo.</p>
+      <p>Quelle que soit la séquence, elle est déroulée <strong>étape par étape</strong>, avec les PV de la
+         cible qui descendent au fil des coups. C'est ce qui détermine la fréquence de chaque passif, et le
+         moment où un seuil est franchi.</p>
       <table>
         <tr><th>Type de passif</th><th>Déclenchements</th></tr>
         <tr><td>À l'impact — Conflit, Fendoir, Fil de brume…</td><td>chaque attaque</td></tr>
-        <tr><td>Lame enchantée</td><td>attaques 1 et 3, une par cast de posture</td></tr>
+        <tr><td>Lame enchantée</td><td>la première attaque après un cast</td></tr>
         <tr><td>Toutes les 3 attaques — Tueur de krakens</td><td>attaque 3</td></tr>
         <tr><td>Énergisé — Voltaic, Rasoir de tempête</td><td>attaque 1, chargé avant le combat</td></tr>
         <tr><td>Actifs et effets à usage unique</td><td>une fois</td></tr>
@@ -1404,6 +1409,7 @@ const ITEMS = [
 {n:"MALIGNANCE",g:2700,id:3118,mana:600,ap:90,ah:15},
 {n:"MANAMUNE",g:2900,id:3004,mana:500,ad:35,ah:15},
 {n:"MAW OF MALMORTIUS",g:3100,id:3156,mr:40,ad:60,ah:15},
+{n:"DARK SEAL",g:350,id:3040,ap:15,mana:0},
 {n:"MEJAI'S SOULSTEALER",g:1500,id:3041,hp:100,ap:20},
 {n:"MERCURIAL SCIMITAR",g:3200,id:3139,mr:35,ad:50,ls:10},
 {n:"MERCURY'S TREADS",g:1250,id:3111,mr:20,ms:45,ten:30},
@@ -1492,6 +1498,22 @@ function itemAllowed(name, worn){
 }
 
 /* items that make on-hit effects land twice on the empowered attack */
+/* Items whose passive grows with a counter. The count is a build choice, so it
+   is carried on the slot rather than assumed to be at maximum. */
+const STACKING = {
+  "DARK SEAL":            {max:10, def:10, per:{ap:4}},
+  "MEJAI'S SOULSTEALER":  {max:25, def:25, per:{ap:5}, at:[{n:10, mspct:10}]},
+  "HUBRIS":               {max:17, def:1,  per:{ad:3}, flat:{ad:9}},   /* 12 at one, then +3 */
+  "ROD OF AGES":          {max:10, def:10, per:{hp:10, mana:30, ap:3}}
+  /* stacked in a fight rather than over a game: an ability applies one, up to four */
+};
+const stacksOf = slot => {
+  const st = STACKING[slot.name];
+  if(!st) return 0;
+  const v = slot.stacks;
+  return Math.max(0, Math.min(st.max, v === undefined ? st.def : v));
+};
+
 const REAPPLY = new Set(["DUSK AND DAWN","GUINSOO'S RAGEBLADE"]);
 
 const BOOTS = new Set(["PLATED STEELCAPS","MERCURY'S TREADS","IONIAN BOOTS OF LUCIDITY",
@@ -1797,7 +1819,7 @@ const ITEM_FX = {
   "FIENDHUNTER BOLTS":[{lab:"Night Vigil — 30 ultimate haste", src:"wiki", always:true, gain:() => ({uh:30})},
                       {lab:"Opening Barrage — 3 attacks after your ultimate", src:"wiki",
                         type:"phys", hits:3, pctTotAD:80}],
-  "BLOODLETTER'S CURSE":[{lab:"Vile Decay — 4 stacks", src:"wiki", mrRed:30}],
+  "BLOODLETTER'S CURSE":[{lab:"Vile Decay — builds through the combo", src:"wiki", mrRedPer:7.5, stackMax:4}],
   "ABYSSAL MASK":    [{lab:"Unmake — magic damage only", src:"wiki", amp:12}],
   "SHADOWFLAME":     [{lab:"Cinderbloom — magic damage, target under 40%", src:"wiki", ampBelow40:20}],
   "HORIZON FOCUS":   [{lab:"Hypershot",         src:"wiki", amp:10}],
@@ -1810,10 +1832,11 @@ const ITEM_FX = {
   "RAPID FIRECANNON":[{lab:"Sharpshooter",      src:"wiki", type:"magic", hits:1, flat:40}],
   "UMBRAL GLAIVE":   [{lab:"Nightstalker — out of vision", src:"wiki", type:"true", hits:1, flat:50, perLeth:1.5}],
   "BASTIONBREAKER":  [{lab:"Shaped Charge",     src:"wiki", type:"true", hits:1, flat:50, perLeth:1.5}],
-  "HUBRIS":          [{lab:"Eminence — 1 stack", src:"wiki", gain:() => ({ad:15})}],
+  "HUBRIS":          [{lab:"Eminence", src:"wiki", stacked:true}],
   "YUN TAL WILDARROWS":[{lab:"Practice Makes Lethal", src:"wiki", gain:() => ({crit:25})}],
-  "MEJAI'S SOULSTEALER":[{lab:"Glory — 25 stacks", src:"wiki", gain:() => ({ap:125, mspct:10})}],
-  "ROD OF AGES":     [{lab:"Timeless — 10 stacks", src:"wiki", gain:() => ({hp:100, mana:300, ap:30})}],
+  "MEJAI'S SOULSTEALER":[{lab:"Glory", src:"wiki", stacked:true}],
+  "DARK SEAL":[{lab:"Glory", src:"wiki", stacked:true}],
+  "ROD OF AGES":     [{lab:"Timeless", src:"wiki", stacked:true}],
   "BOOTS OF SWIFTNESS":[{lab:"Fleetfooted",  src:"wiki", gain:() => ({slow:25})}],
   "SWIFTMARCH":      [{lab:"Fleetfooted",    src:"wiki", gain:() => ({slow:40})}],
   "BLACK CLEAVER":   [{lab:"Carve — 6% x 5 stacks", src:"wiki", armorRed:30}],
@@ -1929,7 +1952,7 @@ const WIKI_TIPS = {
   "HEXOPTICS C44":"Magnification: deal up to 10% increased basic damage, 1% per 50 units of distance to the target.",
   "ACTUALIZER":"Mana Made Real: while Empowered, gain 15% (+0.5% per 100 bonus mana) increased ability damage, healing and shielding.",
   "FIENDHUNTER BOLTS":"Opening Barrage: after your ultimate, your next 3 attacks gain 50% attack speed and critically strike for 80% total critical damage, plus 15% bonus true damage if they would already have crit.",
-  "BLOODLETTER'S CURSE":"Vile Decay: magic ability damage applies a stack, up to 4. Each inflicts 7.5% magic resist reduction, up to 30%.",
+  "BLOODLETTER'S CURSE":"Vile Decay: magic ability damage applies a stack, up to 4, each lasting 6s. Each inflicts 7.5% magic resist reduction, 30% at four. Set the count on the slot.",
   "ABYSSAL MASK":"Unmake: nearby enemy champions take 12% increased magic damage from all sources.",
   "SHADOWFLAME":"Cinderbloom: your magic and true damage critically strikes for 120% against enemies below 40% maximum health.",
   "HORIZON FOCUS":"Hypershot: ability damage at 600+ range marks the target for 6s, increasing your damage to them by 10%.",
@@ -1942,7 +1965,7 @@ const WIKI_TIPS = {
   "UMBRAL GLAIVE":"Nightstalker: after being unseen for 1s, your next attack on a champion deals 50 (+1.5 per lethality) bonus true damage.",
   "BASTIONBREAKER":"Shaped Charge: your next ability damage to a champion deals 50 (+1.5 per lethality) bonus true damage (20s cooldown).",
   "STERAK'S GAGE":"The Claws that Catch: gain bonus attack damage equal to 45% base AD.",
-  "HUBRIS":"Eminence: each takedown grants a permanent stack, giving 12 (+3 per stack) bonus attack damage for 90s.",
+  "HUBRIS":"Eminence: a takedown grants 12 bonus attack damage for 90s, and every further takedown adds 3. Set the count on the slot.",
   "YUN TAL WILDARROWS":"Practice Makes Lethal: attacks grant 0.4% critical strike chance permanently, capped at 25%.",
   "MEJAI'S SOULSTEALER":"Glory: 5 ability power per stack, up to 125 at 25 stacks, plus 10% bonus move speed at 10+.",
   "ROD OF AGES":"Timeless: gains 10 health, 30 mana and 3 ability power per minute, up to 100 / 300 / 30.",
@@ -2346,6 +2369,8 @@ const CHAMPIONS = {
       qBack:  [40,65,90,115,140],    qBackAP:0.60,
       qSlow:  [40,45,50,55,60],
       wShield:[100,120,140,160,180], wAP:1.50,
+      wLowPct:3,        /* % of missing health on-hit, below 30% of the target's maximum */
+      wLowMin:15,
       eDmg:   [50,75,100,125,150],   eAP:0.40,
       rDmg:   [200,350,500],         rAP:1.75,
       rHealMin:[100,150,200],        rHealMinAP:0.60,
@@ -2361,6 +2386,9 @@ const CHAMPIONS = {
       A.qTotal = A.qOut + A.qBack;
       A.qSlow  = R(T.qSlow,qr);
       A.wShield= R(T.wShield,wr) + T.wAP*ap;
+      /* Parallel Convergence also empowers attacks against a wounded target */
+      A.wLowPct = T.wLowPct + 3*ap/100;
+      A.wLowMin = T.wLowMin;
       A.eDmg   = R(T.eDmg,er)  + T.eAP*ap;
       A.rDmg   = R(T.rDmg,rr)  + T.rAP*ap;
       A.rHealMin = R(T.rHealMin,rr) + T.rHealMinAP*ap;
@@ -2372,7 +2400,7 @@ const CHAMPIONS = {
       A.qCd = R(T.qCd,qr)/ah; A.wCd = R(T.wCd,wr)/ah;
       A.eCd = R(T.eCd,er)/ah; A.rCd = R(T.rCd,rr)/(1 + tot.uh/100);
       if(!learned.q){ A.qOut=0; A.qBack=0; A.qTotal=0; }
-      if(!learned.w) A.wShield=0;
+      if(!learned.w){ A.wShield=0; A.wLowPct=0; }
       if(!learned.e) A.eDmg=0;
       if(!learned.r){ A.rDmg=0; A.rHealMin=0; A.rHealMax=0; }
       A.msIdle = c.msSoftCap((c.base.ms + c.S.ms) * (1 + tot.mspct/100));
@@ -2381,25 +2409,33 @@ const CHAMPIONS = {
     /* Resonance counts hits, so the combo needs a memory */
     newState(){ return {stacks:0}; },
     combos:[
-      {key:"basic", en:"E, Q, auto", fr:"E, Q, auto",
-       steps:[{kind:"cast", label:"E"},
+      {key:"basic", en:"W, E, Q, auto", fr:"W, E, Q, auto",
+       steps:[{kind:"cast", label:"W", id:"w"},
+              {kind:"cast", label:"E"},
               {kind:"attack", dive:true},
               {kind:"spell", id:"q"},
               {kind:"attack"}]},
-      {key:"dusk", en:"E, auto — with Dusk and Dawn", fr:"E, auto — avec Aube et crépuscule",
-       steps:[{kind:"cast", label:"E"},
+      {key:"dusk", en:"W, E, auto — with Dusk and Dawn", fr:"W, E, auto — avec Aube et crépuscule",
+       steps:[{kind:"cast", label:"W", id:"w"},
+              {kind:"cast", label:"E"},
               {kind:"attack", dive:true},
               {kind:"attack"}]},
       {key:"ult", en:"Chronobreak", fr:"Chronorupture",
        steps:[{kind:"spell", id:"r"}]}
     ],
     onStep(key, st, c){
-      const {A, memo, onHits} = c, out = {parts:[]};
+      const {A, memo, onHits, hp, cur} = c, out = {parts:[]};
       let marks = 0;
       if(st.kind === "attack"){
         marks = onHits;                                   /* doubled by Dusk and Dawn */
         if(st.dive) out.parts.push({n:"phaseDive", v:A.eDmg, type:"magic"});
+        /* the W's on-hit only lands once the target is under 30% of its health */
+        if(A.wLowPct && cur < 0.30 * hp){
+          const miss = Math.max(0, hp - cur);
+          out.parts.push({n:"wLowHit", v:Math.max(A.wLowMin, miss * A.wLowPct/100), type:"magic"});
+        }
       }
+      if(st.kind === "cast" && st.id === "w") out.shield = A.wShield;
       if(st.kind === "spell"){
         marks = 1;
         if(st.id === "q") out.parts.push({n:"timewinder", v:A.qTotal, type:"magic"});
@@ -2419,7 +2455,9 @@ const CHAMPIONS = {
       return out;
     },
     comboEnd(){ return {parts:[]}; },
-    castNote(){
+    castNote(st){
+      if(st.id === "w") return isFR() ? "Convergence parallèle — bouclier et zone ralentissante"
+                                      : "Parallel Convergence — shield and slowing zone";
       return isFR() ? "Plongée — dash, prépare l'attaque suivante"
                     : "Phase Dive — dash, empowers the next attack";
     },
@@ -2429,7 +2467,9 @@ const CHAMPIONS = {
         [{lab:TR("kQout"), val:n0(A.qOut)}, {lab:TR("kQback"), val:n0(A.qBack)},
          {lab:TR("kQtotal"), val:n0(A.qTotal), awk:true},
          {lab:TR("slow"), val:pc(A.qSlow)}, {lab:TR("cooldown"), val:nf1.format(A.qCd)+" s"}],
-        [{lab:TR("shield"), val:n0(A.wShield)}, {lab:TR("cooldown"), val:nf1.format(A.wCd)+" s"}],
+        [{lab:TR("shield"), val:n0(A.wShield)},
+         {lab:TR("kWlow"), val:pc(A.wLowPct), awk:true},
+         {lab:TR("cooldown"), val:nf1.format(A.wCd)+" s"}],
         [{lab:TR("kEdmg"), val:n0(A.eDmg)}, {lab:TR("cooldown"), val:nf1.format(A.eCd)+" s"}],
         [{lab:TR("damage"), val:n0(A.rDmg)},
          {lab:TR("kRmin"), val:n0(A.rHealMin), awk:true},
@@ -2443,6 +2483,7 @@ const CHAMPIONS = {
         {lab:TR("damage"), val:n0(c.dmg), hi:true},
         {lab:TR("dps"), val:n0(c.dps)},
         {lab:TR("healing"), val:n0(c.heal), dim:c.heal < 1},
+        {lab:TR("shielding"), val:n0(c.shield), dim:c.shield < 1},
         {lab:TR("kReso"), val:n0(A.reso)},
         {lab:TR("targetLeft"), val:n0(c.leftover)}];
     }
@@ -2514,7 +2555,7 @@ function computeBuild(b, target){
     if(!slot.name) return;
     const it = BY_NAME[slot.name];
     if(!it) return;
-    equipped.push({it, cond:slot.cond, idx});
+    equipped.push({it, cond:slot.cond, idx, name:slot.name, stacks:slot.stacks});
     gold += it.g;
     for(const k in S){ if(typeof it[k] === "number") S[k] += it[k]; }
     if(slot.cond && it.c){
@@ -2530,6 +2571,15 @@ function computeBuild(b, target){
     const list = PV[e.it.n];
     if(!list) return;
     list.forEach(f => {
+      if(f.stacked){
+        const cfg = STACKING[e.it.n];
+        if(!cfg || !(e.cond || f.always)) return;   /* the toggle applies here too */
+        const n = stacksOf(e);
+        for(const k in (cfg.flat || {})) if(k in S) S[k] += cfg.flat[k];
+        for(const k in cfg.per) if(k in S) S[k] += cfg.per[k] * n;
+        (cfg.at || []).forEach(t => { if(n >= t.n) for(const k in t) if(k !== "n" && k in S) S[k] += t[k]; });
+        return;
+      }
       if(!f.gain || !(e.cond || f.always)) return;
       const g = f.gain({baseAD:base.ad, L});
       for(const k in g){ if(k in S) S[k] += g[k]; }
@@ -2681,6 +2731,13 @@ function computeBuild(b, target){
       if(f.ampAbove60) ampHigh *= (1 + f.ampAbove60/100);
     });
   });
+  /* Vile Decay and its kind build up during the fight rather than sitting at
+     maximum: one stack per ability cast, so the reduction is worked out at each
+     step of the combo instead of once before it. */
+  let mrRedPer = 0, mrRedCap = 0;
+  equipped.forEach(e => (PV[e.it.n] || []).forEach(f => {
+    if(f.mrRedPer && (e.cond || f.always)){ mrRedPer += f.mrRedPer; mrRedCap = Math.max(mrRedCap, f.stackMax || 4); }
+  }));
   const shredAr = target.ar * (1 - Math.min(100, armorRed)/100);
   const shredMr = target.mr * (1 - Math.min(100, mrRed)/100) - mrRedFlat;
 
@@ -2690,7 +2747,14 @@ function computeBuild(b, target){
   /* the game does not simply divide once a resistance goes below zero */
   const resistMul = r => r >= 0 ? 100/(100+r) : 2 - 100/(100-r);
   const pMul  = resistMul(effAr);
-  const mMul  = resistMul(effMr);
+  /* n stacks of a growing reduction, before penetration as always */
+  const mMulAt = n => {
+    if(!mrRedPer) return resistMul(effMr);
+    const extra = Math.min(mrRedCap, n) * mrRedPer;
+    const sh = target.mr * (1 - Math.min(100, mrRed + extra)/100) - mrRedFlat;
+    return resistMul(sh - tot.mrpenflat - (tot.mrpen > 0 ? tot.mrpen*0.01*sh : 0));
+  };
+  const mMul  = mMulAt(mrRedCap);      /* the figure shown in the stat panel */
 
   /* --- abilities: the champion owns the formulas --- */
   const A = CHAMP.abilities({
@@ -2816,7 +2880,8 @@ function computeBuild(b, target){
     let stanceDmg = 0;                 /* what the abilities add, without the attacks */
     const lines = {}, steps = [];
     const add = (k,v) => { lines[k] = (lines[k]||0) + v; };
-    const mulOf = t => t === "phys" ? pMul : t === "magic" ? mMul : 1;
+    let vileStacks = 0;
+    const mulOf = t => t === "phys" ? pMul : t === "magic" ? mMulAt(vileStacks) : 1;
 
     let a = 0;                         /* how many basic attacks have landed */
     let asNow = A.comboAS, time = 0;   /* an ability may speed up the attacks that follow */
@@ -2826,7 +2891,10 @@ function computeBuild(b, target){
       let d = 0;
       const parts = [];
 
-      if(st.kind === "cast" || st.kind === "spell") charged = true;
+      if(st.kind === "cast" || st.kind === "spell"){
+        charged = true;
+        if(mrRedPer) vileStacks = Math.min(mrRedCap, vileStacks + 1);   /* one per cast */
+      }
       const spendsCharge = st.kind === "attack" && charged;
 
       if(st.kind === "attack"){
@@ -2852,6 +2920,7 @@ function computeBuild(b, target){
         });
         extraLS += (rid.ls || 0) + (st.kind === "attack" && rid.lsPct ? autoHit * rid.lsPct/100 : 0);
         heal    += (rid.heal || 0) * hsMul;
+        shield  += (rid.shield || 0) * hsMul;   /* a cast may put up a shield */
         if(rid.asBonus) asNow = Math.min(2.5, base.as * (1 + (tot.bonusASpct + rid.asBonus)/100));
       }
 
@@ -3198,6 +3267,7 @@ const L10N = {
   ehpMagic:["Effective HP vs magic","PV effectifs vs magique"], shieldPer:["Shielding per combo","Boucliers par combo"],
   scaleFrom:["(scale starts at %s)","(échelle à partir de %s)"], pickKeystone:["pick a keystone first","choisissez d'abord une rune clé"],
   modelled:["effect included in the maths","effet pris en compte dans le calcul"],
+  stacksWhy:["how many stacks this item is holding","nombre de charges de cet item"],
   clickToggle:["click to toggle","cliquer pour activer"],
   damage:["damage","dégâts"], healing:["healing","soins"], shielding:["shielding","boucliers"],
   fromLS:["from lifesteal","dont vol de vie"], fromOV:["from omnivamp","dont omnivampirisme"],
@@ -3217,6 +3287,7 @@ const L10N = {
   kRmin:["Chronobreak, minimum heal","Chronorupture, soin minimum"],
   kRmax:["Chronobreak, maximum heal","Chronorupture, soin maximum"],
   kReso:["Resonance, third mark","Résonance, troisième marque"],
+  kWlow:["W on-hit, target under 30%","W à l'impact, cible sous 30 %"],
   eCd:["Cocoon cooldown","Recharge du Cocon"], eRappel:["Rappel cooldown","Recharge du Rappel"],
   ePassive:["Spider Queen, on-hit","Reine araignée, à l'impact"],
   ePassiveHeal:["Spider Queen, heal","Reine araignée, soin"],
@@ -3420,95 +3491,6 @@ function fxLabel(lab){
    Newest first. Add an entry at the top of the list on each update:
    date, then one line per change in English and French.
    ============================================================ */
-const PATCH_NOTES = [
-  {date:"2026.08.20", items:[
-    ["Builds and the leaderboard are kept separately for each champion.",
-     "Les builds et le classement sont séparés par champion."],
-    ["Every step of a combo is labelled with its key, and steps that deal no damage say what they were for.",
-     "Chaque étape d'un combo porte sa touche, et les étapes sans dégâts indiquent à quoi elles servent."],
-    ["Eclipse corrected to 8% of maximum health, from 6%.",
-     "Éclipse corrigé à 8 % des PV max, au lieu de 6 %."],
-    ["Discord sign-in repaired: the reply was being wiped from the address before it could be read.",
-     "Connexion Discord réparée : la réponse était effacée de l'adresse avant d'avoir pu être lue."]
-  ]},
-  {date:"2026.08.19", items:[
-    ["Ekko joins, with Resonance counting its marks step by step and Dusk and Dawn doubling them on the empowered attack.",
-     "Ekko arrive, avec la Résonance qui compte ses marques étape par étape et Aube et crépuscule qui les double sur l'attaque améliorée."],
-    ["Melee and ranged item values are both used: Elise is ranged in human form, melee as a spider.",
-     "Les valeurs d'items mêlée et distance sont toutes deux utilisées : Elise est à distance en humaine, en mêlée en araignée."],
-    ["Spellblade now fires on the first attack after a cast rather than on a fixed attack number.",
-     "La Lame enchantée se déclenche sur la première attaque après un cast, et non plus sur un numéro d'attaque figé."]
-  ]},
-  {date:"2026.08.18", items:[
-    ["A home page: the site opens on a shelf of champions with a search box, rather than on one calculator.",
-     "Une page d'accueil : le site s'ouvre sur une vitrine de champions avec une barre de recherche, au lieu d'un seul calculateur."],
-    ["Elise joins, with her human and spider sequences.",
-     "Elise arrive, avec ses séquences humaine et araignée."],
-    ["Combos are described by each champion rather than fixed, so a form swap or a mark counter can be modelled.",
-     "Les combos sont décrits par chaque champion au lieu d'être figés, ce qui permet de modéliser un changement de forme ou un compteur de marques."],
-    ["Seven item values brought in line with the current patch, including Black Cleaver at 45 attack damage.",
-     "Sept valeurs d'items alignées sur le patch courant, dont Couperet noir à 45 d'AD."]
-  ]},
-  {date:"2026.08.11", items:[
-    ["Blazing Stampede now shows the move speed you keep after its 1.5s decay, not just the opening burst.",
-     "Piétinement flamboyant affiche la vitesse conservée après son decay de 1,5 s, et non plus seulement la pointe de départ."],
-    ["Target profiles follow the level of the build being measured, so percentage-health items are no longer overrated early.",
-     "Les profils de cible suivent le niveau du build mesuré : les items en pourcentage de PV ne sont plus surévalués tôt."],
-    ["Item families are enforced: one pair of boots, and one item per restricted family.",
-     "Les familles d'items sont respectées : une paire de bottes, et un item par famille limitée."],
-    ["Skill points are capped by level, with an extra one from Triple Tonic at level 9.",
-     "Les points de compétence sont limités par le niveau, avec un point supplémentaire de Triple tonique au niveau 9."],
-    ["Monk Training's 30% attack speed on the two attacks after a cast is now counted.",
-     "Les 30 % de vitesse d'attaque de l'Entraînement du moine sur les deux attaques suivant un cast sont désormais comptés."],
-    ["Several ability values corrected against the wiki, including the R's damage per tick.",
-     "Plusieurs valeurs de compétences corrigées d'après le wiki, dont les dégâts par tick du R."]
-  ]},
-  {date:"2026.08.07", items:[
-    ["Leaderboard: publish, like, sort by likes, date, author or rank, filter on verified accounts and streamers.",
-     "Classement : publication, likes, tri par likes, date, auteur ou rang, filtres sur les comptes validés et les streamers."],
-    ["You choose the name shown on the board instead of being stuck with your Discord handle.",
-     "Vous choisissez le pseudo affiché sur le classement au lieu de subir votre pseudo Discord."],
-    ["Feedback button: report a bug or an idea without an account, with your builds attached.",
-     "Bouton Un retour : signaler un bug ou une idée sans compte, avec vos builds joints."],
-    ["Skill points are now limited by level, and Triple Tonic adds one at level 9.",
-     "Les points de compétence sont limités par le niveau, et Triple tonique en ajoute un au niveau 9."],
-    ["Magical Footwear was missing: your boots now gain their 10 move speed.",
-     "Chaussures magiques manquait : vos bottes gagnent bien leurs 10 de vitesse."],
-    ["Build cost is shown against a rough idea of the gold available at that level.",
-     "Le coût du build s'affiche face à un ordre d'idée de l'or disponible à ce niveau."],
-    ["A table under each card ranks items and runes by how much of the combo they carry.",
-     "Un tableau sous chaque carte classe items et runes selon leur part du combo."],
-    ["Target presets: squishy, bruiser, tank.",
-     "Préréglages de cible : fragile, bruiser, tank."],
-    ["The page now tells you when a newer version is online, instead of leaving you on a cached copy.",
-     "La page signale qu'une version plus récente est en ligne, au lieu de vous laisser sur une copie en cache."],
-    ["Phone layout.", "Mise en page pour téléphone."]
-  ]},
-  {date:"2026.08.06", items:[
-    ["Attack speed was additive and ignored level growth. It now follows the game, capped at 2.5.",
-     "La vitesse d'attaque était additive et ignorait la croissance par niveau. Elle suit le jeu, plafonnée à 2,5."],
-    ["Stance cooldowns, awaken cooldown by level bracket, and the 5% cut per attack.",
-     "Recharges des postures, recharge de l'éveil par palier de niveau, et les 5 % retirés par attaque."],
-    ["Coup de Grace and Cut Down are read at each hit rather than amplifying the whole combo.",
-     "Coup de Grâce et Abattage sont lus à chaque coup au lieu d'amplifier tout le combo."],
-    ["Press the Attack lands on the third attack, and its 8% only applies afterwards.",
-     "Coup de Poing tombe à la troisième attaque, et ses 8 % ne s'appliquent qu'ensuite."],
-    ["Click a stance name to see the combo broken down attack by attack.",
-     "Cliquez sur le nom d'une posture pour voir le combo décortiqué attaque par attaque."]
-  ]},
-  {date:"2026.08.05", items:[
-    ["Full French version, using Riot's own item, rune and ability names.",
-     "Version française complète, avec les noms d'items, de runes et de sorts de Riot."],
-    ["All 124 Summoner's Rift items have an entry; 99 have an effect in the maths.",
-     "Les 124 items de la Faille ont une fiche ; 99 ont un effet calculé."],
-    ["Black Cleaver was counted twice, as armour reduction and as penetration.",
-     "Couperet noir était compté deux fois, en réduction d'armure et en pénétration."],
-    ["Effective health now folds in shields and damage reduction.",
-     "Les PV effectifs intègrent boucliers et réduction de dégâts."],
-    ["Rune pages follow the client's rules: one rune per row, secondary tree separate.",
-     "Les pages de runes suivent les règles du client : une rune par ligne, arbre secondaire séparé."]
-  ]}
-];
 
 
 /* ============================================================
@@ -4197,6 +4179,9 @@ function card(b, bi, R){
       ${it && (it.c || PV[it.n]) ? `<button class="cond-btn" data-act="cond" data-b="${bi}" data-s="${si}"
           aria-pressed="${s.cond?"true":"false"}"
           title="${esc([(PV[it.n]||[]).map(f=>fxLabel(f.lab)).join(" + "), it.c || ""].filter(Boolean).join(" · "))} — click to toggle">COND</button>` : ""}
+      ${it && STACKING[it.n] ? `<label class="stk" title="${TR("stacksWhy")}">
+          <input type="number" min="0" max="${STACKING[it.n].max}" value="${stacksOf(s)}"
+                 data-act="stk" data-b="${bi}" data-s="${si}"></label>` : ""}
     </div>`;
   }).join("");
 
@@ -4387,10 +4372,16 @@ function cmpRows(){
   rows.push({head:() => TR("healPer"), col:"var(--good)"});
   cbs.forEach(c => rows.push({lab:() => lab(c), col:"var(--good)",
                get:r => (r.D.combo[c.key] || {}).heal || 0}));
-  if(cbs.some(c => (CHAMP.key === "udyr" && c.key === "w")))
-    rows.push({head:() => TR("shieldPer"), col:"var(--w)"},
-              {lab:() => lab(cbs.find(c => c.key === "w")), col:"var(--w)",
-               get:r => (r.D.combo.w || {}).shield || 0});
+  /* a shielding block, but only for the combos that actually produce one */
+  const shielders = cbs.filter(c => state.builds.some(b => {
+    try{ return (computeBuild(b, state.target).D.combo[c.key] || {}).shield > 0; }
+    catch(err){ return false; }
+  }));
+  if(shielders.length){
+    rows.push({head:() => TR("shieldPer"), col:"var(--w)"});
+    shielders.forEach(c => rows.push({lab:() => lab(c), col:"var(--w)",
+      get:r => (r.D.combo[c.key] || {}).shield || 0}));
+  }
   rows.push({head:() => TR("tankPer"), col:"var(--tank)"},
             {lab:() => TR("ehpPhys"),  col:"var(--tank)", get:r => r.ehpAr},
             {lab:() => TR("ehpMagic"), col:"var(--tank)", get:r => r.ehpMr});
@@ -5203,6 +5194,14 @@ function bind(){
   grid.querySelectorAll('[data-act="pick"]').forEach(el => {
     el.addEventListener("click", () => openPicker(+el.dataset.b, +el.dataset.s));
   });
+  grid.querySelectorAll('input[data-act="stk"]').forEach(el => {
+    el.addEventListener("change", e => {
+      const b = state.builds[+el.dataset.b], slot = b.items[+el.dataset.s];
+      const cfg = STACKING[slot.name];
+      slot.stacks = Math.max(0, Math.min(cfg ? cfg.max : 0, parseInt(e.target.value) || 0));
+      render();
+    });
+  });
   grid.querySelectorAll('[data-act="cond"]').forEach(el => {
     el.addEventListener("click", () => {
       const slot = state.builds[+el.dataset.b].items[+el.dataset.s];
@@ -5603,21 +5602,13 @@ if(fbOverlay) fbOverlay.addEventListener("click", e => { if(e.target === fbOverl
 document.addEventListener("keydown", e => { if(e.key === "Escape") closeFb(); });
 on("btnReport", "click", () => { fbOverlay.classList.add("on"); fbCooldown(); });
 
-const pnOverlay = document.getElementById("pnOverlay");
-const closePn = () => pnOverlay && pnOverlay.classList.remove("on");
-on("pnClose", "click", closePn);
+
 const swOverlay = document.getElementById("swOverlay");
 const closeSw = () => swOverlay && swOverlay.classList.remove("on");
 on("swClose", "click", closeSw);
 if(swOverlay) swOverlay.addEventListener("click", e => { if(e.target === swOverlay) closeSw(); });
 document.addEventListener("keydown", e => { if(e.key === "Escape") closeSw(); });
-if(pnOverlay) pnOverlay.addEventListener("click", e => { if(e.target === pnOverlay) closePn(); });
-document.addEventListener("keydown", e => { if(e.key === "Escape") closePn(); });
-on("btnOpt", "click", () => {
-  if(!myFlags.admin) return;
-  optRender();
-  document.getElementById("optOverlay").classList.add("on");
-});
+
 on("btnOpt", "click", () => {
   if(!myFlags.admin) return;
   optRender();
@@ -5629,13 +5620,6 @@ on("optClose", "click", closeOpt);
 if(optOverlay) optOverlay.addEventListener("click", e => { if(e.target === optOverlay) closeOpt(); });
 document.addEventListener("keydown", e => { if(e.key === "Escape") closeOpt(); });
 
-
-on("btnNotes", "click", () => {
-  document.getElementById("pnBody").innerHTML = PATCH_NOTES.map(n => `
-    <h3>${esc(n.date)}</h3>
-    <ul>${n.items.map(it => `<li>${esc(isFR() ? it[1] : it[0])}</li>`).join("")}</ul>`).join("");
-  pnOverlay.classList.add("on");
-});
 const FB_WAIT = 60000;                       /* one minute between two reports */
 const fbLast = () => { try{ return +localStorage.getItem("udyr-fb-last") || 0; }catch(e){ return 0; } };
 function fbCooldown(){
@@ -5700,23 +5684,194 @@ document.addEventListener("keydown", e => { if(e.key === "Escape") closeHelp(); 
    One page, two views. The address decides which: #/udyr opens the
    calculator, anything else lands on the shelf.
    ============================================================ */
+/* The whole roster, so the shelf shows what is here and what is still to come.
+   Only the three with ready:true have a calculator behind them. */
 const ROSTER = [
-  {key:"udyr",  name:"Udyr",  splash:3, ready:true, focus:"50% 32%",
-   en:"124 items, 62 runes, four stances", fr:"124 items, 62 runes, quatre postures"},
-  {key:"ekko",  name:"Ekko",  splash:19, ready:true, focus:"62% 16%",
-   en:"Resonance marks and time rewind", fr:"Marques de Résonance et rembobinage"},
-  {key:"elise", name:"Elise", splash:15, ready:true, focus:"58% 14%",
-   en:"Human and spider forms", fr:"Formes humaine et araignée"}
+  {key:"aatrox", name:"Aatrox", label:"Aatrox"},
+  {key:"ahri", name:"Ahri", label:"Ahri"},
+  {key:"akali", name:"Akali", label:"Akali"},
+  {key:"akshan", name:"Akshan", label:"Akshan"},
+  {key:"alistar", name:"Alistar", label:"Alistar"},
+  {key:"ambessa", name:"Ambessa", label:"Ambessa"},
+  {key:"amumu", name:"Amumu", label:"Amumu"},
+  {key:"anivia", name:"Anivia", label:"Anivia"},
+  {key:"annie", name:"Annie", label:"Annie"},
+  {key:"aphelios", name:"Aphelios", label:"Aphelios"},
+  {key:"ashe", name:"Ashe", label:"Ashe"},
+  {key:"aurelionsol", name:"AurelionSol", label:"Aurelion Sol"},
+  {key:"aurora", name:"Aurora", label:"Aurora"},
+  {key:"azir", name:"Azir", label:"Azir"},
+  {key:"bard", name:"Bard", label:"Bard"},
+  {key:"belveth", name:"Belveth", label:"Bel'Veth"},
+  {key:"blitzcrank", name:"Blitzcrank", label:"Blitzcrank"},
+  {key:"brand", name:"Brand", label:"Brand"},
+  {key:"braum", name:"Braum", label:"Braum"},
+  {key:"briar", name:"Briar", label:"Briar"},
+  {key:"caitlyn", name:"Caitlyn", label:"Caitlyn"},
+  {key:"camille", name:"Camille", label:"Camille"},
+  {key:"cassiopeia", name:"Cassiopeia", label:"Cassiopeia"},
+  {key:"chogath", name:"Chogath", label:"Cho'Gath"},
+  {key:"corki", name:"Corki", label:"Corki"},
+  {key:"darius", name:"Darius", label:"Darius"},
+  {key:"diana", name:"Diana", label:"Diana"},
+  {key:"drmundo", name:"DrMundo", label:"Dr. Mundo"},
+  {key:"draven", name:"Draven", label:"Draven"},
+  {key:"ekko",  name:"Ekko",  splash:19, ready:true, focus:"62% 16%"},
+  {key:"elise", name:"Elise", splash:15, ready:true, focus:"58% 14%"},
+  {key:"evelynn", name:"Evelynn", label:"Evelynn"},
+  {key:"ezreal", name:"Ezreal", label:"Ezreal"},
+  {key:"fiddlesticks", name:"Fiddlesticks", label:"Fiddlesticks"},
+  {key:"fiora", name:"Fiora", label:"Fiora"},
+  {key:"fizz", name:"Fizz", label:"Fizz"},
+  {key:"galio", name:"Galio", label:"Galio"},
+  {key:"gangplank", name:"Gangplank", label:"Gangplank"},
+  {key:"garen", name:"Garen", label:"Garen"},
+  {key:"gnar", name:"Gnar", label:"Gnar"},
+  {key:"gragas", name:"Gragas", label:"Gragas"},
+  {key:"graves", name:"Graves", label:"Graves"},
+  {key:"gwen", name:"Gwen", label:"Gwen"},
+  {key:"hecarim", name:"Hecarim", label:"Hecarim"},
+  {key:"heimerdinger", name:"Heimerdinger", label:"Heimerdinger"},
+  {key:"hwei", name:"Hwei", label:"Hwei"},
+  {key:"illaoi", name:"Illaoi", label:"Illaoi"},
+  {key:"irelia", name:"Irelia", label:"Irelia"},
+  {key:"ivern", name:"Ivern", label:"Ivern"},
+  {key:"janna", name:"Janna", label:"Janna"},
+  {key:"jarvaniv", name:"JarvanIV", label:"Jarvan IV"},
+  {key:"jax", name:"Jax", label:"Jax"},
+  {key:"jayce", name:"Jayce", label:"Jayce"},
+  {key:"jhin", name:"Jhin", label:"Jhin"},
+  {key:"jinx", name:"Jinx", label:"Jinx"},
+  {key:"ksante", name:"KSante", label:"K'Sante"},
+  {key:"kaisa", name:"Kaisa", label:"Kai'Sa"},
+  {key:"kalista", name:"Kalista", label:"Kalista"},
+  {key:"karma", name:"Karma", label:"Karma"},
+  {key:"karthus", name:"Karthus", label:"Karthus"},
+  {key:"kassadin", name:"Kassadin", label:"Kassadin"},
+  {key:"katarina", name:"Katarina", label:"Katarina"},
+  {key:"kayle", name:"Kayle", label:"Kayle"},
+  {key:"kayn", name:"Kayn", label:"Kayn"},
+  {key:"kennen", name:"Kennen", label:"Kennen"},
+  {key:"khazix", name:"Khazix", label:"Kha'Zix"},
+  {key:"kindred", name:"Kindred", label:"Kindred"},
+  {key:"kled", name:"Kled", label:"Kled"},
+  {key:"kogmaw", name:"KogMaw", label:"Kog'Maw"},
+  {key:"leblanc", name:"Leblanc", label:"LeBlanc"},
+  {key:"leesin", name:"LeeSin", label:"Lee Sin"},
+  {key:"leona", name:"Leona", label:"Leona"},
+  {key:"lillia", name:"Lillia", label:"Lillia"},
+  {key:"lissandra", name:"Lissandra", label:"Lissandra"},
+  {key:"locke", name:"Locke", label:"Locke"},
+  {key:"lucian", name:"Lucian", label:"Lucian"},
+  {key:"lulu", name:"Lulu", label:"Lulu"},
+  {key:"lux", name:"Lux", label:"Lux"},
+  {key:"malphite", name:"Malphite", label:"Malphite"},
+  {key:"malzahar", name:"Malzahar", label:"Malzahar"},
+  {key:"maokai", name:"Maokai", label:"Maokai"},
+  {key:"masteryi", name:"MasterYi", label:"Master Yi"},
+  {key:"gnarbig", name:"GnarBig", label:"Mega Gnar"},
+  {key:"mel", name:"Mel", label:"Mel"},
+  {key:"milio", name:"Milio", label:"Milio"},
+  {key:"missfortune", name:"MissFortune", label:"Miss Fortune"},
+  {key:"mordekaiser", name:"Mordekaiser", label:"Mordekaiser"},
+  {key:"morgana", name:"Morgana", label:"Morgana"},
+  {key:"naafiri", name:"Naafiri", label:"Naafiri"},
+  {key:"nami", name:"Nami", label:"Nami"},
+  {key:"nasus", name:"Nasus", label:"Nasus"},
+  {key:"nautilus", name:"Nautilus", label:"Nautilus"},
+  {key:"neeko", name:"Neeko", label:"Neeko"},
+  {key:"nidalee", name:"Nidalee", label:"Nidalee"},
+  {key:"nilah", name:"Nilah", label:"Nilah"},
+  {key:"nocturne", name:"Nocturne", label:"Nocturne"},
+  {key:"nunu", name:"Nunu", label:"Nunu & Willump"},
+  {key:"olaf", name:"Olaf", label:"Olaf"},
+  {key:"orianna", name:"Orianna", label:"Orianna"},
+  {key:"ornn", name:"Ornn", label:"Ornn"},
+  {key:"pantheon", name:"Pantheon", label:"Pantheon"},
+  {key:"poppy", name:"Poppy", label:"Poppy"},
+  {key:"pyke", name:"Pyke", label:"Pyke"},
+  {key:"qiyana", name:"Qiyana", label:"Qiyana"},
+  {key:"quinn", name:"Quinn", label:"Quinn"},
+  {key:"rakan", name:"Rakan", label:"Rakan"},
+  {key:"rammus", name:"Rammus", label:"Rammus"},
+  {key:"reksai", name:"RekSai", label:"Rek'Sai"},
+  {key:"rell", name:"Rell", label:"Rell"},
+  {key:"renata", name:"Renata", label:"Renata Glasc"},
+  {key:"renekton", name:"Renekton", label:"Renekton"},
+  {key:"rengar", name:"Rengar", label:"Rengar"},
+  {key:"riven", name:"Riven", label:"Riven"},
+  {key:"rumble", name:"Rumble", label:"Rumble"},
+  {key:"ryze", name:"Ryze", label:"Ryze"},
+  {key:"samira", name:"Samira", label:"Samira"},
+  {key:"sejuani", name:"Sejuani", label:"Sejuani"},
+  {key:"senna", name:"Senna", label:"Senna"},
+  {key:"seraphine", name:"Seraphine", label:"Seraphine"},
+  {key:"sett", name:"Sett", label:"Sett"},
+  {key:"shaco", name:"Shaco", label:"Shaco"},
+  {key:"shen", name:"Shen", label:"Shen"},
+  {key:"shyvana", name:"Shyvana", label:"Shyvana"},
+  {key:"singed", name:"Singed", label:"Singed"},
+  {key:"sion", name:"Sion", label:"Sion"},
+  {key:"sivir", name:"Sivir", label:"Sivir"},
+  {key:"skarner", name:"Skarner", label:"Skarner"},
+  {key:"smolder", name:"Smolder", label:"Smolder"},
+  {key:"sona", name:"Sona", label:"Sona"},
+  {key:"soraka", name:"Soraka", label:"Soraka"},
+  {key:"swain", name:"Swain", label:"Swain"},
+  {key:"sylas", name:"Sylas", label:"Sylas"},
+  {key:"syndra", name:"Syndra", label:"Syndra"},
+  {key:"tahmkench", name:"TahmKench", label:"Tahm Kench"},
+  {key:"taliyah", name:"Taliyah", label:"Taliyah"},
+  {key:"talon", name:"Talon", label:"Talon"},
+  {key:"taric", name:"Taric", label:"Taric"},
+  {key:"teemo", name:"Teemo", label:"Teemo"},
+  {key:"thresh", name:"Thresh", label:"Thresh"},
+  {key:"tristana", name:"Tristana", label:"Tristana"},
+  {key:"trundle", name:"Trundle", label:"Trundle"},
+  {key:"tryndamere", name:"Tryndamere", label:"Tryndamere"},
+  {key:"twistedfate", name:"TwistedFate", label:"Twisted Fate"},
+  {key:"twitch", name:"Twitch", label:"Twitch"},
+  {key:"udyr",  name:"Udyr",  splash:3,  ready:true, focus:"50% 32%"},
+  {key:"urgot", name:"Urgot", label:"Urgot"},
+  {key:"varus", name:"Varus", label:"Varus"},
+  {key:"vayne", name:"Vayne", label:"Vayne"},
+  {key:"veigar", name:"Veigar", label:"Veigar"},
+  {key:"velkoz", name:"Velkoz", label:"Vel'Koz"},
+  {key:"vex", name:"Vex", label:"Vex"},
+  {key:"vi", name:"Vi", label:"Vi"},
+  {key:"viego", name:"Viego", label:"Viego"},
+  {key:"viktor", name:"Viktor", label:"Viktor"},
+  {key:"vladimir", name:"Vladimir", label:"Vladimir"},
+  {key:"volibear", name:"Volibear", label:"Volibear"},
+  {key:"warwick", name:"Warwick", label:"Warwick"},
+  {key:"monkeyking", name:"MonkeyKing", label:"Wukong"},
+  {key:"xayah", name:"Xayah", label:"Xayah"},
+  {key:"xerath", name:"Xerath", label:"Xerath"},
+  {key:"xinzhao", name:"XinZhao", label:"Xin Zhao"},
+  {key:"yasuo", name:"Yasuo", label:"Yasuo"},
+  {key:"yone", name:"Yone", label:"Yone"},
+  {key:"yorick", name:"Yorick", label:"Yorick"},
+  {key:"yunara", name:"Yunara", label:"Yunara"},
+  {key:"yuumi", name:"Yuumi", label:"Yuumi"},
+  {key:"zaahen", name:"Zaahen", label:"Zaahen"},
+  {key:"zac", name:"Zac", label:"Zac"},
+  {key:"zed", name:"Zed", label:"Zed"},
+  {key:"zeri", name:"Zeri", label:"Zeri"},
+  {key:"ziggs", name:"Ziggs", label:"Ziggs"},
+  {key:"zilean", name:"Zilean", label:"Zilean"},
+  {key:"zoe", name:"Zoe", label:"Zoe"},
+  {key:"zyra", name:"Zyra", label:"Zyra"},
 ];
-const SPLASH = c => `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${
-  c.name}_${c.splash}.jpg`;
+const SPLASH = c => `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${c.name}_${c.splash || 0}.jpg`;
 
 function drawHome(){
   const el = document.getElementById("champList");
   if(!el) return;
   const box = document.getElementById("champSearch");
   const needle = noAccent((box && box.value || "").trim().toLowerCase());
-  const list = ROSTER.filter(c => !needle || noAccent(c.name.toLowerCase()).includes(needle));
+  const list = ROSTER.filter(c => !needle ||
+    noAccent(((c.label || "") + " " + c.name).toLowerCase()).includes(needle));
+  list.sort((a, b) => (b.ready ? 1 : 0) - (a.ready ? 1 : 0));   /* what works comes first */
   const count = document.getElementById("champCount");
   if(count) count.textContent = TR("champCount")
     .replace("%r", ROSTER.filter(c => c.ready).length)
@@ -5726,7 +5881,7 @@ function drawHome(){
       <span class="art" style="background-image:url('${SPLASH(c)}');background-position:${c.focus || "52% 22%"}"></span>
       <span class="veil"></span>
       <span class="tagsoon ${c.ready ? "tagnew" : ""}">${c.ready ? TR("homeReady") : TR("homeSoon")}</span>
-      <span class="lab"><b>${esc(c.name)}</b></span>
+      <span class="lab"><b>${esc(c.label || c.name)}</b></span>
     </a>`).join("") || `<p class="nochamp">${TR("noChamp")}</p>`;
   const hv = document.getElementById("homeVer");
   if(hv) hv.textContent = versionLabel();
@@ -5772,6 +5927,7 @@ function route(){
     document.body.dataset.view = "home";
     document.title = "OTP LoL Calc";
     applyStatic();          /* the home labels are static markup like the rest */
+    syncHomeLang();
     drawHome();
   }
   window.scrollTo(0, 0);
@@ -5781,12 +5937,18 @@ window.addEventListener("hashchange", route);
 const champBox = document.getElementById("champSearch");
 if(champBox) champBox.addEventListener("input", drawHome);
 
+/* the saved language decides which of the two is lit, on the home page as
+   everywhere else */
+function syncHomeLang(){
+  document.querySelectorAll("#homeLang button").forEach(b =>
+    b.setAttribute("aria-pressed", String(b.dataset.l === (isFR() ? "fr" : "en"))));
+}
+
 document.querySelectorAll("#homeLang button").forEach(btn => {
   btn.addEventListener("click", () => {
     const other = document.querySelector(`#langSeg button[data-l="${btn.dataset.l}"]`);
     if(other) other.click();
-    document.querySelectorAll("#homeLang button").forEach(b =>
-      b.setAttribute("aria-pressed", String(b === btn)));
+    syncHomeLang();
     drawHome();
   });
 });
