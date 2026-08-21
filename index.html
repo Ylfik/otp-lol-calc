@@ -248,6 +248,8 @@ tr.swcur td{background:rgba(232,161,60,.09)}
   color:var(--q);font-family:var(--mono);font-size:11px;padding:3px 4px;text-align:center;
 }
 .stk input:focus{outline:none;border-color:var(--q)}
+.stkunit{font-style:normal;font-family:var(--display);font-size:8.5px;letter-spacing:.1em;
+  color:var(--ink-faint);margin-left:3px}
 .cond-btn{
   font-family:var(--mono);font-size:9px;letter-spacing:.06em;padding:2px 5px;border-radius:2px;
   border:1px solid var(--line);color:var(--ink-faint);background:transparent;
@@ -1507,10 +1509,23 @@ function itemAllowed(name, worn){
 const STACKING = {
   "DARK SEAL":            {max:10, def:10, per:{ap:4}},
   "MEJAI'S SOULSTEALER":  {max:25, def:25, per:{ap:5}, at:[{n:10, mspct:10}]},
-  "HUBRIS":               {max:17, def:1,  per:{ad:3}, flat:{ad:9}},   /* 12 at one, then +3 */
+  /* Eminence stacks are permanent and uncapped, so no ceiling here either.
+     The shop shows the bonus attack damage, and so does the slot: 12, 15, 18… */
+  "HUBRIS":               {max:Infinity, def:1, per:{ad:3}, flat:{ad:9},
+                           show:{base:9, per:3, unit:"AD"}},
   "ROD OF AGES":          {max:10, def:10, per:{hp:10, mana:30, ap:3}}
   /* stacked in a fight rather than over a game: an ability applies one, up to four */
 };
+/* a stack control may show a derived figure rather than the raw count */
+const stkShown = (name, n) => {
+  const d = (STACKING[name] || {}).show;
+  return d ? d.base + d.per * n : n;
+};
+const stkFromShown = (name, v) => {
+  const d = (STACKING[name] || {}).show;
+  return d ? Math.round((v - d.base) / d.per) : v;
+};
+
 const stacksOf = slot => {
   const st = STACKING[slot.name];
   if(!st) return 0;
@@ -4184,8 +4199,12 @@ function card(b, bi, R){
           aria-pressed="${s.cond?"true":"false"}"
           title="${esc([(PV[it.n]||[]).map(f=>fxLabel(f.lab)).join(" + "), it.c || ""].filter(Boolean).join(" · "))} — click to toggle">COND</button>` : ""}
       ${it && STACKING[it.n] ? `<label class="stk" title="${TR("stacksWhy")}">
-          <input type="number" min="0" max="${STACKING[it.n].max}" value="${stacksOf(s)}"
-                 data-act="stk" data-b="${bi}" data-s="${si}"></label>` : ""}
+          <input type="number" step="${STACKING[it.n].show ? STACKING[it.n].show.per : 1}"
+                 min="${stkShown(it.n, STACKING[it.n].show ? 1 : 0)}"
+                 ${Number.isFinite(STACKING[it.n].max) ? `max="${stkShown(it.n, STACKING[it.n].max)}"` : ""}
+                 value="${stkShown(it.n, stacksOf(s))}"
+                 data-act="stk" data-b="${bi}" data-s="${si}">
+          ${STACKING[it.n].show ? `<i class="stkunit">${STACKING[it.n].show.unit}</i>` : ""}</label>` : ""}
     </div>`;
   }).join("");
 
@@ -5202,7 +5221,9 @@ function bind(){
     el.addEventListener("change", e => {
       const b = state.builds[+el.dataset.b], slot = b.items[+el.dataset.s];
       const cfg = STACKING[slot.name];
-      slot.stacks = Math.max(0, Math.min(cfg ? cfg.max : 0, parseInt(e.target.value) || 0));
+      const raw = stkFromShown(slot.name, parseFloat(e.target.value) || 0);
+      const floor = cfg && cfg.show ? 1 : 0;      /* the passive needs one takedown to exist */
+      slot.stacks = Math.max(floor, Math.min(cfg ? cfg.max : 0, raw));
       render();
     });
   });
