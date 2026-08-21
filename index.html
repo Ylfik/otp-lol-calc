@@ -159,6 +159,29 @@ main{max-width:2200px;margin:0 auto;padding:22px 28px 80px}
 .blib button:disabled{opacity:.3;cursor:default}
 .blib .danger:hover:not(:disabled){border-color:var(--bad);color:var(--bad)}
 .blib .clearb{margin-left:auto;border-color:var(--line)}
+.mkcombo{
+  margin:10px 0 0;border:1px solid var(--e);color:var(--e);background:var(--panel-2);
+  border-radius:2px;padding:5px 12px;font-family:var(--display);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;
+}
+.mkcombo:hover{background:var(--e);color:#10161d}
+.cbpal{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 4px}
+.cbpal button{border:1px solid var(--line);background:var(--panel-2);color:var(--ink-dim);
+  border-radius:3px;padding:5px 10px;font-size:12px}
+.cbpal button:hover{border-color:var(--q);color:var(--q)}
+.cbpal.saved button em{font-style:normal;color:var(--ink-faint);font-family:var(--mono);font-size:10px}
+.cbdraft{margin:6px 0;padding-left:20px;color:var(--ink)}
+.cbdraft li{margin:3px 0;font-size:13px;display:flex;align-items:center;gap:6px}
+.cbdraft li span{flex:1}
+.cbdraft button{border:1px solid var(--line-soft);background:var(--panel-2);color:var(--ink-faint);
+  border-radius:2px;width:22px;height:22px;font-size:9px;padding:0}
+.cbdraft button:hover:not(:disabled){border-color:var(--q);color:var(--q)}
+.cbdraft button:disabled{opacity:.3}
+.cbdel{color:var(--bad)!important}
+.cbact{display:flex;gap:8px;align-items:center;margin:10px 0 4px}
+.cbact input{background:var(--panel-2);border:1px solid var(--line);border-radius:2px;
+  color:var(--ink);font-size:13px;padding:6px 9px;max-width:220px}
+.cbact input:focus{outline:none;border-color:var(--q)}
 .blib .swapb{border-color:var(--e);color:var(--e)}
 .blib .swapb:hover{background:var(--e);color:#10161d}
 .swbar{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin:10px 0 8px}
@@ -964,6 +987,16 @@ body[data-view="home"] #app{display:none}
   </div>
 </div>
 
+<div class="overlay" id="cbOverlay">
+  <div class="help wide" role="dialog" aria-modal="true" aria-label="Combo builder">
+    <header>
+      <h2 data-i18n="cbTitle">Build a combo</h2>
+      <button class="closebtn" id="cbClose" aria-label="Close">esc</button>
+    </header>
+    <div class="helpbody" id="cbBody"></div>
+  </div>
+</div>
+
 <div class="overlay" id="optOverlay">
   <div class="help wide" role="dialog" aria-modal="true" aria-label="Optimiser">
     <header>
@@ -1043,33 +1076,22 @@ body[data-view="home"] #app{display:none}
     </header>
     <div class="helpbody help-en">
       <h3>What this is</h3>
-      <p>A build comparison tool on Summoner's Rift, one champion at a time — Udyr, Ekko and Elise so far. Three builds side by side, with item and
+      <p>A build comparison tool on Summoner's Rift, nine champions so far, with the combo left to you. Three builds side by side, with item and
          rune passives folded into the maths rather than left as text.</p>
 
-      <h3>The combo of reference</h3>
-      <p>Every number on a champion's page is measured over the sequences that champion declares, and they
-         differ from one to the next: some are four basic attacks, others a chain of casts, others a swap
-         between two forms. Each page names its own above the combo columns, with a line saying what makes
-         that sequence work.</p>
+      <h3>The combo is yours</h3>
+      <p>There is no sequence handed to you. <strong>You build it.</strong> Open <em>Build a combo</em>
+         under the builds, pick the steps from the champion's own abilities, put them in the order you
+         play them, and name it.</p>
+      <p>Once saved it sits alongside your other combos and is <strong>measured across all three
+         builds at once</strong>, so the comparison answers the question you actually asked rather than
+         one someone else chose for you.</p>
+      <p>The steps offered are the ones that behave differently: an awakened attack, an attack in spider
+         form, an attack at full charge. Anything the champion's kit distinguishes, the list distinguishes.</p>
       <p>Whatever the sequence, it is walked <strong>one step at a time</strong>, with the target's health
-         falling as it goes. That is what decides how often each passive fires, and when a threshold is
-         crossed.</p>
-      <table>
-        <tr><th>Passive type</th><th>Triggers</th></tr>
-        <tr><td>On-hit — Fray, Cleave, Mist's Edge…</td><td>every attack</td></tr>
-        <tr><td>Spellblade</td><td>the first attack after any cast</td></tr>
-        <tr><td>Every third attack — Kraken Slayer</td><td>attack 3</td></tr>
-        <tr><td>Energized — Voltaic, Stormrazor</td><td>attack 1, charged before the fight</td></tr>
-        <tr><td>Actives and once-per-combo effects</td><td>once</td></tr>
-      </table>
-      <p>The combo is stepped through <strong>one attack at a time</strong>. Passives that scale off the
-         target's <em>current</em> health hit for less as it drops, and thresholds are read at the moment
-         of each hit — Coup de Grace only pays once the target is actually under 40%.</p>
-      <p><strong>Click any combo name</strong> in a build to open the full breakdown: what every attack was
-         made of, the target's remaining health after each one, and the totals.</p>
-      <p>Under each card, a table lists every item and rune that dealt damage, heaviest first, with the share
-         of the <strong>champion's first combo</strong> each one accounts for. It is the quickest way to see which item is
-         actually carrying a build.</p>
+         falling as it goes. That is what decides how often each passive fires and which damage thresholds
+         are met.</p>
+      <p>Combos are kept in your browser, one set per champion.</p>
 
       <h3>Level and skill points</h3>
       <p>Points follow the game: one per level, rank 2 at level 3, rank 3 at level 5, up to rank 6 at level 11.
@@ -1177,34 +1199,24 @@ body[data-view="home"] #app{display:none}
     </div>
     <div class="helpbody help-fr">
       <h3>Ce que c'est</h3>
-      <p>Un comparateur de builds sur la Faille de l'invocateur, un champion à la fois — Udyr, Ekko et
-         Elise pour l'instant. Trois builds côte à côte, avec les
+      <p>Un comparateur de builds sur la Faille de l'invocateur, neuf champions pour l'instant, le combo
+         étant laissé à votre main. Trois builds côte à côte, avec les
          passifs d'items et de runes intégrés au calcul et non laissés en texte.</p>
 
-      <h3>Le combo de référence</h3>
-      <p>Les chiffres d'un champion sont mesurés sur les séquences qu'il déclare, et elles diffèrent d'un
-         champion à l'autre : certaines sont quatre auto-attaques, d'autres un enchaînement de sorts,
-         d'autres un passage d'une forme à l'autre. Chaque page indique la sienne au-dessus des colonnes de
-         combo, avec une ligne expliquant ce qui fait fonctionner cette séquence.</p>
+      <h3>Le combo vous appartient</h3>
+      <p>Aucune séquence ne vous est imposée. <strong>C'est vous qui la construisez.</strong> Ouvrez
+         <em>Créer un combo</em> sous les builds, choisissez les étapes parmi les compétences du champion,
+         mettez-les dans l'ordre où vous les jouez, et nommez-la.</p>
+      <p>Une fois enregistrée, elle rejoint vos autres combos et est <strong>mesurée sur les trois builds
+         à la fois</strong> : la comparaison répond donc à votre question, pas à celle qu'un autre aurait
+         choisie pour vous.</p>
+      <p>Les étapes proposées sont celles qui se comportent différemment : une attaque éveillée, une
+         attaque en forme araignée, une attaque à charge pleine. Tout ce que le kit distingue, la liste le
+         distingue.</p>
       <p>Quelle que soit la séquence, elle est déroulée <strong>étape par étape</strong>, avec les PV de la
-         cible qui descendent au fil des coups. C'est ce qui détermine la fréquence de chaque passif, et le
-         moment où un seuil est franchi.</p>
-      <table>
-        <tr><th>Type de passif</th><th>Déclenchements</th></tr>
-        <tr><td>À l'impact — Conflit, Fendoir, Fil de brume…</td><td>chaque attaque</td></tr>
-        <tr><td>Lame enchantée</td><td>la première attaque après un cast</td></tr>
-        <tr><td>Toutes les 3 attaques — Tueur de krakens</td><td>attaque 3</td></tr>
-        <tr><td>Énergisé — Voltaic, Rasoir de tempête</td><td>attaque 1, chargé avant le combat</td></tr>
-        <tr><td>Actifs et effets à usage unique</td><td>une fois</td></tr>
-      </table>
-      <p>Le combo est déroulé <strong>attaque par attaque</strong>. Les passifs qui scalent sur les PV
-         <em>actuels</em> tapent moins fort à mesure que la cible descend, et les seuils sont lus au moment de
-         chaque coup — Coup de Grâce ne paie qu'une fois la cible réellement sous 40 %.</p>
-      <p><strong>Cliquez sur le nom d'un combo</strong> dans un build pour ouvrir le détail complet : la
-         composition de chaque attaque, les PV restants de la cible après chacune, et les totaux.</p>
-      <p>Sous chaque carte, un tableau liste les items et runes ayant infligé des dégâts, du plus lourd au plus
-         léger, avec la part du <strong>premier combo du champion</strong> que chacun représente. C'est le moyen le plus
-         rapide de voir quel item porte réellement un build.</p>
+         cible qui descendent. C'est ce qui détermine la fréquence de chaque passif et les seuils de dégâts
+         atteints.</p>
+      <p>Les combos sont conservés dans votre navigateur, un jeu par champion.</p>
 
       <h3>Niveau et points de compétence</h3>
       <p>Les points suivent le jeu : un par niveau, rang 2 au niveau 3, rang 3 au niveau 5, jusqu'au rang 6 au
@@ -2070,8 +2082,15 @@ function parseCond(str){
    ============================================================ */
 const CHAMPIONS = {
   udyr:{
+    stepMenu:[
+      {id:"aa",    kind:"attack", en:"Auto attack",       fr:"Auto-attaque"},
+      {id:"aaAwk", kind:"attack", awakened:true, en:"Auto, awakened", fr:"Auto, éveillée"},
+      {id:"cq", kind:"cast", label:"Q", en:"Q — Wilding Claw",     fr:"Q — Griffe sauvage"},
+      {id:"cw", kind:"cast", label:"W", en:"W — Iron Mantle",      fr:"W — Cape de fer"},
+      {id:"ce", kind:"cast", label:"E", en:"E — Blazing Stampede", fr:"E — Piétinement flamboyant"},
+      {id:"cr", kind:"cast", label:"R", en:"R — Wingborne Storm",  fr:"R — Tempête spirituelle"}
+    ],
     key:"udyr", name:"Udyr", splash:3,
-    comboNote:["2 attacks, then 2 awakened","2 attaques, puis 2 éveillées"],
     base:{hp:[664,92], mana:[271,50], ad:[62,4], ar:[31,4.7], mr:[32,2.05],
           as:0.65, asPerLevel:3, ms:350},
     abilities_meta:[
@@ -2146,31 +2165,29 @@ const CHAMPIONS = {
         {lab:"&nbsp;&nbsp;" + TR("fromOV"), val:n0(c.ovHeal), dim:c.ovHeal < 1}];
     },
     /* Two attacks in the stance, then two awakened. */
-    combos:[
-      {key:"q", en:"Wilding Claw",     fr:"Griffe sauvage",
-       steps:[{kind:"cast"},{kind:"attack"},{kind:"attack"},{kind:"cast"},{kind:"attack",awakened:true},{kind:"attack",awakened:true}]},
-      {key:"w", en:"Iron Mantle",      fr:"Cape de fer",
-       steps:[{kind:"cast"},{kind:"attack"},{kind:"attack"},{kind:"cast"},{kind:"attack",awakened:true},{kind:"attack",awakened:true}]},
-      {key:"e", en:"Blazing Stampede", fr:"Piétinement flamboyant", ms:A => A.msEAwk,
-       steps:[{kind:"cast"},{kind:"attack"},{kind:"attack"},{kind:"cast"},{kind:"attack",awakened:true},{kind:"attack",awakened:true}]},
-      {key:"r", en:"Wingborne Storm",  fr:"Tempête spirituelle",
-       steps:[{kind:"cast"},{kind:"attack"},{kind:"attack"},{kind:"cast"},{kind:"attack",awakened:true},{kind:"attack",awakened:true}]}
-    ],
+    combos:[],
     /* what the stance adds to a single attack */
     castNote(st, key){
-      const n = {q:"Q", w:"W", e:"E", r:"R"}[key] || "";
+      const n = st.label || {q:"Q", w:"W", e:"E", r:"R"}[key] || "";
       return isFR() ? n + " — changement de posture" : n + " — stance swap";
     },
+    newState(){ return {stance:null}; },
     onStep(key, st, c){
-      const {A, hp} = c, out = {parts:[], ls:0};
+      const {A, hp, memo} = c, out = {parts:[], ls:0};
+      /* a cast decides which stance the following attacks are in */
+      if(st.kind === "cast"){
+        memo.stance = st.label ? st.label.toLowerCase() : key;
+        return out;
+      }
       if(st.kind !== "attack") return out;   /* the stance rides on attacks only */
-      if(key === "q"){
+      const stance = memo.stance || key;
+      if(stance === "q"){
         out.parts.push({n:"qOnHit", v:A.qOnHit, type:"phys"});
         out.parts.push({n:st.awakened ? "qAwkPct" : "qPct",
                         v:hp*(st.awakened ? A.qAwkPct : A.qPct)*0.01, type:"phys"});
       }
-      if(key === "r") out.parts.push({n:"rOnHit", v:A.rOnHit, type:"magic"});
-      if(key === "w") out.lsPct = st.awakened ? A.wAwkLifest : A.wLifesteal;
+      if(stance === "r") out.parts.push({n:"rOnHit", v:A.rOnHit, type:"magic"});
+      if(stance === "w") out.lsPct = st.awakened ? A.wAwkLifest : A.wLifesteal;
       return out;
     },
     /* effects that resolve once the four attacks have landed */
@@ -2253,8 +2270,16 @@ const CHAMPIONS = {
     }
   },
   elise:{
+    stepMenu:[
+      {id:"aa",       kind:"attack", en:"Auto, human",  fr:"Auto, humaine", ranged:true},
+      {id:"aaSpider", kind:"attack", spider:true, en:"Auto, spider", fr:"Auto, araignée"},
+      {id:"q",  kind:"spell", en:"Q — Neurotoxin",         fr:"Q — Neurotoxine"},
+      {id:"w",  kind:"spell", en:"W — Volatile Spiderling", fr:"W — Araignée volatile"},
+      {id:"e",  kind:"spell", en:"E — Cocoon",             fr:"E — Cocon"},
+      {id:"sq", kind:"spell", spider:true, en:"Q — Venomous Bite", fr:"Q — Morsure venimeuse"},
+      {id:"sw", kind:"spell", en:"W — Skittering Frenzy",  fr:"W — Frénésie grouillante"}
+    ],
     key:"elise", name:"Elise", splash:15,
-    comboNote:["one form, then the other","une forme, puis l\u2019autre"],
     base:{hp:[620,109], mana:[324,50], ad:[55,3], ar:[30,4.5], mr:[30,1.3],
           as:0.625, asPerLevel:1.75, ms:330},
     /* Spider form is melee at 125 range and adds 25 base move speed */
@@ -2360,20 +2385,7 @@ const CHAMPIONS = {
     /* Three sequences: the human opener, the spider follow-up, and the whole
        thing end to end. Spider attacks carry the passive's magic damage and
        its heal; Venomous Bite applies on-hit effects, Cocoon deals none. */
-    combos:[
-      {key:"human", en:"Human form", fr:"Forme humaine",
-       steps:[{kind:"spell", id:"e"}, {kind:"spell", id:"q"},
-              {kind:"spell", id:"w"}, {kind:"attack", ranged:true}]},
-      {key:"spider", en:"Spider form", fr:"Forme araignée", ms:A => A.msSpider,
-       steps:[{kind:"spell", id:"sw"}, {kind:"spell", id:"sq", spider:true},
-              {kind:"attack", spider:true}, {kind:"attack", spider:true}]},
-      {key:"full", en:"Human into spider", fr:"Humaine puis araignée", ms:A => A.msSpider,
-       steps:[{kind:"spell", id:"e"}, {kind:"spell", id:"q"}, {kind:"spell", id:"w"},
-              {kind:"attack", ranged:true},
-              {kind:"attack", spider:true}, {kind:"spell", id:"sw"},
-              {kind:"spell", id:"sq", spider:true},
-              {kind:"attack", spider:true}, {kind:"attack", spider:true}]}
-    ],
+    combos:[],
     onStep(key, st, c){
       const {A, hp, cur} = c, out = {parts:[]};
       if(st.kind === "spell"){
@@ -2400,8 +2412,15 @@ const CHAMPIONS = {
     }
   },
   ekko:{
+    stepMenu:[
+      {id:"aa",     kind:"attack", en:"Auto attack",     fr:"Auto-attaque"},
+      {id:"aaDive", kind:"attack", dive:true, en:"Auto, Phase Dive", fr:"Auto, Plongée"},
+      {id:"q", kind:"spell", en:"Q — Timewinder",           fr:"Q — Remonteur du temps"},
+      {id:"w", kind:"cast",  label:"W", en:"W — Parallel Convergence", fr:"W — Convergence parallèle"},
+      {id:"e", kind:"cast",  label:"E", en:"E — Phase Dive", fr:"E — Plongée fantomatique"},
+      {id:"r", kind:"spell", en:"R — Chronobreak",          fr:"R — Chronorupture"}
+    ],
     key:"ekko", name:"Ekko", splash:19,
-    comboNote:["Resonance triggers on the third mark","la Résonance part à la troisième marque"],
     base:{hp:[655,99], mana:[280,70], ad:[58,3], ar:[32,4.2], mr:[32,2.05],
           as:0.688, asPerLevel:3.3, ms:340},
     abilities_meta:[
@@ -2457,21 +2476,7 @@ const CHAMPIONS = {
     },
     /* Resonance counts hits, so the combo needs a memory */
     newState(){ return {stacks:0}; },
-    combos:[
-      {key:"basic", en:"W, E, Q, auto", fr:"W, E, Q, auto",
-       steps:[{kind:"cast", label:"W", id:"w"},
-              {kind:"cast", label:"E"},
-              {kind:"attack", dive:true},
-              {kind:"spell", id:"q"},
-              {kind:"attack"}]},
-      {key:"dusk", en:"W, E, auto — with Dusk and Dawn", fr:"W, E, auto — avec Aube et crépuscule",
-       steps:[{kind:"cast", label:"W", id:"w"},
-              {kind:"cast", label:"E"},
-              {kind:"attack", dive:true},
-              {kind:"attack"}]},
-      {key:"ult", en:"Chronobreak", fr:"Chronorupture",
-       steps:[{kind:"spell", id:"r"}]}
-    ],
+    combos:[],
     onStep(key, st, c){
       const {A, memo, onHits, hp, cur} = c, out = {parts:[]};
       let marks = 0;
@@ -2547,6 +2552,24 @@ const CHAMPIONS = {
     }
   },
   irelia:{
+    stepMenu:[
+      {id:"aa",  kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
+      {id:"aaF", kind:"attack", fervor:true, en:"Auto, four stacks", fr:"Auto, quatre charges"},
+      {id:"q", kind:"spell", en:"Q — Bladesurge",   fr:"Q — Assaut des lames"},
+      {id:"w", kind:"spell", en:"W — Defiant Dance, charged", fr:"W — Danse du défi, chargée"},
+      {id:"e", kind:"spell", en:"E — Flawless Duet", fr:"E — Duo sans faille"},
+      {id:"r", kind:"spell", en:"R — Vanguard's Edge", fr:"R — Lame d'avant-garde"}
+    ],
+    onStep(key, st, c){
+      const {A} = c, out = {parts:[]};
+      if(st.id === "q"){ out.parts.push({n:"bladesurge", v:A.qDmg, type:"phys"}); out.heal = A.qHeal; }
+      if(st.id === "w") out.parts.push({n:"defiantDance",  v:A.wMax, type:"phys"});
+      if(st.id === "e") out.parts.push({n:"flawlessDuet",  v:A.eDmg, type:"magic"});
+      if(st.id === "r") out.parts.push({n:"vanguardsEdge", v:A.rDmg, type:"magic"});
+      if(st.kind === "attack" && st.fervor)
+        out.parts.push({n:"ionianFervor", v:A.pOnHit, type:"magic"});
+      return out;
+    },
     key:"irelia", name:"Irelia", splash:0,
     base:{hp:[630,115], mana:[350,50], ad:[65,3.5], ar:[36,4.7], mr:[30,2.05],
           as:0.656, asPerLevel:2.5, ms:335},
@@ -2614,6 +2637,12 @@ const CHAMPIONS = {
     combos:[]
   },
   shen:{
+    stepMenu:[
+      {id:"aa",  kind:"attack", en:"Auto attack",  fr:"Auto-attaque"},
+      {id:"aaQ", kind:"attack", empowered:true, en:"Auto, enhanced by Q", fr:"Auto, renforcée par le Q"},
+      {id:"q", kind:"cast", label:"Q", en:"Q — Twilight Assault", fr:"Q — Assaut crépusculaire"},
+      {id:"e", kind:"spell", en:"E — Shadow Dash",  fr:"E — Ruée de l'ombre"}
+    ],
     key:"shen", name:"Shen", splash:0,
     base:{hp:[610,99], mana:[400,0], ad:[64,3], ar:[34,4.2], mr:[32,2.05],
           as:0.751, asPerLevel:3, ms:340},
@@ -2673,17 +2702,7 @@ const CHAMPIONS = {
                                       : "Twilight Assault — the blade passes through, 3 attacks enhanced";
       return isFR() ? "aucun dégât propre" : "no damage of its own";
     },
-    comboNote:["the blade passes through, so all three attacks are enhanced",
-               "la lame traverse, les trois attaques sont donc renforcées"],
-    combos:[
-      {key:"q", en:"Q through, then 3 attacks", fr:"Q qui traverse, puis 3 attaques",
-       steps:[{kind:"cast", label:"Q", id:"q"},
-              {kind:"attack", empowered:true}, {kind:"attack", empowered:true},
-              {kind:"attack", empowered:true}]},
-      {key:"e", en:"E, then 3 attacks", fr:"E, puis 3 attaques",
-       steps:[{kind:"spell", id:"e"},
-              {kind:"attack"}, {kind:"attack"}, {kind:"attack"}]}
-    ],
+    combos:[],
     onStep(key, st, c){
       const {A, hp} = c, out = {parts:[]};
       /* the blade caught someone on the way, so the higher figure applies
@@ -2719,6 +2738,21 @@ const CHAMPIONS = {
     }
   },
   tahmkench:{
+    stepMenu:[
+      {id:"aa", kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
+      {id:"q", kind:"spell", en:"Q — Tongue Lash",  fr:"Q — Coup de langue"},
+      {id:"w", kind:"spell", en:"W — Abyssal Dive", fr:"W — Plongeon abyssal"},
+      {id:"r", kind:"cast", label:"R", en:"R — Devour", fr:"R — Dévorer"}
+    ],
+    onStep(key, st, c){
+      const {A} = c, out = {parts:[]};
+      /* An Acquired Taste rides on every attack and on the Q */
+      if(st.kind === "attack") out.parts.push({n:"acquiredTaste", v:A.pOnHit, type:"magic"});
+      if(st.id === "q"){ out.parts.push({n:"tongueLash", v:A.qDmg + A.pOnHit, type:"magic"}); out.heal = A.qHeal; }
+      if(st.id === "w") out.parts.push({n:"abyssalDive", v:A.wDmg, type:"magic"});
+      if(st.id === "r") out.shield = A.rShield;
+      return out;
+    },
     key:"tahmkench", name:"TahmKench", splash:0, label:"Tahm Kench",
     base:{hp:[640,103], mana:[325,50], ad:[56,3.2], ar:[39,4.7], mr:[32,2.05],
           as:0.658, asPerLevel:2.5, ms:335},
@@ -2786,6 +2820,26 @@ const CHAMPIONS = {
     combos:[]
   },
   zeri:{
+    stepMenu:[
+      {id:"aa",     kind:"attack", en:"Auto — a zap", fr:"Auto — un zap"},
+      {id:"aaFull", kind:"attack", full:true, en:"Auto, full charge", fr:"Auto, charge pleine"},
+      {id:"q", kind:"spell", en:"Q — Burst Fire",       fr:"Q — Tir en rafale"},
+      {id:"w", kind:"spell", en:"W — Ultrashock Laser", fr:"W — Laser ultrachoc"},
+      {id:"e", kind:"spell", en:"E — Spark Surge",      fr:"E — Décharge d'étincelles"},
+      {id:"r", kind:"cast", label:"R", en:"R — Lightning Crash", fr:"R — Fracas de foudre"}
+    ],
+    onStep(key, st, c){
+      const {A, hp} = c, out = {parts:[]};
+      if(st.kind === "attack"){
+        out.parts.push({n:"zap", v:A.pZap, type:"magic"});   /* her attack is a zap */
+        if(st.full) out.parts.push({n:"fullCharge", v:A.pFull + hp*A.pFullPct/100, type:"magic"});
+      }
+      if(st.id === "q") out.parts.push({n:"burstFire",  v:A.qBurst, type:"phys"});
+      if(st.id === "w") out.parts.push({n:"ultrashock", v:A.wDmg,   type:"phys"});
+      if(st.id === "e") out.parts.push({n:"sparkSurge", v:A.eDmg,   type:"magic"});
+      if(st.id === "r") out.parts.push({n:"lightningCrash", v:A.rDmg, type:"magic"});
+      return out;
+    },
     key:"zeri", name:"Zeri", splash:0,
     base:{hp:[600,110], mana:[250,45], ad:[56,2], ar:[24,4.2], mr:[30,1.3],
           as:0.658, asPerLevel:2, ms:330},
@@ -2858,6 +2912,26 @@ const CHAMPIONS = {
     combos:[]
   },
   yunara:{
+    stepMenu:[
+      {id:"aa",  kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
+      {id:"aaQ", kind:"attack", empowered:true, en:"Auto, Q active", fr:"Auto, Q actif"},
+      {id:"q", kind:"cast", label:"Q", en:"Q — Path of Devotion", fr:"Q — Voie de la dévotion"},
+      {id:"w", kind:"spell", en:"W — Blade Sever", fr:"W — Lame tranchante"},
+      {id:"e", kind:"cast", label:"E", en:"E — Unseen Step", fr:"E — Pas invisible"},
+      {id:"r", kind:"spell", en:"R — Arc of Ruin", fr:"R — Arc de ruine"}
+    ],
+    onStep(key, st, c){
+      const {A} = c, out = {parts:[]};
+      if(st.kind === "attack")
+        out.parts.push({n:"pathOfDevotion", v:st.empowered ? A.qBoth : A.qPassive, type:"magic"});
+      if(st.id === "q") out.asBonus = A.qAS;
+      if(st.id === "w"){
+        out.parts.push({n:"bladeSever",       v:A.wDmg,    type:"magic"});
+        out.parts.push({n:"bladeSeverLinger", v:A.wLinger, type:"magic"});
+      }
+      if(st.id === "r") out.parts.push({n:"arcOfRuin", v:A.rDmg, type:"magic"});
+      return out;
+    },
     key:"yunara", name:"Yunara", splash:0,
     base:{hp:[590,110], mana:[275,45], ad:[55,3], ar:[25,4.4], mr:[30,1.3],
           as:0.65, asPerLevel:2, ms:325},
@@ -2923,6 +2997,24 @@ const CHAMPIONS = {
     combos:[]
   },
   kayle:{
+    stepMenu:[
+      {id:"aa",  kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
+      {id:"aaE", kind:"attack", starfire:true, en:"Auto, Starfire", fr:"Auto, Lame stellaire"},
+      {id:"q", kind:"spell", en:"Q — Radiant Blast", fr:"Q — Explosion radieuse"},
+      {id:"w", kind:"cast", label:"W", en:"W — Celestial Blessing", fr:"W — Bénédiction céleste"},
+      {id:"e", kind:"cast", label:"E", en:"E — Starfire Spellblade", fr:"E — Lame stellaire"},
+      {id:"r", kind:"spell", en:"R — Divine Judgment", fr:"R — Jugement divin"}
+    ],
+    onStep(key, st, c){
+      const {A, hp, cur} = c, out = {parts:[]};
+      if(st.kind === "attack" && st.starfire)
+        out.parts.push({n:"starfire",
+          v:A.eDmg + Math.max(0, hp - cur) * A.eMissPct/100, type:"magic"});
+      if(st.id === "q") out.parts.push({n:"radiantBlast",   v:A.qDmg, type:"magic"});
+      if(st.id === "w") out.heal = A.wHeal;
+      if(st.id === "r") out.parts.push({n:"divineJudgment", v:A.rDmg, type:"magic"});
+      return out;
+    },
     key:"kayle", name:"Kayle", splash:0,
     base:{hp:[670,92], mana:[330,50], ad:[50,2.5], ar:[26,4.2], mr:[22,1.3],
           as:0.625, asPerLevel:1.5, ms:335},
@@ -2981,6 +3073,30 @@ const CHAMPIONS = {
   }
 };
 let CHAMP = CHAMPIONS.udyr;
+
+/* ------------------------------------------------------------
+   Combos you build yourself. A combo is only an ordering of steps,
+   so the same walker runs yours and the built-in ones. Kept per
+   champion, so an Udyr sequence never shows up on Ekko.
+   ------------------------------------------------------------ */
+const cbKey = () => "otp-calc-combos:" + (CHAMP ? CHAMP.key : "udyr");
+let myCombos = [];
+function loadMyCombos(){
+  try{ myCombos = JSON.parse(localStorage.getItem(cbKey()) || "[]"); }
+  catch(err){ myCombos = []; }
+}
+function storeMyCombos(){
+  try{ localStorage.setItem(cbKey(), JSON.stringify(myCombos)); }catch(err){}
+}
+/* saved as a list of step ids; looked back up in the champion's menu */
+function comboList(){
+  const menu = CHAMP.stepMenu || [];
+  const mine = myCombos.map(c => ({
+    key:"my:" + c.name, en:c.name, fr:c.name, mine:true,
+    steps:c.steps.map(id => menu.find(m => m.id === id)).filter(Boolean)
+  })).filter(c => c.steps.length);
+  return (CHAMP.combos || []).concat(mine);
+}
 let T = CHAMP.ranks;
 /* ------------------------------------------------------------
    Rough economy model, so a build can be judged against what you
@@ -3364,7 +3480,7 @@ function computeBuild(b, target){
      abilities cast between them. The engine walks the list, keeps track of the
      target's falling health, and asks the champion what each step adds. */
   function makeCombo(key){
-    const def = (CHAMP.combos || []).find(c => c.key === key);
+    const def = comboList().find(c => c.key === key);
     const seq = def ? def.steps : [];
     let cur = hp;
     let dmg = 0, shield = 0, heal = 0, extraLS = 0, autoAll = 0;
@@ -3476,8 +3592,8 @@ function computeBuild(b, target){
   }
 
   D.combo = {};
-  (CHAMP.combos || []).forEach(c => { D.combo[c.key] = makeCombo(c.key); });
-  const mainKey = (CHAMP.combos && CHAMP.combos[0]) ? CHAMP.combos[0].key : "q";
+  comboList().forEach(c => { D.combo[c.key] = makeCombo(c.key); });
+  const mainKey = (comboList()[0] || {}).key || "q";
   const mainCombo = D.combo[mainKey] || {lines:[], dmg:0};
   D.mainKey   = mainKey;
   D.itemLines = (mainCombo.lines || []).slice().sort((a,b) => b.v - a.v);
@@ -3601,10 +3717,9 @@ const L10N = {
   homeSub:["Build calculators for one-trick players, built one champion at a time.",
            "Des calculateurs de build pour les joueurs mono-champion, construits un champion à la fois."],
   homeReady:["Available","Disponible"], homeSoon:["Coming","À venir"],
-  homeWip:["In progress","En travaux"],
   fav:["Pin to the top","Épingler en haut"], unfav:["Unpin","Retirer des favoris"],
-  wipNote:["The abilities are in, the combos are not settled yet — damage figures will follow.",
-           "Les compétences sont là, les combos ne sont pas encore arrêtés — les dégâts suivront."],
+  wipNote:["No combo yet. Build one from this champion's abilities and it will be measured across all three builds.",
+           "Aucun combo pour l'instant. Créez-en un à partir des compétences de ce champion et il sera mesuré sur les trois builds."],
   findChamp:["Search a champion…","Chercher un champion…"],
   champCount:["%r of %t available","%r sur %t disponibles"],
   noChamp:["No champion by that name — yet.","Aucun champion de ce nom — pour l'instant."],
@@ -3695,6 +3810,15 @@ const L10N = {
   offense:["Offense","Offense"], defense:["Defense","Défense"], utility:["Utility","Utilitaire"],
   abilities:["Abilities","Compétences"],
   combos:["Combos","Combos"],
+  buildCombo:["Build a combo","Créer un combo"],
+  cbTitle:["Build a combo","Créer un combo"],
+  cbHow:["Click a step to add it, then order it. The combo joins the comparison across all three builds.",
+         "Cliquez sur une étape pour l'ajouter, puis ordonnez-la. Le combo rejoint la comparaison des trois builds."],
+  cbDraft:["Your sequence","Votre séquence"],
+  cbEmpty:["No step yet.","Aucune étape pour l'instant."],
+  cbNamePh:["name it","donnez-lui un nom"],
+  cbSave:["Save","Enregistrer"], cbSaved:["Saved combos","Combos enregistrés"],
+  cbUntitled:["My combo","Mon combo"],
   passiveOut:["Passive output over the combo","Effet des passifs sur le combo"],
   comparison:["Comparison","Comparaison"],
   cmpSub:["Damage and sustain over the same sequences, step by step.","Dégâts et survie sur les mêmes séquences, étape par étape."],
@@ -4861,10 +4985,12 @@ function card(b, bi, R){
         </div>`).join("")}
     </div>
 
-    ${!(CHAMP.combos || []).length ? `<p class="wipbar">${TR("wipNote")}</p>` : ""}
-    <div class="sect-h" ${!(CHAMP.combos || []).length ? "hidden" : ""}>${TR("combos")}${CHAMP.comboNote ? " — " + esc(isFR() ? CHAMP.comboNote[1] : CHAMP.comboNote[0]) : ""}</div>
+    ${!comboList().length ? `<p class="wipbar">${TR("wipNote")}</p>` : ""}
+    ${bi === 0 && (CHAMP.stepMenu || []).length
+      ? `<button class="mkcombo" id="btnCombo">${TR("buildCombo")}</button>` : ""}
+    <div class="sect-h" ${!comboList().length ? "hidden" : ""}>${TR("combos")}${CHAMP.comboNote ? " — " + esc(isFR() ? CHAMP.comboNote[1] : CHAMP.comboNote[0]) : ""}</div>
     <div class="totals">
-      ${(CHAMP.combos || []).map((cb, ci) => {
+      ${comboList().map((cb, ci) => {
         const c = D.combo[cb.key] || {};
         const rows = CHAMP.comboRows
           ? CHAMP.comboRows(cb.key, {c, A, TR, n0, pc})
@@ -4893,7 +5019,7 @@ function card(b, bi, R){
 /* The comparison is built from whatever combos the champion declares, so it
    follows Udyr's four stances or Elise's three sequences without changes. */
 function cmpRows(){
-  const cbs = CHAMP.combos || [];
+  const cbs = comboList();
   const lab = c => isFR() ? c.fr : c.en;
   const dmgOf = k => r => (r.D.combo[k] || {}).dmg || 0;
   const rows = [{head:() => TR("dmgPer"), col:"var(--q)"}];
@@ -5492,6 +5618,66 @@ function drawSwaps(){
   on2("swMix", "input", e => { mixWeight = +e.target.value; drawSwaps(); });
 }
 
+/* ------------------------------------------------------------
+   The combo builder: pick steps, order them, name it, keep it.
+   ------------------------------------------------------------ */
+let draft = [];
+function cbOpen(){
+  draft = [];
+  cbDraw();
+  document.getElementById("cbOverlay").classList.add("on");
+}
+function cbDraw(){
+  const el = document.getElementById("cbBody");
+  if(!el) return;
+  const menu = CHAMP.stepMenu || [];
+  const nameOf = m => esc(isFR() ? m.fr : m.en);
+  el.innerHTML = `
+    <p class="tipstat">${TR("cbHow")}</p>
+    <div class="cbpal">${menu.map(m =>
+      `<button data-add="${m.id}">${nameOf(m)}</button>`).join("")}</div>
+
+    <h3>${TR("cbDraft")}</h3>
+    ${draft.length ? `<ol class="cbdraft">${draft.map((id, i) => {
+        const m = menu.find(x => x.id === id) || {};
+        return `<li><span>${nameOf(m)}</span>
+          <button data-up="${i}" ${i === 0 ? "disabled" : ""}>&#9650;</button>
+          <button data-down="${i}" ${i === draft.length - 1 ? "disabled" : ""}>&#9660;</button>
+          <button data-del="${i}" class="cbdel">&times;</button></li>`;
+      }).join("")}</ol>`
+      : `<p class="tipstat">${TR("cbEmpty")}</p>`}
+    <div class="cbact">
+      <input id="cbName" maxlength="28" placeholder="${TR("cbNamePh")}">
+      <button class="tipbtn" id="cbSave" ${draft.length ? "" : "disabled"}>${TR("cbSave")}</button>
+    </div>
+
+    ${myCombos.length ? `<h3>${TR("cbSaved")}</h3>
+      <div class="cbpal saved">${myCombos.map((c, i) =>
+        `<button data-load="${i}">${esc(c.name)} <em>${c.steps.length}</em></button>
+         <button data-drop="${i}" class="cbdel">&times;</button>`).join("")}</div>` : ""}`;
+
+  const on = (sel, fn) => el.querySelectorAll(sel).forEach(b =>
+    b.addEventListener("click", () => fn(b)));
+  on("button[data-add]",  b => { draft.push(b.dataset.add); cbDraw(); });
+  on("button[data-del]",  b => { draft.splice(+b.dataset.del, 1); cbDraw(); });
+  on("button[data-up]",   b => { const i = +b.dataset.up;
+    [draft[i-1], draft[i]] = [draft[i], draft[i-1]]; cbDraw(); });
+  on("button[data-down]", b => { const i = +b.dataset.down;
+    [draft[i+1], draft[i]] = [draft[i], draft[i+1]]; cbDraw(); });
+  on("button[data-load]", b => { draft = myCombos[+b.dataset.load].steps.slice(); cbDraw(); });
+  on("button[data-drop]", b => { myCombos.splice(+b.dataset.drop, 1); storeMyCombos(); cbDraw(); render(); });
+
+  const save = el.querySelector("#cbSave");
+  if(save) save.addEventListener("click", () => {
+    const nm = (el.querySelector("#cbName").value || "").trim() || TR("cbUntitled");
+    myCombos = myCombos.filter(c => c.name !== nm);      /* same name replaces */
+    myCombos.push({name:nm, steps:draft.slice()});
+    storeMyCombos();
+    document.getElementById("cbOverlay").classList.remove("on");
+    render();
+  });
+}
+
 function breakdown(bi, stance){
   const R = computeBuild(state.builds[bi], state.target);
   const c = R.D.combo[stance], A = R.A;
@@ -5653,6 +5839,8 @@ function bind(){
       render();
     });
   });
+  const mk = document.getElementById("btnCombo");
+  if(mk) mk.addEventListener("click", cbOpen);
   grid.querySelectorAll("button[data-swap]").forEach(el => {
     el.addEventListener("click", () => openSwaps(+el.dataset.swap));
   });
@@ -6150,6 +6338,12 @@ on("btnOpt", "click", () => {
   optRender();
   document.getElementById("optOverlay").classList.add("on");
 });
+const cbOverlay = document.getElementById("cbOverlay");
+const closeCb = () => cbOverlay && cbOverlay.classList.remove("on");
+on("cbClose", "click", closeCb);
+if(cbOverlay) cbOverlay.addEventListener("click", e => { if(e.target === cbOverlay) closeCb(); });
+document.addEventListener("keydown", e => { if(e.key === "Escape") closeCb(); });
+
 const optOverlay = document.getElementById("optOverlay");
 const closeOpt = () => optOverlay && optOverlay.classList.remove("on");
 on("optClose", "click", closeOpt);
@@ -6253,12 +6447,12 @@ const ROSTER = [
   {key:"drmundo", name:"DrMundo", label:"Dr. Mundo"},
   {key:"draven", name:"Draven", label:"Draven"},
   {key:"ekko",  name:"Ekko",  splash:19, ready:true, focus:"62% 16%"},
-  {key:"irelia", name:"Irelia", splash:0, ready:true, wip:true, focus:"55% 18%"},
+  {key:"irelia", name:"Irelia", splash:0, ready:true, focus:"55% 18%"},
   {key:"shen",   name:"Shen",   splash:0, ready:true, focus:"52% 20%"},
-  {key:"tahmkench", name:"TahmKench", label:"Tahm Kench", splash:0, ready:true, wip:true, focus:"52% 24%"},
-  {key:"zeri",   name:"Zeri",   splash:0, ready:true, wip:true, focus:"54% 18%"},
-  {key:"yunara", name:"Yunara", splash:0, ready:true, wip:true, focus:"54% 18%"},
-  {key:"kayle",  name:"Kayle",  splash:0, ready:true, wip:true, focus:"52% 18%"},
+  {key:"tahmkench", name:"TahmKench", label:"Tahm Kench", splash:0, ready:true, focus:"52% 24%"},
+  {key:"zeri",   name:"Zeri",   splash:0, ready:true, focus:"54% 18%"},
+  {key:"yunara", name:"Yunara", splash:0, ready:true, focus:"54% 18%"},
+  {key:"kayle",  name:"Kayle",  splash:0, ready:true, focus:"52% 18%"},
   {key:"elise", name:"Elise", splash:15, ready:true, focus:"58% 14%"},
   {key:"evelynn", name:"Evelynn", label:"Evelynn"},
   {key:"ezreal", name:"Ezreal", label:"Ezreal"},
@@ -6419,7 +6613,7 @@ function drawHome(){
     noAccent(((c.label || "") + " " + c.name).toLowerCase()).includes(needle));
   /* favourites at the top, then finished, in progress, and the rest —
      each group in alphabetical order */
-  const rank = c => favourites.has(c.key) ? -1 : c.ready && !c.wip ? 0 : c.wip ? 1 : 2;
+  const rank = c => favourites.has(c.key) ? -1 : c.ready ? 0 : 1;
   const nameOf = c => (c.label || c.name).toLowerCase();
   list.sort((a, b) => rank(a) - rank(b) || nameOf(a).localeCompare(nameOf(b), undefined, {sensitivity:"base"}));
   const count = document.getElementById("champCount");
@@ -6430,8 +6624,8 @@ function drawHome(){
     <a class="champ ${c.ready ? "" : "soon"}" ${c.ready ? `href="#/${c.key}"` : ""}>
       <span class="art" style="background-image:url('${SPLASH(c)}');background-position:${c.focus || "52% 22%"}"></span>
       <span class="veil"></span>
-      <span class="tagsoon ${c.wip ? "tagwip" : c.ready ? "tagnew" : ""}">${
-        c.wip ? TR("homeWip") : c.ready ? TR("homeReady") : TR("homeSoon")}</span>
+      <span class="tagsoon ${c.ready ? "tagnew" : ""}">${
+        c.ready ? TR("homeReady") : TR("homeSoon")}</span>
       <button class="favbtn ${favourites.has(c.key) ? "on" : ""}" data-fav="${c.key}"
               title="${favourites.has(c.key) ? TR("unfav") : TR("fav")}"
               aria-pressed="${favourites.has(c.key)}">${favourites.has(c.key) ? "&#9733;" : "&#9734;"}</button>
@@ -6474,6 +6668,7 @@ function route(){
     /* the splash is a large image; showing the page first feels much faster */
     CHAMP = CHAMPIONS[champ.key] || CHAMPIONS.udyr;
     T = CHAMP.ranks;
+    loadMyCombos();
     document.body.dataset.view = "app";
     document.title = (champ.label || champ.name) + " — OTP LoL Calc";
     document.documentElement.style.setProperty("--splashpos", champ.focus || "50% 28%");
