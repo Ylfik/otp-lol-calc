@@ -2560,7 +2560,7 @@ const CHAMPIONS = {
       qCd:[10,9,8,7,6], wCd:[20,18,16,14,12], eCd:[16,14.5,13,11.5,10], rCd:[125,105,85]
     },
     abilities(c){
-      const {A, T, qr, wr, er, rr, tot, bonusAD, learned} = c;
+      const {A, T, qr, wr, er, rr, tot, bonusAD, lerp, learned} = c;
       const R = (a,n) => a[Math.max(0, Math.min(a.length-1, n-1))] || 0;
       const ap = tot.ap, ah = 1 + tot.ah/100;
       A.qDmg  = R(T.qFlat,qr) + T.qAD*tot.ad;
@@ -2575,11 +2575,24 @@ const CHAMPIONS = {
       if(!learned.w){ A.wMin=0; A.wMax=0; }
       if(!learned.e) A.eDmg=0;
       if(!learned.r) A.rDmg=0;
+      /* Ionian Fervor: attack speed per stack, and an on-hit at four */
+      A.pAsPer   = lerp(10, 25, c.L);
+      A.pAsMax   = A.pAsPer * 4;
+      A.pOnHit   = lerp(10, 61, c.L) + 0.20 * bonusAD;
+      A.pStacks  = 4;
       A.msIdle = c.msSoftCap((c.base.ms + c.S.ms) * (1 + tot.mspct/100));
       return A;
     },
     passiveName:["Ionian Fervor","Ferveur ionienne"],
-    passiveRows(c){ const {TR} = c; return [{lab:TR("wipStat"), val:"—"}]; },
+    passiveRows(c){
+      const {A, TR, n0, pc} = c;
+      return [
+        {lab:TR("iPas"),    val:"+" + pc(A.pAsPer)},
+        {lab:TR("iPasMax"), val:"+" + pc(A.pAsMax), awk:true},
+        {lab:TR("iPhit"),   val:n0(A.pOnHit), awk:true},
+        {lab:TR("kMarks"),  val:"4"}
+      ];
+    },
     abilityRows(c){
       const {A, TR, n0, pc, nf1} = c;
       return [
@@ -2627,6 +2640,10 @@ const CHAMPIONS = {
       A.rShield= R(T.rShield,rr) + T.rAP*ap + T.rHpPct/100 * bonusHP;
       A.rShieldMax = A.rShield * 1.6;
       A.qAS = 50;                 /* granted when the blade catches a champion */
+      /* Ki Barrier: a shield after every ability, sooner if it caught someone */
+      A.pShield = lerp(47, 120, L, 20) + 0.13 * bonusHP;
+      A.pCd     = 13 / ah;
+      A.pCdHit  = Math.max(0, 13 - (lerp(4, 8, Math.min(18, L)) + Math.max(0, L - 18) * 0.125)) / ah;
       A.qCd = R(T.qCd,qr)/ah; A.wCd = R(T.wCd,wr)/ah;
       A.eCd = R(T.eCd,er)/ah; A.rCd = R(T.rCd,rr)/(1 + tot.uh/100);
       if(!learned.q){ A.qFlat=0; A.qPct=0; A.qPctUp=0; A.qAS=0; }
@@ -2636,7 +2653,14 @@ const CHAMPIONS = {
       return A;
     },
     passiveName:["Ki Barrier","Barrière de Ki"],
-    passiveRows(c){ const {TR} = c; return [{lab:TR("wipStat"), val:"—"}]; },
+    passiveRows(c){
+      const {A, TR, n0, nf1} = c;
+      return [
+        {lab:TR("shield"),   val:n0(A.pShield)},
+        {lab:TR("sPcd"),     val:nf1.format(A.pCd) + " s"},
+        {lab:TR("sPcdHit"),  val:nf1.format(A.pCdHit) + " s", awk:true}
+      ];
+    },
     castNote(st){
       if(st.id === "q") return isFR() ? "Assaut crépusculaire — la lame traverse, 3 attaques renforcées"
                                       : "Twilight Assault — the blade passes through, 3 attacks enhanced";
@@ -2720,6 +2744,9 @@ const CHAMPIONS = {
       A.eStore    = R(T.eStore,er);
       A.eStoreUp  = R(T.eStoreUp,er);
       A.rShield   = R(T.rShield,rr) + T.rAP*ap;
+      /* An Acquired Taste: bonus magic damage on attacks and on the Q */
+      const bonusHP = tot.hp - c.base.hp;
+      A.pOnHit = c.lerp(5, 60, c.L, 12) + 0.04 * bonusHP + (1.25 * bonusHP / 100) * ap / 100;
       A.qCd = R(T.qCd,qr)/ah; A.wCd = R(T.wCd,wr)/ah;
       A.eCd = R(T.eCd,er); A.rCd = R(T.rCd,rr)/(1 + tot.uh/100);
       if(!learned.q){ A.qDmg=0; A.qHeal=0; }
@@ -2729,7 +2756,13 @@ const CHAMPIONS = {
       return A;
     },
     passiveName:["An Acquired Taste","Un goût acquis"],
-    passiveRows(c){ const {TR} = c; return [{lab:TR("wipStat"), val:"—"}]; },
+    passiveRows(c){
+      const {A, TR, n0} = c;
+      return [
+        {lab:TR("tPhit"),  val:n0(A.pOnHit)},
+        {lab:TR("kMarks"), val:"3"}
+      ];
+    },
     abilityRows(c){
       const {A, TR, n0, pc, nf1} = c;
       return [
@@ -3552,6 +3585,11 @@ const L10N = {
   kResoMs:["Stolen Time, move speed","Temps volé, vitesse"],
   kMarks:["marks to trigger","marques pour déclencher"],
   wipStat:["not modelled yet","pas encore modélisé"],
+  iPas:["attack speed per stack","vitesse d'attaque par charge"],
+  iPasMax:["at four stacks","à quatre charges"],
+  iPhit:["on-hit at four stacks","à l'impact, quatre charges"],
+  sPcd:["cooldown","recharge"], sPcdHit:["cooldown if it hits a champion","recharge si elle touche un champion"],
+  tPhit:["bonus magic damage on-hit","dégâts magiques bonus à l'impact"],
   iWmin:["minimum damage","dégâts minimum"], iWmax:["fully charged","pleinement chargé"],
   sQflat:["flat damage","dégâts fixes"], sQpct:["% of maximum health","% des PV max"],
   sQpctUp:["% when empowered","% une fois amélioré"],
