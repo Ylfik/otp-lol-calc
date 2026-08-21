@@ -1,0 +1,154 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Carnivore|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Cho'Gath
+|skill        = I
+|icon         = Carnivore.png
+|blurb        = {{sbc|Innate:}} Whenever {{ci|Cho'Gath}} kills an enemy, it {{tip|heal|heals}} and restores {{sti|{{as|mana}}}}.
+|description  = {{sbc|Innate:}} Whenever '''Cho'Gath''' kills an enemy, it {{tip|heals}} for {{pplevel|18 to 52|color=heal}} and restores {{as|{{sti|mana|{{pplevel|4.72 to 9.48}} mana}}}}.
+|targeting    = Passive
+|affects      = Self
+|damagetype   = 
+|spelleffects = 
+|spellshield  = 
+|projectile   = 
+|knockdown    = 
+|grounded     = 
+|notes        =
+* ''Carnivore'' will also trigger when '''Cho'Gath''' destroys a {{tip|turret}}, but not from other structures.
+* ''Carnivore'' does not trigger upon destroying {{tip|wards}} and possibly other similar units.
+** It does trigger upon killing one of {{cai|Prophet of an Elder God|Illaoi|Tentacles}}. [https://www.youtube.com/watch?t=161&v=_65aFxwtPfw]
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Rupture|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Cho'Gath
+|skill        = Q
+|icon         = Rupture.png
+|blurb        = {{sbc|Active:}} {{ci|Cho'Gath}} ruptures the target location, dealing {{as|magic damage}} and {{tip|airborne|knocking up}} enemies within, {{tip|slow|slowing}} them upon landing.
+|description  = {{sbc|Active:}} '''Cho'Gath''' ruptures the target location after a {{rutngt|0.625}} delay, granting {{tip|sight}} of the area before dealing {{as|magic damage}} to enemies within and {{tip|airborne|knocking them up}} for 1 second, and afterwards {{tip|slow|slowing}} them by 60% for {{fd|1.5}} seconds.
+|leveling     = {{st|Magic damage|{{ap|80 to 300}} {{as|(+ 100% AP)}}}}
+|target range = 950
+|cast time    = {{fd|0.5}}
+|effect radius= {{tip|cr|icononly = true}} 250
+|cooldown     = 6
+|cost         = 50
+|costtype     = mana
+|targeting    = Location
+|affects      = Enemies
+|damagetype   = Magic
+|spelleffects = spellaoe
+|spellshield  = True
+|projectile   = 
+|knockdown    = 
+|grounded     = 
+|outofrange   = walk to location
+|notes        = 
+* The delay before the rupture does not include the cast time.
+* The animation is visible in {{tip|brush}} and in [[Sight|fog of war]].
+* {{tip|Cleanse|Cleansing}} the {{tip|airborne}} will not prevent the {{tip|slow}}.
+** The slow itself can also not be blocked by {{tip|spell shield}}, but will always be prevented if the airborne was.
+* The area will still rupture even if '''Cho'Gath''' dies during the delay.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Feral Scream|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Cho'Gath
+|skill        = W
+|icon         = Feral Scream.png
+|blurb        = {{sbc|Active:}} {{ci|Cho'Gath}} roars in a cone, dealing {{as|magic damage}} and {{tip|silence|silencing}} enemies hit.
+|description  = {{sbc|Active:}} '''Cho'Gath''' roars in a cone in the target direction, dealing {{as|magic damage}} to enemies hit.
+|leveling     = {{st|Magic damage|{{ap|80 to 280}} {{as|(+ 70% AP)}}}}
+|description2 = Enemy {{tip|champions}} and {{ui|Rift Scuttler|Rift Scuttlers}} hit are also {{tip|silence|silenced}} for a duration.
+|leveling2    = {{st|Silence Duration|{{ap|1.6 to 2}} seconds}}
+|target range = {{tip|er|icononly = true}} {{tt|650|center-to-edge (from caster's center to target's edge)}}
+|angle        = {{tip|er|icononly = true}} 60{{degree}}
+|cooldown     = {{ap|11 to 9}}
+|cost         = {{ap|70 to 90}}
+|costtype     = mana
+|cast time    = {{fd|0.5}}
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = Magic
+|spelleffects = spellaoe
+|spellshield  = True
+|projectile   = False
+|knockdown    = 
+|grounded     = 
+|notes        =
+{{Effect at cast time end}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Vorpal Spikes|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Cho'Gath
+|skill        = E
+|icon         = Vorpal Spikes.png
+|blurb        = {{sbc|Active:}} {{cis|Cho'Gath}} next few basic attacks launch forth deadly spikes, dealing {{as|magic damage}} to enemies hit based on ''{{ai|Feast|Cho'Gath}}'' stacks and each {{as|target's '''maximum''' health}}, and {{tip|slow|slowing}} them.
+|description  = {{sbc|Active:}} '''Cho'Gath''' empowers its next 3 {{tip|basic attacks}} within 6 seconds to gain {{sti|range|50 '''bonus''' range}} and launch a blast of spikes {{tip|on-attack}} in the target's direction. Enemies struck are dealt {{as|magic damage}} and {{tip|slow|slowed}} by an amount that decays over {{fd|1.5}} seconds. The damage is modified against {{tip|monsters}}.
+|leveling     = {{st|Magic Damage|{{ap|20 to 100}} {{as|(+ 30% AP)}} {{as|(+ {{ap|2.5 to 3.9}}% {{as|(+ {{fd|0.5}}% per ''{{ai|Feast|Cho'Gath}}'' stack)|buzzword}} of target's '''maximum''' health)}}|Total Magic Damage|{{ap|20*3 to 100*3}} {{as|(+ {{ap|30*3}}% AP)}} {{as|(+ {{ap|2.5*3 to 3.9*3}}% {{as|(+ {{fd|1.5}}% per ''{{ai|Feast|Cho'Gath}}'' stack)|buzzword}} of target's '''maximum''' health)}}}}
+{{st|Monster Damage|{{ap|100 to 300}} {{as|(+ 30% AP)}}|Total Monster Damage|{{ap|100*3 to 300*3}} {{as|(+ {{ap|30*3}}% AP)}}}}
+{{st|Slow|{{ap|30 to 50}}%}}
+|description2 = The width of the blast of spikes increases based on '''Cho'Gath's''' character {{tip|size}} modifier when they launch, including but not limited to the bonus from ''{{ai|Feast|Cho'Gath|Feast}}'' stacks.
+|description3 = ''Vorpal Spikes {{tip|basic attack reset|resets}} '''Cho'Gath's''' basic attack timer.''
+|range        = {{tip|cr|icononly = true}} {{tt|650|From an offset 25 units in front of Cho'Gath}}
+|width        = {{tip|er|icononly = true}} {{pp|type=bonus size|key1=%|340;370;380;410;440;470;500|0;16.5±1.5;35±2;56.5±1.5;72.5±2.5;95±1;95.5±0.5|formula=340 +30 width at every bonus size threshold except +10 for the second instead, likely a bug}}
+|speed        = 1475
+|cooldown     = {{ap|8 to 4}}
+|cdstart      = post-effect
+|cost         = 30
+|costtype     = mana
+|cast time    = none
+|targeting    = Auto
+|affects      = Self / Enemies
+|damagetype   = Magic
+|spelleffects = aoe
+|spellshield  = False
+|projectile   = True
+|knockdown    = 
+|grounded     = 
+|parry        = False
+|notes        = 
+* The missiles are launched from an offset 25 units in front of Cho'Gath and towards the target's location on-attack-complete.
+** When attacking enemies within 25 units center-to-center of '''Cho'Gath''', the missile will fire in the opposite direction.
+* '''Cho'Gath's''' size factors into the wideness of the hitbox ''Vorpal Spikes'' has. External size modifiers ({{ai|Wild Growth|Lulu}}) contribute to this.
+** At certain size thresholds, the missile gets replaced by a different one with a different width. At each step, the width grows by 30, except for the 3rd missile, where it only grows by 10.{{bug|2}}
+** Some of the size thresholds are placed very weird.{{bug|2}}
+** The missile range is unchanged.
+* The empowered attack will trigger but not apply its effects against [[structures]].
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Feast|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Cho'Gath
+|skill        = R
+|icon         = Feast.png
+|blurb        = {{sbc|Active:}} {{ci|Cho'Gath}} devours an enemy, dealing {{as|true damage}} based on {{as|'''Cho'Gath's bonus''' health}}. If this attack kills the target, '''Cho'Gath''' gains a permanent ''Feast'' {{tip|stack}} that infinitely stacks.
+|blurb4       = {{sbc|Feast:}} For each stack, '''Cho'Gath''' gains {{as|{{sti|health|'''bonus''' health}}}}, {{sti|range|'''bonus''' attack range}} and increased {{tip|size}}.
+|description  = {{sbc|Active:}} '''Cho'Gath''' attempts to eat the target enemy, dealing them {{sti|{{as|true damage}}}}. Against non-{{tip|champions}}, the '''base''' damage is modified.
+|leveling     = {{st|Champion True Damage|{{ap|300|475|650}} {{as|(+ 50% AP)}} {{as|(+ 10% '''bonus''' health)}}}}
+{{st|Non-Champion True Damage|1200 {{as|(+ 50% AP)}} {{as|(+ 10% '''bonus''' health)}}}}
+|description2 = If the target is killed, '''Cho'Gath''' gains a {{tip|stack}} of ''Feast''. Only 6 stacks can be gained from non-epic {{tip|monster|monsters}} or {{tip|minion|minions}}.
+|description3 = Each stack of ''Feast'' increases the cast range of the ability by {{fd|2.5}}, for a maximum increase of 25 at 10 stacks, and grants '''Cho'Gath''' {{as|{{sti|health|'''bonus''' health}}}} as well as {{sti|range|'''bonus''' attack range}} and increased {{tip|size}}, capping at {{sti|range|75 '''bonus''' attack range}} and 100% increased size.
+|leveling3    = {{st|Bonus Health Per Stack|{{ap|80 to 160}}}}
+{{st|Bonus Attack Range Per Stack|{{ap|4.7 to 7.7}}}}
+{{st|Bonus Size Per Stack|{{ap|(60 to 100)/10}}%}}
+|target range = {{tip|er|icononly = true}} 175
+|cooldown     = {{ap|80 to 60}}
+|cost         = 100
+|costtype     = mana
+|cast time    = {{fd|0.25}}
+|targeting    = Unit
+|affects      = Enemies / Self
+|damagetype   = True
+|spelleffects = spell
+|spellshield  = True
+|projectile   = 
+|callforhelp  = True
+|flavorsound  = 
+|knockdown    = 
+|grounded     = 
+|notes        = 
+* The increased size stacks additively with other size increases.
+* The name of the bonus health buff is ''"Feast"''.
+* The bonus attack range and increase size cap at respectively {{ap|75/((60 to 100)/13)|round=2}} and {{ap|100/((60 to 100)/10)|round=2}} stacks, with the last stack being effective as the decimal part of the value (no decimal meaning 100% as effective).
+* Each stack of ''Feast'' increases the damage by {{ap|8|12|16}}.
+{{Unit-targeted cancel conditions}}
+* If an enemy {{tip|champion}} has health below the amount of {{as|true damage}} ''Feast'' deals, they will be marked for execution. This indicator does not consider {{tip|shield|shields}} or {{tip|invulnerability}}.  
+* Consuming any additional {{ui|Voidgrub|Voidgrubs}} from the same spawn group will be tracked as a "monster eaten" for ''Feast's'' buff, but will neither grant any bonuses nor count towards the 6-stack limit.{{bug}}
+* While not on {{sti|cooldown}}, ''Feast's'' ability icon on the HUD can be [[ping|pinged]] to announce its damage to {{tip|monsters}} in the ally chat.
+<!--
+** Pending Test: The kill success check is after all additional instant damage applied. If the additional instant damage triggered by Feast from Cho'Gath killed the target then Chogath will still earn the stack, eg: Dark Harvest, Electrocute, Cheap Shot, etc killed the target . Non-instant damage that requires another check such as Aery, Comet, Hextech & Infernal dragon soul, Luden Echo, The Collector etc does not add however. Hextech Alternator (including Night Harvester)??
+*Possibly bug: Feast has special interaction toward Shaco R Hallucination where it counted as champion stack.-->
+[[File:Feast_Execute_Indicator.png|thumb|left|150px|This indicator is only visible to '''Cho'Gath'''.]]
+}}
