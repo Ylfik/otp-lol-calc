@@ -1034,9 +1034,9 @@ body[data-view="home"] #app{display:none}
 
       <h3>The combo of reference</h3>
       <p>Every number on a champion's page is measured over the sequences that champion declares, and they
-         differ from one to the next: Udyr swings four times, twice in a stance then twice awakened; Elise
-         opens in human form and follows up as a spider; Ekko shields, dashes, casts and attacks. Each page
-         names its own above the combo columns.</p>
+         differ from one to the next: some are four basic attacks, others a chain of casts, others a swap
+         between two forms. Each page names its own above the combo columns, with a line saying what makes
+         that sequence work.</p>
       <p>Whatever the sequence, it is walked <strong>one step at a time</strong>, with the target's health
          falling as it goes. That is what decides how often each passive fires, and when a threshold is
          crossed.</p>
@@ -1051,15 +1051,17 @@ body[data-view="home"] #app{display:none}
       <p>The combo is stepped through <strong>one attack at a time</strong>. Passives that scale off the
          target's <em>current</em> health hit for less as it drops, and thresholds are read at the moment
          of each hit — Coup de Grace only pays once the target is actually under 40%.</p>
-      <p><strong>Click any stance name</strong> in a build to open the full breakdown: what every attack was
+      <p><strong>Click any combo name</strong> in a build to open the full breakdown: what every attack was
          made of, the target's remaining health after each one, and the totals.</p>
       <p>Under each card, a table lists every item and rune that dealt damage, heaviest first, with the share
-         of the <strong>full Q combo</strong> each one accounts for. It is the quickest way to see which item is
+         of the <strong>champion's first combo</strong> each one accounts for. It is the quickest way to see which item is
          actually carrying a build.</p>
 
       <h3>Level and skill points</h3>
       <p>Points follow the game: one per level, rank 2 at level 3, rank 3 at level 5, up to rank 6 at level 11.
-         Udyr has no ultimate, so all four stances share the same rules. A counter next to the ranks shows what
+         Each champion carries its own rules: most cap their basic abilities at rank 5 and take their ultimate
+         at levels 6, 11 and 16, while Udyr has no ultimate and puts six ranks into each of his four stances.
+         A counter next to the ranks shows what
          you have spent against what your level allows, and the ranks trim themselves if you go over or drop a
          level. <strong>Triple Tonic</strong> adds a point at level 9.</p>
 
@@ -1155,7 +1157,7 @@ body[data-view="home"] #app{display:none}
       <p>Made by <strong>Ylfik</strong>. Built from my own Google Sheets calculator and rewritten as a web app
          with the help of an AI assistant, which wrote the code and cross-checked the values against the
          official data. The model, the build choices and the testing are mine.</p>
-      <p class="legal">Udyr Calc isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot
+      <p class="legal">OTP LoL Calc isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot
          Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all
          associated properties are trademarks or registered trademarks of Riot Games, Inc.</p>
     </div>
@@ -1167,9 +1169,9 @@ body[data-view="home"] #app{display:none}
 
       <h3>Le combo de référence</h3>
       <p>Les chiffres d'un champion sont mesurés sur les séquences qu'il déclare, et elles diffèrent d'un
-         champion à l'autre : Udyr frappe quatre fois, deux dans la posture puis deux éveillées ; Elise
-         ouvre en forme humaine et enchaîne en araignée ; Ekko pose son bouclier, dash, lance et frappe.
-         Chaque page indique la sienne au-dessus des colonnes de combo.</p>
+         champion à l'autre : certaines sont quatre auto-attaques, d'autres un enchaînement de sorts,
+         d'autres un passage d'une forme à l'autre. Chaque page indique la sienne au-dessus des colonnes de
+         combo, avec une ligne expliquant ce qui fait fonctionner cette séquence.</p>
       <p>Quelle que soit la séquence, elle est déroulée <strong>étape par étape</strong>, avec les PV de la
          cible qui descendent au fil des coups. C'est ce qui détermine la fréquence de chaque passif, et le
          moment où un seuil est franchi.</p>
@@ -1184,15 +1186,17 @@ body[data-view="home"] #app{display:none}
       <p>Le combo est déroulé <strong>attaque par attaque</strong>. Les passifs qui scalent sur les PV
          <em>actuels</em> tapent moins fort à mesure que la cible descend, et les seuils sont lus au moment de
          chaque coup — Coup de Grâce ne paie qu'une fois la cible réellement sous 40 %.</p>
-      <p><strong>Cliquez sur le nom d'une posture</strong> dans un build pour ouvrir le détail complet : la
+      <p><strong>Cliquez sur le nom d'un combo</strong> dans un build pour ouvrir le détail complet : la
          composition de chaque attaque, les PV restants de la cible après chacune, et les totaux.</p>
       <p>Sous chaque carte, un tableau liste les items et runes ayant infligé des dégâts, du plus lourd au plus
-         léger, avec la part du <strong>combo Q complet</strong> que chacun représente. C'est le moyen le plus
+         léger, avec la part du <strong>premier combo du champion</strong> que chacun représente. C'est le moyen le plus
          rapide de voir quel item porte réellement un build.</p>
 
       <h3>Niveau et points de compétence</h3>
       <p>Les points suivent le jeu : un par niveau, rang 2 au niveau 3, rang 3 au niveau 5, jusqu'au rang 6 au
-         niveau 11. Udyr n'a pas d'ultime, les quatre postures obéissent donc aux mêmes règles. Un compteur à
+         Chaque champion a ses propres règles : la plupart plafonnent leurs sorts de base au rang 5 et prennent
+         leur ultime aux niveaux 6, 11 et 16, tandis qu'Udyr n'a pas d'ultime et met six rangs dans chacune de
+         ses quatre postures. Un compteur à
          côté des rangs indique ce que vous avez dépensé sur ce que votre niveau autorise, et les rangs se
          réajustent si vous dépassez ou redescendez de niveau. <strong>Triple tonique</strong> ajoute un point
          au niveau 9.</p>
@@ -1297,7 +1301,7 @@ body[data-view="home"] #app{display:none}
       <p>Réalisé par <strong>Ylfik</strong>. Construit à partir de mon propre tableur Google Sheets et réécrit
          en site web avec l'aide d'une IA, qui a écrit le code et recoupé les valeurs avec les données
          officielles. Le modèle, les choix de builds et les tests sont les miens.</p>
-      <p class="legal">Udyr Calc n'est pas approuvé par Riot Games et ne reflète pas les opinions de Riot Games
+      <p class="legal">OTP LoL Calc n'est pas approuvé par Riot Games et ne reflète pas les opinions de Riot Games
          ni de quiconque impliqué officiellement dans la production ou la gestion des propriétés de Riot Games.
          Riot Games et toutes les propriétés associées sont des marques ou marques déposées de Riot Games, Inc.</p>
     </div>
@@ -3255,8 +3259,8 @@ const L10N = {
  swNow:["Currently","Actuellement"],
   swDelta:["Change","Écart"], swGold:["Cost","Coût"],
   source:["Source","Source"], shareHead:["% of Q combo","% du combo Q"],
-  shareWhy:["share of the full Q combo damage this line accounts for",
-            "part des dégâts du combo Q complet que représente cette ligne"],
+  shareWhy:["share of the first combo's damage this line accounts for",
+            "part des dégâts du premier combo que représente cette ligne"],
   ultHaste:["ULT HASTE","ACCÉL. ULT"], awakenCD:["AWAKEN CD","RECHARGE ÉVEIL"],
   awakenAtk:["AWAKEN IN ATK","ÉVEIL EN ATQ"], awakenReal:["AWAKEN WHILE HITTING","ÉVEIL EN TAPANT"],
   comboTime:["4 attacks","4 attaques"], attackEvery:["1 attack","1 attaque"], dps:["damage / sec","dégâts / sec"],
@@ -3399,7 +3403,7 @@ const FR_TIPS = {
 "BERSERKER'S GREAVES": "Aucun passif : vitesse d'attaque et de déplacement uniquement.",
 "GUNMETAL GREAVES": "Aucun passif : vitesse d'attaque, vol de vie et vitesse de déplacement uniquement.",
 "INFINITY EDGE": "Aucun passif : dégâts d'attaque, chance et dégâts de critique uniquement.",
-"RUNAAN'S HURRICANE": "Furie du vent : projectiles supplémentaires sur les ennemis proches. L'item ne peut être acheté que par les champions à distance, donc Udyr ne peut jamais le posséder.",
+"RUNAAN'S HURRICANE": "Furie du vent : projectiles supplémentaires sur les ennemis proches. L'item ne peut être acheté que par les champions à distance, donc les champions de mêlée ne peuvent jamais l'acheter.",
 "PLATED STEELCAPS": "Blindage : réduit de 10 % tous les dégâts de base reçus, hors attaques de tourelle.",
 "ARMORED ADVANCE": "Blindage, plus Endurance noxienne : subir des dégâts physiques donne un bouclier absorbant 100-200 (+8 % des PV bonus) pendant 5 s (15 s de recharge).",
 "CHAINLACED CRUSHERS": "Persévérance noxienne : subir des dégâts magiques donne un bouclier absorbant 100-200 (+8 % des PV bonus) pendant 5 s (15 s de recharge).",
