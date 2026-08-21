@@ -1,0 +1,165 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Vow of the First Lands|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Yunara
+|skill        = I
+|icon         = Yunara Vow of the First Lands.png
+|description  = {{sbc|Innate:}} '''Yunara's''' {{tip|critical strike|critical strikes}} deal {{as|10%|magic damage}} {{as|(+ 10% per 100 AP)}} {{as|'''bonus''' magic damage}}.
+|targeting    = Passive
+|affects      = Self, Enemies
+|damagetype   = magic 
+|spelleffects = proc
+|parry        = true
+|notes        = 
+* The '''bonus''' damage is calculated based on the total damage of the critical strike {{tt|pre-mitigation|Damage calculated before modifiers}}.
+** If '''Yunara''' critically strikes against a champion that has {{ii|Randuin's Omen}}, the '''bonus''' magic damage from ''Vow of the First Lands'' and the '''bonus''' magic damage on-hit from {{ai|Q|Yunara}} will both be reduced by 30%.{{bug|2}}
+<!-- Blurb -->
+|blurbicon    = Yunara Vow of the First Lands.png
+|blurb        = {{sbc|Innate:}} {{cis|Yunara}} {{tip|critical strike|critical strikes}} deal {{as|'''bonus''' magic damage}}.
+}}
+<!-- Damage values are defined as parameters.
+-->{{#vardefine:pb1|5}}<!-- Base passive on-hit damage at rank 1
+-->{{#vardefine:pb5|25}}<!-- Base passive on-hit damage at rank 5
+-->{{#vardefine:pap|20}}<!-- Base on-hit AP ratio
+-->{{#vardefine:ab1|5}}<!-- Base active on-hit damage at rank 1
+-->{{#vardefine:ab5|25}}<!-- Base active on-hit damage at rank 5
+-->{{#vardefine:aap|20}}<!-- Active on-hit AP ratio
+-->{{{{{1<noinclude>|Ability data</noinclude>}}}|Cultivation of Spirit|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Yunara
+|skill        = Q
+|icon         = Yunara Cultivation of Spirit 2.png
+|icon2        = Yunara Cultivation of Spirit.png
+|description  = {{sbc|Passive:}} '''Yunara's''' {{tip|basic attacks}} deal {{as|'''bonus''' magic damage}} {{tip|on-hit}}. While this ability is inactive, her basic attacks {{tip|on-attack}} generate a {{tip|stack}} of ''Unleash'' for 6 seconds, increased to 2 stacks against {{tip|champions}}. The stacks refresh on subsequent attacks, stack up to 8 times, and expire one by one every {{fd|0.5}} seconds after the duration.
+|leveling     = {{st|Passive Bonus Magic Damage|{{ap|{{#var:pb1}} to {{#var:pb5}}}} {{as|(+ {{#var:pap}}% AP)}}}}
+|description2 = {{sbc|Active:}} '''Yunara''' unleashes for 5 seconds: gaining {{sti|{{as|'''bonus''' attack speed}}}}, dealing {{as|'''additional bonus''' magic damage|magic damage}} {{tip|on-hit}}, and augmenting her basic attacks to have increased missile speed, a 40% lower {{tip|attack windup|windup}} time, and an {{tip|uncancellable windup}}. Her basic attacks are also empowered to spread to each enemy near the target, dealing {{as|30% AD}} {{as|physical damage}}.<br>Each spread attack {{tip|applies lifesteal|applies}} {{as|{{sti|life steal}}}} and {{tip|on-hit}} effects, with on-hit damage reduced to 30% effectiveness, and will {{tip|critically strike}} if the triggering attack does. Spread attacks deal 250% damage against {{tip|minions}} {{as|below 30% '''maximum''' health}}.
+|leveling2    = {{st|Bonus Attack Speed|{{ap|20 to 60}}%}}
+{{st|Active Bonus Magic Damage|{{ap|{{#var:ab1}} to {{#var:ab5}}}} {{as|(+ {{#var:aap}}% AP)}}|Combined Bonus Magic Damage|{{ap|{{#var:pb1}}+{{#var:ab1}} to {{#var:pb5}}+{{#var:ab5}}}} {{as|(+ {{#expr:{{#var:aap}}+{{#var:pap}}}}% AP)}}}}
+{{st|Active Increased Minion Damage|{{ap|{{#var:ab1}}*2.5 to {{#var:ab5}}*2.5}} {{as|(+ {{#expr:20*2.5}}% AP)}}|Combined Increased Minion Damage|{{ap|({{#var:pb1}}+{{#var:ab1}})*2.5 to ({{#var:pb5}}+{{#var:ab5}})*2.5}} {{as|(+ {{#expr:({{#var:aap}}+{{#var:pap}})*2.5}}% AP)}}}}
+|description3 = ''Cultivation of Spirit {{tip|basic attack reset|resets}} '''Yunara's''' basic attack timer. Targets do not have to be {{tip|sight|visible}} to be hit by the spread attacks.''
+|cast time    = none
+|effect radius= {{tip|er|icononly = true}} {{tt|300|Center-to-edge}}
+|cost         = 30
+|costtype     = Mana + 8 Unleash Stacks
+|speed        = {{dv|{{tt|10000|Empowered attack missile speed}}|{{tt|2000|Spread attack missile speed}}}}
+|queue time   = {{fd|0.05}}
+|targeting    = Auto
+|affects      = Self, Enemies
+|damagetype   = Physical Magic
+|spelleffects = special
+|spellshield  = false
+|projectile   = true
+|parry        = unknown
+|notes        = 
+* ''Cultivation of Spirit's'' damage classifications:
+** {{tip|Proc damage}} for the passive and active on-hit damage.
+** {{tip|Basic damage}} for the spread attack damage.
+* Spread attacks will still deal damage even if '''Yunara''' misses her basic attack due to {{tip|blind}}.
+* {{Pending for test}} Spread attack interaction with parrying effects ({{tip|dodge}}, {{tip|block}})
+* There is no limit to the number of enemies the empowered attacks can spread to.
+* '''Yunara's''' secondary resource bar gives various context for ''Cultivation of Spirit''. It is visible to the player only.
+** While ''Cultivation of Spirit'' is not active, the bar shows her current ''Unleash'' stacks. It is colored white while below maximum stacks and yellow while at maximum stacks.
+** After ''Cultivation of Spirit'' is cast, the bar counts down the buff's duration.
+*** This is also true during {{ai|Transcend One's Self|Yunara}}, which means that the bar effectively also counts down the duration of her ''Transcendent State''.
+* If '''Yunara''' begins an {{tip|attack windup}} toward the end of the active effects' duration and its launch would take place after it, the effects' duration is extended equal to the attack's windup time, once at most.
+** Since the buff ends right after launching ''Cultivation of Spirit's'' attack and its effects have already been determined, this allows it to both spread to nearby enemies and generate a stack of ''Unleash''.
+* Each bolt from {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}} may trigger its own spread attack (despite the spread attacks not being an on-hit effect).
+|tips        = 
+* While ''Cultivation of Spirit'' has no cooldown, the ability has a minimum downtime that is the time it takes for '''Yunara''' to generate 8 stacks.
+** Against champions, this downtime is {{fd|{{#expr:4*1/{{ccd|Yunara|as_base}} round 2}}}} seconds at '''Yunara's''' base attack speed ({{as|{{fd|{{ccd|Yunara|as_base}}}}|attack speed}}), 20 seconds at minimum attack speed ({{as|{{fd|0.2}}|attack speed}}), and {{fd|1.{{Recurring|33}}}} seconds at maximum attack speed ({{as|{{fd|3.003}}|attack speed}}).
+** Against non-champions, this downtime is {{fd|{{#expr:8*1/{{ccd|Yunara|as_base}} round 2}}}} seconds at '''Yunara's''' base attack speed ({{as|{{fd|{{ccd|Yunara|as_base}}}}|attack speed}}), 40 seconds at minimum attack speed ({{as|{{fd|0.2}}|attack speed}}), and {{fd|2.{{Recurring|66}}}} seconds at maximum attack speed ({{as|{{fd|3.003}}|attack speed}}).
+** These can be further decreased with effects that allow exceeding the attack speed cap or reset the attack timer.
+<!-- Blurb -->
+|blurbicon    = Yunara Cultivation of Spirit 2.png
+|blurb        = {{sbc|Passive:}} {{cis|Yunara}} {{tip|basic attacks}} deal {{as|'''bonus''' magic damage}} {{tip|on-hit}} and generate {{tip|stacks}} of ''Unleash'' {{tip|on-attack}}, stacking up to a cap upon which she can cast ''Cultivation of Spirit''.
+|blurb2       = {{sbc|Active:}} '''Yunara''' unleashes for a few seconds: her basic attacks gain {{as|{{sti|'''bonus''' attack speed}}}}, deal {{as|'''additional bonus''' magic damage|magic damage}}, and spread to deal {{as|physical damage}} to enemies near the target.
+|blurb4       = The spread attack will apply {{as|{{sti|life steal}}}} and {{tip|on-hit}} effects, and can {{tip|critically strike}}.
+}}
+<!--Edit these paramater values when they get changed
+-->{{#vardefine:b1|55}}<!-- Base Rank 1 Damage
+-->{{#vardefine:b5|215}}<!-- Base Rank 5 Damage
+-->{{#vardefine:adr|85}}<!-- Bonus AD ratio as a PERCENTAGE
+-->{{#vardefine:apr|50}}<!-- AP ratio as a PERCENTAGE
+-->{{#vardefine:lm|0.6}}<!-- Linger Damage Modifier as a DECIMAL
+-->{{{{{1<noinclude>|Ability data</noinclude>}}}|Arc of Judgment|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Yunara
+|skill        = W
+|icon         = Yunara Arc of Judgment.png
+|description  = {{sbc|Active:}} '''Yunara''' launches a spinning prayer bead in the target direction that briefly grants {{tip|sight}} of its {{tt|surroundings|Cannot see through terrain nor brush}} as it travels. The bead slows down significantly while colliding with an enemy, lingering as it travels and resetting its remaining duration; upon reaching maximum range, it will expand and linger in place for 1 second regardless of enemies hit.<br><br>The initial hit against each enemy before the bead's expansion deals {{as|magic damage}} and {{tip|slow|slows}} them by 99% decaying over {{fd|1.5}} seconds. While lingering, the bead deals {{#expr:{{#var:lm}}*100/4}}% of the impact damage as {{as|magic damage}} to nearby enemies every {{fd|0.25}} seconds.
+|leveling     = {{st|Initial Magic Damage|{{ap|{{#var:b1}} to {{#var:b5}}}} {{as|(+ {{#var:adr}}% '''bonus''' AD)}} {{as|(+ {{#var:apr}}% AP)}}}}
+{{st|Linger Magic Damage per Tick|{{ap|({{#var:b1}}*{{#var:lm}})/4 to ({{#var:b5}}*{{#var:lm}})/4}} {{as|(+ {{ap|({{#var:adr}}*{{#var:lm}})/4}}% '''bonus''' AD)}} {{as|(+ {{ap|({{#var:apr}}*{{#var:lm}})/4}}% AP)}}}}
+{{st|Total Expanded Damage|{{ap|(({{#var:b1}}*{{#var:lm}})/4)*4 to (({{#var:b5}}*{{#var:lm}})/4)*4}} {{as|(+ {{ap|(({{#var:adr}}*{{#var:lm}})/4)*4}}% '''bonus''' AD)}} {{as|(+ {{ap|(({{#var:apr}}*{{#var:lm}})/4)*4}}% AP)}}}}
+|description2 = ''Arc of Judgment'' deals {{pp|50 to 100 for 3|1;9;13|key=%}} damage against {{tip|minions}} and {{tip|execute|executes}} them if they would be killed by 6 more damage instances from the linger effect.
+|range        = 1150
+|speed        = {{dv|{{tt|2150|Normal missile speed}}|{{tt|150|Lingering missile speed}}}}
+|effect radius= {{tt|150|Expanded bead radius}}
+|width        = {{tip|er|icononly = true}} 120
+|cooldown     = 10
+|cast time    = {{pp|0.45 to 0.225 for 11|0 to 100|key1=%|type='''bonus''' attack speed|label1= Bonus AS|color=attack speed|round=3}}
+|cost         = 60
+|costtype     = mana
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = magic
+|spelleffects = special
+|spellshield  = special
+|projectile   = true
+|notes        = 
+* Applies {{tip|area damage}} for the initial hit and {{tip|persistent area damage}} for the lingering effect.
+* {{tip|Spell shield}} can block either the initial hit or one damage tick of the lingering effect.{{Effect at cast time end}}
+* ''Arc of Judgment'' can hit an enemy more than once with the initial damage as well with the lingering effect (both while not expanded and while expanded).
+** The bead can hit an enemy multiple times if they collide with it again while it is in flight.
+<!-- Blurb -->
+|blurbicon    = Yunara Arc of Judgment.png
+|blurb        = {{sbc|Active:}} {{ci|Yunara}} launches a spinning prayer bead that briefly slows down upon hitting an enemy. The initial hit against each enemy deals {{as|magic damage}} and {{tip|slows}} the target, and the bead continually deals {{as|magic damage}} to nearby enemies.
+|blurb2       = Upon reaching maximum range, the bead expands and lingers briefly.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Kanmei's Steps|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Yunara
+|skill        = E
+|icon         = Yunara Kanmei's Steps.png
+|description  = {{sbc|Active:}} '''Yunara''' becomes {{tip|ghosted}} and gains {{sti|{{as|'''bonus''' movement speed}}}} for {{fd|1.5}} seconds. The {{as|movement speed}} is 50% more effective while facing a nearby {{tip|sight|visible}} enemy {{tip|champion}}.
+|leveling     = {{st|Bonus Move Speed|{{ap|30 to 50}}%|Increased Bonus Move Speed|{{ap|30*1.5 to 50*1.5}}%}}
+|cost         = 40
+|costtype     = Mana
+|cooldown     = 9
+|cdstart      = on-cast
+|cast time    = none
+|effect radius= {{tip|cr|icononly = true}} {{tt|2000|Enemy champion check}}
+|queue time   = {{fd|0.05}}
+|targeting    = auto
+|affects      = Self
+|notes        = 
+<!-- Blurb -->
+|blurbicon    = Yunara Kanmei's Steps.png
+|blurb        = {{sbc|Active:}} {{ci|Yunara}} briefly becomes {{tip|ghosted}} and gains {{sti|ms|{{as|'''bonus''' move speed|ms}}}}, increased while facing an enemy {{tip|champion}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Transcend One's Self|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Yunara
+|skill        = R
+|icon         = false
+|icon2        = Yunara Transcend One's Self.png
+|description  = {{sbc|Passive:}} ''{{ais|Arc of Ruin|Yunara}}'' base damage and ''{{ais|Untouchable Shadow|Yunara}}'' dash speed scale with ''Transcend One's Self's'' rank.
+|leveling     = {{st|[[File: Yunara Arc of Ruin.png|20px|border|link=]] Arc of Ruin Base Damage|{{ap|160 to 480}}}}
+{{st|[[File: Yunara Untouchable Shadow.png|20px|border|link=]] Untouchable Shadow Dash Speed|{{ap|1350 to 1650}}}}
+|description2 = {{sbc|Active:}} '''Yunara''' enters ''Transcendent State'' for 15 seconds, during which each of her basic abilities is empowered:
+{{lc|{{ai|Cultivation of Spirit|Yunara}}}} Automatically becomes active at no cost, with the duration increased to ''Transcendent State's''.
+{{lc|{{ai|Arc of Judgment|Yunara}}}} Upgraded into ''{{ai|Arc of Ruin|Yunara}}'', which has no cost and has its {{sti|'''remaining''' cooldown}} reduced by 80% upon both entering and exiting the state.
+{{lc|{{ai|Kanmei's Steps|Yunara}}}} Upgraded into ''{{ai|Untouchable Shadow|Yunara}}'', which has no cost and has its {{sti|cooldown}} reset upon both entering and exiting the state.
+|cooldown     = {{ap|100 to 80}}
+|cdstart      = on-cast
+|cost         = 100
+|costtype     = Mana
+|cast time    = none
+|targeting    = Auto
+|affects      = Self
+|notes        = 
+* An ongoing ''{{ais|Kanmei's Steps|Yunara}}'' effect is not lost when quickly replaced by ''{{ai|Untouchable Shadow|Yunara}}''.
+* {{ai|Cultivation of Spirit|Yunara}} is cast alongside ''Transcend One's Self''. If the former was not already active, this will also grant its {{tip|basic attack reset|attack reset}}.
+** The attack reset does '''not''' originate from ''Transcend One's Self'' nor is ''Transcend One's Self'' tagged as granting one itself (e.g. for the purposes of {{ri|Hail of Blades}}).
+* ''Transcend One's Self'' cannot be cast again while active.
+|flavorsound = {{sm2|Yunara_Original_R_1.ogg}} ''"Relentless fortitude!"''
+<!-- Blurb -->
+|blurbicon    = Yunara Transcend One's Self.png
+|blurb        = {{sbc|Passive:}} ''{{ais|Arc of Ruin|Yunara}}'' damage and {{ais|Untouchable Shadow|Yunara}} dash speed are increased.
+|blurb2       = {{sbc|Active:}} {{ci|Yunara}} enters ''Transcendent State'' for some time.
+|blurb3       = {{sbc|Transcendent State:}} '''Yunara''' gains ''{{ais|Cultivation of Spirit|Yunara}}'' active effect, ''{{ai|Arc of Judgment|Yunara}}'' and ''{{ai|Kanmei's Steps|Yunara}}'' are upgraded into ''{{ai|Arc of Ruin|Yunara}}'' and ''{{ai|Untouchable Shadow|Yunara}}''.
+|blurb4       = ''{{ais|Kanmei's Steps|Yunara}}'' and ''{{ais|Arc of Judgment|Yunara}}'' cooldowns are reset and reduced, respectively, upon both entering and exiting the state.
+}}
