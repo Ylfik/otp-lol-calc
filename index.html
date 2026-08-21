@@ -165,6 +165,8 @@ main{max-width:2200px;margin:0 auto;padding:22px 28px 80px}
 .mixsl,.mixrow{gap:8px!important}
 .mixsl input[type=range],.mixrow input[type=range]{accent-color:var(--q);width:150px}
 .mixval{font-family:var(--mono);font-size:10.5px;color:var(--q);min-width:96px;text-transform:none;letter-spacing:0}
+.wipbar{margin:12px 0 2px;padding:8px 12px;border:1px solid var(--e);border-radius:3px;
+  background:rgba(11,17,24,.5);color:var(--e);font-size:12px;line-height:1.5}
 .mixbar{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:2px 0 10px}
 .mixbar input[type=range]{width:190px;accent-color:var(--q)}
 .mixend{font-family:var(--display);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
@@ -339,6 +341,8 @@ tr.swcur td{background:rgba(232,161,60,.09)}
   font-family:var(--display);font-weight:400;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
   margin:0 0 2px;color:var(--ink-dim);
 }
+.ab.p h4{color:var(--ink-dim)}
+.ab.p{border-color:var(--line-soft)}
 .ab.q h4{color:var(--q)} .ab.w h4{color:var(--w)}
 .ab.e h4{color:var(--e)} .ab.r h4{color:var(--r)}
 .ab .row{display:flex;justify-content:space-between;gap:8px;font-size:11.5px;padding:1px 0}
@@ -830,6 +834,7 @@ body[data-view="home"] #app{display:none}
   border:1px solid var(--line);border-radius:9px;padding:2px 8px;background:rgba(11,17,24,.75);
 }
 .champ .tagnew{border-color:var(--q);color:var(--q)}
+.champ .tagwip{border-color:var(--e);color:var(--e)}
 
 .home-why{margin-top:46px;border-top:1px solid var(--line-soft);padding-top:26px}
 .home-why h2{font-family:var(--display);font-weight:400;font-size:12px;letter-spacing:.24em;
@@ -2072,6 +2077,15 @@ const CHAMPIONS = {
     awakenBase: L => L >= 16 ? 20 : L >= 11 ? 30 : L >= 6 ? 40 : 50,
     stanceCD: 6,
     comboASBonus: 30,          /* Monk Training, on every attack of the combo */
+    passiveName:["Monk Training","Entraînement du moine"],
+    passiveRows(c){
+      const {A, TR, n0, pc, nf1} = c;
+      return [
+        {lab:TR("uAsAfterCast"), val:"+" + pc(30)},
+        {lab:TR("uRefund"),      val:pc(5)},
+        {lab:TR("awakenCD"),     val:nf1.format(A.awakenCD) + " s", awk:true}
+      ];
+    },
     /* what each ability panel shows, and what each combo column shows */
     abilityRows(c){
       const {A, M, TR, n0, pc, nf1} = c, cd = {lab:TR("cooldown"), val:nf1.format(A.stanceCD) + " s"};
@@ -2301,6 +2315,15 @@ const CHAMPIONS = {
       A.msSpider = c.msSoftCap((base.ms + 25 + c.S.ms) * (1 + tot.mspct/100));
       return A;
     },
+    passiveName:["Spider Queen","Reine araignée"],
+    passiveRows(c){
+      const {A, TR, n0} = c;
+      return [
+        {lab:TR("ePassive"),     val:n0(A.pOnHit)},
+        {lab:TR("ePassiveHeal"), val:n0(A.pHeal)},
+        {lab:TR("eSpiders"),     val:n0(A.spiderCap)}
+      ];
+    },
     abilityRows(c){
       const {A, TR, n0, pc, nf1} = c;
       return [
@@ -2480,6 +2503,15 @@ const CHAMPIONS = {
       return isFR() ? "Plongée — dash, prépare l'attaque suivante"
                     : "Phase Dive — dash, empowers the next attack";
     },
+    passiveName:["Z-Drive Resonance","Résonance du Z-Drive"],
+    passiveRows(c){
+      const {A, TR, n0, pc} = c;
+      return [
+        {lab:TR("kReso"),   val:n0(A.reso)},
+        {lab:TR("kResoMs"), val:"+" + pc(A.resoMs)},
+        {lab:TR("kMarks"),  val:"3"}
+      ];
+    },
     abilityRows(c){
       const {A, TR, n0, pc, nf1} = c;
       return [
@@ -2506,6 +2538,212 @@ const CHAMPIONS = {
         {lab:TR("kReso"), val:n0(A.reso)},
         {lab:TR("targetLeft"), val:n0(c.leftover)}];
     }
+  },
+  irelia:{
+    key:"irelia", name:"Irelia", splash:0,
+    base:{hp:[630,115], mana:[350,50], ad:[65,3.5], ar:[36,4.7], mr:[30,2.05],
+          as:0.656, asPerLevel:2.5, ms:335},
+    abilities_meta:[
+      {k:"q", en:"Bladesurge",       fr:"Assaut des lames"},
+      {k:"w", en:"Defiant Dance",    fr:"Danse du défi"},
+      {k:"e", en:"Flawless Duet",    fr:"Duo sans faille"},
+      {k:"r", en:"Vanguard's Edge",  fr:"Lame d'avant-garde"}
+    ],
+    rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
+    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    maxRank: 5,
+    ranks:{
+      qFlat:[5,25,45,65,85], qAD:0.70, qHealPct:[9,10,11,12,13],
+      wMin:[10,20,30,40,50], wMinAD:0.40, wMinAP:0.50,
+      eDmg:[70,110,150,190,230], eAP:1.00,
+      rDmg:[125,200,275], rAP:0.70,
+      qCd:[10,9,8,7,6], wCd:[20,18,16,14,12], eCd:[16,14.5,13,11.5,10], rCd:[125,105,85]
+    },
+    abilities(c){
+      const {A, T, qr, wr, er, rr, tot, bonusAD, learned} = c;
+      const R = (a,n) => a[Math.max(0, Math.min(a.length-1, n-1))] || 0;
+      const ap = tot.ap, ah = 1 + tot.ah/100;
+      A.qDmg  = R(T.qFlat,qr) + T.qAD*tot.ad;
+      A.qHeal = R(T.qHealPct,qr)/100 * tot.ad;
+      A.wMin  = R(T.wMin,wr) + T.wMinAD*tot.ad + T.wMinAP*ap;
+      A.wMax  = A.wMin * 3;                     /* held to full charge */
+      A.eDmg  = R(T.eDmg,er) + T.eAP*ap;
+      A.rDmg  = R(T.rDmg,rr) + T.rAP*ap;
+      A.qCd = R(T.qCd,qr)/ah; A.wCd = R(T.wCd,wr)/ah;
+      A.eCd = R(T.eCd,er)/ah; A.rCd = R(T.rCd,rr)/(1 + tot.uh/100);
+      if(!learned.q){ A.qDmg=0; A.qHeal=0; }
+      if(!learned.w){ A.wMin=0; A.wMax=0; }
+      if(!learned.e) A.eDmg=0;
+      if(!learned.r) A.rDmg=0;
+      A.msIdle = c.msSoftCap((c.base.ms + c.S.ms) * (1 + tot.mspct/100));
+      return A;
+    },
+    passiveName:["Ionian Fervor","Ferveur ionienne"],
+    passiveRows(c){ const {TR} = c; return [{lab:TR("wipStat"), val:"—"}]; },
+    abilityRows(c){
+      const {A, TR, n0, pc, nf1} = c;
+      return [
+        [{lab:TR("damage"), val:n0(A.qDmg)}, {lab:TR("healing"), val:n0(A.qHeal)},
+         {lab:TR("cooldown"), val:nf1.format(A.qCd)+" s"}],
+        [{lab:TR("iWmin"), val:n0(A.wMin)}, {lab:TR("iWmax"), val:n0(A.wMax), awk:true},
+         {lab:TR("cooldown"), val:nf1.format(A.wCd)+" s"}],
+        [{lab:TR("damage"), val:n0(A.eDmg)}, {lab:TR("cooldown"), val:nf1.format(A.eCd)+" s"}],
+        [{lab:TR("damage"), val:n0(A.rDmg)}, {lab:TR("cooldown"), val:nf1.format(A.rCd)+" s"}]
+      ];
+    },
+    combos:[]
+  },
+  shen:{
+    key:"shen", name:"Shen", splash:0,
+    base:{hp:[610,99], mana:[400,0], ad:[64,3], ar:[34,4.2], mr:[32,2.05],
+          as:0.751, asPerLevel:3, ms:340},
+    abilities_meta:[
+      {k:"q", en:"Twilight Assault",  fr:"Assaut crépusculaire"},
+      {k:"w", en:"Spirit's Refuge",   fr:"Refuge de l'esprit"},
+      {k:"e", en:"Shadow Dash",       fr:"Ruée de l'ombre"},
+      {k:"r", en:"Stand United",      fr:"Unis dans l'épreuve"}
+    ],
+    rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
+    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    maxRank: 5,
+    ranks:{
+      qFlat:[10,16,22,28,34,40], qPct:[2,2.5,3,3.5,4], qPctUp:[5,5.5,6,6.5,7],
+      qSlow:[25,30,35,40,45],
+      eDmg:[60,85,110,135,160], eHpPct:11,
+      rShield:[120,220,320], rAP:1.35, rHpPct:15,
+      qCd:[8,7.25,6.5,5.75,5], wCd:[16,14.5,13,11.5,10], eCd:[18,16,14,12,10], rCd:[200,180,160]
+    },
+    abilities(c){
+      const {A, T, L, qr, wr, er, rr, tot, lerp, learned} = c;
+      const R = (a,n) => a[Math.max(0, Math.min(a.length-1, n-1))] || 0;
+      const ap = tot.ap, ah = 1 + tot.ah/100;
+      const bonusHP = tot.hp - c.base.hp;
+      /* the flat part of Twilight Assault grows with level, not with rank */
+      A.qFlat  = lerp(10, 40, L, 16);
+      A.qPct   = R(T.qPct,qr)   + 1.5*ap/100;
+      A.qPctUp = R(T.qPctUp,qr) + 2.0*ap/100;
+      A.qSlow  = R(T.qSlow,qr);
+      A.eDmg   = R(T.eDmg,er) + T.eHpPct/100 * bonusHP;
+      A.rShield= R(T.rShield,rr) + T.rAP*ap + T.rHpPct/100 * bonusHP;
+      A.rShieldMax = A.rShield * 1.6;
+      A.qAS = 50;                 /* granted when the blade catches a champion */
+      A.qCd = R(T.qCd,qr)/ah; A.wCd = R(T.wCd,wr)/ah;
+      A.eCd = R(T.eCd,er)/ah; A.rCd = R(T.rCd,rr)/(1 + tot.uh/100);
+      if(!learned.q){ A.qFlat=0; A.qPct=0; A.qPctUp=0; A.qAS=0; }
+      if(!learned.e) A.eDmg=0;
+      if(!learned.r){ A.rShield=0; A.rShieldMax=0; }
+      A.msIdle = c.msSoftCap((c.base.ms + c.S.ms) * (1 + tot.mspct/100));
+      return A;
+    },
+    passiveName:["Ki Barrier","Barrière de Ki"],
+    passiveRows(c){ const {TR} = c; return [{lab:TR("wipStat"), val:"—"}]; },
+    castNote(st){
+      if(st.id === "q") return isFR() ? "Assaut crépusculaire — la lame traverse, 3 attaques renforcées"
+                                      : "Twilight Assault — the blade passes through, 3 attacks enhanced";
+      return isFR() ? "aucun dégât propre" : "no damage of its own";
+    },
+    comboNote:["the blade passes through, so all three attacks are enhanced",
+               "la lame traverse, les trois attaques sont donc renforcées"],
+    combos:[
+      {key:"q", en:"Q through, then 3 attacks", fr:"Q qui traverse, puis 3 attaques",
+       steps:[{kind:"cast", label:"Q", id:"q"},
+              {kind:"attack", empowered:true}, {kind:"attack", empowered:true},
+              {kind:"attack", empowered:true}]},
+      {key:"e", en:"E, then 3 attacks", fr:"E, puis 3 attaques",
+       steps:[{kind:"spell", id:"e"},
+              {kind:"attack"}, {kind:"attack"}, {kind:"attack"}]}
+    ],
+    onStep(key, st, c){
+      const {A, hp} = c, out = {parts:[]};
+      /* the blade caught someone on the way, so the higher figure applies
+         and the attack speed comes with it */
+      if(st.kind === "cast" && st.id === "q") out.asBonus = A.qAS;
+      if(st.kind === "spell" && st.id === "e")
+        out.parts.push({n:"shadowDash", v:A.eDmg, type:"phys"});
+      if(st.kind === "attack" && st.empowered)
+        out.parts.push({n:"twilightAssault",
+                        v:A.qFlat + hp * A.qPctUp/100, type:"magic"});
+      return out;
+    },
+    comboEnd(){ return {parts:[]}; },
+    comboRows(key, x){
+      const {c, TR, n0} = x;
+      return [
+        {lab:TR("damage"), val:n0(c.dmg), hi:true},
+        {lab:TR("dps"), val:n0(c.dps)},
+        {lab:TR("targetLeft"), val:n0(c.leftover)}];
+    },
+    abilityRows(c){
+      const {A, TR, n0, pc, nf1} = c;
+      return [
+        [{lab:TR("sQflat"), val:n0(A.qFlat)}, {lab:TR("sQpct"), val:pc(A.qPct)},
+         {lab:TR("sQpctUp"), val:pc(A.qPctUp), awk:true},
+         {lab:TR("sQas"), val:"+" + pc(A.qAS), awk:true},
+         {lab:TR("slow"), val:pc(A.qSlow)}, {lab:TR("cooldown"), val:nf1.format(A.qCd)+" s"}],
+        [{lab:TR("cooldown"), val:nf1.format(A.wCd)+" s"}],
+        [{lab:TR("damage"), val:n0(A.eDmg)}, {lab:TR("cooldown"), val:nf1.format(A.eCd)+" s"}],
+        [{lab:TR("shield"), val:n0(A.rShield)}, {lab:TR("sRmax"), val:n0(A.rShieldMax), awk:true},
+         {lab:TR("cooldown"), val:nf1.format(A.rCd)+" s"}]
+      ];
+    }
+  },
+  tahmkench:{
+    key:"tahmkench", name:"TahmKench", splash:0, label:"Tahm Kench",
+    base:{hp:[640,103], mana:[325,50], ad:[56,3.2], ar:[39,4.7], mr:[32,2.05],
+          as:0.658, asPerLevel:2.5, ms:335},
+    abilities_meta:[
+      {k:"q", en:"Tongue Lash",    fr:"Coup de langue"},
+      {k:"w", en:"Abyssal Dive",   fr:"Plongeon abyssal"},
+      {k:"e", en:"Thick Skin",     fr:"Peau épaisse"},
+      {k:"r", en:"Devour",         fr:"Dévorer"}
+    ],
+    rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
+    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    maxRank: 5,
+    ranks:{
+      qFlat:[75,120,165,210,255], qAP:1.00,
+      qHeal:[10,15,20,25,30], qHealMiss:[5,5.5,6,6.5,7],
+      wFlat:[100,135,170,205,240], wAP:1.50, wRefund:[40,42.5,45,47.5,50],
+      eStore:[15,23,31,39,47], eStoreUp:[42,44,46,48,50],
+      rShield:[650,800,950], rAP:1.00,
+      qCd:[7,6.5,6,5.5,5], wCd:[21,20,19,18,17], eCd:[3,3,3,3,3], rCd:[120,100,80]
+    },
+    abilities(c){
+      const {A, T, qr, wr, er, rr, tot, learned} = c;
+      const R = (a,n) => a[Math.max(0, Math.min(a.length-1, n-1))] || 0;
+      const ap = tot.ap, ah = 1 + tot.ah/100;
+      A.qDmg      = R(T.qFlat,qr) + T.qAP*ap;
+      A.qHeal     = R(T.qHeal,qr);
+      A.qHealMiss = R(T.qHealMiss,qr);
+      A.wDmg      = R(T.wFlat,wr) + T.wAP*ap;
+      A.wRefund   = R(T.wRefund,wr);
+      A.eStore    = R(T.eStore,er);
+      A.eStoreUp  = R(T.eStoreUp,er);
+      A.rShield   = R(T.rShield,rr) + T.rAP*ap;
+      A.qCd = R(T.qCd,qr)/ah; A.wCd = R(T.wCd,wr)/ah;
+      A.eCd = R(T.eCd,er); A.rCd = R(T.rCd,rr)/(1 + tot.uh/100);
+      if(!learned.q){ A.qDmg=0; A.qHeal=0; }
+      if(!learned.w){ A.wDmg=0; }
+      if(!learned.r) A.rShield=0;
+      A.msIdle = c.msSoftCap((c.base.ms + c.S.ms) * (1 + tot.mspct/100));
+      return A;
+    },
+    passiveName:["An Acquired Taste","Un goût acquis"],
+    passiveRows(c){ const {TR} = c; return [{lab:TR("wipStat"), val:"—"}]; },
+    abilityRows(c){
+      const {A, TR, n0, pc, nf1} = c;
+      return [
+        [{lab:TR("damage"), val:n0(A.qDmg)},
+         {lab:TR("healing"), val:n0(A.qHeal) + " + " + pc(A.qHealMiss)},
+         {lab:TR("cooldown"), val:nf1.format(A.qCd)+" s"}],
+        [{lab:TR("damage"), val:n0(A.wDmg)}, {lab:TR("tRefund"), val:pc(A.wRefund)},
+         {lab:TR("cooldown"), val:nf1.format(A.wCd)+" s"}],
+        [{lab:TR("tStore"), val:pc(A.eStore)}, {lab:TR("tStoreUp"), val:pc(A.eStoreUp), awk:true},
+         {lab:TR("cooldown"), val:nf1.format(A.eCd)+" s"}],
+        [{lab:TR("shield"), val:n0(A.rShield)}, {lab:TR("cooldown"), val:nf1.format(A.rCd)+" s"}]
+      ];
+    },
+    combos:[]
   }
 };
 let CHAMP = CHAMPIONS.udyr;
@@ -3129,6 +3367,9 @@ const L10N = {
   homeSub:["Build calculators for one-trick players, built one champion at a time.",
            "Des calculateurs de build pour les joueurs mono-champion, construits un champion à la fois."],
   homeReady:["Available","Disponible"], homeSoon:["Coming","À venir"],
+  homeWip:["In progress","En travaux"],
+  wipNote:["The abilities are in, the combos are not settled yet — damage figures will follow.",
+           "Les compétences sont là, les combos ne sont pas encore arrêtés — les dégâts suivront."],
   findChamp:["Search a champion…","Chercher un champion…"],
   champCount:["%r of %t available","%r sur %t disponibles"],
   noChamp:["No champion by that name — yet.","Aucun champion de ce nom — pour l'instant."],
@@ -3278,7 +3519,7 @@ const L10N = {
             "part des dégâts du premier combo que représente cette ligne"],
   ultHaste:["ULT HASTE","ACCÉL. ULT"], awakenCD:["AWAKEN CD","RECHARGE ÉVEIL"],
   awakenAtk:["AWAKEN IN ATK","ÉVEIL EN ATQ"], awakenReal:["AWAKEN WHILE HITTING","ÉVEIL EN TAPANT"],
-  comboTime:["4 attacks","4 attaques"], attackEvery:["1 attack","1 attaque"], dps:["damage / sec","dégâts / sec"],
+  comboTime:["combo length","durée du combo"], attackEvery:["1 attack","1 attaque"], dps:["damage / sec","dégâts / sec"],
   hps:["healing / sec","soins / sec"], dpsPer:["Damage per second","Dégâts par seconde"],
   msPer:["Move speed","Vitesse de déplacement"],
   tankPer:["Tankiness","Résistance"],
@@ -3296,6 +3537,7 @@ const L10N = {
   amp:["amp — items & runes","amplif. — items et runes"],
   ampLow:["amp — target <40%","amplif. — cible <40 %"],
   ampHigh:["amp — target >60%","amplif. — cible >60 %"],
+  passive:["Passive","Passif"],
   onHit:["on-hit","à l'impact"],
   eQhuman:["Neurotoxin","Neurotoxine"], eQspider:["Venomous Bite","Morsure venimeuse"],
   eWhuman:["Volatile Spiderling","Araignée volatile"], eWspider:["Skittering Frenzy, attack speed","Frénésie grouillante, vitesse d'attaque"],
@@ -3307,6 +3549,18 @@ const L10N = {
   kRmax:["Chronobreak, maximum heal","Chronorupture, soin maximum"],
   kReso:["Resonance, third mark","Résonance, troisième marque"],
   kWlow:["W on-hit, target under 30%","W à l'impact, cible sous 30 %"],
+  kResoMs:["Stolen Time, move speed","Temps volé, vitesse"],
+  kMarks:["marks to trigger","marques pour déclencher"],
+  wipStat:["not modelled yet","pas encore modélisé"],
+  iWmin:["minimum damage","dégâts minimum"], iWmax:["fully charged","pleinement chargé"],
+  sQflat:["flat damage","dégâts fixes"], sQpct:["% of maximum health","% des PV max"],
+  sQpctUp:["% when empowered","% une fois amélioré"],
+  sQas:["attack speed when it connects","vitesse d'attaque si elle touche"], sRmax:["at full channel","canalisation complète"],
+  tRefund:["cooldown refunded","recharge remboursée"],
+  tStore:["damage stored as grey health","dégâts stockés en PV gris"],
+  tStoreUp:["stored when empowered","stockés une fois amélioré"],
+  uAsAfterCast:["attack speed on the 2 attacks after a cast","vitesse d'attaque sur les 2 attaques après un cast"],
+  uRefund:["awaken cooldown refunded per attack","recharge d'éveil remboursée par attaque"],
   eCd:["Cocoon cooldown","Recharge du Cocon"], eRappel:["Rappel cooldown","Recharge du Rappel"],
   ePassive:["Spider Queen, on-hit","Reine araignée, à l'impact"],
   ePassiveHeal:["Spider Queen, heal","Reine araignée, soin"],
@@ -4344,6 +4598,11 @@ function card(b, bi, R){
 
     <div class="sect-h">${TR("abilities")}</div>
     <div class="abil">
+      ${(CHAMP.passiveRows ? [CHAMP.passiveRows({A, M, TR, n0, pc, nf1})] : []).map(ab => `
+        <div class="ab p">
+          <h4>P · ${esc(CHAMP.passiveName ? (isFR() ? CHAMP.passiveName[1] : CHAMP.passiveName[0]) : TR("passive"))}</h4>
+          ${ab.map(r => `<div class="row ${r.awk ? "awk" : ""}"><i>${esc(r.lab)}</i><b>${r.val}</b></div>`).join("")}
+        </div>`).join("")}
       ${(CHAMP.abilityRows ? CHAMP.abilityRows({A, M, TR, n0, pc, nf1}) : []).map((ab, ai) => `
         <div class="ab ${"qwer"[ai]}">
           <h4>${"QWER"[ai]} · ${esc(abName(ai))}</h4>
@@ -4351,7 +4610,8 @@ function card(b, bi, R){
         </div>`).join("")}
     </div>
 
-    <div class="sect-h">${TR("combos")}${CHAMP.comboNote ? " — " + esc(isFR() ? CHAMP.comboNote[1] : CHAMP.comboNote[0]) : ""}</div>
+    ${!(CHAMP.combos || []).length ? `<p class="wipbar">${TR("wipNote")}</p>` : ""}
+    <div class="sect-h" ${!(CHAMP.combos || []).length ? "hidden" : ""}>${TR("combos")}${CHAMP.comboNote ? " — " + esc(isFR() ? CHAMP.comboNote[1] : CHAMP.comboNote[0]) : ""}</div>
     <div class="totals">
       ${(CHAMP.combos || []).map((cb, ci) => {
         const c = D.combo[cb.key] || {};
@@ -5742,6 +6002,9 @@ const ROSTER = [
   {key:"drmundo", name:"DrMundo", label:"Dr. Mundo"},
   {key:"draven", name:"Draven", label:"Draven"},
   {key:"ekko",  name:"Ekko",  splash:19, ready:true, focus:"62% 16%"},
+  {key:"irelia", name:"Irelia", splash:0, ready:true, wip:true, focus:"55% 18%"},
+  {key:"shen",   name:"Shen",   splash:0, ready:true, focus:"52% 20%"},
+  {key:"tahmkench", name:"TahmKench", label:"Tahm Kench", splash:0, ready:true, wip:true, focus:"52% 24%"},
   {key:"elise", name:"Elise", splash:15, ready:true, focus:"58% 14%"},
   {key:"evelynn", name:"Evelynn", label:"Evelynn"},
   {key:"ezreal", name:"Ezreal", label:"Ezreal"},
@@ -5759,7 +6022,6 @@ const ROSTER = [
   {key:"heimerdinger", name:"Heimerdinger", label:"Heimerdinger"},
   {key:"hwei", name:"Hwei", label:"Hwei"},
   {key:"illaoi", name:"Illaoi", label:"Illaoi"},
-  {key:"irelia", name:"Irelia", label:"Irelia"},
   {key:"ivern", name:"Ivern", label:"Ivern"},
   {key:"janna", name:"Janna", label:"Janna"},
   {key:"jarvaniv", name:"JarvanIV", label:"Jarvan IV"},
@@ -5833,7 +6095,6 @@ const ROSTER = [
   {key:"seraphine", name:"Seraphine", label:"Seraphine"},
   {key:"sett", name:"Sett", label:"Sett"},
   {key:"shaco", name:"Shaco", label:"Shaco"},
-  {key:"shen", name:"Shen", label:"Shen"},
   {key:"shyvana", name:"Shyvana", label:"Shyvana"},
   {key:"singed", name:"Singed", label:"Singed"},
   {key:"sion", name:"Sion", label:"Sion"},
@@ -5845,7 +6106,6 @@ const ROSTER = [
   {key:"swain", name:"Swain", label:"Swain"},
   {key:"sylas", name:"Sylas", label:"Sylas"},
   {key:"syndra", name:"Syndra", label:"Syndra"},
-  {key:"tahmkench", name:"TahmKench", label:"Tahm Kench"},
   {key:"taliyah", name:"Taliyah", label:"Taliyah"},
   {key:"talon", name:"Talon", label:"Talon"},
   {key:"taric", name:"Taric", label:"Taric"},
@@ -5896,7 +6156,8 @@ function drawHome(){
   const needle = noAccent((box && box.value || "").trim().toLowerCase());
   const list = ROSTER.filter(c => !needle ||
     noAccent(((c.label || "") + " " + c.name).toLowerCase()).includes(needle));
-  list.sort((a, b) => (b.ready ? 1 : 0) - (a.ready ? 1 : 0));   /* what works comes first */
+  const rank = c => c.ready && !c.wip ? 0 : c.wip ? 1 : 2;
+  list.sort((a, b) => rank(a) - rank(b));   /* finished first, then in progress */
   const count = document.getElementById("champCount");
   if(count) count.textContent = TR("champCount")
     .replace("%r", ROSTER.filter(c => c.ready).length)
@@ -5905,7 +6166,8 @@ function drawHome(){
     <a class="champ ${c.ready ? "" : "soon"}" ${c.ready ? `href="#/${c.key}"` : ""}>
       <span class="art" style="background-image:url('${SPLASH(c)}');background-position:${c.focus || "52% 22%"}"></span>
       <span class="veil"></span>
-      <span class="tagsoon ${c.ready ? "tagnew" : ""}">${c.ready ? TR("homeReady") : TR("homeSoon")}</span>
+      <span class="tagsoon ${c.wip ? "tagwip" : c.ready ? "tagnew" : ""}">${
+        c.wip ? TR("homeWip") : c.ready ? TR("homeReady") : TR("homeSoon")}</span>
       <span class="lab"><b>${esc(c.label || c.name)}</b></span>
     </a>`).join("") || `<p class="nochamp">${TR("noChamp")}</p>`;
   const hv = document.getElementById("homeVer");
@@ -5941,7 +6203,7 @@ function route(){
     CHAMP = CHAMPIONS[champ.key] || CHAMPIONS.udyr;
     T = CHAMP.ranks;
     document.body.dataset.view = "app";
-    document.title = champ.name + " — OTP LoL Calc";
+    document.title = (champ.label || champ.name) + " — OTP LoL Calc";
     document.documentElement.style.setProperty("--splashpos", champ.focus || "50% 28%");
     const art = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champ.name}_${champ.splash}.jpg`;
     const pre = new Image();
