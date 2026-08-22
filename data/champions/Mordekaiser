@@ -1,0 +1,412 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Darkness Rise|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Mordekaiser
+|skill        = I
+|icon         = false
+|blurb        = {{sbc|Innate:}} {{cis|Mordekaiser}} basic attacks deal {{as|'''bonus''' magic damage}}.
+|blurb2       = {{sbc|Innate:}} '''Mordekaiser''' generates a {{tip|stack}} for each enemy {{tip|champion}} or {{tip|monster}} hit by his {{tip|basic attacks}} and {{tip|ability|basic abilities}}, which lasts a few seconds. At max stacks, he gains ''Darkness Rise''.
+|blurb4       = {{sbc|Darkness Rise:}} '''Mordekaiser''' gains {{sti|{{as|'''bonus''' movement speed}}}} and creates an {{tip|aura}} that continually deals {{as|magic damage}} to nearby enemies based on {{as|their '''maximum''' health}}.
+|description  = {{sbc|Innate:}} '''Mordekaiser's''' basic attacks are empowered to deal {{as|40% AP}} {{as|'''bonus''' magic damage}} {{tip|on-hit}}.
+|description2 = {{sbc|Innate:}} '''Mordekaiser''' generates a {{tip|stack}} for each enemy {{tip|champion}} or large {{tip|monster}} damaged by his {{tip|basic attacks}} or hit by his basic {{tip|abilities}}, lasting for 4 seconds, refreshing on subsequent triggers, and stacking up to 3 times. At 3 stacks, he gains ''Darkness Rise''.
+|icon3        = Darkness Rise.png
+|description3 = {{sbc|Darkness Rise:}} '''Mordekaiser''' gains {{sti|ms|{{as|{{pplevel|3 to 12|1;6;11;19|key=%}} '''bonus''' movement speed}}}} and deals{{ft|{{as|5|magic damage}} {{as|(+ 30% AP)}} {{as|(+ {{pplevel|key=%|1 to 5}} of target's '''maximum''' health)}} {{as|magic damage}} every second|{{as|{{ap|5*0.125}}|magic damage}} {{as|(+ {{ap|30*0.125}}% AP)}} {{as|(+ {{pplevel|key=%|1*0.125 to 5*0.125}} of target's '''maximum''' health)}} {{as|magic damage}} every {{fd|0.125}} seconds}}to nearby enemies. Against monsters, the damage is capped at{{ft|{{pplevel|40 to 200}} per second.|{{pp|40*0.125 to 200*0.125}} per {{fd|0.125}} seconds.}}
+|targeting    = Passive
+|effect radius= 375
+|affects      = Self / Enemies
+|damagetype   = Magic
+|projectile   = 
+|spelleffects = special
+|parry        = true
+|onhiteffects = 
+|spellshield  = false
+|notes        = 
+* ''Darkness Rise'' deals {{tip|persistent area damage}} damage around '''Mordekaiser''', while the bonus damage on his basic attacks is {{tip|proc damage}}.
+* ''Darkness Rise's'' bonus damage {{tip|on-hit}} is not applied against {{tip|structures}}.
+* '''Mordekaiser''' has a stack counter under his [[health bar]] that is not visible to other champions. It will light up when the maximum effect is active.
+* '''Mordekaiser''' will still generate ''Darkness Rise'' stacks from hitting his abilities even if they deal no damage, such as if the target is {{tip|invulnerable}} or blocks an ability with a {{tip|spell shield}}.
+* Basic attacks do not generate a stack if their damage event does not happen due to the target being {{tip|invulnerable}}, or the attack being {{tip|dodge|dodged}}, {{tip|block|blocked}}, or missed while '''Mordekaiser''' is {{tip|blind|blinded}}.
+* {{iis|Dusk and Dawn}} {{sbc|Spellblade}} {{tip|on-hit}} event is special cased to generate an additional ''Darkness Rise'' stack.
+** The {{tip|on-hit}} event is not triggered if the triggering attack is {{tip|dodge|dodged}}, {{tip|block|blocked}}, or missed while '''Mordekaiser''' is {{tip|blind|blinded}}, thus not generating a ''Darkness Rise'' stack.
+* ''Darkness Rise's'' area damage alone does not refresh ''Darkness Rise's'' buff.
+{{safesubst:unexpected|desc=
+* If ''Darkness Rise'' is activated through either {{ai|Obliterate|Mordekaiser}} or {{ai|Death's Grasp|Mordekaiser}}, it will be treated as the same {{tip|cast instance}} as the triggering spell.{{bug}}
+** Under these conditions, ''Darkness Rise'' will fail to interact with effects that only do so once per cast instance (e.g {{ri|Conqueror}}), but will interact with effects such as {{iis|Spear of Shojin}} {{sbc|Focused Will's}} stacking, which would normally not interact with innate abilities.[https://www.youtube.com/watch?v=xv-FWFjvu0I&feature=youtu.be]
+** ''Darkness Rise's'' damage will be grouped with the triggering spell's damage in the [[death recap]].[https://www.youtube.com/watch?v=R20QmJav714]|affectedEffects=Mordekaiser I; Cast Instance|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Darkness Rise
+}}<!--
+-->
+}}
+<!-- Damage values are defined as parameters.
+-->{{#vardefine:p1|0}}<!-- Level 1 base damage
+-->{{#vardefine:p18|45}}<!-- Level 18 base damage
+-->{{#vardefine:b1|80}}<!-- Rank 1 base damage
+-->{{#vardefine:b5|220}}<!-- Rank 5 base damage 
+-->{{#vardefine:ap|70}}<!-- AP ratio as a PERCENTAGE
+-->{{#vardefine:ad|120}}<!-- Bonus AD ratio as a PERCENTAGE
+-->{{#vardefine:m1|1.3}}<!-- Rank 1 damage modifier as a DECIMAL
+-->{{#vardefine:m5|1.5}}<!-- Rank 5 damage modifier as a DECIMAL
+-->{{{{{1<noinclude>|Ability data</noinclude>}}}|Obliterate|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Mordekaiser
+|skill        = Q
+|icon         = Obliterate.png
+|blurb        = {{sbc|Active:}} {{ci|Mordekaiser}} smashes the area in the target direction, dealing {{as|magic damage}} to enemies within, {{ccs|increased|magic}} if it hits only one enemy.
+|description  = {{sbc|Active:}} '''Mordekaiser''' strikes his mace down in a line in the target direction, dealing {{as|magic damage}} to enemies within, {{ccs|increased|magic}} if only one enemy is hit.
+|leveling     = {{st|Magic Damage|{{pp|{{#var:p1}} + ({{#var:p18}}-{{#var:p1}})/9*(x-1) for 12|1;10 to 20|formula=0 at level 1, then +5 every level starting at level 10}} (+ {{ap|{{#var:b1}} to {{#var:b5}}}}) {{as|(+ {{#var:ad}}% '''bonus''' AD)}} {{as|(+ {{#var:ap}}% AP)}}}}
+{{st|Isolated Damage Increase|{{ap|{{#expr:({{#var:m1}}-1)*100}} to {{#expr:({{#var:m5}}-1)*100}}}}%}}
+|cooldown     = {{ap|8 to 4}}
+|range        = {{tip|er|icononly=true}} {{tt|22.5 - 625|Starts 22.5 units in front of Mordekaiser}}
+|width        = {{tip|er|icononly=true}} {{tt|90 - 150|90 at start, 150 at end.}}
+|cast time    = {{fd|0.5}}
+|queue time   = {{fd|0.275}}
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = Magic
+|projectile   = False
+|spelleffects = special
+|spellshield  = True
+|notes        = 
+{{always quickcast}}
+{{Effect at cast time end}}
+* The ability will cast to wherever the caster's cursor was at the start of the cast time.<!--
+-->{{safesubst:unexpected|desc=
+** If '''Mordekaiser's''' location changes during the cast time, the visual effects of ''Obliterate'' will be divided into three sections: one forming toward the caster's cursor at the start of the cast, one forming toward the original cast direction, and one following '''Mordekaiser's''' facing direction. Only the first will portray the spell's effect accurately.{{bug}}[https://youtu.be/77NJdwW2TPQ]|affectedEffects=Mordekaiser Q|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Obliterate
+}}
+* Applies {{tip|spell damage}} if it hits one target and {{tip|area damage}} to multiple targets.
+* ''Obliterate's'' damage against isolated enemies at:
+** Rank 1: {{pp|({{#var:p1}}+{{#var:b1}})*{{#var:m1}} + (({{#var:p18}}+{{#var:b1}})*{{#var:m1}}-({{#var:p1}}+{{#var:b1}})*{{#var:m1}})/9*(x-1) for 12|1;10 to 20}} {{as|(+ {{#expr:{{#var:ad}}*{{#var:m1}}}}% '''bonus''' AD)}} {{as|(+ {{#expr:{{#var:ap}}*{{#var:m1}}}}% AP)}}
+** Rank 2: {{pp|({{#var:p1}}+({{#expr:{{#var:b1}}+({{#var:b5}}-{{#var:b1}})*(1/4)}}))*({{#var:m1}}+({{#var:m5}}-{{#var:m1}})*(1/4)) + (({{#var:p18}}+({{#expr:{{#var:b1}}+({{#var:b5}}-{{#var:b1}})*(1/4)}}))*({{#var:m1}}+({{#var:m5}}-{{#var:m1}})*(1/4))-({{#var:p1}}+({{#expr:{{#var:b1}}+({{#var:b5}}-{{#var:b1}})*(1/4)}}))*({{#var:m1}}+({{#var:m5}}-{{#var:m1}})*(1/4)))/9*(x-1) for 12|1;10 to 20}} {{as|(+ {{#expr:{{#var:ad}}*({{#var:m1}}+({{#var:m5}}-{{#var:m1}})*(1/4))}}% '''bonus''' AD)}} {{as|(+ {{#expr:{{#var:ap}}*({{#var:m1}}+({{#var:m5}}-{{#var:m1}})*(1/4))}}% AP)}}
+** Rank 3: {{pp|({{#var:p1}}+({{#expr:{{#var:b1}}+({{#var:b5}}-{{#var:b1}})*(2/4)}}))*({{#var:m1}}+({{#var:m5}}-{{#var:m1}})*(2/4)) + (({{#var:p18}}+({{#expr:{{#var:b1}}+({{#var:b5}}-{{#var:b1}})*(2/4)}}))*({{#var:m1}}+({{#var:m5}}-{{#var:m1}})*(2/4))-({{#var:p1}}+({{#expr:{{#var:b1}}+({{#var:b5}}-{{#var:b1}})*(2/4)}}))*({{#var:m1}}+({{#var:m5}}-{{#var:m1}})*(2/4)))/9*(x-1) for 12|1;10 to 20}} {{as|(+ {{#expr:{{#var:ad}}*({{#var:m1}}+({{#var:m5}}-{{#var:m1}})*(2/4))}}% '''bonus''' AD)}} {{as|(+ {{#expr:{{#var:ap}}*({{#var:m1}}+({{#var:m5}}-{{#var:m1}})*(2/4))}}% AP)}}
+** Rank 4: {{pp|({{#var:p1}}+({{#expr:{{#var:b1}}+({{#var:b5}}-{{#var:b1}})*(3/4)}}))*({{#var:m1}}+({{#var:m5}}-{{#var:m1}})*(3/4)) + (({{#var:p18}}+({{#expr:{{#var:b1}}+({{#var:b5}}-{{#var:b1}})*(3/4)}}))*({{#var:m1}}+({{#var:m5}}-{{#var:m1}})*(3/4))-({{#var:p1}}+({{#expr:{{#var:b1}}+({{#var:b5}}-{{#var:b1}})*(3/4)}}))*({{#var:m1}}+({{#var:m5}}-{{#var:m1}})*(3/4)))/9*(x-1) for 12|1;10 to 20}} {{as|(+ {{#expr:{{#var:ad}}*({{#var:m1}}+({{#var:m5}}-{{#var:m1}})*(3/4))}}% '''bonus''' AD)}} {{as|(+ {{#expr:{{#var:ap}}*({{#var:m1}}+({{#var:m5}}-{{#var:m1}})*(3/4))}}% AP)}}
+** Rank 5: {{pp|({{#var:p1}}+{{#var:b5}})*{{#var:m5}} + (({{#var:p18}}+{{#var:b5}})*{{#var:m5}}-({{#var:p1}}+{{#var:b5}})*{{#var:m5}})/9*(x-1) for 12|1;10 to 20}} {{as|(+ {{#expr:{{#var:ad}}*{{#var:m5}}}}% '''bonus''' AD)}} {{as|(+ {{#expr:{{#var:ap}}*{{#var:m5}}}}% AP)}}
+|flavorsound  = {{sm2|Mordekaiser_Original_Q_1.ogg}} ''"Shatter!"''
+}}
+<!-- Damage values are defined as parameters.
+-->{{#vardefine:dam_dealt|45}}<!-- Damage dealt converted to potential shield as a PERCENTAGE
+-->{{#vardefine:dam_taken|7.5}}<!-- Damage taken converted to potential shield as a PERCENTAGE
+-->{{#vardefine:h1|0.35}}<!-- Rank 1 conversion as a DECIMAL
+-->{{#vardefine:h5|0.45}}<!-- Rank 5 base damage as a DECIMAL
+-->{{#vardefine:min|5}}<!-- Minimum health shield threshold as a PERCENTAGE
+-->{{#vardefine:minion|0.25}}<!-- Non-champion modifier as a DECIMAL
+-->{{#vardefine:max|30}}<!-- Maximum health shield as a PERCENTAGE 
+-->{{{{{1<noinclude>|Ability data</noinclude>}}}|Indestructible|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Mordekaiser
+|skill        = W
+|icon         = false
+|blurb        = {{sbc|Passive:}} {{ci|Mordekaiser}} stores a portion of the damage he deals and receives as ''Potential Shield'', up to a portion of {{as|his '''maximum''' health}}. This begins to decay after a brief time without fighting.
+|blurb2      = {{sbc|Active:}} '''Mordekaiser''' converts his ''Potential Shield'' to {{tip|shield}} himself for a few seconds, which decays over time. ''Indestructible'' can be recast while the shield is active.
+|blurb3       = {{sbc|Recast:}} '''Mordekaiser''' consumes the remaining shield, {{tip|healing}} for a portion of the amount.
+|description  = {{sbc|Passive:}} '''Mordekaiser''' stores {{fd|{{#var:dam_dealt}}}}% of the {{tt|post-mitigation|Damage calculated after modifiers}} damage he deals and {{fd|{{#var:dam_taken}}}}% of the {{tt|pre-mitigation|Damage calculated before modifiers}} damage he takes,{{ft|reduced by {{ap|(1-{{#var:minion}})*100}}% for non-champion sources,|reduced to {{ap|{{#var:dam_dealt}}*{{#var:minion}}}}% of damage dealt and {{ap|{{#var:dam_taken}}*{{#var:minion}}}}% of damage taken for non-champion sources,}}as ''Potential Shield'' on his secondary resource bar, up to {{sti|health|{{as|{{fd|{{#var:max}}}}% of his '''maximum''' health}}}}. The ''Potential Shield'' decays by {{pp|8 to 25}} every second after not dealing or taking damage for 1 second. While ''Indestructible'' is not on cooldown, the ''Potential Shield'' will not decay below a minimum of {{as|{{fd|{{#var:min}}}}% of his '''maximum''' health}}, and it will be set to that amount when it comes off cooldown if it was previously below it.
+|icon2        = Indestructible.png
+|description2 = {{sbc|Active:}} '''Mordekaiser''' consumes his ''Potential Shield'' to grant himself a {{tip|shield}} for the same amount for 4 seconds. The shield decays exponentially over the duration. ''Indestructible'' can be recast after {{fd|0.5}} seconds while the shield is active.
+|icon3        = Indestructible 2.png
+|description3 = {{sbc|Recast:}} '''Mordekaiser''' consumes the remaining shield, {{tip|healing}} for a portion of the amount.
+|leveling3    = {{st|Shield to Healing|{{ap|{{#var:h1}}*100 to {{#var:h5}}*100}}%}}
+|cooldown     = {{ap|12 to 8}}
+|cdstart      = post-effect
+|target range = 
+|effect radius= 
+|cast time    = none
+|queue time   = {{tt|{{fd|0.25}}|Initial cast}}
+|targeting    = Auto
+|affects      = Self
+|damagetype   = 
+|projectile   = 
+|spelleffects = 
+|onhiteffects = 
+|spellshield  = 
+|notes        = 
+* Both casts count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and triggering {{ais|Force Pulse|Kassadin}} passive.
+* The recast will heal '''Mordekaiser''' for a minimum of {{as|{{ap|{{#var:h1}}*{{#var:min}} to {{#var:h5}}*{{#var:min}}}}%|hp}} and up to {{as|{{ap|{{#var:h1}}*{{#var:max}} to {{#var:h5}}*{{#var:max}}}}% of his '''maximum''' health}}.
+** It also effectively converts {{ap|{{#var:h1}}*{{#var:dam_dealt}} to {{#var:h5}}*{{#var:dam_dealt}}}}% of damage dealt and {{ap|{{#var:h1}}*{{#var:dam_taken}} to {{#var:h5}}*{{#var:dam_taken}}}}% of damage taken, reduced to {{ap|{{#var:h1}}*{{#var:dam_dealt}}*{{#var:minion}} to {{#var:h5}}*{{#var:dam_dealt}}*{{#var:minion}}|round=4}}% and {{ap|{{#var:h1}}*{{#var:dam_taken}}*{{#var:minion}} to {{#var:h5}}*{{#var:dam_taken}}*{{#var:minion}}|round=4}}% for non-champion sources respectively.
+|flavorsound  = {{sm2|Mordekaiser_Original_W_0.ogg}} ''"Unbreakable."''
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Death's Grasp|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Mordekaiser
+|skill        = E
+|icon         = false
+|blurb        = {{sbc|Passive:}} {{ci|Mordekaiser}} gains {{sti|mpen|{{as|magic penetration}}}}.
+|blurb2       = {{sbc|Active:}} '''Mordekaiser''' summons a claw in the target direction that grants {{tip|sight}} of the area. After a brief time, it deals {{as|magic damage}} and {{tip|airborne|pulls}} enemies hit.
+|description  = {{sbc|Passive:}} '''Mordekaiser''' gains {{sti|mpen|{{as|magic penetration}}}}.
+|leveling     = {{st|Magic Penetration|{{ap|5 to 15}}%}}
+|icon2        = Death's Grasp.png
+|description2 = {{sbc|Active:}} '''Mordekaiser''' summons a claw in the target direction that grants {{tip|sight}} of the area. After {{fd|0.5}} seconds, it deals {{as|magic damage}} to enemies within and {{tip|airborne|pulls}} them over 250 units.
+|leveling2    = {{st|Magic Damage|{{ap|60 to 140}} {{as|(+ 45% AP)}}}}
+|cooldown     = {{ap|16 to 8}}
+|target range = {{dv|{{tt|700|Maximum cast range}}|{{tt|900|Maximum range}}}}
+|effect radius= {{dv|{{tt|800|Claw range}}|{{tt|200|Claw offset from cast origin}}}}
+|width        = 200
+|speed        = 3000
+|cast time    = {{fd|0.25}}
+|angle        = 
+|targeting    = Location
+|affects      = Self, Enemies
+|damagetype   = Magic
+|spelleffects = aoe
+|onhiteffects = 
+|spellshield  = True
+|projectile   = false
+|outofrange   = cast at max
+|notes        = 
+* ''Death's Grasp'' will still {{tip|airborne|pull}} even if '''Mordekaiser''' {{tip|death|dies}}.
+* ''Death's Grasp'' tooltip does not mention the {{sti|mpen|{{as|magic penetration}}}} granted.{{bug|2}}
+** The extended tooltip does mention it.
+{{Effect at cast time start}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Realm of Death|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Mordekaiser
+|skill        = R
+|icon         = Realm of Death.png
+|blurb        = {{sbc|Active:}} {{ci|Mordekaiser}} {{tip|slow|slows}} the target enemy champion, then banishes them with him to the ''Death Realm'' for a few seconds, cancelling all interactions with non-banished units.
+|blurb2       = Additionally, '''Mordekaiser''' {{tip|heal|heals}} himself for a portion of the {{as|target's '''maximum''' health}} and temporarily steals a portion of their '''current''' {{sti|{{as|attack damage}}}}, {{sti|{{as|ability power}}}}, {{sti|{{as|'''total''' attack speed}}}}, {{sti|{{as|'''maximum''' health}}}}, {{sti|armor|{{as|armor}}}}, {{sti|magic resistance|{{as|magic resist}}}}, and {{tip|size}}.
+|blurb3       = If the target dies while inside the ''Death Realm'', '''Mordekaiser''' keeps his stolen stats until they [[death|respawn]].
+|blurb4       = {{sbc|Death Realm:}} The ''Death Realm'' confines units in a small area. Allies and enemies cannot see or interact with those in the ''Death Realm'' but can see their locations and vice versa.
+|description  = {{sbc|Active:}} '''Mordekaiser''' aims his mace towards the target enemy champion, {{tip|slow|slowing}} them by 75% and {{tip|true sight|revealing}} them over the cast time, and then [[File:Mordekaiser Realm of Death banished icon.png|20px|link=]] {{tt|banishing|See notes}} them with him to the ''Death Realm'' for 7 seconds. <br/><br/>'''Mordekaiser''' also consumes the target's soul for 7 seconds, {{tip|heal|healing}} himself for {{as|10% of their '''maximum''' health}} and reducing their '''current''' {{sti|{{as|ability power}}}}, {{sti|{{as|'''total''' attack speed}}}}, {{sti|{{as|'''maximum''' health}}}}, {{sti|armor|{{as|armor}}}}, {{sti|{{as|magic resistance}}}}, and {{tip|size}} by 10% for the duration. Additionally, the target's {{sti|{{as|'''base''' attack damage}}}} is reduced by {{as|10% of their '''current total''' AD}} for the same duration. '''Mordekaiser''' gains the reduced stats of the target for himself for the same duration, and if the target dies while inside the ''Death Realm'', he keeps their partial stats until they [[death|respawn]].
+|description3 = Units between realms see each other as spirits. Only '''Mordekaiser''' and the target will enter the realm; other champions cannot follow them. Everything that occurs inside the ''Death Realm'' is hidden to units outside of it, and vice versa. {{tt|Most|See notes for exceptions}} {{tip|pets}} still inside the realm are killed at its end.
+|description4 = ''When the Realm of Death ends, all affected champions are returned to the normal realm. The Realm of Death ends prematurely if either affected champion dies or is {{tt|forced out of the realm|See Map-Specific Differences}}.''
+|cooldown     = {{ap|140 to 100}}
+|cdstart      = on-cast
+|target range = 650
+|effect radius= {{tt|1200|Death Realm radius, center changes based on Mordekaiser's position from the target}}
+|cast time    = {{fd|0.5}}
+|queue time   = {{fd|0.25}}
+|targeting    = Unit
+|affects      = Enemies
+|damagetype   = 
+|spelleffects = 
+|onhiteffects = 
+|projectile   = 
+|spellshield  = special
+|callforhelp  = 
+|flavorsound  = {{sm2|Mordekaiser_Original_R_6.ogg}} ''"Welcome to oblivion."''
+|notes        = 
+[[File:Mordekaiser Death Realm screenshot.png|thumb|right|400px|Mordekaiser's Realm of Death. Champions outside of the death realm are seen as spirits. Blue spirits (above Mordekaiser) are allied champions while red spirits (below Mordekaiser) are enemy champions.]]
+[[File:Realm_of_Death_ally_Spirit_screenshot.PNG|thumb|right|125px|Ally spirit]]
+[[File:Realm_of_Death_enemy_spirit_screenshot.PNG|thumb|right|125px|Enemy spirit]]
+* The ''Death Realm'' is a battlefield that exists outside of the normal realm in an alternate "dimension". It exists only for '''Mordekaiser''' and his target. It consists of an arena that has a radius of 1200 units and includes any [[terrain]] features that would exist in the map of the normal realm, including walls and {{tip|brush|brushes}}.
+** {{tip|Structures}} exist in all realms at the same time. {{tip|Turrets}} will behave normally as if all units were in the same realm.
+** The boundaries of the arena are impassable but not considered terrain themselves ({{ai|Unstoppable Onslaught|Sion}} exception), and enemies that try to move out of the area will be displaced back inside.
+** {{tip|Dash|Dashes}}, {{tip|blink|blinks}}, {{tip|airborne|displacements}} and other forms of movement will cap their effect range to the boundary. Targets will stop at the boundary even after it expired.<!--
+-->{{safesubst:unexpected|desc=
+** During the cast time of ''Realm of Death'', it is possible to pathfind outside the boundaries of the arena by issuing a movement command toward an area that becomes inaccessible due to terrain inside the ''Death Realm''.{{bug}}[https://youtu.be/LXQSroimFSw]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+* ''Realm of Death'' retains '''Mordekaiser's''' previous '''current''' health percentage when granting him a portion of the target's '''maximum''' health.
+* ''Realm of Death's'' {{tip|healing}} is affected by healing modifiers.
+* ''Realm of Death's'' target will be marked by '''Mordekaiser''' for [[Assist#Indirect_triggers_of_assist_credit|assist credit]] when entering the ''Death Realm''.
+* ''Realm of Death'' does not trigger [[Combat_status|in-combat]] effects.
+* ''Realm of Death'' will cancel and go on cooldown after its cast time if:
+** The target is {{tip|displacement immune}}, {{tip|cc-immune|crowd control immune}} or protected by a {{tip|spell shield}}.
+*** Note that all of the above are ineffective if they are applied '''after''' the target has been banished.
+** The target is a {{tip|clone}} or {{ci|Sion}} when his {{ai|Glory in Death|Sion}} is active.
+* If the target becomes {{tip|untargetable}}, {{tip|death|dies}}, is too far away or '''Mordekaiser''' loses {{tip|sight}} of them due to {{tip|nearsight}} during the cast time, this ability will cancel but does not go on {{sti|cooldown}}.
+{{safesubst:unexpected|desc=
+* If either '''Mordekaiser''' or the target {{tip|death|dies}} at the same time of the transition into the ''Death Realm'', the ''Death Realm'' will not end prematurely and will continue until its full duration has ended.{{bug}}[https://www.youtube.com/watch?v=l7jPwQQhHfI]
+** If the target dies this way, '''Mordekaiser''' will not keep their stats after leaving the ''Death Realm''.
+** {{cai|Devour|Tahm Kench}} will always trigger this bug if used during the cast of ''Realm of Death'' and the spit would kill '''Mordekaiser'''.[https://youtu.be/Og98A3kQ-os]|affectedEffects=Mordekaiser R; Target Death|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+* If '''Mordekaiser''' or the target cast another ''Realm of Death'', the affected champions will remain stuck for the duration of the new circle.
+** The previous circle will be overridden by the new one; it will be dispelled to enter the new circle.
+* {{tip|Spell shield}} will not block the initial {{tip|slow}}.
+* The {{tip|sight|reveal}} effect lasts for {{fd|1.25}} seconds from the start of the cast time if the cast does not complete. Otherwise, the reveal ends as soon as the cast time completes.
+{{safesubst:unexpected|desc=
+* Upon entering or leaving the ''Death Realm'', targets revealed by effects such as {{si|Ignite}} or {{cai|Hawkshot|Ashe}} will keep the {{tip|sight|reveal}} VFX but will stop being revealed.{{bug}}[https://www.youtube.com/watch?v=lhY6ZTkISYM]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+* {{tip|camouflage|Camouflaged}} units will become visible if an enemy {{tip|champion}} is within their detection range, even if the champion is in a different realm.{{bug}} 
+* If the target's {{as|'''current''' health}} is lower than the amount that should be stolen, they will be brought down to 1 health. '''Mordekaiser''' will still get the intended amount of {{as|'''maximum''' health}}.
+* ''Realm of Death's'' '''maximum''' health reduction ignores {{tip|invulnerable|invulnerability}} effects.
+* Entering or leaving the ''Death Realm'' will cause all targeted {{tip|projectile|projectiles}} to be {{tip|homing projectile destruction|destroyed}}.
+* The transition in and out of the ''Death Realm'' doesn't interrupt {{tip|channel|channels}}.
+** {{ai|Grand Starfall|Pantheon}} will always be interrupted by the transition into the realm.
+* ''Realm of Death'' will not be dispelled if either of the two affected champions enter {{tip|resurrection}} after taking lethal damage. It is dispelled if the target enters a {{tip|zombie state}}.
+* Any active {{tip|tether}} effects (both friendly and hostile ones) existing on either of the two champions entering the realm will be broken (unless the tether is between those two).
+* Upon entering the realm, '''Mordekaiser''' and the target are {{tip|cleanse|cleansed}} from all {{tip|forced action}} effects.
+** The cleanse will occur even if the source of the crowd control enters the realm.{{bug|2}}
+* Unlike the other stats, '''Mordekaiser''' does not ''steal'' enemy total size; instead he gains 10% of his own size and reduces the enemy's size by 10% of theirs (all size modifiers stack additively).
+** '''Mordekaiser''' grows in size over {{fd|0.25}} seconds after successfully stealing his targets' stats, and shrinks over {{fd|0.25}} seconds after the buff runs out again. The target shrinks over {{fd|0.25}} seconds after their stats are stolen, but grows back to normal size instantly when the effect ends.
+* While '''Mordekaiser''' has hold of his enemy's stats, that champion's circular portrait will appear as a pip next to his health bar, visible to all players.
+** The champion's portrait will ocasionally stay even after '''Mordekaiser''' has lost hold of the enemy's stats.{{bug}}
+* ''Realm of Death's'' interactions with other elements/abilities (This list might be incomplete, last updated on patch [[V26.09]]):
+** Multiple ''Death Realms'' (possible through a {{ai|Hijack|Sylas|hijacked}} ''Realm of Death'' or if multiple '''Mordekaisers''' are in the same match) spawned will exist in the same realm, allowing champions to see and interact with champions bound to other circles. Champions are only affected by their boundaries and are not able to see the others.<!--
+-->{{safesubst:unexpected|desc=
+*** If another ''Realm of Death'' is cast while one is already active, upon leaving, the spirits from the second ''Realm of Death'' will be invisible from the perspective of the players affected by the first ''Realm of Death''.{{bug}}[https://youtu.be/mhNDY2ls4qo]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+*** {{cai|Devour|Tahm Kench}} can carry a target outside of their circle, but they will be displaced back inside once {{ai|Regurgitate|Tahm Kench|Regurgitated}}.
+*** An active {{ai|Cease and Desist|Vi}} on a target outside the perimeter will cause {{ci|Vi}} to continue her charge until her circle ends. She can knock back and damage secondary targets multiple times.
+** Champions inside the ''Death Realm'' continue gaining {{g|gold}} and {{stil|experience}} from any source, which includes nearby and global bounties as well as neutral [[buff]]s.
+** {{tip|Turret|Turret's}} [[Turret#Items|Crystalline Overgrowth]] can still be triggered while inside the ''Death Realm''.<!--
+-->{{safesubst:unexpected|desc=
+*** The Overgrowth's VFX of the Outer Turrets (Tier 1) will be invisible inside the ''Death Realm''.{{bug}}[https://youtu.be/XirCNQnVflY]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V26.01|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+** [[Wards]] placed in the ''Death Realm'' will not be destroyed at its end.
+*** The ward limit for each champion will be separate for the ''Death Realm''.
+** The [[faelights]] and [[jungle plants]] ({{ui|Blast Cone}}, {{ui|Honeyfruit}}, {{ui|Scryer's Bloom}}) will not be present in the ''Death Realm''.<!--
+-->{{safesubst:unexpected|desc=
+*** The faelights indicator will still be visible if the player's cursor is placed in their location.{{bug}}[https://youtu.be/NtRaAa-_VqY]
+*** The {{uis|Blast Cone}} landing indicator will still be visible while in the Death Realm and within its range.{{bug}}[https://youtu.be/F6a4e3CKfo0]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}<!--
+-->{{safesubst:unexpected|desc=
+** {{tip|Monsters}}, with the exception of {{uis|Voidgrub}}, will be visible for a brief moment after entering the ''Death Realm'', but they will be untargetable.{{bug}}[https://youtu.be/Kma-9kXcFhk]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+** {{tip|Hex-gate|Hex-gates}} on {{ui|Hextech Drake|Hextech Rift}} will not be present between realms.<!--
+-->{{safesubst:unexpected|desc=
+** {{ii|Eye of the Herald}} and {{si|Teleport}} are disabled while in the ''Death Realm''.
+*** Using {{ri|Unsealed Spellbook}} to obtain Teleport while in the ''Death Realm'' will enable the user to use it.{{bug}}
+*** Using {{ri|Unsealed Spellbook}} to swap Teleport for another summoner spell while in the ''Death Realm'' will disable the new summoner spell until the user leaves the realm.{{bug}}[https://youtu.be/jfHgiPav5XQ]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+*** The {{ii|Eye of the Herald}} can still spawn in the ''Death Realm'' if its automatically consumed while inside.{{bug|2}}
+**** The Herald will die at the end of ''Realm of Death''.
+** Controllable [[pets]] and {{tip|clones}} can still be commanded between realms.
+** '''Mordekaiser''' will be given gold, if applicable, for {{tip|pets}} killed at the end of ''Realm of Death''.
+*** {{tip|Clones}} and {{cai|Prophet of an Elder God|Illaoi|Tentacles}} will not be killed at the end of ''Realm of Death''.{{bug|2}}<!--
+-->{{safesubst:unexpected|desc=
+** {{cai|Summon: Tibbers|Annie|Tibbers}}, {{cai|H-28Q Apex Turret|Heimerdinger}}, {{cai|Daisy!|Ivern|Daisy}} and {{cai|Eulogy of the Isles|Yorick|Maiden}} are considered as "large pets" for the purposes of this ability and will follow their respective {{tip|champions}} between realms.
+*** If '''Mordekaiser''' dies inside of the ''Death Realm'' while his {{ai|Darkness Rise|Mordekaiser}} is hitting any of these pets, ''Darkness Rise'' will keep affecting the pets until they die or ''Darkness Rise'' deactivates normally.{{bug}}[https://youtu.be/QYPQgjONboM]|affectedEffects=Mordekaiser R; Mordekaiser I|estimatedPatchOrigin=V25.09|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+** Switching realms detaches all {{tip|attached}} champions on either of the two champions entering the realm.
+** The allied health, resource, and ultimate indicators (champion portraits located on the screen) will not update between realms as the [[Summoner|players]] have no {{tip|sight|vision}} of them.
+** [[Ping]]s used in the ''Death Realm'' will appear in the chat and mini-map, but will not appear in the map.{{bug|2}}
+** Any spawned terrain while in the ''Death Realm'' will remain inside until expired. They will not be destroyed.
+** Except for some cases, spells that require a target to be cast (e.g {{cai|Shuriken Flip|Akali}}, {{cai|Contaminate|Twitch}}) will not affect enemies in other realms nor will be castable if there's no targets in the same realm as the caster.
+** {{cai|Bandage Toss|Amumu}}, {{cai|Rocket Grab|Blitzcrank}}, {{cai|Zenith Blade|Leona}}, {{cai|Dredge Line|Nautilus}}, {{cai|Bone Skewer|Pyke}} and {{cai|Death Sentence|Thresh}} will still hit targets if their caster switches realms before they hit.
+** {{cai|The Hextech Ultimatum|Camille}}, {{cai|Goes Where He Pleases|Dr. Mundo}}, {{cai|Biggest Snowball Ever!|Nunu & Willump}} and {{ai|Absolute Zero|Nunu & Willump}}, {{cai|Death from Below|Pyke}}, {{cai|Realm Warp|Ryze}}, {{cai|Spirit's Refuge|Shen}}, {{cai|Threaded Volley|Taliyah|Worked Ground}} and {{cai|Living Shadow|Zed|Shadows}} will follow their caster between realms.<!--
+-->{{safesubst:unexpected|desc=
+** {{cai|Glacial Fissure|Braum}}[https://www.youtube.com/watch?v=7M9UGlXTFJs], {{cai|Grand Starfall|Pantheon}}{{tt|*|This is only possible if Pantheon casts the spell before leaving the Death Realm}}[https://www.youtube.com/watch?v=10gYNmd2amI], {{cai|Mega Adhesive|Singed}}[https://www.youtube.com/watch?v=iSTkyPLBvPI], {{cai|Hail of Arrows|Varus}}[https://www.youtube.com/watch?v=iQ6FcTM8D30], {{cai|Wind Wall|Yasuo}}[https://youtu.be/5miflp-M22Q], {{cai|Satchel Charge|Ziggs}}{{tt|*|The detonation VFX will be visible in Ziggs' realm}}[https://www.youtube.com/watch?v=QLubhxn2nHQ] and {{cai|Time Bomb|Zilean}}{{tt|*|The detonation VFX will be visible in Zilean's realm}}[https://www.youtube.com/watch?v=Q11r4wWMrdo] will follow their caster between realms but will only be visible in the realm they were cast.{{bug}}|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+** {{cai|Orb of Deception|Ahri}} will stay in the realm it was cast.
+*** The orb will still go back towards {{cis|Ahri}} position.
+** {{cai|Avengerang|Akshan}} will stay in the realm it was cast.
+*** The boomerang will only go back towards {{cis|Akshan}} position if it was already doing so during the realm switch.
+** {{cai|Comeuppance|Akshan}} bullets will get destroyed if he switches realms, even if its target is '''Mordekaiser'''.
+** {{cai|Glacial Storm|Anivia}} will not be dispelled if Anivia switches realms, but it will only be present in the realm it was cast.
+** {{cai|Endless Banquet|Bel'Veth|Void Corals}} will only be present in the realm they spawned in.
+*** If {{ci|Bel'Veth}} switches realms while she is consuming a Void Coral, the Void Coral will dissappear and she will not get her True Form nor deal damage to nearby enemies.
+** {{ci|Camille}} will still be able to use {{ais|Hookshot|Camille}} dash if she switches realms before the spell hits.<!--
+-->{{safesubst:unexpected|desc=
+** {{cai|Parallel Convergence|Ekko}} will only be visible in the realm it was cast, but he will still be able to trigger the spell's effect from another realm and it will only affect enemies in said realm.{{bug}}[https://youtu.be/ibBIMDfYiFg]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+** {{cai|Chum the Waters|Fizz}} will follow its target between realms.<!--
+-->{{safesubst:unexpected|desc=
+** {{cai|Winds of War|Galio}} will follow him if the spell was already on the ground before the realm switch, but it will only be visible in the realm it was cast.{{bug}}[https://youtu.be/sYHSur3s9Dw]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}<!--
+-->{{safesubst:unexpected|desc=
+** {{cai|Boulder Toss|Gnar}} boulder will only be visible in the realm it was cast, but he can still pick it up if he goes to its location.{{bug}}[https://youtu.be/ePda6dTbOOU]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+** {{cai|Test of Spirit|Illaoi}} tether will be destroyed if her target switches realms.
+*** {{ais|Test of Spirit|Illaoi}} target will not be made into a Vessel.
+** {{cai|Flawless Duet|Irelia}} will be recast automatically when switching realms, and will only affect enemies in the realm it was cast.
+** {{cai|Rootcaller|Ivern}} can still be recast if the target is in a different realm than him.<!--
+-->{{safesubst:unexpected|desc=
+** {{cai|Brushmaker|Ivern}} brushes might be visible for a few seconds after switching realms.{{bug}}[https://youtu.be/UIeh-LISo18]
+*** Passing by the position of a brush created by {{ai|Brushmaker|Ivern}} in another realm will make units transparent for a few seconds, but they will still be visible to the enemy team.|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+** {{cai|Cataclysm|Jarvan IV}} deactivation VFX will appear in the realm he is at.
+** {{cai|Killer Instinct|Kai'Sa}} can only be cast towards enemies in the same realm she is at.
+** {{cai|Fate's Call|Kalista}} cannot be cast if her {{ii|Black Spear|oathsworn}} is in another realm, but if the spell was cast before entering the ''Death Realm'', it will function as normal and will only affect targets in the oathsworn's realm.
+** {{cai|Requiem|Karthus}} will damage enemies in all realms.
+** {{cai|Umbral Trespass|Kayn}} will be interrupted and will not deal damage if its target switches realms.<!--
+-->{{safesubst:unexpected|desc=
+** {{cai|Void Ooze|Kog'Maw}} will follow him between realms.{{bug}}[https://www.youtube.com/watch?v=3GG93221-F8]
+*** A part of the VFX will be left in the realm it was cast.|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+** {{cai|Lilting Lullaby|Lillia}} will only affect enemies in the same realm as her.
+** {{cai|Glacial Path|Lissandra}} can still be recast if the spell was initially cast in another realm.<!--
+-->{{safesubst:unexpected|desc=
+** {{cai|Pix, Faerie Companion|Lulu|Pix}} will follow her between realms.
+*** However, if Pix is on another {{tip|champion}}, it will visually stay in Lulu's realm but will keep affecting enemies in the ''Death Realm''.{{bug}}[https://youtu.be/83eZ0bxAkoA]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+**** Pix will still be able to return to Lulu as normal, even if her ally's still in the ''Death Realm''.
+** If {{cais|Purgatory|Locke}} totem is in the ground, it will follow Locke between realms.{{bug}}
+*** If the totem closes in a different realm than Locke, the totem will be visible in Locke's realm but it will only be pickable in the realm it closed.{{bug}}<!-- PFT: rest of known PBE bugs -->
+** {{cai|Prismatic Barrier|Lux}} will grant her its second shield if she switches realms as the wand is coming back.<!--
+-->{{safesubst:unexpected|desc=
+** {{cai|Final Spark|Lux}} will follow her between realms.
+*** The beam's VFX will only be visible in the realm it was cast.{{bug}}[https://youtu.be/FZccLf0HpCI]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+** {{cai|Void Shift|Malzahar}} is special cased to not resist the slow but instead resist the realm switch after the cast completes.<!--
+-->{{safesubst:unexpected|desc=
+** {{cai|Call of the Void|Malzahar}} will follow him if used moments before the realm switch. Also, a part of the VFX will be left in the realm it was cast.{{bug}}[https://youtu.be/g752va4WSz8]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+<!--*** If '''Mordekaiser''' uses ''Realm of Death'' on a Malzahar with both a {{tip|spell shield}} and {{ai|Void Shift|Malzahar}} active at the same time, both shields will be consumed, the realm switch will not happen, {{ai|Void Shift|Malzahar}} will stop working for the rest of the game and Malzahar will become immune to the realm switch of ''Realm of Death''.{{bug}}
+*** On  rare occassions, if ''Realm of Death'' is used on a Malzahar with only {{ai|Void Shift|Malzahar}} active, Malzahar will become immune to the realm switch of ''Realm of Death'' while {{ai|Void Shift|Malzahar}} will keep working as expected.{{bug}}-->
+** {{cai|Golden Eclipse|Mel}} will only deal damage to enemies in the same realm she is at the end of the cast.<!--
+-->{{safesubst:unexpected|desc=
+** {{cai|Make It Rain|Miss Fortune}} will follow her between realms.{{bug}}[https://youtu.be/8kml6xMX1xM]
+*** The spell's area VFX will not follow.{{bug|1|The bullets VFX will follow}}|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+** {{cai|Hounds' Pursuit|Naafiri}} dash will still go through if she switches realms during the cast.<!--
+-->{{safesubst:unexpected|desc=
+** {{cai|Spirit Fire|Nasus}} will stay in the realm it was cast.
+*** However, the spell will keep affecting enemies in another realm if they were already affected by it before switching realms and they have not left the spell's area.{{bug}}[https://www.youtube.com/watch?v=qySVY0_cpuw]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+** {{cai|Depth Charge|Nautilus}} will not follow its target between realms.
+** {{cai|Inherent Glamour|Neeko}} does not copy '''Mordekaiser's''' ''Realm of Death'' form.
+** {{cai|Pop Blossom|Neeko}} will follow her between realms but only the leap VFX will be visible.
+** {{cai|Apotheosis|Nilah}} will only deal damage to enemies in the realm it was cast.{{bug|2}}
+*** It will still heal/shield targets in {{cis|Nilah}} realm at the end of the cast.
+** {{cai|Paranoia|Nocturne}} only applies {{tip|nearsight}} to enemy champions in the same realm as him.
+** {{cai|Clockwork Windup|Orianna|Ball}} will go back to her after switching realms.<!--
+-->{{safesubst:unexpected|desc=
+** {{cai|Command: Shockwave|Orianna}} will follow her between realms if her {{ai|Clockwork Windup|Orianna|ball}} is not on the ground.
+*** However, if her {{ai|Clockwork Windup|Orianna|ball}} is on the ground, {{ai|Command: Shockwave|Orianna}} will still follow her between realms but its shockwave will be invisible.{{bug}}[https://www.youtube.com/watch?v=VJcFuR3p6oU]
+*** Additionally, if {{ai|Command: Shockwave|Orianna}} is buffered while {{ai|Command: Attack|Orianna|her ball}} is still flying and she switches realms, {{ais|Command: Shockwave|Orianna}} will appear on top of {{ci|Orianna}}, but the actual shockwave will occur at the location {{ai|Command: Attack|Orianna|her ball}} was supposed to land.{{bug}}[https://www.youtube.com/watch?v=pNExpPyim4s]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}<!--
+-->{{safesubst:unexpected|desc=
+** {{cai|Keeper's Verdict|Poppy}} can send '''Mordekaiser''' outside of the ''Death Realm'' arena if she uses it during ''Realm of Death's'' cast.{{bug}}[https://www.youtube.com/watch?v=_JW_pRC_kwA]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+** {{cai|Phantom Undertow|Pyke}} will not follow him if he switches realms while the Phantom is coming back.<!--
+-->{{safesubst:unexpected|desc=
+** {{cai|Grand Entrance|Rakan}} will follow him between realms, but its initial VFX will not.{{bug}}[https://www.youtube.com/watch?v=M6ttzhFII60]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+** {{cai|Tunnel|Rek'Sai|Tunnels}} will not follow her between realms.
+*** If {{ci|Rek'Sai}} is already on a tunnel when switching realms, her {{tip|dash}} will not be interrupted.<!--
+-->{{safesubst:unexpected|desc=
+** {{cai|Decimating Smash|Sion}} VFX will follow him between realms, but the spell will only affect enemies in the realm it was cast.{{bug}}[https://www.youtube.com/watch?v=11WUUdF368s&pp=0gcJCQYKAYcqIYzv]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+** {{cai|Wish|Soraka}} will heal targets in all realms.
+** {{cai|Nevermove|Swain}} can still be recast if the target is in another realm, but nothing will happen.{{bug|2}}
+** {{cai|Abduct|Sylas}} will not hit enemies if he switches realms during the spell's animation.
+** {{cai|Force of Will|Syndra}} will cancel on realm switch.
+** {{cai|Unleashed Power|Syndra}} will only affect enemies in the realm it was cast, even if its target is '''Mordekaiser'''.
+** {{cai|Devour|Tahm Kench}} target will get spit on realm switch. The target will still be dealt damage by the spit if applicable.
+** {{cai|Weaver's Wall|Taliyah}} will get interrupted on realm switch.
+** {{cai|Shadow Assault|Talon}} will follow him between realms but the blades will be invisible. The blades will become visible again on recast.
+** {{cai|Bastion|Taric}} link will be temporarily disabled while in the ''Death Realm''. The link will not break.
+** {{cai|Dark Passage|Thresh}} will go back to him on realm switch.<!--
+-->{{safesubst:unexpected|desc=
+** {{cai|The Box|Thresh}} pillars will be visible in all realms, but it will only affect enemies in the realm it was cast.{{bug}}[https://youtu.be/vCiH6FKfJdM]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+** {{cai|Wingborne Storm|Udyr}} will stay in the realm it was cast.
+*** If the storm's target is sent to a different realm than {{ci|Udyr}}, the storm will start following him instead. 
+**** The storm's tracking VFX will stay in its target until the end of the spell.{{bug}}
+** {{cai|Fear Beyond Death 2|Urgot|Fear Beyond Death}} cannot be recast if the target is not in the same realm as him. 
+*** If the target is being reeled in however, the execution at the end of the {{tip|channel}} will take place regardless of the realm either he or the target is in.
+** {{cai|Event Horizon|Veigar}} will spawn in Veigar's realm at the end of the cast.
+** {{cai|Harrowed Path|Viego}} will follow him between realms.{{bug}}
+*** The ground mist will be visible in all realms.{{bug}}
+** {{cai|Arcane Storm|Viktor}} can be redirected with its recast even if Viktor is in a different realm from the singularity.
+** {{cai|Bladecaller|Xayah}} cannot call {{ai|Clean Cuts|Xayah|Feathers}} between realms.
+** {{cai|Last Breath|Yasuo}} will be interrupted if its target switches realms, unless the target is '''Mordekaiser'''.
+** {{cai|Soul Unbound|Yone}} cannot be recast inside of the ''Death Realm''.<!--
+-->{{safesubst:unexpected|desc=
+** {{cai|Eulogy of the Isles|Yorick|Maiden}} will not die with him if he dies inside of the ''Death Realm''.{{bug}}[https://youtu.be/l_jg1KyWwY4]
+*** {{ai|Eulogy of the Isles|Yorick}} will still go on cooldown and Yorick will be able to summon another Maiden once the cooldown ends.
+**** If Yorick has more than one {{ai|Eulogy of the Isles|Yorick|Maiden}} and one of them dies, {{ai|Eulogy of the Isles|Yorick}} will go on cooldown, even though there is still a Maiden in the map.|affectedEffects=Mordekaiser R; Yorick R|estimatedPatchOrigin=V25.09|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+** {{cai|Dreaded Return|Zaahen}} will only {{tip|airborne|pull}} affected enemies in the same realm it was cast.
+** {{iis|Cryptbloom}} nova will spawn at the user's realm and will only affect targets in said realm.<!--
+-->{{safesubst:unexpected|desc=
+** {{iis|Elixir of Iron}} trail will follow between realms, but it will be invisible.{{bug}}[https://youtu.be/c5jygokOY_s]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}<!--
+-->{{safesubst:unexpected|desc=
+** {{iis|Iceborn Gauntlet}} frost field will follow between realms, but it will be invisible.{{bug}}[https://youtu.be/IK1LrZCb50E]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}<!--
+-->{{safesubst:unexpected|desc=
+** {{iis|Redemption}} beam will only affect targets in the realm it was cast, but its SFX will be heard in all realms.{{bug}}[https://youtu.be/MRwIrU8pF4M]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}<!--
+-->{{safesubst:unexpected|desc=
+** {{ris|Dark Harvest}} souls VFX will not follow between realms, but they will still be reaped succesfully.{{bug}}[https://youtu.be/79qXNVmSIV4]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}<!--
+-->{{safesubst:unexpected|desc=
+** {{ris|Glacial Augment}} glacial rays will follow between realms, but they will be invisible.{{bug}}[https://youtu.be/Lx5ksbqHQog]|affectedEffects=Mordekaiser R|estimatedPatchOrigin=V9.12|<!--added automatically-->wikiUploadTimestamp=1774002446|<!--added automatically-->pagename=Template:Data Mordekaiser/Realm of Death
+}}
+{{ct|cast}}
+|tips = 
+* While in lane, ''Realm of Death'' is best used while the target is between you and your turret. This is so the target doesn't have much space to go towards their turret, since the area of the ''Death Realm'' is created in front of '''Mordekaiser''', leaving little space to move behind him.
+}}
