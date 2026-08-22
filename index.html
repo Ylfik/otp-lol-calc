@@ -169,6 +169,7 @@ main{max-width:2200px;margin:0 auto;padding:22px 28px 80px}
 .cbpal button{border:1px solid var(--line);background:var(--panel-2);color:var(--ink-dim);
   border-radius:3px;padding:5px 10px;font-size:12px}
 .cbpal button:hover{border-color:var(--q);color:var(--q)}
+.cbpal.saved button.on{border-color:var(--q);color:var(--q)}
 .cbpal.saved button em{font-style:normal;color:var(--ink-faint);font-family:var(--mono);font-size:10px}
 .cbdraft{margin:6px 0;padding-left:20px;color:var(--ink)}
 .cbdraft li{margin:3px 0;font-size:13px;display:flex;align-items:center;gap:6px}
@@ -4057,7 +4058,8 @@ const L10N = {
   cbDraft:["Your sequence","Votre séquence"],
   cbEmpty:["No step yet.","Aucune étape pour l'instant."],
   cbNamePh:["name it","donnez-lui un nom"],
-  cbSave:["Save","Enregistrer"], cbSaved:["Saved combos","Combos enregistrés"],
+  cbSave:["Save","Enregistrer"], cbUpdate:["Update","Mettre à jour"],
+  cbAsNew:["Save as new","Enregistrer comme nouveau"], cbSaved:["Saved combos","Combos enregistrés"],
   cbUntitled:["My combo","Mon combo"],
   passiveOut:["Passive output over the combo","Effet des passifs sur le combo"],
   comparison:["Comparison","Comparaison"],
@@ -5872,9 +5874,9 @@ function drawSwaps(){
 /* ------------------------------------------------------------
    The combo builder: pick steps, order them, name it, keep it.
    ------------------------------------------------------------ */
-let draft = [];
+let draft = [], draftName = "", editing = null;
 function cbOpen(){
-  draft = [];
+  draft = []; draftName = ""; editing = null;
   cbDraw();
   document.getElementById("cbOverlay").classList.add("on");
 }
@@ -5898,35 +5900,59 @@ function cbDraw(){
       }).join("")}</ol>`
       : `<p class="tipstat">${TR("cbEmpty")}</p>`}
     <div class="cbact">
-      <input id="cbName" maxlength="28" placeholder="${TR("cbNamePh")}">
-      <button class="tipbtn" id="cbSave" ${draft.length ? "" : "disabled"}>${TR("cbSave")}</button>
+      <input id="cbName" maxlength="28" placeholder="${TR("cbNamePh")}" value="${esc(draftName)}">
+      <button class="tipbtn" id="cbSave" ${draft.length ? "" : "disabled"}>${
+        editing === null ? TR("cbSave") : TR("cbUpdate")}</button>
+      ${editing === null ? "" : `<button class="tipbtn" id="cbNew">${TR("cbAsNew")}</button>`}
     </div>
 
     ${myCombos.length ? `<h3>${TR("cbSaved")}</h3>
       <div class="cbpal saved">${myCombos.map((c, i) =>
-        `<button data-load="${i}">${esc(c.name)} <em>${c.steps.length}</em></button>
+        `<button data-load="${i}" class="${editing === i ? "on" : ""}"
+           >${esc(c.name)} <em>${c.steps.length}</em></button>
          <button data-drop="${i}" class="cbdel">&times;</button>`).join("")}</div>` : ""}`;
 
+  const nameBox = el.querySelector("#cbName");
+  if(nameBox) nameBox.addEventListener("input", () => { draftName = nameBox.value; });
+
+  const keepName = () => {
+    const box = el.querySelector("#cbName");
+    if(box) draftName = box.value;
+  };
   const on = (sel, fn) => el.querySelectorAll(sel).forEach(b =>
-    b.addEventListener("click", () => fn(b)));
+    b.addEventListener("click", () => { keepName(); fn(b); }));
   on("button[data-add]",  b => { draft.push(b.dataset.add); cbDraw(); });
   on("button[data-del]",  b => { draft.splice(+b.dataset.del, 1); cbDraw(); });
   on("button[data-up]",   b => { const i = +b.dataset.up;
     [draft[i-1], draft[i]] = [draft[i], draft[i-1]]; cbDraw(); });
   on("button[data-down]", b => { const i = +b.dataset.down;
     [draft[i+1], draft[i]] = [draft[i], draft[i+1]]; cbDraw(); });
-  on("button[data-load]", b => { draft = myCombos[+b.dataset.load].steps.slice(); cbDraw(); });
+  on("button[data-load]", b => {
+    const i = +b.dataset.load;
+    draft = myCombos[i].steps.slice();
+    draftName = myCombos[i].name;
+    editing = i;                       /* saving now updates this one */
+    cbDraw();
+  });
   on("button[data-drop]", b => { myCombos.splice(+b.dataset.drop, 1); storeMyCombos(); cbDraw(); render(); });
 
-  const save = el.querySelector("#cbSave");
-  if(save) save.addEventListener("click", () => {
-    const nm = (el.querySelector("#cbName").value || "").trim() || TR("cbUntitled");
-    myCombos = myCombos.filter(c => c.name !== nm);      /* same name replaces */
-    myCombos.push({name:nm, steps:draft.slice()});
+  const commit = asNew => {
+    keepName();
+    const nm = (draftName || "").trim() || TR("cbUntitled");
+    if(!asNew && editing !== null){
+      myCombos[editing] = {name:nm, steps:draft.slice()};
+    }else{
+      myCombos = myCombos.filter(c => c.name !== nm);   /* the same name replaces */
+      myCombos.push({name:nm, steps:draft.slice()});
+    }
     storeMyCombos();
     document.getElementById("cbOverlay").classList.remove("on");
     render();
-  });
+  };
+  const save = el.querySelector("#cbSave");
+  if(save) save.addEventListener("click", () => commit(false));
+  const asNew = el.querySelector("#cbNew");
+  if(asNew) asNew.addEventListener("click", () => commit(true));
 }
 
 function breakdown(bi, stance){
