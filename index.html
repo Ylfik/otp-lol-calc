@@ -273,6 +273,12 @@ tr.swcur td{background:rgba(232,161,60,.09)}
   color:var(--q);font-family:var(--mono);font-size:11px;padding:3px 4px;text-align:center;
 }
 .stk input:focus{outline:none;border-color:var(--q)}
+.champstk{display:flex;align-items:center;gap:6px;margin-left:8px}
+.champstk span{font-family:var(--display);font-size:9px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-faint)}
+.champstk input{width:52px;background:var(--panel-2);border:1px solid var(--line);
+  border-radius:2px;color:var(--ink);font-family:var(--mono);font-size:12px;padding:3px 5px;text-align:center}
+.champstk input:focus{outline:none;border-color:var(--q)}
 .stkunit{font-style:normal;font-family:var(--display);font-size:8.5px;letter-spacing:.1em;
   color:var(--ink-faint);margin-left:3px}
 .cond-btn{
@@ -2085,10 +2091,14 @@ const CHAMPIONS = {
     stepMenu:[
       {id:"aa",    kind:"attack", en:"Auto attack",       fr:"Auto-attaque"},
       {id:"aaAwk", kind:"attack", awakened:true, en:"Auto, awakened", fr:"Auto, éveillée"},
-      {id:"cq", kind:"cast", label:"Q", en:"Q — Wilding Claw",     fr:"Q — Griffe sauvage"},
-      {id:"cw", kind:"cast", label:"W", en:"W — Iron Mantle",      fr:"W — Cape de fer"},
-      {id:"ce", kind:"cast", label:"E", en:"E — Blazing Stampede", fr:"E — Piétinement flamboyant"},
-      {id:"cr", kind:"cast", label:"R", en:"R — Wingborne Storm",  fr:"R — Tempête spirituelle"}
+      {id:"cq",    kind:"cast", label:"Q", en:"Q — enter Wilding Claw", fr:"Q — entrer en Griffe sauvage"},
+      {id:"cqAwk", kind:"cast", label:"Q", awakened:true, en:"Q — awaken, the lightning", fr:"Q — éveil, l'éclair"},
+      {id:"cw",    kind:"cast", label:"W", en:"W — Iron Mantle, the shield", fr:"W — Cape de fer, le bouclier"},
+      {id:"cwAwk", kind:"cast", label:"W", awakened:true, en:"W — awaken, shield and regen", fr:"W — éveil, bouclier et régénération"},
+      {id:"ce",    kind:"cast", label:"E", en:"E — Blazing Stampede", fr:"E — Piétinement flamboyant"},
+      {id:"ceAwk", kind:"cast", label:"E", awakened:true, en:"E — awaken", fr:"E — éveil"},
+      {id:"cr",    kind:"cast", label:"R", en:"R — Wingborne Storm", fr:"R — Tempête spirituelle"},
+      {id:"crAwk", kind:"cast", label:"R", awakened:true, en:"R — awaken, the glacial storm", fr:"R — éveil, la tempête glaciale"}
     ],
     key:"udyr", name:"Udyr", splash:3,
     base:{hp:[664,92], mana:[271,50], ad:[62,4], ar:[31,4.7], mr:[32,2.05],
@@ -2175,8 +2185,22 @@ const CHAMPIONS = {
     onStep(key, st, c){
       const {A, hp, memo} = c, out = {parts:[], ls:0};
       /* a cast decides which stance the following attacks are in */
+      /* A cast decides the stance, and some stances do something the moment
+         they are entered — the shield, the storm — which used to be lost
+         because it hung off the combo's name. */
       if(st.kind === "cast"){
-        memo.stance = st.label ? st.label.toLowerCase() : key;
+        const k = st.label ? st.label.toLowerCase() : key;
+        memo.stance = k;
+        if(k === "w"){
+          out.shield = st.awakened ? A.wShield + A.wAwkShield : A.wShield;
+          out.heal   = st.awakened ? A.wAwkRegen : 0;
+        }
+        if(k === "r"){
+          out.parts.push({n:"rStorm", v:A.rTotal, type:"magic"});
+          if(st.awakened) out.parts.push({n:"rAwkStorm", v:hp*A.rAwkTotal*0.01, type:"magic"});
+        }
+        if(k === "q" && st.awakened)
+          out.parts.push({n:"lightning", v:hp*A.qLightning*0.01*6, type:"magic"});
         return out;
       }
       if(st.kind !== "attack") return out;   /* the stance rides on attacks only */
@@ -2187,23 +2211,14 @@ const CHAMPIONS = {
                         v:hp*(st.awakened ? A.qAwkPct : A.qPct)*0.01, type:"phys"});
       }
       if(stance === "r") out.parts.push({n:"rOnHit", v:A.rOnHit, type:"magic"});
-      if(stance === "w") out.lsPct = st.awakened ? A.wAwkLifest : A.wLifesteal;
+      if(stance === "w"){
+        out.lsPct = st.awakened ? A.wAwkLifest : A.wLifesteal;
+        out.heal  = st.awakened ? A.wAwkHeal : A.wHeal;
+      }
       return out;
     },
     /* effects that resolve once the four attacks have landed */
-    comboEnd(key, c){
-      const {A, hp, hsMul} = c, out = {parts:[]};
-      if(key === "q") out.parts.push({n:"lightning", v:hp*A.qLightning*0.01*6, type:"magic"});
-      if(key === "r"){
-        out.parts.push({n:"rStorm",    v:A.rTotal, type:"magic"});
-        out.parts.push({n:"rAwkStorm", v:hp*A.rAwkTotal*0.01, type:"magic"});
-      }
-      if(key === "w"){
-        out.shield = (A.wShield + A.wAwkShield) * hsMul;
-        out.heal   = (2*A.wHeal + 2*A.wAwkHeal + A.wAwkRegen) * hsMul;
-      }
-      return out;
-    },
+    comboEnd(){ return {parts:[]}; },
     ranks:{
       qOnHit:      [5,13,21,29,37,45],
       qOnHitPct:   [3,4,5,6,7,8],
@@ -2415,6 +2430,7 @@ const CHAMPIONS = {
     stepMenu:[
       {id:"aa",     kind:"attack", en:"Auto attack",     fr:"Auto-attaque"},
       {id:"aaDive", kind:"attack", dive:true, en:"Auto, Phase Dive", fr:"Auto, Plongée"},
+      {id:"aaLow",  kind:"attack", low:true, en:"Auto, target under 30%", fr:"Auto, cible sous 30 %"},
       {id:"q", kind:"spell", en:"Q — Timewinder",           fr:"Q — Remonteur du temps"},
       {id:"w", kind:"cast",  label:"W", en:"W — Parallel Convergence", fr:"W — Convergence parallèle"},
       {id:"e", kind:"cast",  label:"E", en:"E — Phase Dive", fr:"E — Plongée fantomatique"},
@@ -2484,8 +2500,8 @@ const CHAMPIONS = {
         marks = onHits;                                   /* doubled by Dusk and Dawn */
         if(st.dive) out.parts.push({n:"phaseDive", v:A.eDmg, type:"magic"});
         /* the W's on-hit only lands once the target is under 30% of its health */
-        if(A.wLowPct && cur < 0.30 * hp){
-          const miss = Math.max(0, hp - cur);
+        if(A.wLowPct && (st.low || cur < 0.30 * hp)){
+          const miss = st.low ? Math.max(hp - cur, 0.70 * hp) : hp - cur;
           out.parts.push({n:"wLowHit", v:Math.max(A.wLowMin, miss * A.wLowPct/100), type:"magic"});
         }
       }
@@ -3070,6 +3086,226 @@ const CHAMPIONS = {
       ];
     },
     combos:[]
+  },
+  chogath:{
+    key:"chogath", name:"Chogath", label:"Cho'Gath", splash:0,
+    base:{hp:[644,94], mana:[270,60], ad:[69,4.2], ar:[38,4.5], mr:[32,2.05],
+          as:0.658, asPerLevel:1.44, ms:345},
+    abilities_meta:[
+      {k:"q", en:"Rupture", fr:"Rupture"},
+      {k:"w", en:"Feral Scream", fr:"Cri féroce"},
+      {k:"e", en:"Vorpal Spikes", fr:"Piques vorpales"},
+      {k:"r", en:"Feast", fr:"Festin"}
+    ],
+    rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
+    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    maxRank: 5,
+    /* Feast stacks are a build choice, so they get their own control */
+    stacks:{max:99, def:6, en:"Feast stacks", fr:"charges de Festin"},
+    ranks:{
+      qFlat:[80,135,190,245,300], qAP:1.00,
+      wFlat:[80,130,180,230,280], wAP:0.70, wSilence:[1.6,1.7,1.8,1.9,2.0],
+      eFlat:[20,40,60,80,100], eAP:0.30, ePct:[2.5,2.85,3.2,3.55,3.9], ePctPerStack:0.5,
+      eSlow:[30,35,40,45,50],
+      rDmg:[300,475,650], rAP:0.50, rHpPct:10, rPerStack:[80,120,160],
+      qCd:[6,6,6,6,6], wCd:[11,10.5,10,9.5,9], eCd:[8,7,6,5,4], rCd:[80,70,60]
+    },
+    abilities(c){
+      const {A, T, qr, wr, er, rr, tot, learned} = c;
+      const R = (a,n) => a[Math.max(0, Math.min(a.length-1, n-1))] || 0;
+      const ap = tot.ap, ah = 1 + tot.ah/100;
+      const n = c.stacks || 0;
+      A.feast   = n;
+      A.feastHP = R(T.rPerStack, rr) * n;
+      tot.hp += A.feastHP;                      /* those stacks are real health */
+      const bonusHP = tot.hp - c.base.hp + A.feastHP;
+      A.qDmg = R(T.qFlat,qr) + T.qAP*ap;
+      A.wDmg = R(T.wFlat,wr) + T.wAP*ap;
+      A.wSilence = R(T.wSilence,wr);
+      A.eFlat = R(T.eFlat,er) + T.eAP*ap;
+      A.ePct  = R(T.ePct,er) + T.ePctPerStack * n;
+      A.eSlow = R(T.eSlow,er);
+      A.rDmg  = R(T.rDmg,rr) + T.rAP*ap + T.rHpPct/100 * bonusHP;
+      A.qCd = R(T.qCd,qr)/ah; A.wCd = R(T.wCd,wr)/ah;
+      A.eCd = R(T.eCd,er)/ah; A.rCd = R(T.rCd,rr)/(1 + tot.uh/100);
+      if(!learned.q) A.qDmg = 0;
+      if(!learned.w){ A.wDmg = 0; A.wSilence = 0; }
+      if(!learned.e){ A.eFlat = 0; A.ePct = 0; }
+      if(!learned.r){ A.rDmg = 0; A.feastHP = 0; }
+      A.msIdle = c.msSoftCap((c.base.ms + c.S.ms) * (1 + tot.mspct/100));
+      return A;
+    },
+    passiveName:["Carnivore","Carnivore"],
+    passiveRows(c){
+      const {A, TR, n0} = c;
+      return [{lab:TR("cFeastHp"), val:n0(A.feastHP)}, {lab:TR("cFeast"), val:n0(A.feast)}];
+    },
+    stepMenu:[
+      {id:"aa",  kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
+      {id:"aaE", kind:"attack", spikes:true, en:"Auto, Vorpal Spikes", fr:"Auto, Piques vorpales"},
+      {id:"q", kind:"spell", en:"Q — Rupture", fr:"Q — Rupture"},
+      {id:"w", kind:"spell", en:"W — Feral Scream", fr:"W — Cri féroce"},
+      {id:"e", kind:"cast", label:"E", en:"E — Vorpal Spikes", fr:"E — Piques vorpales"},
+      {id:"r", kind:"spell", en:"R — Feast", fr:"R — Festin"}
+    ],
+    onStep(key, st, c){
+      const {A, hp} = c, out = {parts:[]};
+      if(st.kind === "attack" && st.spikes)
+        out.parts.push({n:"vorpalSpikes", v:A.eFlat + hp*A.ePct/100, type:"magic"});
+      if(st.id === "q") out.parts.push({n:"rupture", v:A.qDmg, type:"magic"});
+      if(st.id === "w") out.parts.push({n:"feralScream", v:A.wDmg, type:"magic"});
+      if(st.id === "r") out.parts.push({n:"feast", v:A.rDmg, type:"true"});
+      return out;
+    },
+    abilityRows(c){
+      const {A, TR, n0, pc, nf1} = c;
+      return [
+        [{lab:TR("damage"), val:n0(A.qDmg)}, {lab:TR("cooldown"), val:nf1.format(A.qCd)+" s"}],
+        [{lab:TR("damage"), val:n0(A.wDmg)}, {lab:TR("cSilence"), val:nf1.format(A.wSilence)+" s"},
+         {lab:TR("cooldown"), val:nf1.format(A.wCd)+" s"}],
+        [{lab:TR("damage"), val:n0(A.eFlat)}, {lab:TR("cSpikePct"), val:pc(A.ePct), awk:true},
+         {lab:TR("slow"), val:pc(A.eSlow)}, {lab:TR("cooldown"), val:nf1.format(A.eCd)+" s"}],
+        [{lab:TR("cTrue"), val:n0(A.rDmg)}, {lab:TR("cFeastHp"), val:n0(A.feastHP), awk:true},
+         {lab:TR("cooldown"), val:nf1.format(A.rCd)+" s"}]
+      ];
+    },
+    combos:[]
+  },
+  lillia:{
+    key:"lillia", name:"Lillia", label:"Lilia", splash:0,
+    base:{hp:[605,105], mana:[410,50], ad:[61,3.1], ar:[22,4.5], mr:[32,1.55],
+          as:0.625, asPerLevel:2.7, ms:330},
+    abilities_meta:[
+      {k:"q", en:"Blooming Blows", fr:"Coups fleurissants"},
+      {k:"w", en:"Watch Out! Eep!", fr:"Attention ! Hiii !"},
+      {k:"e", en:"Swirlseed", fr:"Graine tourbillonnante"},
+      {k:"r", en:"Lilting Lullaby", fr:"Berceuse mélodieuse"}
+    ],
+    rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
+    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    maxRank: 5,
+    ranks:{
+      qFlat:[35,45,55,65,75], qAP:0.35, qMs:[3,4,5,6,7], qMsAP:3,
+      wFlat:[80,100,120,140,160], wAP:0.35, wCentre:3,
+      eFlat:[60,85,110,135,160], eAP:0.50,
+      rFlat:[100,150,200], rAP:0.40,
+      qCd:[6,5.5,5,4.5,4], wCd:[14,13,12,11,10], eCd:[12,12,12,12,12], rCd:[150,130,110]
+    },
+    abilities(c){
+      const {A, T, qr, wr, er, rr, tot, learned} = c;
+      const R = (a,n) => a[Math.max(0, Math.min(a.length-1, n-1))] || 0;
+      const ap = tot.ap, ah = 1 + tot.ah/100;
+      A.qDmg = R(T.qFlat,qr) + T.qAP*ap;
+      A.qBoth = A.qDmg * 2;
+      A.qMs = R(T.qMs,qr) + T.qMsAP*ap/100;
+      A.qMsMax = A.qMs * 4;
+      A.wDmg = R(T.wFlat,wr) + T.wAP*ap;
+      A.wCentre = A.wDmg * T.wCentre;
+      A.eDmg = R(T.eFlat,er) + T.eAP*ap;
+      A.rDmg = R(T.rFlat,rr) + T.rAP*ap;
+      A.qCd = R(T.qCd,qr)/ah; A.wCd = R(T.wCd,wr)/ah;
+      A.eCd = R(T.eCd,er)/ah; A.rCd = R(T.rCd,rr)/(1 + tot.uh/100);
+      if(!learned.q){ A.qDmg = 0; A.qBoth = 0; A.qMs = 0; A.qMsMax = 0; }
+      if(!learned.w){ A.wDmg = 0; A.wCentre = 0; }
+      if(!learned.e) A.eDmg = 0;
+      if(!learned.r) A.rDmg = 0;
+      A.msIdle = c.msSoftCap((c.base.ms + c.S.ms) * (1 + tot.mspct/100));
+      return A;
+    },
+    passiveName:["Dream-Laden Bough","Rameau chargé de rêves"],
+    passiveRows(c){ const {TR} = c; return [{lab:TR("wipStat"), val:"—"}]; },
+    stepMenu:[
+      {id:"aa", kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
+      {id:"q",  kind:"spell", en:"Q — Blooming Blows", fr:"Q — Coups fleurissants"},
+      {id:"w",  kind:"spell", en:"W — Watch Out! Eep!", fr:"W — Attention ! Hiii !"},
+      {id:"wC", kind:"spell", centre:true, en:"W — struck in the centre", fr:"W — touché au centre"},
+      {id:"e",  kind:"spell", en:"E — Swirlseed", fr:"E — Graine tourbillonnante"},
+      {id:"r",  kind:"spell", en:"R — Lilting Lullaby", fr:"R — Berceuse mélodieuse"}
+    ],
+    onStep(key, st, c){
+      const {A} = c, out = {parts:[]};
+      if(st.id === "q")  out.parts.push({n:"bloomingBlows", v:A.qBoth, type:"magic"});
+      if(st.id === "w")  out.parts.push({n:"watchOut", v:A.wDmg, type:"magic"});
+      if(st.id === "wC") out.parts.push({n:"watchOutCentre", v:A.wCentre, type:"magic"});
+      if(st.id === "e")  out.parts.push({n:"swirlseed", v:A.eDmg, type:"magic"});
+      if(st.id === "r")  out.parts.push({n:"lullaby", v:A.rDmg, type:"magic"});
+      return out;
+    },
+    abilityRows(c){
+      const {A, TR, n0, pc, nf1} = c;
+      return [
+        [{lab:TR("lQboth"), val:n0(A.qBoth)}, {lab:TR("msBonus"), val:"+" + pc(A.qMsMax), awk:true},
+         {lab:TR("cooldown"), val:nf1.format(A.qCd)+" s"}],
+        [{lab:TR("damage"), val:n0(A.wDmg)}, {lab:TR("lWcentre"), val:n0(A.wCentre), awk:true},
+         {lab:TR("cooldown"), val:nf1.format(A.wCd)+" s"}],
+        [{lab:TR("damage"), val:n0(A.eDmg)}, {lab:TR("cooldown"), val:nf1.format(A.eCd)+" s"}],
+        [{lab:TR("damage"), val:n0(A.rDmg)}, {lab:TR("cooldown"), val:nf1.format(A.rCd)+" s"}]
+      ];
+    },
+    combos:[]
+  },
+  mordekaiser:{
+    key:"mordekaiser", name:"Mordekaiser", splash:0,
+    base:{hp:[645,104], mana:[0,0], ad:[61,4], ar:[37,4.2], mr:[32,2.05],
+          as:0.625, asPerLevel:1, ms:335},
+    abilities_meta:[
+      {k:"q", en:"Obliterate", fr:"Anéantissement"},
+      {k:"w", en:"Indestructible", fr:"Indestructible"},
+      {k:"e", en:"Death's Grasp", fr:"Poigne de la mort"},
+      {k:"r", en:"Realm of Death", fr:"Royaume de la mort"}
+    ],
+    rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
+    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    maxRank: 5,
+    ranks:{
+      qFlat:[80,115,150,185,220], qAD:1.20, qAP:0.70, qIso:[1.3,1.35,1.4,1.45,1.5],
+      wConv:[0.35,0.375,0.40,0.425,0.45],
+      eFlat:[60,80,100,120,140], eAP:0.45, ePen:[5,7.5,10,12.5,15],
+      qCd:[8,7,6,5,4], wCd:[12,11,10,9,8], eCd:[16,14,12,10,8], rCd:[140,130,120]
+    },
+    abilities(c){
+      const {A, T, L, qr, wr, er, rr, tot, bonusAD, learned} = c;
+      const R = (a,n) => a[Math.max(0, Math.min(a.length-1, n-1))] || 0;
+      const ap = tot.ap, ah = 1 + tot.ah/100;
+      A.qFlat = R(T.qFlat,qr) + T.qAD*bonusAD + T.qAP*ap + (L >= 10 ? 5*(L-9) : 0);
+      A.qIso  = A.qFlat * R(T.qIso,qr);
+      A.wConv = R(T.wConv,wr) * 100;
+      A.eDmg  = R(T.eFlat,er) + T.eAP*ap;
+      A.ePen  = R(T.ePen,er);
+      A.qCd = R(T.qCd,qr)/ah; A.wCd = R(T.wCd,wr)/ah;
+      A.eCd = R(T.eCd,er)/ah; A.rCd = R(T.rCd,rr)/(1 + tot.uh/100);
+      if(!learned.q){ A.qFlat = 0; A.qIso = 0; }
+      if(!learned.e){ A.eDmg = 0; A.ePen = 0; }
+      A.msIdle = c.msSoftCap((c.base.ms + c.S.ms) * (1 + tot.mspct/100));
+      return A;
+    },
+    passiveName:["Darkness Rise","Montée des ténèbres"],
+    passiveRows(c){ const {TR} = c; return [{lab:TR("wipStat"), val:"—"}]; },
+    stepMenu:[
+      {id:"aa", kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
+      {id:"q",  kind:"spell", en:"Q — Obliterate", fr:"Q — Anéantissement"},
+      {id:"qI", kind:"spell", iso:true, en:"Q — isolated target", fr:"Q — cible isolée"},
+      {id:"e",  kind:"spell", en:"E — Death's Grasp", fr:"E — Poigne de la mort"}
+    ],
+    onStep(key, st, c){
+      const {A} = c, out = {parts:[]};
+      if(st.id === "q")  out.parts.push({n:"obliterate", v:A.qFlat, type:"magic"});
+      if(st.id === "qI") out.parts.push({n:"obliterateIso", v:A.qIso, type:"magic"});
+      if(st.id === "e")  out.parts.push({n:"deathsGrasp", v:A.eDmg, type:"magic"});
+      return out;
+    },
+    abilityRows(c){
+      const {A, TR, n0, pc, nf1} = c;
+      return [
+        [{lab:TR("damage"), val:n0(A.qFlat)}, {lab:TR("mIso"), val:n0(A.qIso), awk:true},
+         {lab:TR("cooldown"), val:nf1.format(A.qCd)+" s"}],
+        [{lab:TR("mConv"), val:pc(A.wConv)}, {lab:TR("cooldown"), val:nf1.format(A.wCd)+" s"}],
+        [{lab:TR("damage"), val:n0(A.eDmg)}, {lab:TR("mPen"), val:pc(A.ePen), awk:true},
+         {lab:TR("cooldown"), val:nf1.format(A.eCd)+" s"}],
+        [{lab:TR("cooldown"), val:nf1.format(A.rCd)+" s"}]
+      ];
+    },
+    combos:[]
   }
 };
 let CHAMP = CHAMPIONS.udyr;
@@ -3147,6 +3383,10 @@ function computeBuild(b, target){
   const gr = (L-1)*(0.7025+0.0175*(L-1));           // LoL growth curve
   /* 62 + 4 per level gives 130 AD at level 18, confirmed in game.
      Riot's champion file reports 0 AD per level for Udyr, which is wrong. */
+  /* some champions carry a counter of their own — Feast stacks and the like */
+  const champStacks = CHAMP.stacks
+    ? Math.max(0, Math.min(CHAMP.stacks.max, b.stacks === undefined ? CHAMP.stacks.def : b.stacks))
+    : 0;
   const CB = CHAMP.base, at = ([v, per]) => v + per*gr;
   const base = {
     hp:at(CB.hp), mana:at(CB.mana), ad:at(CB.ad), ap:0,
@@ -3366,7 +3606,7 @@ function computeBuild(b, target){
   /* --- abilities: the champion owns the formulas --- */
   const A = CHAMP.abilities({
     A:{}, T, R1, lerp, L, qr, wr, er, rr, tot, base, S, bonusAD, bonusHP,
-    learned, has, msSoftCap, qBonusAS, qAwkBonusAS
+    learned, has, msSoftCap, qBonusAS, qAwkBonusAS, stacks:champStacks
   });
 
   /* --- on-target totals: 2 basic attack combo --- */
@@ -3911,6 +4151,12 @@ const L10N = {
   kResoMs:["Stolen Time, move speed","Temps volé, vitesse"],
   kMarks:["marks to trigger","marques pour déclencher"],
   wipStat:["not modelled yet","pas encore modélisé"],
+  cFeast:["Feast stacks","charges de Festin"], cFeastHp:["health from Feast","PV issus du Festin"],
+  cSilence:["silence","silence"], cSpikePct:["% of maximum health","% des PV max"],
+  cTrue:["true damage","dégâts bruts"],
+  lQboth:["both hits","les deux coups"], lWcentre:["struck in the centre","touché au centre"],
+  mIso:["isolated target","cible isolée"], mConv:["shield turned into healing","bouclier converti en soin"],
+  mPen:["magic penetration","pénétration magique"],
   iPas:["attack speed per stack","vitesse d'attaque par charge"],
   iPasMax:["at four stacks","à quatre charges"],
   iPhit:["on-hit at four stacks","à l'impact, quatre charges"],
@@ -4869,6 +5115,11 @@ function card(b, bi, R){
       <div class="rank q"><b>Q</b><input type="number" min="0" max="${CHAMP.maxRank}" value="${b.q}" data-act="q" data-b="${bi}"></div>
       <div class="rank w"><b>W</b><input type="number" min="0" max="${CHAMP.maxRank}" value="${b.w}" data-act="w" data-b="${bi}"></div>
       <div class="rank e"><b>E</b><input type="number" min="0" max="${CHAMP.maxRank}" value="${b.e}" data-act="e" data-b="${bi}"></div>
+      ${CHAMP.stacks ? `<label class="champstk" title="${esc(isFR() ? CHAMP.stacks.fr : CHAMP.stacks.en)}">
+        <span>${esc(isFR() ? CHAMP.stacks.fr : CHAMP.stacks.en)}</span>
+        <input type="number" min="0" max="${CHAMP.stacks.max}"
+               value="${b.stacks === undefined ? CHAMP.stacks.def : b.stacks}"
+               data-act="cstk" data-b="${bi}"></label>` : ""}
       <div class="rank r"><b>R</b><input type="number" min="0" max="${CHAMP.rankCapR ? 4 : CHAMP.maxRank}" value="${b.r}" data-act="r" data-b="${bi}"></div>
       <span class="pts ${(b.q+b.w+b.e+b.r) > skillPts(b.level, b.runes.some(x => x && x.id === 8313)) ? "over" : ""}"
             title="${TR("ptsWhy")}">${b.q+b.w+b.e+b.r} / ${skillPts(b.level, b.runes.some(x => x && x.id === 8313))}</span>
@@ -5916,6 +6167,14 @@ function bind(){
   grid.querySelectorAll('[data-act="pick"]').forEach(el => {
     el.addEventListener("click", () => openPicker(+el.dataset.b, +el.dataset.s));
   });
+  grid.querySelectorAll('input[data-act="cstk"]').forEach(el => {
+    el.addEventListener("change", e => {
+      const b = state.builds[+el.dataset.b];
+      const max = (CHAMP.stacks || {}).max || 0;
+      b.stacks = Math.max(0, Math.min(max, parseInt(e.target.value) || 0));
+      render();
+    });
+  });
   grid.querySelectorAll('input[data-act="stk"]').forEach(el => {
     el.addEventListener("change", e => {
       const b = state.builds[+el.dataset.b], slot = b.items[+el.dataset.s];
@@ -6440,7 +6699,6 @@ const ROSTER = [
   {key:"caitlyn", name:"Caitlyn", label:"Caitlyn"},
   {key:"camille", name:"Camille", label:"Camille"},
   {key:"cassiopeia", name:"Cassiopeia", label:"Cassiopeia"},
-  {key:"chogath", name:"Chogath", label:"Cho'Gath"},
   {key:"corki", name:"Corki", label:"Corki"},
   {key:"darius", name:"Darius", label:"Darius"},
   {key:"diana", name:"Diana", label:"Diana"},
@@ -6453,6 +6711,9 @@ const ROSTER = [
   {key:"zeri",   name:"Zeri",   splash:0, ready:true, focus:"54% 18%"},
   {key:"yunara", name:"Yunara", splash:0, ready:true, focus:"54% 18%"},
   {key:"kayle",  name:"Kayle",  splash:0, ready:true, focus:"52% 18%"},
+  {key:"chogath", name:"Chogath", label:"Cho'Gath", splash:0, ready:true, focus:"50% 22%"},
+  {key:"lillia",  name:"Lillia",  label:"Lilia",    splash:0, ready:true, focus:"52% 18%"},
+  {key:"mordekaiser", name:"Mordekaiser", splash:0, ready:true, focus:"52% 20%"},
   {key:"elise", name:"Elise", splash:15, ready:true, focus:"58% 14%"},
   {key:"evelynn", name:"Evelynn", label:"Evelynn"},
   {key:"ezreal", name:"Ezreal", label:"Ezreal"},
@@ -6493,7 +6754,6 @@ const ROSTER = [
   {key:"leblanc", name:"Leblanc", label:"LeBlanc"},
   {key:"leesin", name:"LeeSin", label:"Lee Sin"},
   {key:"leona", name:"Leona", label:"Leona"},
-  {key:"lillia", name:"Lillia", label:"Lillia"},
   {key:"lissandra", name:"Lissandra", label:"Lissandra"},
   {key:"locke", name:"Locke", label:"Locke"},
   {key:"lucian", name:"Lucian", label:"Lucian"},
@@ -6507,7 +6767,6 @@ const ROSTER = [
   {key:"mel", name:"Mel", label:"Mel"},
   {key:"milio", name:"Milio", label:"Milio"},
   {key:"missfortune", name:"MissFortune", label:"Miss Fortune"},
-  {key:"mordekaiser", name:"Mordekaiser", label:"Mordekaiser"},
   {key:"morgana", name:"Morgana", label:"Morgana"},
   {key:"naafiri", name:"Naafiri", label:"Naafiri"},
   {key:"nami", name:"Nami", label:"Nami"},
