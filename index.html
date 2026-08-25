@@ -818,6 +818,34 @@ table.brk .up{color:var(--e)}
   background:linear-gradient(180deg,#0B1118 0%,#101922 55%,#0B1118 100%)}
 body[data-view="home"] #home{display:block}
 body[data-view="home"] #app{display:none}
+#builds{display:none;min-height:100vh;
+  background:linear-gradient(180deg,#0B1118 0%,#101922 55%,#0B1118 100%)}
+body[data-view="builds"] #builds{display:block}
+body[data-view="builds"] #app,body[data-view="builds"] #home{display:none}
+body[data-view="home"] #builds{display:none}
+.bcard{border:1px solid var(--line);border-radius:4px;background:var(--panel);
+  padding:14px 16px;margin:0 0 12px}
+.bcard:hover{border-color:var(--line-soft)}
+.bhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:9px}
+.bhead b{font-family:var(--display);font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.bhead .who{font-size:12px;color:var(--ink-dim)}
+.bhead .likes{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--q)}
+.brow{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin:6px 0}
+.brow .iicon{width:30px;height:30px;border-radius:2px}
+.bcombo{font-size:12px;color:var(--e);margin:6px 0 2px}
+.bnotes{font-size:12.5px;color:var(--ink-dim);line-height:1.55;margin:6px 0 0}
+.bact{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.bact button{border:1px solid var(--line);background:var(--panel-2);color:var(--ink-dim);
+  border-radius:2px;padding:4px 10px;font-family:var(--display);font-size:9px;
+  letter-spacing:.12em;text-transform:uppercase}
+.bact button:hover{border-color:var(--q);color:var(--q)}
+.bcount{font-family:var(--mono);font-size:11px;color:var(--q)}
+.rolefilter{display:flex;gap:5px;flex-wrap:wrap;margin:10px 0 14px}
+.rolefilter button{border:1px solid var(--line);background:var(--panel-2);color:var(--ink-faint);
+  border-radius:14px;padding:4px 13px;font-family:var(--display);font-size:9.5px;
+  letter-spacing:.12em;text-transform:uppercase}
+.rolefilter button:hover{border-color:var(--q);color:var(--q)}
+.rolefilter button.on{background:var(--q);border-color:var(--q);color:#10161d;font-weight:600}
 .home-in{max-width:1100px;margin:0 auto;padding:56px 24px 40px}
 .home-head{text-align:center;margin-bottom:38px;position:relative}
 .home-head h1{
@@ -828,6 +856,25 @@ body[data-view="home"] #app{display:none}
 .home-sub{margin:12px auto 0;max-width:620px;color:var(--ink-dim);font-size:14px;line-height:1.6}
 .home-act{position:absolute;top:0;right:0}
 
+.shelfnav{
+  position:relative;display:inline-flex;margin:16px auto 0;padding:3px;
+  border:1px solid var(--line);border-radius:24px;background:rgba(11,17,24,.6);
+}
+.shelfnav a{
+  position:relative;z-index:2;display:block;padding:6px 22px;text-decoration:none;
+  font-family:var(--display);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-faint);transition:color .25s;
+}
+.shelfnav a:hover{color:var(--ink-dim)}
+.shelfnav .slider{
+  position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);
+  border-radius:22px;background:var(--q);
+  transition:transform .28s cubic-bezier(.4,0,.2,1);
+}
+.shelfnav[data-on="builds"] .slider{transform:translateX(100%)}
+.shelfnav[data-on="calc"]   a:nth-of-type(1),
+.shelfnav[data-on="builds"] a:nth-of-type(2){color:#10161d;font-weight:600}
+@media (prefers-reduced-motion:reduce){ .shelfnav .slider{transition:none} }
 .champfind{display:flex;align-items:center;gap:14px;margin:0 0 18px}
 .champfind input{
   flex:1;max-width:360px;background:var(--panel);border:1px solid var(--line);border-radius:3px;
@@ -918,8 +965,14 @@ body[data-view="home"] #app{display:none}
   <div class="home-in">
     <header class="home-head">
       <h1>OTP<span>·</span>LOL<span>·</span>CALC</h1>
+      <nav class="shelfnav" data-on="calc">
+        <span class="slider"></span>
+        <a href="#/" data-i18n="navCalc">Calculators</a>
+        <a href="#/builds" data-i18n="navBuilds">Builds</a>
+      </nav>
       <p class="home-sub" data-i18n="homeSub">Build calculators for one-trick players, built one champion at a time.</p>
       <div class="home-act">
+        <a class="helpbtn" id="btnBuilds" href="#/builds" data-i18n="sharedBuilds">Builds</a>
         <div class="seg" id="homeLang"><button data-l="en" aria-pressed="true">EN</button><button data-l="fr" aria-pressed="false">FR</button></div>
       </div>
     </header>
@@ -950,6 +1003,25 @@ body[data-view="home"] #app{display:none}
   </div>
 </div>
 
+<!-- ============================================================
+     BUILDS — the shared shelf, a page of its own rather than a panel
+     buried inside one champion's calculator.
+     ============================================================ -->
+<div id="builds">
+  <div class="home-in">
+    <header class="home-head">
+      <h1>OTP<span>·</span>LOL<span>·</span>CALC</h1>
+      <nav class="shelfnav" data-on="builds">
+        <span class="slider"></span>
+        <a href="#/" data-i18n="navCalc">Calculators</a>
+        <a href="#/builds" data-i18n="navBuilds">Builds</a>
+      </nav>
+      <p class="home-sub" data-i18n="buildsSub">Builds published by other players, one champion at a time.</p>
+    </header>
+    <div id="buildsBody"></div>
+  </div>
+</div>
+
 <div id="app">
 <div class="hero">
   <div class="acct" id="acctBar"></div>
@@ -964,7 +1036,7 @@ body[data-view="home"] #app{display:none}
 
       <button class="helpbtn" id="btnOpt" data-i18n="optimiser" hidden>Optimiser</button>
       
-      <button class="helpbtn" id="btnBoard" data-i18n="board">Leaderboard</button>
+      <a class="helpbtn" id="btnBuilds" href="#/builds" data-i18n="sharedBuilds">Builds</a>
       
       <button class="helpbtn" id="btnReport" data-i18n="report">Feedback</button>
       <div class="seg" id="langSeg"><button data-l="en" aria-pressed="true">EN</button><button data-l="fr" aria-pressed="false">FR</button></div>
@@ -3307,6 +3379,89 @@ const CHAMPIONS = {
       ];
     },
     combos:[]
+  },
+  xinzhao:{
+    key:"xinzhao", name:"XinZhao", label:"Xin Zhao", splash:0,
+    base:{hp:[620,106], mana:[274,55], ad:[63,3], ar:[35,4.4], mr:[32,2.05],
+          as:0.645, asPerLevel:3.5, ms:345},
+    abilities_meta:[
+      {k:"q", en:"Three Talon Strike", fr:"Triple frappe"},
+      {k:"w", en:"Wind Becomes Lightning", fr:"Le vent devient foudre"},
+      {k:"e", en:"Audacious Charge", fr:"Charge audacieuse"},
+      {k:"r", en:"Crescent Guard", fr:"Garde du croissant"}
+    ],
+    rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
+    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    maxRank: 5,
+    ranks:{
+      qFlat:[15,30,45,60,75], qBonusAD:0.40,
+      wSlash:[30,40,50,60,70], wSlashAD:0.30,
+      wThrust:[50,85,120,155,190], wThrustAD:0.90, wThrustAP:0.65,
+      eFlat:[50,75,100,125,150], eAP:1.20, eAS:[38,46,54,62,70], eASAP:10,
+      rFlat:[75,175,275], rBonusAD:1.00, rAP:1.10, rCurPct:15,
+      qCd:[7,6.5,6,5.5,5], wCd:[12,11,10,9,8], eCd:[11,11,11,11,11], rCd:[120,110,100]
+    },
+    abilities(c){
+      const {A, T, qr, wr, er, rr, tot, bonusAD, learned} = c;
+      const R = (a,n) => a[Math.max(0, Math.min(a.length-1, n-1))] || 0;
+      const ap = tot.ap, ah = 1 + tot.ah/100;
+      /* the Q empowers three attacks, so one hit and the set are both useful */
+      A.qHit    = R(T.qFlat,qr) + T.qBonusAD*bonusAD;
+      A.qAll    = A.qHit * 3;
+      A.wSlash  = R(T.wSlash,wr)  + T.wSlashAD*tot.ad;
+      A.wThrust = R(T.wThrust,wr) + T.wThrustAD*tot.ad + T.wThrustAP*ap;
+      A.wBoth   = A.wSlash + A.wThrust;
+      A.eDmg    = R(T.eFlat,er) + T.eAP*ap;
+      A.eAS     = R(T.eAS,er) + T.eASAP*ap/100;
+      A.rFlat   = R(T.rFlat,rr) + T.rBonusAD*bonusAD + T.rAP*ap;
+      A.rCurPct = T.rCurPct;
+      A.qCd = R(T.qCd,qr)/ah; A.wCd = R(T.wCd,wr)/ah;
+      A.eCd = R(T.eCd,er)/ah; A.rCd = R(T.rCd,rr)/(1 + tot.uh/100);
+      if(!learned.q){ A.qHit = 0; A.qAll = 0; }
+      if(!learned.w){ A.wSlash = 0; A.wThrust = 0; A.wBoth = 0; }
+      if(!learned.e){ A.eDmg = 0; A.eAS = 0; }
+      if(!learned.r){ A.rFlat = 0; A.rCurPct = 0; }
+      A.msIdle = c.msSoftCap((c.base.ms + c.S.ms) * (1 + tot.mspct/100));
+      return A;
+    },
+    passiveName:["Determination","Détermination"],
+    passiveRows(c){ const {TR} = c; return [{lab:TR("wipStat"), val:"—"}]; },
+    stepMenu:[
+      {id:"aa",  kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
+      {id:"aaQ", kind:"attack", talon:true, en:"Auto, Three Talon Strike", fr:"Auto, Triple frappe"},
+      {id:"q", kind:"cast", label:"Q", en:"Q — empower three attacks", fr:"Q — renforcer trois attaques"},
+      {id:"w", kind:"spell", en:"W — slash and thrust", fr:"W — fauche et estoc"},
+      {id:"e", kind:"spell", en:"E — Audacious Charge", fr:"E — Charge audacieuse"},
+      {id:"r", kind:"spell", en:"R — Crescent Guard", fr:"R — Garde du croissant"}
+    ],
+    onStep(key, st, c){
+      const {A, cur} = c, out = {parts:[]};
+      if(st.kind === "attack" && st.talon)
+        out.parts.push({n:"threeTalon", v:A.qHit, type:"phys"});
+      if(st.id === "w") out.parts.push({n:"windLightning", v:A.wBoth, type:"phys"});
+      if(st.id === "e"){
+        out.parts.push({n:"audaciousCharge", v:A.eDmg, type:"magic"});
+        out.asBonus = A.eAS;
+      }
+      if(st.id === "r")
+        out.parts.push({n:"crescentGuard", v:A.rFlat + cur*A.rCurPct/100, type:"phys"});
+      return out;
+    },
+    abilityRows(c){
+      const {A, TR, n0, pc, nf1} = c;
+      return [
+        [{lab:TR("xQhit"), val:n0(A.qHit)}, {lab:TR("xQall"), val:n0(A.qAll), awk:true},
+         {lab:TR("cooldown"), val:nf1.format(A.qCd)+" s"}],
+        [{lab:TR("xWslash"), val:n0(A.wSlash)}, {lab:TR("xWthrust"), val:n0(A.wThrust)},
+         {lab:TR("xWboth"), val:n0(A.wBoth), awk:true},
+         {lab:TR("cooldown"), val:nf1.format(A.wCd)+" s"}],
+        [{lab:TR("damage"), val:n0(A.eDmg)}, {lab:TR("bonusAs"), val:"+" + pc(A.eAS), awk:true},
+         {lab:TR("cooldown"), val:nf1.format(A.eCd)+" s"}],
+        [{lab:TR("damage"), val:n0(A.rFlat)}, {lab:TR("xRcur"), val:pc(A.rCurPct), awk:true},
+         {lab:TR("cooldown"), val:nf1.format(A.rCd)+" s"}]
+      ];
+    },
+    combos:[]
   }
 };
 let CHAMP = CHAMPIONS.udyr;
@@ -4052,6 +4207,13 @@ const L10N = {
   abilities:["Abilities","Compétences"],
   combos:["Combos","Combos"],
   buildCombo:["Build a combo","Créer un combo"],
+  buildsTitle:["BUILDS","BUILDS"],
+  buildsSub:["Builds published by other players, one champion at a time.",
+             "Les builds publiés par d'autres joueurs, un champion à la fois."],
+  allChamps:["All champions","Tous les champions"],
+  navCalc:["Calculators","Calculateurs"], navBuilds:["Builds","Builds"],
+  bCombo:["Combo:","Combo :"], anyRole:["Any role","Tous les rôles"], bCompare:["Compare in","Comparer en"],
+  sharedBuilds:["Builds","Builds"],
   cbTitle:["Build a combo","Créer un combo"],
   cbHow:["Click a step to add it, then order it. The combo joins the comparison across all three builds.",
          "Cliquez sur une étape pour l'ajouter, puis ordonnez-la. Le combo rejoint la comparaison des trois builds."],
@@ -4159,6 +4321,9 @@ const L10N = {
   lQboth:["both hits","les deux coups"], lWcentre:["struck in the centre","touché au centre"],
   mIso:["isolated target","cible isolée"], mConv:["shield turned into healing","bouclier converti en soin"],
   mPen:["magic penetration","pénétration magique"],
+  xQhit:["per empowered attack","par attaque renforcée"], xQall:["all three","les trois"],
+  xWslash:["slash","fauche"], xWthrust:["thrust","estoc"], xWboth:["both","les deux"],
+  xRcur:["% of current health","% des PV actuels"],
   iPas:["attack speed per stack","vitesse d'attaque par charge"],
   iPasMax:["at four stacks","à quatre charges"],
   iPhit:["on-hit at four stacks","à l'impact, quatre charges"],
@@ -4581,6 +4746,16 @@ async function lbLoad(){
   lbRender();
 }
 
+/* the combo is the visitor's now, so a published build carries the one it was
+   measured on — otherwise its numbers mean nothing to whoever loads it */
+function withCombo(b){
+  const out = JSON.parse(JSON.stringify(b));
+  const sel = document.getElementById("pubCombo");
+  const pick = sel ? myCombos.find(c => c.name === sel.value) : myCombos[0];
+  if(pick) out.combo = JSON.parse(JSON.stringify(pick));
+  return out;
+}
+
 async function lbPublish(){
   if(!me) return;
   const g = id => (document.getElementById(id) || {}).value || "";
@@ -4593,7 +4768,7 @@ async function lbPublish(){
     role:g("pubRole"), starter:g("pubStarter"),
     summoner:g("pubSummoner").trim().slice(0, 40),
     rank:g("pubRank"),
-    data:JSON.parse(JSON.stringify(b))
+    data:withCombo(b)
   });
   boardNote = error ? error.message : TR("published");
   lbLoad();
@@ -4605,7 +4780,7 @@ async function lbUpdate(id, bi){
   const b = state.builds[bi];
   const row = board.find(x => x.id === id) || {};
   const notes = prompt(TR("editNotes"), row.notes || "");
-  const patch = {data:JSON.parse(JSON.stringify(b)), patch:GAME_PATCH};
+  const patch = {data:withCombo(b), patch:GAME_PATCH};
   if(notes !== null) patch.notes = notes.slice(0, 400);
   const {error} = await sb.from("builds").update(patch).eq("id", id);
   boardNote = error ? error.message : TR("updatedOn").replace("%s", GAME_PATCH);
@@ -5378,6 +5553,9 @@ function lbRender(){
         <label>${TR("summoner")}<input id="pubSummoner" maxlength="40" placeholder="Ylfik#EUW"></label>
         <label>${TR("rank")}<select id="pubRank"><option value="">—</option>${RANKS.map(r =>
           `<option value="${r}">${r}</option>`).join("")}</select></label>
+        ${myCombos.length ? `<label>${TR("bCombo")}<select id="pubCombo">${
+          myCombos.map(c => `<option value="${esc(c.name)}">${esc(c.name)}</option>`).join("")
+        }</select></label>` : ""}
         <label>${TR("role")}<select id="pubRole"><option value="">—</option>${ROLES.map(r =>
           `<option value="${r.k}">${esc(isFR() ? r.fr : r.en)}</option>`).join("")}</select></label>
         <label>${TR("starter")}<select id="pubStarter"><option value="">—</option>${
@@ -6740,6 +6918,7 @@ const ROSTER = [
   {key:"chogath", name:"Chogath", label:"Cho'Gath", splash:0, ready:true, focus:"50% 22%"},
   {key:"lillia",  name:"Lillia",  label:"Lilia",    splash:0, ready:true, focus:"52% 18%"},
   {key:"mordekaiser", name:"Mordekaiser", splash:0, ready:true, focus:"52% 20%"},
+  {key:"xinzhao", name:"XinZhao", label:"Xin Zhao", splash:0, ready:true, focus:"52% 20%"},
   {key:"elise", name:"Elise", splash:15, ready:true, focus:"58% 14%"},
   {key:"evelynn", name:"Evelynn", label:"Evelynn"},
   {key:"ezreal", name:"Ezreal", label:"Ezreal"},
@@ -6864,7 +7043,6 @@ const ROSTER = [
   {key:"monkeyking", name:"MonkeyKing", label:"Wukong"},
   {key:"xayah", name:"Xayah", label:"Xayah"},
   {key:"xerath", name:"Xerath", label:"Xerath"},
-  {key:"xinzhao", name:"XinZhao", label:"Xin Zhao"},
   {key:"yasuo", name:"Yasuo", label:"Yasuo"},
   {key:"yone", name:"Yone", label:"Yone"},
   {key:"yorick", name:"Yorick", label:"Yorick"},
@@ -6937,6 +7115,104 @@ function goBackAfterAuth(){
   route();
 }
 
+/* ------------------------------------------------------------
+   The shared shelf. Same grid as the home page, then a page of
+   cards for whichever champion you opened.
+   ------------------------------------------------------------ */
+let buildsFor = null, buildRows = [], buildCounts = {}, buildRole = "";
+
+async function buildsCount(){
+  if(!lbReady()) return;
+  const {data} = await sb.from("leaderboard").select("champion");
+  buildCounts = {};
+  (data || []).forEach(r => { buildCounts[r.champion] = (buildCounts[r.champion] || 0) + 1; });
+}
+async function buildsLoad(key){
+  if(!lbReady()) return;
+  let q = sb.from("leaderboard").select("*").eq("champion", key);
+  if(buildRole) q = q.eq("role", buildRole);
+  const {data} = await q
+    .order("likes", {ascending:false})
+    .order("created_at", {ascending:false})
+    .limit(100);
+  buildRows = data || [];
+  drawBuilds();
+}
+
+function drawBuilds(){
+  const el = document.getElementById("buildsBody");
+  if(!el) return;
+
+  if(!buildsFor){
+    const shown = ROSTER.filter(c => c.ready);
+    el.innerHTML = `<div class="champs">${shown.map(c => `
+      <a class="champ" href="#/builds/${c.key}">
+        <span class="art" style="background-image:url('${SPLASH(c)}');background-position:${c.focus || "52% 22%"}"></span>
+        <span class="veil"></span>
+        <span class="tagsoon tagnew">${(buildCounts[c.key] || 0)}</span>
+        <span class="lab"><b>${esc(c.label || c.name)}</b></span>
+      </a>`).join("")}</div>`;
+    return;
+  }
+
+  const champ = ROSTER.find(c => c.key === buildsFor) || {};
+  el.innerHTML = `
+    <p class="bcount"><a class="backhome" href="#/builds">${TR("allChamps")}</a>
+       &nbsp; ${esc(champ.label || champ.name || "")} — ${buildRows.length}</p>
+    <div class="rolefilter">
+      <button data-role="" class="${buildRole ? "" : "on"}">${TR("anyRole")}</button>
+      ${ROLES.map(r => `<button data-role="${r.k}" class="${buildRole === r.k ? "on" : ""}"
+        >${esc(isFR() ? r.fr : r.en)}</button>`).join("")}
+    </div>
+    ${buildRows.length ? buildRows.map(r => {
+      const items = ((r.data || {}).items || []).filter(x => x && x.name);
+      const runes = ((r.data || {}).runes || []).filter(x => x && x.id);
+      const combo = (r.data || {}).combo;
+      return `<div class="bcard">
+        <div class="bhead">
+          <b>${esc(r.name)}</b>
+          <span class="who">${esc(r.author)}${r.rank ? " · " + esc(r.rank) : ""}${
+            r.role ? " · " + esc(roleName(r.role)) : ""}</span>
+          <span class="likes">&#9829; ${r.likes}</span>
+        </div>
+        <div class="brow">${r.starter && starterId(r.starter)
+            ? `<img class="iicon start" src="${ITEM_ICON(starterId(r.starter))}" alt=""
+                 title="${esc(starterName(r.starter))}" loading="lazy"
+                 onerror="this.style.visibility='hidden'">` : ""}
+          ${items.map(x => { const it = BY_NAME[x.name];
+            return it && it.id ? `<img class="iicon" src="${ITEM_ICON(it.id)}" alt=""
+              title="${esc(iName(it))}" loading="lazy" onerror="this.style.visibility='hidden'">` : "";
+          }).join("")}</div>
+        <div class="brow">${runes.map(x => { const rn = RUNE_BY_ID[x.id];
+          return rn ? `<img class="iicon" src="${RUNE_ICON(rn)}" alt="" title="${esc(rName(rn))}"
+            loading="lazy" onerror="this.style.visibility='hidden'">` : "";
+        }).join("")}</div>
+        ${combo && combo.name ? `<p class="bcombo">${TR("bCombo")} ${esc(combo.name)}</p>` : ""}
+        ${r.notes ? `<p class="bnotes">${esc(r.notes)}</p>` : ""}
+        <div class="bact">
+          ${[0,1,2].map(i =>
+            `<button data-cmp="${r.id}" data-slot="${i}">${TR("bCompare")} ${i + 1}</button>`).join("")}
+        </div>
+      </div>`;
+    }).join("") : `<p class="tipstat">${TR("boardEmpty")}</p>`}`;
+
+  el.querySelectorAll("button[data-role]").forEach(b =>
+    b.addEventListener("click", () => {
+      buildRole = b.dataset.role;
+      buildsLoad(buildsFor);
+    }));
+  el.querySelectorAll("button[data-cmp]").forEach(b =>
+    b.addEventListener("click", () => useShared(b.dataset.cmp, +b.dataset.slot)));
+}
+
+/* load a shared build into one of your three slots, then go there */
+function useShared(id, slot){
+  const row = buildRows.find(x => x.id === id);
+  if(!row) return;
+  try{ sessionStorage.setItem("otp-incoming", JSON.stringify({slot, row})); }catch(err){}
+  location.hash = "#/" + row.champion;
+}
+
 function route(){
   const raw = location.hash || "";
   /* the address bar may be holding a sign-in reply rather than a route */
@@ -6947,16 +7223,49 @@ function route(){
     goBackAfterAuth();
     return;
   }
-  const key = (raw.replace(/^#\/?/, "") || "").toLowerCase();
+  const path = (raw.replace(/^#\/?/, "") || "").toLowerCase();
+
+  if(path === "builds" || path.startsWith("builds/")){
+    buildsFor = path.startsWith("builds/") ? path.slice(7) : null;
+    if(!buildsFor) buildRole = "";
+    document.body.dataset.view = "builds";
+    document.title = "Builds — OTP LoL Calc";
+    applyStatic();
+    drawBuilds();
+    buildsFor ? buildsLoad(buildsFor) : buildsCount().then(drawBuilds);
+    window.scrollTo(0, 0);
+    return;
+  }
+
+  const key = path;
   const champ = ROSTER.find(c => c.key === key && c.ready);
   if(champ){
     /* the splash is a large image; showing the page first feels much faster */
     CHAMP = CHAMPIONS[champ.key] || CHAMPIONS.udyr;
     T = CHAMP.ranks;
     loadMyCombos();
+    /* a build handed over from the shared shelf */
+    try{
+      const inc = sessionStorage.getItem("otp-incoming");
+      if(inc){
+        sessionStorage.removeItem("otp-incoming");
+        const {slot, row} = JSON.parse(inc);
+        if(row.champion === CHAMP.key){
+          const one = restoreBuild(mk(row.name), row.data);
+          one.name = row.name;
+          state.builds[slot] = one;
+          const cb = (row.data || {}).combo;
+          if(cb && cb.name && cb.steps && !myCombos.some(c => c.name === cb.name)){
+            myCombos.push(cb); storeMyCombos();   /* its combo comes along */
+          }
+        }
+      }
+    }catch(err){}
     document.body.dataset.view = "app";
     document.title = (champ.label || champ.name) + " — OTP LoL Calc";
     document.documentElement.style.setProperty("--splashpos", champ.focus || "50% 28%");
+    const bb = document.getElementById("btnBuilds");
+    if(bb) bb.setAttribute("href", "#/builds/" + champ.key);   /* his builds, not the shelf */
     const art = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champ.name}_${champ.splash}.jpg`;
     const pre = new Image();
     pre.onload = () => document.documentElement.style.setProperty("--splash", `url("${art}")`);
