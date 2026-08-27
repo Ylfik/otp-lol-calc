@@ -22,7 +22,7 @@ window.CHAMPION = {
       return out;
     },
     key:"yunara", name:"Yunara", splash:0,
-    base:{hp:[590,110], mana:[275,45], ad:[55,3], ar:[25,4.4], mr:[30,1.3],
+    base:{hp:[590,110], mana:[275,45], ad:[55,3], ar:[25,4.4], mr:[33,1.1],
           as:0.65, asPerLevel:2, ms:325},
     abilities_meta:[
       {k:"q", en:"Path of Devotion", fr:"Voie de la dévotion"},

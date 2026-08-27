@@ -22,7 +22,7 @@ window.CHAMPION = {
       return out;
     },
     key:"zeri", name:"Zeri", splash:0,
-    base:{hp:[600,110], mana:[250,45], ad:[56,2], ar:[24,4.2], mr:[30,1.3],
+    base:{hp:[600,110], mana:[250,45], ad:[56,2], ar:[24,4.2], mr:[33,1.1],
           as:0.658, asPerLevel:2, ms:330},
     abilities_meta:[
       {k:"q", en:"Burst Fire",      fr:"Tir en rafale"},
