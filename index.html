@@ -970,7 +970,7 @@ body[data-view="home"] #builds{display:none}
 .home-foot p{margin:0 0 5px}
 
 .skinbtn{
-  position:absolute;top:14px;left:132px;z-index:3;
+  position:relative;
   font-family:var(--display);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
   color:var(--ink-dim);border:1px solid var(--line);border-radius:2px;
   padding:4px 10px;background:rgba(11,17,24,.7);
@@ -986,8 +986,9 @@ body[data-view="home"] #builds{display:none}
   text-transform:uppercase;color:var(--ink-faint)}
 .skslide input[type=range]{width:170px;accent-color:var(--q)}
 .cbpal button.on{border-color:var(--q);color:var(--q)}
+.herotools{position:absolute;top:14px;left:22px;z-index:3;display:flex;gap:6px}
 .backhome{
-  position:absolute;top:14px;left:22px;z-index:3;
+  position:relative;
   font-family:var(--display);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
   color:var(--ink-dim);text-decoration:none;border:1px solid var(--line);border-radius:2px;
   padding:4px 10px;background:rgba(11,17,24,.7);
@@ -1093,8 +1094,10 @@ body[data-view="home"] #builds{display:none}
 <div id="app">
 <div class="hero">
   <div class="acct" id="acctBar"></div>
-  <a class="backhome" href="#/" data-i18n="backHome">All champions</a>
-  <button class="skinbtn" id="btnSkin" data-i18n="skTitle">Splash art</button>
+  <div class="herotools">
+    <a class="backhome" href="#/" data-i18n="backHome">All champions</a>
+    <button class="skinbtn" id="btnSkin" data-i18n="skTitle">Splash art</button>
+  </div>
   <div class="hero-in">
     <div class="brand">
       <h1>UDYR<span>·</span>CALC</h1>
@@ -1105,6 +1108,7 @@ body[data-view="home"] #builds{display:none}
 
       <button class="helpbtn" id="btnOpt" data-i18n="optimiser" hidden>Optimiser</button>
       
+      <button class="helpbtn" id="btnBoard" data-i18n="publishBuild">Publish a build</button>
       <a class="helpbtn" id="btnBuilds" href="#/builds" data-i18n="sharedBuilds">Builds</a>
       
       <button class="helpbtn" id="btnReport" data-i18n="report">Feedback</button>
@@ -1818,7 +1822,10 @@ const RUNE_FX = {
   8112:{cond:"3 separate hits",proc:{type:"phys",n:1,dmg:c=>lin(70,240,c.L)+0.1*c.bonusAD+0.05*c.ap}},    /* Electrocute */
   8128:{cond:"target below 50% HP", param:{lab:"souls", def:0}, needBelow:50,
         proc:{type:"phys",n:1,dmg:(c,v)=>30+11*(v||0)+0.1*c.bonusAD+0.05*c.ap}},   /* Dark Harvest */
-  9923:{cond:"first 3 attacks",stats:{as:1.2}, proc:{type:"true",n:3,dmg:c=>lin(4,20,c.L)+0.08*c.bonusAD+0.06*c.ap}}, /* Hail of Blades */
+  /* 26.17: 90% attack speed for melee, and the on-hit re-scaled */
+  9923:{cond:"first 3 attacks",stats:{as:0.9},
+        proc:{type:"true",n:3,dmg:c=>lin(2,20,c.L)+0.12*c.bonusAD+0.10*c.ap},
+        rng:{stats:{as:0.6}}},   /* Hail of Blades */
   8437:{cond:"every 4s in combat",proc:{type:"magic",n:1,dmg:c=>0.035*c.hp}, heal:c=>0.013*c.hp},            /* Grasp of the Undying */
   8369:{cond:"initiating combat",amp:7},                                                                    /* First Strike */
   /* --- minor runes --- */
@@ -2258,9 +2265,18 @@ async function skinList(c){
   try{
     const res = await fetch(`https://ddragon.leagueoflegends.com/cdn/${DDRAGON_V}/data/en_US/champion/${c.name}.json`);
     const j = await res.json();
-    const list = j.data[c.name].skins.map(k => ({num:k.num, name:k.name === "default" ? c.label || c.name : k.name}));
-    skinCache[c.key] = list;
-    return list;
+    const raw = j.data[c.name].skins.map(k =>
+      ({num:k.num, name:k.name === "default" ? c.label || c.name : k.name}));
+    /* a few entries share or lack a splash of their own; keep only what loads */
+    const ok = await Promise.all(raw.map(k => new Promise(res => {
+      const im = new Image();
+      im.onload  = () => res(k);
+      im.onerror = () => res(null);
+      im.src = SPLASH_URL(c.name, k.num);
+    })));
+    const list = ok.filter(Boolean);
+    skinCache[c.key] = list.length ? list : raw;
+    return skinCache[c.key];
   }catch(err){
     skinCache[c.key] = null;                 /* try again next time */
     return [{num:c.splash || 0, name:c.label || c.name, only:true}];
@@ -3061,6 +3077,7 @@ const L10N = {
           "La liste des skins n'a pas pu être récupérée. Le cadrage ci-dessous fonctionne quand même."],
   navCalc:["Calculators","Calculateurs"], navBuilds:["Builds","Builds"],
   bCombo:["Combo:","Combo :"],
+  publishBuild:["Publish a build","Publier un build"],
   bRename:["Edit","Modifier"], bDelete:["Delete","Supprimer"],
   bDeleteSure:["Delete this build for good?","Supprimer ce build définitivement ?"],
   bRenameAsk:["Name of the build","Nom du build"],
@@ -3176,6 +3193,13 @@ const L10N = {
   xQhit:["per empowered attack","par attaque renforcée"], xQall:["all three","les trois"],
   xWslash:["slash","fauche"], xWthrust:["thrust","estoc"], xWboth:["both","les deux"],
   xRcur:["% of current health","% des PV actuels"],
+  thSouls:["souls","âmes"], thSoulAr:["armour from souls","armure issue des âmes"],
+  thSoulAp:["ability power from souls","puissance issue des âmes"],
+  thEmin:["without wind-up","sans élan"], thEmax:["fully wound up","pleinement chargé"],
+  kdMarks:["marks","marques"], kdRange:["attack range","portée d'attaque"],
+  kdWpct:["% of current health","% des PV actuels"], kdEpct:["% of missing health","% des PV manquants"],
+  twVenom:["venom stacks","charges de venin"], twPerStack:["per stack","par charge"],
+  twRad:["bonus attack damage","AD bonus"],
   iPas:["attack speed per stack","vitesse d'attaque par charge"],
   iPasMax:["at four stacks","à quatre charges"],
   iPhit:["on-hit at four stacks","à l'impact, quatre charges"],
@@ -5784,6 +5808,9 @@ const ROSTER = [
   {key:"lillia",  name:"Lillia",  label:"Lilia",    splash:0, ready:true, focus:"52% 18%"},
   {key:"mordekaiser", name:"Mordekaiser", splash:0, ready:true, focus:"52% 20%"},
   {key:"xinzhao", name:"XinZhao", label:"Xin Zhao", splash:0, ready:true, focus:"52% 20%"},
+  {key:"thresh",  name:"Thresh",  splash:0, ready:true, focus:"52% 20%"},
+  {key:"kindred", name:"Kindred", splash:0, ready:true, focus:"52% 18%"},
+  {key:"twitch",  name:"Twitch",  splash:0, ready:true, focus:"52% 20%"},
   {key:"elise", name:"Elise", splash:15, ready:true, focus:"58% 14%"},
   {key:"evelynn", name:"Evelynn", label:"Evelynn"},
   {key:"ezreal", name:"Ezreal", label:"Ezreal"},
@@ -5818,7 +5845,6 @@ const ROSTER = [
   {key:"kayn", name:"Kayn", label:"Kayn"},
   {key:"kennen", name:"Kennen", label:"Kennen"},
   {key:"khazix", name:"Khazix", label:"Kha'Zix"},
-  {key:"kindred", name:"Kindred", label:"Kindred"},
   {key:"kled", name:"Kled", label:"Kled"},
   {key:"kogmaw", name:"KogMaw", label:"Kog'Maw"},
   {key:"leblanc", name:"Leblanc", label:"LeBlanc"},
@@ -5886,12 +5912,10 @@ const ROSTER = [
   {key:"talon", name:"Talon", label:"Talon"},
   {key:"taric", name:"Taric", label:"Taric"},
   {key:"teemo", name:"Teemo", label:"Teemo"},
-  {key:"thresh", name:"Thresh", label:"Thresh"},
   {key:"tristana", name:"Tristana", label:"Tristana"},
   {key:"trundle", name:"Trundle", label:"Trundle"},
   {key:"tryndamere", name:"Tryndamere", label:"Tryndamere"},
   {key:"twistedfate", name:"TwistedFate", label:"Twisted Fate"},
-  {key:"twitch", name:"Twitch", label:"Twitch"},
   {key:"udyr",  name:"Udyr",  splash:3,  ready:true, focus:"50% 32%"},
   {key:"urgot", name:"Urgot", label:"Urgot"},
   {key:"varus", name:"Varus", label:"Varus"},
