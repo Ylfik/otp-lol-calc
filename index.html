@@ -964,6 +964,23 @@ body[data-view="home"] #builds{display:none}
   font-size:11px;color:var(--ink-faint);line-height:1.6}
 .home-foot p{margin:0 0 5px}
 
+.skinbtn{
+  position:absolute;top:14px;left:132px;z-index:3;
+  font-family:var(--display);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-dim);border:1px solid var(--line);border-radius:2px;
+  padding:4px 10px;background:rgba(11,17,24,.7);
+}
+.skinbtn:hover{border-color:var(--q);color:var(--q)}
+.skpreview{
+  height:150px;border:1px solid var(--line);border-radius:3px;margin:10px 0;
+  background-size:cover;background-repeat:no-repeat;
+}
+.skslide{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:10px}
+.skslide label{display:flex;align-items:center;gap:8px}
+.skslide span{font-family:var(--display);font-size:9.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-faint)}
+.skslide input[type=range]{width:170px;accent-color:var(--q)}
+.cbpal button.on{border-color:var(--q);color:var(--q)}
 .backhome{
   position:absolute;top:14px;left:22px;z-index:3;
   font-family:var(--display);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
@@ -1072,6 +1089,7 @@ body[data-view="home"] #builds{display:none}
 <div class="hero">
   <div class="acct" id="acctBar"></div>
   <a class="backhome" href="#/" data-i18n="backHome">All champions</a>
+  <button class="skinbtn" id="btnSkin" data-i18n="skTitle">Splash art</button>
   <div class="hero-in">
     <div class="brand">
       <h1>UDYR<span>·</span>CALC</h1>
@@ -1109,6 +1127,16 @@ body[data-view="home"] #builds{display:none}
       <input id="tGpm" type="number" value="400" min="0" step="10" data-i18n-title="gpmWhy">
     </div>
 
+  </div>
+</div>
+
+<div class="overlay" id="skOverlay">
+  <div class="help" role="dialog" aria-modal="true" aria-label="Splash art">
+    <header>
+      <h2 data-i18n="skTitle">Splash art</h2>
+      <button class="closebtn" id="skClose" aria-label="Close">esc</button>
+    </header>
+    <div class="helpbody" id="skBody"></div>
   </div>
 </div>
 
@@ -2198,6 +2226,42 @@ function parseCond(str){
 /* ============================================================
    PALIERS PAR RANG — repris de l'onglet CALC SKILL
    ============================================================ */
+/* ------------------------------------------------------------
+   Splash art. Which skin, and where the banner is centred on it,
+   are personal choices kept in this browser. The framing has to be
+   adjustable because every splash puts the face somewhere else.
+   ------------------------------------------------------------ */
+const SKIN_KEY = "otp-calc-skins";
+let skinPrefs = (() => {
+  try{ return JSON.parse(localStorage.getItem(SKIN_KEY) || "{}"); }catch(err){ return {}; }
+})();
+function saveSkins(){
+  try{ localStorage.setItem(SKIN_KEY, JSON.stringify(skinPrefs)); }catch(err){}
+}
+function skinOf(c){
+  const p = skinPrefs[c.key];
+  return {num: p && p.num !== undefined ? p.num : (c.splash || 0),
+          pos: p && p.pos ? p.pos : (c.focus || "50% 28%")};
+}
+const SPLASH_URL = (name, num) =>
+  `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${name}_${num}.jpg`;
+
+/* the skin list comes from Riot, once per champion per visit */
+const skinCache = {};
+async function skinList(c){
+  if(skinCache[c.key]) return skinCache[c.key];
+  try{
+    const res = await fetch(`https://ddragon.leagueoflegends.com/cdn/${DDRAGON_V}/data/en_US/champion/${c.name}.json`);
+    const j = await res.json();
+    const list = j.data[c.name].skins.map(k => ({num:k.num, name:k.name === "default" ? c.label || c.name : k.name}));
+    skinCache[c.key] = list;
+    return list;
+  }catch(err){
+    skinCache[c.key] = null;                 /* try again next time */
+    return [{num:c.splash || 0, name:c.label || c.name, only:true}];
+  }
+}
+
 const CHAMP_VER = "1";        /* bump to push past a stale cache */
 
 /* ============================================================
@@ -2984,6 +3048,12 @@ const L10N = {
   allChamps:["All champions","Tous les champions"],
   champFail:["This champion could not be loaded. Reload the page and try again.",
              "Ce champion n'a pas pu être chargé. Rechargez la page et réessayez."],
+  skTitle:["Splash art","Illustration"],
+  skHow:["Pick a skin, then slide to centre the banner on it. Kept in this browser, for you only.",
+         "Choisissez un skin, puis faites glisser pour centrer la bannière dessus. Conservé dans ce navigateur, pour vous seul."],
+  skX:["across","horizontal"], skY:["down","vertical"],
+  skFail:["The skin list could not be reached. The framing below still works.",
+          "La liste des skins n'a pas pu être récupérée. Le cadrage ci-dessous fonctionne quand même."],
   navCalc:["Calculators","Calculateurs"], navBuilds:["Builds","Builds"],
   bCombo:["Combo:","Combo :"], anyRole:["Any role","Tous les rôles"], bCompare:["Compare in","Comparer en"],
   sharedBuilds:["Builds","Builds"],
@@ -5580,6 +5650,13 @@ on("btnOpt", "click", () => {
   optRender();
   document.getElementById("optOverlay").classList.add("on");
 });
+const skOverlay = document.getElementById("skOverlay");
+const closeSk = () => skOverlay && skOverlay.classList.remove("on");
+on("skClose", "click", closeSk);
+on("btnSkin", "click", skOpen);
+if(skOverlay) skOverlay.addEventListener("click", e => { if(e.target === skOverlay) closeSk(); });
+document.addEventListener("keydown", e => { if(e.key === "Escape") closeSk(); });
+
 const cbOverlay = document.getElementById("cbOverlay");
 const closeCb = () => cbOverlay && cbOverlay.classList.remove("on");
 on("cbClose", "click", closeCb);
@@ -5844,7 +5921,7 @@ function toggleFav(key){
   drawHome();
 }
 
-const SPLASH = c => `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${c.name}_${c.splash || 0}.jpg`;
+const SPLASH = c => SPLASH_URL(c.name, skinOf(c).num);
 
 function drawHome(){
   const el = document.getElementById("champList");
@@ -5864,7 +5941,7 @@ function drawHome(){
     .replace("%t", ROSTER.length);
   el.innerHTML = (list.length ? list : []).map(c => `
     <a class="champ ${c.ready ? "" : "soon"}" ${c.ready ? `href="#/${c.key}"` : ""}>
-      <span class="art" style="background-image:url('${SPLASH(c)}');background-position:${c.focus || "52% 22%"}"></span>
+      <span class="art" style="background-image:url('${SPLASH(c)}');background-position:${skinOf(c).pos}"></span>
       <span class="veil"></span>
       <span class="tagsoon ${c.ready ? "tagnew" : ""}">${
         c.ready ? TR("homeReady") : TR("homeSoon")}</span>
@@ -5926,7 +6003,7 @@ function drawBuilds(){
     const shown = ROSTER.filter(c => c.ready);
     el.innerHTML = `<div class="champs">${shown.map(c => `
       <a class="champ" href="#/builds/${c.key}">
-        <span class="art" style="background-image:url('${SPLASH(c)}');background-position:${c.focus || "52% 22%"}"></span>
+        <span class="art" style="background-image:url('${SPLASH(c)}');background-position:${skinOf(c).pos}"></span>
         <span class="veil"></span>
         <span class="tagsoon tagnew">${(buildCounts[c.key] || 0)}</span>
         <span class="lab"><b>${esc(c.label || c.name)}</b></span>
@@ -5992,6 +6069,63 @@ function useShared(id, slot){
   location.hash = "#/" + row.champion;
 }
 
+/* the picker: which skin, and where the banner sits on it */
+let skDraftPos = null;
+async function skOpen(){
+  const champ = ROSTER.find(c => c.key === (CHAMP || {}).key);
+  if(!champ) return;
+  skDraftPos = skinOf(champ).pos;
+  document.getElementById("skOverlay").classList.add("on");
+  skDraw(champ, [{num:skinOf(champ).num, name:"…"}]);
+  skDraw(champ, await skinList(champ));
+}
+function skDraw(champ, list){
+  const el = document.getElementById("skBody");
+  if(!el) return;
+  const cur = skinOf(champ);
+  const [x, y] = skDraftPos.split(" ");
+  el.innerHTML = `
+    <p class="tipstat">${TR("skHow")}</p>
+    <div class="skpreview" style="background-image:url('${SPLASH_URL(champ.name, cur.num)}');
+         background-position:${skDraftPos}"></div>
+    <div class="skslide">
+      <label><span>${TR("skX")}</span>
+        <input type="range" id="skX" min="0" max="100" value="${parseInt(x)}"></label>
+      <label><span>${TR("skY")}</span>
+        <input type="range" id="skY" min="0" max="100" value="${parseInt(y)}"></label>
+    </div>
+    ${list.length === 1 && list[0].only ? `<p class="tipstat">${TR("skFail")}</p>` : ""}
+    <div class="cbpal">${list.map(k =>
+      `<button data-skin="${k.num}" class="${k.num === cur.num ? "on" : ""}">${esc(k.name)}</button>`).join("")}</div>`;
+
+  const champKey = champ.key;
+  const move = () => {
+    const nx = el.querySelector("#skX").value, ny = el.querySelector("#skY").value;
+    skDraftPos = nx + "% " + ny + "%";
+    el.querySelector(".skpreview").style.backgroundPosition = skDraftPos;
+    skinPrefs[champKey] = {num:skinOf(champ).num, pos:skDraftPos};
+    saveSkins();
+    applySplash(champ);
+  };
+  ["skX","skY"].forEach(id => { const r = el.querySelector("#" + id); if(r) r.addEventListener("input", move); });
+  el.querySelectorAll("button[data-skin]").forEach(b =>
+    b.addEventListener("click", () => {
+      skinPrefs[champKey] = {num:+b.dataset.skin, pos:skDraftPos};
+      saveSkins();
+      applySplash(champ);
+      skDraw(champ, list);
+    }));
+}
+
+function applySplash(champ){
+  const sk = skinOf(champ);
+  document.documentElement.style.setProperty("--splashpos", sk.pos);
+  const art = SPLASH_URL(champ.name, sk.num);
+  const pre = new Image();
+  pre.onload = () => document.documentElement.style.setProperty("--splash", `url("${art}")`);
+  pre.src = art;
+}
+
 function route(){
   const raw = location.hash || "";
   /* the address bar may be holding a sign-in reply rather than a route */
@@ -6023,13 +6157,9 @@ function route(){
   if(champ){
     document.body.dataset.view = "app";
     document.title = (champ.label || champ.name) + " — OTP LoL Calc";
-    document.documentElement.style.setProperty("--splashpos", champ.focus || "50% 28%");
     const bb = document.getElementById("btnBuilds");
     if(bb) bb.setAttribute("href", "#/builds/" + champ.key);
-    const art = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champ.name}_${champ.splash || 0}.jpg`;
-    const pre = new Image();
-    pre.onload = () => document.documentElement.style.setProperty("--splash", `url("${art}")`);
-    pre.src = art;
+    applySplash(champ);
 
     loadChampion(champ.key).then(def => {
       if((location.hash.replace(/^#\/?/, "") || "").toLowerCase() !== champ.key) return;
