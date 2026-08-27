@@ -1,0 +1,151 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Deadly Venom|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Twitch
+|skill        = I
+|icon         = false
+|icon2        = Deadly Venom.png
+|blurb        = {{sbc|Innate:}} {{cis|Twitch}} {{tip|basic attacks}} {{tip|on-hit}} apply {{tip|stacks}} of ''Deadly Venom'' for a few seconds, which stacks up to a cap.
+|blurb4      = {{sbc|Deadly Venom:}} For each stack, the target is continually dealt {{as|true damage}}. This effect is considered a {{tip|poison}}.
+|description  = {{sbc|Innate:}} '''Twitch's''' {{tip|basic attacks}} {{tip|on-hit}} apply a {{tip|stack}} of ''Deadly Venom'' for 6 seconds, refreshing on subsequent applications and stacking up to 6 times.
+|description2 = {{sbc|Deadly Venom:}} For each stack, the target is dealt{{ft|{{sti|true damage|{{as|{{pp|1 to 5 for 5|1 to 17|formula=1 every 4 levels}}|true damage}}}} {{as|(+ 3% AP)}} {{as|true damage}} per second over the duration,|{{sti|true damage|{{as|{{pp|1*6 to 5*6 for 5|1 to 17|formula=1, +1 every 4 levels}}|true damage}}}} {{as|(+ {{#expr:3*6}}% AP)}} {{as|'''total''' true damage}} over the duration,}}for a maximum of{{ft|{{as|{{pp|1*6 to 5*6 for 5|1 to 17|formula=6 every 4 levels}}|true damage}} {{as|(+ {{#expr:3*6}}% AP)}} {{as|true damage}} with each tick.|{{as|{{pp|1*6*6 to 5*6*6 for 5|1 to 17|formula=6 every 4 levels}}|true damage}} {{as|(+ {{#expr:3*6*6}}% AP)}} {{as|'''total''' true damage}} over the duration.}}This effect is considered a {{tip|poison}}.
+|targeting    = Passive
+|damagetype   = True
+|affects      = Enemies
+|spelleffects = special
+|parry        = true
+|spellshield  = False
+|notes   = 
+* ''Deadly Venom'' deals {{tip|proc damage|proc}} {{tip|persistent damage|damage over time}}, and does not trigger {{tip|spell effects}}.
+* The first 5 stacks on a target are indicated each by a small mark around them, while a target affected by the maximum stacks of 6 is indicated by a single large mark above them instead.
+* ''Deadly Venom'' does not affect {{tip|structures}}.
+* {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}} bolts are special-cased to generate one ''Deadly Venom'' stack per enemy hit.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Ambush|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Twitch
+|skill        = Q
+|icon         = Ambush.png
+|blurb        = {{sbc|Active:}} {{ci|Twitch}} becomes {{tip|camouflage|camouflaged}} for some time, gaining {{sti|ms|{{as|'''bonus''' movement speed}}}}, increased while facing enemy {{tip|champions}} that cannot see him.
+|blurb2      = Upon breaking stealth, '''Twitch''' gains {{sti|{{as|'''bonus''' attack speed}}}} for a few seconds.
+|blurb3      = When an enemy {{tip|champion}} dies while afflicted with ''{{ai|Deadly Venom|Twitch}}'', ''Ambush's'' cooldown is {{sti|cdr|reset}}.
+|description  = {{sbc|Active:}} After a 1-second delay, '''Twitch''' becomes {{tip|camouflage|camouflaged}} for a duration. Attacking or casting ''{{ai|Venom Cask|Twitch}}'' or ''{{ai|Contaminate|Twitch}}'' ends ''Ambush'' immediately.
+|leveling     = {{st|Stealth Duration|{{ap|10 to 14}} seconds}}
+|icon2        = Ambush 2.png
+|description2 = During this time, '''Twitch''' gains {{sti|ms|{{as|10% '''bonus''' movement speed}}}}, increased to {{as|30%|ms}} while facing enemy {{tip|champions}} within a 1000-unit radius who cannot see him.
+|icon3        = Ambush 3.png
+|description3 = Upon breaking stealth, '''Twitch''' gains {{sti|{{as|'''bonus''' attack speed}}}} for 6 seconds.
+|leveling3    = {{st|Bonus Attack Speed|{{ap|40 to 60}}%}}
+|description4 = When an enemy {{tip|champion}} dies while afflicted with ''{{ai|Deadly Venom|Twitch}}'', ''Ambush's'' {{sti|cooldown}} is reset.
+|customlabel  = Detection Radius
+|custominfo   = 500
+|cooldown     = 16
+|cdstart      = post-effect
+|cost         = 40
+|cast time = none
+|costtype     = Mana
+|targeting    = Auto
+|affects      = Self
+|notes   = 
+* Entering stealth cancels '''Twitch's''' current basic attack.
+* ''Ambush'' follows the same rules as stealth but he can still perform actions normally before entering {{tip|camouflage}}. Activating {{si|Recall}} during the 1-second delay allows him to {{tip|channel}} it while stealthed.
+* If '''Twitch''' enters {{tip|stasis}} during the delay, he will gain the {{tip|camouflage}} after the stasis ends.
+* Using a basic attack {{tip|breaks stealth|breaks the stealth}} at the start of the attack windup.
+|flavorsound  = {{sm2|Twitch_Original_Q_3.ogg}} ''"Sneaky, sneaky... "''
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Venom Cask|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Twitch
+|skill        = W
+|icon         = Venom Cask.png
+|blurb        = {{sbc|Active:}} {{ci|Twitch}} hurls a cask of corrosive mixture that explodes at the target location, inflicting ''{{ai|Deadly Venom|Twitch}}'' to enemies hit.
+|blurb2       = The area then becomes contaminated for a short time, continually {{tip|slow|slowing}} enemies and inflicting ''{{ai|Deadly Venom|Twitch}}''.
+|description  = {{sbc|Active:}} '''Twitch''' hurls a cask of corrosive mixture at the target location that breaks upon landing, applying ''{{ai|Deadly Venom|Twitch}}'' to enemies in the area and granting {{tip|sight}} of it.
+|description2 = The area then becomes contaminated for 3 seconds, applying a ''{{ai|Deadly Venom|Twitch}}'' stack each second to enemies within and {{tip|slow|slowing}} them.
+|leveling2    = {{st|Slow|{{ap|30 to 50}}% {{as|(+ 6% per 100 AP)}}}}
+|cooldown     = {{ap|13 to 9}}
+|cast time    = {{fd|0.25}}
+|cost         = 70
+|costtype     = Mana
+|target range = 950
+|speed        = 1400
+|effect radius= {{tip|er|icononly = true}} 300
+|targeting    = Location
+|affects      = Enemies
+|projectile   = True
+|spelleffects = 
+|spellshield  = True
+|outofrange   = walk to location
+|notes   = 
+* ''Venom Cask'' can apply a maximum of 4 {{ai|Deadly Venom|Twitch}} stacks per enemy per cast.
+* ''Venom Cask's'' missile will fail to fire if '''Twitch''' is {{tip|suppression|suppressed}} during the cast time.{{bug|2}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Contaminate|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Twitch
+|skill        = E
+|icon         = Contaminate.png
+|blurb        = {{sbc|Active:}} {{ci|Twitch}} spreads a toxin to nearby enemies afflicted with ''{{ai|Deadly Venom|Twitch}}'', dealing {{as|physical damage}}. This deals additional {{as|physical|pdamage}} and {{as|magic damage}} based on stacks of ''{{ai|Deadly Venom|Twitch}}''.
+|description  = {{sbc|Active:}} '''Twitch''' sends out a lethal toxin to each nearby enemy afflicted by ''{{ai|Deadly Venom|Twitch}}'', dealing them {{as|physical damage}}.
+|leveling     = {{st|Base Physical Damage|{{ap|20 to 60}}}}
+|description2 = ''Contaminate'' deals additional {{as|physical damage}} and {{as|35% AP}} {{as|magic damage}} for each stack of ''{{ai|Deadly Venom|Twitch}}'' on the target.
+|leveling2    = {{st|Physical Damage Per Stack|{{ap|15 to 35}} {{as|(+ 35% '''bonus''' AD)}}|Minimum Mixed Damage|{{ap|20+15 to 60+35}} {{as|(+ 35% '''bonus''' AD)}} {{as|(+ 35% AP)}}|Maximum Mixed Damage|{{ap|20+15*6 to 60+35*6}} {{as|(+ 210% '''bonus''' AD)}} {{as|(+ {{ap|35*6}}% AP)}}}}
+|description3 = ''A nearby enemy with {{ai|Deadly Venom|Twitch}} is required to cast this ability. The target does not have to be {{tip|sight|visible}} to be targeted by this ability.''
+|cooldown     = {{ap|12 to 8}}
+|cost         = {{ap|50 to 90}}
+|costtype     = Mana
+|effect radius= {{tip|cr|icononly = true}} 1200
+|cast time    = {{fd|0.25}}
+|targeting    = Proximity
+|damagetype   = Physical
+|spelleffects = Aoe
+|spellshield  = True
+|affects      = Enemies
+|projectile   = false
+|notes   = 
+* ''Contaminate'' will deal the additional damage to targets based on the number of {{ai|Deadly Venom|Twitch}} stacks they had at the start of the cast time.
+* '''Twitch''' is given a range indicator for ''Contaminate's'' radius upon infecting an enemy champion with {{ai|Deadly Venom|Twitch}} (actual range is slightly larger than shown by the indicator).
+* ''Contaminate'' will not deal damage to enemies that are not within range of the ability before the cast time completes.
+** If the target moves out of range after the cast time, they are still dealt the damage.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Spray and Pray|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Twitch
+|skill        = R
+|icon         = Spray and Pray.png
+|blurb        = {{sbc|Active:}} {{ci|Twitch}} gains {{sti|{{as|'''bonus''' attack damage}}}} and {{sti|range|'''bonus''' attack range}} for a few seconds, during which his basic attacks are replaced with bolts that deal the {{as|attack's damage|AD}} to all enemies in a line.
+|description  = {{sbc|Active:}} '''Twitch''' gains {{sti|{{as|'''bonus''' attack damage}}}} and {{sti|range|300 '''bonus''' attack range}} for 6 seconds, during which his {{tip|basic attack|basic attacks}} are replaced by ''bolts'' that travel slightly further than his attack range in a straight line, dealing damage to {{tt|every enemy unit|non-champions and champions, wards and plants, turrets and structures}} hit.
+|leveling     = {{st|Bonus Attack Damage|{{ap|30 to 60}}}}
+|description2 = The ''bolts'' deal {{pp|key=%|type=enemies hit|110-10*x|0 to 4 for 5|formula=100% - 10% per enemy hit. ''This is capped at 60% damage.''|changedisplay=true}} of the triggering {{as|attack's damage|AD}}, apply {{tip|on-hit}} effects, and can {{tip|critically strike}} for {{as|{{critical damage|{{ccd|Twitch|crit_base}}|100}}|critical damage}} damage.
+|cooldown     = 90
+|cdstart      = on-cast
+|cost         = 100
+|costtype     = Mana
+|target range = {{tip|er|icononly = true}} Twitch's {{sti|range|attack range}}
+|range        = {{tip|er|icononly = true}} {{tt|1100 (+ 100% '''bonus''' {{sti|attack range}})|Bolt missile travel range}}
+|width        = {{tip|er|icononly = true}} {{tt|120|bolt width}}
+|speed        = 5000
+|targeting    = Auto
+|cast time    = none
+|affects      = Self
+|damagetype   = Physical
+|spelleffects = basic
+|callforhelp  = True
+|projectile   = true
+|parry        = True
+|spellshield  = 
+|notes        = 
+* The extra distance that the ''bolts'' travel scales with '''bonus''' attack range.
+* ''Spray and Pray'' allows '''Twitch''' to outrange {{tip|turret|turrets}} by 50 units, allowing him to hit them without them returning fire.
+* '''Twitch''' targets his line attack at his target's location at the ''start'' of his attack windup.
+** The ''bolts'' reach targets at a delay, composed of '''Twitch's''' windup time and distance the ''bolt'' has to travel at finite speed. Even the primary target can dodge the attack if they are moving quickly enough.
+* {{tip|On-attack}} effects such as {{ai|Help, Pix!|Lulu}} and {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}} will be triggered as usual from the completion of '''Twitch's''' basic attack windup. They will obey their standard target-acquisition rules in spite of ''Spray and Pray's'' special basic attack behavior.
+* The ''bolt'' projectiles will naturally pass through terrain and enemy structures (the latter will be damaged by ''bolts'' even if they are not directly targeted).
+* If '''Twitch''' is {{tip|blind|blinded}} before winding up the attack, the hits will ''miss'' against '''all''' targets.
+* {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}} interacts with ''Spray and Pray's'' {{sti|'''bonus''' attack range}} but not with the modified missile effect (the secondary bolts will not have pass-through effects).
+* Whenever the ''bolts'' penetrate a target, a small elongated cloud appears at the location, which's VFX and SFX '''can''' be seen and heard inside the Fog of War.
+* The ''bolts<nowiki>'</nowiki>'' travel distance scales with the full value of '''Twitch's''' {{sti|range|attack range}} increases such as {{ii|Rapid Firecannon}}, but not with size increases (which only increase his effective attack range, thereby the target range).
+* (Outdated as of [[V10.13]], now can hit everything with edge range, except for turrets) The {{tip|cr|icononly = true}} center of a unit must be within the maximum travel distance of the ''bolt'' missile, and in front of the spawn location ('''Twitch's''' {{tip|cr|icononly = true}} center) for the ''bolt'' to be able to hit them.
+** Other than this condition, the ''bolt'' missile has to only touch (pass within its half width of 60 units) the {{tip|er|icononly = true}} edge of the unit's radius.
+** This is standard behaviour for ''linear skillshots''.
+* {{iis|Malignance}} {{nie|Hatefog}} is special cased to work with ''Spray and Pray''.
+* ''Bolt'' damage is considered {{tip|area of effect}} for {{ri|Axiom Arcanist}}. <!--intended feature lmao-->
+** It is '''not''' considered ''area of effect'' for other effects, i.e {{tip|omnivamp}}.
+|tips         = 
+* {{iis|Runaan's Hurricane}} bolts can target the same units that are hit by '''Twitch's''' penetrated ''bolt'', increasing the total damage dealt to them and applying {{tip|on-hit}} effects twice.
+|flavorsound  = {{sm2|Twitch_Original_R_7.ogg}} ''"Pins and needles!"''
+}}
