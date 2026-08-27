@@ -841,6 +841,23 @@ body[data-view="home"] #builds{display:none}
 .bact button:hover{border-color:var(--q);color:var(--q)}
 .bact .bdel:hover{border-color:var(--bad);color:var(--bad)}
 .bcount{font-family:var(--mono);font-size:11px;color:var(--q)}
+/* the champion's own banner, so you know whose shelf you are on */
+.bhero{
+  position:relative;border:1px solid var(--line);border-radius:4px;overflow:hidden;
+  min-height:132px;margin:0 0 16px;background-size:cover;background-repeat:no-repeat;
+  display:flex;align-items:flex-end;
+}
+.bhero .veil{position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(11,17,24,.96) 14%,rgba(11,17,24,.35) 72%,rgba(11,17,24,.08))}
+.bhero-in{position:relative;padding:16px 22px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.bhero-in b{
+  font-family:var(--display);font-weight:300;font-size:clamp(22px,3vw,32px);
+  letter-spacing:.18em;text-transform:uppercase;color:var(--ink);
+  text-shadow:0 2px 14px rgba(0,0,0,.9);
+}
+.bhero-in em{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--q)}
+.bhero-in .backhome{position:static}
+@media (max-width:720px){ .bhero{min-height:104px} .bhero-in{padding:12px 14px} }
 .rolefilter{display:flex;gap:5px;flex-wrap:wrap;margin:10px 0 14px}
 .rolefilter button{border:1px solid var(--line);background:var(--panel-2);color:var(--ink-faint);
   border-radius:14px;padding:4px 13px;font-family:var(--display);font-size:9.5px;
@@ -1029,7 +1046,7 @@ body[data-view="home"] #builds{display:none}
         <b class="k-p">P</b><b class="k-q">Q</b><b class="k-w">W</b><b class="k-e">E</b><b class="k-r">R</b>
       </div>
       <h1>OTP<span>·</span>LOL<span>·</span>CALC</h1>
-      <p class="eyebrow" data-i18n="homeEyebrow">Summoner's Rift · patch 26.15</p>
+      <p class="eyebrow" data-i18n="homeEyebrow">Summoner's Rift · patch 26.17</p>
       <p class="home-sub" data-i18n="homeSub">Build calculators for one-trick players, built one champion at a time.</p>
       <nav class="shelfnav" data-on="calc">
         <span class="slider"></span>
@@ -1079,7 +1096,7 @@ body[data-view="home"] #builds{display:none}
         <b class="k-p">P</b><b class="k-q">Q</b><b class="k-w">W</b><b class="k-e">E</b><b class="k-r">R</b>
       </div>
       <h1>OTP<span>·</span>LOL<span>·</span>CALC</h1>
-      <p class="eyebrow" data-i18n="homeEyebrow">Summoner's Rift · patch 26.15</p>
+      <p class="eyebrow" data-i18n="homeEyebrow">Summoner's Rift · patch 26.17</p>
       <p class="home-sub" data-i18n="buildsSub">Builds published by other players, one champion at a time.</p>
       <nav class="shelfnav" data-on="builds">
         <span class="slider"></span>
@@ -1317,7 +1334,20 @@ body[data-view="home"] #builds{display:none}
       <p>Saves live in your browser, tied to one address. <strong>Export</strong> writes a portable file that
          carries your whole library — use it to move between machines or as a backup.</p>
 
-      <h3>Leaderboard</h3>
+      <h3>Sharing builds</h3>
+      <p><strong>Builds</strong>, from the switch at the top, is a shelf of its own: one card per champion,
+         then the builds published for that one, most liked first. Filter by role, and load any of them
+         straight into one of your three slots with <em>Compare in 1, 2 or 3</em>.</p>
+      <p>A published build carries <strong>the combo it was measured on</strong>, which comes across with it
+         — without that its numbers would mean nothing to you.</p>
+      <p>Publish from a champion's page, where the build lives. Your own builds can be edited or deleted
+         from the shelf.</p>
+
+      <h3>Splash art</h3>
+      <p><strong>Splash art</strong>, in the banner, picks which skin a champion wears and slides the framing
+         until his face sits where you want it. Personal to you, kept in this browser.</p>
+
+      <h3>Publishing</h3>
       <p>Sign in with Discord to publish a build, and to like others. The board is ranked by likes, and can be
          sorted by date, author or rank, or filtered to verified accounts and streamers.</p>
       <p>Each entry shows its items, runes and shards, a description, and <strong>the patch it was saved on</strong>
@@ -1449,7 +1479,20 @@ body[data-view="home"] #builds{display:none}
          fichier transportable qui emporte toute votre bibliothèque — pour changer de machine ou faire une
          copie de sécurité.</p>
 
-      <h3>Classement</h3>
+      <h3>Partager ses builds</h3>
+      <p><strong>Builds</strong>, depuis le sélecteur en tête, est une vitrine à part : une carte par champion,
+         puis les builds publiés pour celui-ci, les plus aimés d'abord. Filtrez par rôle, et chargez-en un
+         directement dans l'un de vos trois emplacements avec <em>Comparer en 1, 2 ou 3</em>.</p>
+      <p>Un build publié emporte <strong>le combo sur lequel il a été mesuré</strong>, qui vous suit avec lui —
+         sans quoi ses chiffres ne voudraient rien dire pour vous.</p>
+      <p>On publie depuis la page d'un champion, là où le build existe. Vos propres builds se modifient et se
+         suppriment depuis la vitrine.</p>
+
+      <h3>Illustration</h3>
+      <p><strong>Illustration</strong>, dans la bannière, choisit le skin porté par le champion et fait glisser
+         le cadrage jusqu'à ce que son visage tombe où vous voulez. Personnel, conservé dans ce navigateur.</p>
+
+      <h3>Publier</h3>
       <p>Connectez-vous avec Discord pour publier un build et liker ceux des autres. Le classement se fait par
          likes, avec des tris par date, auteur ou rang, et des filtres sur les comptes validés et les streamers.</p>
       <p>Chaque entrée montre ses items, runes et fragments, une description, et <strong>le patch sur lequel
@@ -1799,7 +1842,7 @@ const RUNES = [
 const RUNE_BY_ID = {};
 RUNES.forEach(r => RUNE_BY_ID[r.id] = r);
 const RUNE_ICON = ic => "https://ddragon.leagueoflegends.com/cdn/img/" + ic;
-const DDRAGON_V = "16.15.1";
+const DDRAGON_V = "16.17.1";
 const ITEM_ICON = id => `https://ddragon.leagueoflegends.com/cdn/${DDRAGON_V}/img/item/${id}.png`;
 
 /* level-scaled value: a at level 1 -> b at level 18 */
@@ -2968,7 +3011,7 @@ const L10N = {
   backHome:["All champions","Tous les champions"],
   homeSub:["Compare three builds side by side, with every item and rune passive computed rather than guessed.",
            "Comparez trois builds côte à côte, avec chaque passif d'item et de rune calculé plutôt que deviné."],
-  homeEyebrow:["Summoner's Rift · patch 26.15","Faille de l'invocateur · patch 26.15"],
+  homeEyebrow:["Summoner's Rift · patch %s","Faille de l'invocateur · patch %s"],
   homeReady:["Available","Disponible"], homeSoon:["Coming","À venir"],
   fav:["Pin to the top","Épingler en haut"], unfav:["Unpin","Retirer des favoris"],
   wipNote:["No combo yet. Build one from this champion's abilities and it will be measured across all three builds.",
@@ -3068,6 +3111,7 @@ const L10N = {
   buildsSub:["Builds published by other players, one champion at a time.",
              "Les builds publiés par d'autres joueurs, un champion à la fois."],
   allChamps:["All champions","Tous les champions"],
+  bPublished:["%d published","%d publiés"],
   champFail:["This champion could not be loaded. Reload the page and try again.",
              "Ce champion n'a pas pu être chargé. Rechargez la page et réessayez."],
   skTitle:["Splash art","Illustration"],
@@ -3218,6 +3262,16 @@ const L10N = {
   zPfullPct:["plus % of maximum health","plus % des PV max"],
   yPcrit:["extra magic damage on a crit","dégâts magiques en plus sur un critique"],
   kayEmiss:["% of missing health","% des PV manquants"],
+  kayForm:["form","forme"], kayRange:["attack range","portée d'attaque"],
+  kayWave:["wave of fire, exalted","vague de feu, exaltée"],
+  xPthird:["third strike","troisième coup"], xPratio:["of attack damage","de l'AD"],
+  xPheal:["healed on the third","soin au troisième"],
+  mPonhit:["magic damage on-hit","dégâts magiques à l'impact"],
+  mPtick:["Darkness Rise, per second","Ténèbres, par seconde"],
+  mPpct:["plus % of maximum health","plus % des PV max"],
+  lPpct:["% of maximum health over 3s","% des PV max sur 3 s"],
+  lPheal:["healed over the burn","soin sur la durée"],
+  eSpiderHit:["one spiderling","une araignée"], eSpiderAll:["the whole brood","toute la portée"],
   iWmin:["minimum damage","dégâts minimum"], iWmax:["fully charged","pleinement chargé"],
   sQflat:["flat damage","dégâts fixes"], sQpct:["% of maximum health","% des PV max"],
   sQpctUp:["% when empowered","% une fois amélioré"],
@@ -3257,6 +3311,10 @@ const TR = k => { const v = L10N[k]; return v ? (isFR() ? v[1] : v[0]) : k; };
 /* static markup carries data-i18n and is refreshed on every render */
 function applyStatic(){
   document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = TR(el.dataset.i18n); });
+  /* after the generic pass, so the patch number is not written over */
+  document.querySelectorAll('[data-i18n="homeEyebrow"]').forEach(el => {
+    el.textContent = TR("homeEyebrow").replace("%s", GAME_PATCH);
+  });
   document.querySelectorAll("[data-i18n-ph]").forEach(el => { el.placeholder = TR(el.dataset.i18nPh); });
   document.querySelectorAll("[data-i18n-title]").forEach(el => { el.title = TR(el.dataset.i18nTitle); });
   document.documentElement.lang = LANG;
@@ -6075,9 +6133,17 @@ function drawBuilds(){
   }
 
   const champ = ROSTER.find(c => c.key === buildsFor) || {};
+  const sk = champ.key ? skinOf(champ) : null;
   el.innerHTML = `
-    <p class="bcount"><a class="backhome" href="#/builds">${TR("allChamps")}</a>
-       &nbsp; ${esc(champ.label || champ.name || "")} — ${buildRows.length}</p>
+    <div class="bhero" ${sk ? `style="background-image:url('${SPLASH_URL(champ.name, sk.num)}');
+         background-position:${sk.pos}"` : ""}>
+      <span class="veil"></span>
+      <div class="bhero-in">
+        <a class="backhome" href="#/builds">${TR("allChamps")}</a>
+        <b>${esc(champ.label || champ.name || "")}</b>
+        <em>${TR("bPublished").replace("%d", buildRows.length)}</em>
+      </div>
+    </div>
     <div class="rolefilter">
       <button data-role="" class="${buildRole ? "" : "on"}">${TR("anyRole")}</button>
       ${ROLES.map(r => `<button data-role="${r.k}" class="${buildRole === r.k ? "on" : ""}"
