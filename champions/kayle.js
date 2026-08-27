@@ -3,7 +3,8 @@
 window.CHAMPION = {
     stepMenu:[
       {id:"aa",  kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
-      {id:"aaE", kind:"attack", starfire:true, en:"Auto, Starfire", fr:"Auto, Lame stellaire"},
+      {id:"aaE",   kind:"attack", starfire:true, en:"Auto, Starfire", fr:"Auto, Lame stellaire"},
+      {id:"aaEx",  kind:"attack", exalted:true, en:"Auto, exalted", fr:"Auto, exaltée"},
       {id:"q", kind:"spell", en:"Q — Radiant Blast", fr:"Q — Explosion radieuse"},
       {id:"w", kind:"cast", label:"W", en:"W — Celestial Blessing", fr:"W — Bénédiction céleste"},
       {id:"e", kind:"cast", label:"E", en:"E — Starfire Spellblade", fr:"E — Lame stellaire"},
@@ -14,6 +15,8 @@ window.CHAMPION = {
       if(st.kind === "attack" && st.starfire)
         out.parts.push({n:"starfire",
           v:A.eDmg + Math.max(0, hp - cur) * A.eMissPct/100, type:"magic"});
+      if(st.kind === "attack" && st.exalted && A.pWave)
+        out.parts.push({n:"divineAscent", v:A.pWave, type:"magic"});
       if(st.id === "q") out.parts.push({n:"radiantBlast",   v:A.qDmg, type:"magic"});
       if(st.id === "w") out.heal = A.wHeal;
       if(st.id === "r") out.parts.push({n:"divineJudgment", v:A.rDmg, type:"magic"});
@@ -50,6 +53,15 @@ window.CHAMPION = {
       A.eDmg    = R(T.eFlat,er) + T.eBonusAD*bonusAD + T.eAP*ap;
       A.eMissPct= R(T.eMissPct,er) + T.eMissAP*ap/100;
       A.rDmg    = R(T.rDmg,rr) + T.rBonusAD*bonusAD + T.rAP*ap;
+      /* Divine Ascent: four forms, taken at levels 1, 6, 11 and 16 */
+      const L = c.L;
+      A.pForm   = L >= 16 ? 4 : L >= 11 ? 3 : L >= 6 ? 2 : 1;
+      A.pAsPer  = 6;                              /* per stack of Zeal, five of them */
+      A.pAsMax  = 30;
+      A.pRange  = L >= 16 ? 625 : L >= 6 ? 525 : 175;
+      /* from level 11 an exalted attack throws a wave of fire */
+      A.pWave   = L >= 11 ? 20 + 3 * (L - 11) + 0.10 * bonusAD + 0.25 * ap : 0;
+      A.pAlways = L >= 16;                        /* exalted for good */
       A.qCd = R(T.qCd,qr)/ah; A.wCd = R(T.wCd,wr)/ah;
       A.eCd = R(T.eCd,er)/ah; A.rCd = R(T.rCd,rr)/(1 + tot.uh/100);
       if(!learned.q){ A.qDmg=0; A.qSlow=0; }
@@ -60,7 +72,14 @@ window.CHAMPION = {
       return A;
     },
     passiveName:["Divine Ascent","Ascension divine"],
-    passiveRows(c){ const {TR} = c; return [{lab:TR("wipStat"), val:"—"}]; },
+    passiveRows(c){
+      const {A, TR, n0, pc} = c;
+      const form = ["Zealous","Arisen","Aflame","Transcendent"][A.pForm - 1];
+      return [{lab:TR("kayForm"),  val:form},
+              {lab:TR("kayRange"), val:n0(A.pRange)},
+              {lab:TR("bonusAs"),  val:"+" + pc(A.pAsMax), awk:true},
+              {lab:TR("kayWave"),  val:A.pWave ? n0(A.pWave) : "—", awk:true}];
+    },
     abilityRows(c){
       const {A, TR, n0, pc, nf1} = c;
       return [

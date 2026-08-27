@@ -35,6 +35,13 @@ window.CHAMPION = {
       A.eAS     = R(T.eAS,er) + T.eASAP*ap/100;
       A.rFlat   = R(T.rFlat,rr) + T.rBonusAD*bonusAD + T.rAP*ap;
       A.rCurPct = T.rCurPct;
+      /* Determination: every third hit strikes harder and heals him.
+         15% AD, rising by 15 points every five levels, plus a flat 5 to 20. */
+      const step = Math.floor((c.L - 1) / 5);
+      A.pPct    = 15 + 15 * step;
+      A.pFlat   = 5 + 5 * step;
+      A.pDmg    = tot.ad * A.pPct/100 + A.pFlat;
+      A.pHeal   = 8 + (58 - 8) * (c.L - 1) / 17 + 0.30 * tot.ad;
       A.qCd = R(T.qCd,qr)/ah; A.wCd = R(T.wCd,wr)/ah;
       A.eCd = R(T.eCd,er)/ah; A.rCd = R(T.rCd,rr)/(1 + tot.uh/100);
       if(!learned.q){ A.qHit = 0; A.qAll = 0; }
@@ -45,10 +52,16 @@ window.CHAMPION = {
       return A;
     },
     passiveName:["Determination","Détermination"],
-    passiveRows(c){ const {TR} = c; return [{lab:TR("wipStat"), val:"—"}]; },
+    passiveRows(c){
+      const {A, TR, n0, pc} = c;
+      return [{lab:TR("xPthird"), val:n0(A.pDmg)},
+              {lab:TR("xPratio"), val:pc(A.pPct) + " + " + n0(A.pFlat)},
+              {lab:TR("xPheal"),  val:n0(A.pHeal), awk:true}];
+    },
     stepMenu:[
       {id:"aa",  kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
       {id:"aaQ", kind:"attack", talon:true, en:"Auto, Three Talon Strike", fr:"Auto, Triple frappe"},
+      {id:"aa3", kind:"attack", third:true, en:"Auto, third strike", fr:"Auto, troisième coup"},
       {id:"q", kind:"cast", label:"Q", en:"Q — empower three attacks", fr:"Q — renforcer trois attaques"},
       {id:"w", kind:"spell", en:"W — slash and thrust", fr:"W — fauche et estoc"},
       {id:"e", kind:"spell", en:"E — Audacious Charge", fr:"E — Charge audacieuse"},
@@ -58,6 +71,10 @@ window.CHAMPION = {
       const {A, cur} = c, out = {parts:[]};
       if(st.kind === "attack" && st.talon)
         out.parts.push({n:"threeTalon", v:A.qHit, type:"phys"});
+      if(st.kind === "attack" && st.third){
+        out.parts.push({n:"determination", v:A.pDmg, type:"phys"});
+        out.heal = A.pHeal;
+      }
       if(st.id === "w") out.parts.push({n:"windLightning", v:A.wBoth, type:"phys"});
       if(st.id === "e"){
         out.parts.push({n:"audaciousCharge", v:A.eDmg, type:"magic"});

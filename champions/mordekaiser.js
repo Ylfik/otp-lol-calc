@@ -28,6 +28,11 @@ window.CHAMPION = {
       A.wConv = R(T.wConv,wr) * 100;
       A.eDmg  = R(T.eFlat,er) + T.eAP*ap;
       A.ePen  = R(T.ePen,er);
+      /* his attacks always carry magic damage; three hits light Darkness Rise */
+      A.pOnHit = 0.40 * ap;
+      A.pTick  = 5 + 0.30 * ap;                 /* per second, plus % of max health */
+      A.pPct   = 1 + (5 - 1) * Math.min(1, Math.max(0, (c.L - 1) / 18));
+      A.pMs    = 3 + (12 - 3) * Math.min(1, Math.max(0, (c.L - 1) / 18));
       A.qCd = R(T.qCd,qr)/ah; A.wCd = R(T.wCd,wr)/ah;
       A.eCd = R(T.eCd,er)/ah; A.rCd = R(T.rCd,rr)/(1 + tot.uh/100);
       if(!learned.q){ A.qFlat = 0; A.qIso = 0; }
@@ -36,15 +41,26 @@ window.CHAMPION = {
       return A;
     },
     passiveName:["Darkness Rise","Montée des ténèbres"],
-    passiveRows(c){ const {TR} = c; return [{lab:TR("wipStat"), val:"—"}]; },
+    passiveRows(c){
+      const {A, TR, n0, pc} = c;
+      return [{lab:TR("mPonhit"), val:n0(A.pOnHit)},
+              {lab:TR("mPtick"),  val:n0(A.pTick), awk:true},
+              {lab:TR("mPpct"),   val:pc(A.pPct), awk:true},
+              {lab:TR("msBonus"), val:"+" + pc(A.pMs)}];
+    },
     stepMenu:[
-      {id:"aa", kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
+      {id:"aa",   kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
+      {id:"tick", kind:"spell", tick:true, en:"Darkness Rise, one second", fr:"Ténèbres, une seconde"},
       {id:"q",  kind:"spell", en:"Q — Obliterate", fr:"Q — Anéantissement"},
       {id:"qI", kind:"spell", iso:true, en:"Q — isolated target", fr:"Q — cible isolée"},
       {id:"e",  kind:"spell", en:"E — Death's Grasp", fr:"E — Poigne de la mort"}
     ],
     onStep(key, st, c){
       const {A} = c, out = {parts:[]};
+      if(st.kind === "attack")
+        out.parts.push({n:"darknessOnHit", v:A.pOnHit, type:"magic"});
+      if(st.tick)
+        out.parts.push({n:"darknessRise", v:A.pTick + c.hp*A.pPct/100, type:"magic"});
       if(st.id === "q")  out.parts.push({n:"obliterate", v:A.qFlat, type:"magic"});
       if(st.id === "qI") out.parts.push({n:"obliterateIso", v:A.qIso, type:"magic"});
       if(st.id === "e")  out.parts.push({n:"deathsGrasp", v:A.eDmg, type:"magic"});

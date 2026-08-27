@@ -8,7 +8,9 @@ window.CHAMPION = {
       {id:"w",  kind:"spell", en:"W — Volatile Spiderling", fr:"W — Araignée volatile"},
       {id:"e",  kind:"spell", en:"E — Cocoon",             fr:"E — Cocon"},
       {id:"sq", kind:"spell", spider:true, en:"Q — Venomous Bite", fr:"Q — Morsure venimeuse"},
-      {id:"sw", kind:"spell", en:"W — Skittering Frenzy",  fr:"W — Frénésie grouillante"}
+      {id:"sw", kind:"spell", en:"W — Skittering Frenzy",  fr:"W — Frénésie grouillante"},
+      {id:"spiders", kind:"spell", brood:true,
+       en:"Spiderlings, one bite each", fr:"Araignées, une morsure chacune"}
     ],
     key:"elise", name:"Elise", splash:15,
     base:{hp:[620,109], mana:[324,50], ad:[55,3], ar:[30,4.5], mr:[30,1.3],
@@ -69,6 +71,9 @@ window.CHAMPION = {
       A.pOnHit    = R(T.pOnHit, rr) + 0.15 * ap;    /* magic damage on every spider attack */
       A.pHeal     = R(T.pHeal, rr) + 0.08 * ap;     /* healed on the same hit */
       A.spiderCap = R(T.spiderCap, rr);
+      /* a spiderling's own bite, and what the whole brood lands in one pass */
+      A.spiderHit  = 8 + (26 - 8) * (L - 1) / 17 + 0.10 * ap;
+      A.spiderAll  = A.spiderHit * A.spiderCap;
 
       if(!learned.q){ A.qFlat = 0; A.qCurPct = 0; A.sqFlat = 0; A.sqMissPct = 0; }
       if(!learned.w){ A.wDmg = 0; A.swAS = 0; }
@@ -85,7 +90,9 @@ window.CHAMPION = {
       return [
         {lab:TR("ePassive"),     val:n0(A.pOnHit)},
         {lab:TR("ePassiveHeal"), val:n0(A.pHeal)},
-        {lab:TR("eSpiders"),     val:n0(A.spiderCap)}
+        {lab:TR("eSpiders"),     val:n0(A.spiderCap)},
+        {lab:TR("eSpiderHit"),   val:n0(A.spiderHit), awk:true},
+        {lab:TR("eSpiderAll"),   val:n0(A.spiderAll), awk:true}
       ];
     },
     abilityRows(c){
@@ -129,6 +136,8 @@ window.CHAMPION = {
         if(st.id === "sw") out.asBonus = A.swAS;   /* Skittering Frenzy, 3s */
         /* Cocoon and Rappel deal nothing */
       }
+      if(st.brood)
+        out.parts.push({n:"spiderlings", v:A.spiderAll, type:"phys"});
       if(st.kind === "attack" && st.spider){
         out.parts.push({n:"spiderQueen", v:A.pOnHit, type:"magic"});
         out.heal = A.pHeal;

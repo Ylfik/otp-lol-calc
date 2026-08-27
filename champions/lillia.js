@@ -32,6 +32,9 @@ window.CHAMPION = {
       A.wCentre = A.wDmg * T.wCentre;
       A.eDmg = R(T.eFlat,er) + T.eAP*ap;
       A.rDmg = R(T.rFlat,rr) + T.rAP*ap;
+      /* Dream Dust: everything she touches burns for a share of its health */
+      A.pPct  = 5 + 1.25 * ap / 100;
+      A.pHeal = 6 + (90 - 6) * (c.L - 1) / 17 + 0.30 * ap;
       A.qCd = R(T.qCd,qr)/ah; A.wCd = R(T.wCd,wr)/ah;
       A.eCd = R(T.eCd,er)/ah; A.rCd = R(T.rCd,rr)/(1 + tot.uh/100);
       if(!learned.q){ A.qDmg = 0; A.qBoth = 0; A.qMs = 0; A.qMsMax = 0; }
@@ -42,9 +45,14 @@ window.CHAMPION = {
       return A;
     },
     passiveName:["Dream-Laden Bough","Rameau chargé de rêves"],
-    passiveRows(c){ const {TR} = c; return [{lab:TR("wipStat"), val:"—"}]; },
+    passiveRows(c){
+      const {A, TR, n0, pc} = c;
+      return [{lab:TR("lPpct"),  val:pc(A.pPct)},
+              {lab:TR("lPheal"), val:n0(A.pHeal), awk:true}];
+    },
     stepMenu:[
-      {id:"aa", kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
+      {id:"aa",   kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
+      {id:"dust", kind:"spell", dust:true, en:"Dream Dust, full burn", fr:"Poussière de rêve, brûlure complète"},
       {id:"q",  kind:"spell", en:"Q — Blooming Blows", fr:"Q — Coups fleurissants"},
       {id:"w",  kind:"spell", en:"W — Watch Out! Eep!", fr:"W — Attention ! Hiii !"},
       {id:"wC", kind:"spell", centre:true, en:"W — struck in the centre", fr:"W — touché au centre"},
@@ -53,6 +61,10 @@ window.CHAMPION = {
     ],
     onStep(key, st, c){
       const {A} = c, out = {parts:[]};
+      if(st.dust){
+        out.parts.push({n:"dreamDust", v:c.hp*A.pPct/100, type:"magic"});
+        out.heal = A.pHeal;
+      }
       if(st.id === "q")  out.parts.push({n:"bloomingBlows", v:A.qBoth, type:"magic"});
       if(st.id === "w")  out.parts.push({n:"watchOut", v:A.wDmg, type:"magic"});
       if(st.id === "wC") out.parts.push({n:"watchOutCentre", v:A.wCentre, type:"magic"});
