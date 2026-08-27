@@ -2365,7 +2365,8 @@ function goldAt(level, gpm){
    Rank 2 needs level 3, rank 3 level 5, and so on up to rank 6 at level 11.
    Perfect Timing hands out an Elixir of Skill at level 9, worth one extra point. */
 const rankCap   = L => CHAMP.rankCap(L);
-const skillPts  = (L, perfectTiming) => L + (perfectTiming && L >= 9 ? 1 : 0);
+const skillPts  = (L, perfectTiming) => L + (perfectTiming && L >= 9 ? 1 : 0)
+  + ((CHAMP && CHAMP.freeRanks) || 0);   /* Elise starts with a rank in her transform */
 
 /* Ability values that scale with level keep climbing past 18: the wiki writes
    them as a + (b - a) / 17 * (level - 1), where b is simply the level 18 value,
@@ -3198,6 +3199,7 @@ const L10N = {
   thEmin:["without wind-up","sans élan"], thEmax:["fully wound up","pleinement chargé"],
   kdMarks:["marks","marques"], kdRange:["attack range","portée d'attaque"],
   kdWpct:["% of current health","% des PV actuels"], kdEpct:["% of missing health","% des PV manquants"],
+  kdEcrit:["raised by crit chance","majoré par le taux de critique"],
   twVenom:["venom stacks","charges de venin"], twPerStack:["per stack","par charge"],
   twRad:["bonus attack damage","AD bonus"],
   iPas:["attack speed per stack","vitesse d'attaque par charge"],
@@ -4172,12 +4174,12 @@ function card(b, bi, R){
       <div class="rank q"><b>Q</b><input type="number" min="0" max="${CHAMP.maxRank}" value="${b.q}" data-act="q" data-b="${bi}"></div>
       <div class="rank w"><b>W</b><input type="number" min="0" max="${CHAMP.maxRank}" value="${b.w}" data-act="w" data-b="${bi}"></div>
       <div class="rank e"><b>E</b><input type="number" min="0" max="${CHAMP.maxRank}" value="${b.e}" data-act="e" data-b="${bi}"></div>
+      <div class="rank r"><b>R</b><input type="number" min="0" max="${CHAMP.rankCapR ? CHAMP.rankCapR(20) : CHAMP.maxRank}" value="${b.r}" data-act="r" data-b="${bi}"></div>
       ${CHAMP.stacks ? `<label class="champstk" title="${esc(isFR() ? CHAMP.stacks.fr : CHAMP.stacks.en)}">
         <span>${esc(isFR() ? CHAMP.stacks.fr : CHAMP.stacks.en)}</span>
         <input type="number" min="0" max="${CHAMP.stacks.max}"
                value="${b.stacks === undefined ? CHAMP.stacks.def : b.stacks}"
                data-act="cstk" data-b="${bi}"></label>` : ""}
-      <div class="rank r"><b>R</b><input type="number" min="0" max="${CHAMP.rankCapR ? 4 : CHAMP.maxRank}" value="${b.r}" data-act="r" data-b="${bi}"></div>
       <span class="pts ${(b.q+b.w+b.e+b.r) > skillPts(b.level, b.runes.some(x => x && x.id === 8313)) ? "over" : ""}"
             title="${TR("ptsWhy")}">${b.q+b.w+b.e+b.r} / ${skillPts(b.level, b.runes.some(x => x && x.id === 8313))}</span>
     </div>
