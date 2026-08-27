@@ -839,6 +839,7 @@ body[data-view="home"] #builds{display:none}
   border-radius:2px;padding:4px 10px;font-family:var(--display);font-size:9px;
   letter-spacing:.12em;text-transform:uppercase}
 .bact button:hover{border-color:var(--q);color:var(--q)}
+.bact .bdel:hover{border-color:var(--bad);color:var(--bad)}
 .bcount{font-family:var(--mono);font-size:11px;color:var(--q)}
 .rolefilter{display:flex;gap:5px;flex-wrap:wrap;margin:10px 0 14px}
 .rolefilter button{border:1px solid var(--line);background:var(--panel-2);color:var(--ink-faint);
@@ -885,8 +886,12 @@ body[data-view="home"] #builds{display:none}
 }
 .home-head h1 span{color:var(--q)}
 .home-sub{margin:12px auto 0;max-width:620px;color:var(--ink-dim);font-size:14px;line-height:1.6}
-.home-act{position:absolute;top:0;right:0;display:flex;align-items:center;gap:10px}
-.shelfacct{position:static}
+.home-act{
+  position:absolute;top:-6px;right:0;display:flex;align-items:center;
+  gap:12px;flex-wrap:wrap;justify-content:flex-end;max-width:min(58%,460px);
+}
+.shelfacct{position:static;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.shelfacct .acctname{max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
 .shelfnav{
   position:relative;display:inline-flex;margin:16px 0 0;padding:3px;
@@ -3055,7 +3060,11 @@ const L10N = {
   skFail:["The skin list could not be reached. The framing below still works.",
           "La liste des skins n'a pas pu être récupérée. Le cadrage ci-dessous fonctionne quand même."],
   navCalc:["Calculators","Calculateurs"], navBuilds:["Builds","Builds"],
-  bCombo:["Combo:","Combo :"], anyRole:["Any role","Tous les rôles"], bCompare:["Compare in","Comparer en"],
+  bCombo:["Combo:","Combo :"],
+  bRename:["Edit","Modifier"], bDelete:["Delete","Supprimer"],
+  bDeleteSure:["Delete this build for good?","Supprimer ce build définitivement ?"],
+  bRenameAsk:["Name of the build","Nom du build"],
+  bNotesAsk:["Description","Description"], anyRole:["Any role","Tous les rôles"], bCompare:["Compare in","Comparer en"],
   sharedBuilds:["Builds","Builds"],
   cbTitle:["Build a combo","Créer un combo"],
   cbHow:["Click a step to add it, then order it. The combo joins the comparison across all three builds.",
@@ -5919,6 +5928,7 @@ function toggleFav(key){
   favourites.has(key) ? favourites.delete(key) : favourites.add(key);
   try{ localStorage.setItem(FAV_KEY, JSON.stringify([...favourites])); }catch(err){}
   drawHome();
+  drawBuilds();
 }
 
 const SPLASH = c => SPLASH_URL(c.name, skinOf(c).num);
@@ -6000,14 +6010,41 @@ function drawBuilds(){
   if(!el) return;
 
   if(!buildsFor){
-    const shown = ROSTER.filter(c => c.ready);
-    el.innerHTML = `<div class="champs">${shown.map(c => `
+    const box = document.getElementById("buildSearch");
+    const needle = noAccent((box && box.value || "").trim().toLowerCase());
+    const rank = c => favourites.has(c.key) ? 0 : 1;
+    const nameOf = c => (c.label || c.name).toLowerCase();
+    const shown = ROSTER.filter(c => c.ready)
+      .filter(c => !needle || noAccent(((c.label || "") + " " + c.name).toLowerCase()).includes(needle))
+      .sort((a, b) => rank(a) - rank(b) ||
+        nameOf(a).localeCompare(nameOf(b), undefined, {sensitivity:"base"}));
+    el.innerHTML = `
+      <div class="champfind">
+        <input id="buildSearch" type="search" data-i18n-ph="findChamp"
+               autocomplete="off" value="${esc(box ? box.value : "")}">
+        <span class="champcount">${shown.length}</span>
+      </div>
+      <div class="champs">${shown.map(c => `
       <a class="champ" href="#/builds/${c.key}">
         <span class="art" style="background-image:url('${SPLASH(c)}');background-position:${skinOf(c).pos}"></span>
         <span class="veil"></span>
         <span class="tagsoon tagnew">${(buildCounts[c.key] || 0)}</span>
+        <button class="favbtn ${favourites.has(c.key) ? "on" : ""}" data-fav="${c.key}"
+                title="${favourites.has(c.key) ? TR("unfav") : TR("fav")}"
+                >${favourites.has(c.key) ? "&#9733;" : "&#9734;"}</button>
         <span class="lab"><b>${esc(c.label || c.name)}</b></span>
       </a>`).join("")}</div>`;
+    const bs = el.querySelector("#buildSearch");
+    if(bs){
+      bs.addEventListener("input", drawBuilds);
+      if(box === document.activeElement){ bs.focus(); bs.selectionStart = bs.value.length; }
+    }
+    el.querySelectorAll("button[data-fav]").forEach(b =>
+      b.addEventListener("click", e => {
+        e.preventDefault(); e.stopPropagation();
+        toggleFav(b.dataset.fav);
+      }));
+    applyStatic();
     return;
   }
 
@@ -6048,6 +6085,11 @@ function drawBuilds(){
         <div class="bact">
           ${[0,1,2].map(i =>
             `<button data-cmp="${r.id}" data-slot="${i}">${TR("bCompare")} ${i + 1}</button>`).join("")}
+          ${me && r.owner === me.id
+            ? `<button data-ren="${r.id}">${TR("bRename")}</button>
+               <button data-del="${r.id}" class="bdel">${TR("bDelete")}</button>` : ""}
+          ${me && myFlags.admin && r.owner !== me.id
+            ? `<button data-del="${r.id}" class="bdel">${TR("bDelete")}</button>` : ""}
         </div>
       </div>`;
     }).join("") : `<p class="tipstat">${TR("boardEmpty")}</p>`}`;
@@ -6059,6 +6101,23 @@ function drawBuilds(){
     }));
   el.querySelectorAll("button[data-cmp]").forEach(b =>
     b.addEventListener("click", () => useShared(b.dataset.cmp, +b.dataset.slot)));
+  el.querySelectorAll("button[data-del]").forEach(b =>
+    b.addEventListener("click", async () => {
+      if(!confirm(TR("bDeleteSure"))) return;
+      await sb.from("builds").delete().eq("id", b.dataset.del);
+      buildsLoad(buildsFor);
+    }));
+  el.querySelectorAll("button[data-ren]").forEach(b =>
+    b.addEventListener("click", async () => {
+      const row = buildRows.find(x => x.id === b.dataset.ren);
+      const nm = prompt(TR("bRenameAsk"), row ? row.name : "");
+      if(nm === null) return;
+      const notes = prompt(TR("bNotesAsk"), row ? (row.notes || "") : "");
+      if(notes === null) return;
+      await sb.from("builds").update({name:nm.trim().slice(0,60), notes:notes.trim().slice(0,400)})
+        .eq("id", b.dataset.ren);
+      buildsLoad(buildsFor);
+    }));
 }
 
 /* load a shared build into one of your three slots, then go there */
