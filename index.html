@@ -1027,6 +1027,11 @@ body[data-view="home"] #builds{display:none}
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preconnect" href="https://ddragon.leagueoflegends.com" crossorigin>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<!-- Visitor counting. No cookie, no address stored: GoatCounter builds a
+     fingerprint that is thrown away daily, so it needs no consent banner.
+     The site uses one page and moves by hash, so each view is sent by hand. -->
+<script data-goatcounter="https://ylfik.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 
@@ -6352,6 +6357,17 @@ function route(){
   window.scrollTo(0, 0);
 }
 window.addEventListener("hashchange", route);
+
+/* one page, several views: tell the counter when the address changes */
+let lastCounted = location.pathname + location.hash;
+window.addEventListener("hashchange", () => {
+  const here = location.pathname + location.hash;
+  if(here === lastCounted) return;
+  lastCounted = here;
+  if(window.goatcounter && window.goatcounter.count){
+    window.goatcounter.count({path:location.pathname + location.hash});
+  }
+});
 
 const champBox = document.getElementById("champSearch");
 if(champBox) champBox.addEventListener("input", drawHome);
