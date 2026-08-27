@@ -68,7 +68,7 @@ return {
             ["act"] = {   
                 ["name"]        = "Mana Made Real",
                 ["unique"]      = true,
-                ["description"] = "For 8 seconds, your mana is ''Empowered''. While ''Empowered'': your [[champion ability|abilities]] cost 100% more mana; you gain 15% {{as|(+ {{fd|0.5}}% per 100 '''bonus''' mana)}} increased {{tip|ability damage}} and {{tip|pet damage}}, {{tip|healing}}, and {{tip|shielding}}; and your basic abilities' cooldowns progress 30% faster.",
+                ["description"] = "For 8 seconds, your mana is ''Empowered''. While ''Empowered'': your [[champion ability|abilities]] cost 100% more mana; you gain 15% {{as|(+ {{fd|0.5}}% per 100 '''bonus''' mana)}} increased {{tip|ability damage|ability}} and {{tip|pet damage}}, {{tip|healing}}, and {{tip|shielding}}; and your basic abilities' cooldowns progress 30% faster.",
                 ["cd"]          = "60",                
             },
 		},
@@ -549,7 +549,7 @@ return {
             ["pass"] = {   
                 ["name"]        = "Shaped Charge",
                 ["unique"]      = true,
-                ["description"] = "Your next instance of [[ability damage]] to a champion or epic monster with a [[champion ability]] deals {{as|{{rd|50|25}} {{as|(+ {{rd|{{fd|1.5}}|{{fd|0.75}}}} per 1 lethality)}} '''bonus''' true damage}}.",
+                ["description"] = "Your next instance of {{tip|ability damage}} to a champion or epic monster with a [[champion ability]] deals {{as|{{rd|50|25}} {{as|(+ {{rd|{{fd|1.5}}|{{fd|0.75}}}} per 1 lethality)}} '''bonus''' true damage}}.",
                 ["cd"]          = "20",
             },
             ["pass2"] = {   
@@ -696,7 +696,7 @@ return {
             ["pass"] = {   
                 ["name"]        = "Baleful Blaze",
                 ["unique"]      = true,
-                ["description"] = "Dealing [[ability damage]] burns enemies, causing them to take {{as|{{ap|60/6}} {{as|(+ {{ap|6/6}}% AP)}} magic damage|magic damage}} every {{fd|0.5}} seconds over 3 seconds, for a total of {{as|60|magic damage}} {{as|(+ 6% AP)}}. Against monsters, the burn deals {{as|10 '''bonus''' magic damage}} per tick, dealing a total of {{as|{{ap|(60/6)+10}} {{as|(+ {{ap|6/6}}% AP)}} magic damage|magic damage}} per tick for up to {{as|{{ap|60+(10*6)}}|magic damage}} {{as|(+ 6% AP)}}.",
+                ["description"] = "Dealing {{tip|ability damage}} burns enemies, causing them to take {{as|{{ap|60/6}} {{as|(+ {{ap|6/6}}% AP)}} magic damage|magic damage}} every {{fd|0.5}} seconds over 3 seconds, for a total of {{as|60|magic damage}} {{as|(+ 6% AP)}}. Against monsters, the burn deals {{as|10 '''bonus''' magic damage}} per tick, dealing a total of {{as|{{ap|(60/6)+10}} {{as|(+ {{ap|6/6}}% AP)}} magic damage|magic damage}} per tick for up to {{as|{{ap|60+(10*6)}}|magic damage}} {{as|(+ 6% AP)}}.",
             },
             ["pass2"] = {   
                 ["name"]        = "Blackfire",
@@ -1801,7 +1801,7 @@ return {
             ["pass"] = {   
                 ["name"]        = "The Bomb",
                 ["unique"]      = true,
-                ["description"] = "Dealing ability damage against enemy champions marks them for 3 seconds, storing 20% of the {{tt|post-mitigation damage|Damage calculated after modifiers}} you deal to them, increased to 25% if they are {{tip|immobilize|immobilized}}. Each instance of your ability damage dealt to a marked target refreshes their mark. Once the mark expires, it detonates to deal {{as|true damage}} equal to the amount stored against the target. If a mark would deal lethal damage to the target, it is detonated immediately.",
+                ["description"] = "Dealing {{tip|ability damage}} against enemy champions marks them for 3 seconds, storing 20% of the {{tt|post-mitigation damage|Damage calculated after modifiers}} you deal to them, increased to 25% if they are {{tip|immobilize|immobilized}}. Subsequent ability damage dealt to a marked target refreshes their mark. Once the mark expires, it detonates to deal {{as|true damage}} equal to the amount stored against the target. If a mark would deal lethal damage to the target, it detonates immediately.",
             },
         },
         ["sell"]                 = 2000,
@@ -2702,7 +2702,7 @@ return {
             ["pass"] = {   
                 ["name"]        = "Inflame",
                 ["unique"]      = true,
-                ["description"] = "Dealing [[ability damage]] burns enemies, causing them to take {{as|{{ap|15/6}} magic damage}} every {{fd|0.5}} seconds over 3 seconds, for a total of {{as|15|magic damage}}. Against monsters, the burn deals {{as|{{fd|7.5}} '''bonus''' magic damage}} per tick, dealing a total of {{as|{{ap|(15/6)+7.5}} magic damage}} per tick for up to {{as|{{ap|15+(7.5*6)}}|magic damage}}.",
+                ["description"] = "Dealing {{tip|ability damage}} burns enemies, causing them to take {{as|{{ap|15/6}} magic damage}} every {{fd|0.5}} seconds over 3 seconds, for a total of {{as|15|magic damage}}. Against monsters, the burn deals {{as|{{fd|7.5}} '''bonus''' magic damage}} per tick, dealing a total of {{as|{{ap|(15/6)+7.5}} magic damage}} per tick for up to {{as|{{ap|15+(7.5*6)}}|magic damage}}.",
             },
         },
         ["recipe"]              = {"Amplifying Tome"},
@@ -2736,7 +2736,7 @@ return {
             ["pass2"] = {   
                 ["name"]        = "Opening Barrage",
                 ["unique"]      = true,
-                ["description"] = "After casting your ultimate ability, your next 3 basic attacks {{tip|on-attack}} within 8 seconds gain {{as|50% '''bonus''' attack speed}} and are empowered to {{tip|critically strike}} for{{ft|{{as|{{critical damage|60|80}}|critical damage}} '''bonus''' damage.|{{sti|{{as|80% '''total''' critical damage}}}}.}}If an attack would have already critically struck, it instead critically strikes for{{ft|{{as|{{critical damage|100|100}}|critical damage}} '''bonus''' damage|{{sti|{{as|100% '''total''' critical damage}}}}}}and deals {{as|'''bonus''' true damage}} equal to 15% of the triggering {{as|attack's damage}} {{tt|pre-mitigation|Damage calculated before modifiers}}.",
+                ["description"] = "After casting your ultimate ability, your next 3 basic attacks {{tip|on-attack}} within 8 seconds gain {{as|50% '''bonus''' attack speed}} and are empowered to {{tip|critically strike}} for{{ft|{{as|{{critical damage|60|80}}|critical damage}} '''bonus''' damage.|{{sti|{{as|80% '''total''' critical damage}}}}.}}If an attack would have already critically struck, it instead critically strikes for{{ft|{{as|{{critical damage|100|100}}|critical damage}} '''bonus''' damage|{{sti|{{as|100% '''total''' critical damage}}}}}}and deals {{as|'''bonus''' true damage}} equal to 15% of the triggering attack's damage {{tt|pre-mitigation|Damage calculated before modifiers}}.",
                 ["cd"]          = 45
             },
         },
@@ -4034,7 +4034,7 @@ return {
             ["pass"] = {
                 ["name"]        = "Hypershot",
                 ["unique"]      = true,
-                ["description"] = "Dealing [[ability damage]] to a champion with a [[champion ability]] at {{tip|cr|icononly = true}} 600 or more units away from the cast position marks them for 6 seconds, {{tip|standard sight|revealing}} them and increasing your damage dealt to them by 10%.",
+                ["description"] = "Dealing {{tip|ability damage}} to a champion with a [[champion ability]] at {{tip|cr|icononly = true}} 600 or more units away from the cast position marks them for 6 seconds, {{tip|standard sight|revealing}} them and increasing your damage dealt to them by 10%.",
             },
             ["pass2"] = {
                 ["name"]        = "Focus",
@@ -4998,7 +4998,7 @@ return {
             ["pass"] = {   
                 ["name"]        = "Echo",
                 ["unique"]      = true,
-                ["description"] = "Gain 6 ''Echo'' stacks. Dealing [[ability damage]] to an enemy consumes all ''Echo'' stacks to deal {{as|75|magic damage}} {{as|(+ 5% AP)}} {{as|'''bonus''' magic damage}} to them and, for each stack consumed beyond the first, an additional enemy within {{tip|cr|icononly=true}} 600 units of them, firing an orb at each secondary target that impacts after {{rutngt|0.5}} to deal the damage. If the number of additional targets fired at is less than the number of stacks consumed,{{ft|deal an additional {{as|{{pp|75*0.2 to 75*5*0.2 for 5|1 to 5|changedisplay=true|type=remaining ''Echo'' stacks}}|magic damage}} {{as|(+ {{pp|key=%|5*0.2 to 5*5*0.2 for 5|1 to 5|type=remaining ''Echo'' stacks|changedisplay=true|showtype=false}} AP)}} {{as|magic damage}} to the primary target, for a total of {{as|{{pp|(75*0.2)+75 to (75*5*0.2)+75 for 5|1 to 5|type=remaining ''Echo'' stacks|changedisplay=true|showtype=false}}|magic damage}} {{as|(+ {{pp|key=%|(5*0.2)+5 to (5*5*0.2)+5 for 5|1 to 5|type=remaining ''Echo'' stacks|changedisplay=true|showtype=false}} AP)}}|deal an additional 20% damage to the primary target for each remaining ''Echo'' stack}}",
+                ["description"] = "Gain 6 ''Echo'' stacks. Dealing {{tip|ability damage}} to an enemy consumes all ''Echo'' stacks to deal {{as|75|magic damage}} {{as|(+ 5% AP)}} {{as|'''bonus''' magic damage}} to them and, for each stack consumed beyond the first, an additional enemy within {{tip|cr|icononly=true}} 600 units of them, firing an orb at each secondary target that impacts after {{rutngt|0.5}} to deal the damage. If the number of additional targets fired at is less than the number of stacks consumed,{{ft|deal an additional {{as|{{pp|75*0.2 to 75*5*0.2 for 5|1 to 5|changedisplay=true|type=remaining ''Echo'' stacks}}|magic damage}} {{as|(+ {{pp|key=%|5*0.2 to 5*5*0.2 for 5|1 to 5|type=remaining ''Echo'' stacks|changedisplay=true|showtype=false}} AP)}} {{as|magic damage}} to the primary target, for a total of {{as|{{pp|(75*0.2)+75 to (75*5*0.2)+75 for 5|1 to 5|type=remaining ''Echo'' stacks|changedisplay=true|showtype=false}}|magic damage}} {{as|(+ {{pp|key=%|(5*0.2)+5 to (5*5*0.2)+5 for 5|1 to 5|type=remaining ''Echo'' stacks|changedisplay=true|showtype=false}} AP)}}|deal an additional 20% damage to the primary target for each remaining ''Echo'' stack}}",
                 ["cd"]          = "12"
             },
 		},
@@ -5464,7 +5464,7 @@ return {
             ["pass2"] = {   
                 ["name"]        = "Shock",
                 ["unique"]      = true,
-                ["description"] = "Basic attacks [[on-hit]] against champions deal {{as|{{as|{{fd|1.2}}% '''maximum''' mana}} '''bonus''' physical damage}}.",
+                ["description"] = "Basic attacks {{tip|on-hit}} against champions deal {{as|{{as|{{fd|1.2}}% '''maximum''' mana}} '''bonus''' physical damage}}.",
                 ["description2"]= "Dealing {{tip|ability damage}} to champions with a {{tip|champion ability}} deals {{as|{{as|{{rd|4%|3%}} '''maximum''' mana}} '''bonus''' physical damage|physical damage}}, unless the damage also counts as {{tip|proc damage}} or {{tip|indirect damage}}. This can only be triggered on the same target once every {{fd|6.5}} seconds from the same cast instance.",
             },
         },
@@ -5596,7 +5596,7 @@ return {
             ["pass"] = {   
                 ["name"]        = "Soulrend",
                 ["unique"]      = true,
-                ["description"] = "Damaging an enemy champion with a basic attack or [[ability damage]] deals {{as|160 {{as|(+ 40% AP)}} '''bonus''' magic damage|magic damage}} and grants you {{as|40% '''bonus''' movement speed}} for {{fd|1.5}} seconds, with the duration extending on subsequent triggers (10 second cooldown per champion).",
+                ["description"] = "Damaging an enemy champion with a [[basic attack]] or dealing {{tip|ability damage}} to them deals {{as|160 {{as|(+ 40% AP)}} '''bonus''' magic damage|magic damage}} and grants you {{as|40% '''bonus''' movement speed}} for {{fd|1.5}} seconds, with the duration extending on subsequent triggers (10 second cooldown per champion).",
             },
         },
         ["sell"]                 = 2000,
@@ -5805,7 +5805,7 @@ return {
     ["Phage"] = {
         ["id"]                  = 3044,
         ["nickname"]            = {"mallet"},
-        ["tags"]                = {"HasOnHit", "OnHitAppliesLifeSteal"},
+        --["tags"]                = {"HasOnHit", "OnHitAppliesLifeSteal"},
         ["tier"]                = 2,
         ["type"]                = {"Epic"},
         ["modes"] = {
@@ -6902,7 +6902,7 @@ return {
             ["pass"] = {   
                 ["name"]        = "Rimefrost",
                 ["unique"]      = true,
-                ["description"] = "Dealing {{tip|ability damage}} {{tip|slow|slows}} affected [[unit]]s by 30% for 1 second.",
+                ["description"] = "Dealing {{tip|ability damage}} {{tip|slow|slows}} enemies hit by 30% for 1 second.",
             },
         },
         ["recipe"]              = {"Blasting Wand", "Giant's Belt", "Amplifying Tome"},
@@ -7107,6 +7107,9 @@ return {
             ["nb"]              = true,
             ["ar"]              = true,
         },
+        ["menu"] = {
+            ["mage"]            = true,
+        },
         ["stats"] = {
             ["ap"]              = 70,
             ["ah"]              = 25,
@@ -7203,7 +7206,7 @@ return {
             ["pass"] = {   
                 ["name"]        = "Bitter Cold",
                 ["unique"]      = true,
-                ["description"] = "Dealing [[ability damage]] to an enemy that is at or below {{as|50% of their '''maximum''' health}} {{tip|slow|slows}} them by 30% for 1 second.",
+                ["description"] = "Dealing {{tip|ability damage}} to an enemy that is at or below {{as|50% of their '''maximum''' health}} {{tip|slow|slows}} them by 30% for 1 second.",
             },
         },
         ["recipe"]              = {"Caulfield's Warhammer", "Last Whisper"},
@@ -7459,7 +7462,7 @@ return {
             ["pass2"] = {
             	["name"]         = "Focused Will",
                 ["unique"]       = true,
-                ["description"]  = "Dealing {{tip|ability damage}} or {{tip|pet damage}}, from a non-innate {{tip|ability}} {{tip|cast instance}}, generates a stack for 6 seconds, stacking up to 4 times. For each stack, your {{tip|ability damage}}, {{tip|pet damage}} and {{tip|proc damage}}, from an {{tip|ability}} {{tip|cast instance}}, gain 3% increased damage, for a total increase of 12% at '''maximum''' stacks.",
+                ["description"]  = "Dealing {{tip|ability damage}} or {{tip|pet damage}} from a non-innate {{tip|ability}} {{tip|cast instance}}, generates a stack of ''Focused Will'' for 6 seconds, stacking up to 4 times. For each stack, your {{tip|ability damage|ability}}, {{tip|proc damage|proc}} and {{tip|pet damage}} originating from your ability {{tip|cast instance|cast instances}} deals 3% increased damage, for a total increase of 12% at '''maximum''' stacks.",
             	["description2"] = "Each {{tip|cast instance}} can only grant one stack per second."
             },
         },
@@ -7759,7 +7762,7 @@ return {
         ["buy"]                 = 3200,
     },
     ["Stormrazor"] = {
-        ["id"]                  = 3097,
+        ["id"]                  = 3095,
         ["nickname"]            = {"energize", "Windblade"},
         ["tags"]                = {"HasOnHit", "HasOnAttack"},
         ["tier"]                = 3,
@@ -7776,7 +7779,7 @@ return {
         },
         ["stats"] = {
             ["ad"]              = 50,
-            ["as"]              = 20,
+            ["as"]              = 25,
             ["crit"]            = 25,
         },
         ["effects"] = {
@@ -7879,8 +7882,8 @@ return {
             ["fighter"]         = true,
         },
         ["stats"] = {
-            ["hp"]              = 450,
-            ["ad"]              = 45,
+            ["hp"]              = 400,
+            ["ad"]              = 40,
             ["ah"]              = 10,
         },
         ["effects"] = {
@@ -7978,7 +7981,7 @@ return {
         	["pass"] = {
         		["name"]        = "Fleetfooted",
         		["unique"]      = true,
-        		["description"] = "Gain 40% [[slow resist]].",
+        		["description"] = "Gain 25% [[slow resist]].",
         	},
             ["pass2"] = {
                 ["name"]        = "Noxian Fervor",
@@ -8558,6 +8561,45 @@ return {
         },
         ["sell"]                = 2000,
     },
+    ["Ultra Hydra"] = {
+        ["id"]                  = 226668,
+        ["tier"]                = 3,
+        ["type"]                = {"Distributed", "Special"},
+        ["req"]                 = "Requires the {{aug|mayhem|Ultra Hydra}} augment.",
+        ["itemlimit"]           = "Hydra",
+        ["caption"]             = "\"Ssssslash!\"",
+        ["modes"] = {
+            ["classic sr 5v5"]  = false,
+            ["aram"]            = false,
+            ["nb"]              = false,
+            ["ar"]          	= false,
+            ["mayhem"]			= true,
+        },
+        ["menu"] = {
+        	["assassin"]        = true,
+            ["fighter"]	        = true,
+        },
+        ["stats"] = {
+            ["ah"]              = 25,
+            ["ad"]              = 200,
+            ["hp"]              = 1000,
+            ["omnivamp"]        = 15,
+            ["lethality"]       = 25,
+        },
+        ["effects"] = {
+            ["act"] = {   
+                ["name"]        = "Ultra Hydra",
+                ["unique"]      = true,
+                ["description"] = "Your next basic attack [[on-hit]] within 10 seconds modifies and empowers ''Ultra Cleave'' to deal {{as|160% AD}} {{as|physical damage}} to enemies within a {{tip|cr|icononly = true}} 450 radius {{tt|in front of you|100 unit offset in the caster's facing direction}} and {{as|6% '''maximum''' health}} {{as|'''bonus''' physical damage}} to the attack target and {{as|10% '''maximum''' health}} {{as|physical damage}} to other enemies in a cone in the direction of the attack target (10 second cooldown, starts after using the empowered attack).",
+            },
+            ["pass"] = {
+                ["name"]        = "Ultra Cleave",
+                ["unique"]      = true,
+                ["description"] = "Basic attacks [[on-hit]] deal {{as|80% AD}} {{as|(+ 2% '''maximum''' health)}} {{as|physical damage}} to other enemies in a {{tip|cr|icononly = true}} 350 radius centered around the target. This damage benefits from {{as|{{sti|life steal}}}} at 100% effectiveness.",
+            },
+        },
+        ["sell"]                = 4200,      
+    },      
     ["Umbral Glaive"] = {
         ["id"]                  = 3179,
         ["nickname"]            = {"lethality"},
@@ -8712,7 +8754,6 @@ return {
             ["hp"]              = 1000,
             ["hp5"]             = 200,
         },
-        ["sell"]                 = 6000,
         ["effects"] = {
             ["pass"] = {
                 ["name"]        = "Immolate",
@@ -8725,6 +8766,7 @@ return {
                 ["description"] = "Killing an enemy unit causes an eruption around their death location that deals {{as|20|magic damage}} {{as|(+ 2% '''bonus''' health)}} {{as|magic damage}} to enemies within 350 units.",                
             },
         },
+        ["sell"]                = 4200,        
     },    
     ["Void Staff"] = {
         ["id"]                  = 3135,
@@ -9214,7 +9256,7 @@ return {
             ["pass"] = {   
                 ["name"]        = "Void Explosion",
                 ["unique"]      = true,
-                ["description"] = "Dealing [[ability damage]] to an enemy champion creates an explosion at their location after a {{fd|0.5}}-second delay, dealing {{as|10|magic damage}} {{as|(+ 15% AP)}} {{as|(+ 3% of each target's '''maximum''' health)}} {{as|magic damage}} to enemies within the area, capped at 300 against {{tip|monsters}}.",
+                ["description"] = "Dealing {{tip|ability damage}} to an enemy champion creates an explosion at their location after a {{fd|0.5}}-second delay, dealing {{as|10|magic damage}} {{as|(+ 15% AP)}} {{as|(+ 3% of each target's '''maximum''' health)}} {{as|magic damage}} to enemies within the area, capped at 300 against {{tip|monsters}}.",
                 ["cd"]          = "10", 
             },
 		},
