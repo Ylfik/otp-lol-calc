@@ -23,6 +23,7 @@ window.CHAMPION = {
       {k:"r", en:"Wingborne Storm",  fr:"Tempête spirituelle"}
     ],
     rankCap: L => Math.min(6, Math.floor((L + 1) / 2)),   /* no ultimate here */
+    maxRank: 6,      /* four stances, six ranks each */
     awakenBase: L => L >= 16 ? 20 : L >= 11 ? 30 : L >= 6 ? 40 : 50,
     stanceCD: 6,
     comboASBonus: 30,          /* Monk Training, on every attack of the combo */

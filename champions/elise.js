@@ -24,6 +24,7 @@ window.CHAMPION = {
     /* Q, W and E cap at 5; the transform has 4 ranks, taken at levels 1, 6, 11 and 16 */
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
     rankCapR: L => Math.min(4, Math.floor(L / 5) + 1),
+    freeRanks: 1,    /* the first rank of her transform is granted at level 1 */
     maxRank: 5,
     ranks:{
       /* human */

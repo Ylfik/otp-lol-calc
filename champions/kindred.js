@@ -28,12 +28,17 @@ window.CHAMPION = {
       const ap = tot.ap, ah = 1 + tot.ah/100;
       const n = c.stacks || 0;
       A.marks   = n;
-      A.range   = 500 + n * 25;             /* every mark lengthens her bow */
+      /* the wiki's table: nothing before four marks, +75 there, then +25 every
+         three more, up to +250 at twenty-five */
+      A.range   = 500 + (n < 4 ? 0 : Math.min(250, 75 + 25 * Math.floor((n - 4) / 3)));
       A.qDmg    = R(T.qFlat,qr) + T.qBonusAD*bonusAD;
       A.wDmg    = R(T.wFlat,wr) + T.wBonusAD*bonusAD + T.wAP*ap;
       A.wPct    = T.wPct + T.wPctPerMark * n;      /* of the target's current health */
       A.eDmg    = R(T.eFlat,er) + T.eBonusAD*bonusAD;
       A.ePct    = T.ePct + T.ePctPerMark * n;      /* of the target's missing health */
+      /* Wolf's pounce is not a critical strike: the chance simply raises it,
+         by up to 50% at full crit, and excess crit chance is wasted */
+      A.eCritUp = Math.min(1, tot.crit / 100) * 50;
       A.rHeal   = R(T.rHeal,rr);
       A.qCd = R(T.qCd,qr)/ah; A.wCd = R(T.wCd,wr)/ah;
       A.eCd = R(T.eCd,er)/ah; A.rCd = R(T.rCd,rr)/(1 + tot.uh/100);
@@ -63,7 +68,7 @@ window.CHAMPION = {
         out.parts.push({n:"wolfsFrenzy", v:A.wDmg + cur*A.wPct/100, type:"magic"});
       if(st.id === "e")
         out.parts.push({n:"mountingDread",
-          v:A.eDmg + Math.max(0, hp - cur)*A.ePct/100, type:"phys"});
+          v:(A.eDmg + Math.max(0, hp - cur)*A.ePct/100) * (1 + A.eCritUp/100), type:"phys"});
       if(st.id === "r") out.heal = A.rHeal;
       return out;
     },
@@ -74,6 +79,7 @@ window.CHAMPION = {
         [{lab:TR("damage"), val:n0(A.wDmg)}, {lab:TR("kdWpct"), val:pc(A.wPct), awk:true},
          {lab:TR("cooldown"), val:nf1.format(A.wCd)+" s"}],
         [{lab:TR("damage"), val:n0(A.eDmg)}, {lab:TR("kdEpct"), val:pc(A.ePct), awk:true},
+         {lab:TR("kdEcrit"), val:"+" + pc(A.eCritUp), awk:true},
          {lab:TR("cooldown"), val:nf1.format(A.eCd)+" s"}],
         [{lab:TR("healing"), val:n0(A.rHeal)}, {lab:TR("cooldown"), val:nf1.format(A.rCd)+" s"}]
       ];
