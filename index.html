@@ -2651,6 +2651,9 @@ function computeBuild(b, target){
       if(f.mrRed)    mrRed    += f.mrRed;
       if(f.mrRedFlat) mrRedFlat += f.mrRedFlat;
       if(f.amp)        ampMul  *= (1 + f.amp/100);
+      if(f.ampBasic)   ampBasic *= (1 + f.ampBasic/100);   /* basic damage only */
+      if(f.ampPerSec)  ampSec.push({pct:f.ampPerSec,  max:f.stackMax || 4, why:iName(e.it)});
+      if(f.ampPerCast) ampCast.push({pct:f.ampPerCast, max:f.stackMax || 4, why:iName(e.it)});
       if(f.ampBelow40) ampLow  *= (1 + f.ampBelow40/100);
       if(f.ampAbove60) ampHigh *= (1 + f.ampAbove60/100);
     });
@@ -2872,6 +2875,7 @@ function computeBuild(b, target){
        rather than from the cast, so two casts in quick succession only pay
        once. The engine already tracks elapsed time, so it can hold it back. */
     const SPELLBLADE_CD = 1.5;
+    const hasSpellblade = equipped.some(e => (PV[e.it.n] || []).some(f => f.spellblade));
     let sbReadyAt = 0;
     const memo = CHAMP.newState ? CHAMP.newState() : {};   /* the champion's own counter */
     seq.forEach((st, si) => {
@@ -2982,7 +2986,7 @@ function computeBuild(b, target){
       d *= amp;
       steps.push({n:si + 1, atk:a, awakened:!!st.awakened, kind:st.kind,
                   label:st.label || st.id, id:st.id, passes,
-                  sbHeld:st.kind === "attack" && charged && !spendsCharge,
+                  sbHeld:hasSpellblade && st.kind === "attack" && charged && !spendsCharge,
                   amp, before:cur, total:d, parts:parts.map(x => ({...x, v:x.v*amp}))});
       cur = Math.max(0, cur - d);
       dmg += d;
