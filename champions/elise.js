@@ -10,7 +10,9 @@ window.CHAMPION = {
       {id:"sq", kind:"spell", spider:true, en:"Q — Venomous Bite", fr:"Q — Neurotoxine/Morsure venimeuse"},
       {id:"sw", kind:"spell", en:"W — Skittering Frenzy",  fr:"W — Araignée explosive/Frénésie symbiotique"},
       {id:"spiders", kind:"spell", brood:true,
-       en:"Spiderlings, one bite each", fr:"Araignées, une morsure chacune"}
+       en:"Spiderlings, four seconds", fr:"Araignées, quatre secondes",
+       /* the brood keeps biting; four seconds is a fair slice of a fight */
+       times:c => Math.max(1, 4 * (c.tot.as || 0.6))}
     ],
     key:"elise", name:"Elise", splash:15,
     base:{hp:[620,109], mana:[324,50], ad:[55,3], ar:[30,4.5], mr:[30,1.3],
@@ -136,7 +138,7 @@ window.CHAMPION = {
         if(st.id === "sw") out.asBonus = A.swAS;   /* Skittering Frenzy, 3s */
         /* Cocoon and Rappel deal nothing */
       }
-      if(st.brood)
+      if(st.brood)      /* one pass of the brood; the step repeats it */
         out.parts.push({n:"spiderlings", v:A.spiderAll, type:"phys"});
       if(st.kind === "attack" && st.spider){
         out.parts.push({n:"spiderQueen", v:A.pOnHit, type:"magic"});

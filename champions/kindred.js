@@ -61,7 +61,10 @@ window.CHAMPION = {
     stepMenu:[
       {id:"aa", kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
       {id:"q", kind:"spell", en:"Q — Dance of Arrows", fr:"Q — Danse des flèches"},
-      {id:"w", kind:"spell", en:"W — Wolf's Frenzy, one bite", fr:"W — Frénésie de Loup, une morsure"},
+      {id:"w", kind:"spell", en:"W — Wolf's Frenzy, the whole zone",
+       fr:"W — Frénésie de Loup, toute la zone",
+       /* Wolf bites for four seconds at Lamb's own rate */
+       times:c => Math.max(1, 4 * (c.tot.as || 0.6))},
       {id:"e", kind:"cast", label:"E", en:"E — Mounting Dread, the mark", fr:"E — Terreur mortelle, la marque"},
       {id:"r", kind:"cast", label:"R", en:"R — Lamb's Respite", fr:"R — Repos d'Agneau"}
     ],
