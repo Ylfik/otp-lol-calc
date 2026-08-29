@@ -1866,11 +1866,19 @@ const RUNE_FX = {
   /* the third attack lands the hit; the 8% follows for the rest of the fight */
   8005:{cond:"3 consecutive attacks", stats:{}, ampFrom:{from:4, pct:8},
         proc:{type:"phys", n:1, on:3, dmg:c=>lin(40,160,c.L)}},   /* Press the Attack */
-  8008:{cond:"6 stacks",stats:{as:0.36}, proc:{type:"phys",n:4,dmg:c=>lin(9,30,c.L)*(1+c.bonusASpct/100)}}, /* Lethal Tempo */
+  /* 6% attack speed a stack for a melee, 4% at range, six of them; the damage
+     only lands once the sixth is up, and every attack after it */
+  8008:{cond:"builds to 6 stacks, damage at 6", stats:{as:0.36},
+        rampAS:{per:6, max:6, rng:4},
+        proc:{type:"phys", n:1, from:6, dmg:c=>lin(9,30,c.L)*(1+c.bonusASpct/100)}}, /* Lethal Tempo */
   8021:{cond:"energized attack, 1s", stats:{msPct:20},
         heal:c=>lin(10,130,c.L)+0.1*c.bonusAD+0.05*c.ap},   /* full value for melee */                          /* Fleet Footwork */
-  8010:{cond:"12 stacks",stats:{adFn:c=>12*lin(1.8,4,c.L)}},                                        /* Conqueror (12 stacks) */
-  8112:{cond:"3 separate hits",proc:{type:"phys",n:1,dmg:c=>lin(70,240,c.L)+0.1*c.bonusAD+0.05*c.ap}},    /* Electrocute */
+  /* two stacks a hit for a melee, twelve at most, so it is worth little on the
+     first blow and everything by the sixth */
+  8010:{cond:"builds to 12 stacks", stats:{adFn:c=>12*lin(1.8,4,c.L)},
+        ramp:{per:2, max:12, ad:c=>lin(1.8,4,c.L)}},          /* Conqueror */
+  8112:{cond:"3 separate hits", proc:{type:"phys", n:1, on:3,
+        dmg:c=>lin(70,240,c.L)+0.1*c.bonusAD+0.05*c.ap}},   /* Electrocute */
   8128:{cond:"target below 50% HP", param:{lab:"souls", def:0}, needBelow:50,
         proc:{type:"phys",n:1,dmg:(c,v)=>30+11*(v||0)+0.1*c.bonusAD+0.05*c.ap}},   /* Dark Harvest */
   /* 26.17: 90% attack speed for melee, and the on-hit re-scaled */
@@ -1978,7 +1986,7 @@ const ITEM_FX = {
   "WHISPERING CIRCLET":[{lab:"Harmony — heal and shield from bonus mana", src:"wiki"}],
   "DIADEM OF SONGS":[{lab:"Harmony — heal and shield from bonus mana", src:"wiki"}],
   "PROTOPLASM HARNESS":[{lab:"Lifeline — under 30% health", src:"wiki"}],
-  "GLUTTONOUS GREAVES":[{lab:"Slay — 10 stacks", src:"wiki"}],
+  "GLUTTONOUS GREAVES":[{lab:"Slay — 10 takedowns", src:"wiki"}],
   "BANDLEPIPES":     [{lab:"Fanfare — after a slow or immobilise", src:"wiki"}],
   "DEAD MAN'S PLATE":[{lab:"Shipwrecker",     src:"wiki", type:"phys",  hits:1, flat:40, pctBaseAD:100},
                       {lab:"Unsinkable",     src:"wiki", gain:() => ({slow:15})}],
@@ -2100,11 +2108,11 @@ const ITEM_FX = {
   "ROD OF AGES":     [{lab:"Timeless", src:"wiki", stacked:true}],
   "BOOTS OF SWIFTNESS":[{lab:"Fleetfooted",  src:"wiki", gain:() => ({slow:25})}],
   "SWIFTMARCH":      [{lab:"Fleetfooted",    src:"wiki", gain:() => ({slow:40})}],
-  "BLACK CLEAVER":   [{lab:"Carve — 6% x 5 stacks", src:"wiki", armorRed:30}],
-  "RIFTMAKER":       [{lab:"Void Corruption — 4 stacks", src:"wiki", amp:8},
+  "BLACK CLEAVER":   [{lab:"Carve — builds through the combo", src:"wiki", armorRedPer:6, stackMax:5}],
+  "RIFTMAKER":       [{lab:"Void Corruption — 2% a second, 4 max", src:"wiki", ampPerSec:2, stackMax:4},
                       {lab:"Void Infusion — AP from bonus health", src:"wiki"},
                       {lab:"Void Corruption — 10% omnivamp at max", src:"wiki", gain:() => ({ov:10})}],
-  "SPEAR OF SHOJIN": [{lab:"Focused Will — 4 stacks",   src:"wiki", amp:12},
+  "SPEAR OF SHOJIN": [{lab:"Focused Will — 3% per ability damage, 4 max", src:"wiki", ampPerCast:3, stackMax:4},
                       {lab:"Dragonforce — 25 ability haste", src:"wiki", gain:() => ({ah:25})}]
 };
 
@@ -2521,7 +2529,7 @@ function computeBuild(b, target){
   /* --- runes: flat stats go in the item pool, % bonuses are applied to totals --- */
   const runeCtxEarly = {L, bonusAD:S.ad, ap:S.ap};
   const pct = {hp:0, ar:0, mr:0};
-  const ampLowWhy = [], ampHighWhy = [];
+  const ampLowWhy = [], ampHighWhy = [], ampSec = [], ampCast = [];
   let ampBasic = 1, ampMul = 1, ampLow = 1, ampHigh = 1;
   const ampStage = [];
   const activeRunes = b.runes.filter(r => r && r.id != null);
@@ -2650,9 +2658,10 @@ function computeBuild(b, target){
   /* Vile Decay and its kind build up during the fight rather than sitting at
      maximum: one stack per ability cast, so the reduction is worked out at each
      step of the combo instead of once before it. */
-  let mrRedPer = 0, mrRedCap = 0;
+  let mrRedPer = 0, mrRedCap = 0, arRedPer = 0, arRedCap = 0;
   equipped.forEach(e => (PV[e.it.n] || []).forEach(f => {
     if(f.mrRedPer && (e.cond || f.always)){ mrRedPer += f.mrRedPer; mrRedCap = Math.max(mrRedCap, f.stackMax || 4); }
+    if(f.armorRedPer && (e.cond || f.always)){ arRedPer += f.armorRedPer; arRedCap = Math.max(arRedCap, f.stackMax || 5); }
   }));
   const shredAr = target.ar * (1 - Math.min(100, armorRed)/100);
   const shredMr = target.mr * (1 - Math.min(100, mrRed)/100) - mrRedFlat;
@@ -2662,7 +2671,14 @@ function computeBuild(b, target){
   const effMr = shredMr - tot.mrpenflat - (tot.mrpen > 0 ? tot.mrpen*0.01*shredMr : 0);
   /* the game does not simply divide once a resistance goes below zero */
   const resistMul = r => r >= 0 ? 100/(100+r) : 2 - 100/(100-r);
-  const pMul  = resistMul(effAr);
+  /* n stacks of a growing armour reduction, before lethality as always */
+  const pMulAt = n => {
+    if(!arRedPer) return resistMul(effAr);
+    const extra = Math.min(arRedCap, n) * arRedPer;
+    const sh = target.ar * (1 - Math.min(100, armorRed + extra)/100);
+    return resistMul(sh - tot.letha - (tot.arpen > 0 ? tot.arpen*0.01*sh : 0));
+  };
+  const pMul  = pMulAt(arRedCap);      /* the figure shown in the stat panel */
   /* n stacks of a growing reduction, before penetration as always */
   const mMulAt = n => {
     if(!mrRedPer) return resistMul(effMr);
@@ -2695,6 +2711,28 @@ function computeBuild(b, target){
   /* --- rune procs over that same 4-attack window --- */
   const rctx = {L, bonusAD, bonusHP, ap:tot.ap, hp:tot.hp,
                 bonusASpct:tot.bonusASpct, awkShield:A.wAwkShield};
+  /* Some runes are not worth their full value from the first blow: they build
+     up as the fight runs. The engine is told how fast, so an attack early in a
+     combo counts for less than one at the end. */
+  const ramps = [];
+  activeRunes.forEach(e => {
+    const fx = RUNE_FX[e.id];
+    if(fx && fx.ramp && e.on) ramps.push({...fx.ramp, name:rName(RUNE_BY_ID[e.id])});
+  });
+  /* what one attack is worth once n instances have landed */
+  const rampAD = n => ramps.reduce((t, r) =>
+    t + (r.ad ? r.ad(rctx) * Math.min(r.max, n * (r.per || 1)) : 0), 0);
+
+  /* the same idea for attack speed: what is built after n attacks */
+  const asRamps = [];
+  activeRunes.forEach(e => {
+    const fx = RUNE_FX[e.id];
+    if(fx && fx.rampAS && e.on) asRamps.push(fx.rampAS);
+  });
+  const rampASpct = n => asRamps.reduce((t, r) =>
+    t + r.per * Math.min(r.max, n), 0);
+  const asRampMax = rampASpct(99);
+
   let runeDmg = 0, runeDmgLow = 0, runeHeal = 0;
   const inlineProcs = [];
   const runeLines = [], runeHealLines = [];
@@ -2709,7 +2747,8 @@ function computeBuild(b, target){
       /* the ones that land on a given attack are shown there instead */
       if(!fx.needBelow) inlineProcs.push({
         id:e.id, name:rName(RUNE_BY_ID[e.id]), per:one * mul,
-        n:fx.proc.n, byReset:fx.proc.byReset, maxN:fx.proc.maxN, on:fx.proc.on
+        n:fx.proc.n, byReset:fx.proc.byReset, maxN:fx.proc.maxN,
+        on:fx.proc.on, from:fx.proc.from
       });
     }
     if(fx.heal){
@@ -2793,6 +2832,11 @@ function computeBuild(b, target){
     : f.at ? (Array.isArray(f.at) ? f.at.indexOf(a) >= 0 : f.at === a)
     : (!!f.hits && a <= f.hits);
 
+  /* what the growing amplifiers are worth after so many seconds and casts */
+  const ampGrown = (secs, casts) =>
+      ampSec.reduce((m, x) => m * (1 + x.pct * Math.min(x.max, Math.floor(secs))/100), 1)
+    * ampCast.reduce((m, x) => m * (1 + x.pct * Math.min(x.max, casts)/100), 1);
+
   const ampAt = (c, a) => ampStage.reduce((m, x) => m * (a >= x.from ? x.mul : 1), 1) * ampMul
     * (c < 0.40*hp ? ampLow  : 1)
     * (c > 0.60*hp ? ampHigh : 1);
@@ -2814,14 +2858,21 @@ function computeBuild(b, target){
     let stanceDmg = 0;                 /* what the abilities add, without the attacks */
     const lines = {}, steps = [];
     const add = (k,v) => { lines[k] = (lines[k]||0) + v; };
-    let vileStacks = 0;
-    const mulOf = t => t === "phys" ? pMul : t === "magic" ? mMulAt(vileStacks) : 1;
+    let vileStacks = 0, carveStacks = 0;
+    const mulOf = t => t === "phys" ? pMulAt(carveStacks)
+      : t === "magic" ? mMulAt(vileStacks) : 1;
 
     let a = 0;                         /* how many basic attacks have landed */
     let asNow = A.comboAS, time = 0;   /* an ability may speed up the attacks that follow */
     let resets = 0;                    /* attack resets, which some runes reward */
     let inst = 0;                      /* cast instances: an attack, or an ability */
+    let casts = 0;                     /* instances of ability damage, for Focused Will */
     let charged = false;               /* a cast is waiting to be spent on the next attack */
+    /* Spellblade has its own 1.5s cooldown, counted from the empowered attack
+       rather than from the cast, so two casts in quick succession only pay
+       once. The engine already tracks elapsed time, so it can hold it back. */
+    const SPELLBLADE_CD = 1.5;
+    let sbReadyAt = 0;
     const memo = CHAMP.newState ? CHAMP.newState() : {};   /* the champion's own counter */
     seq.forEach((st, si) => {
       let d = 0;
@@ -2831,14 +2882,24 @@ function computeBuild(b, target){
         charged = true;
         inst++;
         if(mrRedPer) vileStacks = Math.min(mrRedCap, vileStacks + 1);   /* one per cast */
+        if(arRedPer) carveStacks = Math.min(arRedCap, carveStacks + 1);
       }
-      const spendsCharge = st.kind === "attack" && charged;
+      const spendsCharge = st.kind === "attack" && charged && time >= sbReadyAt;
 
       if(st.kind === "attack"){
         a++; inst++;
-        const hit = autoHit * ampBasic;      /* Magnification and its kind */
+        if(arRedPer) carveStacks = Math.min(arRedCap, carveStacks + 1);   /* Carve */
+        /* a ramping rune is worth what it has built by this point, not its cap */
+        const built = ramps.length ? rampAD(inst - 1) * pMul : 0;
+        const capped = ramps.length ? rampAD(999) * pMul : 0;
+        const rate = arRedPer ? pMulAt(carveStacks) / (pMul || 1) : 1;
+        const hit = (autoHit - capped + built) * ampBasic * rate;
         d += hit; autoAll += hit;
-        time += 1 / Math.max(0.1, asNow);
+        /* stacks already up when this attack starts */
+        const asHere = asRamps.length
+          ? Math.min(2.5, base.as * (1 + (tot.bonusASpct - asRampMax + rampASpct(a - 1))/100))
+          : asNow;
+        time += 1 / Math.max(0.1, asHere);
         parts.push({n:"basicAttack", v:hit});
       }
 
@@ -2861,7 +2922,7 @@ function computeBuild(b, target){
           (one.parts || []).forEach(x => {
             const v = x.v * mulOf(x.type);
             if(!v) return;
-            d += v; stanceDmg += v;
+            d += v; stanceDmg += v; casts++;
             const seen = parts.find(y => y.n === x.n);
             seen ? seen.v += v : parts.push({n:x.n, v});
           });
@@ -2872,7 +2933,7 @@ function computeBuild(b, target){
         (rid.parts || []).forEach(x => {
           const v = x.v * mulOf(x.type);
           if(!v) return;
-          d += v; stanceDmg += v;
+          d += v; stanceDmg += v; casts++;   /* each landing feeds Focused Will */
           const seen = parts.find(y => y.n === x.n);   /* one line per effect */
           seen ? seen.v += v : parts.push({n:x.n, v});
         });
@@ -2887,7 +2948,9 @@ function computeBuild(b, target){
       if(st.kind === "attack"){
         inlineProcs.forEach(pr => {
           const limit = pr.byReset ? Math.min(pr.maxN || pr.n, pr.n + resets) : pr.n;
-          const lands = pr.on ? (a === pr.on) : (a <= limit);
+          const lands = pr.from ? (a >= pr.from)
+            : pr.on ? (a === pr.on)
+            : (a <= limit);
           if(!lands || !pr.per) return;
           d += pr.per;
           parts.push({n:pr.name, v:pr.per, rune:true});
@@ -2911,11 +2974,15 @@ function computeBuild(b, target){
         });
       }
 
-      if(st.kind === "attack") charged = false;
-      const amp = ampAt(cur, a || 1);
+      if(st.kind === "attack" && spendsCharge){
+        charged = false;
+        sbReadyAt = time + SPELLBLADE_CD;   /* the clock starts on the empowered hit */
+      }
+      const amp = ampAt(cur, a || 1) * ampGrown(time, casts);
       d *= amp;
       steps.push({n:si + 1, atk:a, awakened:!!st.awakened, kind:st.kind,
-                  label:st.label || st.id, id:st.id,
+                  label:st.label || st.id, id:st.id, passes,
+                  sbHeld:st.kind === "attack" && charged && !spendsCharge,
                   amp, before:cur, total:d, parts:parts.map(x => ({...x, v:x.v*amp}))});
       cur = Math.max(0, cur - d);
       dmg += d;
@@ -2937,7 +3004,9 @@ function computeBuild(b, target){
     /* whatever did not land on an attack is added here */
     const inlineTotal = inlineProcs.reduce((t, pr) => {
       const limit = pr.byReset ? Math.min(pr.maxN || pr.n, pr.n + resets) : pr.n;
-      const hits = pr.on ? (a >= pr.on ? 1 : 0) : Math.min(a, limit);
+      const hits = pr.from ? Math.max(0, a - pr.from + 1)
+        : pr.on ? (a >= pr.on ? 1 : 0)
+        : Math.min(a, limit);
       return t + pr.per * hits;
     }, 0);
     const leftover = Math.max(0, runeDmg - inlineTotal);
@@ -3291,6 +3360,7 @@ const L10N = {
   healShield:["healing + shield","soins + bouclier"],
   moveSpeed:["move speed","vitesse de dépl."], attackSpeed:["attack speed","vitesse d'attaque"],
   slow:["slow","ralentissement"],
+  sbHeld:["Spellblade still on cooldown","Brillance encore en recharge"],
   brkPasses:["%d hits over the duration","%d coups sur la durée"],
   amp:["amp — items & runes","amplif. — items et runes"],
   ampLow:["amp — target <40%","amplif. — cible <40 %"],
@@ -5206,6 +5276,7 @@ function breakdown(bi, stance){
         <td>${n0(p.v)}</td></tr>`).join("")}
     ${st.parts.filter(p => p.v > 0.5).length ? "" :
       `<tr class="brk-amp"><td></td><td>${esc(stepNote(st))}</td><td>—</td></tr>`}
+    ${st.sbHeld ? `<tr class="brk-amp"><td></td><td>${TR("sbHeld")}</td><td>—</td></tr>` : ""}
     ${st.passes > 1 ? `<tr class="brk-amp"><td></td><td>${TR("brkPasses").replace("%d", st.passes)}</td><td>—</td></tr>` : ""}
     ${st.amp !== 1 ? `<tr class="brk-amp"><td></td><td>${TR("amp")}${
         st.ampWhy ? " — " + esc(st.ampWhy) : ""}</td><td>x${nf2.format(st.amp)}</td></tr>` : ""}
