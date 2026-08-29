@@ -65,30 +65,31 @@ window.CHAMPION = {
       ];
     },
     comboRows(key, x){
-      const {c, A, TR, n0, pc} = x;
+      const {c, A, TR, n0, pc, nf1} = x;
+      const dur = {lab:TR("comboTime"), val:nf1.format(c.time || 0) + " s"};
       if(key === "e") return [
         {lab:TR("msWithE"), val:n0(A.msE), hi:true},
         {lab:TR("awkMs"), val:n0(A.msEAwk)},
         {lab:TR("msDecay"), val:n0(A.msEDecay)},
         {lab:TR("awkMsDecay"), val:n0(A.msEAwkDecay)},
-        {lab:TR("msBonus"), val:"+" + pc(A.eMs) + " / " + pc(A.eMsDecay)}];
+        {lab:TR("msBonus"), val:"+" + pc(A.eMs) + " / " + pc(A.eMsDecay)}, dur];
       if(key === "w") return [
         {lab:TR("damage"), val:n0(c.dmg), hi:true},
         {lab:TR("hps"), val:n0(c.hps)},
         {lab:TR("healing"), val:n0(c.heal)},
         {lab:TR("shielding"), val:n0(c.shield)},
-        {lab:TR("healShield"), val:n0(c.sustain)}];
+        {lab:TR("healShield"), val:n0(c.sustain)}, dur];
       if(key === "r") return [
         {lab:TR("damage"), val:n0(c.dmg), hi:true},
         {lab:TR("dps"), val:n0(c.dps)},
         {lab:TR("healing"), val:n0(c.heal)},
-        {lab:TR("slow"), val:n0(A.rSlow) + " / " + n0(A.rAwkSlow) + "%"}];
+        {lab:TR("slow"), val:n0(A.rSlow) + " / " + n0(A.rAwkSlow) + "%"}, dur];
       return [
         {lab:TR("damage"), val:n0(c.dmg), hi:true},
         {lab:TR("dps"), val:n0(c.dps)},
         {lab:TR("healing"), val:n0(c.heal)},
         {lab:"&nbsp;&nbsp;" + TR("fromLS"), val:n0(c.lsHeal), dim:c.lsHeal < 1},
-        {lab:"&nbsp;&nbsp;" + TR("fromOV"), val:n0(c.ovHeal), dim:c.ovHeal < 1}];
+        {lab:"&nbsp;&nbsp;" + TR("fromOV"), val:n0(c.ovHeal), dim:c.ovHeal < 1}, dur];
     },
     /* Two attacks in the stance, then two awakened. */
     combos:[],
