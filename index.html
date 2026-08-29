@@ -2261,7 +2261,9 @@ for(const k in ITEM_FX){ PV[k] = ITEM_FX[k].map(o => Object.assign({}, o)); }
    decides which column applies. */
 function fxOne(f, ctx, targetHealth, ranged){
   if(ranged && f.rng) f = Object.assign({}, f, f.rng);
-  if(!f || !f.hits) return 0;
+  /* hits is how many times it lands when it fires; a periodic effect lands once */
+  if(!f) return 0;
+  if(!f.hits && !(f.every || f.everyInstance || f.energized)) return 0;
   const one = (f.lvlFrom !== undefined
                  ? lin(f.lvlFrom, f.lvlTo, ctx.L, f.lvlTop)
                  : (f.flat||0))
@@ -4516,7 +4518,7 @@ function card(b, bi, R){
       ${comboList().map((cb, ci) => {
         const c = D.combo[cb.key] || {};
         const rows = CHAMP.comboRows
-          ? CHAMP.comboRows(cb.key, {c, A, TR, n0, pc})
+          ? CHAMP.comboRows(cb.key, {c, A, TR, n0, pc, nf1})
           : [{lab:TR("damage"), val:n0(c.dmg), hi:true},
              {lab:TR("dps"), val:n0(c.dps)},
              {lab:TR("healing"), val:n0(c.heal), dim:c.heal < 1},
