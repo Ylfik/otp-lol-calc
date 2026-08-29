@@ -6,10 +6,10 @@ window.CHAMPION = {
     base:{hp:[620,120], mana:[274,44], ad:[56,2.2], ar:[33,0], mr:[30,1.55],
           as:0.625, asPerLevel:3.5, ms:330},
     abilities_meta:[
-      {k:"q", en:"Death Sentence", fr:"Condamnation"},
-      {k:"w", en:"Dark Passage",   fr:"Passage obscur"},
-      {k:"e", en:"Flay",           fr:"Écorchement"},
-      {k:"r", en:"The Box",        fr:"La Boîte"}
+      {k:"q", en:"Death Sentence", fr:"Peine capitale"},
+      {k:"w", en:"Dark Passage", fr:"Lien des ténèbres"},
+      {k:"e", en:"Flay", fr:"Fauchage"},
+      {k:"r", en:"The Box", fr:"La cage"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
     rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
@@ -54,10 +54,10 @@ window.CHAMPION = {
     },
     stepMenu:[
       {id:"aa", kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
-      {id:"q", kind:"spell", en:"Q — Death Sentence", fr:"Q — Condamnation"},
-      {id:"w", kind:"cast", label:"W", en:"W — Dark Passage", fr:"W — Passage obscur"},
-      {id:"e", kind:"spell", en:"E — Flay, fully wound up", fr:"E — Écorchement, pleinement chargé"},
-      {id:"r", kind:"spell", en:"R — The Box", fr:"R — La Boîte"}
+      {id:"q", kind:"spell", en:"Q — Death Sentence", fr:"Q — Peine capitale"},
+      {id:"w", kind:"cast", label:"W", en:"W — Dark Passage", fr:"W — Lien des ténèbres"},
+      {id:"e", kind:"spell", en:"E — Flay, fully wound up", fr:"E — Fauchage, pleinement chargé"},
+      {id:"r", kind:"spell", en:"R — The Box", fr:"R — La cage"}
     ],
     onStep(key, st, c){
       const {A} = c, out = {parts:[]};

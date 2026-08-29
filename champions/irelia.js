@@ -4,10 +4,10 @@ window.CHAMPION = {
     stepMenu:[
       {id:"aa",  kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
       {id:"aaF", kind:"attack", fervor:true, en:"Auto, four stacks", fr:"Auto, quatre charges"},
-      {id:"q", kind:"spell", en:"Q — Bladesurge",   fr:"Q — Assaut des lames"},
-      {id:"w", kind:"spell", en:"W — Defiant Dance, charged", fr:"W — Danse du défi, chargée"},
-      {id:"e", kind:"spell", en:"E — Flawless Duet", fr:"E — Duo sans faille"},
-      {id:"r", kind:"spell", en:"R — Vanguard's Edge", fr:"R — Lame d'avant-garde"}
+      {id:"q", kind:"spell", en:"Q — Bladesurge",   fr:"Q — Rush fatal"},
+      {id:"w", kind:"spell", en:"W — Defiant Dance, charged", fr:"W — Danse de défi, chargée"},
+      {id:"e", kind:"spell", en:"E — Flawless Duet", fr:"E — Duo parfait"},
+      {id:"r", kind:"spell", en:"R — Vanguard's Edge", fr:"R — Pointe de l'avant-garde"}
     ],
     onStep(key, st, c){
       const {A} = c, out = {parts:[]};
@@ -23,10 +23,10 @@ window.CHAMPION = {
     base:{hp:[630,115], mana:[350,50], ad:[65,3.5], ar:[36,4.7], mr:[30,2.05],
           as:0.656, asPerLevel:2.5, ms:335},
     abilities_meta:[
-      {k:"q", en:"Bladesurge",       fr:"Assaut des lames"},
-      {k:"w", en:"Defiant Dance",    fr:"Danse du défi"},
-      {k:"e", en:"Flawless Duet",    fr:"Duo sans faille"},
-      {k:"r", en:"Vanguard's Edge",  fr:"Lame d'avant-garde"}
+      {k:"q", en:"Bladesurge", fr:"Rush fatal"},
+      {k:"w", en:"Defiant Dance", fr:"Danse de défi"},
+      {k:"e", en:"Flawless Duet", fr:"Duo parfait"},
+      {k:"r", en:"Vanguard's Edge", fr:"Pointe de l'avant-garde"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
     rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),

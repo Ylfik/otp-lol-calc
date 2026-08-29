@@ -4,14 +4,14 @@ window.CHAMPION = {
     stepMenu:[
       {id:"aa",    kind:"attack", en:"Auto attack",       fr:"Auto-attaque"},
       {id:"aaAwk", kind:"attack", awakened:true, en:"Auto, awakened", fr:"Auto, éveillée"},
-      {id:"cq",    kind:"cast", label:"Q", en:"Q — enter Wilding Claw", fr:"Q — entrer en Griffe sauvage"},
-      {id:"cqAwk", kind:"cast", label:"Q", awakened:true, en:"Q — awaken, the lightning", fr:"Q — éveil, l'éclair"},
+      {id:"cq",    kind:"cast", label:"Q", en:"Q — enter Wilding Claw", fr:"Q — Griffe sauvage"},
+      {id:"cqAwk", kind:"cast", label:"Q", awakened:true, en:"Q — awaken, the lightning", fr:"Q — Griffe sauvage, l'éclair"},
       {id:"cw",    kind:"cast", label:"W", en:"W — Iron Mantle, the shield", fr:"W — Cape de fer, le bouclier"},
-      {id:"cwAwk", kind:"cast", label:"W", awakened:true, en:"W — awaken, shield and regen", fr:"W — éveil, bouclier et régénération"},
+      {id:"cwAwk", kind:"cast", label:"W", awakened:true, en:"W — awaken, shield and regen", fr:"W — Cape de fer, bouclier et régénération"},
       {id:"ce",    kind:"cast", label:"E", en:"E — Blazing Stampede", fr:"E — Piétinement flamboyant"},
-      {id:"ceAwk", kind:"cast", label:"E", awakened:true, en:"E — awaken", fr:"E — éveil"},
+      {id:"ceAwk", kind:"cast", label:"E", awakened:true, en:"E — awaken", fr:"E — Piétinement flamboyant"},
       {id:"cr",    kind:"cast", label:"R", en:"R — Wingborne Storm", fr:"R — Tempête spirituelle"},
-      {id:"crAwk", kind:"cast", label:"R", awakened:true, en:"R — awaken, the glacial storm", fr:"R — éveil, la tempête glaciale"}
+      {id:"crAwk", kind:"cast", label:"R", awakened:true, en:"R — awaken, the glacial storm", fr:"R — Tempête spirituelle, la tempête glaciale"}
     ],
     key:"udyr", name:"Udyr", splash:3,
     base:{hp:[664,92], mana:[271,50], ad:[62,4], ar:[31,4.7], mr:[32,2.05],
@@ -27,7 +27,7 @@ window.CHAMPION = {
     awakenBase: L => L >= 16 ? 20 : L >= 11 ? 30 : L >= 6 ? 40 : 50,
     stanceCD: 6,
     comboASBonus: 30,          /* Monk Training, on every attack of the combo */
-    passiveName:["Monk Training","Entraînement du moine"],
+    passiveName:["Monk Training","Canalisation des esprits"],
     passiveRows(c){
       const {A, TR, n0, pc, nf1} = c;
       return [

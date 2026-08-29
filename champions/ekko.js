@@ -5,19 +5,19 @@ window.CHAMPION = {
       {id:"aa",     kind:"attack", en:"Auto attack",     fr:"Auto-attaque"},
       {id:"aaDive", kind:"attack", dive:true, en:"Auto, Phase Dive", fr:"Auto, Plongée"},
       {id:"aaLow",  kind:"attack", low:true, en:"Auto, target under 30%", fr:"Auto, cible sous 30 %"},
-      {id:"q", kind:"spell", en:"Q — Timewinder",           fr:"Q — Remonteur du temps"},
+      {id:"q", kind:"spell", en:"Q — Timewinder",           fr:"Q — Rétrobang"},
       {id:"w", kind:"cast",  label:"W", en:"W — Parallel Convergence", fr:"W — Convergence parallèle"},
-      {id:"e", kind:"cast",  label:"E", en:"E — Phase Dive", fr:"E — Plongée fantomatique"},
-      {id:"r", kind:"spell", en:"R — Chronobreak",          fr:"R — Chronorupture"}
+      {id:"e", kind:"cast",  label:"E", en:"E — Phase Dive", fr:"E — Rush déphasé"},
+      {id:"r", kind:"spell", en:"R — Chronobreak",          fr:"R — Chronofracture"}
     ],
     key:"ekko", name:"Ekko", splash:19,
     base:{hp:[655,99], mana:[280,70], ad:[58,3], ar:[32,4.2], mr:[32,2.05],
           as:0.688, asPerLevel:3.3, ms:340},
     abilities_meta:[
-      {k:"q", en:"Timewinder",     fr:"Remonteur du temps"},
+      {k:"q", en:"Timewinder", fr:"Rétrobang"},
       {k:"w", en:"Parallel Convergence", fr:"Convergence parallèle"},
-      {k:"e", en:"Phase Dive",     fr:"Plongée fantomatique"},
-      {k:"r", en:"Chronobreak",    fr:"Chronorupture"}
+      {k:"e", en:"Phase Dive", fr:"Rush déphasé"},
+      {k:"r", en:"Chronobreak", fr:"Chronofracture"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
     rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
@@ -105,7 +105,7 @@ window.CHAMPION = {
       return isFR() ? "Plongée — dash, prépare l'attaque suivante"
                     : "Phase Dive — dash, empowers the next attack";
     },
-    passiveName:["Z-Drive Resonance","Résonance du Z-Drive"],
+    passiveName:["Z-Drive Resonance","RéZonance"],
     passiveRows(c){
       const {A, TR, n0, pc} = c;
       return [

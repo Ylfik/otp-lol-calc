@@ -4,11 +4,11 @@ window.CHAMPION = {
     stepMenu:[
       {id:"aa",       kind:"attack", en:"Auto, human",  fr:"Auto, humaine", ranged:true},
       {id:"aaSpider", kind:"attack", spider:true, en:"Auto, spider", fr:"Auto, araignée"},
-      {id:"q",  kind:"spell", en:"Q — Neurotoxin",         fr:"Q — Neurotoxine"},
-      {id:"w",  kind:"spell", en:"W — Volatile Spiderling", fr:"W — Araignée volatile"},
-      {id:"e",  kind:"spell", en:"E — Cocoon",             fr:"E — Cocon"},
-      {id:"sq", kind:"spell", spider:true, en:"Q — Venomous Bite", fr:"Q — Morsure venimeuse"},
-      {id:"sw", kind:"spell", en:"W — Skittering Frenzy",  fr:"W — Frénésie grouillante"},
+      {id:"q",  kind:"spell", en:"Q — Neurotoxin",         fr:"Q — Neurotoxine/Morsure venimeuse"},
+      {id:"w",  kind:"spell", en:"W — Volatile Spiderling", fr:"W — Araignée explosive/Frénésie symbiotique"},
+      {id:"e",  kind:"spell", en:"E — Cocoon",             fr:"E — Cocon/Suspension"},
+      {id:"sq", kind:"spell", spider:true, en:"Q — Venomous Bite", fr:"Q — Neurotoxine/Morsure venimeuse"},
+      {id:"sw", kind:"spell", en:"W — Skittering Frenzy",  fr:"W — Araignée explosive/Frénésie symbiotique"},
       {id:"spiders", kind:"spell", brood:true,
        en:"Spiderlings, one bite each", fr:"Araignées, une morsure chacune"}
     ],
@@ -18,10 +18,10 @@ window.CHAMPION = {
     /* Spider form is melee at 125 range and adds 25 base move speed */
     spider:{ms:25, range:125},
     abilities_meta:[
-      {k:"q", en:"Neurotoxin / Venomous Bite",  fr:"Neurotoxine / Morsure venimeuse"},
-      {k:"w", en:"Volatile Spiderling / Skittering Frenzy", fr:"Araignée volatile / Frénésie grouillante"},
-      {k:"e", en:"Cocoon / Rappel",             fr:"Cocon / Rappel"},
-      {k:"r", en:"Spider Form / Human Form",    fr:"Forme araignée / Forme humaine"}
+      {k:"q", en:"Neurotoxin / Venomous Bite", fr:"Neurotoxine/Morsure venimeuse"},
+      {k:"w", en:"Volatile Spiderling / Skittering Frenzy", fr:"Araignée explosive/Frénésie symbiotique"},
+      {k:"e", en:"Cocoon / Rappel", fr:"Cocon/Suspension"},
+      {k:"r", en:"Spider Form / Human Form", fr:"Forme arachnéenne"}
     ],
     /* Q, W and E cap at 5; the transform has 4 ranks, taken at levels 1, 6, 11 and 16 */
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),

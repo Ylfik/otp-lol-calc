@@ -6,9 +6,9 @@ window.CHAMPION = {
           as:0.679, asPerLevel:3, ms:330},
     abilities_meta:[
       {k:"q", en:"Ambush",        fr:"Embuscade"},
-      {k:"w", en:"Venom Cask",    fr:"Fiole de venin"},
+      {k:"w", en:"Venom Cask", fr:"Dose de venin"},
       {k:"e", en:"Contaminate",   fr:"Contamination"},
-      {k:"r", en:"Spray and Pray",fr:"Tir en rafale"}
+      {k:"r", en:"Spray and Pray", fr:"Panique"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
     rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
@@ -51,9 +51,9 @@ window.CHAMPION = {
       {id:"aa",  kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
       {id:"aaR", kind:"attack", spray:true, en:"Auto, Spray and Pray", fr:"Auto, Tir en rafale"},
       {id:"q", kind:"cast", label:"Q", en:"Q — Ambush", fr:"Q — Embuscade"},
-      {id:"w", kind:"spell", en:"W — Venom Cask", fr:"W — Fiole de venin"},
+      {id:"w", kind:"spell", en:"W — Venom Cask", fr:"W — Dose de venin"},
       {id:"e", kind:"spell", en:"E — Contaminate", fr:"E — Contamination"},
-      {id:"r", kind:"cast", label:"R", en:"R — Spray and Pray", fr:"R — Tir en rafale"}
+      {id:"r", kind:"cast", label:"R", en:"R — Spray and Pray", fr:"R — Panique"}
     ],
     onStep(key, st, c){
       const {A, tot} = c, out = {parts:[]};

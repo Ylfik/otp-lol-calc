@@ -5,10 +5,10 @@ window.CHAMPION = {
     base:{hp:[645,104], mana:[0,0], ad:[61,4], ar:[37,4.2], mr:[32,2.05],
           as:0.625, asPerLevel:1, ms:335},
     abilities_meta:[
-      {k:"q", en:"Obliterate", fr:"Anéantissement"},
+      {k:"q", en:"Obliterate", fr:"Oblitération"},
       {k:"w", en:"Indestructible", fr:"Indestructible"},
-      {k:"e", en:"Death's Grasp", fr:"Poigne de la mort"},
-      {k:"r", en:"Realm of Death", fr:"Royaume de la mort"}
+      {k:"e", en:"Death's Grasp", fr:"Emprise funeste"},
+      {k:"r", en:"Realm of Death", fr:"Royaume des morts"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
     rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
@@ -40,7 +40,7 @@ window.CHAMPION = {
       A.msIdle = c.msSoftCap((c.base.ms + c.S.ms) * (1 + tot.mspct/100));
       return A;
     },
-    passiveName:["Darkness Rise","Montée des ténèbres"],
+    passiveName:["Darkness Rise","Vortex de ténèbres"],
     passiveRows(c){
       const {A, TR, n0, pc} = c;
       return [{lab:TR("mPonhit"), val:n0(A.pOnHit)},
@@ -51,9 +51,9 @@ window.CHAMPION = {
     stepMenu:[
       {id:"aa",   kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
       {id:"tick", kind:"spell", tick:true, en:"Darkness Rise, one second", fr:"Ténèbres, une seconde"},
-      {id:"q",  kind:"spell", en:"Q — Obliterate", fr:"Q — Anéantissement"},
-      {id:"qI", kind:"spell", iso:true, en:"Q — isolated target", fr:"Q — cible isolée"},
-      {id:"e",  kind:"spell", en:"E — Death's Grasp", fr:"E — Poigne de la mort"}
+      {id:"q",  kind:"spell", en:"Q — Obliterate", fr:"Q — Oblitération"},
+      {id:"qI", kind:"spell", iso:true, en:"Q — isolated target", fr:"Q — Oblitération"},
+      {id:"e",  kind:"spell", en:"E — Death's Grasp", fr:"E — Emprise funeste"}
     ],
     onStep(key, st, c){
       const {A} = c, out = {parts:[]};

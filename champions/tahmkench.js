@@ -4,8 +4,8 @@ window.CHAMPION = {
     stepMenu:[
       {id:"aa", kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
       {id:"q", kind:"spell", en:"Q — Tongue Lash",  fr:"Q — Coup de langue"},
-      {id:"w", kind:"spell", en:"W — Abyssal Dive", fr:"W — Plongeon abyssal"},
-      {id:"r", kind:"cast", label:"R", en:"R — Devour", fr:"R — Dévorer"}
+      {id:"w", kind:"spell", en:"W — Abyssal Dive", fr:"W — Plongée abyssale"},
+      {id:"r", kind:"cast", label:"R", en:"R — Devour", fr:"R — Dévoration"}
     ],
     onStep(key, st, c){
       const {A} = c, out = {parts:[]};
@@ -21,9 +21,9 @@ window.CHAMPION = {
           as:0.658, asPerLevel:2.5, ms:335},
     abilities_meta:[
       {k:"q", en:"Tongue Lash",    fr:"Coup de langue"},
-      {k:"w", en:"Abyssal Dive",   fr:"Plongeon abyssal"},
+      {k:"w", en:"Abyssal Dive", fr:"Plongée abyssale"},
       {k:"e", en:"Thick Skin",     fr:"Peau épaisse"},
-      {k:"r", en:"Devour",         fr:"Dévorer"}
+      {k:"r", en:"Devour", fr:"Dévoration"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
     rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
@@ -59,7 +59,7 @@ window.CHAMPION = {
       A.msIdle = c.msSoftCap((c.base.ms + c.S.ms) * (1 + tot.mspct/100));
       return A;
     },
-    passiveName:["An Acquired Taste","Un goût acquis"],
+    passiveName:["An Acquired Taste","Goût acquis"],
     passiveRows(c){
       const {A, TR, n0} = c;
       return [

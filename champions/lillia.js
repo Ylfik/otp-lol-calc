@@ -5,10 +5,10 @@ window.CHAMPION = {
     base:{hp:[605,105], mana:[410,50], ad:[61,3.1], ar:[22,4.5], mr:[32,1.55],
           as:0.625, asPerLevel:2.7, ms:330},
     abilities_meta:[
-      {k:"q", en:"Blooming Blows", fr:"Coups fleurissants"},
-      {k:"w", en:"Watch Out! Eep!", fr:"Attention ! Hiii !"},
-      {k:"e", en:"Swirlseed", fr:"Graine tourbillonnante"},
-      {k:"r", en:"Lilting Lullaby", fr:"Berceuse mélodieuse"}
+      {k:"q", en:"Blooming Blows", fr:"Frappe fleurie"},
+      {k:"w", en:"Watch Out! Eep!", fr:"Attention, désolée !"},
+      {k:"e", en:"Swirlseed", fr:"Graine tournoyante"},
+      {k:"r", en:"Lilting Lullaby", fr:"Douce berceuse"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
     rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
@@ -44,7 +44,7 @@ window.CHAMPION = {
       A.msIdle = c.msSoftCap((c.base.ms + c.S.ms) * (1 + tot.mspct/100));
       return A;
     },
-    passiveName:["Dream-Laden Bough","Rameau chargé de rêves"],
+    passiveName:["Dream-Laden Bough","Bâton chargé de rêves"],
     passiveRows(c){
       const {A, TR, n0, pc} = c;
       return [{lab:TR("lPpct"),  val:pc(A.pPct)},
@@ -53,11 +53,11 @@ window.CHAMPION = {
     stepMenu:[
       {id:"aa",   kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
       {id:"dust", kind:"spell", dust:true, en:"Dream Dust, full burn", fr:"Poussière de rêve, brûlure complète"},
-      {id:"q",  kind:"spell", en:"Q — Blooming Blows", fr:"Q — Coups fleurissants"},
-      {id:"w",  kind:"spell", en:"W — Watch Out! Eep!", fr:"W — Attention ! Hiii !"},
-      {id:"wC", kind:"spell", centre:true, en:"W — struck in the centre", fr:"W — touché au centre"},
-      {id:"e",  kind:"spell", en:"E — Swirlseed", fr:"E — Graine tourbillonnante"},
-      {id:"r",  kind:"spell", en:"R — Lilting Lullaby", fr:"R — Berceuse mélodieuse"}
+      {id:"q",  kind:"spell", en:"Q — Blooming Blows", fr:"Q — Frappe fleurie"},
+      {id:"w",  kind:"spell", en:"W — Watch Out! Eep!", fr:"W — Attention, désolée !"},
+      {id:"wC", kind:"spell", centre:true, en:"W — struck in the centre", fr:"W — Attention, désolée !"},
+      {id:"e",  kind:"spell", en:"E — Swirlseed", fr:"E — Graine tournoyante"},
+      {id:"r",  kind:"spell", en:"R — Lilting Lullaby", fr:"R — Douce berceuse"}
     ],
     onStep(key, st, c){
       const {A} = c, out = {parts:[]};

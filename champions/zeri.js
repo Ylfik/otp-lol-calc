@@ -4,10 +4,10 @@ window.CHAMPION = {
     stepMenu:[
       {id:"aa",     kind:"attack", en:"Auto — a zap", fr:"Auto — un zap"},
       {id:"aaFull", kind:"attack", full:true, en:"Auto, full charge", fr:"Auto, charge pleine"},
-      {id:"q", kind:"spell", en:"Q — Burst Fire",       fr:"Q — Tir en rafale"},
-      {id:"w", kind:"spell", en:"W — Ultrashock Laser", fr:"W — Laser ultrachoc"},
-      {id:"e", kind:"spell", en:"E — Spark Surge",      fr:"E — Décharge d'étincelles"},
-      {id:"r", kind:"cast", label:"R", en:"R — Lightning Crash", fr:"R — Fracas de foudre"}
+      {id:"q", kind:"spell", en:"Q — Burst Fire",       fr:"Q — Rafale"},
+      {id:"w", kind:"spell", en:"W — Ultrashock Laser", fr:"W — Laser électrocuteur"},
+      {id:"e", kind:"spell", en:"E — Spark Surge",      fr:"E — Charge ionique"},
+      {id:"r", kind:"cast", label:"R", en:"R — Lightning Crash", fr:"R — Éruption électrique"}
     ],
     onStep(key, st, c){
       const {A, hp} = c, out = {parts:[]};
@@ -25,10 +25,10 @@ window.CHAMPION = {
     base:{hp:[600,110], mana:[250,45], ad:[56,2], ar:[24,4.2], mr:[33,1.1],
           as:0.658, asPerLevel:2, ms:330},
     abilities_meta:[
-      {k:"q", en:"Burst Fire",      fr:"Tir en rafale"},
-      {k:"w", en:"Ultrashock Laser",fr:"Laser ultrachoc"},
-      {k:"e", en:"Spark Surge",     fr:"Décharge d'étincelles"},
-      {k:"r", en:"Lightning Crash", fr:"Fracas de foudre"}
+      {k:"q", en:"Burst Fire", fr:"Rafale"},
+      {k:"w", en:"Ultrashock Laser", fr:"Laser électrocuteur"},
+      {k:"e", en:"Spark Surge", fr:"Charge ionique"},
+      {k:"r", en:"Lightning Crash", fr:"Éruption électrique"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
     rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),

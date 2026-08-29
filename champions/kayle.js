@@ -5,9 +5,9 @@ window.CHAMPION = {
       {id:"aa",  kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
       {id:"aaE",   kind:"attack", starfire:true, en:"Auto, Starfire", fr:"Auto, Lame stellaire"},
       {id:"aaEx",  kind:"attack", exalted:true, en:"Auto, exalted", fr:"Auto, exaltée"},
-      {id:"q", kind:"spell", en:"Q — Radiant Blast", fr:"Q — Explosion radieuse"},
+      {id:"q", kind:"spell", en:"Q — Radiant Blast", fr:"Q — Incandescence"},
       {id:"w", kind:"cast", label:"W", en:"W — Celestial Blessing", fr:"W — Bénédiction céleste"},
-      {id:"e", kind:"cast", label:"E", en:"E — Starfire Spellblade", fr:"E — Lame stellaire"},
+      {id:"e", kind:"cast", label:"E", en:"E — Starfire Spellblade", fr:"E — Lame de feu stellaire"},
       {id:"r", kind:"spell", en:"R — Divine Judgment", fr:"R — Jugement divin"}
     ],
     onStep(key, st, c){
@@ -26,9 +26,9 @@ window.CHAMPION = {
     base:{hp:[670,92], mana:[330,50], ad:[50,2.5], ar:[26,4.2], mr:[22,1.3],
           as:0.625, asPerLevel:1.5, ms:335},
     abilities_meta:[
-      {k:"q", en:"Radiant Blast",   fr:"Explosion radieuse"},
+      {k:"q", en:"Radiant Blast", fr:"Incandescence"},
       {k:"w", en:"Celestial Blessing", fr:"Bénédiction céleste"},
-      {k:"e", en:"Starfire Spellblade", fr:"Lame stellaire"},
+      {k:"e", en:"Starfire Spellblade", fr:"Lame de feu stellaire"},
       {k:"r", en:"Divine Judgment", fr:"Jugement divin"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),

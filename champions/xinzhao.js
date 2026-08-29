@@ -5,10 +5,10 @@ window.CHAMPION = {
     base:{hp:[620,106], mana:[274,55], ad:[63,3], ar:[35,4.4], mr:[32,2.05],
           as:0.645, asPerLevel:3.5, ms:345},
     abilities_meta:[
-      {k:"q", en:"Three Talon Strike", fr:"Triple frappe"},
-      {k:"w", en:"Wind Becomes Lightning", fr:"Le vent devient foudre"},
+      {k:"q", en:"Three Talon Strike", fr:"Frappe des trois serres"},
+      {k:"w", en:"Wind Becomes Lightning", fr:"Vent et foudre"},
       {k:"e", en:"Audacious Charge", fr:"Charge audacieuse"},
-      {k:"r", en:"Crescent Guard", fr:"Garde du croissant"}
+      {k:"r", en:"Crescent Guard", fr:"Garde circulaire"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
     rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
@@ -62,10 +62,10 @@ window.CHAMPION = {
       {id:"aa",  kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
       {id:"aaQ", kind:"attack", talon:true, en:"Auto, Three Talon Strike", fr:"Auto, Triple frappe"},
       {id:"aa3", kind:"attack", third:true, en:"Auto, third strike", fr:"Auto, troisième coup"},
-      {id:"q", kind:"cast", label:"Q", en:"Q — empower three attacks", fr:"Q — renforcer trois attaques"},
-      {id:"w", kind:"spell", en:"W — slash and thrust", fr:"W — fauche et estoc"},
+      {id:"q", kind:"cast", label:"Q", en:"Q — empower three attacks", fr:"Q — Frappe des trois serres"},
+      {id:"w", kind:"spell", en:"W — slash and thrust", fr:"W — Vent et foudre"},
       {id:"e", kind:"spell", en:"E — Audacious Charge", fr:"E — Charge audacieuse"},
-      {id:"r", kind:"spell", en:"R — Crescent Guard", fr:"R — Garde du croissant"}
+      {id:"r", kind:"spell", en:"R — Crescent Guard", fr:"R — Garde circulaire"}
     ],
     onStep(key, st, c){
       const {A, cur} = c, out = {parts:[]};

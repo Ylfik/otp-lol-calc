@@ -6,7 +6,7 @@ window.CHAMPION = {
           as:0.658, asPerLevel:1.44, ms:345},
     abilities_meta:[
       {k:"q", en:"Rupture", fr:"Rupture"},
-      {k:"w", en:"Feral Scream", fr:"Cri féroce"},
+      {k:"w", en:"Feral Scream", fr:"Cri sauvage"},
       {k:"e", en:"Vorpal Spikes", fr:"Piques vorpales"},
       {k:"r", en:"Feast", fr:"Festin"}
     ],
@@ -57,7 +57,7 @@ window.CHAMPION = {
       {id:"aa",  kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
       {id:"aaE", kind:"attack", spikes:true, en:"Auto, Vorpal Spikes", fr:"Auto, Piques vorpales"},
       {id:"q", kind:"spell", en:"Q — Rupture", fr:"Q — Rupture"},
-      {id:"w", kind:"spell", en:"W — Feral Scream", fr:"W — Cri féroce"},
+      {id:"w", kind:"spell", en:"W — Feral Scream", fr:"W — Cri sauvage"},
       {id:"e", kind:"cast", label:"E", en:"E — Vorpal Spikes", fr:"E — Piques vorpales"},
       {id:"r", kind:"spell", en:"R — Feast", fr:"R — Festin"}
     ],

@@ -4,10 +4,10 @@ window.CHAMPION = {
     stepMenu:[
       {id:"aa",  kind:"attack", en:"Auto attack", fr:"Auto-attaque"},
       {id:"aaQ", kind:"attack", empowered:true, en:"Auto, Q active", fr:"Auto, Q actif"},
-      {id:"q", kind:"cast", label:"Q", en:"Q — Path of Devotion", fr:"Q — Voie de la dévotion"},
-      {id:"w", kind:"spell", en:"W — Blade Sever", fr:"W — Lame tranchante"},
-      {id:"e", kind:"cast", label:"E", en:"E — Unseen Step", fr:"E — Pas invisible"},
-      {id:"r", kind:"spell", en:"R — Arc of Ruin", fr:"R — Arc de ruine"}
+      {id:"q", kind:"cast", label:"Q", en:"Q — Path of Devotion", fr:"Q — Déchaînement spirituel"},
+      {id:"w", kind:"spell", en:"W — Blade Sever", fr:"W — Arc du jugement | Arc de la ruine"},
+      {id:"e", kind:"cast", label:"E", en:"E — Unseen Step", fr:"E — Célérité des kanmei | Ombres ineffables"},
+      {id:"r", kind:"spell", en:"R — Arc of Ruin", fr:"R — Transe"}
     ],
     onStep(key, st, c){
       const {A} = c, out = {parts:[]};
@@ -25,10 +25,10 @@ window.CHAMPION = {
     base:{hp:[590,110], mana:[275,45], ad:[55,3], ar:[25,4.4], mr:[33,1.1],
           as:0.65, asPerLevel:2, ms:325},
     abilities_meta:[
-      {k:"q", en:"Path of Devotion", fr:"Voie de la dévotion"},
-      {k:"w", en:"Blade Sever",      fr:"Lame tranchante"},
-      {k:"e", en:"Unseen Step",      fr:"Pas invisible"},
-      {k:"r", en:"Arc of Ruin",      fr:"Arc de ruine"}
+      {k:"q", en:"Path of Devotion", fr:"Déchaînement spirituel"},
+      {k:"w", en:"Blade Sever", fr:"Arc du jugement | Arc de la ruine"},
+      {k:"e", en:"Unseen Step", fr:"Célérité des kanmei | Ombres ineffables"},
+      {k:"r", en:"Arc of Ruin", fr:"Transe"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
     rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
@@ -65,7 +65,7 @@ window.CHAMPION = {
       A.msIdle = c.msSoftCap((c.base.ms + c.S.ms) * (1 + tot.mspct/100));
       return A;
     },
-    passiveName:["Chosen of the Kanmei","Élue des Kanmei"],
+    passiveName:["Chosen of the Kanmei","Serment aux Terres premières"],
     passiveRows(c){
       const {A, TR, pc} = c;
       return [{lab:TR("yPcrit"), val:pc(A.pCritPct)}];

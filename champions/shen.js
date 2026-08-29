@@ -5,16 +5,16 @@ window.CHAMPION = {
       {id:"aa",  kind:"attack", en:"Auto attack",  fr:"Auto-attaque"},
       {id:"aaQ", kind:"attack", empowered:true, en:"Auto, enhanced by Q", fr:"Auto, renforcée par le Q"},
       {id:"q", kind:"cast", label:"Q", en:"Q — Twilight Assault", fr:"Q — Assaut crépusculaire"},
-      {id:"e", kind:"spell", en:"E — Shadow Dash",  fr:"E — Ruée de l'ombre"}
+      {id:"e", kind:"spell", en:"E — Shadow Dash",  fr:"E — Rush des ombres"}
     ],
     key:"shen", name:"Shen", splash:0,
     base:{hp:[610,99], mana:[400,0], ad:[64,3], ar:[34,4.2], mr:[32,2.05],
           as:0.751, asPerLevel:3, ms:340},
     abilities_meta:[
       {k:"q", en:"Twilight Assault",  fr:"Assaut crépusculaire"},
-      {k:"w", en:"Spirit's Refuge",   fr:"Refuge de l'esprit"},
-      {k:"e", en:"Shadow Dash",       fr:"Ruée de l'ombre"},
-      {k:"r", en:"Stand United",      fr:"Unis dans l'épreuve"}
+      {k:"w", en:"Spirit's Refuge", fr:"Refuge spirituel"},
+      {k:"e", en:"Shadow Dash", fr:"Rush des ombres"},
+      {k:"r", en:"Stand United", fr:"Soutien indéfectible"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
     rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
@@ -52,7 +52,7 @@ window.CHAMPION = {
       A.msIdle = c.msSoftCap((c.base.ms + c.S.ms) * (1 + tot.mspct/100));
       return A;
     },
-    passiveName:["Ki Barrier","Barrière de Ki"],
+    passiveName:["Ki Barrier","Barrière de ki"],
     passiveRows(c){
       const {A, TR, n0, nf1} = c;
       return [
