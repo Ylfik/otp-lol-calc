@@ -1863,7 +1863,9 @@ const lin = (a,b,L,top) => { top = top || 18; return a + (b-a)/(top-1)*(Math.min
    ctx = { L, bonusAD, bonusHP, ap, hp, bonusASpct, awkShield } */
 const RUNE_FX = {
   /* --- keystones --- */
-  8005:{cond:"3 consecutive attacks",stats:{},ampFrom:{from:4,pct:8}, proc:{type:"phys",n:1,dmg:c=>lin(40,160,c.L)}},          /* Press the Attack */
+  /* the third attack lands the hit; the 8% follows for the rest of the fight */
+  8005:{cond:"3 consecutive attacks", stats:{}, ampFrom:{from:4, pct:8},
+        proc:{type:"phys", n:1, on:3, dmg:c=>lin(40,160,c.L)}},   /* Press the Attack */
   8008:{cond:"6 stacks",stats:{as:0.36}, proc:{type:"phys",n:4,dmg:c=>lin(9,30,c.L)*(1+c.bonusASpct/100)}}, /* Lethal Tempo */
   8021:{cond:"energized attack, 1s", stats:{msPct:20},
         heal:c=>lin(10,130,c.L)+0.1*c.bonusAD+0.05*c.ap},   /* full value for melee */                          /* Fleet Footwork */
@@ -1980,13 +1982,13 @@ const ITEM_FX = {
   "BANDLEPIPES":     [{lab:"Fanfare — after a slow or immobilise", src:"wiki"}],
   "DEAD MAN'S PLATE":[{lab:"Shipwrecker",     src:"wiki", type:"phys",  hits:1, flat:40, pctBaseAD:100},
                       {lab:"Unsinkable",     src:"wiki", gain:() => ({slow:15})}],
-  "KRAKEN SLAYER":   [{lab:"Bring It Down — every 3rd attack", src:"wiki", type:"phys", hits:1, at:3, lvlFrom:150, lvlTo:200, lvlTop:20, rng:{lvlFrom:120, lvlTo:160}}],
-  "VOLTAIC CYCLOSWORD":[{lab:"Firmament — first attack, +15 lethality 4s", src:"wiki", type:"phys", hits:1, pctTgtHP:9, cur:true, rng:{pctTgtHP:7}}],
+  "KRAKEN SLAYER":   [{lab:"Bring It Down — every 3rd attack", src:"wiki", type:"phys", every:3, lvlFrom:150, lvlTo:200, lvlTop:20, rng:{lvlFrom:120, lvlTo:160}}],
+  "VOLTAIC CYCLOSWORD":[{lab:"Firmament — fully energized", src:"wiki", type:"phys", energized:true, pctTgtHP:9, cur:true, rng:{pctTgtHP:7}}],
   "STORMRAZOR":      [{lab:"Bolt",            src:"wiki", type:"magic", hits:1, flat:100}],
-  "STATIKK SHIV":    [{lab:"Electrospark",    src:"wiki", type:"magic", hits:1, flat:60}],
-  "HULLBREAKER":     [{lab:"Skipper",         src:"wiki", type:"phys", hits:1, at:4, pctBaseAD:120, pctHP:5, rng:{pctBaseAD:84, pctHP:3.5}}],
+  "STATIKK SHIV":    [{lab:"Electrospark — fully energized", src:"wiki", type:"magic", energized:true, flat:60}],
+  "HULLBREAKER":     [{lab:"Skipper — every 4th attack", src:"wiki", type:"phys", every:4, pctBaseAD:120, pctHP:5, rng:{pctBaseAD:84, pctHP:3.5}}],
   "HEARTSTEEL":      [{lab:"Colossal Consumption", src:"wiki", type:"phys", hits:1, flat:70, pctHP:6}],
-  "ECLIPSE":         [{lab:"Ever Rising Moon",src:"wiki", type:"phys", hits:1, at:2, pctTgtHP:8, rng:{pctTgtHP:5}}],
+  "ECLIPSE":         [{lab:"Ever Rising Moon — 2 instances, 6s cooldown", src:"wiki", type:"phys", everyInstance:2, pctTgtHP:8, rng:{pctTgtHP:5}}],
   "TRINITY FORCE":   [{lab:"Spellblade",      src:"wiki", type:"phys",  hits:2, spellblade:true, pctBaseAD:200}],
   "ICEBORN GAUNTLET":[{lab:"Spellblade",      src:"wiki", type:"phys",  hits:2, spellblade:true, pctBaseAD:150}],
   "ESSENCE REAVER":  [{lab:"Spellblade",      src:"wiki", type:"phys",  hits:2, spellblade:true, pctBaseAD:125}],
@@ -2519,6 +2521,7 @@ function computeBuild(b, target){
   /* --- runes: flat stats go in the item pool, % bonuses are applied to totals --- */
   const runeCtxEarly = {L, bonusAD:S.ad, ap:S.ap};
   const pct = {hp:0, ar:0, mr:0};
+  const ampLowWhy = [], ampHighWhy = [];
   let ampBasic = 1, ampMul = 1, ampLow = 1, ampHigh = 1;
   const ampStage = [];
   const activeRunes = b.runes.filter(r => r && r.id != null);
@@ -2693,14 +2696,21 @@ function computeBuild(b, target){
   const rctx = {L, bonusAD, bonusHP, ap:tot.ap, hp:tot.hp,
                 bonusASpct:tot.bonusASpct, awkShield:A.wAwkShield};
   let runeDmg = 0, runeDmgLow = 0, runeHeal = 0;
+  const inlineProcs = [];
   const runeLines = [], runeHealLines = [];
   activeRunes.forEach(e => {
     const fx = RUNE_FX[e.id]; if(!fx || !e.on) return;
     if(fx.proc){
-      const raw = fx.proc.dmg(rctx, e.val) * fx.proc.n;
+      const one = fx.proc.dmg(rctx, e.val);
       const mul = fx.proc.type === "phys" ? pMul : fx.proc.type === "magic" ? mMul : 1;
+      const raw = one * fx.proc.n;
       if(fx.needBelow) runeDmgLow += raw * mul; else runeDmg += raw * mul;
       runeLines.push({n:rName(RUNE_BY_ID[e.id]), v:raw*mul});
+      /* the ones that land on a given attack are shown there instead */
+      if(!fx.needBelow) inlineProcs.push({
+        id:e.id, name:rName(RUNE_BY_ID[e.id]), per:one * mul,
+        n:fx.proc.n, byReset:fx.proc.byReset, maxN:fx.proc.maxN, on:fx.proc.on
+      });
     }
     if(fx.heal){
       const h = fx.heal(rctx);
@@ -2708,6 +2718,7 @@ function computeBuild(b, target){
       runeHealLines.push({n:rName(RUNE_BY_ID[e.id]), v:h});
     }
   });
+  D.inlineProcs = inlineProcs;
   D.runeDmg = runeDmg;
   D.runeLines = runeLines;
   D.runeHealLines = runeHealLines;
@@ -2768,8 +2779,18 @@ function computeBuild(b, target){
      60%. Since the combo is stepped attack by attack we can read the target's
      health at the moment of each hit instead of amplifying the whole combo. */
   /* a passive fires either on its first N attacks, or on one named attack */
-  const fires = (f, a) => f.at
-    ? (Array.isArray(f.at) ? f.at.indexOf(a) >= 0 : f.at === a)
+  /* An attack grants 6 Energize stacks, 15 while Statikk is worn, and the bar
+     is full when a fight opens because it fills as you walk. So the first
+     attack spends it, and the next needs a hundred more. */
+  const energizePer = 6 + (has("STATIKK SHIV") ? 9 : 0);
+  const energizeEvery = Math.ceil(100 / energizePer);
+
+  /* at:[1,3] names the attacks; every:3 repeats; everyInstance counts casts too */
+  const fires = (f, a, inst) =>
+      f.energized ? (a === 1 || (a - 1) % energizeEvery === 0)
+    : f.everyInstance ? (inst > 0 && inst % f.everyInstance === 0)
+    : f.every ? (a % f.every === 0)
+    : f.at ? (Array.isArray(f.at) ? f.at.indexOf(a) >= 0 : f.at === a)
     : (!!f.hits && a <= f.hits);
 
   const ampAt = (c, a) => ampStage.reduce((m, x) => m * (a >= x.from ? x.mul : 1), 1) * ampMul
@@ -2799,6 +2820,7 @@ function computeBuild(b, target){
     let a = 0;                         /* how many basic attacks have landed */
     let asNow = A.comboAS, time = 0;   /* an ability may speed up the attacks that follow */
     let resets = 0;                    /* attack resets, which some runes reward */
+    let inst = 0;                      /* cast instances: an attack, or an ability */
     let charged = false;               /* a cast is waiting to be spent on the next attack */
     const memo = CHAMP.newState ? CHAMP.newState() : {};   /* the champion's own counter */
     seq.forEach((st, si) => {
@@ -2807,12 +2829,13 @@ function computeBuild(b, target){
 
       if(st.kind === "cast" || st.kind === "spell"){
         charged = true;
+        inst++;
         if(mrRedPer) vileStacks = Math.min(mrRedCap, vileStacks + 1);   /* one per cast */
       }
       const spendsCharge = st.kind === "attack" && charged;
 
       if(st.kind === "attack"){
-        a++;
+        a++; inst++;
         const hit = autoHit * ampBasic;      /* Magnification and its kind */
         d += hit; autoAll += hit;
         time += 1 / Math.max(0.1, asNow);
@@ -2824,20 +2847,51 @@ function computeBuild(b, target){
       const onHits = st.kind === "attack"
         ? 1 + (spendsCharge && equipped.some(e => e.cond && REAPPLY.has(e.it.n)) ? 1 : 0)
         : 0;
-      const rid = CHAMP.onStep
-        ? CHAMP.onStep(key, st, {A, hp, cur, a, pMul, mMul, tot, memo, onHits, charged}) : null;
+      /* A summon is not one hit: Wolf and the spiderlings strike over and over
+         while the fight runs, at a rate set by attack speed. Such a step says
+         how many times, and each pass sees the target lower than the last. */
+      const passes = st.times ? Math.max(1, Math.round(st.times({A, tot, asNow}))) : 1;
+      let rid = null;
+      for(let t = 0; t < passes; t++){
+        const one = CHAMP.onStep
+          ? CHAMP.onStep(key, st, {A, hp, cur:cur - d, a, pMul, mMul, tot, memo, onHits, charged}) : null;
+        if(!one) break;
+        if(t === 0){ rid = one; }
+        else {
+          (one.parts || []).forEach(x => {
+            const v = x.v * mulOf(x.type);
+            if(!v) return;
+            d += v; stanceDmg += v;
+            const seen = parts.find(y => y.n === x.n);
+            seen ? seen.v += v : parts.push({n:x.n, v});
+          });
+          if(one.heal) heal += one.heal * hsMul;
+        }
+      }
       if(rid){
         (rid.parts || []).forEach(x => {
           const v = x.v * mulOf(x.type);
           if(!v) return;
           d += v; stanceDmg += v;
-          parts.push({n:x.n, v});
+          const seen = parts.find(y => y.n === x.n);   /* one line per effect */
+          seen ? seen.v += v : parts.push({n:x.n, v});
         });
         extraLS += (rid.ls || 0) + (st.kind === "attack" && rid.lsPct ? autoHit * rid.lsPct/100 : 0);
         heal    += (rid.heal || 0) * hsMul;
         shield  += (rid.shield || 0) * hsMul;   /* a cast may put up a shield */
         if(rid.asBonus) asNow = Math.min(2.5, base.as * (1 + (tot.bonusASpct + rid.asBonus)/100));
         if(rid.reset) resets++;
+      }
+
+      /* runes that fire on a given attack are shown on it */
+      if(st.kind === "attack"){
+        inlineProcs.forEach(pr => {
+          const limit = pr.byReset ? Math.min(pr.maxN || pr.n, pr.n + resets) : pr.n;
+          const lands = pr.on ? (a === pr.on) : (a <= limit);
+          if(!lands || !pr.per) return;
+          d += pr.per;
+          parts.push({n:pr.name, v:pr.per, rune:true});
+        });
       }
 
       /* item passives ride on basic attacks */
@@ -2847,7 +2901,7 @@ function computeBuild(b, target){
           if(!list || !e.cond) return;
           list.forEach(f => {
             if(f.aoe) return;                       /* aoe passives miss a lone target */
-            if(f.spellblade ? !spendsCharge : !fires(f, a)) return;
+            if(f.spellblade ? !spendsCharge : !fires(f, a, inst)) return;
             const v = fxOne(f, fxctx, f.cur ? cur : hp, !!st.ranged) * mulOf(f.type);
             if(!v) return;
             d += v;
@@ -2880,7 +2934,14 @@ function computeBuild(b, target){
       shield += fin.shield || 0;
       heal   += fin.heal   || 0;
     }
-    if(runeDmg){ dmg += runeDmg * lateAmp; finals.push({n:"runeProcs", v:runeDmg*lateAmp}); }
+    /* whatever did not land on an attack is added here */
+    const inlineTotal = inlineProcs.reduce((t, pr) => {
+      const limit = pr.byReset ? Math.min(pr.maxN || pr.n, pr.n + resets) : pr.n;
+      const hits = pr.on ? (a >= pr.on ? 1 : 0) : Math.min(a, limit);
+      return t + pr.per * hits;
+    }, 0);
+    const leftover = Math.max(0, runeDmg - inlineTotal);
+    if(leftover){ dmg += leftover * lateAmp; finals.push({n:"runeProcs", v:leftover*lateAmp}); }
     if(cur < 0.50*hp && runeDmgLow){
       dmg += runeDmgLow * lateAmp; finals.push({n:"runeLow", v:runeDmgLow*lateAmp});
     }
@@ -3230,6 +3291,7 @@ const L10N = {
   healShield:["healing + shield","soins + bouclier"],
   moveSpeed:["move speed","vitesse de dépl."], attackSpeed:["attack speed","vitesse d'attaque"],
   slow:["slow","ralentissement"],
+  brkPasses:["%d hits over the duration","%d coups sur la durée"],
   amp:["amp — items & runes","amplif. — items et runes"],
   ampLow:["amp — target <40%","amplif. — cible <40 %"],
   ampHigh:["amp — target >60%","amplif. — cible >60 %"],
@@ -5144,7 +5206,9 @@ function breakdown(bi, stance){
         <td>${n0(p.v)}</td></tr>`).join("")}
     ${st.parts.filter(p => p.v > 0.5).length ? "" :
       `<tr class="brk-amp"><td></td><td>${esc(stepNote(st))}</td><td>—</td></tr>`}
-    ${st.amp !== 1 ? `<tr class="brk-amp"><td></td><td>${TR("amp")}</td><td>x${nf2.format(st.amp)}</td></tr>` : ""}
+    ${st.passes > 1 ? `<tr class="brk-amp"><td></td><td>${TR("brkPasses").replace("%d", st.passes)}</td><td>—</td></tr>` : ""}
+    ${st.amp !== 1 ? `<tr class="brk-amp"><td></td><td>${TR("amp")}${
+        st.ampWhy ? " — " + esc(st.ampWhy) : ""}</td><td>x${nf2.format(st.amp)}</td></tr>` : ""}
     <tr class="brk-left"><td></td><td>${TR("targetLeft")}</td><td>${n0(Math.max(0, st.before - st.total))}</td></tr>
   `).join("");
 
