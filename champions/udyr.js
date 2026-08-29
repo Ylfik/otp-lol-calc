@@ -10,8 +10,10 @@ window.CHAMPION = {
       {id:"cwAwk", kind:"cast", label:"W", awakened:true, en:"W — awaken, shield and regen", fr:"W — Cape de fer, bouclier et régénération"},
       {id:"ce",    kind:"cast", label:"E", en:"E — Blazing Stampede", fr:"E — Piétinement flamboyant"},
       {id:"ceAwk", kind:"cast", label:"E", awakened:true, en:"E — awaken", fr:"E — Piétinement flamboyant"},
-      {id:"cr",    kind:"cast", label:"R", en:"R — Wingborne Storm", fr:"R — Tempête spirituelle"},
-      {id:"crAwk", kind:"cast", label:"R", awakened:true, en:"R — awaken, the glacial storm", fr:"R — Tempête spirituelle, la tempête glaciale"}
+      {id:"cr",    kind:"cast", label:"R",
+       /* the storm lasts four seconds; each second is its own landing */
+       times:() => 4, times:() => 8, en:"R — Wingborne Storm", fr:"R — Tempête spirituelle"},
+      {id:"crAwk", kind:"cast", label:"R", awakened:true, times:() => 4, times:() => 8, en:"R — awaken, the glacial storm", fr:"R — Tempête spirituelle, la tempête glaciale"}
     ],
     key:"udyr", name:"Udyr", splash:3,
     base:{hp:[664,92], mana:[271,50], ad:[62,4], ar:[31,4.7], mr:[32,2.05],
@@ -95,7 +97,7 @@ window.CHAMPION = {
       const n = st.label || {q:"Q", w:"W", e:"E", r:"R"}[key] || "";
       return isFR() ? n + " — changement de posture" : n + " — stance swap";
     },
-    newState(){ return {stance:null}; },
+    newState(){ return {stance:null, placed:null}; },
     onStep(key, st, c){
       const {A, hp, memo} = c, out = {parts:[], ls:0};
       /* a cast decides which stance the following attacks are in */
@@ -105,19 +107,20 @@ window.CHAMPION = {
       if(st.kind === "cast"){
         const k = st.label ? st.label.toLowerCase() : key;
         memo.stance = k;
-        if(k === "w"){
+        /* a shield or a burst is placed once, however long the stance runs */
+        const first = memo.placed !== st.id;
+        if(k === "w" && first){
           out.shield = st.awakened ? A.wShield + A.wAwkShield : A.wShield;
           out.heal   = st.awakened ? A.wAwkRegen : 0;
         }
         if(k === "r"){
-          /* the storm lands eight separate times, which matters for anything
-             counting instances of ability damage */
-          const tick = A.rTotal / 8;
-          for(let i = 0; i < 8; i++) out.parts.push({n:"rStorm", v:tick, type:"magic"});
-          if(st.awakened) out.parts.push({n:"rAwkStorm", v:hp*A.rAwkTotal*0.01, type:"magic"});
+          /* one tick; the step repeats it eight times across the four seconds */
+          out.parts.push({n:"rStorm", v:A.rTotal / 8, type:"magic"});
+          if(st.awakened) out.parts.push({n:"rAwkStorm", v:hp*A.rAwkTotal*0.01/4, type:"magic"});
         }
-        if(k === "q" && st.awakened)
+        if(k === "q" && st.awakened && first)
           out.parts.push({n:"lightning", v:hp*A.qLightning*0.01*6, type:"magic"});
+        memo.placed = st.id;
         return out;
       }
       if(st.kind !== "attack") return out;   /* the stance rides on attacks only */
