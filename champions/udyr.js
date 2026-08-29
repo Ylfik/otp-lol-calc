@@ -110,7 +110,10 @@ window.CHAMPION = {
           out.heal   = st.awakened ? A.wAwkRegen : 0;
         }
         if(k === "r"){
-          out.parts.push({n:"rStorm", v:A.rTotal, type:"magic"});
+          /* the storm lands eight separate times, which matters for anything
+             counting instances of ability damage */
+          const tick = A.rTotal / 8;
+          for(let i = 0; i < 8; i++) out.parts.push({n:"rStorm", v:tick, type:"magic"});
           if(st.awakened) out.parts.push({n:"rAwkStorm", v:hp*A.rAwkTotal*0.01, type:"magic"});
         }
         if(k === "q" && st.awakened)
