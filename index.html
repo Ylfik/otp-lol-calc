@@ -47,7 +47,8 @@ button{cursor:pointer;background:none;border:none}
 /* ---------- header ---------- */
 .hero{
   position:relative;
-  min-height:clamp(170px, 22vw, 280px);
+  /* the splash is 1215 x 717; a flat strip crops away most of the figure */
+  min-height:clamp(210px, 30vw, 400px);
   display:flex;align-items:flex-end;
   /* Spirit Guard Udyr, skin 3 */
   background:
@@ -994,7 +995,7 @@ body[data-view="home"] #builds{display:none}
 }
 .skinbtn:hover{border-color:var(--q);color:var(--q)}
 .skpreview{
-  height:150px;border:1px solid var(--line);border-radius:3px;margin:10px 0;
+  height:210px;border:1px solid var(--line);border-radius:3px;margin:10px 0;
   background-size:cover;background-repeat:no-repeat;
 }
 .skslide{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:10px}
@@ -1122,7 +1123,7 @@ body[data-view="home"] #builds{display:none}
   </div>
   <div class="hero-in">
     <div class="brand">
-      <h1>UDYR<span>·</span>CALC</h1>
+      <h1 id="heroName">UDYR<span>·</span>CALC</h1>
       <small class="by">made by Ylfik</small>
     </div>
     <div class="hero-act">
@@ -1871,8 +1872,10 @@ const RUNE_FX = {
   8128:{cond:"target below 50% HP", param:{lab:"souls", def:0}, needBelow:50,
         proc:{type:"phys",n:1,dmg:(c,v)=>30+11*(v||0)+0.1*c.bonusAD+0.05*c.ap}},   /* Dark Harvest */
   /* 26.17: 90% attack speed for melee, and the on-hit re-scaled */
-  9923:{cond:"first 3 attacks",stats:{as:0.9},
-        proc:{type:"true",n:3,dmg:c=>lin(2,20,c.L)+0.12*c.bonusAD+0.10*c.ap},
+  /* three attacks, and each attack reset buys one more, up to five */
+  9923:{cond:"first 3 attacks, +1 per reset",stats:{as:0.9},
+        proc:{type:"true",n:3,maxN:5,byReset:true,
+              dmg:c=>lin(2,20,c.L)+0.12*c.bonusAD+0.10*c.ap},
         rng:{stats:{as:0.6}}},   /* Hail of Blades */
   8437:{cond:"every 4s in combat",proc:{type:"magic",n:1,dmg:c=>0.035*c.hp}, heal:c=>0.013*c.hp},            /* Grasp of the Undying */
   8369:{cond:"initiating combat",amp:7},                                                                    /* First Strike */
@@ -2070,7 +2073,7 @@ const ITEM_FX = {
   "RYLAI'S CRYSTAL SCEPTER":[{lab:"Rimefrost — 30% slow", src:"wiki"}],
   "THE COLLECTOR":[{lab:"Death — execute under 5%", src:"wiki"}],
   "VOID STAFF":    [{lab:"40% magic penetration, in the stats", src:"wiki"}],
-  "HEXOPTICS C44":   [{lab:"Magnification — at range",   src:"wiki", amp:10}],
+  "HEXOPTICS C44":   [{lab:"Magnification — at range",   src:"wiki", ampBasic:10}],
   "ACTUALIZER":      [{lab:"Mana Made Real — empowered", src:"wiki", amp:15}],
   "FIENDHUNTER BOLTS":[{lab:"Night Vigil — 30 ultimate haste", src:"wiki", always:true, gain:() => ({uh:30})},
                       {lab:"Opening Barrage — 3 attacks after your ultimate", src:"wiki",
@@ -2315,7 +2318,10 @@ async function skinList(c){
     const j = await res.json();
     const raw = j.data[c.name].skins.map(k =>
       ({num:k.num, name:k.name === "default" ? c.label || c.name : k.name}));
-    /* a few entries share or lack a splash of their own; keep only what loads */
+    /* An entry with no splash must never be offered, so each is checked against
+       the splash itself before anything is shown. Testing a cheaper image would
+       be faster but would wrongly drop a skin whose thumbnail happens to be
+       missing, and a wrong list is worse than a slow one. */
     const ok = await Promise.all(raw.map(k => new Promise(res => {
       const im = new Image();
       im.onload  = () => res(k);
@@ -2513,7 +2519,7 @@ function computeBuild(b, target){
   /* --- runes: flat stats go in the item pool, % bonuses are applied to totals --- */
   const runeCtxEarly = {L, bonusAD:S.ad, ap:S.ap};
   const pct = {hp:0, ar:0, mr:0};
-  let ampMul = 1, ampLow = 1, ampHigh = 1;
+  let ampBasic = 1, ampMul = 1, ampLow = 1, ampHigh = 1;
   const ampStage = [];
   const activeRunes = b.runes.filter(r => r && r.id != null);
   /* Magical Footwear upgrades the boots you are wearing */
@@ -2705,7 +2711,7 @@ function computeBuild(b, target){
   D.runeDmg = runeDmg;
   D.runeLines = runeLines;
   D.runeHealLines = runeHealLines;
-  D.ampMul = ampMul;
+  D.ampMul = ampMul; D.ampBasic = ampBasic;
 
   const fxctx = {bonusAD, totalAD:tot.ad, baseAD:base.ad, bonusHP, ap:tot.ap,
                  hp:tot.hp, tgtHP:hp, mana:tot.mana, letha:tot.letha, L};
@@ -2769,7 +2775,7 @@ function computeBuild(b, target){
   const ampAt = (c, a) => ampStage.reduce((m, x) => m * (a >= x.from ? x.mul : 1), 1) * ampMul
     * (c < 0.40*hp ? ampLow  : 1)
     * (c > 0.60*hp ? ampHigh : 1);
-  D.ampMul = ampMul; D.ampLow = ampLow; D.ampHigh = ampHigh;
+  D.ampMul = ampMul; D.ampBasic = ampBasic; D.ampLow = ampLow; D.ampHigh = ampHigh;
 
   const hsMul = 1 + tot.hs/100;           /* heal & shield power, on cast heals only */
 
@@ -2792,6 +2798,7 @@ function computeBuild(b, target){
 
     let a = 0;                         /* how many basic attacks have landed */
     let asNow = A.comboAS, time = 0;   /* an ability may speed up the attacks that follow */
+    let resets = 0;                    /* attack resets, which some runes reward */
     let charged = false;               /* a cast is waiting to be spent on the next attack */
     const memo = CHAMP.newState ? CHAMP.newState() : {};   /* the champion's own counter */
     seq.forEach((st, si) => {
@@ -2806,9 +2813,10 @@ function computeBuild(b, target){
 
       if(st.kind === "attack"){
         a++;
-        d += autoHit; autoAll += autoHit;
+        const hit = autoHit * ampBasic;      /* Magnification and its kind */
+        d += hit; autoAll += hit;
         time += 1 / Math.max(0.1, asNow);
-        parts.push({n:"basicAttack", v:autoHit});
+        parts.push({n:"basicAttack", v:hit});
       }
 
       /* what the champion adds on this step */
@@ -2829,6 +2837,7 @@ function computeBuild(b, target){
         heal    += (rid.heal || 0) * hsMul;
         shield  += (rid.shield || 0) * hsMul;   /* a cast may put up a shield */
         if(rid.asBonus) asNow = Math.min(2.5, base.as * (1 + (tot.bonusASpct + rid.asBonus)/100));
+        if(rid.reset) resets++;
       }
 
       /* item passives ride on basic attacks */
@@ -3122,7 +3131,12 @@ const L10N = {
   skTitle:["Splash art","Illustration"],
   skHow:["Pick a skin, then slide to centre the banner on it. Kept in this browser, for you only.",
          "Choisissez un skin, puis faites glisser pour centrer la bannière dessus. Conservé dans ce navigateur, pour vous seul."],
+  skLoading:["loading…","chargement…"],
+  skWait:["Checking which skins have their own splash — a moment.",
+          "Vérification des skins ayant leur propre illustration — un instant."],
   skX:["across","horizontal"], skY:["down","vertical"],
+  skXwhy:["Only moves on a narrow screen: on a wide one the art already fills the width.",
+          "N'agit que sur un écran étroit : sur un large, l'image occupe déjà toute la largeur."],
   skFail:["The skin list could not be reached. The framing below still works.",
           "La liste des skins n'a pas pu être récupérée. Le cadrage ci-dessous fonctionne quand même."],
   navCalc:["Calculators","Calculateurs"], navBuilds:["Builds","Builds"],
@@ -4367,7 +4381,12 @@ function card(b, bi, R){
         const c = D.combo[cb.key] || {};
         const rows = CHAMP.comboRows
           ? CHAMP.comboRows(cb.key, {c, A, TR, n0, pc})
-          : [{lab:TR("damage"), val:n0(c.dmg), hi:true}];
+          : [{lab:TR("damage"), val:n0(c.dmg), hi:true},
+             {lab:TR("dps"), val:n0(c.dps)},
+             {lab:TR("healing"), val:n0(c.heal), dim:c.heal < 1},
+             {lab:TR("shielding"), val:n0(c.shield), dim:c.shield < 1},
+             {lab:TR("comboTime"), val:nf1.format(c.time || 0) + " s"},
+             {lab:TR("targetLeft"), val:n0(c.leftover)}];
         return `<div class="tcol ${"qc wc ec rc".split(" ")[ci] || "qc"}">
           <h6><button class="brkbtn" data-brk="${cb.key}" data-b="${bi}" title="${TR('openBrk')}"
                 ><span class="lab">${esc(isFR() ? cb.fr : cb.en)}</span><span class="arw">&#9656;</span></button></h6>
@@ -5749,7 +5768,7 @@ on("btnOpt", "click", () => {
   document.getElementById("optOverlay").classList.add("on");
 });
 const skOverlay = document.getElementById("skOverlay");
-const closeSk = () => skOverlay && skOverlay.classList.remove("on");
+const closeSk = () => { skOpenFor = null; if(skOverlay) skOverlay.classList.remove("on"); };
 on("skClose", "click", closeSk);
 on("btnSkin", "click", skOpen);
 if(skOverlay) skOverlay.addEventListener("click", e => { if(e.target === skOverlay) closeSk(); });
@@ -6226,16 +6245,17 @@ function useShared(id, slot){
 }
 
 /* the picker: which skin, and where the banner sits on it */
-let skDraftPos = null;
+let skDraftPos = null, skOpenFor = null;
 async function skOpen(){
   const champ = ROSTER.find(c => c.key === (CHAMP || {}).key);
   if(!champ) return;
   skDraftPos = skinOf(champ).pos;
+  skOpenFor = champ.key;
   document.getElementById("skOverlay").classList.add("on");
-  skDraw(champ, [{num:skinOf(champ).num, name:"…"}]);
+  skDraw(champ, [{num:skinOf(champ).num, name:TR("skLoading")}], true);
   skDraw(champ, await skinList(champ));
 }
-function skDraw(champ, list){
+function skDraw(champ, list, loading){
   const el = document.getElementById("skBody");
   if(!el) return;
   const cur = skinOf(champ);
@@ -6245,11 +6265,12 @@ function skDraw(champ, list){
     <div class="skpreview" style="background-image:url('${SPLASH_URL(champ.name, cur.num)}');
          background-position:${skDraftPos}"></div>
     <div class="skslide">
-      <label><span>${TR("skX")}</span>
+      <label title="${TR("skXwhy")}"><span>${TR("skX")}</span>
         <input type="range" id="skX" min="0" max="100" value="${parseInt(x)}"></label>
       <label><span>${TR("skY")}</span>
         <input type="range" id="skY" min="0" max="100" value="${parseInt(y)}"></label>
     </div>
+    ${loading ? `<p class="tipstat">${TR("skWait")}</p>` : ""}
     ${list.length === 1 && list[0].only ? `<p class="tipstat">${TR("skFail")}</p>` : ""}
     <div class="cbpal">${list.map(k =>
       `<button data-skin="${k.num}" class="${k.num === cur.num ? "on" : ""}">${esc(k.name)}</button>`).join("")}</div>`;
@@ -6315,6 +6336,9 @@ function route(){
     document.title = (champ.label || champ.name) + " — OTP LoL Calc";
     const bb = document.getElementById("btnBuilds");
     if(bb) bb.setAttribute("href", "#/builds/" + champ.key);
+    const hn = document.getElementById("heroName");
+    if(hn) hn.innerHTML = esc((champ.label || champ.name).toUpperCase()) +
+                          '<span>·</span>CALC';
     applySplash(champ);
 
     loadChampion(champ.key).then(def => {
