@@ -1314,9 +1314,15 @@ body[data-view="home"] #builds{display:none}
       <p><strong>Nothing or max.</strong> A conditional passive is either off or at full value. Items use the
          <strong>COND</strong> button, runes use <strong>ON / OFF</strong>.</p>
       <p><strong>Penetration order:</strong> shred, then lethality, then percentage penetration.</p>
-      <p><strong>Crit</strong> follows the game: <code>1 + chance × (0.75 + bonus crit damage)</code>.
+      <p><strong>Crit</strong> follows the game: <code>1 + chance × (1 + bonus crit damage)</code>.
          <strong>Attack speed</strong> is multiplicative on base and includes 3% growth per level, capped at 2.5.
          <strong>Move speed</strong> applies the real soft caps.</p>
+      <p><strong>Crit is averaged, not rolled.</strong> The game does not use plain randomness: a
+         pseudorandom system raises the odds after each attack that failed to crit, so long dry streaks
+         are rarer than chance alone would give. That shapes how crits are spread through a fight, not
+         how many land over many fights — so the site uses the average, which is what comparing two
+         builds needs. Each attack in a breakdown also shows what it would do without a crit and with
+         one, so the spread behind the average stays visible.</p>
       <p><strong>Level goes to 20.</strong> Ramps are set per effect, because some still peak at 18.</p>
       <p><strong>Healing</strong> splits its sources: life steal only heals off basic attack damage, omnivamp
          off everything. <strong>Effective health</strong> folds in shields and damage reduction.</p>
@@ -1455,9 +1461,16 @@ body[data-view="home"] #builds{display:none}
       <p><strong>Rien ou le maximum.</strong> Un passif conditionnel est soit coupé, soit compté à fond. Les
          items utilisent le bouton <strong>COND</strong>, les runes <strong>ON / OFF</strong>.</p>
       <p><strong>Ordre de pénétration :</strong> réduction, puis létalité, puis pénétration en pourcentage.</p>
-      <p><strong>Le crit</strong> suit le jeu : <code>1 + chance × (0,75 + bonus de dégâts critiques)</code>.
+      <p><strong>Le crit</strong> suit le jeu : <code>1 + chance × (1 + bonus de dégâts critiques)</code>.
          <strong>La vitesse d'attaque</strong> est multiplicative sur la base et inclut 3 % de croissance par
          niveau, plafonnée à 2,5. <strong>La vitesse de déplacement</strong> applique les vrais paliers.</p>
+      <p><strong>Le critique est moyenné, pas tiré.</strong> Le jeu n'utilise pas un hasard pur : un
+         système pseudo-aléatoire augmente les chances après chaque attaque non critique, ce qui rend
+         les longues séries sèches plus rares que le hasard seul ne le voudrait. Cela façonne la
+         répartition des critiques dans un combat, pas leur nombre sur de nombreux combats — le site
+         utilise donc la moyenne, qui est ce qu'il faut pour comparer deux builds. Chaque attaque du
+         détail montre aussi sa valeur sans critique et avec, pour que l'écart derrière la moyenne
+         reste lisible.</p>
       <p><strong>Le niveau monte à 20.</strong> Les rampes sont réglées effet par effet, certains plafonnant
          encore à 18.</p>
       <p><strong>Les soins</strong> séparent leurs sources : le vol de vie ne se déclenche que sur les dégâts
@@ -1990,7 +2003,7 @@ const ITEM_FX = {
   "BANDLEPIPES":     [{lab:"Fanfare — after a slow or immobilise", src:"wiki"}],
   "DEAD MAN'S PLATE":[{lab:"Shipwrecker",     src:"wiki", type:"phys",  hits:1, flat:40, pctBaseAD:100},
                       {lab:"Unsinkable",     src:"wiki", gain:() => ({slow:15})}],
-  "KRAKEN SLAYER":   [{lab:"Bring It Down — every 3rd attack", src:"wiki", type:"phys", every:3, lvlFrom:150, lvlTo:200, lvlTop:20, rng:{lvlFrom:120, lvlTo:160}}],
+  "KRAKEN SLAYER":   [{lab:"Bring It Down — every 3rd attack, up to +75% on a wounded target", src:"wiki", type:"phys", every:3, lvlFrom:150, lvlTo:200, lvlTop:20, byMissing:75, rng:{lvlFrom:120, lvlTo:160}}],
   "VOLTAIC CYCLOSWORD":[{lab:"Firmament — fully energized", src:"wiki", type:"phys", energized:true, pctTgtHP:9, cur:true, rng:{pctTgtHP:7}}],
   "STORMRAZOR":      [{lab:"Bolt",            src:"wiki", type:"magic", hits:1, flat:100}],
   "STATIKK SHIV":    [{lab:"Electrospark — fully energized", src:"wiki", type:"magic", energized:true, flat:60}],
@@ -2700,8 +2713,15 @@ function computeBuild(b, target){
   });
 
   /* --- on-target totals: 2 basic attack combo --- */
-  /* crit: in-game formula - 1 + chance x (0.75 + bonus crit damage) */
-  const critMul = 1 + Math.min(100, tot.crit)*0.01 * (0.75 + tot.critdmg*0.01);
+  /* crit: a critical strike now deals 200% of the hit, so the average is
+     1 + chance x (1 + bonus crit damage) */
+  /* A crit cannot be pinned to a given attack: it is a chance, not a schedule.
+     The engine therefore works on the average, which is what comparing builds
+     needs, and the breakdown shows both faces of the coin so the reader can
+     see the spread the average hides. */
+  const critChance = Math.min(100, tot.crit);
+  const critBonus  = 1 + tot.critdmg*0.01;
+  const critMul = 1 + critChance*0.01 * critBonus;
   const autoAD  = tot.ad * critMul;
   const hp      = target.hp;
 
@@ -2767,6 +2787,7 @@ function computeBuild(b, target){
   D.runeLines = runeLines;
   D.runeHealLines = runeHealLines;
   D.ampMul = ampMul; D.ampBasic = ampBasic;
+  D.critChance = critChance; D.critBonus = critBonus; D.critMul = critMul;
 
   const fxctx = {bonusAD, totalAD:tot.ad, baseAD:base.ad, bonusHP, ap:tot.ap,
                  hp:tot.hp, tgtHP:hp, mana:tot.mana, letha:tot.letha, L};
@@ -2845,7 +2866,8 @@ function computeBuild(b, target){
   const ampAt = (c, a) => ampStage.reduce((m, x) => m * (a >= x.from ? x.mul : 1), 1) * ampMul
     * (c < 0.40*hp ? ampLow  : 1)
     * (c > 0.60*hp ? ampHigh : 1);
-  D.ampMul = ampMul; D.ampBasic = ampBasic; D.ampLow = ampLow; D.ampHigh = ampHigh;
+  D.ampMul = ampMul; D.ampBasic = ampBasic;
+  D.critChance = critChance; D.critBonus = critBonus; D.critMul = critMul; D.ampLow = ampLow; D.ampHigh = ampHigh;
 
   const hsMul = 1 + tot.hs/100;           /* heal & shield power, on cast heals only */
 
@@ -2971,7 +2993,9 @@ function computeBuild(b, target){
           list.forEach(f => {
             if(f.aoe) return;                       /* aoe passives miss a lone target */
             if(f.spellblade ? !spendsCharge : !fires(f, a, inst)) return;
-            const v = fxOne(f, fxctx, f.cur ? cur : hp, !!st.ranged) * mulOf(f.type);
+            let v = fxOne(f, fxctx, f.cur ? cur : hp, !!st.ranged) * mulOf(f.type);
+            /* some effects grow with the health already taken off the target */
+            if(f.byMissing) v *= 1 + (f.byMissing/100) * Math.min(1, (hp - cur) / hp);
             if(!v) return;
             d += v;
             add(e.it.n + " — " + f.lab, v);
@@ -3367,6 +3391,11 @@ const L10N = {
   healShield:["healing + shield","soins + bouclier"],
   moveSpeed:["move speed","vitesse de dépl."], attackSpeed:["attack speed","vitesse d'attaque"],
   slow:["slow","ralentissement"],
+  brkCrit:["without crit → on a crit (%c% chance)","sans critique → sur un critique (%c % de chance)"],
+  critNote:["Crit is counted as an average across the combo, not rolled attack by attack. Each attack below shows what it deals without a crit and with one.",
+            "Le critique est compté en moyenne sur tout le combo, il n'est pas tiré attaque par attaque. Chaque attaque ci-dessous indique ce qu'elle inflige sans critique et avec."],
+  critWhy:["Crit is averaged, not rolled. The game spreads crits with a pseudorandom system that makes long dry streaks rarer, but over many fights the average below is what a build is worth.",
+           "Le critique est moyenné, pas tiré. Le jeu répartit les critiques par un système pseudo-aléatoire qui rend les longues séries sans critique plus rares, mais sur de nombreux combats c'est la moyenne ci-dessous qui dit ce que vaut un build."],
   sbHeld:["Spellblade still on cooldown","Brillance encore en recharge"],
   brkPasses:["%d hits over the duration","%d coups sur la durée"],
   amp:["amp — items & runes","amplif. — items et runes"],
@@ -5283,6 +5312,9 @@ function breakdown(bi, stance){
         <td>${n0(p.v)}</td></tr>`).join("")}
     ${st.parts.filter(p => p.v > 0.5).length ? "" :
       `<tr class="brk-amp"><td></td><td>${esc(stepNote(st))}</td><td>—</td></tr>`}
+    ${st.kind === "attack" && R.D.critChance > 0 ? `<tr class="brk-amp"><td></td>
+       <td>${TR("brkCrit").replace("%c", n0(R.D.critChance))}</td>
+       <td>${n0(st.total / R.D.critMul)} → ${n0(st.total / R.D.critMul * (1 + R.D.critBonus))}</td></tr>` : ""}
     ${st.sbHeld ? `<tr class="brk-amp"><td></td><td>${TR("sbHeld")}</td><td>—</td></tr>` : ""}
     ${st.passes > 1 ? `<tr class="brk-amp"><td></td><td>${TR("brkPasses").replace("%d", st.passes)}</td><td>—</td></tr>` : ""}
     ${st.amp !== 1 ? `<tr class="brk-amp"><td></td><td>${TR("amp")}${
@@ -5305,6 +5337,7 @@ function breakdown(bi, stance){
     </table>`;
   }
   return `<h3>${TR("perAttack")}</h3>
+    ${R.D.critChance > 0 ? `<p class="critnote">${TR("critNote")}</p>` : ""}
     <table class="brk">${rows}</table>
     ${fin ? `<h3>${TR("endOfCombo")}</h3><table class="brk">${fin}</table>` : ""}
     <h3>${TR("summary")}</h3>
