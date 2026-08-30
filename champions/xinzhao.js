@@ -30,6 +30,9 @@ window.CHAMPION = {
       A.qAll    = A.qHit * 3;
       A.wSlash  = R(T.wSlash,wr)  + T.wSlashAD*tot.ad;
       A.wThrust = R(T.wThrust,wr) + T.wThrustAD*tot.ad + T.wThrustAP*ap;
+      /* the thrust is not a crit, but crit chance raises it, up to a third */
+      A.wCritUp = Math.min(100, tot.crit) / 100 * 33;
+      A.wThrust *= 1 + A.wCritUp/100;
       A.wBoth   = A.wSlash + A.wThrust;
       A.eDmg    = R(T.eFlat,er) + T.eAP*ap;
       A.eAS     = R(T.eAS,er) + T.eASAP*ap/100;
@@ -90,6 +93,7 @@ window.CHAMPION = {
         [{lab:TR("xQhit"), val:n0(A.qHit)}, {lab:TR("xQall"), val:n0(A.qAll), awk:true},
          {lab:TR("cooldown"), val:nf1.format(A.qCd)+" s"}],
         [{lab:TR("xWslash"), val:n0(A.wSlash)}, {lab:TR("xWthrust"), val:n0(A.wThrust)},
+         {lab:TR("kdEcrit"), val:"+" + pc(A.wCritUp), awk:true},
          {lab:TR("xWboth"), val:n0(A.wBoth), awk:true},
          {lab:TR("cooldown"), val:nf1.format(A.wCd)+" s"}],
         [{lab:TR("damage"), val:n0(A.eDmg)}, {lab:TR("bonusAs"), val:"+" + pc(A.eAS), awk:true},

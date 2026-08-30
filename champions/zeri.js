@@ -16,6 +16,10 @@ window.CHAMPION = {
         if(st.full) out.parts.push({n:"fullCharge", v:A.pFull + hp*A.pFullPct/100, type:"magic"});
       }
       if(st.id === "q") out.parts.push({n:"burstFire",  v:A.qBurst, type:"phys"});
+      if(st.id === "qR"){
+        out.parts.push({n:"burstFire",     v:A.qBurst,  type:"phys"});
+        out.parts.push({n:"lightningRound", v:A.rQbonus, type:"magic"});
+      }
       if(st.id === "w") out.parts.push({n:"ultrashock", v:A.wDmg,   type:"phys"});
       if(st.id === "e") out.parts.push({n:"sparkSurge", v:A.eDmg,   type:"magic"});
       if(st.id === "r") out.parts.push({n:"lightningCrash", v:A.rDmg, type:"magic"});
@@ -54,6 +58,9 @@ window.CHAMPION = {
       A.wSlow    = R(T.wSlow,wr);
       A.eDmg     = R(T.eDmg,er) + T.eAP*ap;
       A.rDmg     = R(T.rDmg,rr) + T.rBonusAD*bonusAD + T.rAP*ap;
+      /* Lightning Rounds: her Q gains bonus magic damage, doubled at full crit */
+      A.rCritUp  = Math.min(100, tot.crit);
+      A.rQbonus  = (22 + (30 - 22) * (rr - 1) / 2 + 0.20 * ap) * (1 + A.rCritUp/100);
       /* Living Battery: her attack is a zap, and at full charge it detonates */
       const L = c.L;
       A.pZap     = (10 + (15/17)*(L-1)) * (0.7025 + 0.0175*(L-1)) + 0.03*ap;
@@ -87,7 +94,10 @@ window.CHAMPION = {
         [{lab:TR("damage"), val:n0(A.wDmg)}, {lab:TR("slow"), val:pc(A.wSlow)},
          {lab:TR("cooldown"), val:nf1.format(A.wCd)+" s"}],
         [{lab:TR("damage"), val:n0(A.eDmg)}, {lab:TR("cooldown"), val:nf1.format(A.eCd)+" s"}],
-        [{lab:TR("damage"), val:n0(A.rDmg)}, {lab:TR("cooldown"), val:nf1.format(A.rCd)+" s"}]
+        [{lab:TR("damage"), val:n0(A.rDmg)},
+         {lab:TR("zRq"), val:n0(A.rQbonus), awk:true},
+         {lab:TR("kdEcrit"), val:"+" + pc(A.rCritUp), awk:true},
+         {lab:TR("cooldown"), val:nf1.format(A.rCd)+" s"}]
       ];
     },
     combos:[]
