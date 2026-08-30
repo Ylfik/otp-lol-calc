@@ -3351,7 +3351,8 @@ const L10N = {
             "part des dégâts du premier combo que représente cette ligne"],
   ultHaste:["ULT HASTE","ACCÉL. ULT"], awakenCD:["AWAKEN CD","RECHARGE ÉVEIL"],
   awakenAtk:["AWAKEN IN ATK","ÉVEIL EN ATQ"], awakenReal:["AWAKEN WHILE HITTING","ÉVEIL EN TAPANT"],
-  comboTime:["combo length","durée du combo"], attackEvery:["1 attack","1 attaque"], dps:["damage / sec","dégâts / sec"],
+  comboTime:["combo length","durée du combo"],
+  fourAttacks:["4 attacks take","4 attaques prennent"], attackEvery:["1 attack","1 attaque"], dps:["damage / sec","dégâts / sec"],
   hps:["healing / sec","soins / sec"], dpsPer:["Damage per second","Dégâts par seconde"],
   msPer:["Move speed","Vitesse de déplacement"],
   tankPer:["Tankiness","Résistance"],
@@ -4454,7 +4455,7 @@ function card(b, bi, R){
         ${stat("AP", n0(t.ap), t.ap===0)}
         ${stat("AS", nf2.format(t.as))}
         ${stat(TR("attackEvery"), nf2.format(A.attackEvery)+" s")}
-        ${stat(TR("comboTime"), nf1.format(A.comboTime)+" s")}
+        ${stat(TR("fourAttacks"), nf1.format(A.comboTime)+" s")}
         ${stat("CRIT", n0(t.crit)+"%", t.crit===0)}
         ${stat("CRIT DMG", "+"+n0(t.critdmg)+"%", t.critdmg===0)}
         ${stat("LETH", n0(t.letha), t.letha===0)}
@@ -5312,7 +5313,7 @@ function breakdown(bi, stance){
       <tr><td></td><td>${TR("dps")}</td><td>${n0(c.dps)}</td></tr>
       <tr><td></td><td>${TR("healing")}</td><td>${n0(c.heal)}</td></tr>
       ${c.shield ? `<tr><td></td><td>${TR("shielding")}</td><td>${n0(c.shield)}</td></tr>` : ""}
-      <tr><td></td><td>${TR("comboTime")}</td><td>${nf1.format(A.comboTime)} s</td></tr>
+      <tr><td></td><td>${TR("comboTime")}</td><td>${nf1.format(c.time || A.comboTime)} s</td></tr>
     </table>`;
 }
 
