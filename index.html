@@ -3392,8 +3392,8 @@ const L10N = {
   moveSpeed:["move speed","vitesse de dépl."], attackSpeed:["attack speed","vitesse d'attaque"],
   slow:["slow","ralentissement"],
   brkCrit:["without crit → on a crit (%c% chance)","sans critique → sur un critique (%c % de chance)"],
-  critNote:["Crit is counted as an average across the combo, not rolled attack by attack. Each attack below shows what it deals without a crit and with one.",
-            "Le critique est compté en moyenne sur tout le combo, il n'est pas tiré attaque par attaque. Chaque attaque ci-dessous indique ce qu'elle inflige sans critique et avec."],
+  critNote:["Crit is counted as an average across the combo, not rolled attack by attack. Only the weapon hit can crit — an ability landing on the same attack does not — so the range below varies the swing alone.",
+            "Le critique est compté en moyenne sur tout le combo, il n'est pas tiré attaque par attaque. Seul le coup d'arme peut critiquer — un sort qui tombe sur la même attaque, non — donc la fourchette ci-dessous ne fait varier que le coup d'arme."],
   critWhy:["Crit is averaged, not rolled. The game spreads crits with a pseudorandom system that makes long dry streaks rarer, but over many fights the average below is what a build is worth.",
            "Le critique est moyenné, pas tiré. Le jeu répartit les critiques par un système pseudo-aléatoire qui rend les longues séries sans critique plus rares, mais sur de nombreux combats c'est la moyenne ci-dessous qui dit ce que vaut un build."],
   sbHeld:["Spellblade still on cooldown","Brillance encore en recharge"],
@@ -3438,6 +3438,7 @@ const L10N = {
   iPhit:["on-hit at four stacks","à l'impact, quatre charges"],
   sPcd:["cooldown","recharge"], sPcdHit:["cooldown if it hits a champion","recharge si elle touche un champion"],
   tPhit:["bonus magic damage on-hit","dégâts magiques bonus à l'impact"],
+  zRq:["Q bonus under Lightning Rounds","bonus du Q sous Munitions foudroyantes"],
   zQburst:["full burst","rafale complète"], zQhit:["per pellet","par projectile"],
   yQpass:["passive, on-hit","passif, à l'impact"], yQboth:["passive and active","passif et actif"],
   yWinit:["initial damage","dégâts initiaux"], yWling:["lingering total","total résiduel"],
@@ -5312,9 +5313,18 @@ function breakdown(bi, stance){
         <td>${n0(p.v)}</td></tr>`).join("")}
     ${st.parts.filter(p => p.v > 0.5).length ? "" :
       `<tr class="brk-amp"><td></td><td>${esc(stepNote(st))}</td><td>—</td></tr>`}
-    ${st.kind === "attack" && R.D.critChance > 0 ? `<tr class="brk-amp"><td></td>
-       <td>${TR("brkCrit").replace("%c", n0(R.D.critChance))}</td>
-       <td>${n0(st.total / R.D.critMul)} → ${n0(st.total / R.D.critMul * (1 + R.D.critBonus))}</td></tr>` : ""}
+    ${(() => {
+      /* Only the weapon hit can crit: an ability riding on the same attack does
+         not, so the swing is taken out, varied, and put back with the rest. */
+      if(st.kind !== "attack" || !(R.D.critChance > 0)) return "";
+      const swing = (st.parts.find(x => x.n === "basicAttack") || {v:0}).v;
+      if(!swing) return "";
+      const rest = st.total - swing;
+      const flat = swing / R.D.critMul;
+      return `<tr class="brk-amp"><td></td>
+        <td>${TR("brkCrit").replace("%c", n0(R.D.critChance))}</td>
+        <td>${n0(flat + rest)} → ${n0(flat * (1 + R.D.critBonus) + rest)}</td></tr>`;
+    })()}
     ${st.sbHeld ? `<tr class="brk-amp"><td></td><td>${TR("sbHeld")}</td><td>—</td></tr>` : ""}
     ${st.passes > 1 ? `<tr class="brk-amp"><td></td><td>${TR("brkPasses").replace("%d", st.passes)}</td><td>—</td></tr>` : ""}
     ${st.amp !== 1 ? `<tr class="brk-amp"><td></td><td>${TR("amp")}${
