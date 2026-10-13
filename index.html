@@ -3211,6 +3211,9 @@ const L10N = {
   optIntro:["Two questions: what a good build would look like for a given goal, and whether swapping one item in yours would help.",
             "Deux questions : à quoi ressemblerait un bon build pour un objectif donné, et si remplacer un item du vôtre aiderait."],
   optBuild:["Build","Build"], optGoal:["Optimise for","Optimiser pour"],
+  optOn:["Measured on","Mesuré sur"],
+  optNoCombo:["Build a combo first — there is nothing to measure yet.",
+              "Créez d'abord un combo — il n'y a rien à mesurer."],
   optBudget:["Gold limit, 0 for none","Limite d'or, 0 pour aucune"],
   optKeep:["Keep these items","Garder ces items"],
   optRun:["Build one for me","Construis-en un"], optSwapRun:["Check my items","Vérifie mes items"],
@@ -4147,21 +4150,30 @@ function itemSummary(it){
    item synergies are re-evaluated at every step against what is
    already equipped.
    ============================================================ */
+/* The goals used to name Udyr's stances, which stopped existing when combos
+   became the visitor's to build. They now read whichever combo is being
+   optimised for, chosen alongside the goal. */
+let optCombo = null;                      /* key of the combo to measure */
+const pickCombo = r => {
+  const list = comboList();
+  const want = list.find(c => c.key === optCombo) || list[0];
+  return want ? (r.D.combo[want.key] || {}) : {};
+};
 const GOALS = {
-  qDamage:  {en:"Q combo",   fr:"combo Q",   grp:"dmg", f:r => r.D.combo.q.dmg},
-  rDamage:  {en:"R combo",   fr:"combo R",   grp:"dmg", f:r => r.D.combo.r.dmg},
-  rAbility: {en:"R ability alone", fr:"R seul, sans les autos", grp:"dmg",
-             f:r => r.D.combo.r.stanceDmg},
+  damage:   {en:"Combo damage", fr:"Dégâts du combo", grp:"dmg", needsCombo:true,
+             f:r => pickCombo(r).dmg || 0},
+  dps:      {en:"Damage per second", fr:"Dégâts par seconde", grp:"dmg", needsCombo:true,
+             f:r => pickCombo(r).dps || 0},
+  abilities:{en:"Abilities alone, without the swings", fr:"Sorts seuls, sans les coups d'arme", grp:"dmg", needsCombo:true,
+             f:r => pickCombo(r).stanceDmg || 0},
   ehp:      {en:"Effective HP, both types", fr:"PV effectifs, les deux types", grp:"def",
              f:r => 2 / (1/r.ehpAr + 1/r.ehpMr)},
   ehpPhys:  {en:"Effective HP vs physical", fr:"PV effectifs vs physique", grp:"def", f:r => r.ehpAr},
   ehpMagic: {en:"Effective HP vs magic",    fr:"PV effectifs vs magique",  grp:"def", f:r => r.ehpMr},
-  sustain:  {en:"Healing and shielding",    fr:"Soins et boucliers",       grp:"def",
-             f:r => r.D.combo.w.heal + r.D.combo.w.shield},
-  mixQ:     {en:"Q damage and survival", fr:"Dégâts du Q et survie", grp:"mix", weighted:true,
-             f:r => blend(r.D.combo.q.dmg, ehpBoth(r))},
-  mixR:     {en:"R damage and survival", fr:"Dégâts du R et survie", grp:"mix", weighted:true,
-             f:r => blend(r.D.combo.r.dmg, ehpBoth(r))}
+  sustain:  {en:"Healing and shielding",    fr:"Soins et boucliers",       grp:"def", needsCombo:true,
+             f:r => (pickCombo(r).heal || 0) + (pickCombo(r).shield || 0)},
+  mix:      {en:"Damage and survival", fr:"Dégâts et survie", grp:"mix", weighted:true, needsCombo:true,
+             f:r => blend(pickCombo(r).dmg || 0, ehpBoth(r))}
 };
 
 /* a build is only worth considering if you could pay for it */
@@ -4827,11 +4839,11 @@ function lbRender(){
   });
 }
 
-let optGoal = "qDamage";
+let optGoal = "damage";
 function optRender(){
   const el = document.getElementById("optBody");
   if(!el || !myFlags.admin) return;
-  if(!GOALS[optGoal]) optGoal = "qDamage";
+  if(!GOALS[optGoal]) optGoal = "damage";
   const goals = Object.keys(METRIC_GROUP).map(g =>
     `<optgroup label="${esc(isFR() ? METRIC_GROUP[g][1] : METRIC_GROUP[g][0])}">${
       Object.keys(GOALS).filter(k => GOALS[k].grp === g).map(k =>
@@ -4845,6 +4857,14 @@ function optRender(){
     <div class="lbform">
       <label>${TR("optBuild")}<select id="optB">${builds}</select></label>
       <label>${TR("optGoal")}<select id="optG">${goals}</select></label>
+      ${(() => {
+        const list = comboList();
+        if(!list.length) return `<p class="wipbar">${TR("optNoCombo")}</p>`;
+        if(!optCombo || !list.some(c => c.key === optCombo)) optCombo = list[0].key;
+        return `<label>${TR("optOn")}<select id="optC">${list.map(c =>
+          `<option value="${esc(c.key)}" ${c.key === optCombo ? "selected" : ""}>${
+            esc(isFR() ? c.fr : c.en)}</option>`).join("")}</select></label>`;
+      })()}
       <label class="wide mixrow" id="optMixRow" ${GOALS[optGoal] && GOALS[optGoal].weighted ? "" : "hidden"}>
         ${TR("mixLean")}
         <input type="range" id="optMix" min="0" max="100" step="5" value="${mixWeight}">
@@ -4921,10 +4941,25 @@ function optRender(){
     if(row) row.hidden = !(GOALS[optGoal] && GOALS[optGoal].weighted);
   });
 
+  /* the combo being measured — without this the panel offered a choice that
+     changed nothing, and every run silently scored the first combo */
+  const cSel = el.querySelector("#optC");
+  if(cSel) cSel.addEventListener("change", () => { optCombo = cSel.value; });
+
   const kept = () => [...el.querySelectorAll("input[data-keep]:checked")].map(x => +x.dataset.keep);
+
+  /* A goal measured on a combo scores zero everywhere when the visitor has
+     saved none, which used to look like a broken optimiser rather than a
+     missing combo. Say so instead of ranking a field of zeroes. */
+  const lacksCombo = goal => GOALS[goal] && GOALS[goal].needsCombo && !comboList().length;
 
   el.querySelector("#optGo").addEventListener("click", () => {
     const bi = +bSel.value, goal = el.querySelector("#optG").value;
+    if(lacksCombo(goal)){
+      el.querySelector("#optOut").innerHTML =
+        `<p class="wipbar">${TR("optNoCombo")}</p>`;
+      return;
+    }
     const budget = parseFloat(el.querySelector("#optGold").value) || 0;
     const wRaw = el.querySelector("#optW").value;
     const exhaustive = wRaw.charAt(0) === "x";
@@ -4988,6 +5023,7 @@ function optRender(){
     const bi = +bSel.value, goal = el.querySelector("#optG").value;
     const b = state.builds[bi];
     const out = el.querySelector("#optOut");
+    if(lacksCombo(goal)){ out.innerHTML = `<p class="wipbar">${TR("optNoCombo")}</p>`; return; }
     const filled = b.items.map((sl, i) => sl.name ? i : -1).filter(i => i >= 0);
     if(!filled.length){ out.innerHTML = `<p class="tipstat">${TR("optNoItems")}</p>`; return; }
     out.innerHTML = `<p class="tipstat">${TR("optWorking")}</p>`;
@@ -5043,27 +5079,25 @@ const mixLabel = () => mixWeight >= 80 ? TR("mixDmgOnly")
                      : TR("mixTankOnly");
 
 const SWAP_METRICS = {
-  /* damage */
-  qdmg:  {grp:"dmg", label:["Q combo","Combo Q"],                 get:r => r.D.combo.q.dmg},
-  rdmg:  {grp:"dmg", label:["R combo","Combo R"],                 get:r => r.D.combo.r.dmg},
-  rabil: {grp:"dmg", label:["R ability alone","R seul, sans les autos"], get:r => r.D.combo.r.stanceDmg},
+  /* damage — measured on whichever combo is selected below */
+  dmg:   {grp:"dmg", label:["Combo damage","Dégâts du combo"],   get:r => pickCombo(r).dmg || 0},
+  dps:   {grp:"dmg", label:["Damage per second","Dégâts par seconde"], get:r => pickCombo(r).dps || 0},
+  abil:  {grp:"dmg", label:["Abilities alone","Sorts seuls"],    get:r => pickCombo(r).stanceDmg || 0},
   /* staying alive */
   ehp:   {grp:"def", label:["Effective HP, both types","PV effectifs, les deux types"],
           get:r => 2 / (1/r.ehpAr + 1/r.ehpMr)},
   ehpP:  {grp:"def", label:["Effective HP vs physical","PV effectifs vs physique"], get:r => r.ehpAr},
   ehpM:  {grp:"def", label:["Effective HP vs magic","PV effectifs vs magique"],     get:r => r.ehpMr},
   heal:  {grp:"def", label:["Healing and shielding","Soins et boucliers"],
-          get:r => r.D.combo.w.heal + r.D.combo.w.shield},
+          get:r => (pickCombo(r).heal || 0) + (pickCombo(r).shield || 0)},
   /* both at once */
-  mixQ:  {grp:"mix", weighted:true, label:["Q damage vs survival","Dégâts du Q vs survie"],
-          get:r => blend(r.D.combo.q.dmg, ehpBoth(r))},
-  mixR:  {grp:"mix", weighted:true, label:["R damage vs survival","Dégâts du R vs survie"],
-          get:r => blend(r.D.combo.r.dmg, ehpBoth(r))}
+  mix:   {grp:"mix", weighted:true, label:["Damage vs survival","Dégâts vs survie"],
+          get:r => blend(pickCombo(r).dmg || 0, ehpBoth(r))}
 };
 const METRIC_GROUP = {dmg:["Damage","Dégâts"], def:["Staying alive","Survie"],
                       mix:["Both at once","Les deux à la fois"]};
 
-let swapSlot = 0, swapMetric = "qdmg";
+let swapSlot = 0, swapMetric = "dmg";
 /* 0 = all survival, 100 = all damage. The score is a weighted geometric mean,
    so a 1% gain on either side counts the same at 50, and the weight tilts it
    from there. Presets are just points on this line. */
@@ -5144,6 +5178,15 @@ function swapPanel(bi){
               `<option value="${k}" ${k === swapMetric ? "selected" : ""}>${
                 esc(isFR() ? SWAP_METRICS[k].label[1] : SWAP_METRICS[k].label[0])}</option>`).join("")
           }</optgroup>`).join("")}</select></label>
+      ${(() => {
+        const list = comboList();
+        if(!list.length) return "";
+        if(!optCombo || !list.some(c => c.key === optCombo)) optCombo = list[0].key;
+        return `<label class="lbsel">${TR("optOn")}
+          <select id="swCombo">${list.map(c =>
+            `<option value="${esc(c.key)}" ${c.key === optCombo ? "selected" : ""}>${
+              esc(isFR() ? c.fr : c.en)}</option>`).join("")}</select></label>`;
+      })()}
     </div>
     ${SWAP_METRICS[swapMetric].weighted ? mixSlider() : ""}
     ${excluded.size ? `<p class="tipstat">${TR("swExcluded").replace("%s", excluded.size)}</p>` : ""}
@@ -5180,6 +5223,7 @@ function drawSwaps(){
   el.querySelectorAll("button[data-slot]").forEach(x =>
     x.addEventListener("click", () => { swapSlot = +x.dataset.slot; drawSwaps(); }));
   on2("swMetric", "change", e => { swapMetric = e.target.value; drawSwaps(); });
+  on2("swCombo",  "change", e => { optCombo = e.target.value; drawSwaps(); });
   bindMix(el, drawSwaps);
   on2("swMix", "input", e => { mixWeight = +e.target.value; drawSwaps(); });
 }

@@ -11,9 +11,10 @@ window.CHAMPION = {
       {id:"ce",    kind:"cast", label:"E", en:"E — Blazing Stampede", fr:"E — Piétinement flamboyant"},
       {id:"ceAwk", kind:"cast", label:"E", awakened:true, en:"E — awaken", fr:"E — Piétinement flamboyant"},
       {id:"cr",    kind:"cast", label:"R",
-       /* the storm lasts four seconds; each second is its own landing */
-       times:() => 4, times:() => 8, en:"R — Wingborne Storm", fr:"R — Tempête spirituelle"},
-      {id:"crAwk", kind:"cast", label:"R", awakened:true, times:() => 4, times:() => 8, en:"R — awaken, the glacial storm", fr:"R — Tempête spirituelle, la tempête glaciale"}
+       /* the storm ticks every half second over four seconds: eight landings.
+          This key was written twice, 4 then 8; only the second ever applied. */
+       times:() => 8, en:"R — Wingborne Storm", fr:"R — Tempête spirituelle"},
+      {id:"crAwk", kind:"cast", label:"R", awakened:true, times:() => 8, en:"R — awaken, the glacial storm", fr:"R — Tempête spirituelle, la tempête glaciale"}
     ],
     key:"udyr", name:"Udyr", splash:3,
     base:{hp:[664,92], mana:[271,50], ad:[62,4], ar:[31,4.7], mr:[32,2.05],
@@ -115,9 +116,11 @@ window.CHAMPION = {
           out.heal   = st.awakened ? A.wAwkRegen : 0;
         }
         if(k === "r"){
-          /* one tick; the step repeats it eight times across the four seconds */
+          /* one tick: the storm ticks every half second over four seconds, so
+             the step repeats this eight times and each total is divided by 8.
+             The awakened line used to divide by 4, which doubled it. */
           out.parts.push({n:"rStorm", v:A.rTotal / 8, type:"magic"});
-          if(st.awakened) out.parts.push({n:"rAwkStorm", v:hp*A.rAwkTotal*0.01/4, type:"magic"});
+          if(st.awakened) out.parts.push({n:"rAwkStorm", v:hp*A.rAwkTotal*0.01/8, type:"magic"});
         }
         if(k === "q" && st.awakened && first)
           out.parts.push({n:"lightning", v:hp*A.qLightning*0.01*6, type:"magic"});
@@ -199,7 +202,11 @@ window.CHAMPION = {
       A.rPerTick  = R1(T.rPerSec,rr) + 0.175*tot.ap;
       A.rTotal    = A.rPerTick * 8;
       A.rSlow     = R1(T.rSlow,rr);
-      A.rAwkTick  = lerp(1, 1.84, L) + 0.0044*tot.ap;
+      /* wiki: 8/8 + (14/8 - 8/8)/17*(x-1) per tick, so 1 % at level 1 and
+         1.75 % at 18 — the old 1.84 was the level-20 figure read off the
+         table, which the /17 rate already reaches at level 18.
+         AP: 3.5/8 % per 100 AP per tick. */
+      A.rAwkTick  = lerp(1, 1.75, L) + 0.004375*tot.ap;
       A.rAwkTotal = A.rAwkTick * 8;
       A.rAwkSlow  = R1(T.rAwkSlow,rr);
       return A;
