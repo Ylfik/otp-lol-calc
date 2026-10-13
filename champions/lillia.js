@@ -2,7 +2,10 @@
    Replace this file alone to change this champion. */
 window.CHAMPION = {
     key:"lillia", name:"Lillia", label:"Lilia", splash:0,
-    base:{hp:[605,105], mana:[410,50], ad:[61,3.1], ar:[22,4.5], mr:[32,1.55],
+    /* base armour is 24, not 22: the wiki's champion data and Riot's own
+       champion file agree. Riot reports 0 AD per level, which is wrong, so
+       the AD growth stays as the wiki states it. */
+    base:{hp:[605,105], mana:[410,50], ad:[61,3.1], ar:[24,4.5], mr:[32,1.55],
           as:0.625, asPerLevel:2.7, ms:330},
     abilities_meta:[
       {k:"q", en:"Blooming Blows", fr:"Frappe fleurie"},

@@ -1,0 +1,10823 @@
+{
+ "Aatrox": {
+  "base": {
+   "hp": [
+    650,
+    114
+   ],
+   "mana": [
+    0,
+    0
+   ],
+   "ad": [
+    60,
+    5
+   ],
+   "ar": [
+    38,
+    4.8
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.651,
+   "asPerLevel": 2.5,
+   "ms": 345
+  },
+  "range": 175,
+  "resource": "Blood Well",
+  "apiname": "Aatrox",
+  "abilities": [
+   "Blades of Torment",
+   "Blood Thirst / Blood Price",
+   "Blood Well",
+   "Dark Flight",
+   "Deathbringer Stance",
+   "Infernal Chains",
+   "Massacre",
+   "The Darkin Blade",
+   "Umbral Dash",
+   "World Ender"
+  ],
+  "names": {
+   "passive": {
+    "en": "Deathbringer Stance",
+    "fr": "Posture du massacreur"
+   },
+   "spells": [
+    {
+     "en": "The Darkin Blade",
+     "fr": "Épée des Darkin"
+    },
+    {
+     "en": "Infernal Chains",
+     "fr": "Chaînes infernales"
+    },
+    {
+     "en": "Umbral Dash",
+     "fr": "Ruée obscure"
+    },
+    {
+     "en": "World Ender",
+     "fr": "Fossoyeur des mondes"
+    }
+   ]
+  }
+ },
+ "Ahri": {
+  "base": {
+   "hp": [
+    590,
+    104
+   ],
+   "mana": [
+    418,
+    25
+   ],
+   "ad": [
+    53,
+    3
+   ],
+   "ar": [
+    21,
+    4.2
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.668,
+   "asPerLevel": 2.2,
+   "ms": 330
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Ahri",
+  "abilities": [
+   "Charm",
+   "Essence Theft",
+   "Fox-Fire",
+   "Orb of Deception",
+   "Spirit Rush",
+   "Vastayan Grace"
+  ],
+  "names": {
+   "passive": {
+    "en": "Essence Theft",
+    "fr": "Vol essentiel"
+   },
+   "spells": [
+    {
+     "en": "Orb of Deception",
+     "fr": "Orbe d'illusion"
+    },
+    {
+     "en": "Fox-Fire",
+     "fr": "Lucioles"
+    },
+    {
+     "en": "Charm",
+     "fr": "Charme"
+    },
+    {
+     "en": "Spirit Rush",
+     "fr": "Assaut spirituel"
+    }
+   ]
+  }
+ },
+ "Akali": {
+  "base": {
+   "hp": [
+    600,
+    119
+   ],
+   "mana": [
+    200,
+    0
+   ],
+   "ad": [
+    62,
+    3.3
+   ],
+   "ar": [
+    23,
+    4.7
+   ],
+   "mr": [
+    37,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 3.2,
+   "ms": 345
+  },
+  "range": 125,
+  "resource": "Energy",
+  "apiname": "Akali",
+  "abilities": [
+   "Assassin's Mark",
+   "Crescent Slash",
+   "Five Point Strike",
+   "Mark of the Assassin",
+   "Perfect Execution",
+   "Shadow Dance",
+   "Shuriken Flip",
+   "Twilight Shroud",
+   "Twin Disciplines"
+  ],
+  "names": {
+   "passive": {
+    "en": "Assassin's Mark",
+    "fr": "Marque d'assassin"
+   },
+   "spells": [
+    {
+     "en": "Five Point Strike",
+     "fr": "Vague de kunais"
+    },
+    {
+     "en": "Twilight Shroud",
+     "fr": "Linceul nébuleux"
+    },
+    {
+     "en": "Shuriken Flip",
+     "fr": "Lancer acrobatique"
+    },
+    {
+     "en": "Perfect Execution",
+     "fr": "Maîtrise absolue"
+    }
+   ]
+  }
+ },
+ "Akshan": {
+  "base": {
+   "hp": [
+    610,
+    107
+   ],
+   "mana": [
+    350,
+    40
+   ],
+   "ad": [
+    52,
+    3
+   ],
+   "ar": [
+    26,
+    4.7
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.638,
+   "asPerLevel": 4,
+   "ms": 330
+  },
+  "range": 500,
+  "resource": "Mana",
+  "apiname": "Akshan",
+  "abilities": [
+   "Avengerang",
+   "Comeuppance",
+   "Dirty Fighting",
+   "Going Rogue",
+   "Heroic Swing"
+  ],
+  "names": {
+   "passive": {
+    "en": "Dirty Fighting",
+    "fr": "Fourberie"
+   },
+   "spells": [
+    {
+     "en": "Avengerang",
+     "fr": "Vengerang"
+    },
+    {
+     "en": "Going Rogue",
+     "fr": "Cavalier seul"
+    },
+    {
+     "en": "Heroic Swing",
+     "fr": "Envolée héroïque"
+    },
+    {
+     "en": "Comeuppance",
+     "fr": "Bien mérité !"
+    }
+   ]
+  }
+ },
+ "Alistar": {
+  "base": {
+   "hp": [
+    685,
+    120
+   ],
+   "mana": [
+    350,
+    40
+   ],
+   "ad": [
+    62,
+    3.75
+   ],
+   "ar": [
+    40,
+    4.7
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 2.125,
+   "ms": 335
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Alistar",
+  "abilities": [
+   "Headbutt",
+   "Pulverize",
+   "Trample",
+   "Triumphant Roar",
+   "Unbreakable Will"
+  ],
+  "names": {
+   "passive": {
+    "en": "Triumphant Roar",
+    "fr": "Cri triomphant"
+   },
+   "spells": [
+    {
+     "en": "Pulverize",
+     "fr": "Atomisation"
+    },
+    {
+     "en": "Headbutt",
+     "fr": "Coup de tête"
+    },
+    {
+     "en": "Trample",
+     "fr": "Piétinement"
+    },
+    {
+     "en": "Unbreakable Will",
+     "fr": "Volonté de fer"
+    }
+   ]
+  }
+ },
+ "Ambessa": {
+  "base": {
+   "hp": [
+    630,
+    110
+   ],
+   "mana": [
+    200,
+    0
+   ],
+   "ad": [
+    63,
+    3
+   ],
+   "ar": [
+    35,
+    4.9
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 2.5,
+   "ms": 335
+  },
+  "range": 125,
+  "resource": "Energy",
+  "apiname": "Ambessa",
+  "abilities": [
+   "Cunning Sweep",
+   "Drakehound's Step",
+   "Lacerate",
+   "Public Execution",
+   "Repudiation",
+   "Sundering Slam"
+  ],
+  "names": {
+   "passive": {
+    "en": "Drakehound's Step",
+    "fr": "Ruée des chiens-dragons"
+   },
+   "spells": [
+    {
+     "en": "Cunning Sweep / Sundering Slam",
+     "fr": "Frappe fourbe / Frappe fracassante"
+    },
+    {
+     "en": "Repudiation",
+     "fr": "Égide dévastatrice"
+    },
+    {
+     "en": "Lacerate",
+     "fr": "Lacération"
+    },
+    {
+     "en": "Public Execution",
+     "fr": "Exécution publique"
+    }
+   ]
+  }
+ },
+ "Amumu": {
+  "base": {
+   "hp": [
+    685,
+    94
+   ],
+   "mana": [
+    285,
+    40
+   ],
+   "ad": [
+    57,
+    3.8
+   ],
+   "ar": [
+    33,
+    4
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.736,
+   "asPerLevel": 2.18,
+   "ms": 335
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Amumu",
+  "abilities": [
+   "Bandage Toss",
+   "Curse of the Sad Mummy",
+   "Cursed Touch",
+   "Despair",
+   "Tantrum"
+  ],
+  "names": {
+   "passive": {
+    "en": "Cursed Touch",
+    "fr": "Toucher maudit"
+   },
+   "spells": [
+    {
+     "en": "Bandage Toss",
+     "fr": "Jet de bandelette"
+    },
+    {
+     "en": "Despair",
+     "fr": "Désespoir"
+    },
+    {
+     "en": "Tantrum",
+     "fr": "Colère"
+    },
+    {
+     "en": "Curse of the Sad Mummy",
+     "fr": "Malédiction d'Amumu"
+    }
+   ]
+  }
+ },
+ "Anivia": {
+  "base": {
+   "hp": [
+    550,
+    92
+   ],
+   "mana": [
+    495,
+    45
+   ],
+   "ad": [
+    51,
+    3.2
+   ],
+   "ar": [
+    19,
+    4.1
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.658,
+   "asPerLevel": 1.68,
+   "ms": 325
+  },
+  "range": 600,
+  "resource": "Mana",
+  "apiname": "Anivia",
+  "abilities": [
+   "Crystallize",
+   "Flash Frost",
+   "Frostbite",
+   "Glacial Storm",
+   "Rebirth"
+  ],
+  "names": {
+   "passive": {
+    "en": "Rebirth",
+    "fr": "Renaissance"
+   },
+   "spells": [
+    {
+     "en": "Flash Frost",
+     "fr": "Lance de glace"
+    },
+    {
+     "en": "Crystallize",
+     "fr": "Cristallisation"
+    },
+    {
+     "en": "Frostbite",
+     "fr": "Gelure"
+    },
+    {
+     "en": "Glacial Storm",
+     "fr": "Tempête glaciale"
+    }
+   ]
+  }
+ },
+ "Annie": {
+  "base": {
+   "hp": [
+    560,
+    96
+   ],
+   "mana": [
+    418,
+    25
+   ],
+   "ad": [
+    50,
+    2.65
+   ],
+   "ar": [
+    23,
+    4
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.61,
+   "asPerLevel": 1.36,
+   "ms": 335
+  },
+  "range": 625,
+  "resource": "Mana",
+  "apiname": "Annie",
+  "abilities": [
+   "Disintegrate",
+   "Incinerate",
+   "Molten Shield",
+   "Pyromania",
+   "Summon: Tibbers"
+  ],
+  "names": {
+   "passive": {
+    "en": "Pyromania",
+    "fr": "Pyromanie"
+   },
+   "spells": [
+    {
+     "en": "Disintegrate",
+     "fr": "Désintégration"
+    },
+    {
+     "en": "Incinerate",
+     "fr": "Incinération"
+    },
+    {
+     "en": "Molten Shield",
+     "fr": "Bouclier en fusion"
+    },
+    {
+     "en": "Summon: Tibbers",
+     "fr": "Invocation : Tibbers"
+    }
+   ]
+  }
+ },
+ "Aphelios": {
+  "base": {
+   "hp": [
+    600,
+    102
+   ],
+   "mana": [
+    348,
+    42
+   ],
+   "ad": [
+    55,
+    2.3
+   ],
+   "ar": [
+    26,
+    4.2
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.665,
+   "asPerLevel": 2.1,
+   "ms": 325
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Aphelios",
+  "abilities": [
+   "Binding Eclipse",
+   "Calibrum",
+   "Crescendum",
+   "Duskwave",
+   "Gravitum",
+   "Infernum",
+   "Moonlight Vigil",
+   "Moonshot",
+   "Onslaught",
+   "Phase",
+   "Sentry",
+   "Severum",
+   "The Hitman and the Seer",
+   "Weapon Queue System",
+   "Weapons of the Faithful"
+  ],
+  "names": {
+   "passive": {
+    "en": "The Hitman and the Seer",
+    "fr": "Le Tueur et l'Oracle"
+   },
+   "spells": [
+    {
+     "en": "Weapon Abilites",
+     "fr": "Compétences d'arme"
+    },
+    {
+     "en": "Phase",
+     "fr": "Phase"
+    },
+    {
+     "en": "Weapon Queue System",
+     "fr": "Système de file d'armes"
+    },
+    {
+     "en": "Moonlight Vigil",
+     "fr": "Veille au clair de lune"
+    }
+   ]
+  }
+ },
+ "Ashe": {
+  "base": {
+   "hp": [
+    610,
+    101
+   ],
+   "mana": [
+    280,
+    35
+   ],
+   "ad": [
+    59,
+    3
+   ],
+   "ar": [
+    26,
+    4.6
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.658,
+   "asPerLevel": 3,
+   "ms": 325
+  },
+  "range": 600,
+  "resource": "Mana",
+  "apiname": "Ashe",
+  "abilities": [
+   "Enchanted Crystal Arrow",
+   "Frost Shot",
+   "Hawkshot",
+   "Ranger's Focus",
+   "Volley"
+  ],
+  "names": {
+   "passive": {
+    "en": "Frost Shot",
+    "fr": "Tir givrant"
+   },
+   "spells": [
+    {
+     "en": "Ranger's Focus",
+     "fr": "Concentration du ranger"
+    },
+    {
+     "en": "Volley",
+     "fr": "Salve"
+    },
+    {
+     "en": "Hawkshot",
+     "fr": "Rapace"
+    },
+    {
+     "en": "Enchanted Crystal Arrow",
+     "fr": "Flèche de cristal enchantée"
+    }
+   ]
+  }
+ },
+ "Aurelion Sol": {
+  "base": {
+   "hp": [
+    600,
+    90
+   ],
+   "mana": [
+    530,
+    40
+   ],
+   "ad": [
+    58,
+    3.2
+   ],
+   "ar": [
+    22,
+    4
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.625,
+   "asPerLevel": 1.5,
+   "ms": 340
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "AurelionSol",
+  "abilities": [
+   "Astral Flight",
+   "Breath of Light",
+   "Celestial Expansion",
+   "Center of the Universe",
+   "Comet of Legend",
+   "Cosmic Creator",
+   "Falling Star",
+   "Singularity",
+   "Starsurge",
+   "The Skies Descend",
+   "Voice of Light"
+  ],
+  "names": {
+   "passive": {
+    "en": "Cosmic Creator",
+    "fr": "Créateur cosmique"
+   },
+   "spells": [
+    {
+     "en": "Breath of Light",
+     "fr": "Souffle de lumière"
+    },
+    {
+     "en": "Astral Flight",
+     "fr": "Vol astral"
+    },
+    {
+     "en": "Singularity",
+     "fr": "Trou noir"
+    },
+    {
+     "en": "Falling Star / The Skies Descend",
+     "fr": "Étoile finale/Apocalypse"
+    }
+   ]
+  }
+ },
+ "Aurora": {
+  "base": {
+   "hp": [
+    607,
+    110
+   ],
+   "mana": [
+    475,
+    30
+   ],
+   "ad": [
+    53,
+    3
+   ],
+   "ar": [
+    23,
+    4.5
+   ],
+   "mr": [
+    32,
+    1.3
+   ],
+   "as": 0.668,
+   "asPerLevel": 2,
+   "ms": 335
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Aurora",
+  "abilities": [
+   "Across the Veil",
+   "Between Worlds",
+   "Spirit Abjuration",
+   "The Weirding",
+   "Twofold Hex"
+  ],
+  "names": {
+   "passive": {
+    "en": "Spirit Abjuration",
+    "fr": "Abjuration spirituelle"
+   },
+   "spells": [
+    {
+     "en": "Twofold Hex",
+     "fr": "Maléfice"
+    },
+    {
+     "en": "Across the Veil",
+     "fr": "Derrière le voile"
+    },
+    {
+     "en": "The Weirding",
+     "fr": "Sortilège"
+    },
+    {
+     "en": "Between Worlds",
+     "fr": "Entre les mondes"
+    }
+   ]
+  }
+ },
+ "Azir": {
+  "base": {
+   "hp": [
+    575,
+    108
+   ],
+   "mana": [
+    320,
+    40
+   ],
+   "ad": [
+    56,
+    3.5
+   ],
+   "ar": [
+    25,
+    5
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.625,
+   "asPerLevel": 5,
+   "ms": 330
+  },
+  "range": 525,
+  "resource": "Mana",
+  "apiname": "Azir",
+  "abilities": [
+   "Arise!",
+   "Conquering Sands",
+   "Emperor's Divide",
+   "Shifting Sands",
+   "Shurima's Legacy"
+  ],
+  "names": {
+   "passive": {
+    "en": "Shurima's Legacy",
+    "fr": "Héritage de Shurima"
+   },
+   "spells": [
+    {
+     "en": "Conquering Sands",
+     "fr": "Sables conquérants"
+    },
+    {
+     "en": "Arise!",
+     "fr": "Dresse-toi !"
+    },
+    {
+     "en": "Shifting Sands",
+     "fr": "Sables mouvants"
+    },
+    {
+     "en": "Emperor's Divide",
+     "fr": "Partition impériale"
+    }
+   ]
+  }
+ },
+ "Bard": {
+  "base": {
+   "hp": [
+    630,
+    103
+   ],
+   "mana": [
+    350,
+    50
+   ],
+   "ad": [
+    52,
+    3
+   ],
+   "ar": [
+    32,
+    4.7
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.658,
+   "asPerLevel": 2,
+   "ms": 335
+  },
+  "range": 500,
+  "resource": "Mana",
+  "apiname": "Bard",
+  "abilities": [
+   "Caretaker's Shrine",
+   "Cosmic Binding",
+   "Magical Journey",
+   "Tempered Fate",
+   "Traveler's Call"
+  ],
+  "names": {
+   "passive": {
+    "en": "Traveler's Call",
+    "fr": "Instinct du voyageur"
+   },
+   "spells": [
+    {
+     "en": "Cosmic Binding",
+     "fr": "Lien cosmique"
+    },
+    {
+     "en": "Caretaker's Shrine",
+     "fr": "Don du gardien"
+    },
+    {
+     "en": "Magical Journey",
+     "fr": "Route magique"
+    },
+    {
+     "en": "Tempered Fate",
+     "fr": "Destin tempéré"
+    }
+   ]
+  }
+ },
+ "Bel'Veth": {
+  "base": {
+   "hp": [
+    580,
+    105
+   ],
+   "mana": [
+    0,
+    0
+   ],
+   "ad": [
+    55,
+    1.5
+   ],
+   "ar": [
+    28,
+    5
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.67,
+   "asPerLevel": 0,
+   "ms": 340
+  },
+  "range": 150,
+  "resource": "None",
+  "apiname": "Belveth",
+  "abilities": [
+   "Above and Below",
+   "Death in Lavender",
+   "Endless Banquet",
+   "Royal Maelstrom",
+   "Void Surge"
+  ],
+  "names": {
+   "passive": {
+    "en": "Death in Lavender ",
+    "fr": "Mer de lavande "
+   },
+   "spells": [
+    {
+     "en": "Void Surge",
+     "fr": "Charge du Néant"
+    },
+    {
+     "en": "Above and Below",
+     "fr": "Projection cinglante"
+    },
+    {
+     "en": "Royal Maelstrom",
+     "fr": "Maelström impérial"
+    },
+    {
+     "en": "Endless Banquet",
+     "fr": "Banquet infini"
+    }
+   ]
+  }
+ },
+ "Blitzcrank": {
+  "base": {
+   "hp": [
+    600,
+    109
+   ],
+   "mana": [
+    267,
+    40
+   ],
+   "ad": [
+    62,
+    3.5
+   ],
+   "ar": [
+    37,
+    4.7
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 1.13,
+   "ms": 325
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Blitzcrank",
+  "abilities": [
+   "Mana Barrier",
+   "Overdrive",
+   "Power Fist",
+   "Rocket Grab",
+   "Static Field"
+  ],
+  "names": {
+   "passive": {
+    "en": "Mana Barrier",
+    "fr": "Barrière de mana"
+   },
+   "spells": [
+    {
+     "en": "Rocket Grab",
+     "fr": "Grappin propulsé"
+    },
+    {
+     "en": "Overdrive",
+     "fr": "Surcharge"
+    },
+    {
+     "en": "Power Fist",
+     "fr": "Poing d'acier"
+    },
+    {
+     "en": "Static Field",
+     "fr": "Champ de stase"
+    }
+   ]
+  }
+ },
+ "Brand": {
+  "base": {
+   "hp": [
+    570,
+    105
+   ],
+   "mana": [
+    469,
+    21
+   ],
+   "ad": [
+    57,
+    3
+   ],
+   "ar": [
+    24,
+    4.2
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.681,
+   "asPerLevel": 2,
+   "ms": 340
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Brand",
+  "abilities": [
+   "Blaze",
+   "Conflagration",
+   "Pillar of Flame",
+   "Pyroclasm",
+   "Sear"
+  ],
+  "names": {
+   "passive": {
+    "en": "Blaze",
+    "fr": "Flammes"
+   },
+   "spells": [
+    {
+     "en": "Sear",
+     "fr": "Brûlure"
+    },
+    {
+     "en": "Pillar of Flame",
+     "fr": "Colonne de flammes"
+    },
+    {
+     "en": "Conflagration",
+     "fr": "Conflagration"
+    },
+    {
+     "en": "Pyroclasm",
+     "fr": "Pyrolyse"
+    }
+   ]
+  }
+ },
+ "Braum": {
+  "base": {
+   "hp": [
+    610,
+    112
+   ],
+   "mana": [
+    311,
+    45
+   ],
+   "ad": [
+    55,
+    3.2
+   ],
+   "ar": [
+    35,
+    5
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.644,
+   "asPerLevel": 3.5,
+   "ms": 335
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Braum",
+  "abilities": [
+   "Concussive Blows",
+   "Glacial Fissure",
+   "Stand Behind Me",
+   "Unbreakable",
+   "Winter's Bite"
+  ],
+  "names": {
+   "passive": {
+    "en": "Concussive Blows",
+    "fr": "Coups étourdissants"
+   },
+   "spells": [
+    {
+     "en": "Winter's Bite",
+     "fr": "Morsure de l'hiver"
+    },
+    {
+     "en": "Stand Behind Me",
+     "fr": "Bouclier humain"
+    },
+    {
+     "en": "Unbreakable",
+     "fr": "Incassable"
+    },
+    {
+     "en": "Glacial Fissure",
+     "fr": "Fissure glaciale"
+    }
+   ]
+  }
+ },
+ "Briar": {
+  "base": {
+   "hp": [
+    625,
+    95
+   ],
+   "mana": [
+    0,
+    0
+   ],
+   "ad": [
+    60,
+    2.5
+   ],
+   "ar": [
+    30,
+    4.5
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.644,
+   "asPerLevel": 2,
+   "ms": 340
+  },
+  "range": 125,
+  "resource": "Frenzy",
+  "apiname": "Briar",
+  "abilities": [
+   "Blood Frenzy",
+   "Certain Death",
+   "Chilling Scream",
+   "Crimson Curse",
+   "Head Rush",
+   "Snack Attack"
+  ],
+  "names": {
+   "passive": {
+    "en": "Crimson Curse",
+    "fr": "Malédiction écarlate"
+   },
+   "spells": [
+    {
+     "en": "Head Rush",
+     "fr": "À table !"
+    },
+    {
+     "en": "Blood Frenzy / Snack Attack",
+     "fr": "Folie sanguinaire / Juste un croc"
+    },
+    {
+     "en": "Chilling Scream",
+     "fr": "Cri sanglant"
+    },
+    {
+     "en": "Certain Death",
+     "fr": "Vol mortel"
+    }
+   ]
+  }
+ },
+ "Caitlyn": {
+  "base": {
+   "hp": [
+    580,
+    107
+   ],
+   "mana": [
+    315,
+    40
+   ],
+   "ad": [
+    62,
+    3.8
+   ],
+   "ar": [
+    27,
+    4.7
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.681,
+   "asPerLevel": 4,
+   "ms": 325
+  },
+  "range": 650,
+  "resource": "Mana",
+  "apiname": "Caitlyn",
+  "abilities": [
+   "90 Caliber Net",
+   "Ace in the Hole",
+   "Headshot",
+   "Piltover Peacemaker",
+   "Yordle Snap Trap"
+  ],
+  "names": {
+   "passive": {
+    "en": "Headshot",
+    "fr": "Tir dans la tête"
+   },
+   "spells": [
+    {
+     "en": "Piltover Peacemaker",
+     "fr": "Pacificateur de Piltover"
+    },
+    {
+     "en": "Yordle Snap Trap",
+     "fr": "Piège-yordle"
+    },
+    {
+     "en": "90 Caliber Net",
+     "fr": "Filet de calibre 90"
+    },
+    {
+     "en": "Ace in the Hole",
+     "fr": "Tir chirurgical"
+    }
+   ]
+  }
+ },
+ "Camille": {
+  "base": {
+   "hp": [
+    650,
+    99
+   ],
+   "mana": [
+    375,
+    52
+   ],
+   "ad": [
+    68,
+    3.8
+   ],
+   "ar": [
+    35,
+    4.5
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.644,
+   "asPerLevel": 2.5,
+   "ms": 340
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Camille",
+  "abilities": [
+   "Adaptive Defenses",
+   "Hookshot",
+   "Precision Protocol",
+   "Tactical Sweep",
+   "The Hextech Ultimatum",
+   "Wall Dive"
+  ],
+  "names": {
+   "passive": {
+    "en": "Adaptive Defenses",
+    "fr": "Protection modulable"
+   },
+   "spells": [
+    {
+     "en": "Precision Protocol",
+     "fr": "Protocole de précision"
+    },
+    {
+     "en": "Tactical Sweep",
+     "fr": "Balayage tactique"
+    },
+    {
+     "en": "Hookshot",
+     "fr": "Grappin"
+    },
+    {
+     "en": "The Hextech Ultimatum",
+     "fr": "Ultimatum Hextech"
+    }
+   ]
+  }
+ },
+ "Cassiopeia": {
+  "base": {
+   "hp": [
+    610,
+    98
+   ],
+   "mana": [
+    450,
+    40
+   ],
+   "ad": [
+    53,
+    3
+   ],
+   "ar": [
+    18,
+    4.7
+   ],
+   "mr": [
+    32,
+    1.3
+   ],
+   "as": 0.647,
+   "asPerLevel": 1.5,
+   "ms": 335
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Cassiopeia",
+  "abilities": [
+   "Miasma",
+   "Noxious Blast",
+   "Petrifying Gaze",
+   "Serpentine Grace",
+   "Twin Fang"
+  ],
+  "names": {
+   "passive": {
+    "en": "Serpentine Grace",
+    "fr": "Grâce serpentine"
+   },
+   "spells": [
+    {
+     "en": "Noxious Blast",
+     "fr": "Bombe nocive"
+    },
+    {
+     "en": "Miasma",
+     "fr": "Miasmes"
+    },
+    {
+     "en": "Twin Fang",
+     "fr": "Morsure fatale"
+    },
+    {
+     "en": "Petrifying Gaze",
+     "fr": "Regard de la Méduse"
+    }
+   ]
+  }
+ },
+ "Cho'Gath": {
+  "base": {
+   "hp": [
+    644,
+    94
+   ],
+   "mana": [
+    270,
+    60
+   ],
+   "ad": [
+    69,
+    4.2
+   ],
+   "ar": [
+    38,
+    4.5
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.658,
+   "asPerLevel": 1.44,
+   "ms": 345
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Chogath",
+  "abilities": [
+   "Carnivore",
+   "Feast",
+   "Feral Scream",
+   "Rupture",
+   "Vorpal Spikes"
+  ],
+  "names": {
+   "passive": {
+    "en": "Carnivore",
+    "fr": "Carnivore"
+   },
+   "spells": [
+    {
+     "en": "Rupture",
+     "fr": "Rupture"
+    },
+    {
+     "en": "Feral Scream",
+     "fr": "Cri sauvage"
+    },
+    {
+     "en": "Vorpal Spikes",
+     "fr": "Piques vorpales"
+    },
+    {
+     "en": "Feast",
+     "fr": "Festin"
+    }
+   ]
+  }
+ },
+ "Corki": {
+  "base": {
+   "hp": [
+    610,
+    100
+   ],
+   "mana": [
+    350,
+    40
+   ],
+   "ad": [
+    52,
+    2.5
+   ],
+   "ar": [
+    27,
+    4.5
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.644,
+   "asPerLevel": 2.8,
+   "ms": 325
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Corki",
+  "abilities": [
+   "Gatling Gun",
+   "Hextech Munitions",
+   "Missile Barrage",
+   "Phosphorus Bomb",
+   "Special Delivery",
+   "Valkyrie"
+  ],
+  "names": {
+   "passive": {
+    "en": "Hextech Munitions",
+    "fr": "Munitions Hextech"
+   },
+   "spells": [
+    {
+     "en": "Phosphorus Bomb",
+     "fr": "Bombe au phosphore"
+    },
+    {
+     "en": "Valkyrie",
+     "fr": "Valkyrie"
+    },
+    {
+     "en": "Gatling Gun",
+     "fr": "Gatling"
+    },
+    {
+     "en": "Missile Barrage",
+     "fr": "Barrage de projectiles"
+    }
+   ]
+  }
+ },
+ "Darius": {
+  "base": {
+   "hp": [
+    652,
+    114
+   ],
+   "mana": [
+    263,
+    58
+   ],
+   "ad": [
+    64,
+    5
+   ],
+   "ar": [
+    37,
+    5.2
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 1,
+   "ms": 340
+  },
+  "range": 175,
+  "resource": "Mana",
+  "apiname": "Darius",
+  "abilities": [
+   "Apprehend",
+   "Crippling Strike",
+   "Decimate",
+   "Hemorrhage",
+   "Noxian Guillotine"
+  ],
+  "names": {
+   "passive": {
+    "en": "Hemorrhage",
+    "fr": "Plaie béante"
+   },
+   "spells": [
+    {
+     "en": "Decimate",
+     "fr": "Décimation"
+    },
+    {
+     "en": "Crippling Strike",
+     "fr": "Estropiaison"
+    },
+    {
+     "en": "Apprehend",
+     "fr": "Crampon"
+    },
+    {
+     "en": "Noxian Guillotine",
+     "fr": "Guillotine noxienne"
+    }
+   ]
+  }
+ },
+ "Diana": {
+  "base": {
+   "hp": [
+    640,
+    109
+   ],
+   "mana": [
+    375,
+    25
+   ],
+   "ad": [
+    57,
+    3
+   ],
+   "ar": [
+    31,
+    4.3
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 2,
+   "ms": 345
+  },
+  "range": 150,
+  "resource": "Mana",
+  "apiname": "Diana",
+  "abilities": [
+   "Crescent Strike",
+   "Lunar Rush",
+   "Moonfall",
+   "Moonsilver Blade",
+   "Pale Cascade"
+  ],
+  "names": {
+   "passive": {
+    "en": "Moonsilver Blade",
+    "fr": "Lame sélène"
+   },
+   "spells": [
+    {
+     "en": "Crescent Strike",
+     "fr": "Croissant lunaire"
+    },
+    {
+     "en": "Pale Cascade",
+     "fr": "Corps célestes"
+    },
+    {
+     "en": "Lunar Rush",
+     "fr": "Rush lunaire"
+    },
+    {
+     "en": "Moonfall",
+     "fr": "Attraction lunaire"
+    }
+   ]
+  }
+ },
+ "Dr. Mundo": {
+  "base": {
+   "hp": [
+    640,
+    103
+   ],
+   "mana": [
+    0,
+    0
+   ],
+   "ad": [
+    61,
+    2.5
+   ],
+   "ar": [
+    32,
+    4.5
+   ],
+   "mr": [
+    29,
+    2.3
+   ],
+   "as": 0.67,
+   "asPerLevel": 3.3,
+   "ms": 345
+  },
+  "range": 125,
+  "resource": "Health",
+  "apiname": "DrMundo",
+  "abilities": [
+   "Adrenaline Rush",
+   "Blunt Force Trauma",
+   "Burning Agony",
+   "Goes Where He Pleases",
+   "Heart Zapper",
+   "Infected Bonesaw",
+   "Infected Cleaver",
+   "Masochism",
+   "Maximum Dosage",
+   "Sadism"
+  ],
+  "names": {
+   "passive": {
+    "en": "Goes Where He Pleases",
+    "fr": "Il va où il veut"
+   },
+   "spells": [
+    {
+     "en": "Infected Bonesaw",
+     "fr": "Scie souillée"
+    },
+    {
+     "en": "Heart Zapper",
+     "fr": "Défibrillateur"
+    },
+    {
+     "en": "Blunt Force Trauma",
+     "fr": "Contusion"
+    },
+    {
+     "en": "Maximum Dosage",
+     "fr": "Dosage maximal"
+    }
+   ]
+  }
+ },
+ "Draven": {
+  "base": {
+   "hp": [
+    675,
+    104
+   ],
+   "mana": [
+    361,
+    39
+   ],
+   "ad": [
+    64,
+    3.4
+   ],
+   "ar": [
+    29,
+    4.5
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.679,
+   "asPerLevel": 2.7,
+   "ms": 330
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Draven",
+  "abilities": [
+   "Blood Rush",
+   "League of Draven",
+   "Spinning Axe",
+   "Stand Aside",
+   "Whirling Death"
+  ],
+  "names": {
+   "passive": {
+    "en": "League of Draven",
+    "fr": "League of Draven"
+   },
+   "spells": [
+    {
+     "en": "Spinning Axe",
+     "fr": "Hache tournoyante"
+    },
+    {
+     "en": "Blood Rush",
+     "fr": "Pulsion sanguinaire"
+    },
+    {
+     "en": "Stand Aside",
+     "fr": "Division"
+    },
+    {
+     "en": "Whirling Death",
+     "fr": "Volée mortelle"
+    }
+   ]
+  }
+ },
+ "Ekko": {
+  "base": {
+   "hp": [
+    655,
+    99
+   ],
+   "mana": [
+    280,
+    70
+   ],
+   "ad": [
+    58,
+    3
+   ],
+   "ar": [
+    32,
+    4.2
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.688,
+   "asPerLevel": 3.3,
+   "ms": 340
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Ekko",
+  "abilities": [
+   "Chronobreak",
+   "Parallel Convergence",
+   "Phase Dive",
+   "Timewinder",
+   "Z-Drive Resonance"
+  ],
+  "names": {
+   "passive": {
+    "en": "Z-Drive Resonance",
+    "fr": "RéZonance"
+   },
+   "spells": [
+    {
+     "en": "Timewinder",
+     "fr": "Rétrobang"
+    },
+    {
+     "en": "Parallel Convergence",
+     "fr": "Convergence parallèle"
+    },
+    {
+     "en": "Phase Dive",
+     "fr": "Rush déphasé"
+    },
+    {
+     "en": "Chronobreak",
+     "fr": "Chronofracture"
+    }
+   ]
+  }
+ },
+ "Elise": {
+  "base": {
+   "hp": [
+    620,
+    109
+   ],
+   "mana": [
+    324,
+    50
+   ],
+   "ad": [
+    55,
+    3
+   ],
+   "ar": [
+    30,
+    4.5
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.625,
+   "asPerLevel": 1.75,
+   "ms": 330
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Elise",
+  "abilities": [
+   "Cocoon",
+   "Neurotoxin",
+   "Rappel",
+   "Skittering Frenzy",
+   "Spider Form / Human Form",
+   "Spider Queen",
+   "Venomous Bite",
+   "Volatile Spiderling"
+  ],
+  "names": {
+   "passive": {
+    "en": "Spider Queen",
+    "fr": "Reine araignée"
+   },
+   "spells": [
+    {
+     "en": "Neurotoxin / Venomous Bite",
+     "fr": "Neurotoxine/Morsure venimeuse"
+    },
+    {
+     "en": "Volatile Spiderling / Skittering Frenzy",
+     "fr": "Araignée explosive/Frénésie symbiotique"
+    },
+    {
+     "en": "Cocoon / Rappel",
+     "fr": "Cocon/Suspension"
+    },
+    {
+     "en": "Spider Form",
+     "fr": "Forme arachnéenne"
+    }
+   ]
+  }
+ },
+ "Evelynn": {
+  "base": {
+   "hp": [
+    642,
+    98
+   ],
+   "mana": [
+    315,
+    42
+   ],
+   "ad": [
+    61,
+    3
+   ],
+   "ar": [
+    37,
+    4.7
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.667,
+   "asPerLevel": 2.1,
+   "ms": 335
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Evelynn",
+  "abilities": [
+   "Agony's Embrace",
+   "Allure",
+   "Dark Frenzy",
+   "Demon Shade",
+   "Empowered Whiplash",
+   "Hate Spike",
+   "Last Caress",
+   "Ravage",
+   "Shadow Walk",
+   "Whiplash"
+  ],
+  "names": {
+   "passive": {
+    "en": "Demon Shade",
+    "fr": "Ombre démoniaque"
+   },
+   "spells": [
+    {
+     "en": "Hate Spike",
+     "fr": "Piques de haine"
+    },
+    {
+     "en": "Allure",
+     "fr": "Séduction"
+    },
+    {
+     "en": "Whiplash",
+     "fr": "Coup de fouet"
+    },
+    {
+     "en": "Last Caress",
+     "fr": "Faiseuse de veuves"
+    }
+   ]
+  }
+ },
+ "Ezreal": {
+  "base": {
+   "hp": [
+    600,
+    102
+   ],
+   "mana": [
+    375,
+    70
+   ],
+   "ad": [
+    60,
+    3.75
+   ],
+   "ar": [
+    24,
+    4.2
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.625,
+   "asPerLevel": 2.5,
+   "ms": 325
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Ezreal",
+  "abilities": [
+   "Arcane Shift",
+   "Essence Flux",
+   "Mystic Shot",
+   "Rising Spell Force",
+   "Trueshot Barrage"
+  ],
+  "names": {
+   "passive": {
+    "en": "Rising Spell Force",
+    "fr": "Force grandissante"
+   },
+   "spells": [
+    {
+     "en": "Mystic Shot",
+     "fr": "Tir mystique"
+    },
+    {
+     "en": "Essence Flux",
+     "fr": "Flux essentiel"
+    },
+    {
+     "en": "Arcane Shift",
+     "fr": "Transfert arcanique"
+    },
+    {
+     "en": "Trueshot Barrage",
+     "fr": "Arc térébrant"
+    }
+   ]
+  }
+ },
+ "Fiddlesticks": {
+  "base": {
+   "hp": [
+    650,
+    106
+   ],
+   "mana": [
+    500,
+    28
+   ],
+   "ad": [
+    55,
+    2.65
+   ],
+   "ar": [
+    34,
+    4.7
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.625,
+   "asPerLevel": 2.11,
+   "ms": 335
+  },
+  "range": 480,
+  "resource": "Mana",
+  "apiname": "Fiddlesticks",
+  "abilities": [
+   "A Harmless Scarecrow",
+   "Basic Attack",
+   "Bountiful Harvest",
+   "Crowstorm",
+   "Dark Wind",
+   "Drain",
+   "Dread",
+   "Reap",
+   "Terrify"
+  ],
+  "names": {
+   "passive": {
+    "en": "A Harmless Scarecrow",
+    "fr": "Épouvantable épouvantail"
+   },
+   "spells": [
+    {
+     "en": "Terrify",
+     "fr": "Terreur"
+    },
+    {
+     "en": "Bountiful Harvest",
+     "fr": "Moisson fructueuse"
+    },
+    {
+     "en": "Reap",
+     "fr": "Fauchaison"
+    },
+    {
+     "en": "Crowstorm",
+     "fr": "Rafale de corbeaux"
+    }
+   ]
+  }
+ },
+ "Fiora": {
+  "base": {
+   "hp": [
+    620,
+    105
+   ],
+   "mana": [
+    300,
+    60
+   ],
+   "ad": [
+    66,
+    3.3
+   ],
+   "ar": [
+    33,
+    4.7
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.69,
+   "asPerLevel": 3.2,
+   "ms": 345
+  },
+  "range": 150,
+  "resource": "Mana",
+  "apiname": "Fiora",
+  "abilities": [
+   "Bladework",
+   "Duelist's Dance",
+   "Grand Challenge",
+   "Lunge",
+   "Riposte"
+  ],
+  "names": {
+   "passive": {
+    "en": "Duelist's Dance",
+    "fr": "Danse de la duelliste"
+   },
+   "spells": [
+    {
+     "en": "Lunge",
+     "fr": "Fente"
+    },
+    {
+     "en": "Riposte",
+     "fr": "Riposte"
+    },
+    {
+     "en": "Bladework",
+     "fr": "Botte secrète"
+    },
+    {
+     "en": "Grand Challenge",
+     "fr": "Défi suprême"
+    }
+   ]
+  }
+ },
+ "Fizz": {
+  "base": {
+   "hp": [
+    640,
+    106
+   ],
+   "mana": [
+    317,
+    52
+   ],
+   "ad": [
+    58,
+    3
+   ],
+   "ar": [
+    26,
+    4.6
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.658,
+   "asPerLevel": 3.1,
+   "ms": 335
+  },
+  "range": 175,
+  "resource": "Mana",
+  "apiname": "Fizz",
+  "abilities": [
+   "Chum the Waters",
+   "Nimble Fighter",
+   "Playful",
+   "Seastone Trident",
+   "Trickster",
+   "Urchin Strike"
+  ],
+  "names": {
+   "passive": {
+    "en": "Nimble Fighter",
+    "fr": "Combattant agile"
+   },
+   "spells": [
+    {
+     "en": "Urchin Strike",
+     "fr": "Frappe de l'oursin"
+    },
+    {
+     "en": "Seastone Trident",
+     "fr": "Trident marin"
+    },
+    {
+     "en": "Playful / Trickster",
+     "fr": "Joueur/Filou"
+    },
+    {
+     "en": "Chum the Waters",
+     "fr": "Pêche au gros"
+    }
+   ]
+  }
+ },
+ "Galio": {
+  "base": {
+   "hp": [
+    600,
+    126
+   ],
+   "mana": [
+    410,
+    40
+   ],
+   "ad": [
+    59,
+    3.5
+   ],
+   "ar": [
+    24,
+    4.7
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 1.5,
+   "ms": 340
+  },
+  "range": 150,
+  "resource": "Mana",
+  "apiname": "Galio",
+  "abilities": [
+   "Bulwark",
+   "Colossal Smash",
+   "Hero's Entrance",
+   "Idol of Durand",
+   "Justice Punch",
+   "Resolute Smite",
+   "Righteous Gust",
+   "Runic Skin",
+   "Shield of Durand",
+   "Winds of War"
+  ],
+  "names": {
+   "passive": {
+    "en": "Colossal Smash",
+    "fr": "Frappe colossale"
+   },
+   "spells": [
+    {
+     "en": "Winds of War",
+     "fr": "Vents de guerre"
+    },
+    {
+     "en": "Shield of Durand",
+     "fr": "Bouclier de Durand"
+    },
+    {
+     "en": "Justice Punch",
+     "fr": "Horion de la justice"
+    },
+    {
+     "en": "Hero's Entrance",
+     "fr": "Entrée héroïque"
+    }
+   ]
+  }
+ },
+ "Gangplank": {
+  "base": {
+   "hp": [
+    630,
+    114
+   ],
+   "mana": [
+    280,
+    60
+   ],
+   "ad": [
+    64,
+    4.2
+   ],
+   "ar": [
+    31,
+    4.7
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.658,
+   "asPerLevel": 3.2,
+   "ms": 345
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Gangplank",
+  "abilities": [
+   "Cannon Barrage",
+   "Parrrley",
+   "Powder Keg",
+   "Remove Scurvy",
+   "Trial by Fire"
+  ],
+  "names": {
+   "passive": {
+    "en": "Trial by Fire",
+    "fr": "Épreuve du feu"
+   },
+   "spells": [
+    {
+     "en": "Parrrley",
+     "fr": "Pourparlers"
+    },
+    {
+     "en": "Remove Scurvy",
+     "fr": "Guérison du scorbut"
+    },
+    {
+     "en": "Powder Keg",
+     "fr": "Baril de poudre"
+    },
+    {
+     "en": "Cannon Barrage",
+     "fr": "Tir de barrage"
+    }
+   ]
+  }
+ },
+ "Garen": {
+  "base": {
+   "hp": [
+    690,
+    98
+   ],
+   "mana": [
+    0,
+    0
+   ],
+   "ad": [
+    69,
+    4.5
+   ],
+   "ar": [
+    38,
+    4.2
+   ],
+   "mr": [
+    32,
+    1.55
+   ],
+   "as": 0.625,
+   "asPerLevel": 3.65,
+   "ms": 340
+  },
+  "range": 175,
+  "resource": "None",
+  "apiname": "Garen",
+  "abilities": [
+   "Basic Attack",
+   "Courage",
+   "Decisive Strike",
+   "Demacian Justice",
+   "Judgment",
+   "Perseverance"
+  ],
+  "names": {
+   "passive": {
+    "en": "Perseverance",
+    "fr": "Persévérance"
+   },
+   "spells": [
+    {
+     "en": "Decisive Strike",
+     "fr": "Coup décisif"
+    },
+    {
+     "en": "Courage",
+     "fr": "Courage"
+    },
+    {
+     "en": "Judgment",
+     "fr": "Jugement"
+    },
+    {
+     "en": "Demacian Justice",
+     "fr": "Justice de Demacia"
+    }
+   ]
+  }
+ },
+ "Gnar": {
+  "base": {
+   "hp": [
+    540,
+    79
+   ],
+   "mana": [
+    100,
+    0
+   ],
+   "ad": [
+    60,
+    3.2
+   ],
+   "ar": [
+    32,
+    3.7
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.625,
+   "asPerLevel": 6,
+   "ms": 335
+  },
+  "range": 175,
+  "resource": "Rage",
+  "apiname": "Gnar",
+  "abilities": [
+   "Boomerang Throw",
+   "Boulder Toss",
+   "Crunch",
+   "GNAR!",
+   "Hop",
+   "Hyper",
+   "Mega Gnar",
+   "Mini Gnar",
+   "Rage Gene",
+   "Wallop"
+  ],
+  "names": {
+   "passive": {
+    "en": "Rage Gene",
+    "fr": "Rage génique"
+   },
+   "spells": [
+    {
+     "en": "Boomerang Throw / Boulder Toss",
+     "fr": "Jet de boomerang/Jet de rocher"
+    },
+    {
+     "en": "Hyper / Wallop",
+     "fr": "Agitation/Beigne"
+    },
+    {
+     "en": "Hop / Crunch",
+     "fr": "Rebond/Aplatissement"
+    },
+    {
+     "en": "GNAR!",
+     "fr": "GNAR !"
+    }
+   ]
+  }
+ },
+ "Mega Gnar": {
+  "base": {
+   "hp": [
+    640,
+    122
+   ],
+   "mana": [
+    100,
+    0
+   ],
+   "ad": [
+    66,
+    5.7
+   ],
+   "ar": [
+    35.5,
+    6.7
+   ],
+   "mr": [
+    33.5,
+    4.8
+   ],
+   "as": 0.625,
+   "asPerLevel": 0.5,
+   "ms": 335
+  },
+  "range": 175,
+  "resource": "Rage",
+  "apiname": "GnarBig",
+  "abilities": [],
+  "names": null
+ },
+ "Gragas": {
+  "base": {
+   "hp": [
+    640,
+    115
+   ],
+   "mana": [
+    400,
+    47
+   ],
+   "ad": [
+    64,
+    3.5
+   ],
+   "ar": [
+    38,
+    5
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.675,
+   "asPerLevel": 2.05,
+   "ms": 330
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Gragas",
+  "abilities": [
+   "Barrel Roll",
+   "Body Slam",
+   "Drunken Rage",
+   "Explosive Cask",
+   "Happy Hour"
+  ],
+  "names": {
+   "passive": {
+    "en": "Happy Hour",
+    "fr": "Tournée"
+   },
+   "spells": [
+    {
+     "en": "Barrel Roll",
+     "fr": "Fût roulant"
+    },
+    {
+     "en": "Drunken Rage",
+     "fr": "Rage d'ivrogne"
+    },
+    {
+     "en": "Body Slam",
+     "fr": "Coup de bidon"
+    },
+    {
+     "en": "Explosive Cask",
+     "fr": "Fût explosif"
+    }
+   ]
+  }
+ },
+ "Graves": {
+  "base": {
+   "hp": [
+    625,
+    106
+   ],
+   "mana": [
+    325,
+    40
+   ],
+   "ad": [
+    66,
+    4
+   ],
+   "ar": [
+    33,
+    4.6
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.475,
+   "asPerLevel": 3,
+   "ms": 340
+  },
+  "range": 425,
+  "resource": "Mana",
+  "apiname": "Graves",
+  "abilities": [
+   "Collateral Damage",
+   "End of the Line",
+   "New Destiny",
+   "Quickdraw",
+   "Smoke Screen"
+  ],
+  "names": {
+   "passive": {
+    "en": "New Destiny",
+    "fr": "Nouvelle destinée"
+   },
+   "spells": [
+    {
+     "en": "End of the Line",
+     "fr": "Terminus"
+    },
+    {
+     "en": "Smoke Screen",
+     "fr": "Écran de fumée"
+    },
+    {
+     "en": "Quickdraw",
+     "fr": "Ruée vers l'or"
+    },
+    {
+     "en": "Collateral Damage",
+     "fr": "Dégâts collatéraux"
+    }
+   ]
+  }
+ },
+ "Gwen": {
+  "base": {
+   "hp": [
+    620,
+    115
+   ],
+   "mana": [
+    330,
+    40
+   ],
+   "ad": [
+    63,
+    3
+   ],
+   "ar": [
+    39,
+    4.9
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.69,
+   "asPerLevel": 2.25,
+   "ms": 340
+  },
+  "range": 150,
+  "resource": "Mana",
+  "apiname": "Gwen",
+  "abilities": [
+   "A Thousand Cuts",
+   "Hallowed Mist",
+   "Needlework",
+   "Skip 'n Slash",
+   "Snip Snip!"
+  ],
+  "names": {
+   "passive": {
+    "en": "A Thousand Cuts",
+    "fr": "Mille coupures"
+   },
+   "spells": [
+    {
+     "en": "Snip Snip!",
+     "fr": "Tchac, tchac !"
+    },
+    {
+     "en": "Hallowed Mist",
+     "fr": "Brume sacrée"
+    },
+    {
+     "en": "Skip 'n Slash",
+     "fr": "Élan incisif"
+    },
+    {
+     "en": "Needlework",
+     "fr": "Piqûre"
+    }
+   ]
+  }
+ },
+ "Hecarim": {
+  "base": {
+   "hp": [
+    625,
+    106
+   ],
+   "mana": [
+    280,
+    40
+   ],
+   "ad": [
+    66,
+    3.7
+   ],
+   "ar": [
+    32,
+    5.45
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.67,
+   "asPerLevel": 2.5,
+   "ms": 345
+  },
+  "range": 175,
+  "resource": "Mana",
+  "apiname": "Hecarim",
+  "abilities": [
+   "Devastating Charge",
+   "Onslaught of Shadows",
+   "Rampage",
+   "Spirit of Dread",
+   "Warpath"
+  ],
+  "names": {
+   "passive": {
+    "en": "Warpath",
+    "fr": "Galop"
+   },
+   "spells": [
+    {
+     "en": "Rampage",
+     "fr": "Carnage"
+    },
+    {
+     "en": "Spirit of Dread",
+     "fr": "Essence de la peur"
+    },
+    {
+     "en": "Devastating Charge",
+     "fr": "Charge dévastatrice"
+    },
+    {
+     "en": "Onslaught of Shadows",
+     "fr": "Légion des ombres"
+    }
+   ]
+  }
+ },
+ "Heimerdinger": {
+  "base": {
+   "hp": [
+    558,
+    105
+   ],
+   "mana": [
+    385,
+    20
+   ],
+   "ad": [
+    56,
+    2.7
+   ],
+   "ar": [
+    19,
+    4.2
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.658,
+   "asPerLevel": 1.36,
+   "ms": 340
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Heimerdinger",
+  "abilities": [
+   "CH-2 Electron Storm Grenade",
+   "CH-3X Lightning Grenade",
+   "H-28G Evolution Turret",
+   "H-28Q Apex Turret",
+   "Hextech Affinity",
+   "Hextech Micro-Rockets",
+   "Hextech Rocket Swarm",
+   "UPGRADE!!!"
+  ],
+  "names": {
+   "passive": {
+    "en": "Hextech Affinity",
+    "fr": "Affinité Hextech"
+   },
+   "spells": [
+    {
+     "en": "H-28 G Evolution Turret",
+     "fr": "Tourelle H-28G Évolution"
+    },
+    {
+     "en": "Hextech Micro-Rockets",
+     "fr": "Micro-roquettes Hextech"
+    },
+    {
+     "en": "CH-2 Electron Storm Grenade",
+     "fr": "Grenade électro-tempête CH-2"
+    },
+    {
+     "en": "UPGRADE!!!",
+     "fr": "AMÉLIORATION !"
+    }
+   ]
+  }
+ },
+ "Hwei": {
+  "base": {
+   "hp": [
+    580,
+    109
+   ],
+   "mana": [
+    480,
+    30
+   ],
+   "ad": [
+    54,
+    3.3
+   ],
+   "ar": [
+    21,
+    4.7
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.69,
+   "asPerLevel": 2.5,
+   "ms": 330
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Hwei",
+  "abilities": [
+   "Crushing Maw",
+   "Devastating Fire",
+   "Fleeting Current",
+   "Gaze of the Abyss",
+   "Grim Visage",
+   "Molten Fissure",
+   "Pool of Reflection",
+   "Severing Bolt",
+   "Signature of the Visionary",
+   "Spiraling Despair",
+   "Stirring Lights",
+   "Subject: Disaster",
+   "Subject: Serenity",
+   "Subject: Torment",
+   "Wash Brush"
+  ],
+  "names": {
+   "passive": {
+    "en": "Signature of the Visionary",
+    "fr": "Signature du Visionnaire"
+   },
+   "spells": [
+    {
+     "en": "Subject: Disaster",
+     "fr": "Sujet : Désastres"
+    },
+    {
+     "en": "Subject: Serenity",
+     "fr": "Sujet : Sérénités"
+    },
+    {
+     "en": "Subject: Torment",
+     "fr": "Sujet : Tourments"
+    },
+    {
+     "en": "Spiraling Despair",
+     "fr": "Vision de désespoir"
+    }
+   ]
+  }
+ },
+ "Illaoi": {
+  "base": {
+   "hp": [
+    656,
+    115
+   ],
+   "mana": [
+    350,
+    50
+   ],
+   "ad": [
+    65,
+    5
+   ],
+   "ar": [
+    35,
+    5
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 2.5,
+   "ms": 350
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Illaoi",
+  "abilities": [
+   "Harsh Lesson",
+   "Leap of Faith",
+   "Prophet of an Elder God",
+   "Tentacle Smash",
+   "Test of Spirit"
+  ],
+  "names": {
+   "passive": {
+    "en": "Prophet of an Elder God",
+    "fr": "Prophétesse d'un dieu ancestral"
+   },
+   "spells": [
+    {
+     "en": "Tentacle Smash",
+     "fr": "Coup de tentacule"
+    },
+    {
+     "en": "Harsh Lesson",
+     "fr": "Âpre leçon"
+    },
+    {
+     "en": "Test of Spirit",
+     "fr": "Épreuve de l'esprit"
+    },
+    {
+     "en": "Leap of Faith",
+     "fr": "Acte de foi"
+    }
+   ]
+  }
+ },
+ "Irelia": {
+  "base": {
+   "hp": [
+    630,
+    115
+   ],
+   "mana": [
+    350,
+    50
+   ],
+   "ad": [
+    65,
+    3.5
+   ],
+   "ar": [
+    36,
+    4.7
+   ],
+   "mr": [
+    30,
+    2.05
+   ],
+   "as": 0.656,
+   "asPerLevel": 2.5,
+   "ms": 335
+  },
+  "range": 200,
+  "resource": "Mana",
+  "apiname": "Irelia",
+  "abilities": [
+   "Bladesurge",
+   "Defiant Dance",
+   "Equilibrium Strike",
+   "Flawless Duet",
+   "Hiten Style",
+   "Ionian Fervor",
+   "Transcendent Blades",
+   "Vanguard's Edge"
+  ],
+  "names": {
+   "passive": {
+    "en": "Ionian Fervor",
+    "fr": "Ferveur ionienne"
+   },
+   "spells": [
+    {
+     "en": "Bladesurge",
+     "fr": "Rush fatal"
+    },
+    {
+     "en": "Defiant Dance",
+     "fr": "Danse de défi"
+    },
+    {
+     "en": "Flawless Duet",
+     "fr": "Duo parfait"
+    },
+    {
+     "en": "Vanguard's Edge",
+     "fr": "Pointe de l'avant-garde"
+    }
+   ]
+  }
+ },
+ "Ivern": {
+  "base": {
+   "hp": [
+    630,
+    99
+   ],
+   "mana": [
+    450,
+    60
+   ],
+   "ad": [
+    50,
+    3
+   ],
+   "ar": [
+    27,
+    4.7
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.644,
+   "asPerLevel": 3.4,
+   "ms": 330
+  },
+  "range": 475,
+  "resource": "Mana",
+  "apiname": "Ivern",
+  "abilities": [
+   "Brushmaker",
+   "Daisy!",
+   "Friend of the Forest",
+   "Rootcaller",
+   "Triggerseed"
+  ],
+  "names": {
+   "passive": {
+    "en": "Friend of the Forest",
+    "fr": "Ami de la forêt"
+   },
+   "spells": [
+    {
+     "en": "Rootcaller",
+     "fr": "Enracinement"
+    },
+    {
+     "en": "Brushmaker",
+     "fr": "Main verte"
+    },
+    {
+     "en": "Triggerseed",
+     "fr": "Graine à retardement"
+    },
+    {
+     "en": "Daisy!",
+     "fr": "Marguerite !"
+    }
+   ]
+  }
+ },
+ "Janna": {
+  "base": {
+   "hp": [
+    570,
+    90
+   ],
+   "mana": [
+    360,
+    50
+   ],
+   "ad": [
+    47,
+    2.5
+   ],
+   "ar": [
+    28,
+    4.5
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.625,
+   "asPerLevel": 3,
+   "ms": 325
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Janna",
+  "abilities": [
+   "Eye of the Storm",
+   "Howling Gale",
+   "Monsoon",
+   "Tailwind",
+   "Zephyr"
+  ],
+  "names": {
+   "passive": {
+    "en": "Tailwind",
+    "fr": "Zéphyr"
+   },
+   "spells": [
+    {
+     "en": "Howling Gale",
+     "fr": "Vent hurlant"
+    },
+    {
+     "en": "Zephyr",
+     "fr": "Alizé"
+    },
+    {
+     "en": "Eye Of The Storm",
+     "fr": "Œil du cyclone"
+    },
+    {
+     "en": "Monsoon",
+     "fr": "Mousson"
+    }
+   ]
+  }
+ },
+ "Jarvan IV": {
+  "base": {
+   "hp": [
+    640,
+    104
+   ],
+   "mana": [
+    300,
+    55
+   ],
+   "ad": [
+    64,
+    3
+   ],
+   "ar": [
+    36,
+    4.6
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.658,
+   "asPerLevel": 2.5,
+   "ms": 340
+  },
+  "range": 175,
+  "resource": "Mana",
+  "apiname": "JarvanIV",
+  "abilities": [
+   "Cataclysm",
+   "Demacian Standard",
+   "Dragon Strike",
+   "Golden Aegis",
+   "Martial Cadence"
+  ],
+  "names": {
+   "passive": {
+    "en": "Martial Cadence",
+    "fr": "Cadence martiale"
+   },
+   "spells": [
+    {
+     "en": "Dragon Strike",
+     "fr": "Frappe du dragon"
+    },
+    {
+     "en": "Golden Aegis",
+     "fr": "Égide dorée"
+    },
+    {
+     "en": "Demacian Standard",
+     "fr": "Étendard demacien"
+    },
+    {
+     "en": "Cataclysm",
+     "fr": "Cataclysme"
+    }
+   ]
+  }
+ },
+ "Jax": {
+  "base": {
+   "hp": [
+    650,
+    103
+   ],
+   "mana": [
+    339,
+    52
+   ],
+   "ad": [
+    68,
+    4.25
+   ],
+   "ar": [
+    36,
+    4.2
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.638,
+   "asPerLevel": 3.4,
+   "ms": 350
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Jax",
+  "abilities": [
+   "Counter Strike",
+   "Empower",
+   "Grandmaster's Might",
+   "Grandmaster-at-Arms",
+   "Leap Strike",
+   "Relentless Assault"
+  ],
+  "names": {
+   "passive": {
+    "en": "Relentless Assault",
+    "fr": "Acharnement"
+   },
+   "spells": [
+    {
+     "en": "Leap Strike",
+     "fr": "Frappe bondissante"
+    },
+    {
+     "en": "Empower",
+     "fr": "Élargissement"
+    },
+    {
+     "en": "Counter Strike",
+     "fr": "Contre-attaque"
+    },
+    {
+     "en": "Grandmaster-at-Arms",
+     "fr": "Maître d'armes"
+    }
+   ]
+  }
+ },
+ "Jayce": {
+  "base": {
+   "hp": [
+    590,
+    109
+   ],
+   "mana": [
+    375,
+    45
+   ],
+   "ad": [
+    59,
+    4.25
+   ],
+   "ar": [
+    22,
+    5
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.658,
+   "asPerLevel": 3,
+   "ms": 335
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Jayce",
+  "abilities": [
+   "Acceleration Gate",
+   "Hextech Capacitor",
+   "Hextech Capacitor 2",
+   "Hyper Charge",
+   "Lightning Field",
+   "Shock Blast",
+   "Thundering Blow",
+   "To the Skies!",
+   "Transform Mercury Cannon",
+   "Transform Mercury Hammer"
+  ],
+  "names": {
+   "passive": {
+    "en": "Hextech Capacitor",
+    "fr": "Capaciteur Hextech"
+   },
+   "spells": [
+    {
+     "en": "To the Skies! / Shock Blast",
+     "fr": "Direction le ciel ! / Orbe électrique"
+    },
+    {
+     "en": "Lightning Field / Hyper Charge",
+     "fr": "Champ électrique / Hypercharge"
+    },
+    {
+     "en": "Thundering Blow / Acceleration Gate",
+     "fr": "Coup foudroyant / Portail d'accélération"
+    },
+    {
+     "en": "Mercury Cannon / Mercury Hammer",
+     "fr": "Canon Mercury / Marteau Mercury"
+    }
+   ]
+  }
+ },
+ "Jhin": {
+  "base": {
+   "hp": [
+    655,
+    107
+   ],
+   "mana": [
+    300,
+    50
+   ],
+   "ad": [
+    61,
+    4.4
+   ],
+   "ar": [
+    24,
+    4.7
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.625,
+   "asPerLevel": 3,
+   "ms": 330
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Jhin",
+  "abilities": [
+   "Basic Attack",
+   "Captive Audience",
+   "Curtain Call",
+   "Dancing Grenade",
+   "Deadly Flourish",
+   "Whisper"
+  ],
+  "names": {
+   "passive": {
+    "en": "Whisper",
+    "fr": "Murmure"
+   },
+   "spells": [
+    {
+     "en": "Dancing Grenade",
+     "fr": "Grenade dansante"
+    },
+    {
+     "en": "Deadly Flourish",
+     "fr": "Floraison mortelle"
+    },
+    {
+     "en": "Captive Audience",
+     "fr": "Public captif"
+    },
+    {
+     "en": "Curtain Call",
+     "fr": "Rappel de rideau"
+    }
+   ]
+  }
+ },
+ "Jinx": {
+  "base": {
+   "hp": [
+    630,
+    105
+   ],
+   "mana": [
+    260,
+    50
+   ],
+   "ad": [
+    59,
+    3.25
+   ],
+   "ar": [
+    26,
+    4.2
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.625,
+   "asPerLevel": 1,
+   "ms": 325
+  },
+  "range": 525,
+  "resource": "Mana",
+  "apiname": "Jinx",
+  "abilities": [
+   "Flame Chompers!",
+   "Get Excited!",
+   "Super Mega Death Rocket!",
+   "Switcheroo!",
+   "Zap!"
+  ],
+  "names": {
+   "passive": {
+    "en": "Get Excited!",
+    "fr": "Enthousiasme !"
+   },
+   "spells": [
+    {
+     "en": "Switcheroo!",
+     "fr": "Flip flap !"
+    },
+    {
+     "en": "Zap!",
+     "fr": "Zap !"
+    },
+    {
+     "en": "Flame Chompers!",
+     "fr": "Pyromâcheurs !"
+    },
+    {
+     "en": "Super Mega Death Rocket!",
+     "fr": "Super roquette de la mort !"
+    }
+   ]
+  }
+ },
+ "K'Sante": {
+  "base": {
+   "hp": [
+    625,
+    120
+   ],
+   "mana": [
+    320,
+    60
+   ],
+   "ad": [
+    64,
+    3.5
+   ],
+   "ar": [
+    36,
+    5.2
+   ],
+   "mr": [
+    30,
+    2.1
+   ],
+   "as": 0.688,
+   "asPerLevel": 2.5,
+   "ms": 330
+  },
+  "range": 150,
+  "resource": "Mana",
+  "apiname": "KSante",
+  "abilities": [
+   "All Out",
+   "Dauntless Instinct",
+   "Footwork",
+   "Ntofo Strikes",
+   "Path Maker"
+  ],
+  "names": {
+   "passive": {
+    "en": "Dauntless Instinct",
+    "fr": "Instinct intrépide"
+   },
+   "spells": [
+    {
+     "en": "Ntofo Strikes",
+     "fr": "Coups de ntofo"
+    },
+    {
+     "en": "Path Maker",
+     "fr": "Pour Nazumah !"
+    },
+    {
+     "en": "Footwork",
+     "fr": "Jeu de jambes"
+    },
+    {
+     "en": "All Out",
+     "fr": "Grand jeu"
+    }
+   ]
+  }
+ },
+ "Kai'Sa": {
+  "base": {
+   "hp": [
+    640,
+    102
+   ],
+   "mana": [
+    345,
+    40
+   ],
+   "ad": [
+    59,
+    2.6
+   ],
+   "ar": [
+    25,
+    4.2
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.644,
+   "asPerLevel": 1.8,
+   "ms": 335
+  },
+  "range": 525,
+  "resource": "Mana",
+  "apiname": "Kaisa",
+  "abilities": [
+   "Icathian Rain",
+   "Killer Instinct",
+   "Second Skin",
+   "Supercharge",
+   "Void Seeker"
+  ],
+  "names": {
+   "passive": {
+    "en": "Second Skin",
+    "fr": "Seconde peau"
+   },
+   "spells": [
+    {
+     "en": "Icathian Rain",
+     "fr": "Pluie d'Icathia"
+    },
+    {
+     "en": "Void Seeker",
+     "fr": "Rayon du Néant"
+    },
+    {
+     "en": "Supercharge",
+     "fr": "Surpresseur"
+    },
+    {
+     "en": "Killer Instinct",
+     "fr": "Instinct meurtrier"
+    }
+   ]
+  }
+ },
+ "Kalista": {
+  "base": {
+   "hp": [
+    560,
+    114
+   ],
+   "mana": [
+    300,
+    45
+   ],
+   "ad": [
+    57,
+    4.75
+   ],
+   "ar": [
+    24,
+    5.2
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.694,
+   "asPerLevel": 4.5,
+   "ms": 330
+  },
+  "range": 525,
+  "resource": "Mana",
+  "apiname": "Kalista",
+  "abilities": [
+   "Basic Attack",
+   "Fate's Call",
+   "Martial Poise",
+   "Pierce",
+   "Rend",
+   "Sentinel"
+  ],
+  "names": {
+   "passive": {
+    "en": "Martial Poise",
+    "fr": "Maintien martial"
+   },
+   "spells": [
+    {
+     "en": "Pierce",
+     "fr": "Perforation"
+    },
+    {
+     "en": "Sentinel",
+     "fr": "Sentinelle"
+    },
+    {
+     "en": "Rend",
+     "fr": "Extirpation"
+    },
+    {
+     "en": "Fate's Call",
+     "fr": "Appel du destin"
+    }
+   ]
+  }
+ },
+ "Karma": {
+  "base": {
+   "hp": [
+    630,
+    109
+   ],
+   "mana": [
+    374,
+    40
+   ],
+   "ad": [
+    49,
+    3
+   ],
+   "ar": [
+    28,
+    5
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.625,
+   "asPerLevel": 2.3,
+   "ms": 335
+  },
+  "range": 525,
+  "resource": "Mana",
+  "apiname": "Karma",
+  "abilities": [
+   "Defiance",
+   "Focused Resolve",
+   "Gathering Fire",
+   "Inner Flame",
+   "Inspire",
+   "Mantra",
+   "Renewal",
+   "Soulflare"
+  ],
+  "names": {
+   "passive": {
+    "en": "Gathering Fire",
+    "fr": "Concentration ardente"
+   },
+   "spells": [
+    {
+     "en": "Inner Flame",
+     "fr": "Flamme intérieure"
+    },
+    {
+     "en": "Focused Resolve",
+     "fr": "Volonté concentrée"
+    },
+    {
+     "en": "Inspire",
+     "fr": "Exaltation"
+    },
+    {
+     "en": "Mantra",
+     "fr": "Mantra"
+    }
+   ]
+  }
+ },
+ "Karthus": {
+  "base": {
+   "hp": [
+    620,
+    110
+   ],
+   "mana": [
+    467,
+    31
+   ],
+   "ad": [
+    46,
+    3.25
+   ],
+   "ar": [
+    21,
+    4.7
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.625,
+   "asPerLevel": 2.11,
+   "ms": 335
+  },
+  "range": 450,
+  "resource": "Mana",
+  "apiname": "Karthus",
+  "abilities": [
+   "Death Defied",
+   "Defile",
+   "Lay Waste",
+   "Requiem",
+   "Wall of Pain"
+  ],
+  "names": {
+   "passive": {
+    "en": "Death Defied",
+    "fr": "Déni de mort"
+   },
+   "spells": [
+    {
+     "en": "Lay Waste",
+     "fr": "Dévastation"
+    },
+    {
+     "en": "Wall of Pain",
+     "fr": "Mur de douleur"
+    },
+    {
+     "en": "Defile",
+     "fr": "Souillure"
+    },
+    {
+     "en": "Requiem",
+     "fr": "Requiem"
+    }
+   ]
+  }
+ },
+ "Kassadin": {
+  "base": {
+   "hp": [
+    646,
+    113
+   ],
+   "mana": [
+    400,
+    87
+   ],
+   "ad": [
+    59,
+    3.9
+   ],
+   "ar": [
+    21,
+    4
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.64,
+   "asPerLevel": 3.7,
+   "ms": 335
+  },
+  "range": 150,
+  "resource": "Mana",
+  "apiname": "Kassadin",
+  "abilities": [
+   "Force Pulse",
+   "Nether Blade",
+   "Null Sphere",
+   "Riftwalk",
+   "Void Stone"
+  ],
+  "names": {
+   "passive": {
+    "en": "Void Stone",
+    "fr": "Pierre du Néant"
+   },
+   "spells": [
+    {
+     "en": "Null Sphere",
+     "fr": "Orbe du Néant"
+    },
+    {
+     "en": "Nether Blade",
+     "fr": "Lame éthérée"
+    },
+    {
+     "en": "Force Pulse",
+     "fr": "Pulsation"
+    },
+    {
+     "en": "Riftwalk",
+     "fr": "Fissure"
+    }
+   ]
+  }
+ },
+ "Katarina": {
+  "base": {
+   "hp": [
+    672,
+    108
+   ],
+   "mana": [
+    0,
+    0
+   ],
+   "ad": [
+    58,
+    3.2
+   ],
+   "ar": [
+    32,
+    4.7
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.658,
+   "asPerLevel": 2.74,
+   "ms": 335
+  },
+  "range": 125,
+  "resource": "None",
+  "apiname": "Katarina",
+  "abilities": [
+   "Bouncing Blade",
+   "Death Lotus",
+   "Preparation",
+   "Shunpo",
+   "Voracity"
+  ],
+  "names": {
+   "passive": {
+    "en": "Voracity",
+    "fr": "Voracité"
+   },
+   "spells": [
+    {
+     "en": "Bouncing Blade",
+     "fr": "Lame rebondissante"
+    },
+    {
+     "en": "Preparation",
+     "fr": "Préparation"
+    },
+    {
+     "en": "Shunpo",
+     "fr": "Shunpo"
+    },
+    {
+     "en": "Death Lotus",
+     "fr": "Lotus mortel"
+    }
+   ]
+  }
+ },
+ "Kayle": {
+  "base": {
+   "hp": [
+    670,
+    92
+   ],
+   "mana": [
+    330,
+    50
+   ],
+   "ad": [
+    50,
+    2.5
+   ],
+   "ar": [
+    26,
+    4.2
+   ],
+   "mr": [
+    22,
+    1.3
+   ],
+   "as": 0.625,
+   "asPerLevel": 1.5,
+   "ms": 335
+  },
+  "range": 175,
+  "resource": "Mana",
+  "apiname": "Kayle",
+  "abilities": [
+   "Celestial Blessing",
+   "Divine Ascent",
+   "Divine Blessing",
+   "Divine Judgment",
+   "Holy Fervor",
+   "Intervention",
+   "Radiant Blast",
+   "Reckoning",
+   "Righteous Fury",
+   "Starfire Spellblade"
+  ],
+  "names": {
+   "passive": {
+    "en": "Divine Ascent",
+    "fr": "Ascension divine"
+   },
+   "spells": [
+    {
+     "en": "Radiant Blast",
+     "fr": "Incandescence"
+    },
+    {
+     "en": "Celestial Blessing",
+     "fr": "Bénédiction céleste"
+    },
+    {
+     "en": "Starfire Spellblade",
+     "fr": "Lame de feu stellaire"
+    },
+    {
+     "en": "Divine Judgment",
+     "fr": "Jugement divin"
+    }
+   ]
+  }
+ },
+ "Kayn": {
+  "base": {
+   "hp": [
+    655,
+    103
+   ],
+   "mana": [
+    410,
+    50
+   ],
+   "ad": [
+    68,
+    3.3
+   ],
+   "ar": [
+    38,
+    4.5
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.669,
+   "asPerLevel": 2.7,
+   "ms": 340
+  },
+  "range": 175,
+  "resource": "Mana",
+  "apiname": "Kayn",
+  "abilities": [
+   "Blade's Reach",
+   "Reaping Slash",
+   "Shadow Step",
+   "The Darkin Scythe",
+   "Umbral Trespass"
+  ],
+  "names": {
+   "passive": {
+    "en": "The Darkin Scythe",
+    "fr": "Faux des Darkin"
+   },
+   "spells": [
+    {
+     "en": "Reaping Slash",
+     "fr": "Moisson cruelle"
+    },
+    {
+     "en": "Blade's Reach",
+     "fr": "Entaille sombre"
+    },
+    {
+     "en": "Shadow Step",
+     "fr": "Passe-muraille"
+    },
+    {
+     "en": "Umbral Trespass",
+     "fr": "Intrusion obscure"
+    }
+   ]
+  }
+ },
+ "Kennen": {
+  "base": {
+   "hp": [
+    580,
+    98
+   ],
+   "mana": [
+    200,
+    0
+   ],
+   "ad": [
+    48,
+    3.75
+   ],
+   "ar": [
+    29,
+    4.95
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.625,
+   "asPerLevel": 3.4,
+   "ms": 335
+  },
+  "range": 550,
+  "resource": "Energy",
+  "apiname": "Kennen",
+  "abilities": [
+   "Electrical Surge",
+   "Lightning Rush",
+   "Mark of the Storm",
+   "Slicing Maelstrom",
+   "Thundering Shuriken"
+  ],
+  "names": {
+   "passive": {
+    "en": "Mark of the Storm",
+    "fr": "Marque de tempête"
+   },
+   "spells": [
+    {
+     "en": "Thundering Shuriken",
+     "fr": "Shuriken foudroyant"
+    },
+    {
+     "en": "Electrical Surge",
+     "fr": "Surtension"
+    },
+    {
+     "en": "Lightning Rush",
+     "fr": "Rush foudroyant"
+    },
+    {
+     "en": "Slicing Maelstrom",
+     "fr": "Maelström"
+    }
+   ]
+  }
+ },
+ "Kha'Zix": {
+  "base": {
+   "hp": [
+    643,
+    99
+   ],
+   "mana": [
+    327,
+    40
+   ],
+   "ad": [
+    60,
+    3.1
+   ],
+   "ar": [
+    32,
+    4.2
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.668,
+   "asPerLevel": 2.7,
+   "ms": 345
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Khazix",
+  "abilities": [
+   "Evolved Adaptive Cloaking",
+   "Evolved Reaper Claws",
+   "Evolved Spike Racks",
+   "Evolved Wings",
+   "Leap",
+   "Taste Their Fear",
+   "Unseen Threat",
+   "Void Assault",
+   "Void Spike"
+  ],
+  "names": {
+   "passive": {
+    "en": "Unseen Threat",
+    "fr": "Menace invisible"
+   },
+   "spells": [
+    {
+     "en": "Taste Their Fear",
+     "fr": "Goût de la peur"
+    },
+    {
+     "en": "Void Spike",
+     "fr": "Pique du Néant"
+    },
+    {
+     "en": "Leap",
+     "fr": "Bond"
+    },
+    {
+     "en": "Void Assault",
+     "fr": "Assaut du Néant"
+    }
+   ]
+  }
+ },
+ "Kindred": {
+  "base": {
+   "hp": [
+    595,
+    104
+   ],
+   "mana": [
+    300,
+    35
+   ],
+   "ad": [
+    65,
+    3.25
+   ],
+   "ar": [
+    29,
+    4.7
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.625,
+   "asPerLevel": 3.5,
+   "ms": 325
+  },
+  "range": 500,
+  "resource": "Mana",
+  "apiname": "Kindred",
+  "abilities": [
+   "Dance of Arrows",
+   "Lamb's Respite",
+   "Mark of the Kindred",
+   "Mounting Dread",
+   "Wolf's Frenzy"
+  ],
+  "names": {
+   "passive": {
+    "en": "Mark of the Kindred",
+    "fr": "Marque de Kindred"
+   },
+   "spells": [
+    {
+     "en": "Dance of Arrows",
+     "fr": "Danse des flèches"
+    },
+    {
+     "en": "Wolf's Frenzy",
+     "fr": "Frénésie de Loup"
+    },
+    {
+     "en": "Mounting Dread",
+     "fr": "Terreur mortelle"
+    },
+    {
+     "en": "Lamb's Respite",
+     "fr": "Repos d'Agneau"
+    }
+   ]
+  }
+ },
+ "Kled": {
+  "base": {
+   "hp": [
+    410,
+    84
+   ],
+   "mana": [
+    100,
+    0
+   ],
+   "ad": [
+    65,
+    3.5
+   ],
+   "ar": [
+    35,
+    5.2
+   ],
+   "mr": [
+    28,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 3.5,
+   "ms": 305
+  },
+  "range": 250,
+  "resource": "Courage",
+  "apiname": "Kled",
+  "abilities": [
+   "Bear Trap on a Rope",
+   "Chaaaaaaaarge!!!",
+   "Dismounted Chaaaaaaaarge!!!",
+   "Dismounted Jousting",
+   "Dismounted Skaarl the Cowardly Lizard",
+   "Jousting",
+   "Pocket Pistol",
+   "Skaarl the Cowardly Lizard",
+   "Violent Tendencies"
+  ],
+  "names": {
+   "passive": {
+    "en": "Skaarl, the Cowardly Lizard",
+    "fr": "Skaarl, le Lézard froussard"
+   },
+   "spells": [
+    {
+     "en": "Bear Trap on a Rope",
+     "fr": "Piège à ours en laisse"
+    },
+    {
+     "en": "Violent Tendencies",
+     "fr": "Penchant pour la violence"
+    },
+    {
+     "en": "Jousting",
+     "fr": "Joute"
+    },
+    {
+     "en": "Chaaaaaaaarge!!!",
+     "fr": "Chaaaaaaaargez !!!"
+    }
+   ]
+  }
+ },
+ "Kled & Skaarl": {
+  "base": {
+   "hp": [
+    810,
+    84
+   ],
+   "mana": [
+    100,
+    0
+   ],
+   "ad": [
+    65,
+    3.5
+   ],
+   "ar": [
+    35,
+    5.2
+   ],
+   "mr": [
+    28,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 3.5,
+   "ms": 345
+  },
+  "range": 125,
+  "resource": "Courage",
+  "apiname": "Kled",
+  "abilities": [],
+  "names": {
+   "passive": {
+    "en": "Skaarl, the Cowardly Lizard",
+    "fr": "Skaarl, le Lézard froussard"
+   },
+   "spells": [
+    {
+     "en": "Bear Trap on a Rope",
+     "fr": "Piège à ours en laisse"
+    },
+    {
+     "en": "Violent Tendencies",
+     "fr": "Penchant pour la violence"
+    },
+    {
+     "en": "Jousting",
+     "fr": "Joute"
+    },
+    {
+     "en": "Chaaaaaaaarge!!!",
+     "fr": "Chaaaaaaaargez !!!"
+    }
+   ]
+  }
+ },
+ "Kog'Maw": {
+  "base": {
+   "hp": [
+    635,
+    99
+   ],
+   "mana": [
+    325,
+    40
+   ],
+   "ad": [
+    61,
+    3.1
+   ],
+   "ar": [
+    24,
+    4.45
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.665,
+   "asPerLevel": 2.65,
+   "ms": 330
+  },
+  "range": 500,
+  "resource": "Mana",
+  "apiname": "KogMaw",
+  "abilities": [
+   "Bio-Arcane Barrage",
+   "Caustic Spittle",
+   "Icathian Surprise",
+   "Living Artillery",
+   "Void Ooze"
+  ],
+  "names": {
+   "passive": {
+    "en": "Icathian Surprise",
+    "fr": "Surprise d'Icathia"
+   },
+   "spells": [
+    {
+     "en": "Caustic Spittle",
+     "fr": "Bave caustique"
+    },
+    {
+     "en": "Bio-Arcane Barrage",
+     "fr": "Barrage bio-arcanique"
+    },
+    {
+     "en": "Void Ooze",
+     "fr": "Limon du Néant"
+    },
+    {
+     "en": "Living Artillery",
+     "fr": "Artillerie vivante"
+    }
+   ]
+  }
+ },
+ "LeBlanc": {
+  "base": {
+   "hp": [
+    598,
+    108
+   ],
+   "mana": [
+    400,
+    25
+   ],
+   "ad": [
+    55,
+    2.2
+   ],
+   "ar": [
+    22,
+    4.2
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.658,
+   "asPerLevel": 1.5,
+   "ms": 340
+  },
+  "range": 525,
+  "resource": "Mana",
+  "apiname": "Leblanc",
+  "abilities": [
+   "Distortion",
+   "Ethereal Chains",
+   "Mimic",
+   "Mimic Shatter Orb",
+   "Mirror Image",
+   "Shadow of the Rose",
+   "Shatter Orb",
+   "Sigil of Malice"
+  ],
+  "names": {
+   "passive": {
+    "en": "Mirror Image",
+    "fr": "Image miroir"
+   },
+   "spells": [
+    {
+     "en": "Sigil of Malice",
+     "fr": "Sceau de malveillance"
+    },
+    {
+     "en": "Distortion",
+     "fr": "Distorsion"
+    },
+    {
+     "en": "Ethereal Chains",
+     "fr": "Chaînes éthérées"
+    },
+    {
+     "en": "Mimic",
+     "fr": "Imitation"
+    }
+   ]
+  }
+ },
+ "Lee Sin": {
+  "base": {
+   "hp": [
+    645,
+    108
+   ],
+   "mana": [
+    200,
+    0
+   ],
+   "ad": [
+    66,
+    3.4
+   ],
+   "ar": [
+    36,
+    4.5
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.651,
+   "asPerLevel": 3,
+   "ms": 345
+  },
+  "range": 125,
+  "resource": "Energy",
+  "apiname": "LeeSin",
+  "abilities": [
+   "Cripple",
+   "Dragon's Rage",
+   "Flurry",
+   "Iron Will",
+   "Resonating Strike",
+   "Safeguard",
+   "Sonic Wave",
+   "Tempest"
+  ],
+  "names": {
+   "passive": {
+    "en": "Flurry",
+    "fr": "Rafale"
+   },
+   "spells": [
+    {
+     "en": "Sonic Wave / Resonating Strike",
+     "fr": "Onde sonore/Coup résonant"
+    },
+    {
+     "en": "Safeguard / Iron Will",
+     "fr": "Rempart/Force d'âme"
+    },
+    {
+     "en": "Tempest / Cripple",
+     "fr": "Trombe/Fracture"
+    },
+    {
+     "en": "Dragon's Rage",
+     "fr": "Rage du dragon"
+    }
+   ]
+  }
+ },
+ "Leona": {
+  "base": {
+   "hp": [
+    646,
+    101
+   ],
+   "mana": [
+    302,
+    40
+   ],
+   "ad": [
+    60,
+    3
+   ],
+   "ar": [
+    43,
+    4.8
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 2.9,
+   "ms": 335
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Leona",
+  "abilities": [
+   "Eclipse",
+   "Shield of Daybreak",
+   "Solar Flare",
+   "Sunlight",
+   "Zenith Blade"
+  ],
+  "names": {
+   "passive": {
+    "en": "Sunlight",
+    "fr": "Rayon de soleil"
+   },
+   "spells": [
+    {
+     "en": "Shield of Daybreak",
+     "fr": "Bouclier de l'aube"
+    },
+    {
+     "en": "Eclipse",
+     "fr": "Éclipse"
+    },
+    {
+     "en": "Zenith Blade",
+     "fr": "Lame du zénith"
+    },
+    {
+     "en": "Solar Flare",
+     "fr": "Éruption solaire"
+    }
+   ]
+  }
+ },
+ "Lillia": {
+  "base": {
+   "hp": [
+    605,
+    105
+   ],
+   "mana": [
+    410,
+    50
+   ],
+   "ad": [
+    61,
+    3.1
+   ],
+   "ar": [
+    24,
+    4.5
+   ],
+   "mr": [
+    32,
+    1.55
+   ],
+   "as": 0.625,
+   "asPerLevel": 2.7,
+   "ms": 330
+  },
+  "range": 325,
+  "resource": "Mana",
+  "apiname": "Lillia",
+  "abilities": [
+   "Blooming Blows",
+   "Dream-Laden Bough",
+   "Lilting Lullaby",
+   "Swirlseed",
+   "Watch Out! Eep!"
+  ],
+  "names": {
+   "passive": {
+    "en": "Dream-Laden Bough",
+    "fr": "Bâton chargé de rêves"
+   },
+   "spells": [
+    {
+     "en": "Blooming Blows",
+     "fr": "Frappe fleurie"
+    },
+    {
+     "en": "Watch Out! Eep!",
+     "fr": "Attention, désolée !"
+    },
+    {
+     "en": "Swirlseed",
+     "fr": "Graine tournoyante"
+    },
+    {
+     "en": "Lilting Lullaby",
+     "fr": "Douce berceuse"
+    }
+   ]
+  }
+ },
+ "Lissandra": {
+  "base": {
+   "hp": [
+    620,
+    110
+   ],
+   "mana": [
+    475,
+    30
+   ],
+   "ad": [
+    55,
+    2.7
+   ],
+   "ar": [
+    22,
+    4.2
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.656,
+   "asPerLevel": 1.5,
+   "ms": 325
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Lissandra",
+  "abilities": [
+   "Frozen Tomb",
+   "Glacial Path",
+   "Ice Shard",
+   "Iceborn",
+   "Iceborn Subjugation",
+   "Ring of Frost"
+  ],
+  "names": {
+   "passive": {
+    "en": "Iceborn Subjugation",
+    "fr": "Emprise de la Sublimée"
+   },
+   "spells": [
+    {
+     "en": "Ice Shard",
+     "fr": "Éclat de glace"
+    },
+    {
+     "en": "Ring of Frost",
+     "fr": "Cercle de givre"
+    },
+    {
+     "en": "Glacial Path",
+     "fr": "Chemin glacial"
+    },
+    {
+     "en": "Frozen Tomb",
+     "fr": "Tombeau polaire"
+    }
+   ]
+  }
+ },
+ "Locke": {
+  "base": {
+   "hp": [
+    620,
+    109
+   ],
+   "mana": [
+    280,
+    70
+   ],
+   "ad": [
+    58,
+    3
+   ],
+   "ar": [
+    32,
+    4.2
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.688,
+   "asPerLevel": 3.3,
+   "ms": 340
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Locke",
+  "abilities": [
+   "Ashen Pursuit",
+   "Purgatory",
+   "Ritual Nails",
+   "Silver Stake",
+   "Soul Ignition"
+  ],
+  "names": {
+   "passive": {
+    "en": "Silver Stake",
+    "fr": "Pieu argenté"
+   },
+   "spells": [
+    {
+     "en": "Ritual Nails",
+     "fr": "Clous rituels"
+    },
+    {
+     "en": "Soul Ignition",
+     "fr": "Brûlure d'âme"
+    },
+    {
+     "en": "Ashen Pursuit",
+     "fr": "Traque cendrée"
+    },
+    {
+     "en": "Purgatory",
+     "fr": "Purgatoire"
+    }
+   ]
+  }
+ },
+ "Lucian": {
+  "base": {
+   "hp": [
+    641,
+    100
+   ],
+   "mana": [
+    320,
+    43
+   ],
+   "ad": [
+    60,
+    2.9
+   ],
+   "ar": [
+    28,
+    4.2
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.638,
+   "asPerLevel": 2.5,
+   "ms": 335
+  },
+  "range": 500,
+  "resource": "Mana",
+  "apiname": "Lucian",
+  "abilities": [
+   "Ardent Blaze",
+   "Lightslinger",
+   "Piercing Light",
+   "Relentless Pursuit",
+   "The Culling"
+  ],
+  "names": {
+   "passive": {
+    "en": "Lightslinger",
+    "fr": "Pistolero"
+   },
+   "spells": [
+    {
+     "en": "Piercing Light",
+     "fr": "Lumière perforante"
+    },
+    {
+     "en": "Ardent Blaze",
+     "fr": "Flamboiement"
+    },
+    {
+     "en": "Relentless Pursuit",
+     "fr": "Poursuite inlassable"
+    },
+    {
+     "en": "The Culling",
+     "fr": "Déluge de balles"
+    }
+   ]
+  }
+ },
+ "Lulu": {
+  "base": {
+   "hp": [
+    565,
+    92
+   ],
+   "mana": [
+    350,
+    55
+   ],
+   "ad": [
+    47,
+    2.6
+   ],
+   "ar": [
+    26,
+    4.6
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.625,
+   "asPerLevel": 2.25,
+   "ms": 330
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Lulu",
+  "abilities": [
+   "Glitterlance",
+   "Help, Pix!",
+   "Pix, Faerie Companion",
+   "Whimsy",
+   "Wild Growth"
+  ],
+  "names": {
+   "passive": {
+    "en": "Pix, Faerie Companion",
+    "fr": "Pix, le Compagnon féérique"
+   },
+   "spells": [
+    {
+     "en": "Glitterlance",
+     "fr": "Duo éclatant"
+    },
+    {
+     "en": "Whimsy",
+     "fr": "Fantaisie"
+    },
+    {
+     "en": "Help, Pix!",
+     "fr": "Pix à la rescousse !"
+    },
+    {
+     "en": "Wild Growth",
+     "fr": "Croissance prodigieuse"
+    }
+   ]
+  }
+ },
+ "Lux": {
+  "base": {
+   "hp": [
+    580,
+    99
+   ],
+   "mana": [
+    440,
+    23.5
+   ],
+   "ad": [
+    54,
+    3.3
+   ],
+   "ar": [
+    21,
+    5.2
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.669,
+   "asPerLevel": 3,
+   "ms": 330
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Lux",
+  "abilities": [
+   "Final Spark",
+   "Illumination",
+   "Light Binding",
+   "Lucent Singularity",
+   "Prismatic Barrier"
+  ],
+  "names": {
+   "passive": {
+    "en": "Illumination",
+    "fr": "Illumination"
+   },
+   "spells": [
+    {
+     "en": "Light Binding",
+     "fr": "Entrave de lumière"
+    },
+    {
+     "en": "Prismatic Barrier",
+     "fr": "Barrière prismatique"
+    },
+    {
+     "en": "Lucent Singularity",
+     "fr": "Anomalie radieuse"
+    },
+    {
+     "en": "Final Spark",
+     "fr": "Éclat final"
+    }
+   ]
+  }
+ },
+ "Malphite": {
+  "base": {
+   "hp": [
+    665,
+    104
+   ],
+   "mana": [
+    280,
+    60
+   ],
+   "ad": [
+    62,
+    4
+   ],
+   "ar": [
+    40,
+    4.95
+   ],
+   "mr": [
+    28,
+    2.05
+   ],
+   "as": 0.736,
+   "asPerLevel": 3.4,
+   "ms": 335
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Malphite",
+  "abilities": [
+   "Brutal Strikes",
+   "Granite Shield",
+   "Ground Slam",
+   "Seismic Shard",
+   "Thunderclap",
+   "Unstoppable Force"
+  ],
+  "names": {
+   "passive": {
+    "en": "Granite Shield",
+    "fr": "Bouclier de granit"
+   },
+   "spells": [
+    {
+     "en": "Seismic Shard",
+     "fr": "Éclat sismique"
+    },
+    {
+     "en": "Thunderclap",
+     "fr": "Coup de tonnerre"
+    },
+    {
+     "en": "Ground Slam",
+     "fr": "Choc au sol"
+    },
+    {
+     "en": "Unstoppable Force",
+     "fr": "Force indomptable"
+    }
+   ]
+  }
+ },
+ "Malzahar": {
+  "base": {
+   "hp": [
+    580,
+    101
+   ],
+   "mana": [
+    375,
+    28
+   ],
+   "ad": [
+    55,
+    3
+   ],
+   "ar": [
+    18,
+    4.7
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.625,
+   "asPerLevel": 1.5,
+   "ms": 335
+  },
+  "range": 500,
+  "resource": "Mana",
+  "apiname": "Malzahar",
+  "abilities": [
+   "Call of the Void",
+   "Malefic Visions",
+   "Nether Grasp",
+   "Void Shift",
+   "Void Swarm"
+  ],
+  "names": {
+   "passive": {
+    "en": "Void Shift",
+    "fr": "Plan du Néant"
+   },
+   "spells": [
+    {
+     "en": "Call of the Void",
+     "fr": "Appel du Néant"
+    },
+    {
+     "en": "Void Swarm",
+     "fr": "Nuée du Néant"
+    },
+    {
+     "en": "Malefic Visions",
+     "fr": "Visions maléfiques"
+    },
+    {
+     "en": "Nether Grasp",
+     "fr": "Poigne du Néant"
+    }
+   ]
+  }
+ },
+ "Maokai": {
+  "base": {
+   "hp": [
+    665,
+    109
+   ],
+   "mana": [
+    375,
+    43
+   ],
+   "ad": [
+    64,
+    3.3
+   ],
+   "ar": [
+    35,
+    5.2
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.8,
+   "asPerLevel": 2.125,
+   "ms": 335
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Maokai",
+  "abilities": [
+   "Bramble Smash",
+   "Nature's Grasp",
+   "Sap Magic",
+   "Sapling Toss",
+   "Twisted Advance"
+  ],
+  "names": {
+   "passive": {
+    "en": "Sap Magic",
+    "fr": "Sève magique"
+   },
+   "spells": [
+    {
+     "en": "Bramble Smash",
+     "fr": "Coup de ronces"
+    },
+    {
+     "en": "Twisted Advance",
+     "fr": "Croissance torturée"
+    },
+    {
+     "en": "Sapling Toss",
+     "fr": "Jet d'arbrisseau"
+    },
+    {
+     "en": "Nature's Grasp",
+     "fr": "Emprise de la nature"
+    }
+   ]
+  }
+ },
+ "Master Yi": {
+  "base": {
+   "hp": [
+    640,
+    105
+   ],
+   "mana": [
+    251,
+    42
+   ],
+   "ad": [
+    65,
+    2.5
+   ],
+   "ar": [
+    33,
+    5
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.679,
+   "asPerLevel": 2.5,
+   "ms": 355
+  },
+  "range": 175,
+  "resource": "Mana",
+  "apiname": "MasterYi",
+  "abilities": [
+   "Alpha Strike",
+   "Double Strike",
+   "Highlander",
+   "Meditate",
+   "Wuju Style"
+  ],
+  "names": {
+   "passive": {
+    "en": "Double Strike",
+    "fr": "Coup double"
+   },
+   "spells": [
+    {
+     "en": "Alpha Strike",
+     "fr": "Assaut éclair"
+    },
+    {
+     "en": "Meditate",
+     "fr": "Méditation"
+    },
+    {
+     "en": "Wuju Style",
+     "fr": "Style Wuju"
+    },
+    {
+     "en": "Highlander",
+     "fr": "Highlander"
+    }
+   ]
+  }
+ },
+ "Mel": {
+  "base": {
+   "hp": [
+    630,
+    99
+   ],
+   "mana": [
+    480,
+    28
+   ],
+   "ad": [
+    54,
+    3.3
+   ],
+   "ar": [
+    21,
+    5.2
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.625,
+   "asPerLevel": 2.5,
+   "ms": 330
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Mel",
+  "abilities": [
+   "Golden Eclipse",
+   "Radiant Volley",
+   "Rebuttal",
+   "Searing Brilliance",
+   "Solar Snare"
+  ],
+  "names": {
+   "passive": {
+    "en": "Searing Brilliance",
+    "fr": "Luminescence incandescente"
+   },
+   "spells": [
+    {
+     "en": "Radiant Volley",
+     "fr": "Salve radieuse"
+    },
+    {
+     "en": "Rebuttal",
+     "fr": "Réfutation"
+    },
+    {
+     "en": "Solar Snare",
+     "fr": "Piège solaire"
+    },
+    {
+     "en": "Golden Eclipse",
+     "fr": "Éclipse dorée"
+    }
+   ]
+  }
+ },
+ "Milio": {
+  "base": {
+   "hp": [
+    560,
+    88
+   ],
+   "mana": [
+    365,
+    43
+   ],
+   "ad": [
+    48,
+    3.2
+   ],
+   "ar": [
+    26,
+    4.6
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.625,
+   "asPerLevel": 3,
+   "ms": 330
+  },
+  "range": 525,
+  "resource": "Mana",
+  "apiname": "Milio",
+  "abilities": [
+   "Breath of Life",
+   "Cozy Campfire",
+   "Fired Up!",
+   "Ultra Mega Fire Kick",
+   "Warm Hugs"
+  ],
+  "names": {
+   "passive": {
+    "en": "Fired Up!",
+    "fr": "Tout feu tout flamme"
+   },
+   "spells": [
+    {
+     "en": "Ultra Mega Fire Kick",
+     "fr": "Ultra méga boule de feu"
+    },
+    {
+     "en": "Cozy Campfire",
+     "fr": "Feu de camp"
+    },
+    {
+     "en": "Warm Hugs",
+     "fr": "Chaud devant !"
+    },
+    {
+     "en": "Breath of Life",
+     "fr": "Flammes vitales"
+    }
+   ]
+  }
+ },
+ "Miss Fortune": {
+  "base": {
+   "hp": [
+    625,
+    100
+   ],
+   "mana": [
+    300,
+    40
+   ],
+   "ad": [
+    55,
+    2.4
+   ],
+   "ar": [
+    25,
+    4
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.656,
+   "asPerLevel": 3,
+   "ms": 325
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "MissFortune",
+  "abilities": [
+   "Bullet Time",
+   "Double Up",
+   "Love Tap",
+   "Make It Rain",
+   "Strut"
+  ],
+  "names": {
+   "passive": {
+    "en": "Love Tap",
+    "fr": "Cœur volage"
+   },
+   "spells": [
+    {
+     "en": "Double Up",
+     "fr": "Doublé"
+    },
+    {
+     "en": "Strut",
+     "fr": "Fanfaronne"
+    },
+    {
+     "en": "Make It Rain",
+     "fr": "Pluie de balles"
+    },
+    {
+     "en": "Bullet Time",
+     "fr": "Barrage de plomb"
+    }
+   ]
+  }
+ },
+ "Mordekaiser": {
+  "base": {
+   "hp": [
+    645,
+    104
+   ],
+   "mana": [
+    0,
+    0
+   ],
+   "ad": [
+    61,
+    4
+   ],
+   "ar": [
+    37,
+    4.2
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 1,
+   "ms": 335
+  },
+  "range": 175,
+  "resource": "Shield",
+  "apiname": "Mordekaiser",
+  "abilities": [
+   "Children of the Grave",
+   "Darkness Rise",
+   "Death's Grasp",
+   "Harvester of Sorrow",
+   "Indestructible",
+   "Iron Man",
+   "Mace of Spades",
+   "Obliterate",
+   "Realm of Death",
+   "Siphon of Destruction"
+  ],
+  "names": {
+   "passive": {
+    "en": "Darkness Rise",
+    "fr": "Vortex de ténèbres"
+   },
+   "spells": [
+    {
+     "en": "Obliterate",
+     "fr": "Oblitération"
+    },
+    {
+     "en": "Indestructible",
+     "fr": "Indestructible"
+    },
+    {
+     "en": "Death's Grasp",
+     "fr": "Emprise funeste"
+    },
+    {
+     "en": "Realm of Death",
+     "fr": "Royaume des morts"
+    }
+   ]
+  }
+ },
+ "Morgana": {
+  "base": {
+   "hp": [
+    630,
+    104
+   ],
+   "mana": [
+    340,
+    60
+   ],
+   "ad": [
+    56,
+    3.5
+   ],
+   "ar": [
+    25,
+    4.2
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.625,
+   "asPerLevel": 1.53,
+   "ms": 335
+  },
+  "range": 450,
+  "resource": "Mana",
+  "apiname": "Morgana",
+  "abilities": [
+   "Black Shield",
+   "Dark Binding",
+   "Soul Shackles",
+   "Soul Siphon",
+   "Tormented Shadow",
+   "Tormented Soil"
+  ],
+  "names": {
+   "passive": {
+    "en": "Soul Siphon",
+    "fr": "Siphon d'âme"
+   },
+   "spells": [
+    {
+     "en": "Dark Binding",
+     "fr": "Entrave sombre"
+    },
+    {
+     "en": "Tormented Shadow",
+     "fr": "Tourment ténébreux"
+    },
+    {
+     "en": "Black Shield",
+     "fr": "Bouclier noir"
+    },
+    {
+     "en": "Soul Shackles",
+     "fr": "Chaînes spirituelles"
+    }
+   ]
+  }
+ },
+ "Naafiri": {
+  "base": {
+   "hp": [
+    610,
+    105
+   ],
+   "mana": [
+    400,
+    55
+   ],
+   "ad": [
+    55,
+    2
+   ],
+   "ar": [
+    28,
+    4.2
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.663,
+   "asPerLevel": 2.1,
+   "ms": 340
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Naafiri",
+  "abilities": [
+   "Darkin Daggers",
+   "Eviscerate",
+   "Hounds' Pursuit",
+   "The Call of the Pack",
+   "We Are More"
+  ],
+  "names": {
+   "passive": {
+    "en": "We Are More",
+    "fr": "La meute s'agrandit"
+   },
+   "spells": [
+    {
+     "en": "Darkin Daggers",
+     "fr": "Dagues des Darkin"
+    },
+    {
+     "en": "The Call of the Pack",
+     "fr": "Appel de la meute"
+    },
+    {
+     "en": "Eviscerate",
+     "fr": "Éviscération"
+    },
+    {
+     "en": "Hounds' Pursuit",
+     "fr": "Hallali"
+    }
+   ]
+  }
+ },
+ "Nami": {
+  "base": {
+   "hp": [
+    560,
+    88
+   ],
+   "mana": [
+    365,
+    43
+   ],
+   "ad": [
+    54,
+    3.1
+   ],
+   "ar": [
+    29,
+    5.2
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.644,
+   "asPerLevel": 2.61,
+   "ms": 335
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Nami",
+  "abilities": [
+   "Aqua Prison",
+   "Ebb and Flow",
+   "Surging Tides",
+   "Tidal Wave",
+   "Tidecaller's Blessing"
+  ],
+  "names": {
+   "passive": {
+    "en": "Surging Tides",
+    "fr": "Déferlantes"
+   },
+   "spells": [
+    {
+     "en": "Aqua Prison",
+     "fr": "Prison aqueuse"
+    },
+    {
+     "en": "Ebb and Flow",
+     "fr": "Flux et reflux"
+    },
+    {
+     "en": "Tidecaller's Blessing",
+     "fr": "Bénédiction de l'Aquamancienne"
+    },
+    {
+     "en": "Tidal Wave",
+     "fr": "Raz-de-marée"
+    }
+   ]
+  }
+ },
+ "Nasus": {
+  "base": {
+   "hp": [
+    650,
+    104
+   ],
+   "mana": [
+    326,
+    62
+   ],
+   "ad": [
+    67,
+    4
+   ],
+   "ar": [
+    34,
+    4.7
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.638,
+   "asPerLevel": 3.48,
+   "ms": 350
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Nasus",
+  "abilities": [
+   "Fury of the Sands",
+   "Siphoning Strike",
+   "Soul Eater",
+   "Spirit Fire",
+   "Wither"
+  ],
+  "names": {
+   "passive": {
+    "en": "Soul Eater",
+    "fr": "Mangeur d'âmes"
+   },
+   "spells": [
+    {
+     "en": "Siphoning Strike",
+     "fr": "Buveuse d'âmes"
+    },
+    {
+     "en": "Wither",
+     "fr": "Flétrissement"
+    },
+    {
+     "en": "Spirit Fire",
+     "fr": "Esprit enflammé"
+    },
+    {
+     "en": "Fury of the Sands",
+     "fr": "Fureur des sables"
+    }
+   ]
+  }
+ },
+ "Nautilus": {
+  "base": {
+   "hp": [
+    646,
+    100
+   ],
+   "mana": [
+    400,
+    47
+   ],
+   "ad": [
+    58,
+    3.3
+   ],
+   "ar": [
+    39,
+    4.95
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.706,
+   "asPerLevel": 1,
+   "ms": 325
+  },
+  "range": 175,
+  "resource": "Mana",
+  "apiname": "Nautilus",
+  "abilities": [
+   "Depth Charge",
+   "Dredge Line",
+   "Riptide",
+   "Staggering Blow",
+   "Titan's Wrath"
+  ],
+  "names": {
+   "passive": {
+    "en": "Staggering Blow",
+    "fr": "Coup écrasant"
+   },
+   "spells": [
+    {
+     "en": "Dredge Line",
+     "fr": "Abordage"
+    },
+    {
+     "en": "Titan's Wrath",
+     "fr": "Colère du titan"
+    },
+    {
+     "en": "Riptide",
+     "fr": "Répliques"
+    },
+    {
+     "en": "Depth Charge",
+     "fr": "Grenade ASM"
+    }
+   ]
+  }
+ },
+ "Neeko": {
+  "base": {
+   "hp": [
+    610,
+    104
+   ],
+   "mana": [
+    450,
+    30
+   ],
+   "ad": [
+    48,
+    2.5
+   ],
+   "ar": [
+    21,
+    5.2
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.625,
+   "asPerLevel": 3.5,
+   "ms": 340
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Neeko",
+  "abilities": [
+   "Blooming Burst",
+   "Inherent Glamour",
+   "Pop Blossom",
+   "Shapesplitter",
+   "Tangle-Barbs"
+  ],
+  "names": {
+   "passive": {
+    "en": "Inherent Glamour",
+    "fr": "Mirage inné"
+   },
+   "spells": [
+    {
+     "en": "Blooming Burst",
+     "fr": "Explosion florale"
+    },
+    {
+     "en": "Shapesplitter",
+     "fr": "Métaclonage"
+    },
+    {
+     "en": "Tangle-Barbs",
+     "fr": "Spirale épineuse"
+    },
+    {
+     "en": "Pop Blossom",
+     "fr": "Floraison renversante"
+    }
+   ]
+  }
+ },
+ "Nidalee": {
+  "base": {
+   "hp": [
+    610,
+    109
+   ],
+   "mana": [
+    295,
+    45
+   ],
+   "ad": [
+    58,
+    3.5
+   ],
+   "ar": [
+    32,
+    5
+   ],
+   "mr": [
+    30,
+    1.45
+   ],
+   "as": 0.638,
+   "asPerLevel": 3.22,
+   "ms": 335
+  },
+  "range": 525,
+  "resource": "Mana",
+  "apiname": "Nidalee",
+  "abilities": [
+   "Aspect of the Cougar",
+   "Bushwhack",
+   "Javelin Toss",
+   "Pounce",
+   "Primal Surge",
+   "Prowl",
+   "Swipe",
+   "Takedown"
+  ],
+  "names": {
+   "passive": {
+    "en": "Prowl",
+    "fr": "Prédateur"
+   },
+   "spells": [
+    {
+     "en": "Javelin Toss / Takedown",
+     "fr": "Javelot / Mise à terre"
+    },
+    {
+     "en": "Bushwhack / Pounce",
+     "fr": "Guérilla / Bond"
+    },
+    {
+     "en": "Primal Surge / Swipe",
+     "fr": "Charge primale / Taillade"
+    },
+    {
+     "en": "Aspect Of The Cougar",
+     "fr": "Aspect du Couguar"
+    }
+   ]
+  }
+ },
+ "Nilah": {
+  "base": {
+   "hp": [
+    570,
+    101
+   ],
+   "mana": [
+    350,
+    35
+   ],
+   "ad": [
+    58,
+    2
+   ],
+   "ar": [
+    27,
+    4.2
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.697,
+   "asPerLevel": 1.25,
+   "ms": 340
+  },
+  "range": 225,
+  "resource": "Mana",
+  "apiname": "Nilah",
+  "abilities": [
+   "Apotheosis",
+   "Formless Blade",
+   "Joy Unending",
+   "Jubilant Veil",
+   "Slipstream"
+  ],
+  "names": {
+   "passive": {
+    "en": "Joy Unending",
+    "fr": "Joie éternelle"
+   },
+   "spells": [
+    {
+     "en": "Formless Blade",
+     "fr": "Lame fluide"
+    },
+    {
+     "en": "Jubilant Veil",
+     "fr": "Voile de liesse"
+    },
+    {
+     "en": "Slipstream",
+     "fr": "Torrent"
+    },
+    {
+     "en": "Apotheosis",
+     "fr": "Apothéose"
+    }
+   ]
+  }
+ },
+ "Nocturne": {
+  "base": {
+   "hp": [
+    640,
+    109
+   ],
+   "mana": [
+    275,
+    35
+   ],
+   "ad": [
+    62,
+    2.6
+   ],
+   "ar": [
+    36,
+    4.2
+   ],
+   "mr": [
+    32,
+    1.55
+   ],
+   "as": 0.721,
+   "asPerLevel": 2.7,
+   "ms": 345
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Nocturne",
+  "abilities": [
+   "Duskbringer",
+   "Paranoia",
+   "Shroud of Darkness",
+   "Umbra Blades",
+   "Unspeakable Horror"
+  ],
+  "names": {
+   "passive": {
+    "en": "Umbra Blades",
+    "fr": "Lames d'ombre"
+   },
+   "spells": [
+    {
+     "en": "Duskbringer",
+     "fr": "Crépuscule"
+    },
+    {
+     "en": "Shroud of Darkness",
+     "fr": "Linceul des ténèbres"
+    },
+    {
+     "en": "Unspeakable Horror",
+     "fr": "Horreur indicible"
+    },
+    {
+     "en": "Paranoia",
+     "fr": "Paranoïa"
+    }
+   ]
+  }
+ },
+ "Nunu & Willump": {
+  "base": {
+   "hp": [
+    610,
+    90
+   ],
+   "mana": [
+    280,
+    42
+   ],
+   "ad": [
+    61,
+    3
+   ],
+   "ar": [
+    29,
+    4.2
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 2.25,
+   "ms": 345
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Nunu",
+  "abilities": [],
+  "names": {
+   "passive": {
+    "en": "Call of the Freljord",
+    "fr": "Appel de Freljord"
+   },
+   "spells": [
+    {
+     "en": "Consume",
+     "fr": "Voracité"
+    },
+    {
+     "en": "Biggest Snowball Ever!",
+     "fr": "Boule de neige géante !"
+    },
+    {
+     "en": "Snowball Barrage",
+     "fr": "Rafale de boules de neige"
+    },
+    {
+     "en": "Absolute Zero",
+     "fr": "Zéro absolu"
+    }
+   ]
+  }
+ },
+ "Olaf": {
+  "base": {
+   "hp": [
+    645,
+    119
+   ],
+   "mana": [
+    316,
+    50
+   ],
+   "ad": [
+    68,
+    4.7
+   ],
+   "ar": [
+    35,
+    4.2
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.72,
+   "asPerLevel": 2.7,
+   "ms": 350
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Olaf",
+  "abilities": [
+   "Berserker Rage",
+   "Ragnarok",
+   "Reckless Swing",
+   "Tough It Out",
+   "Undertow",
+   "Vicious Strikes"
+  ],
+  "names": {
+   "passive": {
+    "en": "Berserker Rage",
+    "fr": "Rage du berzerker"
+   },
+   "spells": [
+    {
+     "en": "Undertow",
+     "fr": "Déchireuse"
+    },
+    {
+     "en": "Tough It Out",
+     "fr": "Force décuplée"
+    },
+    {
+     "en": "Reckless Swing",
+     "fr": "Frappe sauvage"
+    },
+    {
+     "en": "Ragnarok",
+     "fr": "Ragnarok"
+    }
+   ]
+  }
+ },
+ "Orianna": {
+  "base": {
+   "hp": [
+    565,
+    110
+   ],
+   "mana": [
+    418,
+    25
+   ],
+   "ad": [
+    44,
+    2.6
+   ],
+   "ar": [
+    20,
+    4.2
+   ],
+   "mr": [
+    26,
+    1.3
+   ],
+   "as": 0.658,
+   "asPerLevel": 3.5,
+   "ms": 325
+  },
+  "range": 525,
+  "resource": "Mana",
+  "apiname": "Orianna",
+  "abilities": [
+   "Clockwork Windup",
+   "Command: Attack",
+   "Command: Dissonance",
+   "Command: Protect",
+   "Command: Shockwave"
+  ],
+  "names": {
+   "passive": {
+    "en": "Clockwork Windup",
+    "fr": "Remontoir"
+   },
+   "spells": [
+    {
+     "en": "Command: Attack",
+     "fr": "Ordre : Attaque"
+    },
+    {
+     "en": "Command: Dissonance",
+     "fr": "Ordre : Dissonance"
+    },
+    {
+     "en": "Command: Protect",
+     "fr": "Ordre : Protection"
+    },
+    {
+     "en": "Command: Shockwave",
+     "fr": "Ordre : Onde de choc"
+    }
+   ]
+  }
+ },
+ "Ornn": {
+  "base": {
+   "hp": [
+    660,
+    109
+   ],
+   "mana": [
+    341,
+    65
+   ],
+   "ad": [
+    69,
+    3.5
+   ],
+   "ar": [
+    33,
+    5.2
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 2,
+   "ms": 335
+  },
+  "range": 175,
+  "resource": "Mana",
+  "apiname": "Ornn",
+  "abilities": [
+   "Bellows Breath",
+   "Call of the Forge God",
+   "Living Forge",
+   "Searing Charge",
+   "Volcanic Rupture"
+  ],
+  "names": {
+   "passive": {
+    "en": "Living Forge",
+    "fr": "Forgeron ambulant"
+   },
+   "spells": [
+    {
+     "en": "Volcanic Rupture",
+     "fr": "Fracture magmatique"
+    },
+    {
+     "en": "Bellows Breath",
+     "fr": "Fournaise"
+    },
+    {
+     "en": "Searing Charge",
+     "fr": "Ruée ardente"
+    },
+    {
+     "en": "Call of the Forge God",
+     "fr": "Appel du dieu de la forge"
+    }
+   ]
+  }
+ },
+ "Pantheon": {
+  "base": {
+   "hp": [
+    650,
+    109
+   ],
+   "mana": [
+    317,
+    31
+   ],
+   "ad": [
+    64,
+    3.3
+   ],
+   "ar": [
+    40,
+    4.95
+   ],
+   "mr": [
+    28,
+    2.05
+   ],
+   "as": 0.658,
+   "asPerLevel": 2.95,
+   "ms": 345
+  },
+  "range": 175,
+  "resource": "Mana",
+  "apiname": "Pantheon",
+  "abilities": [
+   "Aegis Assault",
+   "Aegis Protection",
+   "Aegis of Zeonia",
+   "Comet Spear",
+   "Grand Skyfall",
+   "Grand Starfall",
+   "Heartseeker Strike",
+   "Mortal Will",
+   "Shield Vault",
+   "Spear Shot"
+  ],
+  "names": {
+   "passive": {
+    "en": "Mortal Will",
+    "fr": "Ardeur mortelle"
+   },
+   "spells": [
+    {
+     "en": "Comet Spear",
+     "fr": "Lance astrale"
+    },
+    {
+     "en": "Shield Vault",
+     "fr": "Assaut martial"
+    },
+    {
+     "en": "Aegis Assault",
+     "fr": "Égide impénétrable"
+    },
+    {
+     "en": "Grand Starfall",
+     "fr": "Météore"
+    }
+   ]
+  }
+ },
+ "Poppy": {
+  "base": {
+   "hp": [
+    610,
+    110
+   ],
+   "mana": [
+    300,
+    45
+   ],
+   "ad": [
+    56,
+    4
+   ],
+   "ar": [
+    35,
+    5
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.658,
+   "asPerLevel": 2.5,
+   "ms": 345
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Poppy",
+  "abilities": [
+   "Devastating Blow",
+   "Diplomatic Immunity",
+   "Hammer Shock",
+   "Heroic Charge",
+   "Heroic Charge old",
+   "Iron Ambassador",
+   "Keeper's Verdict",
+   "Paragon of Demacia",
+   "Steadfast Presence",
+   "Valiant Fighter"
+  ],
+  "names": {
+   "passive": {
+    "en": "Iron Ambassador",
+    "fr": "Ambassadrice de fer"
+   },
+   "spells": [
+    {
+     "en": "Hammer Shock",
+     "fr": "Commotion"
+    },
+    {
+     "en": "Steadfast Presence",
+     "fr": "Présence immuable"
+    },
+    {
+     "en": "Heroic Charge",
+     "fr": "Charge héroïque"
+    },
+    {
+     "en": "Keeper's Verdict",
+     "fr": "Verdict de la gardienne"
+    }
+   ]
+  }
+ },
+ "Pyke": {
+  "base": {
+   "hp": [
+    670,
+    110
+   ],
+   "mana": [
+    415,
+    50
+   ],
+   "ad": [
+    62,
+    2
+   ],
+   "ar": [
+    37,
+    4.7
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.667,
+   "asPerLevel": 2.5,
+   "ms": 330
+  },
+  "range": 150,
+  "resource": "Mana",
+  "apiname": "Pyke",
+  "abilities": [
+   "Bone Skewer",
+   "Death from Below",
+   "Ghostwater Dive",
+   "Gift of the Drowned Ones",
+   "Phantom Undertow"
+  ],
+  "names": {
+   "passive": {
+    "en": "Gift of the Drowned Ones",
+    "fr": "Don des noyés"
+   },
+   "spells": [
+    {
+     "en": "Bone Skewer",
+     "fr": "Harponnage"
+    },
+    {
+     "en": "Ghostwater Dive",
+     "fr": "Plongée spectrale"
+    },
+    {
+     "en": "Phantom Undertow",
+     "fr": "Ressac fantôme"
+    },
+    {
+     "en": "Death From Below",
+     "fr": "Exécution abyssale"
+    }
+   ]
+  }
+ },
+ "Qiyana": {
+  "base": {
+   "hp": [
+    590,
+    115
+   ],
+   "mana": [
+    375,
+    60
+   ],
+   "ad": [
+    64,
+    3.1
+   ],
+   "ar": [
+    31,
+    4.5
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.688,
+   "asPerLevel": 2.1,
+   "ms": 335
+  },
+  "range": 150,
+  "resource": "Mana",
+  "apiname": "Qiyana",
+  "abilities": [
+   "Audacity",
+   "Edge of Ixtal",
+   "Elemental Wrath",
+   "Royal Privilege",
+   "Supreme Display of Talent",
+   "Terrashape"
+  ],
+  "names": {
+   "passive": {
+    "en": "Royal Privilege",
+    "fr": "Privilège royal"
+   },
+   "spells": [
+    {
+     "en": "Elemental Wrath / Edge of Ixtal",
+     "fr": "Courroux élémentaire/Lame d'Ixtal"
+    },
+    {
+     "en": "Terrashape",
+     "fr": "Terraforce"
+    },
+    {
+     "en": "Audacity",
+     "fr": "Audace"
+    },
+    {
+     "en": "Supreme Display of Talent",
+     "fr": "Tour de force suprême"
+    }
+   ]
+  }
+ },
+ "Quinn": {
+  "base": {
+   "hp": [
+    565,
+    107
+   ],
+   "mana": [
+    269,
+    35
+   ],
+   "ad": [
+    59,
+    3.2
+   ],
+   "ar": [
+    28,
+    4.7
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.668,
+   "asPerLevel": 3.1,
+   "ms": 330
+  },
+  "range": 525,
+  "resource": "Mana",
+  "apiname": "Quinn",
+  "abilities": [
+   "Behind Enemy Lines",
+   "Blinding Assault",
+   "Harrier",
+   "Heightened Senses",
+   "Skystrike",
+   "Vault"
+  ],
+  "names": {
+   "passive": {
+    "en": "Harrier",
+    "fr": "Busard"
+   },
+   "spells": [
+    {
+     "en": "Blinding Assault",
+     "fr": "Assaut aveuglant"
+    },
+    {
+     "en": "Heightened Senses",
+     "fr": "Œil d'aigle"
+    },
+    {
+     "en": "Vault",
+     "fr": "Salto"
+    },
+    {
+     "en": "Behind Enemy Lines",
+     "fr": "En territoire ennemi"
+    }
+   ]
+  }
+ },
+ "Rakan": {
+  "base": {
+   "hp": [
+    610,
+    99
+   ],
+   "mana": [
+    315,
+    50
+   ],
+   "ad": [
+    62,
+    3.5
+   ],
+   "ar": [
+    30,
+    4.9
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.635,
+   "asPerLevel": 3,
+   "ms": 335
+  },
+  "range": 300,
+  "resource": "Mana",
+  "apiname": "Rakan",
+  "abilities": [
+   "Battle Dance",
+   "Fey Feathers",
+   "Gleaming Quill",
+   "Grand Entrance",
+   "The Quickness"
+  ],
+  "names": {
+   "passive": {
+    "en": "Fey Feathers",
+    "fr": "Plumes enchantées"
+   },
+   "spells": [
+    {
+     "en": "Gleaming Quill",
+     "fr": "Rémige rayonnante"
+    },
+    {
+     "en": "Grand Entrance",
+     "fr": "Entrée triomphale"
+    },
+    {
+     "en": "Battle Dance",
+     "fr": "Valse guerrière"
+    },
+    {
+     "en": "The Quickness",
+     "fr": "Danse ultime"
+    }
+   ]
+  }
+ },
+ "Rammus": {
+  "base": {
+   "hp": [
+    645,
+    100
+   ],
+   "mana": [
+    310,
+    33
+   ],
+   "ad": [
+    65,
+    2.75
+   ],
+   "ar": [
+    35,
+    4.5
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.7,
+   "asPerLevel": 2.215,
+   "ms": 335
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Rammus",
+  "abilities": [
+   "Defensive Ball Curl",
+   "Frenzying Taunt",
+   "Powerball",
+   "Puncturing Taunt",
+   "Soaring Slam",
+   "Spiked Shell",
+   "Tremors"
+  ],
+  "names": {
+   "passive": {
+    "en": "Spiked Shell",
+    "fr": "Carapace cloutée"
+   },
+   "spells": [
+    {
+     "en": "Powerball",
+     "fr": "Démolisseur"
+    },
+    {
+     "en": "Defensive Ball Curl",
+     "fr": "Boule défensive"
+    },
+    {
+     "en": "Frenzying Taunt",
+     "fr": "Provocation frénétique"
+    },
+    {
+     "en": "Soaring Slam",
+     "fr": "Frappe ascendante"
+    }
+   ]
+  }
+ },
+ "Rek'Sai": {
+  "base": {
+   "hp": [
+    600,
+    99
+   ],
+   "mana": [
+    100,
+    0
+   ],
+   "ad": [
+    62,
+    3
+   ],
+   "ar": [
+    35,
+    4.5
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.667,
+   "asPerLevel": 2,
+   "ms": 340
+  },
+  "range": 175,
+  "resource": "Fury",
+  "apiname": "RekSai",
+  "abilities": [
+   "Burrow",
+   "Furious Bite",
+   "Fury of the Xer'Sai",
+   "Prey Seeker",
+   "Queen's Wrath",
+   "Tunnel",
+   "Unburrow",
+   "Void Rush"
+  ],
+  "names": {
+   "passive": {
+    "en": "Fury of the Xer'Sai",
+    "fr": "Fureur des Xer'Sai"
+   },
+   "spells": [
+    {
+     "en": "Queen's Wrath / Prey Seeker",
+     "fr": "Courroux de la reine/Sondeur explosif"
+    },
+    {
+     "en": "Burrow / Un-burrow",
+     "fr": "Enfouissement/Jaillissement"
+    },
+    {
+     "en": "Furious Bite / Tunnel",
+     "fr": "Morsure féroce/Tunnel"
+    },
+    {
+     "en": "Void Rush",
+     "fr": "Rush du Néant"
+    }
+   ]
+  }
+ },
+ "Rell": {
+  "base": {
+   "hp": [
+    620,
+    104
+   ],
+   "mana": [
+    320,
+    40
+   ],
+   "ad": [
+    55,
+    3
+   ],
+   "ar": [
+    30,
+    4
+   ],
+   "mr": [
+    28,
+    1.8
+   ],
+   "as": 0.625,
+   "asPerLevel": 2,
+   "ms": 315
+  },
+  "range": 175,
+  "resource": "Mana",
+  "apiname": "Rell",
+  "abilities": [
+   "Attract and Repel",
+   "Break the Mold",
+   "Ferromancy: Crash Down",
+   "Ferromancy: Mount Up",
+   "Full Tilt",
+   "Magnet Storm",
+   "Shattering Strike"
+  ],
+  "names": {
+   "passive": {
+    "en": "Break the Mold",
+    "fr": "Mise en pièces"
+   },
+   "spells": [
+    {
+     "en": "Shattering Strike",
+     "fr": "Frappe dislocatrice"
+    },
+    {
+     "en": "Ferromancy: Crash Down",
+     "fr": "Ferromancie : Descendre en piqué"
+    },
+    {
+     "en": "Full Tilt",
+     "fr": "Joute endiablée"
+    },
+    {
+     "en": "Magnet Storm",
+     "fr": "Tempête magnétique"
+    }
+   ]
+  }
+ },
+ "Renata Glasc": {
+  "base": {
+   "hp": [
+    545,
+    94
+   ],
+   "mana": [
+    350,
+    50
+   ],
+   "ad": [
+    49,
+    3
+   ],
+   "ar": [
+    27,
+    4.7
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.625,
+   "asPerLevel": 2.11,
+   "ms": 330
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Renata",
+  "abilities": [
+   "Bailout",
+   "Handshake",
+   "Hostile Takeover",
+   "Leverage",
+   "Loyalty Program"
+  ],
+  "names": {
+   "passive": {
+    "en": "Leverage",
+    "fr": "Pression"
+   },
+   "spells": [
+    {
+     "en": "Handshake",
+     "fr": "Poignée de main"
+    },
+    {
+     "en": "Bailout",
+     "fr": "Patronage"
+    },
+    {
+     "en": "Loyalty Program",
+     "fr": "Programme de fidélité"
+    },
+    {
+     "en": "Hostile Takeover",
+     "fr": "Prise de contrôle hostile"
+    }
+   ]
+  }
+ },
+ "Renekton": {
+  "base": {
+   "hp": [
+    660,
+    111
+   ],
+   "mana": [
+    100,
+    0
+   ],
+   "ad": [
+    69,
+    4.15
+   ],
+   "ar": [
+    35,
+    5.2
+   ],
+   "mr": [
+    28,
+    2.05
+   ],
+   "as": 0.665,
+   "asPerLevel": 2.75,
+   "ms": 345
+  },
+  "range": 125,
+  "resource": "Fury",
+  "apiname": "Renekton",
+  "abilities": [
+   "Cull the Meek",
+   "Dominus",
+   "Reign of Anger",
+   "Ruthless Predator",
+   "Slice and Dice"
+  ],
+  "names": {
+   "passive": {
+    "en": "Reign of Anger",
+    "fr": "Règne de la colère"
+   },
+   "spells": [
+    {
+     "en": "Cull the Meek",
+     "fr": "Destruction des faibles"
+    },
+    {
+     "en": "Ruthless Predator",
+     "fr": "Prédateur impitoyable"
+    },
+    {
+     "en": "Slice and Dice",
+     "fr": "Tranche et coupe"
+    },
+    {
+     "en": "Dominus",
+     "fr": "Dominus"
+    }
+   ]
+  }
+ },
+ "Rengar": {
+  "base": {
+   "hp": [
+    590,
+    104
+   ],
+   "mana": [
+    4,
+    0
+   ],
+   "ad": [
+    68,
+    3
+   ],
+   "ar": [
+    34,
+    4.2
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.667,
+   "asPerLevel": 3,
+   "ms": 345
+  },
+  "range": 125,
+  "resource": "Ferocity",
+  "apiname": "Rengar",
+  "abilities": [
+   "Battle Roar",
+   "Bola Strike",
+   "Savagery",
+   "Thrill of the Hunt",
+   "Unseen Predator"
+  ],
+  "names": {
+   "passive": {
+    "en": "Unseen Predator",
+    "fr": "Prédateur invisible"
+   },
+   "spells": [
+    {
+     "en": "Savagery",
+     "fr": "Esprit sauvage"
+    },
+    {
+     "en": "Battle Roar",
+     "fr": "Rugissement"
+    },
+    {
+     "en": "Bola Strike",
+     "fr": "Bolas"
+    },
+    {
+     "en": "Thrill of the Hunt",
+     "fr": "Chasseur-né"
+    }
+   ]
+  }
+ },
+ "Riven": {
+  "base": {
+   "hp": [
+    630,
+    100
+   ],
+   "mana": [
+    0,
+    0
+   ],
+   "ad": [
+    64,
+    3
+   ],
+   "ar": [
+    33,
+    4.4
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 3.5,
+   "ms": 340
+  },
+  "range": 125,
+  "resource": "None",
+  "apiname": "Riven",
+  "abilities": [
+   "Blade of the Exile",
+   "Broken Wings",
+   "Ki Burst",
+   "Runic Blade",
+   "Valor",
+   "Wind Slash"
+  ],
+  "names": {
+   "passive": {
+    "en": "Runic Blade",
+    "fr": "Lame runique"
+   },
+   "spells": [
+    {
+     "en": "Broken Wings",
+     "fr": "Ailes brisées"
+    },
+    {
+     "en": "Ki Burst",
+     "fr": "Décharge de ki"
+    },
+    {
+     "en": "Valor",
+     "fr": "Bravoure"
+    },
+    {
+     "en": "Blade of the Exile",
+     "fr": "Lame de l'exilée"
+    }
+   ]
+  }
+ },
+ "Rumble": {
+  "base": {
+   "hp": [
+    640,
+    105
+   ],
+   "mana": [
+    150,
+    0
+   ],
+   "ad": [
+    64,
+    3.2
+   ],
+   "ar": [
+    36,
+    4.7
+   ],
+   "mr": [
+    28,
+    1.55
+   ],
+   "as": 0.644,
+   "asPerLevel": 1.85,
+   "ms": 345
+  },
+  "range": 125,
+  "resource": "Heat",
+  "apiname": "Rumble",
+  "abilities": [
+   "Electro Harpoon",
+   "Flamespitter",
+   "Junkyard Titan",
+   "Scrap Shield",
+   "The Equalizer"
+  ],
+  "names": {
+   "passive": {
+    "en": "Junkyard Titan",
+    "fr": "Titan de bric-à-brac"
+   },
+   "spells": [
+    {
+     "en": "Flamespitter",
+     "fr": "Lance-flammes"
+    },
+    {
+     "en": "Scrap Shield",
+     "fr": "Bouclier recyclé"
+    },
+    {
+     "en": "Electro Harpoon",
+     "fr": "Harpon électrique"
+    },
+    {
+     "en": "The Equalizer",
+     "fr": "Éradication"
+    }
+   ]
+  }
+ },
+ "Ryze": {
+  "base": {
+   "hp": [
+    620,
+    124
+   ],
+   "mana": [
+    300,
+    70
+   ],
+   "ad": [
+    55,
+    3
+   ],
+   "ar": [
+    22,
+    4.7
+   ],
+   "mr": [
+    32,
+    1.3
+   ],
+   "as": 0.658,
+   "asPerLevel": 2.11,
+   "ms": 340
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Ryze",
+  "abilities": [
+   "Arcane Mastery",
+   "Overload",
+   "Realm Warp",
+   "Rune Prison",
+   "Spell Flux"
+  ],
+  "names": {
+   "passive": {
+    "en": "Arcane Mastery",
+    "fr": "Maîtrise des arcanes"
+   },
+   "spells": [
+    {
+     "en": "Overload",
+     "fr": "Court-circuit"
+    },
+    {
+     "en": "Rune Prison",
+     "fr": "Prison runique"
+    },
+    {
+     "en": "Spell Flux",
+     "fr": "Flux envoûtant"
+    },
+    {
+     "en": "Realm Warp",
+     "fr": "Portail transdimensionnel"
+    }
+   ]
+  }
+ },
+ "Samira": {
+  "base": {
+   "hp": [
+    630,
+    108
+   ],
+   "mana": [
+    349,
+    38
+   ],
+   "ad": [
+    57,
+    3
+   ],
+   "ar": [
+    26,
+    4.7
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.658,
+   "asPerLevel": 3.3,
+   "ms": 335
+  },
+  "range": 500,
+  "resource": "Mana",
+  "apiname": "Samira",
+  "abilities": [
+   "Blade Whirl",
+   "Daredevil Impulse",
+   "Flair",
+   "Inferno Trigger",
+   "Taunt",
+   "Wild Rush"
+  ],
+  "names": {
+   "passive": {
+    "en": "Daredevil Impulse",
+    "fr": "Élan téméraire"
+   },
+   "spells": [
+    {
+     "en": "Flair",
+     "fr": "Panache"
+    },
+    {
+     "en": "Blade Whirl",
+     "fr": "Tourbillon de lame"
+    },
+    {
+     "en": "Wild Rush",
+     "fr": "Charge sauvage"
+    },
+    {
+     "en": "Inferno Trigger",
+     "fr": "Gâchette infernale"
+    }
+   ]
+  }
+ },
+ "Sejuani": {
+  "base": {
+   "hp": [
+    630,
+    114
+   ],
+   "mana": [
+    400,
+    40
+   ],
+   "ad": [
+    66,
+    4
+   ],
+   "ar": [
+    34,
+    5.45
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.688,
+   "asPerLevel": 3.5,
+   "ms": 340
+  },
+  "range": 150,
+  "resource": "Mana",
+  "apiname": "Sejuani",
+  "abilities": [
+   "Arctic Assault",
+   "Fury of the North",
+   "Glacial Prison",
+   "Permafrost",
+   "Winter's Wrath"
+  ],
+  "names": {
+   "passive": {
+    "en": "Fury of the North",
+    "fr": "Fureur du nord"
+   },
+   "spells": [
+    {
+     "en": "Arctic Assault",
+     "fr": "Assaut arctique"
+    },
+    {
+     "en": "Winter's Wrath",
+     "fr": "Colère de l'hiver"
+    },
+    {
+     "en": "Permafrost",
+     "fr": "Permafrost"
+    },
+    {
+     "en": "Glacial Prison",
+     "fr": "Prison de glace"
+    }
+   ]
+  }
+ },
+ "Senna": {
+  "base": {
+   "hp": [
+    530,
+    89
+   ],
+   "mana": [
+    350,
+    45
+   ],
+   "ad": [
+    50,
+    0
+   ],
+   "ar": [
+    25,
+    4
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.625,
+   "asPerLevel": 2.6,
+   "ms": 330
+  },
+  "range": 600,
+  "resource": "Mana",
+  "apiname": "Senna",
+  "abilities": [
+   "Absolution",
+   "Basic Attack",
+   "Curse of the Black Mist",
+   "Dawning Shadow",
+   "Last Embrace",
+   "Piercing Darkness"
+  ],
+  "names": {
+   "passive": {
+    "en": "Absolution",
+    "fr": "Absolution"
+   },
+   "spells": [
+    {
+     "en": "Piercing Darkness",
+     "fr": "Ombre perforante"
+    },
+    {
+     "en": "Last Embrace",
+     "fr": "Dernière étreinte"
+    },
+    {
+     "en": "Curse of the Black Mist",
+     "fr": "Malédiction de la Brume noire"
+    },
+    {
+     "en": "Dawning Shadow",
+     "fr": "Ténèbres aveuglantes"
+    }
+   ]
+  }
+ },
+ "Seraphine": {
+  "base": {
+   "hp": [
+    570,
+    95
+   ],
+   "mana": [
+    360,
+    40
+   ],
+   "ad": [
+    50,
+    3
+   ],
+   "ar": [
+    26,
+    4.2
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.669,
+   "asPerLevel": 2,
+   "ms": 330
+  },
+  "range": 525,
+  "resource": "Mana",
+  "apiname": "Seraphine",
+  "abilities": [
+   "Beat Drop",
+   "Encore",
+   "High Note",
+   "Stage Presence",
+   "Surround Sound"
+  ],
+  "names": {
+   "passive": {
+    "en": "Stage Presence",
+    "fr": "Présence sur scène"
+   },
+   "spells": [
+    {
+     "en": "High Note",
+     "fr": "Note aiguë"
+    },
+    {
+     "en": "Surround Sound",
+     "fr": "Son ambiophonique"
+    },
+    {
+     "en": "Beat Drop",
+     "fr": "Battement"
+    },
+    {
+     "en": "Encore",
+     "fr": "Bis"
+    }
+   ]
+  }
+ },
+ "Sett": {
+  "base": {
+   "hp": [
+    670,
+    114
+   ],
+   "mana": [
+    0,
+    0
+   ],
+   "ad": [
+    60,
+    4
+   ],
+   "ar": [
+    33,
+    4.7
+   ],
+   "mr": [
+    28,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 1.75,
+   "ms": 340
+  },
+  "range": 125,
+  "resource": "Grit",
+  "apiname": "Sett",
+  "abilities": [
+   "Facebreaker",
+   "Haymaker",
+   "Knuckle Down",
+   "Pit Grit",
+   "The Show Stopper"
+  ],
+  "names": {
+   "passive": {
+    "en": "Pit Grit",
+    "fr": "Roi de l'arène"
+   },
+   "spells": [
+    {
+     "en": "Knuckle Down",
+     "fr": "Rogne"
+    },
+    {
+     "en": "Haymaker",
+     "fr": "Coup cathartique"
+    },
+    {
+     "en": "Facebreaker",
+     "fr": "Casse-tête"
+    },
+    {
+     "en": "The Show Stopper",
+     "fr": "Le Clou du spectacle"
+    }
+   ]
+  }
+ },
+ "Shaco": {
+  "base": {
+   "hp": [
+    630,
+    99
+   ],
+   "mana": [
+    297,
+    40
+   ],
+   "ad": [
+    63,
+    3
+   ],
+   "ar": [
+    30,
+    4
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.694,
+   "asPerLevel": 3,
+   "ms": 345
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Shaco",
+  "abilities": [
+   "Backstab",
+   "Deceive",
+   "Hallucinate",
+   "Jack in the Box",
+   "Two-Shiv Poison"
+  ],
+  "names": {
+   "passive": {
+    "en": "Backstab",
+    "fr": "Traîtrise"
+   },
+   "spells": [
+    {
+     "en": "Deceive",
+     "fr": "Tromperie"
+    },
+    {
+     "en": "Jack In The Box",
+     "fr": "Boîte surprise"
+    },
+    {
+     "en": "Two-Shiv Poison",
+     "fr": "Poison double"
+    },
+    {
+     "en": "Hallucinate",
+     "fr": "Hallucination"
+    }
+   ]
+  }
+ },
+ "Shen": {
+  "base": {
+   "hp": [
+    610,
+    99
+   ],
+   "mana": [
+    400,
+    0
+   ],
+   "ad": [
+    64,
+    3
+   ],
+   "ar": [
+    34,
+    4.2
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.751,
+   "asPerLevel": 3,
+   "ms": 340
+  },
+  "range": 125,
+  "resource": "Energy",
+  "apiname": "Shen",
+  "abilities": [
+   "Ki Barrier",
+   "Shadow Dash",
+   "Spirit's Refuge",
+   "Stand United",
+   "Twilight Assault"
+  ],
+  "names": {
+   "passive": {
+    "en": "Ki Barrier",
+    "fr": "Barrière de ki"
+   },
+   "spells": [
+    {
+     "en": "Twilight Assault",
+     "fr": "Assaut crépusculaire"
+    },
+    {
+     "en": "Spirit's Refuge",
+     "fr": "Refuge spirituel"
+    },
+    {
+     "en": "Shadow Dash",
+     "fr": "Rush des ombres"
+    },
+    {
+     "en": "Stand United",
+     "fr": "Soutien indéfectible"
+    }
+   ]
+  }
+ },
+ "Shyvana": {
+  "base": {
+   "hp": [
+    625,
+    95
+   ],
+   "mana": [
+    100,
+    0
+   ],
+   "ad": [
+    62,
+    4
+   ],
+   "ar": [
+    35,
+    4
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.638,
+   "asPerLevel": 2,
+   "ms": 350
+  },
+  "range": 150,
+  "resource": "Fury",
+  "apiname": "Shyvana",
+  "abilities": [
+   "Burnout",
+   "Dragon's Descent",
+   "Emberstrike",
+   "Flame Breath",
+   "Fury of the Dragonborn",
+   "Inferno Aegis",
+   "Molten Burst",
+   "Scalemail",
+   "Twin Bite"
+  ],
+  "names": {
+   "passive": {
+    "en": "Scalemail",
+    "fr": "Armure d'écailles"
+   },
+   "spells": [
+    {
+     "en": "Emberstrike",
+     "fr": "Frappe enflammée"
+    },
+    {
+     "en": "Inferno Aegis",
+     "fr": "Égide de feu"
+    },
+    {
+     "en": "Molten Burst",
+     "fr": "Éruption"
+    },
+    {
+     "en": "Dragon's Descent",
+     "fr": "Vol du dragon"
+    }
+   ]
+  }
+ },
+ "Singed": {
+  "base": {
+   "hp": [
+    650,
+    96
+   ],
+   "mana": [
+    330,
+    45
+   ],
+   "ad": [
+    63,
+    3.4
+   ],
+   "ar": [
+    34,
+    4.2
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.7,
+   "asPerLevel": 1.9,
+   "ms": 345
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Singed",
+  "abilities": [
+   "Empowered Bulwark",
+   "Fling",
+   "Insanity Potion",
+   "Mega Adhesive",
+   "Noxious Slipstream",
+   "Poison Trail"
+  ],
+  "names": {
+   "passive": {
+    "en": "Noxious Slipstream",
+    "fr": "Sillage toxique"
+   },
+   "spells": [
+    {
+     "en": "Poison Trail",
+     "fr": "Piste empoisonnée"
+    },
+    {
+     "en": "Mega Adhesive",
+     "fr": "Attrape-mouche"
+    },
+    {
+     "en": "Fling",
+     "fr": "Projection"
+    },
+    {
+     "en": "Insanity Potion",
+     "fr": "Potion de démence"
+    }
+   ]
+  }
+ },
+ "Sion": {
+  "base": {
+   "hp": [
+    655,
+    87
+   ],
+   "mana": [
+    400,
+    52
+   ],
+   "ad": [
+    68,
+    4
+   ],
+   "ar": [
+    36,
+    4.2
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.679,
+   "asPerLevel": 1.3,
+   "ms": 345
+  },
+  "range": 175,
+  "resource": "Mana",
+  "apiname": "Sion",
+  "abilities": [
+   "Death Surge",
+   "Decimating Smash",
+   "Glory in Death",
+   "Roar of the Slayer",
+   "Soul Furnace",
+   "Unstoppable Onslaught"
+  ],
+  "names": {
+   "passive": {
+    "en": "Glory in Death",
+    "fr": "Gloire posthume"
+   },
+   "spells": [
+    {
+     "en": "Decimating Smash",
+     "fr": "Fracas meurtrier"
+    },
+    {
+     "en": "Soul Furnace",
+     "fr": "Feu intérieur"
+    },
+    {
+     "en": "Roar of the Slayer",
+     "fr": "Cri du tueur"
+    },
+    {
+     "en": "Unstoppable Onslaught",
+     "fr": "Assaut inarrêtable"
+    }
+   ]
+  }
+ },
+ "Sivir": {
+  "base": {
+   "hp": [
+    600,
+    104
+   ],
+   "mana": [
+    340,
+    45
+   ],
+   "ad": [
+    60,
+    2.5
+   ],
+   "ar": [
+    30,
+    4
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.625,
+   "asPerLevel": 1.6,
+   "ms": 335
+  },
+  "range": 500,
+  "resource": "Mana",
+  "apiname": "Sivir",
+  "abilities": [
+   "Boomerang Blade",
+   "Fleet of Foot",
+   "On the Hunt",
+   "Ricochet",
+   "Spell Shield"
+  ],
+  "names": {
+   "passive": {
+    "en": "Fleet of Foot",
+    "fr": "Mille-pattes"
+   },
+   "spells": [
+    {
+     "en": "Boomerang Blade",
+     "fr": "Lame boomerang"
+    },
+    {
+     "en": "Ricochet",
+     "fr": "Ricochet"
+    },
+    {
+     "en": "Spell Shield",
+     "fr": "Bouclier magique"
+    },
+    {
+     "en": "On The Hunt",
+     "fr": "En chasse"
+    }
+   ]
+  }
+ },
+ "Skarner": {
+  "base": {
+   "hp": [
+    630,
+    110
+   ],
+   "mana": [
+    320,
+    40
+   ],
+   "ad": [
+    63,
+    5
+   ],
+   "ar": [
+    33,
+    4.5
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 2,
+   "ms": 335
+  },
+  "range": 150,
+  "resource": "Mana",
+  "apiname": "Skarner",
+  "abilities": [
+   "Crystal Slash",
+   "Crystal Spires",
+   "Crystalline Exoskeleton",
+   "Fracture",
+   "Impale",
+   "Ixtal's Impact",
+   "Seismic Bastion",
+   "Shattered Earth",
+   "Threads of Vibration",
+   "Upheaval"
+  ],
+  "names": {
+   "passive": {
+    "en": "Threads of Vibration",
+    "fr": "Échos des vibrations"
+   },
+   "spells": [
+    {
+     "en": "Shattered Earth / Upheaval",
+     "fr": "Terre brisée/Soulèvement"
+    },
+    {
+     "en": "Seismic Bastion",
+     "fr": "Bastion sismique"
+    },
+    {
+     "en": "Ixtal's Impact",
+     "fr": "Impact d'Ixtal"
+    },
+    {
+     "en": "Impale",
+     "fr": "Empalement"
+    }
+   ]
+  }
+ },
+ "Smolder": {
+  "base": {
+   "hp": [
+    575,
+    100
+   ],
+   "mana": [
+    300,
+    40
+   ],
+   "ad": [
+    58,
+    2.3
+   ],
+   "ar": [
+    24,
+    4
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.638,
+   "asPerLevel": 4,
+   "ms": 330
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Smolder",
+  "abilities": [
+   "Achooo!",
+   "Dragon Practice",
+   "Flap, Flap, Flap",
+   "MMOOOMMMM!",
+   "Super Scorcher Breath"
+  ],
+  "names": {
+   "passive": {
+    "en": "Dragon Practice",
+    "fr": "Dragon en herbe"
+   },
+   "spells": [
+    {
+     "en": "Super Scorcher Breath",
+     "fr": "Boule de feu draconique"
+    },
+    {
+     "en": "Achooo!",
+     "fr": "Atchoum !"
+    },
+    {
+     "en": "Flap, Flap, Flap",
+     "fr": "Flap, flap, flap !"
+    },
+    {
+     "en": "MMOOOMMMM!",
+     "fr": "MAMAAAN !"
+    }
+   ]
+  }
+ },
+ "Sona": {
+  "base": {
+   "hp": [
+    550,
+    91
+   ],
+   "mana": [
+    340,
+    45
+   ],
+   "ad": [
+    49,
+    3
+   ],
+   "ar": [
+    26,
+    4.2
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.644,
+   "asPerLevel": 2.3,
+   "ms": 325
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Sona",
+  "abilities": [
+   "Aria of Perseverance",
+   "Crescendo",
+   "Hymn of Valor",
+   "Power Chord",
+   "Song of Celerity"
+  ],
+  "names": {
+   "passive": {
+    "en": "Power Chord",
+    "fr": "Accord de puissance"
+   },
+   "spells": [
+    {
+     "en": "Hymn of Valor",
+     "fr": "Hymne à la bravoure"
+    },
+    {
+     "en": "Aria of Perseverance",
+     "fr": "Aria de persévérance"
+    },
+    {
+     "en": "Song of Celerity",
+     "fr": "Mélodie de vélocité"
+    },
+    {
+     "en": "Crescendo",
+     "fr": "Crescendo"
+    }
+   ]
+  }
+ },
+ "Soraka": {
+  "base": {
+   "hp": [
+    605,
+    88
+   ],
+   "mana": [
+    425,
+    40
+   ],
+   "ad": [
+    50,
+    3
+   ],
+   "ar": [
+    32,
+    5
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.625,
+   "asPerLevel": 2.14,
+   "ms": 325
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Soraka",
+  "abilities": [
+   "Astral Infusion",
+   "Equinox",
+   "Salvation",
+   "Starcall",
+   "Wish"
+  ],
+  "names": {
+   "passive": {
+    "en": "Salvation",
+    "fr": "Salut"
+   },
+   "spells": [
+    {
+     "en": "Starcall",
+     "fr": "Appel de l'étoile"
+    },
+    {
+     "en": "Astral Infusion",
+     "fr": "Infusion astrale"
+    },
+    {
+     "en": "Equinox",
+     "fr": "Équinoxe"
+    },
+    {
+     "en": "Wish",
+     "fr": "Souhait"
+    }
+   ]
+  }
+ },
+ "Swain": {
+  "base": {
+   "hp": [
+    595,
+    99
+   ],
+   "mana": [
+    400,
+    29
+   ],
+   "ad": [
+    58,
+    2.7
+   ],
+   "ar": [
+    23,
+    4.7
+   ],
+   "mr": [
+    34,
+    1.55
+   ],
+   "as": 0.625,
+   "asPerLevel": 2.11,
+   "ms": 330
+  },
+  "range": 525,
+  "resource": "Mana",
+  "apiname": "Swain",
+  "abilities": [
+   "Carrion Renewal",
+   "Death's Hand",
+   "Decrepify",
+   "Demonflare",
+   "Demonic Ascension",
+   "Nevermove",
+   "Ravenous Flock",
+   "Torment",
+   "Vision of Empire"
+  ],
+  "names": {
+   "passive": {
+    "en": "Ravenous Flock",
+    "fr": "Nuée de corbeaux"
+   },
+   "spells": [
+    {
+     "en": "Death's Hand",
+     "fr": "Poigne mortifère"
+    },
+    {
+     "en": "Vision of Empire",
+     "fr": "Œil de l'empire"
+    },
+    {
+     "en": "Nevermove",
+     "fr": "Capture"
+    },
+    {
+     "en": "Demonic Ascension",
+     "fr": "Incarnation démoniaque"
+    }
+   ]
+  }
+ },
+ "Sylas": {
+  "base": {
+   "hp": [
+    600,
+    122
+   ],
+   "mana": [
+    400,
+    70
+   ],
+   "ad": [
+    61,
+    3
+   ],
+   "ar": [
+    29,
+    5.2
+   ],
+   "mr": [
+    32,
+    2.55
+   ],
+   "as": 0.645,
+   "asPerLevel": 3.5,
+   "ms": 340
+  },
+  "range": 175,
+  "resource": "Mana",
+  "apiname": "Sylas",
+  "abilities": [
+   "Abduct",
+   "Abscond",
+   "Chain Lash",
+   "Hijack",
+   "Kingslayer",
+   "Petricite Burst"
+  ],
+  "names": {
+   "passive": {
+    "en": "Petricite Burst",
+    "fr": "Volée de pétricite"
+   },
+   "spells": [
+    {
+     "en": "Chain Lash",
+     "fr": "Croix du forçat"
+    },
+    {
+     "en": "Kingslayer",
+     "fr": "Régicide"
+    },
+    {
+     "en": "Abscond / Abduct",
+     "fr": "Évasion / Enlèvement"
+    },
+    {
+     "en": "Hijack",
+     "fr": "Détournement"
+    }
+   ]
+  }
+ },
+ "Syndra": {
+  "base": {
+   "hp": [
+    583,
+    100
+   ],
+   "mana": [
+    480,
+    40
+   ],
+   "ad": [
+    54,
+    2.9
+   ],
+   "ar": [
+    25,
+    4
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.658,
+   "asPerLevel": 2,
+   "ms": 330
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Syndra",
+  "abilities": [
+   "Dark Sphere",
+   "Force of Will",
+   "Scatter the Weak",
+   "Transcendent",
+   "Unleashed Power"
+  ],
+  "names": {
+   "passive": {
+    "en": "Transcendent",
+    "fr": "Transcendance"
+   },
+   "spells": [
+    {
+     "en": "Dark Sphere",
+     "fr": "Sphère noire"
+    },
+    {
+     "en": "Force of Will",
+     "fr": "Force de la volonté"
+    },
+    {
+     "en": "Scatter the Weak",
+     "fr": "Dispersion des faibles"
+    },
+    {
+     "en": "Unleashed Power",
+     "fr": "Déchaînement de puissance"
+    }
+   ]
+  }
+ },
+ "Tahm Kench": {
+  "base": {
+   "hp": [
+    640,
+    103
+   ],
+   "mana": [
+    325,
+    50
+   ],
+   "ad": [
+    56,
+    3.2
+   ],
+   "ar": [
+    39,
+    4.7
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.658,
+   "asPerLevel": 2.5,
+   "ms": 335
+  },
+  "range": 175,
+  "resource": "Mana",
+  "apiname": "TahmKench",
+  "abilities": [
+   "Abyssal Dive",
+   "Abyssal Voyage",
+   "An Acquired Taste",
+   "Devour",
+   "Regurgitate",
+   "Thick Skin",
+   "Tongue Lash"
+  ],
+  "names": {
+   "passive": {
+    "en": "An Acquired Taste",
+    "fr": "Goût acquis"
+   },
+   "spells": [
+    {
+     "en": "Tongue Lash",
+     "fr": "Coup de langue"
+    },
+    {
+     "en": "Abyssal Dive",
+     "fr": "Plongée abyssale"
+    },
+    {
+     "en": "Thick Skin",
+     "fr": "Peau épaisse"
+    },
+    {
+     "en": "Devour",
+     "fr": "Dévoration"
+    }
+   ]
+  }
+ },
+ "Taliyah": {
+  "base": {
+   "hp": [
+    550,
+    104
+   ],
+   "mana": [
+    470,
+    30
+   ],
+   "ad": [
+    58,
+    3.3
+   ],
+   "ar": [
+    18,
+    4.7
+   ],
+   "mr": [
+    28,
+    1.3
+   ],
+   "as": 0.658,
+   "asPerLevel": 1.36,
+   "ms": 330
+  },
+  "range": 525,
+  "resource": "Mana",
+  "apiname": "Taliyah",
+  "abilities": [
+   "Rock Surfing",
+   "Seismic Shove",
+   "Threaded Volley",
+   "Unraveled Earth",
+   "Weaver's Wall"
+  ],
+  "names": {
+   "passive": {
+    "en": "Rock Surfing",
+    "fr": "Surf tellurique"
+   },
+   "spells": [
+    {
+     "en": "Threaded Volley",
+     "fr": "Rafale filée"
+    },
+    {
+     "en": "Seismic Shove",
+     "fr": "Poussée sismique"
+    },
+    {
+     "en": "Unraveled Earth",
+     "fr": "Défilage tellurique"
+    },
+    {
+     "en": "Weaver's Wall",
+     "fr": "Mur de la tisseuse"
+    }
+   ]
+  }
+ },
+ "Talon": {
+  "base": {
+   "hp": [
+    658,
+    109
+   ],
+   "mana": [
+    400,
+    37
+   ],
+   "ad": [
+    68,
+    3.1
+   ],
+   "ar": [
+    30,
+    4.7
+   ],
+   "mr": [
+    36,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 2.9,
+   "ms": 335
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Talon",
+  "abilities": [
+   "Assassin's Path",
+   "Blade's End",
+   "Noxian Diplomacy",
+   "Rake",
+   "Shadow Assault"
+  ],
+  "names": {
+   "passive": {
+    "en": "Blade's End",
+    "fr": "Saignée fatale"
+   },
+   "spells": [
+    {
+     "en": "Noxian Diplomacy",
+     "fr": "Diplomatie noxienne"
+    },
+    {
+     "en": "Rake",
+     "fr": "Ratissage"
+    },
+    {
+     "en": "Assassin's Path",
+     "fr": "Voie de l'assassin"
+    },
+    {
+     "en": "Shadow Assault",
+     "fr": "Assaut ténébreux"
+    }
+   ]
+  }
+ },
+ "Taric": {
+  "base": {
+   "hp": [
+    645,
+    99
+   ],
+   "mana": [
+    300,
+    60
+   ],
+   "ad": [
+    55,
+    3.5
+   ],
+   "ar": [
+    40,
+    4.3
+   ],
+   "mr": [
+    28,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 2,
+   "ms": 340
+  },
+  "range": 150,
+  "resource": "Mana",
+  "apiname": "Taric",
+  "abilities": [
+   "Bastion",
+   "Bravado",
+   "Cosmic Radiance",
+   "Dazzle",
+   "Starlight's Touch"
+  ],
+  "names": {
+   "passive": {
+    "en": "Bravado",
+    "fr": "Plastronneur"
+   },
+   "spells": [
+    {
+     "en": "Starlight's Touch",
+     "fr": "Bénédiction stellaire"
+    },
+    {
+     "en": "Bastion",
+     "fr": "Bastion"
+    },
+    {
+     "en": "Dazzle",
+     "fr": "Éblouissement"
+    },
+    {
+     "en": "Cosmic Radiance",
+     "fr": "Lumière cosmique"
+    }
+   ]
+  }
+ },
+ "Teemo": {
+  "base": {
+   "hp": [
+    615,
+    104
+   ],
+   "mana": [
+    334,
+    25
+   ],
+   "ad": [
+    54,
+    3
+   ],
+   "ar": [
+    24,
+    4.5
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.69,
+   "asPerLevel": 3.38,
+   "ms": 330
+  },
+  "range": 500,
+  "resource": "Mana",
+  "apiname": "Teemo",
+  "abilities": [
+   "Blinding Dart",
+   "Guerrilla Warfare",
+   "Move Quick",
+   "Noxious Trap",
+   "Toxic Shot"
+  ],
+  "names": {
+   "passive": {
+    "en": "Guerrilla Warfare",
+    "fr": "Guérilla"
+   },
+   "spells": [
+    {
+     "en": "Blinding Dart",
+     "fr": "Fléchette aveuglante"
+    },
+    {
+     "en": "Move Quick",
+     "fr": "Vélocité"
+    },
+    {
+     "en": "Toxic Shot",
+     "fr": "Tir toxique"
+    },
+    {
+     "en": "Noxious Trap",
+     "fr": "Piège nocif"
+    }
+   ]
+  }
+ },
+ "Thresh": {
+  "base": {
+   "hp": [
+    620,
+    120
+   ],
+   "mana": [
+    274,
+    44
+   ],
+   "ad": [
+    56,
+    2.2
+   ],
+   "ar": [
+    33,
+    0
+   ],
+   "mr": [
+    30,
+    1.55
+   ],
+   "as": 0.625,
+   "asPerLevel": 3.5,
+   "ms": 330
+  },
+  "range": 450,
+  "resource": "Mana",
+  "apiname": "Thresh",
+  "abilities": [
+   "Damnation",
+   "Dark Passage",
+   "Death Sentence",
+   "Flay",
+   "The Box"
+  ],
+  "names": {
+   "passive": {
+    "en": "Damnation",
+    "fr": "Damnation"
+   },
+   "spells": [
+    {
+     "en": "Death Sentence",
+     "fr": "Peine capitale"
+    },
+    {
+     "en": "Dark Passage",
+     "fr": "Lien des ténèbres"
+    },
+    {
+     "en": "Flay",
+     "fr": "Fauchage"
+    },
+    {
+     "en": "The Box",
+     "fr": "La cage"
+    }
+   ]
+  }
+ },
+ "Tristana": {
+  "base": {
+   "hp": [
+    640,
+    102
+   ],
+   "mana": [
+    300,
+    32
+   ],
+   "ad": [
+    60,
+    3.4
+   ],
+   "ar": [
+    30,
+    4
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.656,
+   "asPerLevel": 1.5,
+   "ms": 325
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Tristana",
+  "abilities": [
+   "Buster Shot",
+   "Draw a Bead",
+   "Explosive Charge",
+   "Rapid Fire",
+   "Rocket Jump"
+  ],
+  "names": {
+   "passive": {
+    "en": "Draw a Bead",
+    "fr": "Tir de précision"
+   },
+   "spells": [
+    {
+     "en": "Rapid Fire",
+     "fr": "Tir rapide"
+    },
+    {
+     "en": "Rocket Jump",
+     "fr": "Saut roquette"
+    },
+    {
+     "en": "Explosive Charge",
+     "fr": "Charge explosive"
+    },
+    {
+     "en": "Buster Shot",
+     "fr": "Tir à impact"
+    }
+   ]
+  }
+ },
+ "Trundle": {
+  "base": {
+   "hp": [
+    650,
+    110
+   ],
+   "mana": [
+    340,
+    45
+   ],
+   "ad": [
+    68,
+    4.5
+   ],
+   "ar": [
+    37,
+    4.5
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.67,
+   "asPerLevel": 2.9,
+   "ms": 350
+  },
+  "range": 175,
+  "resource": "Mana",
+  "apiname": "Trundle",
+  "abilities": [
+   "Chomp",
+   "Frozen Domain",
+   "King's Tribute",
+   "Pillar of Ice",
+   "Subjugate"
+  ],
+  "names": {
+   "passive": {
+    "en": "King's Tribute",
+    "fr": "Tribut du roi"
+   },
+   "spells": [
+    {
+     "en": "Chomp",
+     "fr": "Morsure"
+    },
+    {
+     "en": "Frozen Domain",
+     "fr": "Royaume gelé"
+    },
+    {
+     "en": "Pillar of Ice",
+     "fr": "Montagne de glace"
+    },
+    {
+     "en": "Subjugate",
+     "fr": "Soumission"
+    }
+   ]
+  }
+ },
+ "Tryndamere": {
+  "base": {
+   "hp": [
+    696,
+    108
+   ],
+   "mana": [
+    100,
+    0
+   ],
+   "ad": [
+    66,
+    4.5
+   ],
+   "ar": [
+    33,
+    4.8
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.67,
+   "asPerLevel": 3.4,
+   "ms": 345
+  },
+  "range": 175,
+  "resource": "Fury",
+  "apiname": "Tryndamere",
+  "abilities": [
+   "Battle Fury",
+   "Bloodlust",
+   "Mocking Shout",
+   "Spinning Slash",
+   "Undying Rage"
+  ],
+  "names": {
+   "passive": {
+    "en": "Battle Fury",
+    "fr": "Vague de violence"
+   },
+   "spells": [
+    {
+     "en": "Bloodlust",
+     "fr": "Soif de sang"
+    },
+    {
+     "en": "Mocking Shout",
+     "fr": "Moquerie"
+    },
+    {
+     "en": "Spinning Slash",
+     "fr": "Balafre"
+    },
+    {
+     "en": "Undying Rage",
+     "fr": "Rage inépuisable"
+    }
+   ]
+  }
+ },
+ "Twisted Fate": {
+  "base": {
+   "hp": [
+    604,
+    108
+   ],
+   "mana": [
+    333,
+    39
+   ],
+   "ad": [
+    52,
+    2.5
+   ],
+   "ar": [
+    24,
+    4.35
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.625,
+   "asPerLevel": 2.5,
+   "ms": 330
+  },
+  "range": 525,
+  "resource": "Mana",
+  "apiname": "TwistedFate",
+  "abilities": [
+   "Destiny",
+   "Loaded Dice",
+   "Pick a Card",
+   "Stacked Deck",
+   "Wild Cards"
+  ],
+  "names": {
+   "passive": {
+    "en": "Loaded Dice",
+    "fr": "Dé pipé"
+   },
+   "spells": [
+    {
+     "en": "Wild Cards",
+     "fr": "Atouts"
+    },
+    {
+     "en": "Pick a Card",
+     "fr": "Bonne pioche"
+    },
+    {
+     "en": "Stacked Deck",
+     "fr": "Paquet"
+    },
+    {
+     "en": "Destiny",
+     "fr": "Destinée"
+    }
+   ]
+  }
+ },
+ "Twitch": {
+  "base": {
+   "hp": [
+    630,
+    98
+   ],
+   "mana": [
+    300,
+    40
+   ],
+   "ad": [
+    59,
+    3
+   ],
+   "ar": [
+    27,
+    4
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.679,
+   "asPerLevel": 3,
+   "ms": 330
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Twitch",
+  "abilities": [
+   "Ambush",
+   "Contaminate",
+   "Deadly Venom",
+   "Spray and Pray",
+   "Venom Cask"
+  ],
+  "names": {
+   "passive": {
+    "en": "Deadly Venom",
+    "fr": "Venin mortel"
+   },
+   "spells": [
+    {
+     "en": "Ambush",
+     "fr": "Embuscade"
+    },
+    {
+     "en": "Venom Cask",
+     "fr": "Dose de venin"
+    },
+    {
+     "en": "Contaminate",
+     "fr": "Contamination"
+    },
+    {
+     "en": "Spray and Pray",
+     "fr": "Panique"
+    }
+   ]
+  }
+ },
+ "Udyr": {
+  "base": {
+   "hp": [
+    664,
+    92
+   ],
+   "mana": [
+    271,
+    50
+   ],
+   "ad": [
+    62,
+    4
+   ],
+   "ar": [
+    31,
+    4.7
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.65,
+   "asPerLevel": 3,
+   "ms": 350
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Udyr",
+  "abilities": [
+   "Bear Stance",
+   "Blazing Stampede",
+   "Bridge Between",
+   "Iron Mantle",
+   "Monkey's Agility",
+   "Phoenix Stance",
+   "Tiger Stance",
+   "Turtle Stance",
+   "Wilding Claw",
+   "Wingborne Storm"
+  ],
+  "names": {
+   "passive": {
+    "en": "Bridge Between",
+    "fr": "Canalisation des esprits"
+   },
+   "spells": [
+    {
+     "en": "Wilding Claw",
+     "fr": "Griffe sauvage"
+    },
+    {
+     "en": "Iron Mantle",
+     "fr": "Cape de fer"
+    },
+    {
+     "en": "Blazing Stampede",
+     "fr": "Piétinement flamboyant"
+    },
+    {
+     "en": "Wingborne Storm",
+     "fr": "Tempête spirituelle"
+    }
+   ]
+  }
+ },
+ "Urgot": {
+  "base": {
+   "hp": [
+    655,
+    102
+   ],
+   "mana": [
+    340,
+    45
+   ],
+   "ad": [
+    63,
+    4
+   ],
+   "ar": [
+    36,
+    5
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 3.75,
+   "ms": 330
+  },
+  "range": 350,
+  "resource": "Mana",
+  "apiname": "Urgot",
+  "abilities": [
+   "Acid Hunter",
+   "Corrosive Charge",
+   "Disdain",
+   "Echoing Flames",
+   "Fear Beyond Death",
+   "Hyper-Kinetic Position Reverser",
+   "Noxian Corrosive Charge",
+   "Purge",
+   "Terror Capacitor",
+   "Zaun-Touched Bolt Augmenter"
+  ],
+  "names": {
+   "passive": {
+    "en": "Echoing Flames",
+    "fr": "Flammes purificatrices"
+   },
+   "spells": [
+    {
+     "en": "Corrosive Charge",
+     "fr": "Torpille corrosive"
+    },
+    {
+     "en": "Purge",
+     "fr": "Géhenne"
+    },
+    {
+     "en": "Disdain",
+     "fr": "Mépris"
+    },
+    {
+     "en": "Fear Beyond Death",
+     "fr": "Règne de la terreur"
+    }
+   ]
+  }
+ },
+ "Varus": {
+  "base": {
+   "hp": [
+    600,
+    105
+   ],
+   "mana": [
+    320,
+    40
+   ],
+   "ad": [
+    59,
+    3.4
+   ],
+   "ar": [
+    24,
+    4
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.658,
+   "asPerLevel": 3.5,
+   "ms": 330
+  },
+  "range": 575,
+  "resource": "Mana",
+  "apiname": "Varus",
+  "abilities": [
+   "Blighted Quiver",
+   "Chain of Corruption",
+   "Hail of Arrows",
+   "Living Vengeance",
+   "Piercing Arrow"
+  ],
+  "names": {
+   "passive": {
+    "en": "Living Vengeance",
+    "fr": "Vengeance incarnée"
+   },
+   "spells": [
+    {
+     "en": "Piercing Arrow",
+     "fr": "Flèche perforante"
+    },
+    {
+     "en": "Blighted Quiver",
+     "fr": "Carquois meurtri"
+    },
+    {
+     "en": "Hail of Arrows",
+     "fr": "Pluie de flèches"
+    },
+    {
+     "en": "Chain of Corruption",
+     "fr": "Chaîne corruptrice"
+    }
+   ]
+  }
+ },
+ "Vayne": {
+  "base": {
+   "hp": [
+    580,
+    98
+   ],
+   "mana": [
+    232,
+    35
+   ],
+   "ad": [
+    60,
+    2.35
+   ],
+   "ar": [
+    23,
+    4.6
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.658,
+   "asPerLevel": 2.8,
+   "ms": 330
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Vayne",
+  "abilities": [
+   "Condemn",
+   "Final Hour",
+   "Night Hunter",
+   "Silver Bolts",
+   "Tumble"
+  ],
+  "names": {
+   "passive": {
+    "en": "Night Hunter",
+    "fr": "Chasseresse nocturne"
+   },
+   "spells": [
+    {
+     "en": "Tumble",
+     "fr": "Roulade"
+    },
+    {
+     "en": "Silver Bolts",
+     "fr": "Carreaux d'argent"
+    },
+    {
+     "en": "Condemn",
+     "fr": "Condamnation"
+    },
+    {
+     "en": "Final Hour",
+     "fr": "Combat ultime"
+    }
+   ]
+  }
+ },
+ "Veigar": {
+  "base": {
+   "hp": [
+    580,
+    108
+   ],
+   "mana": [
+    490,
+    26
+   ],
+   "ad": [
+    52,
+    2.7
+   ],
+   "ar": [
+    18,
+    5.2
+   ],
+   "mr": [
+    32,
+    1.3
+   ],
+   "as": 0.625,
+   "asPerLevel": 2.24,
+   "ms": 340
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Veigar",
+  "abilities": [
+   "Baleful Strike",
+   "Dark Matter",
+   "Event Horizon",
+   "Phenomenal Evil Power",
+   "Primordial Burst"
+  ],
+  "names": {
+   "passive": {
+    "en": "Phenomenal Evil Power",
+    "fr": "Pouvoir maléfique phénoménal"
+   },
+   "spells": [
+    {
+     "en": "Baleful Strike",
+     "fr": "Coup malin"
+    },
+    {
+     "en": "Dark Matter",
+     "fr": "Matière noire"
+    },
+    {
+     "en": "Event Horizon",
+     "fr": "Profanation"
+    },
+    {
+     "en": "Primordial Burst",
+     "fr": "Explosion primordiale"
+    }
+   ]
+  }
+ },
+ "Vel'Koz": {
+  "base": {
+   "hp": [
+    590,
+    102
+   ],
+   "mana": [
+    469,
+    21
+   ],
+   "ad": [
+    55,
+    3.1416
+   ],
+   "ar": [
+    22,
+    4.7
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.643,
+   "asPerLevel": 1.59,
+   "ms": 340
+  },
+  "range": 525,
+  "resource": "Mana",
+  "apiname": "Velkoz",
+  "abilities": [
+   "Life Form Disintegration Ray",
+   "Organic Deconstruction",
+   "Plasma Fission",
+   "Tectonic Disruption",
+   "Void Rift"
+  ],
+  "names": {
+   "passive": {
+    "en": "Organic Deconstruction",
+    "fr": "Décomposition organique"
+   },
+   "spells": [
+    {
+     "en": "Plasma Fission",
+     "fr": "Fission du plasma"
+    },
+    {
+     "en": "Void Rift",
+     "fr": "Ouverture de faille"
+    },
+    {
+     "en": "Tectonic Disruption",
+     "fr": "Dislocation tectonique"
+    },
+    {
+     "en": "Life Form Disintegration Ray",
+     "fr": "Désintégrateur de formes de vie"
+    }
+   ]
+  }
+ },
+ "Vex": {
+  "base": {
+   "hp": [
+    590,
+    104
+   ],
+   "mana": [
+    490,
+    32
+   ],
+   "ad": [
+    54,
+    2.75
+   ],
+   "ar": [
+    23,
+    4.45
+   ],
+   "mr": [
+    28,
+    1.3
+   ],
+   "as": 0.669,
+   "asPerLevel": 1,
+   "ms": 335
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Vex",
+  "abilities": [
+   "Doom 'n Gloom",
+   "Looming Darkness",
+   "Mistral Bolt",
+   "Personal Space",
+   "Shadow Surge"
+  ],
+  "names": {
+   "passive": {
+    "en": "Doom 'n Gloom",
+    "fr": "Malheur et Désespoir"
+   },
+   "spells": [
+    {
+     "en": "Mistral Bolt",
+     "fr": "Mistral perdant"
+    },
+    {
+     "en": "Personal Space",
+     "fr": "Lâchez-moi !"
+    },
+    {
+     "en": "Looming Darkness",
+     "fr": "Ténèbres imminentes"
+    },
+    {
+     "en": "Shadow Surge",
+     "fr": "Déferlement d'Ombre"
+    }
+   ]
+  }
+ },
+ "Vi": {
+  "base": {
+   "hp": [
+    655,
+    105
+   ],
+   "mana": [
+    295,
+    65
+   ],
+   "ad": [
+    61,
+    3.5
+   ],
+   "ar": [
+    30,
+    4.7
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.644,
+   "asPerLevel": 2,
+   "ms": 340
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Vi",
+  "abilities": [
+   "Blast Shield",
+   "Cease and Desist",
+   "Denting Blows",
+   "Relentless Force",
+   "Vault Breaker"
+  ],
+  "names": {
+   "passive": {
+    "en": "Blast Shield",
+    "fr": "Bouclier antichoc"
+   },
+   "spells": [
+    {
+     "en": "Vault Breaker",
+     "fr": "Brise-coffre"
+    },
+    {
+     "en": "Denting Blows",
+     "fr": "Coups fracassants"
+    },
+    {
+     "en": "Relentless Force",
+     "fr": "Force implacable"
+    },
+    {
+     "en": "Cease and Desist",
+     "fr": "Mise en demeure"
+    }
+   ]
+  }
+ },
+ "Viego": {
+  "base": {
+   "hp": [
+    630,
+    109
+   ],
+   "mana": [
+    0,
+    0
+   ],
+   "ad": [
+    57,
+    4
+   ],
+   "ar": [
+    34,
+    4.6
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.658,
+   "asPerLevel": 2.75,
+   "ms": 345
+  },
+  "range": 200,
+  "resource": "None",
+  "apiname": "Viego",
+  "abilities": [
+   "Blade of the Ruined King",
+   "Harrowed Path",
+   "Heartbreaker",
+   "Sovereign's Domination",
+   "Spectral Maw"
+  ],
+  "names": {
+   "passive": {
+    "en": "Sovereign's Domination",
+    "fr": "Assujettissement"
+   },
+   "spells": [
+    {
+     "en": "Blade of the Ruined King",
+     "fr": "Lame du roi déchu"
+    },
+    {
+     "en": "Spectral Maw",
+     "fr": "Gueule spectrale"
+    },
+    {
+     "en": "Harrowed Path",
+     "fr": "Chemin tourmenté"
+    },
+    {
+     "en": "Heartbreaker",
+     "fr": "Cœur brisé"
+    }
+   ]
+  }
+ },
+ "Viktor": {
+  "base": {
+   "hp": [
+    600,
+    100
+   ],
+   "mana": [
+    405,
+    45
+   ],
+   "ad": [
+    53,
+    3
+   ],
+   "ar": [
+    23,
+    4.4
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.658,
+   "asPerLevel": 2.11,
+   "ms": 335
+  },
+  "range": 525,
+  "resource": "Mana",
+  "apiname": "Viktor",
+  "abilities": [
+   "Arcane Storm",
+   "Chaos Storm",
+   "Death Ray",
+   "Glorious Evolution",
+   "Gravity Field",
+   "Hextech Ray",
+   "Siphon Power"
+  ],
+  "names": {
+   "passive": {
+    "en": "Glorious Evolution",
+    "fr": "Glorieuse évolution"
+   },
+   "spells": [
+    {
+     "en": "Siphon Power",
+     "fr": "Siphonnage"
+    },
+    {
+     "en": "Gravity Field",
+     "fr": "Champ gravitationnel"
+    },
+    {
+     "en": "Hextech Ray",
+     "fr": "Rayon Hextech"
+    },
+    {
+     "en": "Arcane Storm",
+     "fr": "Tempête arcanique"
+    }
+   ]
+  }
+ },
+ "Vladimir": {
+  "base": {
+   "hp": [
+    600,
+    110
+   ],
+   "mana": [
+    2,
+    0
+   ],
+   "ad": [
+    55,
+    3
+   ],
+   "ar": [
+    24,
+    4.5
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.658,
+   "asPerLevel": 2,
+   "ms": 330
+  },
+  "range": 450,
+  "resource": "Crimson Rush",
+  "apiname": "Vladimir",
+  "abilities": [
+   "Crimson Pact",
+   "Hemoplague",
+   "Sanguine Pool",
+   "Tides of Blood",
+   "Transfusion"
+  ],
+  "names": {
+   "passive": {
+    "en": "Crimson Pact",
+    "fr": "Pacte de sang"
+   },
+   "spells": [
+    {
+     "en": "Transfusion",
+     "fr": "Transfusion"
+    },
+    {
+     "en": "Sanguine Pool",
+     "fr": "Bain de sang"
+    },
+    {
+     "en": "Tides of Blood",
+     "fr": "Vagues de sang"
+    },
+    {
+     "en": "Hemoplague",
+     "fr": "Peste sanguine"
+    }
+   ]
+  }
+ },
+ "Volibear": {
+  "base": {
+   "hp": [
+    650,
+    104
+   ],
+   "mana": [
+    350,
+    70
+   ],
+   "ad": [
+    65,
+    3.5
+   ],
+   "ar": [
+    35,
+    5.2
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 2,
+   "ms": 340
+  },
+  "range": 150,
+  "resource": "Mana",
+  "apiname": "Volibear",
+  "abilities": [
+   "Chosen of the Storm",
+   "Frenzied Maul",
+   "Frenzy",
+   "Majestic Roar",
+   "Rolling Thunder",
+   "Sky Splitter",
+   "Stormbringer",
+   "The Relentless Storm",
+   "Thunder Claws",
+   "Thundering Smash"
+  ],
+  "names": {
+   "passive": {
+    "en": "The Relentless Storm",
+    "fr": "Tempête impitoyable"
+   },
+   "spells": [
+    {
+     "en": "Thundering Smash",
+     "fr": "Coup fulgurant"
+    },
+    {
+     "en": "Frenzied Maul",
+     "fr": "Folie mutilatrice"
+    },
+    {
+     "en": "Sky Splitter",
+     "fr": "Foudroiement"
+    },
+    {
+     "en": "Stormbringer",
+     "fr": "Tempête incarnée"
+    }
+   ]
+  }
+ },
+ "Warwick": {
+  "base": {
+   "hp": [
+    620,
+    99
+   ],
+   "mana": [
+    280,
+    35
+   ],
+   "ad": [
+    65,
+    2.5
+   ],
+   "ar": [
+    33,
+    4.4
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.638,
+   "asPerLevel": 2,
+   "ms": 335
+  },
+  "range": 125,
+  "resource": "Mana",
+  "apiname": "Warwick",
+  "abilities": [
+   "Blood Hunt",
+   "Blood Scent",
+   "Eternal Hunger",
+   "Eternal Thirst",
+   "Hungering Strike",
+   "Hunter's Call",
+   "Infinite Duress",
+   "Jaws of the Beast",
+   "Primal Howl"
+  ],
+  "names": {
+   "passive": {
+    "en": "Eternal Hunger",
+    "fr": "Soif inextinguible"
+   },
+   "spells": [
+    {
+     "en": "Jaws of the Beast",
+     "fr": "Dents de la bête"
+    },
+    {
+     "en": "Blood Hunt",
+     "fr": "Traque sanguinaire"
+    },
+    {
+     "en": "Primal Howl",
+     "fr": "Hurlement bestial"
+    },
+    {
+     "en": "Infinite Duress",
+     "fr": "Contrainte infinie"
+    }
+   ]
+  }
+ },
+ "Wukong": {
+  "base": {
+   "hp": [
+    610,
+    99
+   ],
+   "mana": [
+    330,
+    65
+   ],
+   "ad": [
+    66,
+    3.5
+   ],
+   "ar": [
+    31,
+    4.7
+   ],
+   "mr": [
+    28,
+    2.05
+   ],
+   "as": 0.69,
+   "asPerLevel": 3,
+   "ms": 340
+  },
+  "range": 175,
+  "resource": "Mana",
+  "apiname": "MonkeyKing",
+  "abilities": [
+   "Crushing Blow",
+   "Cyclone",
+   "Decoy",
+   "Nimbus Strike",
+   "Stone Skin",
+   "Warrior Trickster"
+  ],
+  "names": {
+   "passive": {
+    "en": "Stone Skin",
+    "fr": "Peau de pierre"
+   },
+   "spells": [
+    {
+     "en": "Crushing Blow",
+     "fr": "Écrasement"
+    },
+    {
+     "en": "Warrior Trickster",
+     "fr": "Guerrier espiègle"
+    },
+    {
+     "en": "Nimbus Strike",
+     "fr": "Nimbus"
+    },
+    {
+     "en": "Cyclone",
+     "fr": "Cyclone"
+    }
+   ]
+  }
+ },
+ "Xayah": {
+  "base": {
+   "hp": [
+    630,
+    107
+   ],
+   "mana": [
+    340,
+    40
+   ],
+   "ad": [
+    60,
+    3.5
+   ],
+   "ar": [
+    25,
+    4.2
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.658,
+   "asPerLevel": 3.9,
+   "ms": 330
+  },
+  "range": 525,
+  "resource": "Mana",
+  "apiname": "Xayah",
+  "abilities": [
+   "Bladecaller",
+   "Clean Cuts",
+   "Deadly Plumage",
+   "Double Daggers",
+   "Featherstorm"
+  ],
+  "names": {
+   "passive": {
+    "en": "Clean Cuts",
+    "fr": "Plumes perçantes"
+   },
+   "spells": [
+    {
+     "en": "Double Daggers",
+     "fr": "Dagues jumelles"
+    },
+    {
+     "en": "Deadly Plumage",
+     "fr": "Plumage mortel"
+    },
+    {
+     "en": "Bladecaller",
+     "fr": "Appel des lames"
+    },
+    {
+     "en": "Featherstorm",
+     "fr": "Rafale de plumes"
+    }
+   ]
+  }
+ },
+ "Xerath": {
+  "base": {
+   "hp": [
+    575,
+    106
+   ],
+   "mana": [
+    400,
+    22
+   ],
+   "ad": [
+    55,
+    3
+   ],
+   "ar": [
+    22,
+    4.7
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.658,
+   "asPerLevel": 1.36,
+   "ms": 340
+  },
+  "range": 525,
+  "resource": "Mana",
+  "apiname": "Xerath",
+  "abilities": [
+   "Arcanopulse",
+   "Eye of Destruction",
+   "Mana Surge",
+   "Rite of the Arcane",
+   "Shocking Orb"
+  ],
+  "names": {
+   "passive": {
+    "en": "Mana Surge",
+    "fr": "Afflux de mana"
+   },
+   "spells": [
+    {
+     "en": "Arcanopulse",
+     "fr": "Rayon arcanique"
+    },
+    {
+     "en": "Eye of Destruction",
+     "fr": "Œil de la destruction"
+    },
+    {
+     "en": "Shocking Orb",
+     "fr": "Orbe d'électrocution"
+    },
+    {
+     "en": "Rite of the Arcane",
+     "fr": "Rite arcanique"
+    }
+   ]
+  }
+ },
+ "Xin Zhao": {
+  "base": {
+   "hp": [
+    620,
+    106
+   ],
+   "mana": [
+    274,
+    55
+   ],
+   "ad": [
+    63,
+    3
+   ],
+   "ar": [
+    35,
+    4.4
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.645,
+   "asPerLevel": 3.5,
+   "ms": 345
+  },
+  "range": 175,
+  "resource": "Mana",
+  "apiname": "XinZhao",
+  "abilities": [
+   "Audacious Charge",
+   "Battle Cry",
+   "Challenge",
+   "Crescent Guard",
+   "Crescent Sweep",
+   "Determination",
+   "Three Talon Strike",
+   "Tireless Warrior",
+   "Wind Becomes Lightning"
+  ],
+  "names": {
+   "passive": {
+    "en": "Determination",
+    "fr": "Détermination"
+   },
+   "spells": [
+    {
+     "en": "Three Talon Strike",
+     "fr": "Frappe des trois serres"
+    },
+    {
+     "en": "Wind Becomes Lightning",
+     "fr": "Vent et foudre"
+    },
+    {
+     "en": "Audacious Charge",
+     "fr": "Charge audacieuse"
+    },
+    {
+     "en": "Crescent Guard",
+     "fr": "Garde circulaire"
+    }
+   ]
+  }
+ },
+ "Yasuo": {
+  "base": {
+   "hp": [
+    590,
+    110
+   ],
+   "mana": [
+    100,
+    0
+   ],
+   "ad": [
+    60,
+    2.5
+   ],
+   "ar": [
+    32,
+    4.6
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.697,
+   "asPerLevel": 3.5,
+   "ms": 345
+  },
+  "range": 175,
+  "resource": "Flow",
+  "apiname": "Yasuo",
+  "abilities": [
+   "Last Breath",
+   "Steel Tempest",
+   "Sweeping Blade",
+   "Way of the Wanderer",
+   "Wind Wall"
+  ],
+  "names": {
+   "passive": {
+    "en": "Way of the Wanderer",
+    "fr": "Voie du vagabond"
+   },
+   "spells": [
+    {
+     "en": "Steel Tempest",
+     "fr": "Tempête d'acier"
+    },
+    {
+     "en": "Wind Wall",
+     "fr": "Mur de vent"
+    },
+    {
+     "en": "Sweeping Blade",
+     "fr": "Cercle tranchant"
+    },
+    {
+     "en": "Last Breath",
+     "fr": "Dernier soupir"
+    }
+   ]
+  }
+ },
+ "Yone": {
+  "base": {
+   "hp": [
+    620,
+    105
+   ],
+   "mana": [
+    500,
+    0
+   ],
+   "ad": [
+    62,
+    2
+   ],
+   "ar": [
+    33,
+    4.6
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 3.5,
+   "ms": 345
+  },
+  "range": 175,
+  "resource": "Flow",
+  "apiname": "Yone",
+  "abilities": [
+   "Fate Sealed",
+   "Mortal Steel",
+   "Soul Unbound",
+   "Spirit Cleave",
+   "Way of the Hunter"
+  ],
+  "names": {
+   "passive": {
+    "en": "Way of the Hunter",
+    "fr": "Voie du chasseur"
+   },
+   "spells": [
+    {
+     "en": "Mortal Steel",
+     "fr": "Acier mortel"
+    },
+    {
+     "en": "Spirit Cleave",
+     "fr": "Fendoir spirituel"
+    },
+    {
+     "en": "Soul Unbound",
+     "fr": "Libération spirituelle"
+    },
+    {
+     "en": "Fate Sealed",
+     "fr": "Destin scellé"
+    }
+   ]
+  }
+ },
+ "Yorick": {
+  "base": {
+   "hp": [
+    650,
+    114
+   ],
+   "mana": [
+    300,
+    60
+   ],
+   "ad": [
+    62,
+    5
+   ],
+   "ar": [
+    36,
+    4.5
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 2,
+   "ms": 340
+  },
+  "range": 175,
+  "resource": "Mana",
+  "apiname": "Yorick",
+  "abilities": [
+   "Awakening",
+   "Dark Procession",
+   "Eulogy of the Isles",
+   "Last Rites",
+   "Mourning Mist",
+   "Shepherd of Souls"
+  ],
+  "names": {
+   "passive": {
+    "en": "Shepherd of Souls",
+    "fr": "Berger des âmes"
+   },
+   "spells": [
+    {
+     "en": "Last Rites",
+     "fr": "Derniers sacrements"
+    },
+    {
+     "en": "Dark Procession",
+     "fr": "Sombre cortège"
+    },
+    {
+     "en": "Mourning Mist",
+     "fr": "Brume endeuillée"
+    },
+    {
+     "en": "Eulogy of the Isles",
+     "fr": "Élégie des Îles"
+    }
+   ]
+  }
+ },
+ "Yunara": {
+  "base": {
+   "hp": [
+    590,
+    110
+   ],
+   "mana": [
+    275,
+    45
+   ],
+   "ad": [
+    55,
+    3
+   ],
+   "ar": [
+    25,
+    4.4
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.65,
+   "asPerLevel": 2,
+   "ms": 325
+  },
+  "range": 575,
+  "resource": "Mana",
+  "apiname": "Yunara",
+  "abilities": [
+   "Arc of Judgment",
+   "Arc of Ruin",
+   "Cultivation of Spirit",
+   "Kanmei's Steps",
+   "Transcend One's Self",
+   "Untouchable Shadow",
+   "Vow of the First Lands"
+  ],
+  "names": {
+   "passive": {
+    "en": "Vow of the First Lands",
+    "fr": "Serment aux Terres premières"
+   },
+   "spells": [
+    {
+     "en": "Cultivation of Spirit",
+     "fr": "Déchaînement spirituel"
+    },
+    {
+     "en": "Arc of Judgment | Arc of Ruin",
+     "fr": "Arc du jugement | Arc de la ruine"
+    },
+    {
+     "en": "Kanmei's Steps | Untouchable Shadow",
+     "fr": "Célérité des kanmei | Ombres ineffables"
+    },
+    {
+     "en": "Transcend One's Self",
+     "fr": "Transe"
+    }
+   ]
+  }
+ },
+ "Yuumi": {
+  "base": {
+   "hp": [
+    500,
+    69
+   ],
+   "mana": [
+    440,
+    45
+   ],
+   "ad": [
+    49,
+    3.1
+   ],
+   "ar": [
+    25,
+    4.2
+   ],
+   "mr": [
+    25,
+    1.1
+   ],
+   "as": 0.625,
+   "asPerLevel": 1,
+   "ms": 330
+  },
+  "range": 425,
+  "resource": "Mana",
+  "apiname": "Yuumi",
+  "abilities": [
+   "Bop 'n' Block",
+   "Feline Friendship",
+   "Final Chapter",
+   "Prowling Projectile",
+   "You and Me!",
+   "Zoomies"
+  ],
+  "names": {
+   "passive": {
+    "en": "Feline Friendship",
+    "fr": "Chat-maraderie"
+   },
+   "spells": [
+    {
+     "en": "Prowling Projectile",
+     "fr": "Tête chat-sseuse"
+    },
+    {
+     "en": "You and Me!",
+     "fr": "Félin pour l'autre !"
+    },
+    {
+     "en": "Zoomies",
+     "fr": "Zouuu !"
+    },
+    {
+     "en": "Final Chapter",
+     "fr": "Chat-pitre final"
+    }
+   ]
+  }
+ },
+ "Zaahen": {
+  "base": {
+   "hp": [
+    640,
+    114
+   ],
+   "mana": [
+    350,
+    55
+   ],
+   "ad": [
+    63,
+    4
+   ],
+   "ar": [
+    36,
+    5
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.625,
+   "asPerLevel": 2.5,
+   "ms": 345
+  },
+  "range": 175,
+  "resource": "Mana",
+  "apiname": "Zaahen",
+  "abilities": [
+   "Aureate Rush",
+   "Cultivation of War",
+   "Dreaded Return",
+   "Grim Deliverance",
+   "The Darkin Glaive"
+  ],
+  "names": {
+   "passive": {
+    "en": "Cultivation of War",
+    "fr": "Guerrier immortel"
+   },
+   "spells": [
+    {
+     "en": "The Darkin Glaive",
+     "fr": "Glaive des Darkin"
+    },
+    {
+     "en": "Dreaded Return",
+     "fr": "Retour redoutable"
+    },
+    {
+     "en": "Aureate Rush",
+     "fr": "Incursion dorée"
+    },
+    {
+     "en": "Grim Deliverance",
+     "fr": "Libération inexorable"
+    }
+   ]
+  }
+ },
+ "Zac": {
+  "base": {
+   "hp": [
+    685,
+    109
+   ],
+   "mana": [
+    0,
+    0
+   ],
+   "ad": [
+    60,
+    3.4
+   ],
+   "ar": [
+    33,
+    5.2
+   ],
+   "mr": [
+    32,
+    2.05
+   ],
+   "as": 0.736,
+   "asPerLevel": 1.6,
+   "ms": 340
+  },
+  "range": 175,
+  "resource": "Health",
+  "apiname": "Zac",
+  "abilities": [
+   "Cell Division",
+   "Elastic Slingshot",
+   "Let's Bounce!",
+   "Stretching Strikes",
+   "Unstable Matter"
+  ],
+  "names": {
+   "passive": {
+    "en": "Cell Division",
+    "fr": "Division cellulaire"
+   },
+   "spells": [
+    {
+     "en": "Stretching Strikes",
+     "fr": "Étirements"
+    },
+    {
+     "en": "Unstable Matter",
+     "fr": "Matière instable"
+    },
+    {
+     "en": "Elastic Slingshot",
+     "fr": "Fronde"
+    },
+    {
+     "en": "Let's Bounce!",
+     "fr": "Boing !"
+    }
+   ]
+  }
+ },
+ "Zed": {
+  "base": {
+   "hp": [
+    654,
+    99
+   ],
+   "mana": [
+    200,
+    0
+   ],
+   "ad": [
+    63,
+    3.4
+   ],
+   "ar": [
+    32,
+    4.7
+   ],
+   "mr": [
+    29,
+    2.05
+   ],
+   "as": 0.651,
+   "asPerLevel": 3.3,
+   "ms": 345
+  },
+  "range": 125,
+  "resource": "Energy",
+  "apiname": "Zed",
+  "abilities": [
+   "Contempt for the Weak",
+   "Death Mark",
+   "Living Shadow",
+   "Razor Shuriken",
+   "Shadow Slash"
+  ],
+  "names": {
+   "passive": {
+    "en": "Contempt for the Weak",
+    "fr": "Mépris des faibles"
+   },
+   "spells": [
+    {
+     "en": "Razor Shuriken",
+     "fr": "Shuriken-rasoir"
+    },
+    {
+     "en": "Living Shadow",
+     "fr": "Ombre vivante"
+    },
+    {
+     "en": "Shadow Slash",
+     "fr": "Taillade des ombres"
+    },
+    {
+     "en": "Death Mark",
+     "fr": "Marque de la mort"
+    }
+   ]
+  }
+ },
+ "Zeri": {
+  "base": {
+   "hp": [
+    600,
+    110
+   ],
+   "mana": [
+    250,
+    45
+   ],
+   "ad": [
+    56,
+    2
+   ],
+   "ar": [
+    24,
+    4.2
+   ],
+   "mr": [
+    33,
+    1.1
+   ],
+   "as": 0.658,
+   "asPerLevel": 2,
+   "ms": 330
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Zeri",
+  "abilities": [
+   "Burst Fire",
+   "Lightning Crash",
+   "Living Battery",
+   "Spark Surge",
+   "Ultrashock Laser"
+  ],
+  "names": {
+   "passive": {
+    "en": "Living Battery",
+    "fr": "Batterie vivante"
+   },
+   "spells": [
+    {
+     "en": "Burst Fire",
+     "fr": "Rafale"
+    },
+    {
+     "en": "Ultrashock Laser",
+     "fr": "Laser électrocuteur"
+    },
+    {
+     "en": "Spark Surge",
+     "fr": "Charge ionique"
+    },
+    {
+     "en": "Lightning Crash",
+     "fr": "Éruption électrique"
+    }
+   ]
+  }
+ },
+ "Ziggs": {
+  "base": {
+   "hp": [
+    606,
+    106
+   ],
+   "mana": [
+    480,
+    23.5
+   ],
+   "ad": [
+    55,
+    3.1
+   ],
+   "ar": [
+    21,
+    4.7
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.656,
+   "asPerLevel": 2,
+   "ms": 325
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Ziggs",
+  "abilities": [
+   "Bouncing Bomb",
+   "Hexplosive Minefield",
+   "Mega Inferno Bomb",
+   "Satchel Charge",
+   "Short Fuse"
+  ],
+  "names": {
+   "passive": {
+    "en": "Short Fuse",
+    "fr": "Mèche courte"
+   },
+   "spells": [
+    {
+     "en": "Bouncing Bomb",
+     "fr": "Bombe rebondissante"
+    },
+    {
+     "en": "Satchel Charge",
+     "fr": "Charge explosive"
+    },
+    {
+     "en": "Hexplosive Minefield",
+     "fr": "Mines Hexplosives"
+    },
+    {
+     "en": "Mega Inferno Bomb",
+     "fr": "Méga bombe infernale"
+    }
+   ]
+  }
+ },
+ "Zilean": {
+  "base": {
+   "hp": [
+    574,
+    96
+   ],
+   "mana": [
+    452,
+    50
+   ],
+   "ad": [
+    52,
+    3
+   ],
+   "ar": [
+    24,
+    5
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.658,
+   "asPerLevel": 2.13,
+   "ms": 335
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Zilean",
+  "abilities": [
+   "Chronoshift",
+   "Rewind",
+   "Time Bomb",
+   "Time Warp",
+   "Time in a Bottle"
+  ],
+  "names": {
+   "passive": {
+    "en": "Time In A Bottle",
+    "fr": "Temps dans une bouteille"
+   },
+   "spells": [
+    {
+     "en": "Time Bomb",
+     "fr": "Bombe à retardement"
+    },
+    {
+     "en": "Rewind",
+     "fr": "Retour rapide"
+    },
+    {
+     "en": "Time Warp",
+     "fr": "Distorsion temporelle"
+    },
+    {
+     "en": "Chronoshift",
+     "fr": "Retour temporel"
+    }
+   ]
+  }
+ },
+ "Zoe": {
+  "base": {
+   "hp": [
+    630,
+    106
+   ],
+   "mana": [
+    425,
+    25
+   ],
+   "ad": [
+    58,
+    3.3
+   ],
+   "ar": [
+    21,
+    4.7
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.658,
+   "asPerLevel": 2.5,
+   "ms": 340
+  },
+  "range": 550,
+  "resource": "Mana",
+  "apiname": "Zoe",
+  "abilities": [
+   "More Sparkles!",
+   "Paddle Star!",
+   "Portal Jump",
+   "Sleepy Trouble Bubble",
+   "Spell Thief"
+  ],
+  "names": {
+   "passive": {
+    "en": "More Sparkles!",
+    "fr": "Plus d'étincelles !"
+   },
+   "spells": [
+    {
+     "en": "Paddle Star!",
+     "fr": "Astro-pong !"
+    },
+    {
+     "en": "Spell Thief",
+     "fr": "Voleuse de sorts"
+    },
+    {
+     "en": "Sleepy Trouble Bubble",
+     "fr": "Bulle soporifique"
+    },
+    {
+     "en": "Portal Jump",
+     "fr": "Bond dimensionnel"
+    }
+   ]
+  }
+ },
+ "Zyra": {
+  "base": {
+   "hp": [
+    574,
+    93
+   ],
+   "mana": [
+    418,
+    25
+   ],
+   "ad": [
+    53,
+    3.2
+   ],
+   "ar": [
+    29,
+    4.2
+   ],
+   "mr": [
+    30,
+    1.3
+   ],
+   "as": 0.681,
+   "asPerLevel": 2.11,
+   "ms": 340
+  },
+  "range": 575,
+  "resource": "Mana",
+  "apiname": "Zyra",
+  "abilities": [
+   "Deadly Spines",
+   "Garden of Thorns",
+   "Grasping Roots",
+   "Rampant Growth",
+   "Stranglethorns"
+  ],
+  "names": {
+   "passive": {
+    "en": "Garden of Thorns",
+    "fr": "Jardin de ronces"
+   },
+   "spells": [
+    {
+     "en": "Deadly Spines",
+     "fr": "Épines funestes"
+    },
+    {
+     "en": "Rampant Growth",
+     "fr": "Croissance incontrôlée"
+    },
+    {
+     "en": "Grasping Roots",
+     "fr": "Racines fixatrices"
+    },
+    {
+     "en": "Stranglethorns",
+     "fr": "Ronces étrangleuses"
+    }
+   ]
+  }
+ }
+}
