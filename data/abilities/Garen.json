@@ -1,0 +1,325 @@
+{
+ "champion": "Garen",
+ "abilities": [
+  {
+   "name": "Perseverance",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Decisive Strike",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 8,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Movement Speed Duration",
+     "perRank": [
+      1.4,
+      1.95,
+      2.5,
+      3.05,
+      3.6
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1.4 to 3.6"
+    },
+    {
+     "label": "Bonus Physical Damage",
+     "perRank": [
+      30,
+      60,
+      90,
+      120,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "50% AD",
+       "pct": 50
+      }
+     ],
+     "text": "30 to 150 (+ 50% AD)"
+    }
+   ]
+  },
+  {
+   "name": "Courage",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    22,
+    19.5,
+    17,
+    14.5,
+    12
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Damage Reduction",
+     "perRank": [
+      25,
+      29,
+      33,
+      37,
+      41
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "25 to 41%"
+    },
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      65,
+      85,
+      105,
+      125,
+      145
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusHealth",
+       "raw": "18% bonus health",
+       "pct": 18
+      }
+     ],
+     "text": "65 to 145 (+ 18% bonus health)"
+    }
+   ]
+  },
+  {
+   "name": "Judgment",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    9,
+    8.25,
+    7.5,
+    6.75,
+    6
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage Per Spin",
+     "perRank": [
+      4,
+      7,
+      10,
+      13,
+      16
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "40 to 52% AD",
+       "perRank": [
+        40,
+        43,
+        46,
+        49,
+        52
+       ]
+      }
+     ],
+     "text": "4 to 16 (+ 40 to 52% AD)"
+    },
+    {
+     "label": "Critical Strike Damage Per Spin",
+     "perRank": [
+      5.2,
+      9.1,
+      13,
+      16.9,
+      20.8
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "40*(1+0.3) to 52*(1+0.3)% AD",
+       "perRank": [
+        52,
+        55.9,
+        59.8,
+        63.7,
+        67.6
+       ]
+      }
+     ],
+     "text": "4*(1+0.3) to 16*(1+0.3) (+ 40*(1+0.3) to 52*(1+0.3)% AD)"
+    },
+    {
+     "label": "Infinity Edge Damage Per Spin",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "{{ap|40*(1+{{#expr:*0.3/100}}+0.3) to 52*(1+{{#expr:*0.3/100}}+0.3)}}% AD",
+       "pct": 40
+      }
+     ],
+     "text": "{{ap|4*(1+{{#expr:*0.3/100}}+0.3) to 16*(1+{{#expr:*0.3/100}}+0.3)}} {{as|(+ {{ap|40*(1+{{#expr:*0.3/100}}+0.3) to 52*(1+{{#expr:*0.3/100}}+0.3)}}% AD)}}"
+    },
+    {
+     "label": "Increased Damage Per Spin",
+     "perRank": [
+      5,
+      8.75,
+      12.5,
+      16.25,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "40*1.25 to 52*1.25% AD",
+       "perRank": [
+        50,
+        53.75,
+        57.5,
+        61.25,
+        65
+       ]
+      }
+     ],
+     "text": "4*1.25 to 16*1.25 (+ 40*1.25 to 52*1.25% AD)"
+    },
+    {
+     "label": "Increased Critical Strike Damage Per Spin",
+     "perRank": [
+      6.5,
+      11.375,
+      16.25,
+      21.125,
+      26
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "40*1.25*(1+0.3) to 52*1.25*(1+0.3)% AD",
+       "perRank": [
+        65,
+        69.875,
+        74.75,
+        79.625,
+        84.5
+       ]
+      }
+     ],
+     "text": "4*1.25*(1+0.3) to 16*1.25*(1+0.3) (+ 40*1.25*(1+0.3) to 52*1.25*(1+0.3)% AD)"
+    },
+    {
+     "label": "Increased Infinity Edge Damage Per Spin",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "{{ap|40*1.25*(1+{{#expr:*0.3/100}}+0.3) to 52*1.25*(1+{{#expr:*0.3/100}}+0.3)}}% AD",
+       "pct": 40
+      }
+     ],
+     "text": "{{ap|4*1.25*(1+{{#expr:*0.3/100}}+0.3) to 16*1.25*(1+{{#expr:*0.3/100}}+0.3)}} {{as|(+ {{ap|40*1.25*(1+{{#expr:*0.3/100}}+0.3) to 52*1.25*(1+{{#expr:*0.3/100}}+0.3)}}% AD)}}"
+    }
+   ]
+  },
+  {
+   "name": "Demacian Justice",
+   "slot": "R",
+   "damageType": "True",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.435",
+   "range": "cr 400",
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "True Damage",
+     "perRank": [
+      125,
+      200,
+      275
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "missingHealth",
+       "raw": "25 to 35% of target's missing health",
+       "perRank": [
+        25,
+        30,
+        35
+       ]
+      }
+     ],
+     "text": "125 to 275 (+ 25 to 35% of target's missing health)"
+    }
+   ]
+  },
+  {
+   "name": "Basic Attack",
+   "slot": "A",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  }
+ ]
+}

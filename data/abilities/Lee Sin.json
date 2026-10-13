@@ -1,0 +1,301 @@
+{
+ "champion": "Lee Sin",
+ "abilities": [
+  {
+   "name": "Flurry",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Sonic Wave",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 1200",
+   "cooldown": [
+    10,
+    9,
+    8,
+    7,
+    6
+   ],
+   "cost": 50,
+   "costType": "Energy",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      60,
+      90,
+      120,
+      150,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "90% bonus AD",
+       "pct": 90
+      }
+     ],
+     "text": "60 to 180 (+ 90% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Safeguard",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Unit",
+   "affects": null,
+   "castTime": "none",
+   "range": "cr 700",
+   "cooldown": 7,
+   "cost": 50,
+   "costType": "Energy",
+   "leveling": [
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      60,
+      105,
+      150,
+      195,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "60 to 240 (+ 80% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Tempest",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": 8,
+   "cost": 50,
+   "costType": "Energy",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      35,
+      60,
+      85,
+      110,
+      135
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "90% AD",
+       "pct": 90
+      }
+     ],
+     "text": "35 to 135 (+ 90% AD)"
+    }
+   ]
+  },
+  {
+   "name": "Dragon's Rage",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 375",
+   "cooldown": [
+    110,
+    85,
+    60
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      175,
+      400,
+      625
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "200% bonus AD",
+       "pct": 200
+      }
+     ],
+     "text": "175 to 625 (+ 200% bonus AD)"
+    },
+    {
+     "label": "Collision Physical Damage",
+     "perRank": [
+      175,
+      400,
+      625
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "200% bonus AD",
+       "pct": 200
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "12 to 18% of primary target's bonus health",
+       "perRank": [
+        12,
+        15,
+        18
+       ]
+      }
+     ],
+     "text": "175 to 625 (+ 200% bonus AD) (+ 12 to 18% of primary target's bonus health)"
+    }
+   ]
+  },
+  {
+   "name": "Cripple",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Proximity",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": null,
+   "cost": 25,
+   "costType": "energy",
+   "leveling": [
+    {
+     "label": "Slow",
+     "perRank": [
+      35,
+      45,
+      55,
+      65,
+      75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "35 to 75%"
+    }
+   ]
+  },
+  {
+   "name": "Iron Will",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": null,
+   "cost": 25,
+   "costType": "Energy",
+   "leveling": [
+    {
+     "label": "Omnivamp",
+     "perRank": [
+      10,
+      14,
+      18,
+      22,
+      26
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 26%"
+    }
+   ]
+  },
+  {
+   "name": "Resonating Strike",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Proximity",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "cr 1250",
+   "cooldown": null,
+   "cost": 25,
+   "costType": "Energy",
+   "leveling": [
+    {
+     "label": "Minimum Physical Damage",
+     "perRank": [
+      60,
+      90,
+      120,
+      150,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "90% bonus AD",
+       "pct": 90
+      }
+     ],
+     "text": "60 to 180 (+ 90% bonus AD)"
+    },
+    {
+     "label": "Maximum Physical Damage",
+     "perRank": [
+      120,
+      180,
+      240,
+      300,
+      360
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "90*2% bonus AD",
+       "perRank": [
+        180
+       ]
+      }
+     ],
+     "text": "60*2 to 180*2 (+ 90*2% bonus AD)"
+    }
+   ]
+  }
+ ]
+}

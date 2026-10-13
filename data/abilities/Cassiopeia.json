@@ -1,0 +1,304 @@
+{
+ "champion": "Cassiopeia",
+ "abilities": [
+  {
+   "name": "Serpentine Grace",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Noxious Blast",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "850",
+   "cooldown": 3.5,
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      65,
+      100,
+      135,
+      170,
+      205
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "75% AP",
+       "pct": 75
+      }
+     ],
+     "text": "65 to 205 (+ 75% AP)"
+    },
+    {
+     "label": "Magic Damage Per Tick",
+     "perRank": [
+      9.285714,
+      14.285714,
+      19.285714,
+      24.285714,
+      29.285714
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "75/7% AP",
+       "perRank": [
+        10.714285714285714
+       ]
+      }
+     ],
+     "text": "65/7 to 205/7 (+ 75/7% AP)"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50%"
+    }
+   ]
+  },
+  {
+   "name": "Miasma",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "700",
+   "cooldown": [
+    24,
+    22,
+    20,
+    18,
+    16
+   ],
+   "cost": [
+    70,
+    75,
+    80,
+    85,
+    90
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage Per Second",
+     "perRank": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "10% AP",
+       "pct": 10
+      }
+     ],
+     "text": "20 to 40 (+ 10% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      100,
+      125,
+      150,
+      175,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "100 to 200 (+ 50% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      40,
+      50,
+      60,
+      70,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 80%"
+    }
+   ]
+  },
+  {
+   "name": "Twin Fang",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.125",
+   "range": "cr 700",
+   "cooldown": 0.75,
+   "cost": 45,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      20,
+      45,
+      70,
+      95,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "45% AP",
+       "pct": 45
+      }
+     ],
+     "text": "20 to 120 (+ 45% AP)"
+    },
+    {
+     "label": "Total Enhanced Damage",
+     "perRank": null,
+     "perLevel": {
+      "kind": "level",
+      "at1": 50,
+      "at18": 120,
+      "steps": null
+     },
+     "flat": null,
+     "ratios": [
+      {
+       "stat": null,
+       "raw": "20 to 120",
+       "perRank": [
+        20,
+        45,
+        70,
+        95,
+        120
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "45+20% AP",
+       "perRank": [
+        65
+       ]
+      }
+     ],
+     "text": "50 to 120 (+ 20 to 120) (+ 45+20% AP)"
+    },
+    {
+     "label": "Heal",
+     "perRank": [
+      10,
+      11.5,
+      13,
+      14.5,
+      16
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 16% AP"
+    },
+    {
+     "label": "Reduced Heal",
+     "perRank": [
+      2.5,
+      2.875,
+      3.25,
+      3.625,
+      4
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10*0.25 to 16*0.25% AP"
+    }
+   ]
+  },
+  {
+   "name": "Petrifying Gaze",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.5",
+   "range": null,
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      125,
+      225,
+      325
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "75% AP",
+       "pct": 75
+      }
+     ],
+     "text": "125 to 325 (+ 75% AP)"
+    }
+   ]
+  }
+ ]
+}

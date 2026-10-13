@@ -1,0 +1,290 @@
+{
+ "champion": "Rell",
+ "abilities": [
+  {
+   "name": "Break the Mold",
+   "slot": "I",
+   "damageType": "magic",
+   "targeting": "Passive",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Shattering Strike",
+   "slot": "Q",
+   "damageType": "magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.4",
+   "range": null,
+   "cooldown": [
+    11,
+    10.5,
+    10,
+    9.5,
+    9
+   ],
+   "cost": 50,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      100,
+      140,
+      180,
+      220
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "60 to 220 (+ 60% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Ferromancy: Crash Down",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.625",
+   "range": "100 - 400",
+   "cooldown": 10,
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 40"
+    },
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      20,
+      40,
+      60,
+      80,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "maxHealth",
+       "raw": "11% maximum health",
+       "pct": 11
+      }
+     ],
+     "text": "20 to 100 (+ 11% maximum health)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      90,
+      120,
+      150,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "60 to 180 (+ 60% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Full Tilt",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Self, Allies, Enemies",
+   "castTime": "none",
+   "range": "cr 1200",
+   "cooldown": [
+    14,
+    13,
+    12,
+    11,
+    10
+   ],
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      5,
+      5.5,
+      6,
+      6.5,
+      7
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "3% per 100 AP",
+       "pct": 3
+      }
+     ],
+     "text": "5 to 7% (+ 3% per 100 AP) of target's maximum health"
+    }
+   ]
+  },
+  {
+   "name": "Magnet Storm",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage Per Tick",
+     "perRank": [
+      18.75,
+      31.25,
+      43.75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "110/8% AP",
+       "perRank": [
+        13.75
+       ]
+      }
+     ],
+     "text": "150/8 to 350/8 (+ 110/8% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      150,
+      250,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "110% AP",
+       "pct": 110
+      }
+     ],
+     "text": "150 to 350 (+ 110% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Attract and Repel",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Unit / Auto",
+   "affects": "Enemies",
+   "castTime": "0.35 / 0.25 / None",
+   "range": "cr1500",
+   "cooldown": 13,
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      }
+     ],
+     "text": "80 to 240 (+ 30% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Ferromancy: Mount Up",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 10,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      10,
+      25,
+      40,
+      55,
+      70
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "10 to 70 (+ 40% AP)"
+    }
+   ]
+  }
+ ]
+}

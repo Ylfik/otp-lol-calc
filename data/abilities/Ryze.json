@@ -1,0 +1,209 @@
+{
+ "champion": "Ryze",
+ "abilities": [
+  {
+   "name": "Arcane Mastery",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Overload",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 1000",
+   "cooldown": 5,
+   "cost": [
+    40,
+    38,
+    36,
+    34,
+    32
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      75,
+      95,
+      115,
+      135,
+      155
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "55% AP",
+       "pct": 55
+      },
+      {
+       "stat": null,
+       "raw": "2% bonus mana",
+       "pct": 2
+      }
+     ],
+     "text": "75 to 155 (+ 55% AP) (+ 2% bonus mana)"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      28,
+      32,
+      36,
+      40,
+      44
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "28 to 44%"
+    }
+   ]
+  },
+  {
+   "name": "Rune Prison",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "er 550",
+   "cooldown": [
+    11,
+    10.5,
+    10,
+    9.5,
+    9
+   ],
+   "cost": [
+    50,
+    60,
+    70,
+    80,
+    90
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      90,
+      120,
+      150,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      },
+      {
+       "stat": null,
+       "raw": "3% bonus mana",
+       "pct": 3
+      }
+     ],
+     "text": "60 to 180 (+ 60% AP) (+ 3% bonus mana)"
+    }
+   ]
+  },
+  {
+   "name": "Spell Flux",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "er 550",
+   "cooldown": [
+    3.5,
+    3.25,
+    3,
+    2.75,
+    2.5
+   ],
+   "cost": [
+    40,
+    50,
+    60,
+    70,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      90,
+      120,
+      150,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      },
+      {
+       "stat": null,
+       "raw": "2% bonus mana",
+       "pct": 2
+      }
+     ],
+     "text": "60 to 180 (+ 50% AP) (+ 2% bonus mana)"
+    }
+   ]
+  },
+  {
+   "name": "Realm Warp",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Location",
+   "affects": "Allies",
+   "castTime": "none",
+   "range": "1000",
+   "cooldown": [
+    180,
+    160,
+    140
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Overload Damage",
+     "perRank": [
+      40,
+      65,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 90%"
+    }
+   ]
+  }
+ ]
+}

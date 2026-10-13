@@ -1,0 +1,384 @@
+{
+ "champion": "Ambessa",
+ "abilities": [
+  {
+   "name": "Drakehound's Step",
+   "slot": "I",
+   "damageType": "physical",
+   "targeting": "Passive",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": "175 - 350",
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Cunning Sweep",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    14,
+    13,
+    12,
+    11,
+    10
+   ],
+   "cost": 70,
+   "costType": "Energy",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      20,
+      30,
+      40,
+      50,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "30% bonus AD",
+       "pct": 30
+      },
+      {
+       "stat": "per100BonusAD",
+       "raw": "4/2 to 6/2% (+ 1.5% per 100 bonus AD) of target's maximum health",
+       "perRank": [
+        2,
+        2.25,
+        2.5,
+        2.75,
+        3
+       ]
+      }
+     ],
+     "text": "40/2 to 120/2 (+ 30% bonus AD) (+ 4/2 to 6/2% (+ 1.5% per 100 bonus AD) of target's maximum health)"
+    },
+    {
+     "label": "Increased Physical Damage",
+     "perRank": [
+      40,
+      60,
+      80,
+      100,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "60% bonus AD",
+       "pct": 60
+      },
+      {
+       "stat": "per100BonusAD",
+       "raw": "4 to 6% (+ 3% per 100 bonus AD) of target's maximum health",
+       "perRank": [
+        4,
+        4.5,
+        5,
+        5.5,
+        6
+       ]
+      }
+     ],
+     "text": "40 to 120 (+ 60% bonus AD) (+ 4 to 6% (+ 3% per 100 bonus AD) of target's maximum health)"
+    }
+   ]
+  },
+  {
+   "name": "Repudiation",
+   "slot": "W",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    18,
+    17,
+    16,
+    15,
+    14
+   ],
+   "cost": 70,
+   "costType": "Energy",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      50,
+      75,
+      100,
+      125,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50% bonus AD",
+       "pct": 50
+      }
+     ],
+     "text": "50 to 150 (+ 50% bonus AD)"
+    },
+    {
+     "label": "Increased Physical Damage",
+     "perRank": [
+      75,
+      112.5,
+      150,
+      187.5,
+      225
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50*1.5% bonus AD",
+       "perRank": [
+        75
+       ]
+      }
+     ],
+     "text": "50*1.5 to 150*1.5 (+ 50*1.5% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Lacerate",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    13,
+    12,
+    11,
+    10,
+    9
+   ],
+   "cost": 70,
+   "costType": "Energy",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      40,
+      60,
+      80,
+      100,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50% bonus AD",
+       "pct": 50
+      }
+     ],
+     "text": "40 to 120 (+ 50% bonus AD)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      }
+     ],
+     "text": "40*2 to 120*2 (+ 100% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Public Execution",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.7",
+   "range": null,
+   "cooldown": [
+    130,
+    115,
+    100
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Armor Penetration",
+     "perRank": [
+      10,
+      20,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 30%"
+    },
+    {
+     "label": "Healing Percentage",
+     "perRank": [
+      15,
+      17.5,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": null,
+       "raw": "50% life steal",
+       "pct": 50
+      }
+     ],
+     "text": "15 to 20% (+ 50% life steal)"
+    },
+    {
+     "label": "Reduced Healing Percentage",
+     "perRank": [
+      3.75,
+      4.375,
+      5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": null,
+       "raw": "50*0.25% life steal",
+       "perRank": [
+        12.5
+       ]
+      }
+     ],
+     "text": "15*0.25 to 20*0.25% (+ 50*0.25% life steal)"
+    },
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      150,
+      250,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "80% bonus AD",
+       "pct": 80
+      }
+     ],
+     "text": "150 to 350 (+ 80% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Sundering Slam",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": null,
+   "cost": 70,
+   "costType": "Energy",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      25,
+      37.5,
+      50,
+      62.5,
+      75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "45% bonus AD",
+       "pct": 45
+      },
+      {
+       "stat": "per100BonusAD",
+       "raw": "4/2 to 6/2% (+ 2% per 100 bonus AD) of the target's maximum health",
+       "perRank": [
+        2,
+        2.25,
+        2.5,
+        2.75,
+        3
+       ]
+      }
+     ],
+     "text": "50/2 to 150/2 (+ 45% bonus AD) (+ 4/2 to 6/2% (+ 2% per 100 bonus AD) of the target's maximum health)"
+    },
+    {
+     "label": "Increased Physical Damage",
+     "perRank": [
+      50,
+      75,
+      100,
+      125,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "90% bonus AD",
+       "pct": 90
+      },
+      {
+       "stat": "per100BonusAD",
+       "raw": "4 to 6% (+ 4% per 100 bonus AD) of the target's maximum health",
+       "perRank": [
+        4,
+        4.5,
+        5,
+        5.5,
+        6
+       ]
+      }
+     ],
+     "text": "50 to 150 (+ 90% bonus AD) (+ 4 to 6% (+ 4% per 100 bonus AD) of the target's maximum health)"
+    }
+   ]
+  }
+ ]
+}

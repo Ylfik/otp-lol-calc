@@ -1,0 +1,150 @@
+{
+ "champion": "Taric",
+ "abilities": [
+  {
+   "name": "Bravado",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Starlight's Touch",
+   "slot": "Q",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Allies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": 3,
+   "cost": 60,
+   "costType": "Mana + all charges",
+   "leveling": [
+    {
+     "label": "Maximum Charges",
+     "perRank": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1 to 5"
+    }
+   ]
+  },
+  {
+   "name": "Bastion",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Unit",
+   "affects": "Self, Allies",
+   "castTime": "0.25",
+   "range": "cr 800",
+   "cooldown": 15,
+   "cost": 60,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Armor",
+     "perRank": [
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "6 to 10% of Taric's armor"
+    },
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "7 to 11% of target's maximum health"
+    }
+   ]
+  },
+  {
+   "name": "Dazzle",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    16,
+    15,
+    14,
+    13,
+    12
+   ],
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      90,
+      130,
+      170,
+      210,
+      250
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      },
+      {
+       "stat": "armor",
+       "raw": "50% bonus armor",
+       "pct": 50
+      }
+     ],
+     "text": "90 to 250 (+ 50% AP) (+ 50% bonus armor)"
+    }
+   ]
+  },
+  {
+   "name": "Cosmic Radiance",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Allies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    180,
+    150,
+    120
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": []
+  }
+ ]
+}

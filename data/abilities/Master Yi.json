@@ -1,0 +1,380 @@
+{
+ "champion": "Master Yi",
+ "abilities": [
+  {
+   "name": "Double Strike",
+   "slot": "I",
+   "damageType": "Physical",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Alpha Strike",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": "cr 600",
+   "cooldown": [
+    20,
+    19.5,
+    19,
+    18.5,
+    18
+   ],
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Primary Physical Damage",
+     "perRank": [
+      20,
+      40,
+      60,
+      80,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "70% AD",
+       "pct": 70
+      }
+     ],
+     "text": "20 to 100 (+ 70% AD)"
+    },
+    {
+     "label": "Reduced Damage per hit",
+     "perRank": [
+      5,
+      10,
+      15,
+      20,
+      25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "70*0.25% AD",
+       "perRank": [
+        17.5
+       ]
+      }
+     ],
+     "text": "20*0.25 to 100*0.25 (+ 70*0.25% AD)"
+    },
+    {
+     "label": "Maximum Single-Target Damage",
+     "perRank": [
+      35,
+      70,
+      105,
+      140,
+      175
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "70*(1+0.25*3)% AD",
+       "perRank": [
+        122.5
+       ]
+      }
+     ],
+     "text": "20*(1+0.25*3) to 100*(1+0.25*3) (+ 70*(1+0.25*3)% AD)"
+    },
+    {
+     "label": "Primary Bonus Monster Damage",
+     "perRank": [
+      60,
+      85,
+      110,
+      135,
+      160
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "60 to 160"
+    },
+    {
+     "label": "Combined Primary Monster Damage",
+     "perRank": [
+      80,
+      125,
+      170,
+      215,
+      260
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "70% AD",
+       "pct": 70
+      }
+     ],
+     "text": "20+60 to 100+160 (+ 70% AD)"
+    },
+    {
+     "label": "Reduced Monster Damage per hit",
+     "perRank": [
+      20,
+      31.25,
+      42.5,
+      53.75,
+      65
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "70*0.25% AD",
+       "perRank": [
+        17.5
+       ]
+      }
+     ],
+     "text": "(20+60)*0.25 to (100+160)*0.25 (+ 70*0.25% AD)"
+    },
+    {
+     "label": "Max Single-Target Monster Damage",
+     "perRank": [
+      140,
+      218.75,
+      297.5,
+      376.25,
+      455
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "70*(1+0.25*3)% AD",
+       "perRank": [
+        122.5
+       ]
+      }
+     ],
+     "text": "(20+60)*(1+0.25*3) to (100+160)*(1+0.25*3) (+ 70*(1+0.25*3)% AD)"
+    }
+   ]
+  },
+  {
+   "name": "Meditate",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 10,
+   "cost": 40,
+   "costType": "Mana (+ 6% maximum mana per second)",
+   "leveling": [
+    {
+     "label": "Minimum Heal Per Tick",
+     "perRank": [
+      15,
+      25,
+      35,
+      45,
+      55
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "12.5% AP",
+       "pct": 12.5
+      }
+     ],
+     "text": "15 to 55 (+ 12.5% AP)"
+    },
+    {
+     "label": "Maximum Heal Per Tick",
+     "perRank": [
+      30,
+      50,
+      70,
+      90,
+      110
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25% AP",
+       "pct": 25
+      }
+     ],
+     "text": "15*2 to 55*2 (+ 25% AP)"
+    },
+    {
+     "label": "Minimum Total Heal",
+     "perRank": [
+      120,
+      200,
+      280,
+      360,
+      440
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "15*8 to 55*8 (+ 100% AP)"
+    },
+    {
+     "label": "Maximum Total Heal",
+     "perRank": [
+      240,
+      400,
+      560,
+      720,
+      880
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "200% AP",
+       "pct": 200
+      }
+     ],
+     "text": "15*8*2 to 55*8*2 (+ 200% AP)"
+    },
+    {
+     "label": "Modified Damage Reduction",
+     "perRank": [
+      45,
+      47.5,
+      50,
+      52.5,
+      55
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "45 to 55%"
+    },
+    {
+     "label": "Turret Modified Damage Reduction",
+     "perRank": [
+      22.5,
+      23.75,
+      25,
+      26.25,
+      27.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "45/2 to 55/2%"
+    }
+   ]
+  },
+  {
+   "name": "Wuju Style",
+   "slot": "E",
+   "damageType": "True",
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 14,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus True Damage",
+     "perRank": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "35% bonus AD",
+       "pct": 35
+      }
+     ],
+     "text": "20 to 40 (+ 35% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Highlander",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 85,
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      25,
+      45,
+      65
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "25 to 65%"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      40,
+      50,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 60%"
+    }
+   ]
+  }
+ ]
+}

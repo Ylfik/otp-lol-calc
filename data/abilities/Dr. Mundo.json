@@ -1,0 +1,694 @@
+{
+ "champion": "Dr. Mundo",
+ "abilities": [
+  {
+   "name": "Goes Where He Pleases",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Infected Bonesaw",
+   "slot": "Q",
+   "damageType": "magic",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "0.25",
+   "range": "cr 1050",
+   "cooldown": 4,
+   "cost": [
+    50,
+    60,
+    70,
+    80,
+    90
+   ],
+   "costType": "Health",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      20,
+      22.5,
+      25,
+      27.5,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 30% of target's current health"
+    },
+    {
+     "label": "Minimum Damage",
+     "perRank": [
+      80,
+      130,
+      180,
+      230,
+      280
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "80 to 280"
+    },
+    {
+     "label": "Capped Monster Damage",
+     "perRank": [
+      250,
+      325,
+      400,
+      475,
+      550
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "250 to 550"
+    }
+   ]
+  },
+  {
+   "name": "Heart Zapper",
+   "slot": "W",
+   "damageType": "magic",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "None",
+   "range": null,
+   "cooldown": [
+    17,
+    16.5,
+    16,
+    15.5,
+    15
+   ],
+   "cost": null,
+   "costType": "current health",
+   "leveling": [
+    {
+     "label": "Magic Damage per Tick",
+     "perRank": [
+      5,
+      8.75,
+      12.5,
+      16.25,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "5 to 20"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      80,
+      140,
+      200,
+      260,
+      320
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "5*16 to 20*16"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      20,
+      35,
+      50,
+      65,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusHealth",
+       "raw": "7% bonus health",
+       "pct": 7
+      }
+     ],
+     "text": "20 to 80 (+ 7% bonus health)"
+    }
+   ]
+  },
+  {
+   "name": "Blunt Force Trauma",
+   "slot": "E",
+   "damageType": "physical",
+   "targeting": "Auto",
+   "affects": null,
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    9,
+    8.25,
+    7.5,
+    6.75,
+    6
+   ],
+   "cost": [
+    10,
+    25,
+    40,
+    55,
+    70
+   ],
+   "costType": "Health",
+   "leveling": [
+    {
+     "label": "Bonus Attack Damage",
+     "perRank": [
+      2,
+      2.3,
+      2.6,
+      2.9,
+      3.2
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "2 to 3.2% maximum health"
+    },
+    {
+     "label": "Minimum Bonus Physical Damage",
+     "perRank": [
+      5,
+      15,
+      25,
+      35,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusHealth",
+       "raw": "5% bonus health",
+       "pct": 5
+      }
+     ],
+     "text": "5 to 45 (+ 5% bonus health)"
+    },
+    {
+     "label": "Maximum Bonus Physical Damage",
+     "perRank": [
+      7,
+      21,
+      35,
+      49,
+      63
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusHealth",
+       "raw": "5*1.4% bonus health",
+       "perRank": [
+        7
+       ]
+      }
+     ],
+     "text": "5*1.4 to 45*1.4 (+ 5*1.4% bonus health)"
+    },
+    {
+     "label": "Minimum Minion Physical Damage",
+     "perRank": [
+      7,
+      21,
+      35,
+      49,
+      63
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusHealth",
+       "raw": "5*1.4% bonus health",
+       "perRank": [
+        7
+       ]
+      }
+     ],
+     "text": "5*1.4 to 45*1.4 (+ 5*1.4% bonus health)"
+    },
+    {
+     "label": "Maximum Minion Physical Damage",
+     "perRank": [
+      9.8,
+      29.4,
+      49,
+      68.6,
+      88.2
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusHealth",
+       "raw": "5*1.4*1.4% bonus health",
+       "perRank": [
+        9.799999999999999
+       ]
+      }
+     ],
+     "text": "5*1.4*1.4 to 45*1.4*1.4 (+ 5*1.4*1.4% bonus health)"
+    },
+    {
+     "label": "Minimum Monster Physical Damage",
+     "perRank": [
+      7,
+      21,
+      35,
+      49,
+      63
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusHealth",
+       "raw": "5*1.4% bonus health",
+       "perRank": [
+        7
+       ]
+      }
+     ],
+     "text": "5*1.4 to 45*1.4 (+ 5*1.4% bonus health)"
+    },
+    {
+     "label": "Maximum Monster Physical Damage",
+     "perRank": [
+      9.8,
+      29.4,
+      49,
+      68.6,
+      88.2
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusHealth",
+       "raw": "5*1.4*1.4% bonus health",
+       "perRank": [
+        9.799999999999999
+       ]
+      }
+     ],
+     "text": "5*1.4*1.4 to 45*1.4*1.4 (+ 5*1.4*1.4% bonus health)"
+    }
+   ]
+  },
+  {
+   "name": "Maximum Dosage",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 120,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Increased Base Health",
+     "perRank": [
+      15,
+      20,
+      25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "15 to 25% missing health"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      15,
+      25,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "15 to 35%"
+    },
+    {
+     "label": "Bonus Health Regeneration",
+     "perRank": [
+      10,
+      20,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20/2 to 60/2% maximum health"
+    },
+    {
+     "label": "Health Regenerated per 0.5 Seconds",
+     "perRank": [
+      1,
+      2,
+      3
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20/20 to 60/20% maximum health"
+    },
+    {
+     "label": "Total Health Regenerated",
+     "perRank": [
+      20,
+      40,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 60% maximum health"
+    }
+   ]
+  },
+  {
+   "name": "Adrenaline Rush",
+   "slot": "I",
+   "damageType": "None",
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Burning Agony",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies / Self",
+   "castTime": "None",
+   "range": null,
+   "cooldown": 4,
+   "cost": [
+    10,
+    15,
+    20,
+    25,
+    30
+   ],
+   "costType": "Health Per Second",
+   "leveling": [
+    {
+     "label": "Magic Damage Per Tick",
+     "perRank": [
+      10,
+      13.75,
+      17.5,
+      21.25,
+      25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "20/4% AP",
+       "perRank": [
+        5
+       ]
+      }
+     ],
+     "text": "40/4 to 100/4 (+ 20/4% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Infected Cleaver",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies / Self",
+   "castTime": "0.25",
+   "range": "cr 1050 / er 990",
+   "cooldown": 4,
+   "cost": [
+    50,
+    60,
+    70,
+    80,
+    90
+   ],
+   "costType": "Health",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      20,
+      22.5,
+      25,
+      27.5,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 30% of target's current health"
+    },
+    {
+     "label": "Minimum Damage",
+     "perRank": [
+      80,
+      130,
+      180,
+      230,
+      280
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "80 to 280"
+    },
+    {
+     "label": "Capped Non-Champion Damage",
+     "perRank": [
+      100,
+      200,
+      300,
+      400,
+      500
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "100 to 500"
+    },
+    {
+     "label": "Heal",
+     "perRank": [
+      25,
+      30,
+      35,
+      40,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "50/2 to 90/2"
+    },
+    {
+     "label": "Maximum Heal",
+     "perRank": [
+      50,
+      60,
+      70,
+      80,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "50 to 90"
+    }
+   ]
+  },
+  {
+   "name": "Masochism",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    6,
+    5.5,
+    5,
+    4.5,
+    4
+   ],
+   "cost": [
+    25,
+    35,
+    45,
+    55,
+    65
+   ],
+   "costType": "Health",
+   "leveling": [
+    {
+     "label": "Maximum Magic Resistance",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "(2 to 11)*3 4%"
+    },
+    {
+     "label": "Maximum Stacks",
+     "perRank": [
+      2,
+      5,
+      8,
+      11
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "2 to 11 4"
+    },
+    {
+     "label": "Flat Bonus AD",
+     "perRank": [
+      30,
+      45,
+      60,
+      75,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 90"
+    },
+    {
+     "label": "Maximum Missing Health Bonus AD",
+     "perRank": [
+      20,
+      35,
+      50,
+      65,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 80"
+    },
+    {
+     "label": "Maximum Bonus AD",
+     "perRank": [
+      50,
+      80,
+      110,
+      140,
+      170
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "50 to 170"
+    },
+    {
+     "label": "Bonus Physical Damage",
+     "perRank": [
+      4,
+      4.5,
+      5,
+      5.5,
+      6
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "4 to 6% of his maximum health"
+    }
+   ]
+  },
+  {
+   "name": "Sadism",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    110,
+    100,
+    90
+   ],
+   "cost": null,
+   "costType": "of current Health",
+   "leveling": [
+    {
+     "label": "Total Regeneration",
+     "perRank": [
+      60,
+      85,
+      110
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "60 to 110% maximum health"
+    },
+    {
+     "label": "Regeneration Per Second",
+     "perRank": [
+      5,
+      7.083333,
+      9.166667
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "60/12 to 110/12% maximum health"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      15,
+      25,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "15 to 35%"
+    }
+   ]
+  }
+ ]
+}

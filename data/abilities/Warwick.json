@@ -1,0 +1,389 @@
+{
+ "champion": "Warwick",
+ "abilities": [
+  {
+   "name": "Eternal Hunger",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Jaws of the Beast",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies, Self",
+   "castTime": "none",
+   "range": "cr 365",
+   "cooldown": [
+    8,
+    7.5,
+    7,
+    6.5,
+    6
+   ],
+   "cost": [
+    80,
+    85,
+    90,
+    95,
+    100
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "120% AD",
+       "pct": 120
+      },
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "6 to 10% of target's maximum health (+ 120% AD) (+ 100% AP)"
+    },
+    {
+     "label": "Capped Monster Damage",
+     "perRank": [
+      150,
+      165,
+      180,
+      195,
+      210
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "120% AD",
+       "pct": 120
+      },
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "150 to 210 (+ 120% AD) (+ 100% AP)"
+    },
+    {
+     "label": "Healing Percentage",
+     "perRank": [
+      25,
+      37.5,
+      50,
+      62.5,
+      75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "25 to 75%"
+    }
+   ]
+  },
+  {
+   "name": "Blood Hunt",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self / Enemies",
+   "castTime": "0.5",
+   "range": null,
+   "cooldown": [
+    80,
+    70,
+    60,
+    50,
+    40
+   ],
+   "cost": 55,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      70,
+      80,
+      90,
+      100,
+      110
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "70 to 110%"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      35,
+      42.5,
+      50,
+      57.5,
+      65
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "35 to 65%"
+    },
+    {
+     "label": "Increased Attack Speed",
+     "perRank": [
+      140,
+      160,
+      180,
+      200,
+      220
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "70*2 to 110*2%"
+    },
+    {
+     "label": "Increased Movement Speed",
+     "perRank": [
+      70,
+      85,
+      100,
+      115,
+      130
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "35*2 to 65*2%"
+    }
+   ]
+  },
+  {
+   "name": "Primal Howl",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    15,
+    14,
+    13,
+    12,
+    11
+   ],
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Damage Reduction",
+     "perRank": [
+      35,
+      40,
+      45,
+      50,
+      55
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "35 to 55%"
+    }
+   ]
+  },
+  {
+   "name": "Infinite Duress",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.1",
+   "range": null,
+   "cooldown": [
+    110,
+    90,
+    70
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      175,
+      350,
+      525
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "167% bonus AD",
+       "pct": 167
+      }
+     ],
+     "text": "175 to 525 (+ 167% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Blood Scent",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Blood Scent is a toggleable ability.",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": 4,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Movement speed",
+     "perRank": [
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20"
+    }
+   ]
+  },
+  {
+   "name": "Eternal Thirst",
+   "slot": "I",
+   "damageType": "magic",
+   "targeting": "Eternal Thirst is a passive ability that grants Warwick an on-hit effect.",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Hungering Strike",
+   "slot": "Q",
+   "damageType": "magic",
+   "targeting": "Hungering Strike is a single-target ability.",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": [
+    10,
+    9,
+    8,
+    7,
+    6
+   ],
+   "cost": [
+    70,
+    80,
+    90,
+    100,
+    110
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Minimum Magic Damage",
+     "perRank": [
+      75,
+      125,
+      175,
+      225,
+      275
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "75"
+    },
+    {
+     "label": "Magic Damage To Champions",
+     "perRank": [
+      8,
+      10,
+      12,
+      14,
+      16
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "8% of target's maximum health"
+    }
+   ]
+  },
+  {
+   "name": "Hunter's Call",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Hunter's Call is a point blank area of effect ability.",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": [
+    24,
+    22,
+    20,
+    18,
+    16
+   ],
+   "cost": 35,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Attack Speed",
+     "perRank": [
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40"
+    },
+    {
+     "label": "Ally Attack Speed",
+     "perRank": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20%"
+    }
+   ]
+  }
+ ]
+}

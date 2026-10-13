@@ -1,0 +1,610 @@
+{
+ "champion": "Poppy",
+ "abilities": [
+  {
+   "name": "Iron Ambassador",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Hammer Shock",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.3325",
+   "range": null,
+   "cooldown": [
+    8,
+    7,
+    6,
+    5,
+    4
+   ],
+   "cost": [
+    35,
+    40,
+    45,
+    50,
+    55
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      30,
+      55,
+      80,
+      105,
+      130
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "75% bonus AD",
+       "pct": 75
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "7 to 9% of target's maximum health",
+       "perRank": [
+        7,
+        7.5,
+        8,
+        8.5,
+        9
+       ]
+      }
+     ],
+     "text": "30 to 130 (+ 75% bonus AD) (+ 7 to 9% of target's maximum health)"
+    },
+    {
+     "label": "Capped Minion/Monster Health Damage",
+     "perRank": [
+      70,
+      105,
+      140,
+      175,
+      210
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "70 to 210"
+    },
+    {
+     "label": "Maximum Minion/Monster Damage",
+     "perRank": [
+      100,
+      160,
+      220,
+      280,
+      340
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "75% bonus AD",
+       "pct": 75
+      }
+     ],
+     "text": "30+70 to 130+210 (+ 75% bonus AD)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      20,
+      23,
+      26,
+      29,
+      32
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusHealth",
+       "raw": "0.8% per 100 Poppy's bonus health",
+       "pct": 0.8
+      }
+     ],
+     "text": "20 to 32% (+ 0.8% per 100 Poppy's bonus health)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      60,
+      110,
+      160,
+      210,
+      260
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "75*2% bonus AD",
+       "perRank": [
+        150
+       ]
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "7*2 to 9*2% of target's maximum health",
+       "perRank": [
+        14,
+        15,
+        16,
+        17,
+        18
+       ]
+      }
+     ],
+     "text": "30*2 to 130*2 (+ 75*2% bonus AD) (+ 7*2 to 9*2% of target's maximum health)"
+    },
+    {
+     "label": "Total Maximum Minion/Monster Damage",
+     "perRank": [
+      200,
+      320,
+      440,
+      560,
+      680
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "75*2% bonus AD",
+       "perRank": [
+        150
+       ]
+      }
+     ],
+     "text": "(30+70)*2 to (130+210)*2 (+ 75*2% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Steadfast Presence",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    20,
+    18,
+    16,
+    14,
+    12
+   ],
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      110,
+      150,
+      190,
+      230
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "70 to 230 (+ 70% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Heroic Charge",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "er 475",
+   "cooldown": [
+    14,
+    13,
+    12,
+    11,
+    10
+   ],
+   "cost": 70,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      40,
+      60,
+      80,
+      100,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "60% bonus AD",
+       "pct": 60
+      }
+     ],
+     "text": "40 to 120 (+ 60% bonus AD)"
+    },
+    {
+     "label": "Stun Duration",
+     "perRank": [
+      1.6,
+      1.7,
+      1.8,
+      1.9,
+      2
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1.6 to 2 seconds"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "120% bonus AD",
+       "pct": 120
+      }
+     ],
+     "text": "40*2 to 120*2 (+ 120% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Keeper's Verdict",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    140,
+    120,
+    100
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      100,
+      150,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "45% bonus AD",
+       "pct": 45
+      }
+     ],
+     "text": "100 to 200 (+ 45% bonus AD)"
+    },
+    {
+     "label": "Increased Damage",
+     "perRank": [
+      200,
+      300,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "90% bonus AD",
+       "pct": 90
+      }
+     ],
+     "text": "200 to 400 (+ 90% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Devastating Blow",
+   "slot": "I",
+   "damageType": "magic",
+   "targeting": "Devastating Blow is an on-hit effect.",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": [
+    8,
+    7,
+    6,
+    5,
+    4
+   ],
+   "cost": 55,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      20,
+      40,
+      60,
+      80,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "maxHealth",
+       "raw": "8% of target's maximum health",
+       "pct": 8
+      },
+      {
+       "stat": "ad",
+       "raw": "100% AD",
+       "pct": 100
+      },
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "20 (+ 8% of target's maximum health) (+ 100% AD) (+ 60% AP)"
+    },
+    {
+     "label": "Maximum Magic Damage",
+     "perRank": [
+      75,
+      150,
+      225,
+      300,
+      375
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "100% AD",
+       "pct": 100
+      },
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "75 (+ 100% AD) (+ 60% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Diplomatic Immunity",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Diplomatic Immunity is a self-targeted buff.",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": [
+    140,
+    120,
+    100
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Duration",
+     "perRank": [
+      6,
+      7,
+      8
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "6"
+    },
+    {
+     "label": "Increased Damage",
+     "perRank": [
+      20,
+      30,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20%"
+    }
+   ]
+  },
+  {
+   "name": "Heroic Charge old",
+   "slot": "I",
+   "damageType": "magic",
+   "targeting": "Heroic Charge is a unit-targeted dash.",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": [
+    12,
+    11,
+    10,
+    9,
+    8
+   ],
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Initial Magic Damage",
+     "perRank": [
+      50,
+      75,
+      100,
+      125,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "50 (+ 40% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      125,
+      200,
+      275,
+      350,
+      425
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "125 (+ 80% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Paragon of Demacia",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Paragon of Demacia is a self-targeted buff.",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": 12,
+   "cost": [
+    70,
+    75,
+    80,
+    85,
+    90
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonuses Per Stack",
+     "perRank": [
+      1.5,
+      2,
+      2.5,
+      3,
+      3.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1.5"
+    },
+    {
+     "label": "Total Bonuses",
+     "perRank": [
+      15,
+      20,
+      25,
+      30,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "15"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      17,
+      19,
+      21,
+      23,
+      25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "17%"
+    }
+   ]
+  },
+  {
+   "name": "Valiant Fighter",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Valiant Fighter is a self-targeted buff.",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  }
+ ]
+}

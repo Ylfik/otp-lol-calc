@@ -1,0 +1,206 @@
+{
+ "champion": "Annie",
+ "abilities": [
+  {
+   "name": "Pyromania",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Disintegrate",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 625",
+   "cooldown": 4,
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      125,
+      170,
+      215,
+      260
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "80 to 260 (+ 80% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Incinerate",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": 7,
+   "cost": [
+    70,
+    75,
+    80,
+    85,
+    90
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      110,
+      150,
+      190,
+      230
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "70 to 230 (+ 80% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Molten Shield",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Unit / Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": "cr 800",
+   "cooldown": 10,
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      60,
+      95,
+      130,
+      165,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "60 to 200 (+ 40% AP)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      25,
+      35,
+      45,
+      55,
+      65
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "25 to 65 (+ 40% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Summon: Tibbers",
+   "slot": "R",
+   "damageType": "magic",
+   "targeting": "Location",
+   "affects": "Enemies / Tibbers",
+   "castTime": "0.25",
+   "range": "cr 600 <!-- / X-->",
+   "cooldown": [
+    130,
+    115,
+    100
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Penetration",
+     "perRank": [
+      10,
+      15,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 20 3%"
+    },
+    {
+     "label": "Initial Magic Damage",
+     "perRank": [
+      150,
+      275,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "75% AP",
+       "pct": 75
+      }
+     ],
+     "text": "150 to 400 (+ 75% AP)"
+    }
+   ]
+  }
+ ]
+}

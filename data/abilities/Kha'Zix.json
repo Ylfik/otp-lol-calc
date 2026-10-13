@@ -1,0 +1,243 @@
+{
+ "champion": "Kha'Zix",
+ "abilities": [
+  {
+   "name": "Unseen Threat",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Taste Their Fear",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 325",
+   "cooldown": 4,
+   "cost": 20,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      80,
+      105,
+      130,
+      155,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "105% bonus AD",
+       "pct": 105
+      }
+     ],
+     "text": "80 to 180 (+ 105% bonus AD)"
+    },
+    {
+     "label": "Isolated Target Physical Damage",
+     "perRank": [
+      168,
+      220.5,
+      273,
+      325.5,
+      378
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "105*2.1% bonus AD",
+       "perRank": [
+        220.5
+       ]
+      }
+     ],
+     "text": "80*2.1 to 180*2.1 (+ 105*2.1% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Void Spike",
+   "slot": "W",
+   "damageType": "physical",
+   "targeting": "Direction",
+   "affects": "Enemies, Self",
+   "castTime": "0.25",
+   "range": "1025",
+   "cooldown": 9,
+   "cost": [
+    55,
+    60,
+    65,
+    70,
+    75
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      75,
+      105,
+      135,
+      165,
+      195
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      }
+     ],
+     "text": "75 to 195 (+ 100% bonus AD)"
+    },
+    {
+     "label": "Heal",
+     "perRank": [
+      55,
+      75,
+      95,
+      115,
+      135
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "55 to 135 (+ 50% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Leap",
+   "slot": "E",
+   "damageType": "physical",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "700",
+   "cooldown": [
+    20,
+    18,
+    16,
+    14,
+    12
+   ],
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      65,
+      100,
+      135,
+      170,
+      205
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "40% bonus AD",
+       "pct": 40
+      }
+     ],
+     "text": "65 to 205 (+ 40% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Void Assault",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    100,
+    85,
+    70
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": []
+  },
+  {
+   "name": "Evolved Adaptive Cloaking",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Evolved Reaper Claws",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": "cr 375",
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Evolved Spike Racks",
+   "slot": "W",
+   "damageType": "physical",
+   "targeting": "Direction",
+   "affects": "Enemies, Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Evolved Wings",
+   "slot": "E",
+   "damageType": "physical",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": "1000",
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  }
+ ]
+}

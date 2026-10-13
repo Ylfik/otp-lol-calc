@@ -1,0 +1,390 @@
+{
+ "champion": "Rammus",
+ "abilities": [
+  {
+   "name": "Spiked Shell",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Powerball",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    12,
+    10.5,
+    9,
+    7.5,
+    6
+   ],
+   "cost": 60,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "80 to 240 (+ 100% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      40,
+      50,
+      60,
+      70,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 80%"
+    }
+   ]
+  },
+  {
+   "name": "Defensive Ball Curl",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 7,
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Armor",
+     "perRank": [
+      27,
+      32,
+      37,
+      42,
+      47
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "armor",
+       "raw": "30 to 60% total armor",
+       "perRank": [
+        30,
+        37.5,
+        45,
+        52.5,
+        60
+       ]
+      }
+     ],
+     "text": "27 to 47 (+ 30 to 60% total armor)"
+    },
+    {
+     "label": "Bonus Magic Resistance",
+     "perRank": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "mr",
+       "raw": "30 to 60% total magic resistance",
+       "perRank": [
+        30,
+        37.5,
+        45,
+        52.5,
+        60
+       ]
+      }
+     ],
+     "text": "20 to 40 (+ 30 to 60% total magic resistance)"
+    }
+   ]
+  },
+  {
+   "name": "Frenzying Taunt",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Unit",
+   "affects": "Enemies, Self",
+   "castTime": "0.25",
+   "range": "cr 325",
+   "cooldown": 12,
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Taunt Duration",
+     "perRank": [
+      1.2,
+      1.4,
+      1.6,
+      1.8,
+      2
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1.2 to 2 seconds"
+    },
+    {
+     "label": "Monster Magic Damage",
+     "perRank": [
+      80,
+      100,
+      120,
+      140,
+      160
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "80 to 160 (+ 70% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Soaring Slam",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "None",
+   "range": "800 OR 150% movement speed<!--has a minimum dash range, needs to be measured-->",
+   "cooldown": [
+    120,
+    105,
+    90
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      150,
+      250,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "150 to 350 (+ 60% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      30,
+      40,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50%"
+    }
+   ]
+  },
+  {
+   "name": "Puncturing Taunt",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Unit",
+   "affects": "Enemies, Self",
+   "castTime": "0.25",
+   "range": "cr 325",
+   "cooldown": 12,
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Taunt Duration",
+     "perRank": [
+      1.25,
+      1.5,
+      1.75,
+      2,
+      2.25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1.25 to 2.25"
+    },
+    {
+     "label": "Armor Reduction",
+     "perRank": [
+      5,
+      10,
+      15,
+      20,
+      25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "5 to 25"
+    }
+   ]
+  },
+  {
+   "name": "Tremors",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    100,
+    80,
+    60
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage Per Tick",
+     "perRank": [
+      30,
+      60,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "20% AP",
+       "pct": 20
+      }
+     ],
+     "text": "30 to 90 (+ 20% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      240,
+      480,
+      720
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "160% AP",
+       "pct": 160
+      }
+     ],
+     "text": "30*8 to 90*8 (+ 160% AP)"
+    },
+    {
+     "label": "Structure Damage Per Tick",
+     "perRank": [
+      60,
+      120,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "30*2 to 90*2 (+ 40% AP)"
+    },
+    {
+     "label": "Structure Total Damage",
+     "perRank": [
+      480,
+      960,
+      1440
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "320% AP",
+       "pct": 320
+      }
+     ],
+     "text": "30*2*8 to 90*2*8 (+ 320% AP)"
+    },
+    {
+     "label": "Slow Per Tick",
+     "perRank": [
+      8,
+      10,
+      12
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "8 to 12%"
+    },
+    {
+     "label": "Maximum Slow",
+     "perRank": [
+      64,
+      80,
+      96
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "8*8 to 12*8%"
+    }
+   ]
+  }
+ ]
+}

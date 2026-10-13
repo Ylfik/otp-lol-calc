@@ -1,0 +1,378 @@
+{
+ "champion": "Zeri",
+ "abilities": [
+  {
+   "name": "Living Battery",
+   "slot": "I",
+   "damageType": "magic",
+   "targeting": "Unit",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": 10,
+   "costType": "charge",
+   "leveling": []
+  },
+  {
+   "name": "Burst Fire",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction <!-- internally Location -->",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      15,
+      17,
+      19,
+      21,
+      23
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "104 to 120% AD",
+       "perRank": [
+        104,
+        108,
+        112,
+        116,
+        120
+       ]
+      }
+     ],
+     "text": "15 to 23 (+ 104 to 120% AD)"
+    },
+    {
+     "label": "Total Critical Strike Damage",
+     "perRank": [
+      2250,
+      2550,
+      2850,
+      3150,
+      3450
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "104*150 to 120*150% AD",
+       "perRank": [
+        15600,
+        16200,
+        16800,
+        17400,
+        18000
+       ]
+      }
+     ],
+     "text": "15*150 to 23*150 (+ 104*150 to 120*150% AD)"
+    },
+    {
+     "label": "Total Infinity Edge Damage",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "{{ap|104*(150+{{#expr:*(150*100/200)/100}}) to 120*(150+{{#expr:*(150*100/200)/100}})}}% AD",
+       "pct": 104
+      }
+     ],
+     "text": "{{ap|15*(150+{{#expr:*(150*100/200)/100}}) to 23*(150+{{#expr:*(150*100/200)/100}})}} {{as|(+ {{ap|104*(150+{{#expr:*(150*100/200)/100}}) to 120*(150+{{#expr:*(150*100/200)/100}})}}% AD)}}"
+    },
+    {
+     "label": "Physical Damage per Hit",
+     "perRank": [
+      2.142857,
+      2.428571,
+      2.714286,
+      3,
+      3.285714
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "104/7 to 120/7% AD",
+       "perRank": [
+        14.857143,
+        15.428571,
+        16,
+        16.571429,
+        17.142857
+       ]
+      }
+     ],
+     "text": "15/7 to 23/7 (+ 104/7 to 120/7% AD)"
+    },
+    {
+     "label": "Critical Strike per Hit",
+     "perRank": [
+      321.428571,
+      364.285714,
+      407.142857,
+      450,
+      492.857143
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "104*150/7 to 120*150/7% AD",
+       "perRank": [
+        2228.571429,
+        2314.285714,
+        2400,
+        2485.714286,
+        2571.428571
+       ]
+      }
+     ],
+     "text": "15*150/7 to 23*150/7 (+ 104*150/7 to 120*150/7% AD)"
+    },
+    {
+     "label": "Infinity Edge Damage per Hit",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "{{ap|104*(150+{{#expr:*(150*100/200)/100}})/7 to 120*(150+{{#expr:*(150*100/200)/100}})/7|round=2}}% AD",
+       "pct": 104
+      }
+     ],
+     "text": "{{ap|15*(150+{{#expr:*(150*100/200)/100}})/7 to 23*(150+{{#expr:*(150*100/200)/100}})/7|round=2}} {{as|(+ {{ap|104*(150+{{#expr:*(150*100/200)/100}})/7 to 120*(150+{{#expr:*(150*100/200)/100}})/7|round=2}}% AD)}}"
+    }
+   ]
+  },
+  {
+   "name": "Ultrashock Laser",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "type=bonus attack speed",
+   "range": null,
+   "cooldown": [
+    12,
+    11,
+    10,
+    9,
+    8
+   ],
+   "cost": [
+    50,
+    60,
+    70,
+    80,
+    90
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      30,
+      70,
+      110,
+      150,
+      190
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "120% AD",
+       "pct": 120
+      },
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "30 to 190 (+ 120% AD) (+ 50% AP)"
+    },
+    {
+     "label": "Critical Strike Damage",
+     "perRank": [
+      45,
+      105,
+      165,
+      225,
+      285
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "120*150/100% AD",
+       "perRank": [
+        180
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "50*150/100% AP",
+       "perRank": [
+        75
+       ]
+      }
+     ],
+     "text": "30*150/100 to 190*150/100 (+ 120*150/100% AD) (+ 50*150/100% AP)"
+    },
+    {
+     "label": "Infinity Edge Damage",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "{{ap|120*(150/100+{{#expr:*50/10000}})}}% AD",
+       "pct": 120
+      },
+      {
+       "stat": "ap",
+       "raw": "{{ap|50*(150/100+{{#expr:*50/10000}})}}% AP",
+       "pct": 50
+      }
+     ],
+     "text": "{{ap|30*(150/100+{{#expr:*50/10000}}) to 190*(150/100+{{#expr:*50/10000}})}} {{as|(+ {{ap|120*(150/100+{{#expr:*50/10000}})}}% AD)}} {{as|(+ {{ap|50*(150/100+{{#expr:*50/10000}})}}% AP)}}"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50%"
+    }
+   ]
+  },
+  {
+   "name": "Spark Surge",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies, Self",
+   "castTime": "None",
+   "range": null,
+   "cooldown": [
+    24,
+    22.5,
+    21,
+    19.5,
+    18
+   ],
+   "cost": [
+    90,
+    85,
+    80,
+    75,
+    70
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Burst Fire Bonus Magic Damage",
+     "perRank": [
+      22,
+      24,
+      26,
+      28,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "20% AP",
+       "pct": 20
+      }
+     ],
+     "text": "22 to 30 (+ 20% AP)"
+    },
+    {
+     "label": "Burst Fire Secondary Target Damage",
+     "perRank": [
+      80,
+      85,
+      90,
+      95,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "80 to 100%"
+    }
+   ]
+  },
+  {
+   "name": "Lightning Crash",
+   "slot": "R",
+   "damageType": "Physical Magic",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    80,
+    75,
+    70
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      150,
+      250,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "60% bonus AD",
+       "pct": 60
+      },
+      {
+       "stat": "ap",
+       "raw": "110% AP",
+       "pct": 110
+      }
+     ],
+     "text": "150 to 350 (+ 60% bonus AD) (+ 110% AP)"
+    }
+   ]
+  }
+ ]
+}

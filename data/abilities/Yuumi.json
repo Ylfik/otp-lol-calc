@@ -1,0 +1,403 @@
+{
+ "champion": "Yuumi",
+ "abilities": [
+  {
+   "name": "Feline Friendship",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self, Allies, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Prowling Projectile",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "850",
+   "cooldown": 6.5,
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70,
+    75
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      95,
+      130,
+      165,
+      200,
+      235
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "20% AP",
+       "pct": 20
+      }
+     ],
+     "text": "60 to 235 6 (+ 20% AP)"
+    },
+    {
+     "label": "Increased Damage",
+     "perRank": [
+      80,
+      135,
+      190,
+      245,
+      300,
+      355
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      }
+     ],
+     "text": "80 to 355 6 (+ 30% AP)"
+    },
+    {
+     "label": "Enhanced Slow",
+     "perRank": [
+      50,
+      53,
+      56,
+      59,
+      62,
+      65
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "50 to 65 6%"
+    },
+    {
+     "label": "Minimum Bonus Magic Damage On-Hit",
+     "perRank": [
+      10,
+      12,
+      14,
+      16,
+      18,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "5% AP",
+       "pct": 5
+      }
+     ],
+     "text": "10 to 20 6 (+ 5% AP)"
+    },
+    {
+     "label": "Maximum Bonus Magic Damage On-Hit",
+     "perRank": [
+      17.5,
+      21,
+      24.5,
+      28,
+      31.5,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "5*1.75% AP",
+       "perRank": [
+        8.75
+       ]
+      }
+     ],
+     "text": "10*1.75 to 20*1.75 6 (+ 5*1.75% AP)"
+    }
+   ]
+  },
+  {
+   "name": "You and Me!",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Unit / Direction",
+   "affects": "Allies",
+   "castTime": "none",
+   "range": "700",
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Heal and Shield Power",
+     "perRank": [
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "4 to 8%"
+    },
+    {
+     "label": "Healing On-Hit",
+     "perRank": [
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "3% AP",
+       "pct": 3
+      }
+     ],
+     "text": "3 to 7 (+ 3% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Zoomies",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self / Allies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 10,
+   "cost": [
+    80,
+    90,
+    100,
+    110,
+    120
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Shield",
+     "perRank": [
+      65,
+      90,
+      115,
+      140,
+      165
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "65 to 165 (+ 40% AP)"
+    },
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      25,
+      27.5,
+      30,
+      32.5,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "8% per 100 AP",
+       "pct": 8
+      }
+     ],
+     "text": "25 to 35% (+ 8% per 100 AP)"
+    },
+    {
+     "label": "Minimum Mana Restored",
+     "perRank": [
+      20,
+      24,
+      28,
+      32,
+      36
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 36"
+    },
+    {
+     "label": "Maximum Mana Restored",
+     "perRank": [
+      40,
+      48,
+      56,
+      64,
+      72
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20*2 to 36*2"
+    }
+   ]
+  },
+  {
+   "name": "Final Chapter",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Self, Allies, Enemies",
+   "castTime": "none",
+   "range": "cr 1100",
+   "cooldown": [
+    120,
+    110,
+    100
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Heal per Hit",
+     "perRank": [
+      30,
+      50,
+      70
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "12% AP",
+       "pct": 12
+      }
+     ],
+     "text": "30 to 70 (+ 12% AP)"
+    },
+    {
+     "label": "Total Heal",
+     "perRank": [
+      150,
+      250,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "12*5% AP",
+       "perRank": [
+        60
+       ]
+      }
+     ],
+     "text": "30*5 to 70*5 (+ 12*5% AP)"
+    },
+    {
+     "label": "Magic Damage per Hit",
+     "perRank": [
+      75,
+      125,
+      175
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25% AP",
+       "pct": 25
+      }
+     ],
+     "text": "75 to 175 (+ 25% AP)"
+    },
+    {
+     "label": "Reduced Damage per Hit",
+     "perRank": [
+      18.75,
+      31.25,
+      43.75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25*0.25% AP",
+       "perRank": [
+        6.25
+       ]
+      }
+     ],
+     "text": "75*0.25 to 175*0.25 (+ 25*0.25% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      150,
+      250,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25*2% AP",
+       "perRank": [
+        50
+       ]
+      }
+     ],
+     "text": "75*2 to 175*2 (+ 25*2% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Bop 'n' Block",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  }
+ ]
+}

@@ -1,0 +1,258 @@
+{
+ "champion": "Seraphine",
+ "abilities": [
+  {
+   "name": "Stage Presence",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Self, Allies, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "High Note",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "900",
+   "cooldown": [
+    8,
+    7.5,
+    7,
+    6.5,
+    6
+   ],
+   "cost": [
+    60,
+    70,
+    80,
+    90,
+    100
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      85,
+      110,
+      135,
+      160
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "60 to 160 (+ 40% AP)"
+    },
+    {
+     "label": "Maximum Enhanced Damage",
+     "perRank": [
+      105,
+      148.75,
+      192.5,
+      236.25,
+      280
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40*1.75% AP",
+       "perRank": [
+        70
+       ]
+      }
+     ],
+     "text": "60*1.75 to 160*1.75 (+ 40*1.75% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Surround Sound",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self, Allies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": 22,
+   "cost": [
+    70,
+    75,
+    80,
+    85,
+    90
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      60,
+      80,
+      100,
+      120,
+      140
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "20% AP",
+       "pct": 20
+      }
+     ],
+     "text": "60 to 140 (+ 20% AP)"
+    },
+    {
+     "label": "Heal",
+     "perRank": [
+      8,
+      10,
+      12,
+      14,
+      16
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "8 to 16% of target's missing health"
+    }
+   ]
+  },
+  {
+   "name": "Beat Drop",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 1300",
+   "cooldown": 11,
+   "cost": 60,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      100,
+      130,
+      160,
+      190
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "70 to 190 (+ 50% AP)"
+    },
+    {
+     "label": "Minion Damage",
+     "perRank": [
+      49,
+      70,
+      91,
+      112,
+      133
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50*0.7% AP",
+       "perRank": [
+        35
+       ]
+      }
+     ],
+     "text": "70*0.7 to 190*0.7 (+ 50*0.7% AP)"
+    },
+    {
+     "label": "Disable Duration",
+     "perRank": [
+      1.1,
+      1.2,
+      1.3,
+      1.4,
+      1.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1.1 to 1.5 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Encore",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.5",
+   "range": "er 1300",
+   "cooldown": [
+    160,
+    140,
+    120
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      150,
+      200,
+      250
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "150 to 250 (+ 40% AP)"
+    },
+    {
+     "label": "Disable Duration",
+     "perRank": [
+      1.25,
+      1.5,
+      1.75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1.25 to 1.75 seconds"
+    }
+   ]
+  }
+ ]
+}

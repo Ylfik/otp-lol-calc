@@ -1,0 +1,317 @@
+{
+ "champion": "Lissandra",
+ "abilities": [
+  {
+   "name": "Iceborn Subjugation",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Ice Shard",
+   "slot": "Q",
+   "damageType": "magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    7,
+    6,
+    5,
+    4,
+    3
+   ],
+   "cost": [
+    55,
+    60,
+    65,
+    70,
+    75
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      115,
+      150,
+      185,
+      220
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "75% AP",
+       "pct": 75
+      }
+     ],
+     "text": "80 to 220 (+ 75% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      20,
+      24,
+      28,
+      32,
+      36
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 36%"
+    }
+   ]
+  },
+  {
+   "name": "Ring of Frost",
+   "slot": "W",
+   "damageType": "magic",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    10,
+    9.5,
+    9,
+    8.5,
+    8
+   ],
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      105,
+      140,
+      175,
+      210
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "70 to 210 (+ 70% AP)"
+    },
+    {
+     "label": "Root Duration",
+     "perRank": [
+      1.25,
+      1.35,
+      1.45,
+      1.55,
+      1.65
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1.25 to 1.65 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Glacial Path",
+   "slot": "E",
+   "damageType": "magic",
+   "targeting": "Direction",
+   "affects": "Enemies, Self",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    24,
+    21,
+    18,
+    15,
+    12
+   ],
+   "cost": [
+    80,
+    85,
+    90,
+    95,
+    100
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      105,
+      140,
+      175,
+      210
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "70 to 210 (+ 60% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Frozen Tomb",
+   "slot": "R",
+   "damageType": "magic",
+   "targeting": "Unit",
+   "affects": "Enemies, Self",
+   "castTime": "0.375",
+   "range": "cr 550",
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Minimum Heal per Tick",
+     "perRank": [
+      10,
+      15,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "55/10% AP",
+       "perRank": [
+        5.5
+       ]
+      }
+     ],
+     "text": "100/10 to 200/10 (+ 55/10% AP)"
+    },
+    {
+     "label": "Maximum Heal per Tick",
+     "perRank": [
+      20,
+      30,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "55*2/10% AP",
+       "perRank": [
+        11
+       ]
+      }
+     ],
+     "text": "100*2/10 to 200*2/10 (+ 55*2/10% AP)"
+    },
+    {
+     "label": "Minimum Total Heal",
+     "perRank": [
+      100,
+      150,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "55% AP",
+       "pct": 55
+      }
+     ],
+     "text": "100 to 200 (+ 55% AP)"
+    },
+    {
+     "label": "Maximum Total Heal",
+     "perRank": [
+      200,
+      300,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "55*2% AP",
+       "perRank": [
+        110
+       ]
+      }
+     ],
+     "text": "100*2 to 200*2 (+ 55*2% AP)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      150,
+      250,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "75% AP",
+       "pct": 75
+      }
+     ],
+     "text": "150 to 350 (+ 75% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      45,
+      60,
+      75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "45 to 75%"
+    }
+   ]
+  },
+  {
+   "name": "Iceborn",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  }
+ ]
+}

@@ -1,0 +1,456 @@
+{
+ "champion": "Gnar",
+ "abilities": [
+  {
+   "name": "Rage Gene",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Boomerang Throw",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    16,
+    14.5,
+    13,
+    11.5,
+    10
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      5,
+      45,
+      85,
+      125,
+      165
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "125% AD",
+       "pct": 125
+      }
+     ],
+     "text": "5 to 165 (+ 125% AD)"
+    },
+    {
+     "label": "Reduced Damage",
+     "perRank": [
+      2.5,
+      22.5,
+      42.5,
+      62.5,
+      82.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "125/2% AD",
+       "perRank": [
+        62.5
+       ]
+      }
+     ],
+     "text": "5/2 to 165/2 (+ 125/2% AD)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      15,
+      20,
+      25,
+      30,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "15 to 35%"
+    }
+   ]
+  },
+  {
+   "name": "Hyper",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      0,
+      10,
+      20,
+      30,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "maxHealth",
+       "raw": "6 to 14% of target's maximum health",
+       "perRank": [
+        6,
+        8,
+        10,
+        12,
+        14
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "0 to 40 (+ 6 to 14% of target's maximum health) (+ 100% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Hop",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "475",
+   "cooldown": [
+    22,
+    19.5,
+    17,
+    14.5,
+    12
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      40,
+      45,
+      50,
+      55,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 60%"
+    },
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      50,
+      85,
+      120,
+      155,
+      190
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "maxHealth",
+       "raw": "6% maximum health",
+       "pct": 6
+      }
+     ],
+     "text": "50 to 190 (+ 6% maximum health)"
+    }
+   ]
+  },
+  {
+   "name": "GNAR!",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    90,
+    60,
+    30
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Hyper Bonus Movement Speed",
+     "perRank": [
+      40,
+      60,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 80%"
+    },
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      200,
+      300,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50% bonus AD",
+       "pct": 50
+      },
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "200 to 400 (+ 50% bonus AD) (+ 100% AP)"
+    },
+    {
+     "label": "Disable Duration",
+     "perRank": [
+      1.25,
+      1.5,
+      1.75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1.25 to 1.75"
+    },
+    {
+     "label": "Increased Damage",
+     "perRank": [
+      300,
+      450,
+      600
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "75% bonus AD",
+       "pct": 75
+      },
+      {
+       "stat": "ap",
+       "raw": "150% AP",
+       "pct": 150
+      }
+     ],
+     "text": "200*1.5 to 400*1.5 (+ 75% bonus AD) (+ 150% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Boulder Toss",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.5",
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      45,
+      90,
+      135,
+      180,
+      225
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "140% AD",
+       "pct": 140
+      }
+     ],
+     "text": "45 to 225 (+ 140% AD)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50%"
+    }
+   ]
+  },
+  {
+   "name": "Crunch",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "675<!--has a minimum dash range, needs to be measured-->",
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      80,
+      115,
+      150,
+      185,
+      220
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "maxHealth",
+       "raw": "6% of his maximum health",
+       "pct": 6
+      }
+     ],
+     "text": "80 to 220 (+ 6% of his maximum health)"
+    }
+   ]
+  },
+  {
+   "name": "Mega Gnar",
+   "slot": "I",
+   "damageType": null,
+   "targeting": null,
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Mini Gnar",
+   "slot": "I",
+   "damageType": null,
+   "targeting": null,
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus Movespeed",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": ""
+    },
+    {
+     "label": "Total Movespeed",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "{{pplevel|+1*(x-1) for 15; then +2*x|formula=Gnar's base MS at level 1, then + 1 per level up to 15, then + 2 per level}}"
+    },
+    {
+     "label": "Bonus Range",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": ""
+    },
+    {
+     "label": "Total Range",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "{{pplevel|+(225 to 325)}}"
+    }
+   ]
+  },
+  {
+   "name": "Wallop",
+   "slot": "W",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.6",
+   "range": null,
+   "cooldown": 7,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      45,
+      75,
+      105,
+      135,
+      165
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "100% AD",
+       "pct": 100
+      }
+     ],
+     "text": "45 to 165 (+ 100% AD)"
+    }
+   ]
+  }
+ ]
+}

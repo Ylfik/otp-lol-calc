@@ -1,0 +1,713 @@
+{
+ "champion": "Fiddlesticks",
+ "abilities": [
+  {
+   "name": "A Harmless Scarecrow",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Vector",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Terrify",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.35",
+   "range": "cr 575",
+   "cooldown": [
+    15,
+    14.5,
+    14,
+    13.5,
+    13
+   ],
+   "cost": 65,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Fear Duration",
+     "perRank": [
+      1.2,
+      1.4,
+      1.6,
+      1.8,
+      2
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1.2 to 2 seconds"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      4,
+      4.5,
+      5,
+      5.5,
+      6
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "3% per 100 AP",
+       "pct": 3
+      }
+     ],
+     "text": "4 to 6% (+ 3% per 100 AP) of target's current health"
+    },
+    {
+     "label": "Minimum Damage",
+     "perRank": [
+      40,
+      60,
+      80,
+      100,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 120"
+    },
+    {
+     "label": "Fear Duration",
+     "perRank": [
+      1.2,
+      1.4,
+      1.6,
+      1.8,
+      2
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1.2 to 2 seconds"
+    },
+    {
+     "label": "Increased Magic Damage",
+     "perRank": [
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "3*2% per 100 AP",
+       "perRank": [
+        6
+       ]
+      }
+     ],
+     "text": "4*2 to 6*2% (+ 3*2% per 100 AP) of target's current health"
+    },
+    {
+     "label": "Increased Minimum Damage",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40*2 to 120*2"
+    }
+   ]
+  },
+  {
+   "name": "Bountiful Harvest",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Proximity",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    10,
+    9.5,
+    9,
+    8.5,
+    8
+   ],
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Damage per second",
+     "perRank": [
+      60,
+      90,
+      120,
+      150,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "45% AP",
+       "pct": 45
+      }
+     ],
+     "text": "120/2 to 360/2 (+ 45% AP)"
+    },
+    {
+     "label": "Damage per Instance",
+     "perRank": [
+      15,
+      22.5,
+      30,
+      37.5,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "11.25% AP",
+       "pct": 11.25
+      }
+     ],
+     "text": "120/8 to 360/8 (+ 11.25% AP)"
+    },
+    {
+     "label": "Last Tick of Damage",
+     "perRank": [
+      15,
+      22.5,
+      30,
+      37.5,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "11.25% AP",
+       "pct": 11.25
+      },
+      {
+       "stat": "missingHealth",
+       "raw": "12 to 22% of target's missing health",
+       "perRank": [
+        12,
+        14.5,
+        17,
+        19.5,
+        22
+       ]
+      }
+     ],
+     "text": "120/8 to 360/8 (+ 11.25% AP) (+ 12 to 22% of target's missing health)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      120,
+      180,
+      240,
+      300,
+      360
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90% AP",
+       "pct": 90
+      },
+      {
+       "stat": "missingHealth",
+       "raw": "12 to 22% of target's missing health",
+       "perRank": [
+        12,
+        14.5,
+        17,
+        19.5,
+        22
+       ]
+      }
+     ],
+     "text": "120 to 360 (+ 90% AP) (+ 12 to 22% of target's missing health)"
+    },
+    {
+     "label": "Champion Heal Portion",
+     "perRank": [
+      25,
+      32.5,
+      40,
+      47.5,
+      55
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "25 to 55%"
+    },
+    {
+     "label": "Total Heal per Champion",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90/100*(25 to 55)% AP",
+       "pct": 90
+      },
+      {
+       "stat": "missingHealth",
+       "raw": "(12 to 22)*(25 to 55)/100% of target's missing health",
+       "pct": 100
+      }
+     ],
+     "text": "(120 to 360)*(25 to 55)/100 (+ 90/100*(25 to 55)% AP) (+ (12 to 22)*(25 to 55)/100% of target's missing health)"
+    },
+    {
+     "label": "Total Heal per Monster",
+     "perRank": [
+      72.9,
+      109.35,
+      145.8,
+      182.25,
+      218.7
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90*1.35*0.45% AP",
+       "perRank": [
+        54.675000000000004
+       ]
+      },
+      {
+       "stat": "missingHealth",
+       "raw": "12*1.35*0.45 to 22*1.35*0.45% of target's missing health",
+       "perRank": [
+        7.29,
+        8.80875,
+        10.3275,
+        11.84625,
+        13.365
+       ]
+      }
+     ],
+     "text": "120*1.35*0.45 to 360*1.35*0.45 (+ 90*1.35*0.45% AP) (+ 12*1.35*0.45 to 22*1.35*0.45% of target's missing health)"
+    },
+    {
+     "label": "Total Heal per Minion",
+     "perRank": [
+      9,
+      13.5,
+      18,
+      22.5,
+      27
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90*0.50*0.15% AP",
+       "perRank": [
+        6.75
+       ]
+      },
+      {
+       "stat": "missingHealth",
+       "raw": "12*0.50*0.15 to 22*0.50*0.15% of target's missing health",
+       "perRank": [
+        0.9,
+        1.0875,
+        1.275,
+        1.4625,
+        1.65
+       ]
+      }
+     ],
+     "text": "120*0.50*0.15 to 360*0.50*0.15 (+ 90*0.50*0.15% AP) (+ 12*0.50*0.15 to 22*0.50*0.15% of target's missing health)"
+    }
+   ]
+  },
+  {
+   "name": "Reap",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": null,
+   "castTime": "0.4",
+   "range": "850",
+   "cooldown": [
+    10,
+    9,
+    8,
+    7,
+    6
+   ],
+   "cost": [
+    40,
+    45,
+    50,
+    55,
+    60
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      105,
+      140,
+      175,
+      210
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "70 to 210 (+ 50% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50%"
+    }
+   ]
+  },
+  {
+   "name": "Crowstorm",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": null,
+   "castTime": "none",
+   "range": "800",
+   "cooldown": [
+    140,
+    110,
+    80
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage per Tick",
+     "perRank": [
+      37.5,
+      62.5,
+      87.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "12.5% AP",
+       "pct": 12.5
+      }
+     ],
+     "text": "150*0.25 to 350*0.25 (+ 12.5% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      750,
+      1250,
+      1750
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "250% AP",
+       "pct": 250
+      }
+     ],
+     "text": "150*5 to 350*5 (+ 250% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Basic Attack",
+   "slot": "A",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Dark Wind",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Unit / Auto",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": "750",
+   "cooldown": 10,
+   "cost": [
+    70,
+    75,
+    80,
+    85,
+    90
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage per Bounce",
+     "perRank": [
+      60,
+      80,
+      100,
+      120,
+      140
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "45% AP",
+       "pct": 45
+      }
+     ],
+     "text": "60 to 140 (+ 45% AP)"
+    },
+    {
+     "label": "Total Single-Target Damage",
+     "perRank": [
+      180,
+      240,
+      300,
+      360,
+      420
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "135% AP",
+       "pct": 135
+      }
+     ],
+     "text": "60*3 to 140*3 (+ 135% AP)"
+    },
+    {
+     "label": "Monster Damage per Bounce",
+     "perRank": [
+      120,
+      160,
+      200,
+      240,
+      280
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90% AP",
+       "pct": 90
+      }
+     ],
+     "text": "60*2 to 140*2 (+ 90% AP)"
+    },
+    {
+     "label": "Monster Total Single-Target Damage",
+     "perRank": [
+      360,
+      480,
+      600,
+      720,
+      840
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "270% AP",
+       "pct": 270
+      }
+     ],
+     "text": "60*6 to 140*6 (+ 270% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Drain",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies, Self",
+   "castTime": null,
+   "range": "575",
+   "cooldown": [
+    4,
+    3.75,
+    3.5,
+    3.25,
+    3
+   ],
+   "cost": [
+    80,
+    90,
+    100,
+    110,
+    120
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage per Second",
+     "perRank": [
+      80,
+      105,
+      130,
+      155,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "45% AP",
+       "pct": 45
+      }
+     ],
+     "text": "80 to 180 (+ 45% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      400,
+      525,
+      650,
+      775,
+      900
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "45*5% AP",
+       "perRank": [
+        225
+       ]
+      }
+     ],
+     "text": "80*5 to 180*5 (+ 45*5% AP)"
+    },
+    {
+     "label": "Heal Ratio",
+     "perRank": [
+      60,
+      65,
+      70,
+      75,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "60 to 80%"
+    },
+    {
+     "label": "Heal per Second",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "(60 to 80)/100*45% AP",
+       "pct": 45
+      }
+     ],
+     "text": "(60 to 80)/100*(80 to 180) (+ (60 to 80)/100*45% AP)"
+    },
+    {
+     "label": "Total Heal",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "(60 to 80)/100*45*5% AP",
+       "pct": 5
+      }
+     ],
+     "text": "(60 to 80)/100*(80 to 180)*5 (+ (60 to 80)/100*45*5% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Dread",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  }
+ ]
+}

@@ -1,0 +1,581 @@
+{
+ "champion": "Evelynn",
+ "abilities": [
+  {
+   "name": "Demon Shade",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Hate Spike",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.3",
+   "range": "800",
+   "cooldown": 4,
+   "cost": [
+    40,
+    45,
+    50,
+    55,
+    60
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      25,
+      30,
+      35,
+      40,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25% AP",
+       "pct": 25
+      }
+     ],
+     "text": "25 to 45 (+ 25% AP)"
+    },
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      15,
+      25,
+      35,
+      45,
+      55
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25% AP",
+       "pct": 25
+      }
+     ],
+     "text": "15 to 55 (+ 25% AP)"
+    },
+    {
+     "label": "Total Bonus Damage",
+     "perRank": [
+      45,
+      75,
+      105,
+      135,
+      165
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25*3% AP",
+       "perRank": [
+        75
+       ]
+      }
+     ],
+     "text": "15*3 to 55*3 (+ 25*3% AP)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      25,
+      30,
+      35,
+      40,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25% AP",
+       "pct": 25
+      }
+     ],
+     "text": "25 to 45 (+ 25% AP)"
+    },
+    {
+     "label": "Maximum Magic Damage",
+     "perRank": [
+      75,
+      90,
+      105,
+      120,
+      135
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25*3% AP",
+       "perRank": [
+        75
+       ]
+      }
+     ],
+     "text": "25*3 to 45*3 (+ 25*3% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      145,
+      195,
+      245,
+      295,
+      345
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25*4+25*3% AP",
+       "perRank": [
+        175
+       ]
+      }
+     ],
+     "text": "25*4+15*3 to 45*4+55*3 (+ 25*4+25*3% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Allure",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 1200 to 1600",
+   "cooldown": [
+    15,
+    14,
+    13,
+    12,
+    11
+   ],
+   "cost": [
+    60,
+    70,
+    80,
+    90,
+    100
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Charm Duration",
+     "perRank": [
+      1.25,
+      1.5,
+      1.75,
+      2,
+      2.25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1.25 to 2.25 seconds"
+    },
+    {
+     "label": "Magic Resistance Reduction",
+     "perRank": [
+      35,
+      37.5,
+      40,
+      42.5,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "35 to 45%"
+    },
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      250,
+      300,
+      350,
+      400,
+      450
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "250 to 450 (+ 60% AP)"
+    },
+    {
+     "label": "Monster Charm Duration",
+     "perRank": [
+      3.5,
+      3.75,
+      4,
+      4.25,
+      4.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1.25+2.25 to 2.25+2.25 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Whiplash",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "er 210",
+   "cooldown": 8,
+   "cost": [
+    40,
+    45,
+    50,
+    55,
+    60
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      90,
+      120,
+      150,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "3% (+ 1.5% per 100 AP) of target's maximum health",
+       "pct": 3
+      }
+     ],
+     "text": "60 to 180 (+ 3% (+ 1.5% per 100 AP) of target's maximum health)"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50%"
+    }
+   ]
+  },
+  {
+   "name": "Last Caress",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies / Self",
+   "castTime": "0.35",
+   "range": null,
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      125,
+      250,
+      375
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "75% AP",
+       "pct": 75
+      }
+     ],
+     "text": "125 to 375 (+ 75% AP)"
+    },
+    {
+     "label": "Empowered Damage",
+     "perRank": [
+      300,
+      600,
+      900
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "75*2.4% AP",
+       "perRank": [
+        180
+       ]
+      }
+     ],
+     "text": "125*2.4 to 375*2.4 (+ 75*2.4% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Agony's Embrace",
+   "slot": "R",
+   "damageType": "magic",
+   "targeting": "Agony's Embrace is a ground-targeted area of effect with a self-targeted buff component.",
+   "affects": null,
+   "castTime": null,
+   "range": "650",
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      15,
+      20,
+      25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "1% per 100 AP",
+       "pct": 1
+      }
+     ],
+     "text": "15% (+ 1% per 100 AP) of target's current health"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      40,
+      60,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40%"
+    },
+    {
+     "label": "Shield Strength Per Champion",
+     "perRank": [
+      150,
+      225,
+      300
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "150"
+    }
+   ]
+  },
+  {
+   "name": "Dark Frenzy",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Dark Frenzy is a self-targeted buff.",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": 15,
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      30,
+      40,
+      50,
+      60,
+      70
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30%"
+    }
+   ]
+  },
+  {
+   "name": "Empowered Whiplash",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Empowered Magic Damage",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "4% (+ 2.5% per 100 AP) of target's maximum health",
+       "pct": 4
+      }
+     ],
+     "text": "80 to 240 (+ 4% (+ 2.5% per 100 AP) of target's maximum health)"
+    }
+   ]
+  },
+  {
+   "name": "Ravage",
+   "slot": "E",
+   "damageType": "physical",
+   "targeting": "Ravage is a single-targeted ability with a self-targeted buff component.",
+   "affects": null,
+   "castTime": null,
+   "range": "225",
+   "cooldown": 9,
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage Per Slash",
+     "perRank": [
+      35,
+      55,
+      75,
+      95,
+      115
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50% bonus AD",
+       "pct": 50
+      },
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "35 (+ 50% bonus AD) (+ 50% AP)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      70,
+      110,
+      150,
+      190,
+      230
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      },
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "70 (+ 100% bonus AD) (+ 100% AP)"
+    },
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      60,
+      75,
+      90,
+      105,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "60%"
+    }
+   ]
+  },
+  {
+   "name": "Shadow Walk",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Shadow Walk is a self-targeted buff.",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  }
+ ]
+}

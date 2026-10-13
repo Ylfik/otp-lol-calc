@@ -1,0 +1,238 @@
+{
+ "champion": "Twitch",
+ "abilities": [
+  {
+   "name": "Deadly Venom",
+   "slot": "I",
+   "damageType": "True",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Ambush",
+   "slot": "Q",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 16,
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Stealth Duration",
+     "perRank": [
+      10,
+      11,
+      12,
+      13,
+      14
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 14 seconds"
+    },
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      40,
+      45,
+      50,
+      55,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 60%"
+    }
+   ]
+  },
+  {
+   "name": "Venom Cask",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "950",
+   "cooldown": [
+    13,
+    12,
+    11,
+    10,
+    9
+   ],
+   "cost": 70,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Slow",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "6% per 100 AP",
+       "pct": 6
+      }
+     ],
+     "text": "30 to 50% (+ 6% per 100 AP)"
+    }
+   ]
+  },
+  {
+   "name": "Contaminate",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Proximity",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    12,
+    11,
+    10,
+    9,
+    8
+   ],
+   "cost": [
+    50,
+    60,
+    70,
+    80,
+    90
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Base Physical Damage",
+     "perRank": [
+      20,
+      30,
+      40,
+      50,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 60"
+    },
+    {
+     "label": "Physical Damage Per Stack",
+     "perRank": [
+      15,
+      20,
+      25,
+      30,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "35% bonus AD",
+       "pct": 35
+      }
+     ],
+     "text": "15 to 35 (+ 35% bonus AD)"
+    },
+    {
+     "label": "Minimum Mixed Damage",
+     "perRank": [
+      35,
+      50,
+      65,
+      80,
+      95
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "35% bonus AD",
+       "pct": 35
+      },
+      {
+       "stat": "ap",
+       "raw": "35% AP",
+       "pct": 35
+      }
+     ],
+     "text": "20+15 to 60+35 (+ 35% bonus AD) (+ 35% AP)"
+    },
+    {
+     "label": "Maximum Mixed Damage",
+     "perRank": [
+      110,
+      150,
+      190,
+      230,
+      270
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "210% bonus AD",
+       "pct": 210
+      },
+      {
+       "stat": "ap",
+       "raw": "35*6% AP",
+       "perRank": [
+        210
+       ]
+      }
+     ],
+     "text": "20+15*6 to 60+35*6 (+ 210% bonus AD) (+ 35*6% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Spray and Pray",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": "er Twitch's range",
+   "cooldown": 90,
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Attack Damage",
+     "perRank": [
+      30,
+      45,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 60"
+    }
+   ]
+  }
+ ]
+}

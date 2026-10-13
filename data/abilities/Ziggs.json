@@ -1,0 +1,292 @@
+{
+ "champion": "Ziggs",
+ "abilities": [
+  {
+   "name": "Short Fuse",
+   "slot": "I",
+   "damageType": "magic",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Bouncing Bomb",
+   "slot": "Q",
+   "damageType": "magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "850",
+   "cooldown": [
+    6,
+    5.5,
+    5,
+    4.5,
+    4
+   ],
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      130,
+      180,
+      230,
+      280
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60 to 80% AP",
+       "perRank": [
+        60,
+        65,
+        70,
+        75,
+        80
+       ]
+      }
+     ],
+     "text": "80 to 280 (+ 60 to 80% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Satchel Charge",
+   "slot": "W",
+   "damageType": "magic",
+   "targeting": "Location / Auto",
+   "affects": "Enemies / Self",
+   "castTime": "0.25",
+   "range": "1000",
+   "cooldown": [
+    20,
+    18,
+    16,
+    14,
+    12
+   ],
+   "cost": 80,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      105,
+      140,
+      175,
+      210
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "70 to 210 (+ 50% AP)"
+    },
+    {
+     "label": "Demolition Threshold",
+     "perRank": [
+      25,
+      27.5,
+      30,
+      32.5,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "25 to 35% of turret's maximum health"
+    }
+   ]
+  },
+  {
+   "name": "Hexplosive Minefield",
+   "slot": "E",
+   "damageType": "magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "900",
+   "cooldown": 16,
+   "cost": [
+    70,
+    80,
+    90,
+    100,
+    110
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage per Mine",
+     "perRank": [
+      30,
+      70,
+      110,
+      150,
+      190
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25 to 45% AP",
+       "perRank": [
+        25,
+        30,
+        35,
+        40,
+        45
+       ]
+      }
+     ],
+     "text": "30 to 190 (+ 25 to 45% AP)"
+    },
+    {
+     "label": "Reduced Damage per Mine",
+     "perRank": [
+      12,
+      28,
+      44,
+      60,
+      76
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25*0.4 to 45*0.4% AP",
+       "perRank": [
+        10,
+        12,
+        14,
+        16,
+        18
+       ]
+      }
+     ],
+     "text": "30*0.4 to 190*0.4 (+ 25*0.4 to 45*0.4% AP)"
+    },
+    {
+     "label": "Maximum Total Magic Damage",
+     "perRank": [
+      150,
+      350,
+      550,
+      750,
+      950
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25*(1+0.4*10) to 45*(1+0.4*10)% AP",
+       "perRank": [
+        125,
+        150,
+        175,
+        200,
+        225
+       ]
+      }
+     ],
+     "text": "30*(1+0.4*10) to 190*(1+0.4*10) (+ 25*(1+0.4*10) to 45*(1+0.4*10)% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      10,
+      20,
+      30,
+      40,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 50%"
+    }
+   ]
+  },
+  {
+   "name": "Mega Inferno Bomb",
+   "slot": "R",
+   "damageType": "magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.375",
+   "range": "5000",
+   "cooldown": [
+    120,
+    95,
+    70
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Epicenter Magic Damage",
+     "perRank": [
+      300,
+      500,
+      700
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "300 to 700 (+ 100% AP)"
+    },
+    {
+     "label": "Reduced Damage",
+     "perRank": [
+      195,
+      325,
+      455
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100*0.65% AP",
+       "perRank": [
+        65
+       ]
+      }
+     ],
+     "text": "300*0.65 to 700*0.65 (+ 100*0.65% AP)"
+    }
+   ]
+  }
+ ]
+}

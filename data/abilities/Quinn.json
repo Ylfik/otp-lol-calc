@@ -1,0 +1,227 @@
+{
+ "champion": "Quinn",
+ "abilities": [
+  {
+   "name": "Harrier",
+   "slot": "I",
+   "damageType": "Physical",
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Blinding Assault",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "1050",
+   "cooldown": [
+    11,
+    10.5,
+    10,
+    9.5,
+    9
+   ],
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      65,
+      100,
+      135,
+      170,
+      205
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "80 to 100% bonus AD",
+       "perRank": [
+        80,
+        85,
+        90,
+        95,
+        100
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "65 to 205 (+ 80 to 100% bonus AD) (+ 50% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Heightened Senses",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    50,
+    45,
+    40,
+    35,
+    30
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      28,
+      41,
+      54,
+      67,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "28 to 80%"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 40%"
+    }
+   ]
+  },
+  {
+   "name": "Vault",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "er 600",
+   "cooldown": [
+    12,
+    11,
+    10,
+    9,
+    8
+   ],
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical damage",
+     "perRank": [
+      40,
+      65,
+      90,
+      115,
+      140
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "20% bonus AD",
+       "pct": 20
+      }
+     ],
+     "text": "40 to 140 (+ 20% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Behind Enemy Lines",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": 3,
+   "cost": [
+    50,
+    25,
+    0
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Total Movement Speed Increase",
+     "perRank": [
+      70,
+      100,
+      130
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "70 to 130%"
+    }
+   ]
+  },
+  {
+   "name": "Skystrike",
+   "slot": "R\n|pre-blurb = Quinn/Behind Enemy Lines",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      60,
+      75,
+      90,
+      105,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "35% bonus AD",
+       "pct": 35
+      }
+     ],
+     "text": "60 to 120 (+ 35% bonus AD)"
+    }
+   ]
+  }
+ ]
+}

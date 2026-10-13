@@ -1,0 +1,328 @@
+{
+ "champion": "Sylas",
+ "abilities": [
+  {
+   "name": "Petricite Burst",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Chain Lash",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.4",
+   "range": "50",
+   "cooldown": [
+    10,
+    9,
+    8,
+    7,
+    6
+   ],
+   "cost": 55,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      40,
+      60,
+      80,
+      100,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "40 to 120 (+ 40% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      15,
+      20,
+      25,
+      30,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "15 to 35%"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      115,
+      170,
+      225,
+      280
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "60 to 280 (+ 80% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      100,
+      175,
+      250,
+      325,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80+40% AP",
+       "perRank": [
+        120
+       ]
+      }
+     ],
+     "text": "40+60 to 120+280 (+ 80+40% AP)"
+    },
+    {
+     "label": "Minion Damage",
+     "perRank": [
+      24,
+      46,
+      68,
+      90,
+      112
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80*0.4% AP",
+       "perRank": [
+        32
+       ]
+      }
+     ],
+     "text": "60*0.4 to 280*0.4 (+ 80*0.4% AP)"
+    },
+    {
+     "label": "Total Minion Damage",
+     "perRank": [
+      64,
+      106,
+      148,
+      190,
+      232
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40+(80*0.4)% AP",
+       "perRank": [
+        72
+       ]
+      }
+     ],
+     "text": "40+(60*0.4) to 120+(280*0.4) (+ 40+(80*0.4)% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Kingslayer",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "cr 400",
+   "cooldown": [
+    12,
+    10.5,
+    9,
+    7.5,
+    6
+   ],
+   "cost": [
+    50,
+    60,
+    70,
+    80,
+    90
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      75,
+      110,
+      145,
+      180,
+      215
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "75 to 215 (+ 60% AP)"
+    },
+    {
+     "label": "Minimum Heal",
+     "perRank": [
+      20,
+      40,
+      60,
+      80,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "5% of his bonus health",
+       "pct": 5
+      }
+     ],
+     "text": "20 to 100 (+ 30% AP) (+ 5% of his bonus health)"
+    },
+    {
+     "label": "Maximum Heal",
+     "perRank": [
+      40,
+      80,
+      120,
+      160,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30*2% AP",
+       "perRank": [
+        60
+       ]
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "5*2% of his bonus health",
+       "perRank": [
+        10
+       ]
+      }
+     ],
+     "text": "20*2 to 100*2 (+ 30*2% AP) (+ 5*2% of his bonus health)"
+    }
+   ]
+  },
+  {
+   "name": "Abscond",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Location",
+   "affects": "Self",
+   "castTime": "none",
+   "range": "400<!--has a minimum dash range, needs to be measured-->",
+   "cooldown": [
+    13,
+    12,
+    11,
+    10,
+    9
+   ],
+   "cost": 65,
+   "costType": "Mana",
+   "leveling": []
+  },
+  {
+   "name": "Hijack",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Unit",
+   "affects": "Self, Enemies",
+   "castTime": "0.25",
+   "range": "cr 950",
+   "cooldown": [
+    80,
+    55,
+    30
+   ],
+   "cost": 75,
+   "costType": "Mana",
+   "leveling": []
+  },
+  {
+   "name": "Abduct",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      130,
+      180,
+      230,
+      280
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "80 to 280 (+ 80% AP)"
+    }
+   ]
+  }
+ ]
+}

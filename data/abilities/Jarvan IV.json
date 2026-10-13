@@ -1,0 +1,216 @@
+{
+ "champion": "Jarvan IV",
+ "abilities": [
+  {
+   "name": "Martial Cadence",
+   "slot": "I",
+   "damageType": "Physical",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Dragon Strike",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "0.4",
+   "range": null,
+   "cooldown": [
+    10,
+    9,
+    8,
+    7,
+    6
+   ],
+   "cost": [
+    45,
+    50,
+    55,
+    60,
+    65
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      90,
+      130,
+      170,
+      210,
+      250
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "145% bonus AD",
+       "pct": 145
+      }
+     ],
+     "text": "90 to 250 (+ 145% bonus AD)"
+    },
+    {
+     "label": "Armor Reduction",
+     "perRank": [
+      10,
+      14,
+      18,
+      22,
+      26
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 26% of target's armor"
+    }
+   ]
+  },
+  {
+   "name": "Golden Aegis",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 9,
+   "cost": 30,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Slow",
+     "perRank": [
+      15,
+      20,
+      25,
+      30,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "15 to 35%"
+    },
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      60,
+      80,
+      100,
+      120,
+      140
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "70% bonus AD",
+       "pct": 70
+      }
+     ],
+     "text": "60 to 140 (+ 70% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Demacian Standard",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": "860",
+   "cooldown": [
+    12,
+    11.5,
+    11,
+    10.5,
+    10
+   ],
+   "cost": 55,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      20,
+      22.5,
+      25,
+      27.5,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 30%"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "80 to 240 (+ 80% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Cataclysm",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": "cr 650",
+   "cooldown": [
+    120,
+    105,
+    90
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      200,
+      325,
+      450
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "180% bonus AD",
+       "pct": 180
+      }
+     ],
+     "text": "200 to 450 (+ 180% bonus AD)"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,235 @@
+{
+ "champion": "Katarina",
+ "abilities": [
+  {
+   "name": "Voracity",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Enemies, Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Bouncing Blade",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 625",
+   "cooldown": [
+    11,
+    10,
+    9,
+    8,
+    7
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      115,
+      150,
+      185,
+      220
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "80 to 220 (+ 40% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Preparation",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    15,
+    14,
+    13,
+    12,
+    11
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus Movement speed",
+     "perRank": [
+      50,
+      60,
+      70,
+      80,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "50%"
+    }
+   ]
+  },
+  {
+   "name": "Shunpo",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.15",
+   "range": "725",
+   "cooldown": [
+    12,
+    11,
+    10,
+    9,
+    8
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      20,
+      30,
+      40,
+      50,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "40% AD",
+       "pct": 40
+      },
+      {
+       "stat": "ap",
+       "raw": "25% AP",
+       "pct": 25
+      }
+     ],
+     "text": "20 to 60 (+ 40% AD) (+ 25% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Death Lotus",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Proximity",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    75,
+    60,
+    45
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage Per Dagger",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": null,
+       "raw": "50% per 100% bonus attack speed",
+       "pct": 50
+      }
+     ],
+     "text": "16% (+ 50% per 100% bonus attack speed) bonus AD"
+    },
+    {
+     "label": "Maximum Physical Damage",
+     "perRank": [
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": null,
+       "raw": "50*15% per 100% bonus attack speed",
+       "perRank": [
+        750
+       ]
+      }
+     ],
+     "text": "16*15% (+ 50*15% per 100% bonus attack speed) bonus AD"
+    },
+    {
+     "label": "Magic Damage Per Dagger",
+     "perRank": [
+      25,
+      37.5,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "19% AP",
+       "pct": 19
+      }
+     ],
+     "text": "25 to 50 (+ 19% AP)"
+    },
+    {
+     "label": "Maximum Magic Damage",
+     "perRank": [
+      375,
+      562.5,
+      750
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "285% AP",
+       "pct": 285
+      }
+     ],
+     "text": "25*15 to 50*15 (+ 285% AP)"
+    },
+    {
+     "label": "On-Hit/On-Attack Damage Effectiveness",
+     "perRank": [
+      25,
+      30,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "25 to 35%"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,576 @@
+{
+ "champion": "Galio",
+ "abilities": [
+  {
+   "name": "Colossal Smash",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Winds of War",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "825",
+   "cooldown": [
+    11,
+    10,
+    9,
+    8,
+    7
+   ],
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      105,
+      140,
+      175,
+      210
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "70 to 210 (+ 70% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Shield of Durand",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Self / Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    18,
+    17,
+    16,
+    15,
+    14
+   ],
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Shield Strength",
+     "perRank": [
+      7.5,
+      9,
+      10.5,
+      12,
+      13.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "7.5 to 13.5% of maximum health"
+    },
+    {
+     "label": "Physical Damage Reduction",
+     "perRank": [
+      12.5,
+      15,
+      17.5,
+      20,
+      22.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "1.5% per 100 AP",
+       "perRank": [
+        1.5
+       ]
+      },
+      {
+       "stat": "mr",
+       "raw": "8/2% per 100 bonus magic resistance",
+       "perRank": [
+        4
+       ]
+      },
+      {
+       "stat": "per100BonusHealth",
+       "raw": "1/2% per 100 bonus health",
+       "perRank": [
+        0.5
+       ]
+      }
+     ],
+     "text": "25/2 to 45/2% (+ 1.5% per 100 AP) (+ 8/2% per 100 bonus magic resistance) (+ 1/2% per 100 bonus health)"
+    },
+    {
+     "label": "Magic Damage Reduction",
+     "perRank": [
+      25,
+      30,
+      35,
+      40,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "4% per 100 AP",
+       "pct": 4
+      },
+      {
+       "stat": "mr",
+       "raw": "8% per 100 bonus magic resistance",
+       "pct": 8
+      },
+      {
+       "stat": "per100BonusHealth",
+       "raw": "1% per 100 bonus health",
+       "perRank": [
+        1
+       ]
+      }
+     ],
+     "text": "25 to 45% (+ 4% per 100 AP) (+ 8% per 100 bonus magic resistance) (+ 1% per 100 bonus health)"
+    },
+    {
+     "label": "Minimum Magic Damage",
+     "perRank": [
+      20,
+      30,
+      40,
+      50,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      }
+     ],
+     "text": "20 to 60 (+ 30% AP)"
+    },
+    {
+     "label": "Maximum Magic Damage",
+     "perRank": [
+      60,
+      90,
+      120,
+      150,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90% AP",
+       "pct": 90
+      }
+     ],
+     "text": "20*3 to 60*3 (+ 90% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Justice Punch",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.4",
+   "range": "250 - 650",
+   "cooldown": [
+    11,
+    10,
+    9,
+    8,
+    7
+   ],
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      100,
+      135,
+      170,
+      205,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "100 to 240 (+ 100% AP)"
+    },
+    {
+     "label": "Non-Champion Damage",
+     "perRank": [
+      80,
+      108,
+      136,
+      164,
+      192
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100*0.8% AP",
+       "perRank": [
+        80
+       ]
+      }
+     ],
+     "text": "100*0.8 to 240*0.8 (+ 100*0.8% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Hero's Entrance",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Allies, Enemies",
+   "castTime": "none",
+   "range": "cr 4000",
+   "cooldown": [
+    180,
+    160,
+    140
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      150,
+      250,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      },
+      {
+       "stat": "mr",
+       "raw": "100% bonus magic resistance",
+       "pct": 100
+      }
+     ],
+     "text": "150 to 350 (+ 70% AP) (+ 100% bonus magic resistance)"
+    }
+   ]
+  },
+  {
+   "name": "Bulwark",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Bulwark is a self- and ally-targeted buff with a self-healing component.",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": 13,
+   "cost": 60,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Resistances",
+     "perRank": [
+      30,
+      45,
+      60,
+      75,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30"
+    },
+    {
+     "label": "Initial Heal",
+     "perRank": [
+      25,
+      40,
+      55,
+      70,
+      85
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      }
+     ],
+     "text": "25 (+ 30% AP)"
+    },
+    {
+     "label": "Maximum Heal",
+     "perRank": [
+      100,
+      160,
+      220,
+      280,
+      340
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "120% AP",
+       "pct": 120
+      }
+     ],
+     "text": "100 (+ 120% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Idol of Durand",
+   "slot": "R",
+   "damageType": "magic",
+   "targeting": "Idol of Durand is a point-blank area of effect.",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": [
+    150,
+    135,
+    120
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Minimum Magic Damage",
+     "perRank": [
+      200,
+      300,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "200 (+ 60% AP)"
+    },
+    {
+     "label": "Bonus Magic Damage Per Hit",
+     "perRank": [
+      20,
+      30,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "6% AP",
+       "pct": 6
+      }
+     ],
+     "text": "20 (+ 6% AP)"
+    },
+    {
+     "label": "Maximum Magic Damage",
+     "perRank": [
+      360,
+      540,
+      720
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "108% AP",
+       "pct": 108
+      }
+     ],
+     "text": "360 (+ 108% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Resolute Smite",
+   "slot": "Q",
+   "damageType": "magic",
+   "targeting": "Resolute Smite is a ground-targeted area of effect.",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": 7,
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      135,
+      190,
+      245,
+      300
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "80 (+ 60% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      24,
+      28,
+      32,
+      36,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "24%"
+    }
+   ]
+  },
+  {
+   "name": "Righteous Gust",
+   "slot": "E",
+   "damageType": "magic",
+   "targeting": "Righteous Gust is a linear, pass-through skillshot.",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": [
+    13,
+    12,
+    11,
+    10,
+    9
+   ],
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      105,
+      150,
+      195,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "60 (+ 50% AP)"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30%"
+    }
+   ]
+  },
+  {
+   "name": "Runic Skin",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Runic Skin is a self-targeted buff.",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  }
+ ]
+}

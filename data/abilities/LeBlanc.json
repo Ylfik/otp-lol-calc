@@ -1,0 +1,461 @@
+{
+ "champion": "LeBlanc",
+ "abilities": [
+  {
+   "name": "Mirror Image",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Sigil of Malice",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 700",
+   "cooldown": 6,
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      65,
+      90,
+      115,
+      140,
+      165
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "65 to 165 (+ 40% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      130,
+      180,
+      230,
+      280,
+      330
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40*2% AP",
+       "perRank": [
+        80
+       ]
+      }
+     ],
+     "text": "65*2 to 165*2 (+ 40*2% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Distortion",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "600",
+   "cooldown": [
+    15,
+    13.75,
+    12.5,
+    11.25,
+    10
+   ],
+   "cost": [
+    60,
+    70,
+    80,
+    90,
+    100
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      75,
+      115,
+      155,
+      195,
+      235
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90% AP",
+       "pct": 90
+      }
+     ],
+     "text": "75 to 235 (+ 90% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Ethereal Chains",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 950",
+   "cooldown": [
+    14,
+    13.25,
+    12.5,
+    11.75,
+    11
+   ],
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      50,
+      70,
+      90,
+      110,
+      130
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "50 to 130 (+ 40% AP)"
+    },
+    {
+     "label": "Fracture Magic Damage",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "85% AP",
+       "pct": 85
+      }
+     ],
+     "text": "80 to 240 (+ 85% AP)"
+    },
+    {
+     "label": "Total Damage",
+     "perRank": [
+      130,
+      190,
+      250,
+      310,
+      370
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40+85% AP",
+       "perRank": [
+        125
+       ]
+      }
+     ],
+     "text": "50+80 to 130+240 (+ 40+85% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Mimic",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Varied",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": [
+    45,
+    35,
+    25
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Orb Magic Damage",
+     "perRank": [
+      70,
+      150,
+      230
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "70 to 230 (+ 40% AP)"
+    },
+    {
+     "label": "Mark Magic Damage",
+     "perRank": [
+      140,
+      300,
+      460
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "70*2 to 230*2 (+ 80% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      210,
+      450,
+      690
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "120% AP",
+       "pct": 120
+      }
+     ],
+     "text": "70*3 to 230*3 (+ 120% AP)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      150,
+      315,
+      480
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90% AP",
+       "pct": 90
+      }
+     ],
+     "text": "150 to 480 (+ 90% AP)"
+    },
+    {
+     "label": "Application Magic Damage",
+     "perRank": [
+      70,
+      150,
+      230
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "70 to 230 (+ 40% AP)"
+    },
+    {
+     "label": "Fracture Magic Damage",
+     "perRank": [
+      140,
+      300,
+      460
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "85% AP",
+       "pct": 85
+      }
+     ],
+     "text": "70*2 to 230*2 (+ 85% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      210,
+      450,
+      690
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40+85% AP",
+       "perRank": [
+        125
+       ]
+      }
+     ],
+     "text": "70*3 to 230*3 (+ 40+85% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Mimic Shatter Orb",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": [
+    54,
+    42,
+    30
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      150,
+      275,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "150 (+ 60% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Shadow of the Rose",
+   "slot": "R",
+   "damageType": "None",
+   "targeting": "Ground",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": [
+    160,
+    140,
+    120
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Shatter Orb",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": "700",
+   "cooldown": 6,
+   "cost": [
+    40,
+    45,
+    50,
+    55,
+    60
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      55,
+      90,
+      125,
+      160,
+      195
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "55 (+ 50% AP)"
+    },
+    {
+     "label": "Minion Rebound Damage",
+     "perRank": [
+      33,
+      54,
+      75,
+      96,
+      117
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      }
+     ],
+     "text": "33 (+ 30% AP)"
+    }
+   ]
+  }
+ ]
+}

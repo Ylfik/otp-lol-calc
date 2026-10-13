@@ -1,0 +1,295 @@
+{
+ "champion": "Camille",
+ "abilities": [
+  {
+   "name": "Adaptive Defenses",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Precision Protocol",
+   "slot": "Q",
+   "damageType": "Physical True",
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    9,
+    8,
+    7,
+    6,
+    5
+   ],
+   "cost": 25,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Physical Damage",
+     "perRank": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 40% AD"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      25,
+      30,
+      35,
+      40,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "25 to 45%"
+    },
+    {
+     "label": "Increased Mixed Damage",
+     "perRank": [
+      40,
+      50,
+      60,
+      70,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20*2 to 40*2% AD"
+    }
+   ]
+  },
+  {
+   "name": "Tactical Sweep",
+   "slot": "W",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    12,
+    11.5,
+    11,
+    10.5,
+    10
+   ],
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      60,
+      85,
+      110,
+      135,
+      160
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "60% bonus AD",
+       "pct": 60
+      }
+     ],
+     "text": "60 to 160 (+ 60% bonus AD)"
+    },
+    {
+     "label": "Outer Cone Bonus Damage",
+     "perRank": [
+      7,
+      7.5,
+      8,
+      8.5,
+      9
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100BonusAD",
+       "raw": "2.5% per 100 bonus AD",
+       "pct": 2.5
+      }
+     ],
+     "text": "7 to 9% (+ 2.5% per 100 bonus AD) of target's maximum health"
+    },
+    {
+     "label": "Non-Epic Monster Damage",
+     "perRank": [
+      30,
+      42.5,
+      55,
+      67.5,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "30% bonus AD",
+       "pct": 30
+      }
+     ],
+     "text": "60/2 to 160/2 (+ 30% bonus AD)"
+    },
+    {
+     "label": "Bonus Non-Epic Monster Damage",
+     "perRank": [
+      3.5,
+      3.75,
+      4,
+      4.25,
+      4.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100BonusAD",
+       "raw": "1.25% per 100 bonus AD",
+       "pct": 1.25
+      }
+     ],
+     "text": "7/2 to 9/2% (+ 1.25% per 100 bonus AD) of target's maximum health"
+    }
+   ]
+  },
+  {
+   "name": "Hookshot",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Direction",
+   "affects": "Terrain, Self",
+   "castTime": "none",
+   "range": "800",
+   "cooldown": [
+    16,
+    15,
+    14,
+    13,
+    12
+   ],
+   "cost": 70,
+   "costType": "Mana",
+   "leveling": []
+  },
+  {
+   "name": "The Hextech Ultimatum",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies, Self",
+   "castTime": "none",
+   "range": "cr 475",
+   "cooldown": [
+    140,
+    115,
+    90
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Zone Duration",
+     "perRank": [
+      2.5,
+      3.25,
+      4
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "2.5 to 4 seconds"
+    },
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      4,
+      6,
+      8
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "4 to 8% of target's current health"
+    }
+   ]
+  },
+  {
+   "name": "Wall Dive",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "400",
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      60,
+      90,
+      120,
+      150,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "75% bonus AD",
+       "pct": 75
+      }
+     ],
+     "text": "60 to 180 (+ 75% bonus AD)"
+    },
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      40,
+      45,
+      50,
+      55,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 60%"
+    }
+   ]
+  }
+ ]
+}

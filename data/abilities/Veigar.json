@@ -1,0 +1,218 @@
+{
+ "champion": "Veigar",
+ "abilities": [
+  {
+   "name": "Phenomenal Evil Power",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Baleful Strike",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 1050",
+   "cooldown": [
+    6,
+    5.5,
+    5,
+    4.5,
+    4
+   ],
+   "cost": [
+    30,
+    35,
+    40,
+    45,
+    50
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50 to 70% AP",
+       "perRank": [
+        50,
+        55,
+        60,
+        65,
+        70
+       ]
+      }
+     ],
+     "text": "80 to 240 (+ 50 to 70% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Dark Matter",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "950",
+   "cooldown": null,
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      85,
+      140,
+      195,
+      250,
+      305
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70 to 110% AP",
+       "perRank": [
+        70,
+        80,
+        90,
+        100,
+        110
+       ]
+      }
+     ],
+     "text": "85 to 305 (+ 70 to 110% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Event Horizon",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "725",
+   "cooldown": [
+    20,
+    18.5,
+    17,
+    15.5,
+    14
+   ],
+   "cost": [
+    70,
+    75,
+    80,
+    85,
+    90
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Stun Duration",
+     "perRank": [
+      1.5,
+      1.75,
+      2,
+      2.25,
+      2.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1.5 to 2.5 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Primordial Burst",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 650",
+   "cooldown": [
+    120,
+    90,
+    60
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Minimum Magic Damage",
+     "perRank": [
+      175,
+      250,
+      325
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "65 to 75% AP",
+       "perRank": [
+        65,
+        70,
+        75
+       ]
+      }
+     ],
+     "text": "175 to 325 (+ 65 to 75% AP)"
+    },
+    {
+     "label": "Maximum Magic Damage",
+     "perRank": [
+      350,
+      500,
+      650
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "65*2 to 75*2% AP",
+       "perRank": [
+        130,
+        140,
+        150
+       ]
+      }
+     ],
+     "text": "175*2 to 325*2 (+ 65*2 to 75*2% AP)"
+    }
+   ]
+  }
+ ]
+}

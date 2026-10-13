@@ -1,0 +1,437 @@
+{
+ "champion": "Heimerdinger",
+ "abilities": [
+  {
+   "name": "Hextech Affinity",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "H-28G Evolution Turret",
+   "slot": "Q",
+   "damageType": "magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "350",
+   "cooldown": 1,
+   "cost": 20,
+   "costType": "Mana + 1 Turret Kit",
+   "leveling": []
+  },
+  {
+   "name": "Hextech Micro-Rockets",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "1150",
+   "cooldown": [
+    11,
+    10,
+    9,
+    8,
+    7
+   ],
+   "cost": [
+    50,
+    60,
+    70,
+    80,
+    90
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Initial Rocket Magic Damage",
+     "perRank": [
+      50,
+      75,
+      100,
+      125,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "55% AP",
+       "pct": 55
+      }
+     ],
+     "text": "50 to 150 (+ 55% AP)"
+    },
+    {
+     "label": "Subsequent Rocket Magic Damage",
+     "perRank": [
+      10,
+      15,
+      20,
+      25,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "12% AP",
+       "pct": 12
+      }
+     ],
+     "text": "10 to 30 (+ 12% AP)"
+    },
+    {
+     "label": "Total Subsequent Non-Minion Damage",
+     "perRank": [
+      40,
+      60,
+      80,
+      100,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "4*12% AP",
+       "perRank": [
+        48
+       ]
+      }
+     ],
+     "text": "4*10 to 4*30 (+ 4*12% AP)"
+    },
+    {
+     "label": "Combined Total Non-Minion Damage",
+     "perRank": [
+      90,
+      135,
+      180,
+      225,
+      270
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "55+4*12% AP",
+       "perRank": [
+        103
+       ]
+      }
+     ],
+     "text": "50+4*10 to 150+4*30 (+ 55+4*12% AP)"
+    },
+    {
+     "label": "Subsequent Rocket Minion Damage",
+     "perRank": [
+      30,
+      45,
+      60,
+      75,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "12*3.0% AP",
+       "perRank": [
+        36
+       ]
+      }
+     ],
+     "text": "10*3.0 to 30*3.0 (+ 12*3.0% AP)"
+    },
+    {
+     "label": "Total Subsequent Minion Damage",
+     "perRank": [
+      120,
+      180,
+      240,
+      300,
+      360
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "4*12*3.0% AP",
+       "perRank": [
+        144
+       ]
+      }
+     ],
+     "text": "4*10*3.0 to 4*30*3.0 (+ 4*12*3.0% AP)"
+    },
+    {
+     "label": "Combined Total Minion Damage",
+     "perRank": [
+      170,
+      255,
+      340,
+      425,
+      510
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "55+4*12*3.0% AP",
+       "perRank": [
+        199
+       ]
+      }
+     ],
+     "text": "50+4*10*3.0 to 150+4*30*3.0 (+ 55+4*12*3.0% AP)"
+    }
+   ]
+  },
+  {
+   "name": "CH-2 Electron Storm Grenade",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "925",
+   "cooldown": 11,
+   "cost": 85,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      100,
+      140,
+      180,
+      220
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "60 to 220 (+ 60% AP)"
+    }
+   ]
+  },
+  {
+   "name": "UPGRADE!!!",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    100,
+    85,
+    70
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": []
+  },
+  {
+   "name": "CH-3X Lightning Grenade",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "925",
+   "cooldown": 11,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      100,
+      200,
+      300
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "100 to 300 3 (+ 60% AP)"
+    }
+   ]
+  },
+  {
+   "name": "H-28Q Apex Turret",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "450",
+   "cooldown": 1,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Hextech Rocket Swarm",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "1150",
+   "cooldown": [
+    11,
+    10,
+    9,
+    8,
+    7
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Initial Rocket Damage",
+     "perRank": [
+      135,
+      180,
+      225
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "45% AP",
+       "pct": 45
+      }
+     ],
+     "text": "135 to 225 3 (+ 45% AP)"
+    },
+    {
+     "label": "Rockets 2–5 Magic Damage",
+     "perRank": [
+      32,
+      45,
+      58
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "12% AP",
+       "pct": 12
+      }
+     ],
+     "text": "32 to 58 3 (+ 12% AP)"
+    },
+    {
+     "label": "Rockets 6–20 Magic Damage",
+     "perRank": [
+      16,
+      22.5,
+      29
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "12*0.5% AP",
+       "perRank": [
+        6
+       ]
+      }
+     ],
+     "text": "32*0.5 to 58*0.5 3 (+ 12*0.5% AP)"
+    },
+    {
+     "label": "Combined Total Non-Minion Damage",
+     "perRank": [
+      503,
+      697.5,
+      892
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "45+4*12+15*12*0.5% AP",
+       "perRank": [
+        183
+       ]
+      }
+     ],
+     "text": "135+4*32+15*32*0.5 to 225+4*58+15*58*0.5 3 (+ 45+4*12+15*12*0.5% AP)"
+    },
+    {
+     "label": "Minion Damage per Rocket",
+     "perRank": [
+      135,
+      180,
+      225
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "45% AP",
+       "pct": 45
+      }
+     ],
+     "text": "135 to 225 3 (+ 45% AP)"
+    },
+    {
+     "label": "Combined Total Minion Damage",
+     "perRank": [
+      2700,
+      3600,
+      4500
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "20*45% AP",
+       "perRank": [
+        900
+       ]
+      }
+     ],
+     "text": "20*135 to 20*225 3 (+ 20*45% AP)"
+    }
+   ]
+  }
+ ]
+}

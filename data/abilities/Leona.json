@@ -1,0 +1,234 @@
+{
+ "champion": "Leona",
+ "abilities": [
+  {
+   "name": "Sunlight",
+   "slot": "I",
+   "damageType": "magic",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Shield of Daybreak",
+   "slot": "Q",
+   "damageType": "magic",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 5,
+   "cost": [
+    30,
+    35,
+    40,
+    45,
+    50
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      10,
+      35,
+      60,
+      85,
+      110
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      }
+     ],
+     "text": "10 to 110 (+ 30% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Eclipse",
+   "slot": "W",
+   "damageType": "magic",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    14,
+    13,
+    12,
+    11,
+    10
+   ],
+   "cost": 60,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Flat Damage Reduction",
+     "perRank": [
+      8,
+      12,
+      16,
+      20,
+      24
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "8 to 24"
+    },
+    {
+     "label": "Bonus Armor",
+     "perRank": [
+      20,
+      27.5,
+      35,
+      42.5,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "armor",
+       "raw": "20% bonus armor",
+       "pct": 20
+      }
+     ],
+     "text": "20 to 50 (+ 20% bonus armor)"
+    },
+    {
+     "label": "Bonus Magic Resistance",
+     "perRank": [
+      20,
+      27.5,
+      35,
+      42.5,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "mr",
+       "raw": "20% bonus magic resistance",
+       "pct": 20
+      }
+     ],
+     "text": "20 to 50 (+ 20% bonus magic resistance)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      55,
+      85,
+      115,
+      145,
+      175
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "55 to 175 (+ 40% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Zenith Blade",
+   "slot": "E",
+   "damageType": "magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 900",
+   "cooldown": [
+    12,
+    10.5,
+    9,
+    7.5,
+    6
+   ],
+   "cost": [
+    40,
+    45,
+    50,
+    55,
+    60
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      50,
+      90,
+      130,
+      170,
+      210
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "50 to 210 (+ 40% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Solar Flare",
+   "slot": "R",
+   "damageType": "magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "1200",
+   "cooldown": [
+    90,
+    75,
+    60
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      150,
+      225,
+      300
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "150 to 300 (+ 80% AP)"
+    }
+   ]
+  }
+ ]
+}

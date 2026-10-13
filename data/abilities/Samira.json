@@ -1,0 +1,281 @@
+{
+ "champion": "Samira",
+ "abilities": [
+  {
+   "name": "Daredevil Impulse",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": "er 650 to 950",
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Flair",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "0.25",
+   "range": "er 340",
+   "cooldown": [
+    6,
+    5,
+    4,
+    3,
+    2
+   ],
+   "cost": 30,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      0,
+      5,
+      10,
+      15,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "110% AD",
+       "perRank": [
+        110
+       ]
+      }
+     ],
+     "text": "0 to 20 (+ 110% AD)"
+    }
+   ]
+  },
+  {
+   "name": "Blade Whirl",
+   "slot": "W",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "0.1",
+   "range": null,
+   "cooldown": [
+    30,
+    28,
+    26,
+    24,
+    22
+   ],
+   "cost": 60,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage per Hit",
+     "perRank": [
+      20,
+      35,
+      50,
+      65,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50% bonus AD",
+       "pct": 50
+      }
+     ],
+     "text": "20 to 80 (+ 50% bonus AD)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      40,
+      70,
+      100,
+      130,
+      160
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50*2% bonus AD",
+       "perRank": [
+        100
+       ]
+      }
+     ],
+     "text": "20*2 to 80*2 (+ 50*2% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Wild Rush",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": "cr 600",
+   "cooldown": [
+    20,
+    18,
+    16,
+    14,
+    12
+   ],
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      50,
+      60,
+      70,
+      80,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "20% bonus AD",
+       "pct": 20
+      }
+     ],
+     "text": "50 to 90 (+ 20% bonus AD)"
+    },
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 40%"
+    }
+   ]
+  },
+  {
+   "name": "Inferno Trigger",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Proximity",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage Per Shot",
+     "perRank": [
+      20,
+      40,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "30% AD",
+       "pct": 30
+      }
+     ],
+     "text": "20 to 60 (+ 30% AD)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      200,
+      400,
+      600
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "30*10% AD",
+       "perRank": [
+        300
+       ]
+      }
+     ],
+     "text": "20*10 to 60*10 (+ 30*10% AD)"
+    },
+    {
+     "label": "Minion Damage Per Shot",
+     "perRank": [
+      5,
+      10,
+      15
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "30*0.25% AD",
+       "perRank": [
+        7.5
+       ]
+      }
+     ],
+     "text": "20*0.25 to 60*0.25 (+ 30*0.25% AD)"
+    },
+    {
+     "label": "Total Minion Damage",
+     "perRank": [
+      50,
+      100,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "30*0.25*10% AD",
+       "perRank": [
+        75
+       ]
+      }
+     ],
+     "text": "20*0.25*10 to 60*0.25*10 (+ 30*0.25*10% AD)"
+    }
+   ]
+  },
+  {
+   "name": "Taunt",
+   "slot": "CTRL+2",
+   "damageType": "True",
+   "targeting": "Auto <!-- Missile says Location-targeted, but actually doesn't take any targeting input -->",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  }
+ ]
+}

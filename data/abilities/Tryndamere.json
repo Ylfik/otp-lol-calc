@@ -1,0 +1,243 @@
+{
+ "champion": "Tryndamere",
+ "abilities": [
+  {
+   "name": "Battle Fury",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Bloodlust",
+   "slot": "Q",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 12,
+   "cost": null,
+   "costType": "Current Fury",
+   "leveling": [
+    {
+     "label": "Maximum Bonus Attack Damage",
+     "perRank": [
+      20,
+      35,
+      50,
+      65,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 80"
+    },
+    {
+     "label": "Bonus Attack Damage per 1% missing health",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "{{ap| to }}"
+    },
+    {
+     "label": "Minimum Heal",
+     "perRank": [
+      30,
+      40,
+      50,
+      60,
+      70
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      }
+     ],
+     "text": "30 to 70 (+ 30% AP)"
+    },
+    {
+     "label": "Heal Per 1 Fury",
+     "perRank": [
+      0.5,
+      0.95,
+      1.4,
+      1.85,
+      2.3
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "1.2% AP",
+       "pct": 1.2
+      }
+     ],
+     "text": "0.5 to 2.3 (+ 1.2% AP)"
+    },
+    {
+     "label": "Maximum Heal",
+     "perRank": [
+      80,
+      135,
+      190,
+      245,
+      300
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "150% AP",
+       "pct": 150
+      }
+     ],
+     "text": "30+0.5*100 to 70+2.3*100 (+ 150% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Mocking Shout",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Proximity",
+   "affects": "Enemies",
+   "castTime": "0.3",
+   "range": null,
+   "cooldown": 14,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Attack Damage Reduction",
+     "perRank": [
+      20,
+      35,
+      50,
+      65,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 80"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50%"
+    }
+   ]
+  },
+  {
+   "name": "Spinning Slash",
+   "slot": "E",
+   "damageType": "physical",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "660",
+   "cooldown": [
+    12,
+    11,
+    10,
+    9,
+    8
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      },
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "80 to 240 (+ 100% bonus AD) (+ 80% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Undying Rage",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Fury Gained",
+     "perRank": [
+      50,
+      75,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "50"
+    },
+    {
+     "label": "Minimum Health Threshold",
+     "perRank": [
+      30,
+      50,
+      70
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30"
+    }
+   ]
+  }
+ ]
+}

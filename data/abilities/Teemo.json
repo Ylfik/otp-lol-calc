@@ -1,0 +1,400 @@
+{
+ "champion": "Teemo",
+ "abilities": [
+  {
+   "name": "Guerrilla Warfare",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Blinding Dart",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 680",
+   "cooldown": 7,
+   "cost": [
+    70,
+    75,
+    80,
+    85,
+    90
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      125,
+      170,
+      215,
+      260
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "80 to 260 (+ 70% AP)"
+    },
+    {
+     "label": "Blind Duration",
+     "perRank": [
+      2,
+      2.25,
+      2.5,
+      2.75,
+      3
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "2 to 3 seconds"
+    },
+    {
+     "label": "Increased Blind Duration",
+     "perRank": [
+      4,
+      4.5,
+      5,
+      5.5,
+      6
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "2*2 to 3*2 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Move Quick",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 14,
+   "cost": 40,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      12,
+      16,
+      20,
+      24,
+      28
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "12 to 28%"
+    },
+    {
+     "label": "Enhanced Bonus Movement Speed",
+     "perRank": [
+      24,
+      32,
+      40,
+      48,
+      56
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "12*2 to 28*2%"
+    }
+   ]
+  },
+  {
+   "name": "Toxic Shot",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Magic Damage On-Hit",
+     "perRank": [
+      9,
+      23,
+      37,
+      51,
+      65
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "5% bonus AD",
+       "pct": 5
+      },
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      }
+     ],
+     "text": "9 to 65 (+ 5% bonus AD) (+ 30% AP)"
+    },
+    {
+     "label": "Magic Damage per Tick",
+     "perRank": [
+      6,
+      12,
+      18,
+      24,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "2.5% bonus AD",
+       "pct": 2.5
+      },
+      {
+       "stat": "ap",
+       "raw": "10% AP",
+       "pct": 10
+      }
+     ],
+     "text": "6 to 30 (+ 2.5% bonus AD) (+ 10% AP)"
+    },
+    {
+     "label": "Total Poison Damage",
+     "perRank": [
+      24,
+      48,
+      72,
+      96,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "2.5*4.0% bonus AD",
+       "perRank": [
+        10
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "10*4.0% AP",
+       "perRank": [
+        40
+       ]
+      }
+     ],
+     "text": "6*4.0 to 30*4.0 (+ 2.5*4.0% bonus AD) (+ 10*4.0% AP)"
+    },
+    {
+     "label": "Monster Damage On-Hit",
+     "perRank": [
+      14.4,
+      36.8,
+      59.2,
+      81.6,
+      104
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "5*1.6% bonus AD",
+       "perRank": [
+        8
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "30*1.6% AP",
+       "perRank": [
+        48
+       ]
+      }
+     ],
+     "text": "9*1.6 to 65*1.6 (+ 5*1.6% bonus AD) (+ 30*1.6% AP)"
+    },
+    {
+     "label": "Monster Damage per Tick",
+     "perRank": [
+      9.6,
+      19.2,
+      28.8,
+      38.4,
+      48
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "2.5*1.6% bonus AD",
+       "perRank": [
+        4
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "10*1.6% AP",
+       "perRank": [
+        16
+       ]
+      }
+     ],
+     "text": "6*1.6 to 30*1.6 (+ 2.5*1.6% bonus AD) (+ 10*1.6% AP)"
+    },
+    {
+     "label": "Total Monster Poison Damage",
+     "perRank": [
+      38.4,
+      76.8,
+      115.2,
+      153.6,
+      192
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "2.5*4.0*1.6% bonus AD",
+       "perRank": [
+        16
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "10*4.0*1.6% AP",
+       "perRank": [
+        64
+       ]
+      }
+     ],
+     "text": "6*4.0*1.6 to 30*4.0*1.6 (+ 2.5*4.0*1.6% bonus AD) (+ 10*4.0*1.6% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Noxious Trap",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "600 to 900",
+   "cooldown": 0.25,
+   "cost": [
+    75,
+    55,
+    35
+   ],
+   "costType": "Mana + 1 Charge",
+   "leveling": [
+    {
+     "label": "Bounce Distance Cap",
+     "perRank": [
+      350,
+      450,
+      550
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "350 to 550"
+    },
+    {
+     "label": "Maximum Charges",
+     "perRank": [
+      3,
+      4,
+      5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "3 to 5"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      30,
+      40,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50%"
+    },
+    {
+     "label": "Magic Damage per Tick",
+     "perRank": [
+      50,
+      81.25,
+      112.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50/4% AP",
+       "perRank": [
+        12.5
+       ]
+      }
+     ],
+     "text": "200/4 to 450/4 (+ 50/4% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      200,
+      325,
+      450
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "200 to 450 (+ 50% AP)"
+    }
+   ]
+  }
+ ]
+}

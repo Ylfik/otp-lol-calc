@@ -1,0 +1,182 @@
+{
+ "champion": "Bard",
+ "abilities": [
+  {
+   "name": "Traveler's Call",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Cosmic Binding",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "850",
+   "cooldown": [
+    11,
+    10,
+    9,
+    8,
+    7
+   ],
+   "cost": 60,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "80 to 240 (+ 80% AP)"
+    },
+    {
+     "label": "Disable Duration",
+     "perRank": [
+      1,
+      1.2,
+      1.4,
+      1.6,
+      1.8
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1 to 1.8 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Caretaker's Shrine",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Location / Unit",
+   "affects": "Allies",
+   "castTime": "0.25",
+   "range": "800",
+   "cooldown": null,
+   "cost": 70,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Minimum Heal",
+     "perRank": [
+      25,
+      50,
+      75,
+      100,
+      125
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "25 to 125 (+ 40% AP)"
+    },
+    {
+     "label": "Maximum Heal",
+     "perRank": [
+      50,
+      87.5,
+      125,
+      162.5,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "50 to 200 (+ 70% AP)"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      20,
+      22.5,
+      25,
+      27.5,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "6% per 100 AP",
+       "pct": 6
+      }
+     ],
+     "text": "20 to 30% (+ 6% per 100 AP)"
+    }
+   ]
+  },
+  {
+   "name": "Magical Journey",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Direction",
+   "affects": "Self, Allies, Enemies",
+   "castTime": "0.25",
+   "range": "900",
+   "cooldown": [
+    22,
+    20.5,
+    19,
+    17.5,
+    16
+   ],
+   "cost": 30,
+   "costType": "Mana",
+   "leveling": []
+  },
+  {
+   "name": "Tempered Fate",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Location",
+   "affects": null,
+   "castTime": "0.5",
+   "range": "3400",
+   "cooldown": [
+    110,
+    95,
+    80
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": []
+  }
+ ]
+}

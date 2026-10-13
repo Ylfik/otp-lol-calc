@@ -1,0 +1,275 @@
+{
+ "champion": "Kennen",
+ "abilities": [
+  {
+   "name": "Mark of the Storm",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Thundering Shuriken",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.175",
+   "range": "1050",
+   "cooldown": [
+    7,
+    6.25,
+    5.5,
+    4.75,
+    4
+   ],
+   "cost": [
+    60,
+    55,
+    50,
+    45,
+    40
+   ],
+   "costType": "Energy",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      75,
+      125,
+      175,
+      225,
+      275
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "75% AP",
+       "pct": 75
+      }
+     ],
+     "text": "75 to 275 (+ 75% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Electrical Surge",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Proximity",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    13,
+    11.25,
+    9.5,
+    7.75,
+    6
+   ],
+   "cost": 40,
+   "costType": "Energy",
+   "leveling": [
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      35,
+      45,
+      55,
+      65,
+      75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "80 to 120% bonus AD",
+       "perRank": [
+        80,
+        90,
+        100,
+        110,
+        120
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "35% AP",
+       "pct": 35
+      }
+     ],
+     "text": "35 to 75 (+ 80 to 120% bonus AD) (+ 35% AP)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      95,
+      120,
+      145,
+      170
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "70 to 170 (+ 80% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Lightning Rush",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    10,
+    9,
+    8,
+    7,
+    6
+   ],
+   "cost": 80,
+   "costType": "Energy",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "80 to 240 (+ 80% AP)"
+    },
+    {
+     "label": "Non-Champion Damage",
+     "perRank": [
+      52,
+      78,
+      104,
+      130,
+      156
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80*0.65% AP",
+       "perRank": [
+        52
+       ]
+      }
+     ],
+     "text": "80*0.65 to 240*0.65 (+ 80*0.65% AP)"
+    },
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      50,
+      60,
+      70,
+      80,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "50 to 90%"
+    }
+   ]
+  },
+  {
+   "name": "Slicing Maelstrom",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": 120,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus Resistances",
+     "perRank": [
+      25,
+      50,
+      75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "25 to 75"
+    },
+    {
+     "label": "Magic Damage Per Bolt",
+     "perRank": [
+      40,
+      80,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25% AP",
+       "pct": 25
+      }
+     ],
+     "text": "40 to 120 (+ 25% AP)"
+    },
+    {
+     "label": "Total Single-Target Damage",
+     "perRank": [
+      300,
+      600,
+      900
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25*7.5% AP",
+       "perRank": [
+        187.5
+       ]
+      }
+     ],
+     "text": "40*7.5 to 120*7.5 (+ 25*7.5% AP)"
+    }
+   ]
+  }
+ ]
+}

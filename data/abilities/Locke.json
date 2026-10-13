@@ -1,0 +1,366 @@
+{
+ "champion": "Locke",
+ "abilities": [
+  {
+   "name": "Silver Stake",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Ritual Nails",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25<!--no cast bar in-game?-->",
+   "range": "950<!--925?-->",
+   "cooldown": [
+    10,
+    9,
+    8,
+    7,
+    6
+   ],
+   "cost": 70,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage per Nail",
+     "perRank": [
+      40,
+      48,
+      56,
+      64,
+      72
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "20% AP",
+       "pct": 20
+      }
+     ],
+     "text": "40 to 72 (+ 20% AP)"
+    },
+    {
+     "label": "Maximum Nail Damage",
+     "perRank": [
+      120,
+      144,
+      168,
+      192,
+      216
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "20*3% AP",
+       "perRank": [
+        60
+       ]
+      }
+     ],
+     "text": "40*3 to 72*3 (+ 20*3% AP)"
+    },
+    {
+     "label": "One Stack Bonus Damage",
+     "perRank": [
+      18,
+      26,
+      34,
+      42,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25 to 35% AP",
+       "perRank": [
+        25,
+        27.5,
+        30,
+        32.5,
+        35
+       ]
+      }
+     ],
+     "text": "18 to 50 (+ 25 to 35% AP)"
+    },
+    {
+     "label": "Two Stacks Bonus Damage",
+     "perRank": [
+      43.2,
+      62.4,
+      81.6,
+      100.8,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25*2*1.2 to 35*2*1.2% AP",
+       "perRank": [
+        60,
+        66,
+        72,
+        78,
+        84
+       ]
+      }
+     ],
+     "text": "18*2*1.2 to 50*2*1.2 (+ 25*2*1.2 to 35*2*1.2% AP)"
+    },
+    {
+     "label": "Three Stacks Bonus Damage",
+     "perRank": [
+      75.6,
+      109.2,
+      142.8,
+      176.4,
+      210
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25*3*1.4 to 35*3*1.4% AP",
+       "perRank": [
+        105,
+        115.5,
+        126,
+        136.5,
+        147
+       ]
+      }
+     ],
+     "text": "18*3*1.4 to 50*3*1.4 (+ 25*3*1.4 to 35*3*1.4% AP)"
+    },
+    {
+     "label": "Maximum Total Magic Damage",
+     "perRank": [
+      195.6,
+      253.2,
+      310.8,
+      368.4,
+      426
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "(20+25*1.4)*3 to (20+35*1.4)*3% AP",
+       "perRank": [
+        165,
+        175.5,
+        186,
+        196.5,
+        207
+       ]
+      }
+     ],
+     "text": "(40+18*1.4)*3 to (72+50*1.4)*3 (+ (20+25*1.4)*3 to (20+35*1.4)*3% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Soul Ignition",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    18,
+    17,
+    16,
+    15,
+    14
+   ],
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "Mana (+ 0.5% current health per 0.25 seconds)",
+   "leveling": [
+    {
+     "label": "Damage taken grey health cap",
+     "perRank": [
+      40,
+      60,
+      80,
+      100,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "40 to 120 (+ 100% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Ashen Pursuit",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Self, Enemies",
+   "castTime": "0.5",
+   "range": "375",
+   "cooldown": 10,
+   "cost": [
+    30,
+    40,
+    50,
+    60,
+    70
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Blink Magic Damage",
+     "perRank": [
+      40,
+      50,
+      60,
+      70,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "40 to 80 (+ 40% AP)"
+    },
+    {
+     "label": "Dash Magic Damage",
+     "perRank": [
+      40,
+      60,
+      80,
+      100,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "40 to 120 (+ 40% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      80,
+      110,
+      140,
+      170,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40+40% AP",
+       "perRank": [
+        80
+       ]
+      }
+     ],
+     "text": "40+40 to 80+120 (+ 40+40% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Purgatory",
+   "slot": "R",
+   "damageType": "Magic True",
+   "targeting": "Location",
+   "affects": "Enemies, Self",
+   "castTime": "0.5",
+   "range": "950<!--1000?-->",
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      150,
+      225,
+      300
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "150 to 300 (+ 60% AP)"
+    },
+    {
+     "label": "Execute Threshold",
+     "perRank": [
+      10,
+      11,
+      12
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": null,
+       "raw": "0.5% per Sealed Champion stack",
+       "pct": 0.5
+      }
+     ],
+     "text": "10 to 12% (+ 0.5% per Sealed Champion stack) of the target's maximum health"
+    }
+   ]
+  }
+ ]
+}

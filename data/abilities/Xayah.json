@@ -1,0 +1,256 @@
+{
+ "champion": "Xayah",
+ "abilities": [
+  {
+   "name": "Clean Cuts",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Double Daggers",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "type=bonus attack speed",
+   "range": null,
+   "cooldown": [
+    10,
+    9.5,
+    9,
+    8.5,
+    8
+   ],
+   "cost": 35,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage Per Hit",
+     "perRank": [
+      45,
+      60,
+      75,
+      90,
+      105
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50% bonus AD",
+       "pct": 50
+      }
+     ],
+     "text": "45 to 105 (+ 50% bonus AD)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      90,
+      120,
+      150,
+      180,
+      210
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      }
+     ],
+     "text": "45*2 to 105*2 (+ 100% bonus AD)"
+    },
+    {
+     "label": "Reduced Damage per Hit",
+     "perRank": [
+      22.5,
+      30,
+      37.5,
+      45,
+      52.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "25% bonus AD",
+       "pct": 25
+      }
+     ],
+     "text": "45/2 to 105/2 (+ 25% bonus AD)"
+    },
+    {
+     "label": "Total Reduced Damage",
+     "perRank": [
+      45,
+      60,
+      75,
+      90,
+      105
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50% bonus AD",
+       "pct": 50
+      }
+     ],
+     "text": "45 to 105 (+ 50% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Deadly Plumage",
+   "slot": "W",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self, Rakan",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    18,
+    17,
+    16,
+    15,
+    14
+   ],
+   "cost": [
+    60,
+    55,
+    50,
+    45,
+    40
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      35,
+      40,
+      45,
+      50,
+      55
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "35 to 55%"
+    }
+   ]
+  },
+  {
+   "name": "Bladecaller",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    12,
+    11,
+    10,
+    9,
+    8
+   ],
+   "cost": 20,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage Per Feather",
+     "perRank": [
+      50,
+      65,
+      80,
+      95,
+      110
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "40% bonus AD",
+       "pct": 40
+      }
+     ],
+     "text": "50 to 110 (+ 40% bonus AD)"
+    },
+    {
+     "label": "Minion Damage Per Feather",
+     "perRank": [
+      25,
+      32.5,
+      40,
+      47.5,
+      55
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "40/2% bonus AD",
+       "perRank": [
+        20
+       ]
+      }
+     ],
+     "text": "50/2 to 110/2 (+ 40/2% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Featherstorm",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    140,
+    120,
+    100
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      200,
+      300,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      }
+     ],
+     "text": "200 to 400 (+ 100% bonus AD)"
+    }
+   ]
+  }
+ ]
+}

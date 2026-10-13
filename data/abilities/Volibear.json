@@ -1,0 +1,560 @@
+{
+ "champion": "Volibear",
+ "abilities": [
+  {
+   "name": "The Relentless Storm",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Thundering Smash",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    12,
+    11.5,
+    11,
+    10.5,
+    10
+   ],
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      12,
+      15.5,
+      19,
+      22.5,
+      26
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "12 to 26%"
+    },
+    {
+     "label": "Increased Bonus Movement Speed",
+     "perRank": [
+      24,
+      31,
+      38,
+      45,
+      52
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "12*2 to 26*2%"
+    },
+    {
+     "label": "Bonus Physical Damage",
+     "perRank": [
+      10,
+      20,
+      30,
+      40,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "160% bonus AD",
+       "pct": 160
+      }
+     ],
+     "text": "10 to 50 (+ 160% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Frenzied Maul",
+   "slot": "W",
+   "damageType": "physical",
+   "targeting": "Unit",
+   "affects": "Enemies, Self",
+   "castTime": "0.25",
+   "range": "cr 325",
+   "cooldown": 5,
+   "cost": [
+    20,
+    25,
+    30,
+    35,
+    40
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      5,
+      30,
+      55,
+      80,
+      105
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "110% AD",
+       "pct": 110
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "6% of his bonus health",
+       "pct": 6
+      }
+     ],
+     "text": "5 to 105 (+ 110% AD) (+ 6% of his bonus health)"
+    },
+    {
+     "label": "Heal",
+     "perRank": [
+      20,
+      35,
+      50,
+      65,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "missingHealth",
+       "raw": "8 to 20% of his missing health",
+       "perRank": [
+        8,
+        11,
+        14,
+        17,
+        20
+       ]
+      }
+     ],
+     "text": "20 to 80 (+ 8 to 20% of his missing health)"
+    },
+    {
+     "label": "Minion Heal",
+     "perRank": [
+      10,
+      17.5,
+      25,
+      32.5,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "missingHealth",
+       "raw": "8*0.5 to 20*0.5% of his missing health",
+       "perRank": [
+        4,
+        5.5,
+        7,
+        8.5,
+        10
+       ]
+      }
+     ],
+     "text": "20*0.5 to 80*0.5 (+ 8*0.5 to 20*0.5% of his missing health)"
+    }
+   ]
+  },
+  {
+   "name": "Sky Splitter",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies, Self",
+   "castTime": "none",
+   "range": "1200",
+   "cooldown": 16,
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      110,
+      140,
+      170,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "11 to 15% of target's maximum health",
+       "perRank": [
+        11,
+        12,
+        13,
+        14,
+        15
+       ]
+      }
+     ],
+     "text": "80 to 200 (+ 70% AP) (+ 11 to 15% of target's maximum health)"
+    },
+    {
+     "label": "Non-Champion Capped Damage",
+     "perRank": [
+      150,
+      265,
+      380,
+      495,
+      610
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "150 to 610 (+ 70% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Stormbringer",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Location",
+   "affects": "Enemies, Self",
+   "castTime": "none",
+   "range": "700<!--has a minimum dash range, needs to be measured-->",
+   "cooldown": [
+    160,
+    135,
+    110
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Health",
+     "perRank": [
+      175,
+      350,
+      525
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "175 to 525"
+    },
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      300,
+      500,
+      700
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "250% bonus AD",
+       "pct": 250
+      },
+      {
+       "stat": "ap",
+       "raw": "125% AP",
+       "pct": 125
+      }
+     ],
+     "text": "300 to 700 (+ 250% bonus AD) (+ 125% AP)"
+    },
+    {
+     "label": "Turret Disable Duration",
+     "perRank": [
+      2,
+      3,
+      4
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "2 to 4 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Chosen of the Storm",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Frenzy",
+   "slot": "W",
+   "damageType": "physical",
+   "targeting": "Unit",
+   "affects": "Self / Enemies",
+   "castTime": null,
+   "range": "cr 350",
+   "cooldown": 18,
+   "cost": 35,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed Per Stack",
+     "perRank": [
+      9,
+      13,
+      17,
+      21,
+      25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "9 to 25%"
+    },
+    {
+     "label": "Total Bonus Attack Speed",
+     "perRank": [
+      27,
+      39,
+      51,
+      63,
+      75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "9*3 to 25*3%"
+    },
+    {
+     "label": "Minimum Physical Damage",
+     "perRank": [
+      60,
+      110,
+      160,
+      210,
+      260
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusHealth",
+       "raw": "15% bonus health",
+       "pct": 15
+      }
+     ],
+     "text": "60 to 260 (+ 15% bonus health)"
+    },
+    {
+     "label": "Maximum Physical Damage",
+     "perRank": [
+      120,
+      220,
+      320,
+      420,
+      520
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusHealth",
+       "raw": "30% bonus health",
+       "pct": 30
+      }
+     ],
+     "text": "60*2 to 260*2 (+ 30% bonus health)"
+    }
+   ]
+  },
+  {
+   "name": "Majestic Roar",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "None",
+   "affects": null,
+   "castTime": "none",
+   "range": null,
+   "cooldown": 11,
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      105,
+      150,
+      195,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "60 to 240 (+ 60% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50%"
+    }
+   ]
+  },
+  {
+   "name": "Rolling Thunder",
+   "slot": "Q",
+   "damageType": "physical",
+   "targeting": "None",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    12,
+    11,
+    10,
+    9,
+    8
+   ],
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      15,
+      17.5,
+      20,
+      22.5,
+      25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "15 to 25%"
+    },
+    {
+     "label": "Increased Movement Speed",
+     "perRank": [
+      30,
+      37.5,
+      45,
+      52.5,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 60%"
+    },
+    {
+     "label": "Bonus Physical Damage",
+     "perRank": [
+      30,
+      60,
+      90,
+      120,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 150"
+    }
+   ]
+  },
+  {
+   "name": "Thunder Claws",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "None",
+   "affects": "Enemies",
+   "castTime": "0.1",
+   "range": null,
+   "cooldown": [
+    100,
+    90,
+    80
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      75,
+      115,
+      155
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "75 to 155 (+ 40% AP)"
+    }
+   ]
+  }
+ ]
+}

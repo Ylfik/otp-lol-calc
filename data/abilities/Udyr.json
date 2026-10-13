@@ -1,0 +1,502 @@
+{
+ "champion": "Udyr",
+ "abilities": [
+  {
+   "name": "Bridge Between",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Wilding Claw",
+   "slot": "Q",
+   "damageType": "Physical Magic",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 6,
+   "cost": 20,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Physical Damage",
+     "perRank": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100BonusAD",
+       "raw": "3.5% per 100 bonus AD",
+       "pct": 3.5
+      }
+     ],
+     "text": "3 to 8 6% (+ 3.5% per 100 bonus AD) of target's maximum health"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      6,
+      8,
+      10,
+      12,
+      14,
+      16
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100BonusAD",
+       "raw": "3.5*2% per 100 bonus AD",
+       "perRank": [
+        7
+       ]
+      }
+     ],
+     "text": "3*2 to 8*2 6% (+ 3.5*2% per 100 bonus AD) of target's maximum health"
+    },
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      20,
+      32,
+      44,
+      56,
+      68,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 80 6%"
+    },
+    {
+     "label": "Bonus Physical Damage On-Hit",
+     "perRank": [
+      6,
+      12,
+      18,
+      24,
+      30,
+      36
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "20% bonus AD",
+       "pct": 20
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "1 to 2 6% bonus health",
+       "perRank": [
+        1,
+        1.2,
+        1.4,
+        1.6,
+        1.8,
+        2
+       ]
+      }
+     ],
+     "text": "6 to 36 6 (+ 20% bonus AD) (+ 1 to 2 6% bonus health)"
+    }
+   ]
+  },
+  {
+   "name": "Iron Mantle",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 6,
+   "cost": {
+    "kind": "level",
+    "at1": 40,
+    "at18": 23,
+    "formula": "40 - (40-23)/17*(x-1)"
+   },
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Life Steal",
+     "perRank": [
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "15 to 20 6%"
+    },
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      45,
+      65,
+      85,
+      105,
+      125,
+      145
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50% bonus AD",
+       "pct": 50
+      },
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "2 to 3.5 6% maximum health",
+       "perRank": [
+        2,
+        2.3,
+        2.6,
+        2.9,
+        3.2,
+        3.5
+       ]
+      }
+     ],
+     "text": "45 to 145 6 (+ 50% bonus AD) (+ 40% AP) (+ 2 to 3.5 6% maximum health)"
+    },
+    {
+     "label": "Increased Shield Strength",
+     "perRank": null,
+     "perLevel": {
+      "kind": "level",
+      "at1": 20,
+      "at18": 150,
+      "formula": "20 + (150-20)/17*(x-1)"
+     },
+     "flat": null,
+     "ratios": [
+      {
+       "stat": null,
+       "raw": "45 to 145 6",
+       "perRank": [
+        45,
+        65,
+        85,
+        105,
+        125,
+        145
+       ]
+      },
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      },
+      {
+       "stat": "ap",
+       "raw": "65% AP",
+       "pct": 65
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "8% maximum health",
+       "pct": 8
+      }
+     ],
+     "text": "20 + (150-20)/17*(x-1) for 20 (+ 45 to 145 6) (+ 100% bonus AD) (+ 65% AP) (+ 8% maximum health)"
+    },
+    {
+     "label": "Total Healing",
+     "perRank": null,
+     "perLevel": {
+      "kind": "level",
+      "at1": 10,
+      "at18": 75,
+      "formula": "20/2 + (150/2-20/2)/17*(x-1)"
+     },
+     "flat": null,
+     "ratios": [
+      {
+       "stat": null,
+       "raw": "45/2 to 145/2 6",
+       "perRank": [
+        22.5,
+        32.5,
+        42.5,
+        52.5,
+        62.5,
+        72.5
+       ]
+      },
+      {
+       "stat": "bonusAD",
+       "raw": "100/2% bonus AD",
+       "perRank": [
+        50
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "65/2% AP",
+       "perRank": [
+        32.5
+       ]
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "8/2% maximum health",
+       "perRank": [
+        4
+       ]
+      }
+     ],
+     "text": "20/2 + (150/2-20/2)/17*(x-1) for 20 (+ 45/2 to 145/2 6) (+ 100/2% bonus AD) (+ 65/2% AP) (+ 8/2% maximum health)"
+    },
+    {
+     "label": "Heal per Tick",
+     "perRank": null,
+     "perLevel": {
+      "kind": "level",
+      "at1": 0.625,
+      "at18": 4.6875,
+      "formula": "20/16/2 + (150/16/2-20/16/2)/17*(x-1)"
+     },
+     "flat": null,
+     "ratios": [
+      {
+       "stat": null,
+       "raw": "45/16/2 to 145/16/2 6",
+       "perRank": [
+        1.40625,
+        2.03125,
+        2.65625,
+        3.28125,
+        3.90625,
+        4.53125
+       ]
+      },
+      {
+       "stat": "bonusAD",
+       "raw": "100/16/2% bonus AD",
+       "perRank": [
+        3.125
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "65/16/2% AP",
+       "perRank": [
+        2.03125
+       ]
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "8/16/2% maximum health",
+       "perRank": [
+        0.25
+       ]
+      }
+     ],
+     "text": "20/16/2 + (150/16/2-20/16/2)/17*(x-1) for 20 (+ 45/16/2 to 145/16/2 6) (+ 100/16/2% bonus AD) (+ 65/16/2% AP) (+ 8/16/2% maximum health)"
+    },
+    {
+     "label": "Increased Life Steal",
+     "perRank": [
+      30,
+      32,
+      34,
+      36,
+      38,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "15*2 to 20*2 6%"
+    }
+   ]
+  },
+  {
+   "name": "Blazing Stampede",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 6,
+   "cost": {
+    "kind": "level",
+    "at1": 40,
+    "at18": 23,
+    "formula": "40 - (40-23)/17*(x-1)"
+   },
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      25,
+      31,
+      37,
+      43,
+      49,
+      55
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100BonusAD",
+       "raw": "5% per 100 bonus AD",
+       "pct": 5
+      }
+     ],
+     "text": "25 to 55 6% (+ 5% per 100 bonus AD)"
+    },
+    {
+     "label": "Decayed Bonus Movement Speed",
+     "perRank": [
+      7.5,
+      9.3,
+      11.1,
+      12.9,
+      14.7,
+      16.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100BonusAD",
+       "raw": "5*0.3% per 100 bonus AD",
+       "perRank": [
+        1.5
+       ]
+      }
+     ],
+     "text": "25*0.3 to 55*0.3 6% (+ 5*0.3% per 100 bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Wingborne Storm",
+   "slot": "R",
+   "damageType": "magic",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 6,
+   "cost": {
+    "kind": "level",
+    "at1": 40,
+    "at18": 23,
+    "formula": "40 - (40-23)/17*(x-1)"
+   },
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage per Tick",
+     "perRank": [
+      10,
+      18,
+      26,
+      34,
+      42,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "17.5% AP",
+       "pct": 17.5
+      }
+     ],
+     "text": "10 to 50 6 (+ 17.5% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      80,
+      144,
+      208,
+      272,
+      336,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "17.5*8% AP",
+       "perRank": [
+        140
+       ]
+      }
+     ],
+     "text": "10*8 to 50*8 6 (+ 17.5*8% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      15,
+      18,
+      21,
+      24,
+      27,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "15 to 30 6%"
+    },
+    {
+     "label": "Increased Slow",
+     "perRank": [
+      20,
+      23,
+      26,
+      29,
+      32,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "15+5 to 30+5 6%"
+    }
+   ]
+  }
+ ]
+}

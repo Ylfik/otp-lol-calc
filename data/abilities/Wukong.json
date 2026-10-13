@@ -1,0 +1,308 @@
+{
+ "champion": "Wukong",
+ "abilities": [
+  {
+   "name": "Stone Skin",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Crushing Blow",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    8,
+    7.5,
+    7,
+    6.5,
+    6
+   ],
+   "cost": 20,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Range",
+     "perRank": [
+      135,
+      145,
+      155,
+      165,
+      175
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "135 to 175"
+    },
+    {
+     "label": "Bonus Physical Damage",
+     "perRank": [
+      20,
+      45,
+      70,
+      95,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50% bonus AD",
+       "pct": 50
+      }
+     ],
+     "text": "20 to 120 (+ 50% bonus AD)"
+    },
+    {
+     "label": "Armor Reduction",
+     "perRank": [
+      10,
+      15,
+      20,
+      25,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 30% of target's armor"
+    }
+   ]
+  },
+  {
+   "name": "Warrior Trickster",
+   "slot": "W",
+   "damageType": "physical",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "100 - 300",
+   "cooldown": [
+    22,
+    21,
+    20,
+    19,
+    18
+   ],
+   "cost": [
+    60,
+    55,
+    50,
+    45,
+    40
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Clone Outgoing Damage",
+     "perRank": [
+      40,
+      45,
+      50,
+      55,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 60%"
+    }
+   ]
+  },
+  {
+   "name": "Nimbus Strike",
+   "slot": "E",
+   "damageType": "magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "cr 650",
+   "cooldown": [
+    10,
+    9.25,
+    8.5,
+    7.75,
+    7
+   ],
+   "cost": [
+    30,
+    35,
+    40,
+    45,
+    50
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "80 to 240 (+ 100% AP)"
+    },
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      40,
+      45,
+      50,
+      55,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 60%"
+    }
+   ]
+  },
+  {
+   "name": "Cyclone",
+   "slot": "R",
+   "damageType": "physical",
+   "targeting": "Auto",
+   "affects": "Enemies, Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    130,
+    110,
+    90
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage Per Tick",
+     "perRank": [
+      1,
+      1.5,
+      2
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "275/8% AD",
+       "perRank": [
+        34.375
+       ]
+      }
+     ],
+     "text": "8/8 to 16/8% of target's maximum health (+ 275/8% AD)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      8,
+      12,
+      16
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "275% AD",
+       "pct": 275
+      }
+     ],
+     "text": "8 to 16% of target's maximum health (+ 275% AD)"
+    },
+    {
+     "label": "Maximum Total Physical Damage",
+     "perRank": [
+      16,
+      24,
+      32
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "275*2% AD",
+       "perRank": [
+        550
+       ]
+      }
+     ],
+     "text": "8*2 to 16*2% of target's maximum health (+ 275*2% AD)"
+    }
+   ]
+  },
+  {
+   "name": "Decoy",
+   "slot": "W",
+   "damageType": "magic",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": [
+    18,
+    16,
+    14,
+    12,
+    10
+   ],
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      115,
+      160,
+      205,
+      250
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "70 to 250 (+ 60% AP)"
+    }
+   ]
+  }
+ ]
+}

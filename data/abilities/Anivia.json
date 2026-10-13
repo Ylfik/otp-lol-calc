@@ -1,0 +1,338 @@
+{
+ "champion": "Anivia",
+ "abilities": [
+  {
+   "name": "Rebirth",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Flash Frost",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction / Auto",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    11,
+    10,
+    9,
+    8,
+    7
+   ],
+   "cost": [
+    80,
+    85,
+    90,
+    95,
+    100
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      50,
+      70,
+      90,
+      110,
+      130
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25% AP",
+       "pct": 25
+      }
+     ],
+     "text": "50 to 130 (+ 25% AP)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      95,
+      130,
+      165,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "45% AP",
+       "pct": 45
+      }
+     ],
+     "text": "60 to 200 (+ 45% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      110,
+      165,
+      220,
+      275,
+      330
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "45+25% AP",
+       "perRank": [
+        70
+       ]
+      }
+     ],
+     "text": "50+60 to 130+200 (+ 45+25% AP)"
+    },
+    {
+     "label": "Stun Duration",
+     "perRank": [
+      1.1,
+      1.2,
+      1.3,
+      1.4,
+      1.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1.1 to 1.5 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Crystallize",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "1000",
+   "cooldown": 17,
+   "cost": 70,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Width",
+     "perRank": [
+      600,
+      700,
+      800,
+      900,
+      1000
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "pathing radius 600 to 1000 units"
+    },
+    {
+     "label": "Number of ice segments",
+     "perRank": [
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "4 to 8 chunks of ice"
+    },
+    {
+     "label": "Distance between outermost segments",
+     "perRank": [
+      400,
+      500,
+      600,
+      700,
+      800
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "400 to 800 units"
+    },
+    {
+     "label": "Distance between individual segments",
+     "perRank": [
+      133.33,
+      125,
+      120,
+      116.67,
+      114.29
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "133.33 units"
+    }
+   ]
+  },
+  {
+   "name": "Frostbite",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "er 600",
+   "cooldown": 4,
+   "cost": 50,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      55,
+      80,
+      105,
+      130,
+      155
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "55% AP",
+       "pct": 55
+      }
+     ],
+     "text": "55 to 155 (+ 55% AP)"
+    },
+    {
+     "label": "Enhanced Damage",
+     "perRank": [
+      110,
+      160,
+      210,
+      260,
+      310
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "55*2% AP",
+       "perRank": [
+        110
+       ]
+      }
+     ],
+     "text": "55*2 to 155*2 (+ 55*2% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Glacial Storm",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Location / Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "750",
+   "cooldown": [
+    4,
+    3,
+    2
+   ],
+   "cost": 60,
+   "costType": "mana35 to 55 3 per second",
+   "leveling": [
+    {
+     "label": "Slow Strength Increase",
+     "perRank": [
+      0,
+      10,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "0 to 20%"
+    },
+    {
+     "label": "Magic Damage per Tick",
+     "perRank": [
+      15,
+      22.5,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "6.25% AP",
+       "pct": 6.25
+      }
+     ],
+     "text": "15 to 30 (+ 6.25% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      20,
+      30,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 40%"
+    },
+    {
+     "label": "Empowered Damage per Tick",
+     "perRank": [
+      45,
+      67.5,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "6.25*3% AP",
+       "perRank": [
+        18.75
+       ]
+      }
+     ],
+     "text": "15*3 to 30*3 (+ 6.25*3% AP)"
+    },
+    {
+     "label": "Empowered Slow",
+     "perRank": [
+      30,
+      45,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20*1.5 to 40*1.5%"
+    }
+   ]
+  }
+ ]
+}

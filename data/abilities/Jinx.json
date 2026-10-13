@@ -1,0 +1,300 @@
+{
+ "champion": "Jinx",
+ "abilities": [
+  {
+   "name": "Get Excited!",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Switcheroo!",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": null,
+   "cost": 20,
+   "costType": "Mana per attack with Switcheroo!",
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      15,
+      27.5,
+      40,
+      52.5,
+      65
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30/2 to 130/2%"
+    },
+    {
+     "label": "Attack Speed per Subsequent Stack",
+     "perRank": [
+      7.5,
+      13.75,
+      20,
+      26.25,
+      32.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30/4 to 130/4%"
+    },
+    {
+     "label": "Maximum Attack Speed",
+     "perRank": [
+      30,
+      55,
+      80,
+      105,
+      130
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 130%"
+    },
+    {
+     "label": "Bonus Range",
+     "perRank": [
+      100,
+      125,
+      150,
+      175,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "100 to 200"
+    }
+   ]
+  },
+  {
+   "name": "Zap!",
+   "slot": "W",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.6 to 0.4 for 11",
+   "range": null,
+   "cooldown": [
+    8,
+    7,
+    6,
+    5,
+    4
+   ],
+   "cost": [
+    40,
+    45,
+    50,
+    55,
+    60
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      10,
+      60,
+      110,
+      160,
+      210
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "140% AD",
+       "pct": 140
+      }
+     ],
+     "text": "10 to 210 (+ 140% AD)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      40,
+      50,
+      60,
+      70,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 80%"
+    }
+   ]
+  },
+  {
+   "name": "Flame Chompers!",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "925",
+   "cooldown": [
+    24,
+    20.5,
+    17,
+    13.5,
+    10
+   ],
+   "cost": 90,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      90,
+      140,
+      190,
+      240,
+      290
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "90 to 290 (+ 100% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Super Mega Death Rocket!",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.6",
+   "range": "Global",
+   "cooldown": [
+    85,
+    65,
+    45
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Maximum Physical Damage",
+     "perRank": [
+      200,
+      350,
+      500
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "120% bonus AD",
+       "pct": 120
+      },
+      {
+       "stat": "missingHealth",
+       "raw": "25 to 35% of target's missing health",
+       "perRank": [
+        25,
+        30,
+        35
+       ]
+      }
+     ],
+     "text": "200 to 500 (+ 120% bonus AD) (+ 25 to 35% of target's missing health)"
+    },
+    {
+     "label": "Minimum Physical Damage",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "120*0.1% bonus AD",
+       "perRank": [
+        12
+       ]
+      },
+      {
+       "stat": "missingHealth",
+       "raw": "25 to 35% of target's missing health",
+       "perRank": [
+        25,
+        30,
+        35
+       ]
+      }
+     ],
+     "text": "(200 to 500)*0.1 (+ 120*0.1% bonus AD) (+ 25 to 35% of target's missing health)"
+    },
+    {
+     "label": "Maximum Secondary Damage",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "120*0.8% bonus AD",
+       "perRank": [
+        96
+       ]
+      },
+      {
+       "stat": "missingHealth",
+       "raw": "(25 to 35)*0.8% of target's missing health",
+       "pct": 0.8
+      }
+     ],
+     "text": "(200 to 500)*0.8 (+ 120*0.8% bonus AD) (+ (25 to 35)*0.8% of target's missing health)"
+    },
+    {
+     "label": "Minimum Secondary Damage",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "120*0.8*0.1% bonus AD",
+       "perRank": [
+        9.600000000000001
+       ]
+      },
+      {
+       "stat": "missingHealth",
+       "raw": "(25 to 35)*0.8% of target's missing health",
+       "pct": 0.8
+      }
+     ],
+     "text": "(200 to 500)*0.8*0.1 (+ 120*0.8*0.1% bonus AD) (+ (25 to 35)*0.8% of target's missing health)"
+    }
+   ]
+  }
+ ]
+}

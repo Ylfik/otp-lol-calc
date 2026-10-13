@@ -1,0 +1,286 @@
+{
+ "champion": "Graves",
+ "abilities": [
+  {
+   "name": "New Destiny",
+   "slot": "I",
+   "damageType": "Physical",
+   "targeting": "Passive",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": "errange",
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "End of the Line",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    13,
+    11.25,
+    9.5,
+    7.75,
+    6
+   ],
+   "cost": 80,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      50,
+      75,
+      100,
+      125,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "55% bonus AD",
+       "pct": 55
+      }
+     ],
+     "text": "50 to 150 (+ 55% bonus AD)"
+    },
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      80,
+      125,
+      170,
+      215,
+      260
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "45 to 105% bonus AD",
+       "perRank": [
+        45,
+        60,
+        75,
+        90,
+        105
+       ]
+      }
+     ],
+     "text": "80 to 260 (+ 45 to 105% bonus AD)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      130,
+      200,
+      270,
+      340,
+      410
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "55+45 to 55+105% bonus AD",
+       "perRank": [
+        100,
+        115,
+        130,
+        145,
+        160
+       ]
+      }
+     ],
+     "text": "50+80 to 150+260 (+ 55+45 to 55+105% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Smoke Screen",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "950",
+   "cooldown": [
+    26,
+    24,
+    22,
+    20,
+    18
+   ],
+   "cost": [
+    70,
+    75,
+    80,
+    85,
+    90
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      110,
+      160,
+      210,
+      260
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "60 to 260 (+ 60% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Quickdraw",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Location",
+   "affects": "Self",
+   "castTime": "none",
+   "range": "275 - 375",
+   "cooldown": [
+    16,
+    15,
+    14,
+    13,
+    12
+   ],
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Armor",
+     "perRank": [
+      7,
+      10,
+      13,
+      16,
+      19
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "7 to 19"
+    },
+    {
+     "label": "Maximum Bonus Armor",
+     "perRank": [
+      56,
+      80,
+      104,
+      128,
+      152
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "7*8 to 19*8"
+    },
+    {
+     "label": "Bonus Magic Resistance",
+     "perRank": [
+      3.5,
+      5,
+      6.5,
+      8,
+      9.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "7*0.5 to 19*0.5"
+    },
+    {
+     "label": "Maximum Bonus MR",
+     "perRank": [
+      28,
+      40,
+      52,
+      64,
+      76
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "7*0.5*8 to 19*0.5*8"
+    }
+   ]
+  },
+  {
+   "name": "Collateral Damage",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    100,
+    80,
+    60
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      275,
+      425,
+      575
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "150% bonus AD",
+       "pct": 150
+      }
+     ],
+     "text": "275 to 575 (+ 150% bonus AD)"
+    },
+    {
+     "label": "Reduced Damage",
+     "perRank": [
+      200,
+      320,
+      440
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "120% bonus AD",
+       "pct": 120
+      }
+     ],
+     "text": "200 to 440 (+ 120% bonus AD)"
+    }
+   ]
+  }
+ ]
+}

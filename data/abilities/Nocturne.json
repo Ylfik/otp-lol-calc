@@ -1,0 +1,252 @@
+{
+ "champion": "Nocturne",
+ "abilities": [
+  {
+   "name": "Umbra Blades",
+   "slot": "I",
+   "damageType": "Physical",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Duskbringer",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": 8,
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical damage",
+     "perRank": [
+      65,
+      105,
+      145,
+      185,
+      225
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "85% bonus AD",
+       "pct": 85
+      }
+     ],
+     "text": "65 to 225 (+ 85% bonus AD)"
+    },
+    {
+     "label": "Bonus Attack Damage",
+     "perRank": [
+      15,
+      25,
+      35,
+      45,
+      55
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "15 to 55"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 40%"
+    }
+   ]
+  },
+  {
+   "name": "Shroud of Darkness",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    20,
+    18,
+    16,
+    14,
+    12
+   ],
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50%"
+    },
+    {
+     "label": "Enhanced Bonus Attack Speed",
+     "perRank": [
+      60,
+      70,
+      80,
+      90,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30*2 to 50*2%"
+    }
+   ]
+  },
+  {
+   "name": "Unspeakable Horror",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "cr 425",
+   "cooldown": [
+    15,
+    14,
+    13,
+    12,
+    11
+   ],
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      80,
+      125,
+      170,
+      215,
+      260
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "80 to 260 (+ 100% AP)"
+    },
+    {
+     "label": "Magic Damage per Tick",
+     "perRank": [
+      20,
+      31.25,
+      42.5,
+      53.75,
+      65
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100/4% AP",
+       "perRank": [
+        25
+       ]
+      }
+     ],
+     "text": "80/4 to 260/4 (+ 100/4% AP)"
+    },
+    {
+     "label": "Disable Duration",
+     "perRank": [
+      1.25,
+      1.5,
+      1.75,
+      2,
+      2.25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1.25 to 2.25 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Paranoia",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Auto / Unit",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "cr 2500",
+   "cooldown": [
+    160,
+    130,
+    100
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      150,
+      275,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "120% bonus AD",
+       "pct": 120
+      }
+     ],
+     "text": "150 (+ 120% bonus AD)"
+    }
+   ]
+  }
+ ]
+}

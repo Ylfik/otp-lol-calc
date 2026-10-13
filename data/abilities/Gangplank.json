@@ -1,0 +1,349 @@
+{
+ "champion": "Gangplank",
+ "abilities": [
+  {
+   "name": "Trial by Fire",
+   "slot": "I",
+   "damageType": "True",
+   "targeting": "Passive",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Parrrley",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Enemies, Self",
+   "castTime": "0.25",
+   "range": "cr 625",
+   "cooldown": 4.5,
+   "cost": [
+    50,
+    45,
+    40,
+    35,
+    30
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      10,
+      40,
+      70,
+      100,
+      130
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "100% AD",
+       "pct": 100
+      }
+     ],
+     "text": "10 to 130 (+ 100% AD)"
+    },
+    {
+     "label": "Gold Plunder",
+     "perRank": [
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": ""
+    },
+    {
+     "label": "Silver Serpent Plunder",
+     "perRank": [
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20px|link= 4 to 8"
+    }
+   ]
+  },
+  {
+   "name": "Remove Scurvy",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    22,
+    20,
+    18,
+    16,
+    14
+   ],
+   "cost": [
+    60,
+    70,
+    80,
+    90,
+    100
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Heal",
+     "perRank": [
+      45,
+      70,
+      95,
+      120,
+      145
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90% AP",
+       "pct": 90
+      },
+      {
+       "stat": "missingHealth",
+       "raw": "13% missing health",
+       "pct": 13
+      }
+     ],
+     "text": "45 to 145 (+ 90% AP) (+ 13% missing health)"
+    }
+   ]
+  },
+  {
+   "name": "Powder Keg",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "1000",
+   "cooldown": null,
+   "cost": 1,
+   "costType": "Charge",
+   "leveling": [
+    {
+     "label": "Maximum charges",
+     "perRank": [
+      3,
+      3,
+      4,
+      4,
+      5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "3"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      40,
+      50,
+      60,
+      70,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 80%"
+    },
+    {
+     "label": "Bonus Champion Damage",
+     "perRank": [
+      75,
+      95,
+      115,
+      135,
+      155
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "75 to 155"
+    }
+   ]
+  },
+  {
+   "name": "Cannon Barrage",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "Global",
+   "cooldown": [
+    160,
+    140,
+    120
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage Per Wave",
+     "perRank": [
+      40,
+      70,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "10% AP",
+       "pct": 10
+      }
+     ],
+     "text": "40 to 100 (+ 10% AP)"
+    },
+    {
+     "label": "Magic Damage Per Cluster",
+     "perRank": [
+      120,
+      210,
+      300
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "10*3% AP",
+       "perRank": [
+        30
+       ]
+      }
+     ],
+     "text": "40*3 to 100*3 (+ 10*3% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      480,
+      840,
+      1200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "10*12% AP",
+       "perRank": [
+        120
+       ]
+      }
+     ],
+     "text": "40*12 to 100*12 (+ 10*12% AP)"
+    },
+    {
+     "label": "True Damage with Death's Daughter",
+     "perRank": [
+      120,
+      210,
+      300
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "10*3% AP",
+       "perRank": [
+        30
+       ]
+      }
+     ],
+     "text": "40*3 to 100*3 (+ 10*3% AP)"
+    },
+    {
+     "label": "Total Mixed Damage with Death's Daughter",
+     "perRank": [
+      600,
+      1050,
+      1500
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "10*12+10*3% AP",
+       "perRank": [
+        150
+       ]
+      }
+     ],
+     "text": "40*12+40*3 to 100*12+100*3 (+ 10*12+10*3% AP)"
+    },
+    {
+     "label": "Total Magic Damage with Fire at Will",
+     "perRank": [
+      720,
+      1260,
+      1800
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "10*18% AP",
+       "perRank": [
+        180
+       ]
+      }
+     ],
+     "text": "40*18 to 100*18 (+ 10*18% AP)"
+    },
+    {
+     "label": "Maximum Mixed Total Damage with Fire at Will and Death's Daughter",
+     "perRank": [
+      840,
+      1470,
+      2100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "10*18+10*3% AP",
+       "perRank": [
+        210
+       ]
+      }
+     ],
+     "text": "40*18+40*3 to 100*18+100*3 (+ 10*18+10*3% AP)"
+    }
+   ]
+  }
+ ]
+}

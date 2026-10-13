@@ -1,0 +1,295 @@
+{
+ "champion": "Xin Zhao",
+ "abilities": [
+  {
+   "name": "Determination",
+   "slot": "I",
+   "damageType": "Physical",
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Three Talon Strike",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    7,
+    6.5,
+    6,
+    5.5,
+    5
+   ],
+   "cost": 30,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Physical Damage",
+     "perRank": [
+      15,
+      30,
+      45,
+      60,
+      75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "40% bonus AD",
+       "pct": 40
+      }
+     ],
+     "text": "15 to 75 (+ 40% bonus AD)"
+    },
+    {
+     "label": "Total Bonus Physical Damage",
+     "perRank": [
+      45,
+      90,
+      135,
+      180,
+      225
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "120% bonus AD",
+       "pct": 120
+      }
+     ],
+     "text": "15*3 to 75*3 (+ 120% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Wind Becomes Lightning",
+   "slot": "W",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.5",
+   "range": null,
+   "cooldown": [
+    12,
+    11,
+    10,
+    9,
+    8
+   ],
+   "cost": 60,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage per Slash",
+     "perRank": [
+      7.5,
+      10,
+      12.5,
+      15,
+      17.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "30/4% AD",
+       "perRank": [
+        7.5
+       ]
+      }
+     ],
+     "text": "30/4 to 70/4 (+ 30/4% AD)"
+    },
+    {
+     "label": "Slash Total Physical Damage",
+     "perRank": [
+      30,
+      40,
+      50,
+      60,
+      70
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "30% AD",
+       "pct": 30
+      }
+     ],
+     "text": "30 to 70 (+ 30% AD)"
+    },
+    {
+     "label": "Thrust Physical Damage",
+     "perRank": [
+      50,
+      85,
+      120,
+      155,
+      190
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "90% AD",
+       "pct": 90
+      },
+      {
+       "stat": "ap",
+       "raw": "65% AP",
+       "pct": 65
+      }
+     ],
+     "text": "50 to 190 (+ 90% AD) (+ 65% AP)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      80,
+      125,
+      170,
+      215,
+      260
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "120% AD",
+       "pct": 120
+      },
+      {
+       "stat": "ap",
+       "raw": "65% AP",
+       "pct": 65
+      }
+     ],
+     "text": "30+50 to 70+190 (+ 120% AD) (+ 65% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Audacious Charge",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "cr 650",
+   "cooldown": 11,
+   "cost": 60,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      50,
+      75,
+      100,
+      125,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "120% AP",
+       "pct": 120
+      }
+     ],
+     "text": "50 to 150 (+ 120% AP)"
+    },
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      38,
+      46,
+      54,
+      62,
+      70
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "10% per 100 AP",
+       "pct": 10
+      },
+      {
+       "stat": null,
+       "raw": "1% per 5% bonus attack speed from non-buff sources",
+       "pct": 1
+      }
+     ],
+     "text": "38 to 70% (+ 10% per 100 AP) (+ 1% per 5% bonus attack speed from non-buff sources)"
+    }
+   ]
+  },
+  {
+   "name": "Crescent Guard",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "0.35",
+   "range": null,
+   "cooldown": [
+    120,
+    110,
+    100
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      75,
+      175,
+      275
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      },
+      {
+       "stat": "ap",
+       "raw": "110% AP",
+       "pct": 110
+      },
+      {
+       "stat": "currentHealth",
+       "raw": "15% of target's current health",
+       "pct": 15
+      }
+     ],
+     "text": "75 to 275 (+ 100% bonus AD) (+ 110% AP) (+ 15% of target's current health)"
+    }
+   ]
+  }
+ ]
+}

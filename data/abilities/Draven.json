@@ -1,0 +1,272 @@
+{
+ "champion": "Draven",
+ "abilities": [
+  {
+   "name": "League of Draven",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Spinning Axe",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    12,
+    11,
+    10,
+    9,
+    8
+   ],
+   "cost": 45,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Bonus Physical Damage",
+     "perRank": [
+      40,
+      45,
+      50,
+      55,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "75 to 115% bonus AD",
+       "perRank": [
+        75,
+        85,
+        95,
+        105,
+        115
+       ]
+      }
+     ],
+     "text": "40 to 60 (+ 75 to 115% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Blood Rush",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 12,
+   "cost": [
+    40,
+    35,
+    30,
+    25,
+    20
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 40%"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      50,
+      55,
+      60,
+      65,
+      70
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "50 to 70%"
+    }
+   ]
+  },
+  {
+   "name": "Stand Aside",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 1100",
+   "cooldown": [
+    16,
+    15,
+    14,
+    13,
+    12
+   ],
+   "cost": 70,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      75,
+      110,
+      145,
+      180,
+      215
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50% bonus AD",
+       "pct": 50
+      }
+     ],
+     "text": "75 to 215 (+ 50% bonus AD)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 40%"
+    }
+   ]
+  },
+  {
+   "name": "Whirling Death",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Direction / Auto",
+   "affects": "Enemies",
+   "castTime": "0.5",
+   "range": "Global",
+   "cooldown": [
+    100,
+    90,
+    80
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      200,
+      300,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "110 to 150% bonus AD",
+       "perRank": [
+        110,
+        130,
+        150
+       ]
+      }
+     ],
+     "text": "200 to 400 (+ 110 to 150% bonus AD)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      400,
+      600,
+      800
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "110*2 to 150*2% bonus AD",
+       "perRank": [
+        220,
+        260,
+        300
+       ]
+      }
+     ],
+     "text": "200*2 to 400*2 (+ 110*2 to 150*2% bonus AD)"
+    },
+    {
+     "label": "Minimum Physical Damage",
+     "perRank": [
+      100,
+      150,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "110*0.5 to 150*0.5% bonus AD",
+       "perRank": [
+        55,
+        65,
+        75
+       ]
+      }
+     ],
+     "text": "200*0.5 to 400*0.5 (+ 110*0.5 to 150*0.5% bonus AD)"
+    },
+    {
+     "label": "Minimum Total Damage",
+     "perRank": [
+      200,
+      300,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "110*0.5*2 to 150*0.5*2% bonus AD",
+       "perRank": [
+        110,
+        130,
+        150
+       ]
+      }
+     ],
+     "text": "200*0.5*2 to 400*0.5*2 (+ 110*0.5*2 to 150*0.5*2% bonus AD)"
+    }
+   ]
+  }
+ ]
+}

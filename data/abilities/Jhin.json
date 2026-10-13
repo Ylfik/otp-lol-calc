@@ -1,0 +1,364 @@
+{
+ "champion": "Jhin",
+ "abilities": [
+  {
+   "name": "Whisper",
+   "slot": "I",
+   "damageType": "Physical",
+   "targeting": "Passive",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Dancing Grenade",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "er 550",
+   "cooldown": [
+    7,
+    6.5,
+    6,
+    5.5,
+    5
+   ],
+   "cost": [
+    40,
+    45,
+    50,
+    55,
+    60
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      44,
+      69,
+      94,
+      119,
+      144
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "44 to 74% AD",
+       "perRank": [
+        44,
+        51.5,
+        59,
+        66.5,
+        74
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "44 to 144 (+ 44 to 74% AD) (+ 60% AP)"
+    },
+    {
+     "label": "Bonus Damage per Target Death",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "(44 to 74)*0.35% AD",
+       "pct": 0.35
+      },
+      {
+       "stat": "ap",
+       "raw": "60*0.35% AP",
+       "perRank": [
+        21
+       ]
+      }
+     ],
+     "text": "(44 to 144)*0.35 (+ (44 to 74)*0.35% AD) (+ 60*0.35% AP)"
+    },
+    {
+     "label": "Maximum Final Bounce Physical Damage",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "(44 to 74)*(1+0.35*3)% AD",
+       "pct": 44
+      },
+      {
+       "stat": "ap",
+       "raw": "60*(1+0.35*3)% AP",
+       "perRank": [
+        122.99999999999999
+       ]
+      }
+     ],
+     "text": "(44 to 144)*(1+0.35*3) (+ (44 to 74)*(1+0.35*3)% AD) (+ 60*(1+0.35*3)% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Deadly Flourish",
+   "slot": "W",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.75",
+   "range": null,
+   "cooldown": 12,
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      70,
+      105,
+      140,
+      175,
+      210
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "50% AD",
+       "pct": 50
+      }
+     ],
+     "text": "70 to 210 (+ 50% AD)"
+    },
+    {
+     "label": "Minion Damage",
+     "perRank": [
+      52.5,
+      78.75,
+      105,
+      131.25,
+      157.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "37.5% AD",
+       "pct": 37.5
+      }
+     ],
+     "text": "70*0.75 to 210*0.75 (+ 37.5% AD)"
+    },
+    {
+     "label": "Root Duration",
+     "perRank": [
+      1.25,
+      1.5,
+      1.75,
+      2,
+      2.25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1.25 to 2.25 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Captive Audience",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "750",
+   "cooldown": 2,
+   "cost": 30,
+   "costType": "Mana + 1 Charge",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      20,
+      80,
+      140,
+      200,
+      260
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "120% AD",
+       "pct": 120
+      },
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "20 to 260 (+ 120% AD) (+ 100% AP)"
+    },
+    {
+     "label": "Reduced Damage",
+     "perRank": [
+      13,
+      52,
+      91,
+      130,
+      169
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "78% AD",
+       "pct": 78
+      },
+      {
+       "stat": "ap",
+       "raw": "65% AP",
+       "pct": 65
+      }
+     ],
+     "text": "20*0.65 to 260*0.65 (+ 78% AD) (+ 65% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Curtain Call",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "1",
+   "range": null,
+   "cooldown": [
+    120,
+    105,
+    90
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Minimum Physical Damage per Bullet",
+     "perRank": [
+      64,
+      128,
+      192
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "25% AD",
+       "pct": 25
+      }
+     ],
+     "text": "64 to 192 (+ 25% AD)"
+    },
+    {
+     "label": "Maximum Physical Damage per Bullet",
+     "perRank": [
+      256,
+      512,
+      768
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "25*4% AD",
+       "perRank": [
+        100
+       ]
+      }
+     ],
+     "text": "64*4 to 192*4 (+ 25*4% AD)"
+    },
+    {
+     "label": "Minimum Fourth Shot Damage",
+     "perRank": [
+      128,
+      256,
+      384
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "25*2% AD",
+       "perRank": [
+        50
+       ]
+      }
+     ],
+     "text": "64*2 to 192*2 (+ 25*2% AD)"
+    },
+    {
+     "label": "Maximum Fourth Shot Damage",
+     "perRank": [
+      512,
+      1024,
+      1536
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "(25*2)*4% AD",
+       "perRank": [
+        200
+       ]
+      }
+     ],
+     "text": "(64*2)*4 to (192*2)*4 (+ (25*2)*4% AD)"
+    }
+   ]
+  },
+  {
+   "name": "Basic Attack",
+   "slot": "A",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  }
+ ]
+}

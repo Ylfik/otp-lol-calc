@@ -1,0 +1,224 @@
+{
+ "champion": "Viego",
+ "abilities": [
+  {
+   "name": "Sovereign's Domination",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Blade of the Ruined King",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "1.4*100% of Viego's windup time ({{ap|1.4*(1/)*|round=3}} at base attack speed)",
+   "range": null,
+   "cooldown": [
+    5,
+    4.5,
+    4,
+    3.5,
+    3
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus Physical Damage",
+     "perRank": [
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "2 to 6% of target's current health"
+    },
+    {
+     "label": "Critical Bonus Physical Damage",
+     "perRank": [
+      3.4,
+      5.1,
+      6.8,
+      8.5,
+      10.2
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "2*1.7 to 6*1.7% of target's current health"
+    },
+    {
+     "label": "Minimum Bonus Damage",
+     "perRank": [
+      10,
+      15,
+      20,
+      25,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 30"
+    },
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      25,
+      40,
+      55,
+      70,
+      85
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "70% AD",
+       "pct": 70
+      }
+     ],
+     "text": "25 to 85 (+ 70% AD)"
+    }
+   ]
+  },
+  {
+   "name": "Spectral Maw",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": "300 / cr type=channel time",
+   "cooldown": 8,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      135,
+      190,
+      245,
+      300
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "80 to 300 (+ 100% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Harrowed Path",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Direction",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    14,
+    12,
+    10,
+    8,
+    6
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50%"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      25,
+      27.5,
+      30,
+      32.5,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "4% per 100 AP",
+       "pct": 4
+      }
+     ],
+     "text": "25 to 35% (+ 4% per 100 AP)"
+    }
+   ]
+  },
+  {
+   "name": "Heartbreaker",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Location",
+   "affects": "Self, Enemies",
+   "castTime": "0.5",
+   "range": "500",
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      12,
+      16,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100BonusAD",
+       "raw": "5% per 100 bonus AD",
+       "pct": 5
+      }
+     ],
+     "text": "12 to 20% (+ 5% per 100 bonus AD) of target's missing health"
+    }
+   ]
+  }
+ ]
+}

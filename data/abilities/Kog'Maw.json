@@ -1,0 +1,256 @@
+{
+ "champion": "Kog'Maw",
+ "abilities": [
+  {
+   "name": "Icathian Surprise",
+   "slot": "I",
+   "damageType": "True",
+   "targeting": "Passive",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Caustic Spittle",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "Basic attack timer",
+   "range": null,
+   "cooldown": 7,
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      5,
+      10,
+      15,
+      20,
+      25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "5 to 25%"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      125,
+      170,
+      215,
+      260
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90% AP",
+       "pct": 90
+      }
+     ],
+     "text": "80 to 260 (+ 90% AP)"
+    },
+    {
+     "label": "Resistances Reduction",
+     "perRank": [
+      16,
+      20,
+      24,
+      28,
+      32
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "16 to 32%"
+    }
+   ]
+  },
+  {
+   "name": "Bio-Arcane Barrage",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": null,
+   "castTime": "none",
+   "range": null,
+   "cooldown": 17,
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Attack Range",
+     "perRank": [
+      130,
+      150,
+      170,
+      190,
+      210
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "130 to 210"
+    },
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      3,
+      3.75,
+      4.5,
+      5.25,
+      6
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "1.5% per 100 AP",
+       "pct": 1.5
+      }
+     ],
+     "text": "3 to 6% (+ 1.5% per 100 AP) of target's maximum health"
+    }
+   ]
+  },
+  {
+   "name": "Void Ooze",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": 12,
+   "cost": [
+    40,
+    55,
+    70,
+    85,
+    100
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      110,
+      150,
+      190,
+      230
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "65% AP",
+       "pct": 65
+      }
+     ],
+     "text": "70 to 230 (+ 65% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      40,
+      45,
+      50,
+      55,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 60%"
+    }
+   ]
+  },
+  {
+   "name": "Living Artillery",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "1300 to 1800",
+   "cooldown": [
+    2,
+    1.5,
+    1
+   ],
+   "cost": null,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Minimum Magic Damage",
+     "perRank": [
+      100,
+      140,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "75% bonus AD",
+       "pct": 75
+      },
+      {
+       "stat": "ap",
+       "raw": "35 to 45% AP",
+       "perRank": [
+        35,
+        40,
+        45
+       ]
+      }
+     ],
+     "text": "100 to 180 (+ 75% bonus AD) (+ 35 to 45% AP)"
+    },
+    {
+     "label": "Maximum Magic Damage",
+     "perRank": [
+      200,
+      280,
+      360
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "75*2% bonus AD",
+       "perRank": [
+        150
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "35*2 to 45*2% AP",
+       "perRank": [
+        70,
+        80,
+        90
+       ]
+      }
+     ],
+     "text": "100*2 to 180*2 (+ 75*2% bonus AD) (+ 35*2 to 45*2% AP)"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,373 @@
+{
+ "champion": "Varus",
+ "abilities": [
+  {
+   "name": "Living Vengeance",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Piercing Arrow",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Auto / Direction",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    16,
+    15,
+    14,
+    13,
+    12
+   ],
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Minimum Physical Damage",
+     "perRank": [
+      53.333333,
+      100,
+      146.666667,
+      193.333333,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "120/1.5% bonus AD",
+       "perRank": [
+        80
+       ]
+      }
+     ],
+     "text": "80/1.5 to 360/1.5 (+ 120/1.5% bonus AD)"
+    },
+    {
+     "label": "Maximum Physical Damage",
+     "perRank": [
+      80,
+      150,
+      220,
+      290,
+      360
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "120% bonus AD",
+       "pct": 120
+      }
+     ],
+     "text": "80 to 360 (+ 120% bonus AD)"
+    },
+    {
+     "label": "Minimum Reduced Damage",
+     "perRank": [
+      17.6,
+      33,
+      48.4,
+      63.8,
+      79.2
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "(120/1.5)*0.33% bonus AD",
+       "perRank": [
+        26.400000000000002
+       ]
+      }
+     ],
+     "text": "80/1.5*0.33 to 360/1.5*0.33 (+ (120/1.5)*0.33% bonus AD)"
+    },
+    {
+     "label": "Maximum Reduced Damage",
+     "perRank": [
+      26.4,
+      49.5,
+      72.6,
+      95.7,
+      118.8
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "120*0.33% bonus AD",
+       "perRank": [
+        39.6
+       ]
+      }
+     ],
+     "text": "80*0.33 to 360*0.33 (+ 120*0.33% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Blighted Quiver",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 40,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      4,
+      13,
+      22,
+      31,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "15% bonus AD",
+       "pct": 15
+      },
+      {
+       "stat": "ap",
+       "raw": "25% AP",
+       "pct": 25
+      }
+     ],
+     "text": "4 to 40 (+ 15% bonus AD) (+ 25% AP)"
+    },
+    {
+     "label": "Bonus Magic Damage per Stack",
+     "perRank": [
+      3,
+      3.5,
+      4,
+      4.5,
+      5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "1.3% per 100 AP",
+       "pct": 1.3
+      }
+     ],
+     "text": "3 to 5% (+ 1.3% per 100 AP) of the target's maximum health"
+    },
+    {
+     "label": "Bonus Magic Damage at Max Stacks",
+     "perRank": [
+      9,
+      10.5,
+      12,
+      13.5,
+      15
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "1.3*3% per 100 AP",
+       "perRank": [
+        3.9000000000000004
+       ]
+      }
+     ],
+     "text": "3*3 to 5*3% (+ 1.3*3% per 100 AP) of the target's maximum health"
+    },
+    {
+     "label": "20px|border|link= Maximum Bonus Magic Damage per Stack",
+     "perRank": [
+      4.5,
+      5.25,
+      6,
+      6.75,
+      7.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "1.3*1.5% per 100 AP",
+       "perRank": [
+        1.9500000000000002
+       ]
+      }
+     ],
+     "text": "3*1.5 to 5*1.5% (+ 1.3*1.5% per 100 AP) of the target's maximum health"
+    },
+    {
+     "label": "20px|border|link= Maximum Bonus Magic Damage at Max Stacks",
+     "perRank": [
+      13.5,
+      15.75,
+      18,
+      20.25,
+      22.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "1.3*3*1.5% per 100 AP",
+       "perRank": [
+        5.8500000000000005
+       ]
+      }
+     ],
+     "text": "3*3*1.5 to 5*3*1.5% (+ 1.3*3*1.5% per 100 AP) of the target's maximum health"
+    },
+    {
+     "label": "Active Minimum Magic Damage",
+     "perRank": [
+      6,
+      8,
+      10,
+      12,
+      14
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "6 to 14% of target's missing health"
+    },
+    {
+     "label": "Active Maximum Magic Damage",
+     "perRank": [
+      9,
+      12,
+      15,
+      18,
+      21
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "6*1.5 to 14*1.5% of target's missing health"
+    }
+   ]
+  },
+  {
+   "name": "Hail of Arrows",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.2419",
+   "range": "925",
+   "cooldown": [
+    18,
+    16,
+    14,
+    12,
+    10
+   ],
+   "cost": 90,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      60,
+      90,
+      120,
+      150,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "90% bonus AD",
+       "pct": 90
+      }
+     ],
+     "text": "60 to 180 (+ 90% bonus AD)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50%"
+    }
+   ]
+  },
+  {
+   "name": "Chain of Corruption",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.2419",
+   "range": null,
+   "cooldown": [
+    100,
+    80,
+    60
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      150,
+      250,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "150 to 350 (+ 100% AP)"
+    }
+   ]
+  }
+ ]
+}

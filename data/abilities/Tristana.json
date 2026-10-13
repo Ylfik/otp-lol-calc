@@ -1,0 +1,310 @@
+{
+ "champion": "Tristana",
+ "abilities": [
+  {
+   "name": "Draw a Bead",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Rapid Fire",
+   "slot": "Q",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    20,
+    19,
+    18,
+    17,
+    16
+   ],
+   "cost": [
+    15,
+    20,
+    25,
+    30,
+    35
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      60,
+      75,
+      90,
+      105,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "60 to 120%"
+    }
+   ]
+  },
+  {
+   "name": "Rocket Jump",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies / Self",
+   "castTime": "0.25",
+   "range": "cr 900<!--has a minimum dash range, needs to be measured-->",
+   "cooldown": [
+    22,
+    20,
+    18,
+    16,
+    14
+   ],
+   "cost": [
+    30,
+    35,
+    40,
+    45,
+    50
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      105,
+      140,
+      175,
+      210
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      },
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "70 to 210 (+ 100% bonus AD) (+ 50% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Explosive Charge",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "100% of Tristana's windup time ({{fd|{{#expr:(1/)*round2}}}} at base attack speed)",
+   "range": "er 550 to 700",
+   "cooldown": [
+    16,
+    15.5,
+    15,
+    14.5,
+    14
+   ],
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      45,
+      60,
+      75,
+      90,
+      105
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25% AP",
+       "pct": 25
+      }
+     ],
+     "text": "45 to 105 (+ 25% AP)"
+    },
+    {
+     "label": "Minimum Physical Damage",
+     "perRank": [
+      60,
+      85,
+      110,
+      135,
+      160
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "80% bonus AD",
+       "pct": 80
+      },
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "60 to 160 (+ 80% bonus AD) (+ 50% AP)"
+    },
+    {
+     "label": "Bonus Damage Per Stack",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "80*0.25% bonus AD",
+       "perRank": [
+        20
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "50*0.25% AP",
+       "perRank": [
+        12.5
+       ]
+      }
+     ],
+     "text": "(60 to 160)*0.25 (+ 80*0.25% bonus AD) (+ 50*0.25% AP)"
+    },
+    {
+     "label": "Full Stack Bonus Damage",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "80*(0.25*4)% bonus AD",
+       "perRank": [
+        80
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "50*(0.25*4)% AP",
+       "perRank": [
+        50
+       ]
+      }
+     ],
+     "text": "(60 to 160)*(0.25*4) (+ 80*(0.25*4)% bonus AD) (+ 50*(0.25*4)% AP)"
+    },
+    {
+     "label": "Full Stack Physical Damage",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "80*(1+0.25*4)% bonus AD",
+       "perRank": [
+        160
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "50*(1+0.25*4)% AP",
+       "perRank": [
+        100
+       ]
+      }
+     ],
+     "text": "(60 to 160)*(1+0.25*4) (+ 80*(1+0.25*4)% bonus AD) (+ 50*(1+0.25*4)% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Buster Shot",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "er 550 to 700",
+   "cooldown": 100,
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      225,
+      275,
+      325
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "70% bonus AD",
+       "pct": 70
+      },
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "225 to 325 (+ 70% bonus AD) (+ 100% AP)"
+    },
+    {
+     "label": "Knock Back Distance",
+     "perRank": [
+      600,
+      800,
+      1000
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "600"
+    },
+    {
+     "label": "Stun Duration",
+     "perRank": [
+      0.4,
+      0.55,
+      0.7
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "0.4 to 0.7 seconds"
+    }
+   ]
+  }
+ ]
+}

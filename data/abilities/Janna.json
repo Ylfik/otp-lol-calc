@@ -1,0 +1,311 @@
+{
+ "champion": "Janna",
+ "abilities": [
+  {
+   "name": "Tailwind",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Howling Gale",
+   "slot": "Q",
+   "damageType": "magic",
+   "targeting": "Direction / Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 14,
+   "cost": [
+    90,
+    95,
+    100,
+    105,
+    110
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Minimum Magic Damage",
+     "perRank": [
+      55,
+      90,
+      125,
+      160,
+      195
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "55 to 195 (+ 50% AP)"
+    },
+    {
+     "label": "Bonus Damage Per Second",
+     "perRank": [
+      10,
+      15,
+      20,
+      25,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "10% AP",
+       "pct": 10
+      }
+     ],
+     "text": "10 to 30 (+ 10% AP)"
+    },
+    {
+     "label": "Maximum Magic Damage",
+     "perRank": [
+      85,
+      135,
+      185,
+      235,
+      285
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "55+10*3 to 195+30*3 (+ 80% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Zephyr",
+   "slot": "W",
+   "damageType": "magic",
+   "targeting": "Unit",
+   "affects": "Self, Enemies",
+   "castTime": "0.245",
+   "range": "er 550",
+   "cooldown": [
+    8,
+    7.5,
+    7,
+    6.5,
+    6
+   ],
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "2% per 100 AP",
+       "pct": 2
+      }
+     ],
+     "text": "6 to 10% (+ 2% per 100 AP)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      55,
+      85,
+      115,
+      145,
+      175
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      },
+      {
+       "stat": null,
+       "raw": "30% bonus movement speed",
+       "pct": 30
+      }
+     ],
+     "text": "55 to 175 (+ 50% AP) (+ 30% bonus movement speed)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      20,
+      24,
+      28,
+      32,
+      36
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "6% per 100 AP",
+       "pct": 6
+      }
+     ],
+     "text": "20 to 36% (+ 6% per 100 AP)"
+    }
+   ]
+  },
+  {
+   "name": "Eye of the Storm",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Unit",
+   "affects": "Allies, Allied turrets, Self",
+   "castTime": "none",
+   "range": "cr 800",
+   "cooldown": [
+    16,
+    15,
+    14,
+    13,
+    12
+   ],
+   "cost": [
+    70,
+    75,
+    80,
+    85,
+    90
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "55% AP",
+       "pct": 55
+      }
+     ],
+     "text": "80 to 240 (+ 55% AP)"
+    },
+    {
+     "label": "Bonus Attack Damage",
+     "perRank": [
+      10,
+      15,
+      20,
+      25,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "10% AP",
+       "pct": 10
+      }
+     ],
+     "text": "10 to 30 (+ 10% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Monsoon",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Enemies, Allies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    130,
+    115,
+    100
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Heal Per Tick",
+     "perRank": [
+      25,
+      37.5,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "150/12% AP",
+       "perRank": [
+        12.5
+       ]
+      }
+     ],
+     "text": "300/12 to 600/12 (+ 150/12% AP)"
+    },
+    {
+     "label": "Total Heal",
+     "perRank": [
+      300,
+      450,
+      600
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "150% AP",
+       "pct": 150
+      }
+     ],
+     "text": "300 to 600 (+ 150% AP)"
+    }
+   ]
+  }
+ ]
+}

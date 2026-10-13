@@ -1,0 +1,295 @@
+{
+ "champion": "Elise",
+ "abilities": [
+  {
+   "name": "Spider Queen",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Neurotoxin",
+   "slot": "Q",
+   "damageType": "magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "er 575",
+   "cooldown": 6,
+   "cost": [
+    80,
+    85,
+    90,
+    95,
+    100
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      40,
+      70,
+      100,
+      130,
+      160
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "4% (+ 3% per 100 AP) of target's current health",
+       "pct": 4
+      }
+     ],
+     "text": "40 to 160 (+ 4% (+ 3% per 100 AP) of target's current health)"
+    },
+    {
+     "label": "Capped Monster Damage",
+     "perRank": [
+      65,
+      85,
+      105,
+      125,
+      145
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90% AP",
+       "pct": 90
+      }
+     ],
+     "text": "65 to 145 (+ 90% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Volatile Spiderling",
+   "slot": "W",
+   "damageType": "magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.125",
+   "range": "950",
+   "cooldown": 12,
+   "cost": [
+    60,
+    70,
+    80,
+    90,
+    100
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      100,
+      140,
+      180,
+      220
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "75% AP",
+       "pct": 75
+      }
+     ],
+     "text": "60 to 220 (+ 75% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Cocoon",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 1100",
+   "cooldown": [
+    12,
+    11.5,
+    11,
+    10.5,
+    10
+   ],
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Stun Duration",
+     "perRank": [
+      1.6,
+      1.8,
+      2,
+      2.2,
+      2.4
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1.6 to 2.4 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Venomous Bite",
+   "slot": "Q",
+   "damageType": "magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 475",
+   "cooldown": 6,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      50,
+      80,
+      110,
+      140,
+      170
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "8% (+ 3% per 100 AP) of target's missing health",
+       "pct": 8
+      }
+     ],
+     "text": "50 to 170 (+ 8% (+ 3% per 100 AP) of target's missing health)"
+    },
+    {
+     "label": "Capped Monster Damage",
+     "perRank": [
+      65,
+      85,
+      105,
+      125,
+      145
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90% AP",
+       "pct": 90
+      }
+     ],
+     "text": "65 to 145 (+ 90% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Skittering Frenzy",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Spiderlings, Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 6,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Spider Queen Bonus Attack Speed",
+     "perRank": [
+      5,
+      10,
+      15,
+      20,
+      25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "5 to 25%"
+    },
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      60,
+      75,
+      90,
+      105,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "60 to 120%"
+    }
+   ]
+  },
+  {
+   "name": "Rappel",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Location / Unit",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": "cr 825",
+   "cooldown": [
+    22,
+    21,
+    20,
+    19,
+    18
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Spider Effects Increase",
+     "perRank": [
+      40,
+      55,
+      70,
+      85,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 100%"
+    }
+   ]
+  },
+  {
+   "name": "Spider Form / Human Form",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 3,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  }
+ ]
+}

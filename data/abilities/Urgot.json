@@ -1,0 +1,437 @@
+{
+ "champion": "Urgot",
+ "abilities": [
+  {
+   "name": "Echoing Flames",
+   "slot": "I",
+   "damageType": "Physical",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Corrosive Charge",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "800",
+   "cooldown": [
+    10,
+    9.5,
+    9,
+    8.5,
+    8
+   ],
+   "cost": 70,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      25,
+      70,
+      115,
+      160,
+      205
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "70% AD",
+       "pct": 70
+      }
+     ],
+     "text": "25 to 205 (+ 70% AD)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      45,
+      50,
+      55,
+      60,
+      65
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "45 to 65%"
+    }
+   ]
+  },
+  {
+   "name": "Purge",
+   "slot": "W",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    12,
+    9,
+    6,
+    3,
+    0
+   ],
+   "cost": [
+    40,
+    30,
+    20,
+    10,
+    0
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Modified Physical Damage",
+     "perRank": null,
+     "perLevel": null,
+     "flat": 12,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "20 to 34% AD",
+       "perRank": [
+        20,
+        23.5,
+        27,
+        30.5,
+        34
+       ]
+      }
+     ],
+     "text": "12 (+ 20 to 34% AD)"
+    }
+   ]
+  },
+  {
+   "name": "Disdain",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.45",
+   "range": "cr 475",
+   "cooldown": [
+    16,
+    15.5,
+    15,
+    14.5,
+    14
+   ],
+   "cost": [
+    60,
+    70,
+    80,
+    90,
+    100
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      55,
+      75,
+      95,
+      115,
+      135
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "135% bonus AD",
+       "pct": 135
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "13.5% bonus health",
+       "pct": 13.5
+      }
+     ],
+     "text": "55 to 135 (+ 135% bonus AD) (+ 13.5% bonus health)"
+    },
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      90,
+      120,
+      150,
+      180,
+      210
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      }
+     ],
+     "text": "90 to 210 (+ 100% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Fear Beyond Death",
+   "slot": "R",
+   "damageType": "Physical True",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.5",
+   "range": "er 2500",
+   "cooldown": [
+    100,
+    85,
+    70
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      100,
+      225,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50% bonus AD",
+       "pct": 50
+      }
+     ],
+     "text": "100 to 350 (+ 50% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Acid Hunter",
+   "slot": "Q",
+   "damageType": "physical",
+   "targeting": "Acid Hunter is a linear, collision skillshot with a unit-targeted component.",
+   "affects": null,
+   "castTime": null,
+   "range": "1000",
+   "cooldown": 2,
+   "cost": 40,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      10,
+      40,
+      70,
+      100,
+      130
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "85% AD",
+       "pct": 85
+      }
+     ],
+     "text": "10 (+ 85% AD)"
+    }
+   ]
+  },
+  {
+   "name": "Hyper-Kinetic Position Reverser",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Hyper-Kinetic Position Reverser is a unit-targeted blink with buff and debuff components.",
+   "affects": null,
+   "castTime": null,
+   "range": "500",
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "damage reduction",
+     "perRank": [
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30"
+    }
+   ]
+  },
+  {
+   "name": "Noxian Corrosive Charge",
+   "slot": "E",
+   "damageType": "physical",
+   "targeting": "Noxian Corrosive Charge is a ground-targeted area of effect.",
+   "affects": null,
+   "castTime": null,
+   "range": "900",
+   "cooldown": [
+    15,
+    14,
+    13,
+    12,
+    11
+   ],
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Physical Damage Per Second",
+     "perRank": [
+      15,
+      26,
+      37,
+      48,
+      59
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "12% bonus AD",
+       "pct": 12
+      }
+     ],
+     "text": "15 (+ 12% bonus AD)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      75,
+      130,
+      185,
+      240,
+      295
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "60% bonus AD",
+       "pct": 60
+      }
+     ],
+     "text": "75 (+ 60% bonus AD)"
+    },
+    {
+     "label": "Armor Reduction",
+     "perRank": [
+      12
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "12 of target's armor"
+    }
+   ]
+  },
+  {
+   "name": "Terror Capacitor",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Terror Capacitor is a self-targeted buff with an on-action effect component.",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": [
+    16,
+    15,
+    14,
+    13,
+    12
+   ],
+   "cost": [
+    55,
+    60,
+    65,
+    70,
+    75
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      60,
+      100,
+      140,
+      180,
+      220
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      },
+      {
+       "stat": "maxMana",
+       "raw": "8% maximum mana",
+       "pct": 8
+      }
+     ],
+     "text": "60 (+ 80% AP) (+ 8% maximum mana)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20"
+    }
+   ]
+  },
+  {
+   "name": "Zaun-Touched Bolt Augmenter",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Zaun-Touched Bolt Augmenter is an on-action effect.",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  }
+ ]
+}

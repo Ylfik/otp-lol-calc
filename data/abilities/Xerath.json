@@ -1,0 +1,318 @@
+{
+ "champion": "Xerath",
+ "abilities": [
+  {
+   "name": "Mana Surge",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Arcanopulse",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Auto / Direction",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    9,
+    8,
+    7,
+    6,
+    5
+   ],
+   "cost": [
+    80,
+    90,
+    100,
+    110,
+    120
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Mana Refunded",
+     "perRank": [
+      40,
+      45,
+      50,
+      55,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "80/2 to 120/2"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      110,
+      150,
+      190,
+      230
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90% AP",
+       "pct": 90
+      }
+     ],
+     "text": "70 to 230 (+ 90% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Eye of Destruction",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "1000",
+   "cooldown": [
+    14,
+    13,
+    12,
+    11,
+    10
+   ],
+   "cost": [
+    80,
+    90,
+    100,
+    110,
+    120
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      50,
+      85,
+      120,
+      155,
+      190
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "65% AP",
+       "pct": 65
+      }
+     ],
+     "text": "50 to 190 (+ 65% AP)"
+    },
+    {
+     "label": "Increased Damage",
+     "perRank": [
+      83.35,
+      141.695,
+      200.04,
+      258.385,
+      316.73
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "65*1.667% AP",
+       "perRank": [
+        108.355
+       ]
+      }
+     ],
+     "text": "50*1.667 to 190*1.667 (+ 65*1.667% AP)"
+    },
+    {
+     "label": "Increased Slow",
+     "perRank": [
+      60,
+      65,
+      70,
+      75,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "60 to 80%"
+    }
+   ]
+  },
+  {
+   "name": "Shocking Orb",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    13,
+    12.5,
+    12,
+    11.5,
+    11
+   ],
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      100,
+      130,
+      160,
+      190
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "45% AP",
+       "pct": 45
+      }
+     ],
+     "text": "70 to 190 (+ 45% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Rite of the Arcane",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Auto / Location",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": "5000",
+   "cooldown": [
+    130,
+    115,
+    100
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Number of Recasts",
+     "perRank": [
+      4,
+      5,
+      6
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "4 to 6"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      170,
+      220,
+      270
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "45% AP",
+       "pct": 45
+      }
+     ],
+     "text": "170 to 270 (+ 45% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      680,
+      1100,
+      1620
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "45*4 to 45*6% AP",
+       "perRank": [
+        180,
+        225,
+        270
+       ]
+      }
+     ],
+     "text": "170*4 (+ 45*4 to 45*6% AP)"
+    },
+    {
+     "label": "Maximum Stacks",
+     "perRank": [
+      3,
+      4,
+      5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "3 to 5"
+    },
+    {
+     "label": "Increased Damage per Stack",
+     "perRank": [
+      20,
+      25,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "5% AP",
+       "pct": 5
+      }
+     ],
+     "text": "20 to 30 3 (+ 5% AP)"
+    },
+    {
+     "label": "Impact Distance to Reveal",
+     "perRank": [
+      175,
+      200,
+      225
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "175 to 225"
+    }
+   ]
+  }
+ ]
+}

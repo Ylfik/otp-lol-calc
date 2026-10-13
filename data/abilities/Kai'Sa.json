@@ -1,0 +1,308 @@
+{
+ "champion": "Kai'Sa",
+ "abilities": [
+  {
+   "name": "Second Skin",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Icathian Rain",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Proximity",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "600",
+   "cooldown": [
+    10,
+    9,
+    8,
+    7,
+    6
+   ],
+   "cost": 55,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage Per Missile",
+     "perRank": [
+      40,
+      55,
+      70,
+      85,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "55% bonus AD",
+       "pct": 55
+      },
+      {
+       "stat": "ap",
+       "raw": "20% AP",
+       "pct": 20
+      }
+     ],
+     "text": "40 to 100 (+ 55% bonus AD) (+ 20% AP)"
+    },
+    {
+     "label": "Reduced Damage Per Missile",
+     "perRank": [
+      10,
+      13.75,
+      17.5,
+      21.25,
+      25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "55*0.25% bonus AD",
+       "perRank": [
+        13.75
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "20*0.25% AP",
+       "perRank": [
+        5
+       ]
+      }
+     ],
+     "text": "40*0.25 to 100*0.25 (+ 55*0.25% bonus AD) (+ 20*0.25% AP)"
+    },
+    {
+     "label": "Total Single-Target Damage",
+     "perRank": [
+      90,
+      123.75,
+      157.5,
+      191.25,
+      225
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "55*(1+0.25*5)% bonus AD",
+       "perRank": [
+        123.75
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "20*(1+0.25*5)% AP",
+       "perRank": [
+        45
+       ]
+      }
+     ],
+     "text": "40*(1+0.25*5) to 100*(1+0.25*5) (+ 55*(1+0.25*5)% bonus AD) (+ 20*(1+0.25*5)% AP)"
+    },
+    {
+     "label": "Total Evolved Single-Target Damage",
+     "perRank": [
+      150,
+      206.25,
+      262.5,
+      318.75,
+      375
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "55*(1+0.25*11)% bonus AD",
+       "perRank": [
+        206.25
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "20*(1+0.25*11)% AP",
+       "perRank": [
+        75
+       ]
+      }
+     ],
+     "text": "40*(1+0.25*11) to 100*(1+0.25*11) (+ 55*(1+0.25*11)% bonus AD) (+ 20*(1+0.25*11)% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Void Seeker",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.4",
+   "range": "3000",
+   "cooldown": [
+    20,
+    18.5,
+    17,
+    15.5,
+    14
+   ],
+   "cost": [
+    55,
+    60,
+    65,
+    70,
+    75
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      30,
+      55,
+      80,
+      105,
+      130
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "130% AD",
+       "pct": 130
+      },
+      {
+       "stat": "ap",
+       "raw": "45% AP",
+       "pct": 45
+      }
+     ],
+     "text": "30 to 130 (+ 130% AD) (+ 45% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Supercharge",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "type=bonus attack speed",
+   "range": null,
+   "cooldown": [
+    16,
+    14.5,
+    13,
+    11.5,
+    10
+   ],
+   "cost": 30,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Minimum Movement Speed",
+     "perRank": [
+      55,
+      60,
+      65,
+      70,
+      75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "55 to 75%"
+    },
+    {
+     "label": "Maximum Movement Speed",
+     "perRank": [
+      110,
+      120,
+      130,
+      140,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "55*2 to 75*2%"
+    },
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      40,
+      50,
+      60,
+      70,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 80%"
+    }
+   ]
+  },
+  {
+   "name": "Killer Instinct",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Location",
+   "affects": "Self",
+   "castTime": "none",
+   "range": "2000 to 3000",
+   "cooldown": [
+    130,
+    100,
+    70
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      100,
+      150,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "90 to 180% AD",
+       "perRank": [
+        90,
+        135,
+        180
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "120% AP",
+       "pct": 120
+      }
+     ],
+     "text": "100 to 200 (+ 90 to 180% AD) (+ 120% AP)"
+    }
+   ]
+  }
+ ]
+}

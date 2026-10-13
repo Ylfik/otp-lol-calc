@@ -1,0 +1,429 @@
+{
+ "champion": "Sion",
+ "abilities": [
+  {
+   "name": "Glory in Death",
+   "slot": "I",
+   "damageType": "physical",
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Decimating Smash",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction / Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    10,
+    9,
+    8,
+    7,
+    6
+   ],
+   "cost": 45,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Maximum Base Damage Increase",
+     "perRank": [
+      200,
+      244.4444444444444,
+      266.66666666666663,
+      280,
+      288.88888888888886
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "90/30*100-100%"
+    },
+    {
+     "label": "Minimum Physical Damage",
+     "perRank": [
+      30,
+      45,
+      60,
+      75,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "40 to 80% AD",
+       "perRank": [
+        40,
+        50,
+        60,
+        70,
+        80
+       ]
+      }
+     ],
+     "text": "30 to 90 (+ 40 to 80% AD)"
+    },
+    {
+     "label": "Maximum Physical Damage",
+     "perRank": [
+      90,
+      155,
+      220,
+      285,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "40*3 to 80*3% AD",
+       "perRank": [
+        120,
+        150,
+        180,
+        210,
+        240
+       ]
+      }
+     ],
+     "text": "90 to 350 (+ 40*3 to 80*3% AD)"
+    },
+    {
+     "label": "Minimum Monster Damage",
+     "perRank": [
+      49.5,
+      74.25,
+      99,
+      123.75,
+      148.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "40*1.65 to 80*1.65% AD",
+       "perRank": [
+        66,
+        82.5,
+        99,
+        115.5,
+        132
+       ]
+      }
+     ],
+     "text": "30*1.65 to 90*1.65 (+ 40*1.65 to 80*1.65% AD)"
+    },
+    {
+     "label": "Maximum Monster Damage",
+     "perRank": [
+      148.5,
+      255.75,
+      363,
+      470.25,
+      577.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "40*1.65*3 to 80*1.65*3% AD",
+       "perRank": [
+        198,
+        247.5,
+        297,
+        346.5,
+        396
+       ]
+      }
+     ],
+     "text": "90*1.65 to 350*1.65 (+ 40*1.65*3 to 80*1.65*3% AD)"
+    },
+    {
+     "label": "Minimum Minion Damage",
+     "perRank": [
+      18,
+      27,
+      36,
+      45,
+      54
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "40*0.6 to 80*0.6% AD",
+       "perRank": [
+        24,
+        30,
+        36,
+        42,
+        48
+       ]
+      }
+     ],
+     "text": "30*0.6 to 90*0.6 (+ 40*0.6 to 80*0.6% AD)"
+    },
+    {
+     "label": "Maximum Minion Damage",
+     "perRank": [
+      54,
+      93,
+      132,
+      171,
+      210
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "40*0.6*3 to 80*0.6*3% AD",
+       "perRank": [
+        72,
+        90,
+        108,
+        126,
+        144
+       ]
+      }
+     ],
+     "text": "90*0.6 to 350*0.6 (+ 40*0.6*3 to 80*0.6*3% AD)"
+    }
+   ]
+  },
+  {
+   "name": "Soul Furnace",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    15,
+    14,
+    13,
+    12,
+    11
+   ],
+   "cost": [
+    75,
+    80,
+    85,
+    90,
+    95
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      60,
+      75,
+      90,
+      105,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "8 to 16% maximum health",
+       "perRank": [
+        8,
+        10,
+        12,
+        14,
+        16
+       ]
+      }
+     ],
+     "text": "60 to 120 (+ 40% AP) (+ 8 to 16% maximum health)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      40,
+      65,
+      90,
+      115,
+      140
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "14% of target's maximum health",
+       "pct": 14
+      }
+     ],
+     "text": "40 to 140 (+ 40% AP) (+ 14% of target's maximum health)"
+    }
+   ]
+  },
+  {
+   "name": "Roar of the Slayer",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    12,
+    11,
+    10,
+    9,
+    8
+   ],
+   "cost": [
+    35,
+    40,
+    45,
+    50,
+    55
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      65,
+      100,
+      135,
+      170,
+      205
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "55% AP",
+       "pct": 55
+      }
+     ],
+     "text": "65 to 205 (+ 55% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      40,
+      45,
+      50,
+      55,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 60%"
+    }
+   ]
+  },
+  {
+   "name": "Unstoppable Onslaught",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Direction / Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    140,
+    100,
+    60
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Minimum Physical Damage",
+     "perRank": [
+      150,
+      300,
+      450
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "60% bonus AD",
+       "pct": 60
+      }
+     ],
+     "text": "150 to 450 (+ 60% bonus AD)"
+    },
+    {
+     "label": "Maximum Physical Damage",
+     "perRank": [
+      400,
+      800,
+      1200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "120% bonus AD",
+       "pct": 120
+      }
+     ],
+     "text": "400 to 1200 (+ 120% bonus AD)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 50%"
+    }
+   ]
+  },
+  {
+   "name": "Death Surge",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": 100,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  }
+ ]
+}

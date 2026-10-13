@@ -1,0 +1,251 @@
+{
+ "champion": "Sejuani",
+ "abilities": [
+  {
+   "name": "Fury of the North",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Arctic Assault",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "650",
+   "cooldown": [
+    18,
+    16.5,
+    15,
+    13.5,
+    12
+   ],
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      90,
+      140,
+      190,
+      240,
+      290
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "75% AP",
+       "pct": 75
+      }
+     ],
+     "text": "90 to 290 (+ 75% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Winter's Wrath",
+   "slot": "W",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "1",
+   "range": "600",
+   "cooldown": [
+    9,
+    8,
+    7,
+    6,
+    5
+   ],
+   "cost": 60,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      5,
+      15,
+      25,
+      35,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "4% of her maximum health",
+       "pct": 4
+      }
+     ],
+     "text": "5 to 45 (+ 30% AP) (+ 4% of her maximum health)"
+    },
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      5,
+      25,
+      45,
+      65,
+      85
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "8% of her maximum health",
+       "pct": 8
+      }
+     ],
+     "text": "5 to 85 (+ 60% AP) (+ 8% of her maximum health)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      10,
+      40,
+      70,
+      100,
+      130
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30+60% AP",
+       "perRank": [
+        90
+       ]
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "8+4% of her maximum health",
+       "perRank": [
+        12
+       ]
+      }
+     ],
+     "text": "5+5 to 45+85 (+ 30+60% AP) (+ 8+4% of her maximum health)"
+    }
+   ]
+  },
+  {
+   "name": "Permafrost",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies, Allies, Self",
+   "castTime": "0.25",
+   "range": "cr 600",
+   "cooldown": 1.5,
+   "cost": 20,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      55,
+      105,
+      155,
+      205,
+      255
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "55 to 255 (+ 70% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Glacial Prison",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "1300",
+   "cooldown": [
+    120,
+    105,
+    90
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      125,
+      150,
+      175
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "125 to 175 (+ 40% AP)"
+    },
+    {
+     "label": "Increased Damage",
+     "perRank": [
+      200,
+      300,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "200 to 400 (+ 80% AP)"
+    }
+   ]
+  }
+ ]
+}

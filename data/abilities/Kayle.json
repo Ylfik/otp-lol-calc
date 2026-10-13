@@ -1,0 +1,253 @@
+{
+ "champion": "Kayle",
+ "abilities": [
+  {
+   "name": "Divine Ascent",
+   "slot": "I",
+   "damageType": "magic",
+   "targeting": "Passive",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Radiant Blast",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "Attack Windup Time",
+   "range": null,
+   "cooldown": [
+    12,
+    11,
+    10,
+    9,
+    8
+   ],
+   "cost": [
+    60,
+    70,
+    80,
+    90,
+    100
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      90,
+      120,
+      150,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "60% bonus AD",
+       "pct": 60
+      },
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "60 to 180 (+ 60% bonus AD) (+ 50% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      25,
+      30,
+      35,
+      40,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "25 to 45%"
+    }
+   ]
+  },
+  {
+   "name": "Celestial Blessing",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Unit / Auto",
+   "affects": "Self, Allies",
+   "castTime": "0.25",
+   "range": "cr 900",
+   "cooldown": 15,
+   "cost": [
+    70,
+    75,
+    80,
+    85,
+    90
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Heal",
+     "perRank": [
+      55,
+      80,
+      105,
+      130,
+      155
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25% AP",
+       "pct": 25
+      }
+     ],
+     "text": "55 to 155 (+ 25% AP)"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      24,
+      28,
+      32,
+      36,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "8% per 100 AP",
+       "pct": 8
+      }
+     ],
+     "text": "24 to 40% (+ 8% per 100 AP)"
+    }
+   ]
+  },
+  {
+   "name": "Starfire Spellblade",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    8,
+    7.5,
+    7,
+    6.5,
+    6
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Passive Damage",
+     "perRank": [
+      15,
+      20,
+      25,
+      30,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "10% bonus AD",
+       "pct": 10
+      },
+      {
+       "stat": "ap",
+       "raw": "20% AP",
+       "pct": 20
+      }
+     ],
+     "text": "15 to 35 (+ 10% bonus AD) (+ 20% AP)"
+    },
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      8,
+      8.5,
+      9,
+      9.5,
+      10
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "1.5% per 100 AP",
+       "pct": 1.5
+      }
+     ],
+     "text": "8 to 10% (+ 1.5% per 100 AP) of target's missing health"
+    }
+   ]
+  },
+  {
+   "name": "Divine Judgment",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Allies, Self",
+   "castTime": "0.5",
+   "range": "cr 900",
+   "cooldown": [
+    160,
+    120,
+    80
+   ],
+   "cost": [
+    100,
+    50,
+    0
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      200,
+      300,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      },
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "200 to 400 (+ 100% bonus AD) (+ 70% AP)"
+    }
+   ]
+  }
+ ]
+}

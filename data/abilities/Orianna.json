@@ -1,0 +1,238 @@
+{
+ "champion": "Orianna",
+ "abilities": [
+  {
+   "name": "Clockwork Windup",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Enemies, Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Command: Attack",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "None",
+   "range": "825",
+   "cooldown": [
+    7,
+    6,
+    5,
+    4,
+    3
+   ],
+   "cost": 35,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      90,
+      120,
+      150,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "55% AP",
+       "pct": 55
+      }
+     ],
+     "text": "60 to 180 (+ 55% AP)"
+    },
+    {
+     "label": "Reduced Damage",
+     "perRank": [
+      42,
+      63,
+      84,
+      105,
+      126
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "55*0.7% AP",
+       "perRank": [
+        38.5
+       ]
+      }
+     ],
+     "text": "60*0.7 to 180*0.7 (+ 55*0.7% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Command: Dissonance",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies, Allies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 7,
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      110,
+      150,
+      190,
+      230
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "70 to 230 (+ 80% AP)"
+    },
+    {
+     "label": "Movement Speed Modifier",
+     "perRank": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 40%"
+    }
+   ]
+  },
+  {
+   "name": "Command: Protect",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies, Allies",
+   "castTime": "none",
+   "range": "cr 1120",
+   "cooldown": 9,
+   "cost": 60,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Resistances",
+     "perRank": [
+      6,
+      12,
+      18,
+      24,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "6 to 30"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      90,
+      120,
+      150,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      }
+     ],
+     "text": "60 to 180 (+ 30% AP)"
+    },
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      55,
+      90,
+      125,
+      160,
+      195
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "45% AP",
+       "pct": 45
+      }
+     ],
+     "text": "55 to 195 (+ 45% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Command: Shockwave",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "0.5",
+   "range": null,
+   "cooldown": [
+    110,
+    95,
+    80
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      225,
+      350,
+      475
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "110% AP",
+       "pct": 110
+      }
+     ],
+     "text": "225 to 475 (+ 110% AP)"
+    }
+   ]
+  }
+ ]
+}

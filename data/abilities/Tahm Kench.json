@@ -1,0 +1,238 @@
+{
+ "champion": "Tahm Kench",
+ "abilities": [
+  {
+   "name": "An Acquired Taste",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Tongue Lash",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    7,
+    6.5,
+    6,
+    5.5,
+    5
+   ],
+   "cost": [
+    50,
+    46,
+    42,
+    38,
+    34
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      75,
+      120,
+      165,
+      210,
+      255
+     ],
+     "perLevel": {
+      "kind": "level",
+      "at1": 5,
+      "at18": 60,
+      "steps": 12
+     },
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "4% bonus health",
+       "pct": 4
+      }
+     ],
+     "text": "75 to 255 (+ 100% AP) + [ An Acquired Taste 5 to 60 for 12 (+ 1.25% AP per 100 bonus health) (+ 4% bonus health) ]"
+    },
+    {
+     "label": "Heal",
+     "perRank": [
+      10,
+      15,
+      20,
+      25,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "missingHealth",
+       "raw": "5 to 7% of missing health",
+       "perRank": [
+        5,
+        5.5,
+        6,
+        6.5,
+        7
+       ]
+      }
+     ],
+     "text": "10 to 30 (+ 5 to 7% of missing health)"
+    }
+   ]
+  },
+  {
+   "name": "Abyssal Dive",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Self, Allies",
+   "castTime": "none",
+   "range": "1000 to 1200",
+   "cooldown": [
+    21,
+    20,
+    19,
+    18,
+    17
+   ],
+   "cost": [
+    60,
+    75,
+    90,
+    105,
+    120
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      100,
+      135,
+      170,
+      205,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "150% AP",
+       "pct": 150
+      }
+     ],
+     "text": "100 to 240 (+ 150% AP)"
+    },
+    {
+     "label": "Cooldown Refund",
+     "perRank": [
+      40,
+      42.5,
+      45,
+      47.5,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 50%"
+    }
+   ]
+  },
+  {
+   "name": "Thick Skin",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": 3,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Damage Stored into Grey Health",
+     "perRank": [
+      15,
+      23,
+      31,
+      39,
+      47
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "15 to 47%"
+    },
+    {
+     "label": "Increased Damage Stored into Grey Health",
+     "perRank": [
+      42,
+      44,
+      46,
+      48,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "42 to 50%"
+    }
+   ]
+  },
+  {
+   "name": "Devour",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Unit",
+   "affects": "Self, Enemies / Allies",
+   "castTime": "0.25",
+   "range": "er 250",
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      650,
+      800,
+      950
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "650 to 950 (+ 100% AP)"
+    }
+   ]
+  }
+ ]
+}

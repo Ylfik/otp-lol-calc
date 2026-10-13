@@ -1,0 +1,307 @@
+{
+ "champion": "K'Sante",
+ "abilities": [
+  {
+   "name": "Dauntless Instinct",
+   "slot": "I",
+   "damageType": "physical",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Ntofo Strikes",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies, Self",
+   "castTime": "0.45 to 0.35 by 0.01",
+   "range": null,
+   "cooldown": null,
+   "cost": 20,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      70,
+      100,
+      130,
+      160,
+      190
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "armor",
+       "raw": "40% bonus armor",
+       "pct": 40
+      },
+      {
+       "stat": "mr",
+       "raw": "40% bonus magic resistance",
+       "pct": 40
+      }
+     ],
+     "text": "70 to 190 (+ 40% bonus armor) (+ 40% bonus magic resistance)"
+    }
+   ]
+  },
+  {
+   "name": "Path Maker",
+   "slot": "W",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    14,
+    13,
+    12,
+    11,
+    10
+   ],
+   "cost": [
+    45,
+    50,
+    55,
+    60,
+    65
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      45,
+      75,
+      105,
+      135,
+      165
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "maxHealth",
+       "raw": "8%|hp}} (+ 2% per 100 bonus armor) (+ 2% per 100 bonus magic resistance) of target's maximum health)",
+       "pct": 8
+      }
+     ],
+     "text": "45 to 165 (+ 8% (+ 2% per 100 bonus armor) (+ 2% per 100 bonus magic resistance) of target's maximum health)"
+    },
+    {
+     "label": "Monster Damage Cap",
+     "perRank": [
+      180,
+      260,
+      340,
+      420,
+      500
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "180 to 500"
+    },
+    {
+     "label": "Minimum Bonus True Damage",
+     "perRank": [
+      4.5,
+      7.5,
+      10.5,
+      13.5,
+      16.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "maxHealth",
+       "raw": "8*0.1%|hp}} (+ 2*0.1% per 100 bonus armor) (+ 2*0.1% per 100 bonus magic resistance) of target's maximum health)",
+       "perRank": [
+        0.8
+       ]
+      }
+     ],
+     "text": "45*0.1 to 165*0.1 (+ 8*0.1% (+ 2*0.1% per 100 bonus armor) (+ 2*0.1% per 100 bonus magic resistance) of target's maximum health)"
+    },
+    {
+     "label": "Maximum Bonus True Damage",
+     "perRank": [
+      36,
+      60,
+      84,
+      108,
+      132
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "maxHealth",
+       "raw": "8*0.8%|hp}} (+ 2*0.8% per 100 bonus armor) (+ 2*0.8% per 100 bonus magic resistance) of target's maximum health)",
+       "perRank": [
+        6.4
+       ]
+      }
+     ],
+     "text": "45*0.8 to 165*0.8 (+ 8*0.8% (+ 2*0.8% per 100 bonus armor) (+ 2*0.8% per 100 bonus magic resistance) of target's maximum health)"
+    },
+    {
+     "label": "Total Maximum Mixed Damage",
+     "perRank": [
+      81,
+      135,
+      189,
+      243,
+      297
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "maxHealth",
+       "raw": "8*1.8%|hp}} (+ 2*1.8% per 100 bonus armor) (+ 2*1.8% per 100 bonus magic resistance) of target's maximum health)",
+       "perRank": [
+        14.4
+       ]
+      }
+     ],
+     "text": "45*1.8 to 165*1.8 (+ 8*1.8% (+ 2*1.8% per 100 bonus armor) (+ 2*1.8% per 100 bonus magic resistance) of target's maximum health)"
+    }
+   ]
+  },
+  {
+   "name": "Footwork",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Location",
+   "affects": "Self, Allies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    10,
+    9.5,
+    9,
+    8.5,
+    8
+   ],
+   "cost": [
+    45,
+    50,
+    55,
+    60,
+    65
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      70,
+      112.5,
+      155,
+      197.5,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusHealth",
+       "raw": "13.5% bonus health",
+       "pct": 13.5
+      }
+     ],
+     "text": "70 to 240 (+ 13.5% bonus health)"
+    }
+   ]
+  },
+  {
+   "name": "All Out",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "unit",
+   "affects": "Self, Enemies",
+   "castTime": "0.4",
+   "range": "cr 300",
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      80,
+      115,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "80 to 150"
+    },
+    {
+     "label": "Strike Physical Damage",
+     "perRank": [
+      80,
+      115,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusHealth",
+       "raw": "5% of his bonus health",
+       "pct": 5
+      }
+     ],
+     "text": "80 to 150 (+ 5% of his bonus health)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      160,
+      230,
+      300
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusHealth",
+       "raw": "5% of his bonus health",
+       "pct": 5
+      }
+     ],
+     "text": "80*2 to 150*2 (+ 5% of his bonus health)"
+    },
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      40,
+      60,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 80%"
+    }
+   ]
+  }
+ ]
+}

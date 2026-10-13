@@ -1,0 +1,561 @@
+{
+ "champion": "Skarner",
+ "abilities": [
+  {
+   "name": "Threads of Vibration",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Shattered Earth",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "0.35",
+   "range": null,
+   "cooldown": [
+    8,
+    6.75,
+    5.5,
+    4.25,
+    3
+   ],
+   "cost": 30,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Bonus Physical Damage per Hit",
+     "perRank": [
+      10,
+      20,
+      30,
+      40,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "90% bonus AD",
+       "pct": 90
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "3% of his bonus health",
+       "pct": 3
+      }
+     ],
+     "text": "10 to 50 (+ 90% bonus AD) (+ 3% of his bonus health)"
+    },
+    {
+     "label": "Total Bonus Physical Damage",
+     "perRank": [
+      30,
+      60,
+      90,
+      120,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "90*3% bonus AD",
+       "perRank": [
+        270
+       ]
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "3*3% of his bonus health",
+       "perRank": [
+        9
+       ]
+      }
+     ],
+     "text": "10*3 to 50*3 (+90*3% bonus AD) (+ 3*3% of his bonus health)"
+    },
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 40%"
+    },
+    {
+     "label": "Monster Percent Health Damage Cap",
+     "perRank": [
+      150,
+      200,
+      250,
+      300,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "150 to 350"
+    }
+   ]
+  },
+  {
+   "name": "Seismic Bastion",
+   "slot": "W",
+   "damageType": "Magical",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "0.3",
+   "range": null,
+   "cooldown": [
+    10,
+    9,
+    8,
+    7,
+    6
+   ],
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      50,
+      70,
+      90,
+      110,
+      130
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "50 to 130 (+ 80% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Ixtal's Impact",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": null,
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    22,
+    21,
+    20,
+    19,
+    18
+   ],
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      30,
+      60,
+      90,
+      120,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "120% bonus AD",
+       "pct": 120
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "6% of his maximum health",
+       "pct": 6
+      }
+     ],
+     "text": "30 to 150 (+ 120% bonus AD) (+ 6% of his maximum health)"
+    }
+   ]
+  },
+  {
+   "name": "Impale",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "0.75",
+   "range": null,
+   "cooldown": [
+    120,
+    105,
+    90
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      150,
+      250,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "150 to 350 (+ 100% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Crystal Slash",
+   "slot": "Q",
+   "damageType": "Physical Magic",
+   "targeting": "Auto",
+   "affects": "Enemies, Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    3.5,
+    3.25,
+    3,
+    2.75,
+    2.5
+   ],
+   "cost": 10,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      1,
+      1.5,
+      2,
+      2.5,
+      3
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "20% AD",
+       "pct": 20
+      }
+     ],
+     "text": "1 to 3% of target's maximum health (+ 20% AD)"
+    },
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      1,
+      1.5,
+      2,
+      2.5,
+      3
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "20% AD",
+       "pct": 20
+      },
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      }
+     ],
+     "text": "1 to 3% of target's maximum health (+ 20% AD) (+ 30% AP)"
+    },
+    {
+     "label": "Total Mixed Damage",
+     "perRank": [
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "40% AD",
+       "pct": 40
+      },
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      }
+     ],
+     "text": "1*2 to 3*2% of target's maximum health (+ 40% AD) (+ 30% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Crystal Spires",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Crystalline Exoskeleton",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    13,
+    12.5,
+    12,
+    11.5,
+    11
+   ],
+   "cost": 60,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      9,
+      10,
+      11,
+      12,
+      13
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "9 to 13% maximum health (+ 80% AP)"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      8,
+      10,
+      12,
+      14,
+      16
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "8 to 16%"
+    },
+    {
+     "label": "Increased Bonus Movement Speed",
+     "perRank": [
+      16,
+      20,
+      24,
+      28,
+      32
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "8*2 to 16*2%"
+    }
+   ]
+  },
+  {
+   "name": "Fracture",
+   "slot": "E",
+   "damageType": "Physical Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 1000",
+   "cooldown": [
+    14,
+    13.5,
+    13,
+    12.5,
+    12
+   ],
+   "cost": 55,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      40,
+      65,
+      90,
+      115,
+      140
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "20% AP",
+       "pct": 20
+      }
+     ],
+     "text": "40 to 140 (+ 20% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50%"
+    },
+    {
+     "label": "Bonus Physical Damage",
+     "perRank": [
+      30,
+      50,
+      70,
+      90,
+      110
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 110"
+    }
+   ]
+  },
+  {
+   "name": "Upheaval",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      10,
+      20,
+      30,
+      40,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "90% bonus AD",
+       "pct": 90
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "3% of his bonus health",
+       "pct": 3
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "11% of target's maximum health",
+       "pct": 11
+      }
+     ],
+     "text": "10 to 50 (+ 90% bonus AD) (+ 3% of his bonus health) (+ 11% of target's maximum health)"
+    },
+    {
+     "label": "Maximum Monster Damage",
+     "perRank": [
+      160,
+      220,
+      280,
+      340,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "90% bonus AD",
+       "pct": 90
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "3% of his bonus health",
+       "pct": 3
+      }
+     ],
+     "text": "150+10 to 350+50 (+ 90% bonus AD) (+ 3% of his bonus health)"
+    }
+   ]
+  }
+ ]
+}

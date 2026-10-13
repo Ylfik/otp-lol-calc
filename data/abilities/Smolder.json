@@ -1,0 +1,331 @@
+{
+ "champion": "Smolder",
+ "abilities": [
+  {
+   "name": "Dragon Practice",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Self/Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Super Scorcher Breath",
+   "slot": "Q",
+   "damageType": "Physical True",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "100% of Smolder's windup time ({{ap|(1/)*|round=3}} at base attack speed)",
+   "range": "er {{tt| (+ 100% bonus attack range)|Always equal to Smolder's attack range}}",
+   "cooldown": [
+    5.5,
+    5,
+    4.5,
+    4,
+    3.5
+   ],
+   "cost": 25,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      60,
+      70,
+      80,
+      90,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "130% bonus AD",
+       "pct": 130
+      }
+     ],
+     "text": "60 to 100 (+ 130% bonus AD)"
+    },
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "130*0.5% bonus AD",
+       "perRank": [
+        65
+       ]
+      }
+     ],
+     "text": "60*0.5 to 100*0.5 (+ 130*0.5% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Achooo!",
+   "slot": "W",
+   "damageType": "physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.35",
+   "range": null,
+   "cooldown": [
+    14,
+    13,
+    12,
+    11,
+    10
+   ],
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Glob Physical Damage",
+     "perRank": [
+      60,
+      70,
+      80,
+      90,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "60% bonus AD",
+       "pct": 60
+      }
+     ],
+     "text": "60 to 100 (+ 60% bonus AD)"
+    },
+    {
+     "label": "Explosion Physical Damage",
+     "perRank": [
+      10,
+      35,
+      60,
+      85,
+      110
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50% bonus AD",
+       "pct": 50
+      },
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "10 to 110 (+ 50% bonus AD) (+ 80% AP)"
+    },
+    {
+     "label": "Total Physical Damage On Champion Hit",
+     "perRank": [
+      70,
+      105,
+      140,
+      175,
+      210
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "60+50% bonus AD",
+       "perRank": [
+        110
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "60+10 to 100+110 (+ 60+50% bonus AD) (+ 80% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Flap, Flap, Flap",
+   "slot": "E",
+   "damageType": "physical",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    24,
+    22,
+    20,
+    18,
+    16
+   ],
+   "cost": 65,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Physical Damage per Hit",
+     "perRank": [
+      10,
+      15,
+      20,
+      25,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "30% AD",
+       "pct": 30
+      }
+     ],
+     "text": "10 to 30 (+ 30% AD)"
+    },
+    {
+     "label": "Minimum Total Physical Damage",
+     "perRank": [
+      50,
+      75,
+      100,
+      125,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "30*5% AD",
+       "perRank": [
+        150
+       ]
+      }
+     ],
+     "text": "10*5 to 30*5 (+ 30*5% AD)"
+    }
+   ]
+  },
+  {
+   "name": "MMOOOMMMM!",
+   "slot": "R",
+   "damageType": "physical",
+   "targeting": "Direction",
+   "affects": "Enemies, Self",
+   "castTime": "0.75",
+   "range": null,
+   "cooldown": [
+    120,
+    110,
+    100
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Self Heal",
+     "perRank": [
+      100,
+      175,
+      250
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "75% bonus AD",
+       "pct": 75
+      },
+      {
+       "stat": "ap",
+       "raw": "75% AP",
+       "pct": 75
+      }
+     ],
+     "text": "100 to 250 (+ 75% bonus AD) (+ 75% AP)"
+    },
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      150,
+      250,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      },
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "150 to 350 (+ 100% bonus AD) (+ 100% AP)"
+    },
+    {
+     "label": "Increased Physical Damage",
+     "perRank": [
+      225,
+      375,
+      525
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100*1.5% bonus AD",
+       "perRank": [
+        150
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "100*1.5% AP",
+       "perRank": [
+        150
+       ]
+      }
+     ],
+     "text": "150*1.5 to 350*1.5 (+ 100*1.5% bonus AD) (+ 100*1.5% AP)"
+    }
+   ]
+  }
+ ]
+}

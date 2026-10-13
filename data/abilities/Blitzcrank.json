@@ -1,0 +1,182 @@
+{
+ "champion": "Blitzcrank",
+ "abilities": [
+  {
+   "name": "Mana Barrier",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Rocket Grab",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    20,
+    19,
+    18,
+    17,
+    16
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      110,
+      160,
+      210,
+      260,
+      310
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "120% AP",
+       "pct": 120
+      }
+     ],
+     "text": "110 to 310 (+ 120% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Overdrive",
+   "slot": "W",
+   "damageType": "magic",
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 15,
+   "cost": 75,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      30,
+      40,
+      50,
+      60,
+      70
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 70%"
+    },
+    {
+     "label": "Initial Bonus Movement Speed",
+     "perRank": [
+      60,
+      65,
+      70,
+      75,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "60 to 80%"
+    }
+   ]
+  },
+  {
+   "name": "Power Fist",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Enemy, Structure",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    7,
+    6.5,
+    6,
+    5.5,
+    5
+   ],
+   "cost": 25,
+   "costType": "mana",
+   "leveling": []
+  },
+  {
+   "name": "Static Field",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    60,
+    40,
+    20
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      50,
+      100,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30 to 50% AP",
+       "perRank": [
+        30,
+        40,
+        50
+       ]
+      },
+      {
+       "stat": "maxMana",
+       "raw": "2% maximum mana",
+       "pct": 2
+      }
+     ],
+     "text": "50 to 150 (+ 30 to 50% AP) (+ 2% maximum mana)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      275,
+      400,
+      525
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "275 to 525 (+ 100% AP)"
+    }
+   ]
+  }
+ ]
+}

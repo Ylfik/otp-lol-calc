@@ -1,0 +1,281 @@
+{
+ "champion": "Gragas",
+ "abilities": [
+  {
+   "name": "Happy Hour",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Barrel Roll",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Location / Auto",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "850",
+   "cooldown": [
+    10,
+    9,
+    8,
+    7,
+    6
+   ],
+   "cost": 80,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Minimum Magic Damage",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "80 to 240 (+ 80% AP)"
+    },
+    {
+     "label": "Maximum Magic Damage",
+     "perRank": [
+      120,
+      180,
+      240,
+      300,
+      360
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "120% AP",
+       "pct": 120
+      }
+     ],
+     "text": "80*1.5 to 240*1.5 (+ 120% AP)"
+    },
+    {
+     "label": "Minimum Minion Damage",
+     "perRank": [
+      56,
+      84,
+      112,
+      140,
+      168
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "56% AP",
+       "pct": 56
+      }
+     ],
+     "text": "80*0.7 to 240*0.7 (+ 56% AP)"
+    },
+    {
+     "label": "Maximum Minion Damage",
+     "perRank": [
+      84,
+      126,
+      168,
+      210,
+      252
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "84% AP",
+       "pct": 84
+      }
+     ],
+     "text": "80*1.5*0.7 to 240*1.5*0.7 (+ 84% AP)"
+    },
+    {
+     "label": "Minimum Slow",
+     "perRank": [
+      40,
+      45,
+      50,
+      55,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 60%"
+    },
+    {
+     "label": "Maximum Slow",
+     "perRank": [
+      60,
+      67.5,
+      75,
+      82.5,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40*1.5 to 60*1.5%"
+    }
+   ]
+  },
+  {
+   "name": "Drunken Rage",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies, Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 5,
+   "cost": 30,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Damage Reduction",
+     "perRank": [
+      10,
+      14,
+      18,
+      22,
+      26
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "4% per 100 AP",
+       "pct": 4
+      }
+     ],
+     "text": "10 to 26% (+ 4% per 100 AP)"
+    },
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      20,
+      50,
+      80,
+      110,
+      140
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "maxHealth",
+       "raw": "7% of target's maximum health",
+       "pct": 7
+      },
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "20 to 140 (+ 7% of target's maximum health) (+ 70% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Body Slam",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "600",
+   "cooldown": [
+    14,
+    13.5,
+    13,
+    12.5,
+    12
+   ],
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      125,
+      170,
+      215,
+      260
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "80 to 260 (+ 60% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Explosive Cask",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "1000",
+   "cooldown": [
+    100,
+    85,
+    70
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      200,
+      300,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "200 to 400 (+ 80% AP)"
+    }
+   ]
+  }
+ ]
+}

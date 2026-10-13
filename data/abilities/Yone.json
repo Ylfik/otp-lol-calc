@@ -1,0 +1,270 @@
+{
+ "champion": "Yone",
+ "abilities": [
+  {
+   "name": "Way of the Hunter",
+   "slot": "I",
+   "damageType": "Physical Magic",
+   "targeting": "Passive",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Mortal Steel",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "type=bonus attack speed",
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      25,
+      50,
+      75,
+      100,
+      125
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "110% AD",
+       "pct": 110
+      }
+     ],
+     "text": "25 to 125 (+ 110% AD)"
+    },
+    {
+     "label": "Critical Strike Damage",
+     "perRank": [
+      25,
+      50,
+      75,
+      100,
+      125
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "{{as|{{critical damage|*1.1|110|mod=}}|critical damage}} AD",
+       "pct": 1.1
+      }
+     ],
+     "text": "25 to 125 {{as|(+ {{as|{{critical damage|*1.1|110|mod=}}|critical damage}} AD)|ad}}"
+    }
+   ]
+  },
+  {
+   "name": "Spirit Cleave",
+   "slot": "W",
+   "damageType": "Physical Magic",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "type=bonus attack speed",
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Total Mixed Damage",
+     "perRank": [
+      10,
+      20,
+      30,
+      40,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "maxHealth",
+       "raw": "8 to 12% of target's maximum health",
+       "perRank": [
+        8,
+        9,
+        10,
+        11,
+        12
+       ]
+      }
+     ],
+     "text": "10 to 50 (+ 8 to 12% of target's maximum health)"
+    },
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      5,
+      10,
+      15,
+      20,
+      25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "maxHealth",
+       "raw": "8/2 to 12/2% of target's maximum health",
+       "perRank": [
+        4,
+        4.5,
+        5,
+        5.5,
+        6
+       ]
+      }
+     ],
+     "text": "5 to 25 (+ 8/2 to 12/2% of target's maximum health)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      5,
+      10,
+      15,
+      20,
+      25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "maxHealth",
+       "raw": "8/2 to 12/2% of target's maximum health",
+       "perRank": [
+        4,
+        4.5,
+        5,
+        5.5,
+        6
+       ]
+      }
+     ],
+     "text": "5 to 25 (+ 8/2 to 12/2% of target's maximum health)"
+    }
+   ]
+  },
+  {
+   "name": "Soul Unbound",
+   "slot": "E",
+   "damageType": "True",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "None",
+   "range": null,
+   "cooldown": [
+    22,
+    19,
+    16,
+    13,
+    10
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Damage Stored",
+     "perRank": [
+      25,
+      27.5,
+      30,
+      32.5,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "25 to 35% of damage dealt"
+    }
+   ]
+  },
+  {
+   "name": "Fate Sealed",
+   "slot": "R",
+   "damageType": "Physical Magic",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "0.75",
+   "range": null,
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Total Mixed Damage",
+     "perRank": [
+      200,
+      400,
+      600
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "80% bonus AD",
+       "pct": 80
+      }
+     ],
+     "text": "200 to 600 (+ 80% bonus AD)"
+    },
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      100,
+      200,
+      300
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "40% bonus AD",
+       "pct": 40
+      }
+     ],
+     "text": "100 to 300 (+ 40% bonus AD)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      100,
+      200,
+      300
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "40% bonus AD",
+       "pct": 40
+      }
+     ],
+     "text": "100 to 300 (+ 40% bonus AD)"
+    }
+   ]
+  }
+ ]
+}

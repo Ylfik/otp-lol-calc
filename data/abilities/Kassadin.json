@@ -1,0 +1,320 @@
+{
+ "champion": "Kassadin",
+ "abilities": [
+  {
+   "name": "Void Stone",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Null Sphere",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies, Self",
+   "castTime": "0.25",
+   "range": "cr 650",
+   "cooldown": [
+    9,
+    8.5,
+    8,
+    7.5,
+    7
+   ],
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      65,
+      95,
+      125,
+      155,
+      185
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "65 to 185 (+ 80% AP)"
+    },
+    {
+     "label": "Magic Shield Strength",
+     "perRank": [
+      80,
+      110,
+      140,
+      170,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      }
+     ],
+     "text": "80 to 200 (+ 30% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Nether Blade",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 7,
+   "cost": 1,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Increased Bonus Magic Damage",
+     "perRank": [
+      50,
+      75,
+      100,
+      125,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "50 to 150 (+ 80% AP)"
+    },
+    {
+     "label": "Mana Restored",
+     "perRank": [
+      4,
+      4.5,
+      5,
+      5.5,
+      6
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "4 to 6% of missing mana"
+    },
+    {
+     "label": "Mana Restored Against Champions",
+     "perRank": [
+      20,
+      22.5,
+      25,
+      27.5,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "4*5 to 6*5% of missing mana"
+    }
+   ]
+  },
+  {
+   "name": "Force Pulse",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    21,
+    20,
+    19,
+    18,
+    17
+   ],
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      100,
+      130,
+      160,
+      190
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "70 to 190 (+ 70% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      50,
+      55,
+      60,
+      65,
+      70
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "50 to 70%"
+    }
+   ]
+  },
+  {
+   "name": "Riftwalk",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "500",
+   "cooldown": [
+    5,
+    3.5,
+    2
+   ],
+   "cost": null,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      95,
+      110
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      },
+      {
+       "stat": "maxMana",
+       "raw": "2% maximum mana",
+       "pct": 2
+      }
+     ],
+     "text": "80 to 110 (+ 50% AP) (+ 2% maximum mana)"
+    },
+    {
+     "label": "Bonus Damage Per Stack",
+     "perRank": [
+      35,
+      45,
+      55
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "7% AP",
+       "pct": 7
+      },
+      {
+       "stat": "maxMana",
+       "raw": "1% maximum mana",
+       "pct": 1
+      }
+     ],
+     "text": "35 to 55 (+ 7% AP) (+ 1% maximum mana)"
+    },
+    {
+     "label": "Maximum Bonus Damage",
+     "perRank": [
+      140,
+      180,
+      220
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "7*4% AP",
+       "perRank": [
+        28
+       ]
+      },
+      {
+       "stat": "maxMana",
+       "raw": "4% maximum mana",
+       "pct": 4
+      }
+     ],
+     "text": "35*4 to 55*4 (+ 7*4% AP) (+ 4% maximum mana)"
+    },
+    {
+     "label": "Maximum Magic Damage",
+     "perRank": [
+      220,
+      275,
+      330
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50+7*4% AP",
+       "perRank": [
+        78
+       ]
+      },
+      {
+       "stat": "maxMana",
+       "raw": "6% maximum mana",
+       "pct": 6
+      }
+     ],
+     "text": "80+35*4 to 110+55*4 (+ 50+7*4% AP) (+ 6% maximum mana)"
+    }
+   ]
+  }
+ ]
+}

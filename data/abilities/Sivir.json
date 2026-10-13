@@ -1,0 +1,277 @@
+{
+ "champion": "Sivir",
+ "abilities": [
+  {
+   "name": "Fleet of Foot",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Boomerang Blade",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "type=bonus attack speed",
+   "range": "cr 1250",
+   "cooldown": [
+    10,
+    9.5,
+    9,
+    8.5,
+    8
+   ],
+   "cost": [
+    55,
+    60,
+    65,
+    70,
+    75
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      60,
+      85,
+      110,
+      135,
+      160
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "70% bonus AD",
+       "pct": 70
+      },
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "60 to 160 (+ 70% bonus AD) (+ 60% AP)"
+    },
+    {
+     "label": "Minimum Damage",
+     "perRank": [
+      24,
+      34,
+      44,
+      54,
+      64
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "70*0.4% bonus AD",
+       "perRank": [
+        28
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "24% AP",
+       "pct": 24
+      }
+     ],
+     "text": "60*0.4 to 160*0.4 (+ 70*0.4% bonus AD) (+ 24% AP)"
+    },
+    {
+     "label": "Total Maximum Champion Damage",
+     "perRank": [
+      120,
+      170,
+      220,
+      270,
+      320
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "70*2% bonus AD",
+       "perRank": [
+        140
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "120% AP",
+       "pct": 120
+      }
+     ],
+     "text": "60*2 to 160*2 (+ 70*2% bonus AD) (+ 120% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Ricochet",
+   "slot": "W",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 12,
+   "cost": 60,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 40%"
+    },
+    {
+     "label": "Bounce Damage",
+     "perRank": [
+      40,
+      42.5,
+      45,
+      47.5,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 50% AD"
+    },
+    {
+     "label": "Bounce Critical Damage",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "{{as|{{ap|40*/100 to 50*/100}}% AD}}"
+    },
+    {
+     "label": "Minion Bounce Damage",
+     "perRank": [
+      26,
+      27.625,
+      29.25,
+      30.875,
+      32.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40*0.65 to 50*0.65% AD"
+    },
+    {
+     "label": "Minion Bounce Critical Damage",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "{{as|{{ap|(40*0.65)*/100 to (50*0.65)*/100}}% AD}}"
+    }
+   ]
+  },
+  {
+   "name": "Spell Shield",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    24,
+    22.5,
+    21,
+    19.5,
+    18
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Heal",
+     "perRank": [
+      60,
+      65,
+      70,
+      75,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "60 to 80% AD (+ 50% AP)"
+    }
+   ]
+  },
+  {
+   "name": "On the Hunt",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Allies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Buff Duration",
+     "perRank": [
+      8,
+      10,
+      12
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "8 to 12 seconds"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      20,
+      25,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 30%"
+    }
+   ]
+  }
+ ]
+}

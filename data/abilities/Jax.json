@@ -1,0 +1,376 @@
+{
+ "champion": "Jax",
+ "abilities": [
+  {
+   "name": "Relentless Assault",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Enemies, Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Leap Strike",
+   "slot": "Q",
+   "damageType": "physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "false",
+   "range": "cr 700",
+   "cooldown": [
+    8,
+    7.5,
+    7,
+    6.5,
+    6
+   ],
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      65,
+      105,
+      145,
+      185,
+      225
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      }
+     ],
+     "text": "65 to 225 (+ 100% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Empower",
+   "slot": "W",
+   "damageType": "magic",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    7,
+    6,
+    5,
+    4,
+    3
+   ],
+   "cost": 30,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Additional Magic Damage",
+     "perRank": [
+      50,
+      85,
+      120,
+      155,
+      190
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "50 to 190 (+ 60% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Counter Strike",
+   "slot": "E",
+   "damageType": "magic",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "None",
+   "range": null,
+   "cooldown": [
+    17,
+    15,
+    13,
+    11,
+    9
+   ],
+   "cost": [
+    50,
+    60,
+    70,
+    80,
+    90
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Minimum Magic Damage",
+     "perRank": [
+      40,
+      70,
+      100,
+      130,
+      160
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "4% of target's maximum health",
+       "pct": 4
+      }
+     ],
+     "text": "40 to 160 (+ 70% AP) (+ 4% of target's maximum health)"
+    },
+    {
+     "label": "Maximum Magic Damage",
+     "perRank": [
+      80,
+      140,
+      200,
+      260,
+      320
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70*2% AP",
+       "perRank": [
+        140
+       ]
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "4*2% of target's maximum health",
+       "perRank": [
+        8
+       ]
+      }
+     ],
+     "text": "40*2 to 160*2 (+ 70*2% AP) (+ 4*2% of target's maximum health)"
+    }
+   ]
+  },
+  {
+   "name": "Grandmaster-at-Arms",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies, Self",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    110,
+    100,
+    90
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Additional Magic Damage",
+     "perRank": [
+      75,
+      130,
+      185
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "75 to 185 (+ 60% AP)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      100,
+      175,
+      250
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "100 to 250 (+ 100% AP)"
+    },
+    {
+     "label": "Bonus Armor",
+     "perRank": [
+      45,
+      60,
+      75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "40% bonus AD",
+       "pct": 40
+      }
+     ],
+     "text": "45 to 75 (+ 40% bonus AD)"
+    },
+    {
+     "label": "Bonus Magic Resistance",
+     "perRank": [
+      27,
+      36,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "40*0.6% bonus AD",
+       "perRank": [
+        24
+       ]
+      }
+     ],
+     "text": "45*0.6 to 75*0.6 (+ 40*0.6% bonus AD)"
+    },
+    {
+     "label": "Bonus Armor per Champion Hit",
+     "perRank": [
+      20,
+      25,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "10% bonus AD",
+       "pct": 10
+      }
+     ],
+     "text": "20 to 30 (+ 10% bonus AD)"
+    },
+    {
+     "label": "Bonus Magic Resistance per Champion Hit",
+     "perRank": [
+      12,
+      15,
+      18
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "10*0.6% bonus AD",
+       "perRank": [
+        6
+       ]
+      }
+     ],
+     "text": "20*0.6 to 30*0.6 (+ 10*0.6% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Grandmaster's Might",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies, Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 80,
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      100,
+      140,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "100 (+ 70% AP)"
+    },
+    {
+     "label": "Bonus Armor",
+     "perRank": [
+      30,
+      50,
+      70
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50% bonus AD",
+       "pct": 50
+      }
+     ],
+     "text": "30 (+ 50% bonus AD)"
+    },
+    {
+     "label": "Bonus Magic Resistance",
+     "perRank": [
+      30,
+      50,
+      70
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "20% AP",
+       "pct": 20
+      }
+     ],
+     "text": "30 (+ 20% AP)"
+    }
+   ]
+  }
+ ]
+}

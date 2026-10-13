@@ -1,0 +1,338 @@
+{
+ "champion": "Malphite",
+ "abilities": [
+  {
+   "name": "Granite Shield",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Seismic Shard",
+   "slot": "Q",
+   "damageType": "magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 625",
+   "cooldown": 8,
+   "cost": [
+    70,
+    75,
+    80,
+    85,
+    90
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      120,
+      170,
+      220,
+      270
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "70 to 270 (+ 60% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 40%"
+    }
+   ]
+  },
+  {
+   "name": "Thunderclap",
+   "slot": "W",
+   "damageType": "physical",
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "None",
+   "range": null,
+   "cooldown": [
+    10,
+    9.5,
+    9,
+    8.5,
+    8
+   ],
+   "cost": [
+    30,
+    35,
+    40,
+    45,
+    50
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Bonus Armor",
+     "perRank": [
+      10,
+      15,
+      20,
+      25,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 30% armor"
+    },
+    {
+     "label": "Increased Bonus Armor",
+     "perRank": [
+      30,
+      45,
+      60,
+      75,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10*3 to 30*3% armor"
+    },
+    {
+     "label": "Additional Physical Damage",
+     "perRank": [
+      30,
+      40,
+      50,
+      60,
+      70
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "20% AP",
+       "pct": 20
+      },
+      {
+       "stat": "armor",
+       "raw": "15% armor",
+       "pct": 15
+      }
+     ],
+     "text": "30 to 70 (+ 20% AP) (+ 15% armor)"
+    },
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      15,
+      25,
+      35,
+      45,
+      55
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      },
+      {
+       "stat": "armor",
+       "raw": "15% armor",
+       "pct": 15
+      }
+     ],
+     "text": "15 to 55 (+ 30% AP) (+ 15% armor)"
+    }
+   ]
+  },
+  {
+   "name": "Ground Slam",
+   "slot": "E",
+   "damageType": "magic",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "0.2419",
+   "range": null,
+   "cooldown": 7,
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      95,
+      130,
+      165,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      },
+      {
+       "stat": "armor",
+       "raw": "40% armor",
+       "pct": 40
+      }
+     ],
+     "text": "60 to 200 (+ 60% AP) (+ 40% armor)"
+    },
+    {
+     "label": "Cripple Strength",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50%"
+    }
+   ]
+  },
+  {
+   "name": "Unstoppable Force",
+   "slot": "R",
+   "damageType": "magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "cr 1000",
+   "cooldown": [
+    130,
+    115,
+    100
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      200,
+      300,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90% AP",
+       "pct": 90
+      }
+     ],
+     "text": "200 to 400 (+ 90% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Brutal Strikes",
+   "slot": "W",
+   "damageType": "physical",
+   "targeting": "Self",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": 12,
+   "cost": 25,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Bonus Armor",
+     "perRank": [
+      10,
+      15,
+      20,
+      25,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 30% armor"
+    },
+    {
+     "label": "Increased Armor",
+     "perRank": [
+      30,
+      45,
+      60,
+      75,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10*3 to 30*3% armor"
+    },
+    {
+     "label": "Bonus Physical Damage",
+     "perRank": [
+      15,
+      30,
+      45,
+      60,
+      75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "10% AP",
+       "pct": 10
+      },
+      {
+       "stat": "armor",
+       "raw": "15% armor",
+       "pct": 15
+      }
+     ],
+     "text": "15 to 75 (+ 10% AP) (+ 15% armor)"
+    }
+   ]
+  }
+ ]
+}

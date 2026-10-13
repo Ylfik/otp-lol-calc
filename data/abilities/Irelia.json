@@ -1,0 +1,224 @@
+{
+ "champion": "Irelia",
+ "abilities": [
+  {
+   "name": "Ionian Fervor",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Bladesurge",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Enemies, Self",
+   "castTime": "none",
+   "range": "cr 600",
+   "cooldown": [
+    10,
+    9,
+    8,
+    7,
+    6
+   ],
+   "cost": 15,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      5,
+      25,
+      45,
+      65,
+      85
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "70% AD",
+       "pct": 70
+      }
+     ],
+     "text": "5 to 85 (+ 70% AD)"
+    },
+    {
+     "label": "Heal",
+     "perRank": [
+      9,
+      10,
+      11,
+      12,
+      13
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "9 to 13% AD"
+    }
+   ]
+  },
+  {
+   "name": "Defiant Dance",
+   "slot": "W",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "None",
+   "range": null,
+   "cooldown": [
+    20,
+    18,
+    16,
+    14,
+    12
+   ],
+   "cost": [
+    70,
+    75,
+    80,
+    85,
+    90
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Minimum Physical Damage",
+     "perRank": [
+      10,
+      20,
+      30,
+      40,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "40% AD",
+       "pct": 40
+      },
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "10 to 50 (+ 40% AD) (+ 50% AP)"
+    },
+    {
+     "label": "Maximum Physical Damage",
+     "perRank": [
+      30,
+      60,
+      90,
+      120,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "120% AD",
+       "pct": 120
+      },
+      {
+       "stat": "ap",
+       "raw": "150% AP",
+       "pct": 150
+      }
+     ],
+     "text": "10*3 to 50*3 (+ 120% AD) (+ 150% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Flawless Duet",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "None",
+   "range": "775",
+   "cooldown": [
+    16,
+    14.5,
+    13,
+    11.5,
+    10
+   ],
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      110,
+      150,
+      190,
+      230
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "70 to 230 (+ 100% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Vanguard's Edge",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.4",
+   "range": "cr 1000",
+   "cooldown": [
+    125,
+    105,
+    85
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      125,
+      200,
+      275
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "125 to 275 (+ 70% AP)"
+    }
+   ]
+  }
+ ]
+}

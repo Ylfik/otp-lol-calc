@@ -1,0 +1,304 @@
+{
+ "champion": "Akshan",
+ "abilities": [
+  {
+   "name": "Dirty Fighting",
+   "slot": "I",
+   "damageType": "Physical Magic",
+   "targeting": "Passive",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Avengerang",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    9,
+    8,
+    7,
+    6,
+    5
+   ],
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      45,
+      75,
+      105,
+      135,
+      165
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "70% bonus AD",
+       "pct": 70
+      }
+     ],
+     "text": "45 to 165 (+ 70% bonus AD)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      90,
+      150,
+      210,
+      270,
+      330
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "70*2% bonus AD",
+       "perRank": [
+        140
+       ]
+      }
+     ],
+     "text": "45*2 to 165*2 (+ 70*2% bonus AD)"
+    },
+    {
+     "label": "Non-Champion Damage",
+     "perRank": [
+      40,
+      50,
+      60,
+      70,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 80%"
+    }
+   ]
+  },
+  {
+   "name": "Going Rogue",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "0.5",
+   "range": null,
+   "cooldown": [
+    18,
+    14,
+    10,
+    6,
+    2
+   ],
+   "cost": [
+    40,
+    30,
+    20,
+    10,
+    0
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      80,
+      90,
+      100,
+      110,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "80 to 120"
+    }
+   ]
+  },
+  {
+   "name": "Heroic Swing",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Auto / Location",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": "800",
+   "cooldown": [
+    18,
+    16.5,
+    15,
+    13.5,
+    12
+   ],
+   "cost": 70,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage per Shot",
+     "perRank": [
+      8,
+      16,
+      24,
+      32,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "25% AD",
+       "pct": 25
+      }
+     ],
+     "text": "8 to 40 (+ 25% AD) (1 + 0.3 per 100% bonus attack speed)"
+    }
+   ]
+  },
+  {
+   "name": "Comeuppance",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": "cr 2500",
+   "cooldown": [
+    100,
+    85,
+    70
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Maximum Bullets Stored",
+     "perRank": [
+      5,
+      6,
+      7
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "5 to 7"
+    },
+    {
+     "label": "Bullet Storing Interval Time",
+     "perRank": [
+      0.625,
+      0.520833,
+      0.416667
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "2.5/4 to 2.5/6 seconds"
+    },
+    {
+     "label": "Minimum Physical Damage per Bullet",
+     "perRank": [
+      25,
+      35,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "15% AD",
+       "pct": 15
+      }
+     ],
+     "text": "25 to 45 (+ 15% AD)<!-- -->"
+    },
+    {
+     "label": "Maximum Physical Damage per Bullet",
+     "perRank": [
+      75,
+      105,
+      135
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "15*3% AD",
+       "perRank": [
+        45
+       ]
+      }
+     ],
+     "text": "25*3 to 45*3 (+ 15*3% AD)<!-- -->"
+    },
+    {
+     "label": "Minimum Charged Physical Damage",
+     "perRank": [
+      125,
+      210,
+      315
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "15*5 to 15*7% AD",
+       "perRank": [
+        75,
+        90,
+        105
+       ]
+      }
+     ],
+     "text": "5*25 (+ 15*5 to 15*7% AD)<!-- -->"
+    },
+    {
+     "label": "Damage to target on 67% missing hp",
+     "perRank": [
+      375,
+      630,
+      945
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "3*5*15 to 3*7*15% AD",
+       "perRank": [
+        225,
+        270,
+        315
+       ]
+      }
+     ],
+     "text": "3*5*25 (+ 3*5*15 to 3*7*15% AD)<!-- -->"
+    }
+   ]
+  }
+ ]
+}

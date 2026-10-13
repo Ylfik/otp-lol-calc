@@ -1,0 +1,222 @@
+{
+ "champion": "Sona",
+ "abilities": [
+  {
+   "name": "Power Chord",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Hymn of Valor",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 8,
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      50,
+      85,
+      120,
+      155,
+      190
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "50 to 190 (+ 40% AP)"
+    },
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      10,
+      15,
+      20,
+      25,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "10% of Sona's AP",
+       "pct": 10
+      }
+     ],
+     "text": "10 to 30 (+ 10% of Sona's AP)"
+    }
+   ]
+  },
+  {
+   "name": "Aria of Perseverance",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self, Allies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 10,
+   "cost": [
+    80,
+    85,
+    90,
+    95,
+    100
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Heal",
+     "perRank": [
+      30,
+      45,
+      60,
+      75,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      }
+     ],
+     "text": "30 to 90 (+ 30% AP)"
+    },
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      25,
+      45,
+      65,
+      85,
+      105
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25% of Sona's AP",
+       "pct": 25
+      }
+     ],
+     "text": "25 to 105 (+ 25% of Sona's AP)"
+    },
+    {
+     "label": "Minimum Damage Mitigated",
+     "perRank": [
+      25,
+      45,
+      65,
+      85,
+      105
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "25 to 105"
+    }
+   ]
+  },
+  {
+   "name": "Song of Celerity",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self, Allies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 14,
+   "cost": 65,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      10,
+      12,
+      14,
+      16,
+      18
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "2% per 100 of Sona's AP",
+       "pct": 2
+      }
+     ],
+     "text": "10 to 18% (+ 2% per 100 of Sona's AP)"
+    }
+   ]
+  },
+  {
+   "name": "Crescendo",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    140,
+    120,
+    100
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      150,
+      250,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "150 (+ 50% AP)"
+    }
+   ]
+  }
+ ]
+}

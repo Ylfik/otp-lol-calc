@@ -1,0 +1,227 @@
+{
+ "champion": "Kindred",
+ "abilities": [
+  {
+   "name": "Mark of the Kindred",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Dance of Arrows",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "300",
+   "cooldown": 9,
+   "cost": 35,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      40,
+      65,
+      90,
+      115,
+      140
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "75% bonus AD",
+       "pct": 75
+      }
+     ],
+     "text": "40 to 140 (+ 75% bonus AD)"
+    },
+    {
+     "label": "Static Cooldown",
+     "perRank": [
+      4,
+      3.5,
+      3,
+      2.5,
+      2
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "4 to 2 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Wolf's Frenzy",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "500",
+   "cooldown": [
+    18,
+    17,
+    16,
+    15,
+    14
+   ],
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      25,
+      30,
+      35,
+      40,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "20% bonus AD",
+       "pct": 20
+      },
+      {
+       "stat": "ap",
+       "raw": "20% AP",
+       "pct": 20
+      },
+      {
+       "stat": "currentHealth",
+       "raw": "1.5% (+ 1% per Mark of the Kindred) of target's current health",
+       "pct": 1.5
+      }
+     ],
+     "text": "25 to 45 (+ 20% bonus AD) (+ 20% AP) (+ 1.5% (+ 1% per Mark of the Kindred) of target's current health)"
+    },
+    {
+     "label": "Monster Damage",
+     "perRank": [
+      37.5,
+      45,
+      52.5,
+      60,
+      67.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "20*1.5% bonus AD",
+       "perRank": [
+        30
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "20*1.5% AP",
+       "perRank": [
+        30
+       ]
+      },
+      {
+       "stat": "currentHealth",
+       "raw": "1.5*1.5% (+ 1*1.5% per Mark of the Kindred) of target's current health",
+       "perRank": [
+        2.25
+       ]
+      }
+     ],
+     "text": "25*1.5 to 45*1.5 (+ 20*1.5% bonus AD) (+ 20*1.5% AP) (+ 1.5*1.5% (+ 1*1.5% per Mark of the Kindred) of target's current health)"
+    }
+   ]
+  },
+  {
+   "name": "Mounting Dread",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "er 500;575;600;625;650;675;700;725;750",
+   "cooldown": [
+    14,
+    12.5,
+    11,
+    9.5,
+    8
+   ],
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Additional Physical Damage",
+     "perRank": [
+      80,
+      110,
+      140,
+      170,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      },
+      {
+       "stat": "missingHealth",
+       "raw": "5% (+ 0.5% per Mark of the Kindred) of target's missing health",
+       "pct": 5
+      }
+     ],
+     "text": "80 to 200 (+ 100% bonus AD) (+ 5% (+ 0.5% per Mark of the Kindred) of target's missing health)"
+    }
+   ]
+  },
+  {
+   "name": "Lamb's Respite",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self, Allies, Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    160,
+    140,
+    120
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Heal",
+     "perRank": [
+      225,
+      300,
+      375
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "225 to 375"
+    }
+   ]
+  }
+ ]
+}

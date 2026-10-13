@@ -1,0 +1,294 @@
+{
+ "champion": "Trundle",
+ "abilities": [
+  {
+   "name": "King's Tribute",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Chomp",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 3.5,
+   "cost": 20,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Physical Damage",
+     "perRank": [
+      10,
+      30,
+      50,
+      70,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "15 to 55% AD",
+       "perRank": [
+        15,
+        25,
+        35,
+        45,
+        55
+       ]
+      }
+     ],
+     "text": "10 to 90 (+ 15 to 55% AD)"
+    },
+    {
+     "label": "Bonus Attack Damage",
+     "perRank": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 40"
+    },
+    {
+     "label": "Attack Damage Reduction",
+     "perRank": [
+      10,
+      12.5,
+      15,
+      17.5,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20/2 to 40/2"
+    }
+   ]
+  },
+  {
+   "name": "Frozen Domain",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Location",
+   "affects": "Self",
+   "castTime": "none",
+   "range": "750",
+   "cooldown": [
+    18,
+    17,
+    16,
+    15,
+    14
+   ],
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      30,
+      50,
+      70,
+      90,
+      110
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 110%"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      20,
+      28,
+      36,
+      44,
+      52
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 52%"
+    }
+   ]
+  },
+  {
+   "name": "Pillar of Ice",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "1000",
+   "cooldown": [
+    21,
+    19.5,
+    18,
+    16.5,
+    15
+   ],
+   "cost": 75,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Slow",
+     "perRank": [
+      34,
+      38,
+      42,
+      46,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "34 to 50%"
+    }
+   ]
+  },
+  {
+   "name": "Subjugate",
+   "slot": "R",
+   "damageType": "magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 650",
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      20,
+      25,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "2% per 100 AP",
+       "pct": 2
+      }
+     ],
+     "text": "20 to 30% (+ 2% per 100 AP) of the target's maximum health"
+    },
+    {
+     "label": "Total Healing",
+     "perRank": [
+      20,
+      25,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "2% per 100 AP",
+       "pct": 2
+      }
+     ],
+     "text": "20 to 30% (+ 2% per 100 AP) of the target's maximum health"
+    },
+    {
+     "label": "Initial Magic Damage",
+     "perRank": [
+      10,
+      12.5,
+      15
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "1% per 100 AP",
+       "pct": 1
+      }
+     ],
+     "text": "20/2 to 30/2% (+ 1% per 100 AP) of the target's maximum health"
+    },
+    {
+     "label": "Magic Damage Per Second",
+     "perRank": [
+      2.5,
+      3.125,
+      3.75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "0.25% per 100 AP",
+       "pct": 0.25
+      }
+     ],
+     "text": "20/8 to 30/8% (+ 0.25% per 100 AP) of the target's maximum health"
+    },
+    {
+     "label": "Initial Healing",
+     "perRank": [
+      10,
+      12.5,
+      15
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "1% per 100 AP",
+       "pct": 1
+      }
+     ],
+     "text": "20/2 to 30/2% (+ 1% per 100 AP) of the target's maximum health"
+    },
+    {
+     "label": "Healing Per Second",
+     "perRank": [
+      2.5,
+      3.125,
+      3.75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "0.25% per 100 AP",
+       "pct": 0.25
+      }
+     ],
+     "text": "20/8 to 30/8% (+ 0.25% per 100 AP) of the target's maximum health"
+    }
+   ]
+  }
+ ]
+}

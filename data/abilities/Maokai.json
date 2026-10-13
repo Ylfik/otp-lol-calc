@@ -1,0 +1,373 @@
+{
+ "champion": "Maokai",
+ "abilities": [
+  {
+   "name": "Sap Magic",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Bramble Smash",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.3",
+   "range": "600",
+   "cooldown": [
+    7,
+    6.5,
+    6,
+    5.5,
+    5
+   ],
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      75,
+      120,
+      165,
+      210,
+      255
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "maxHealth",
+       "raw": "2 to 4% of the target's maximum health",
+       "perRank": [
+        2,
+        2.5,
+        3,
+        3.5,
+        4
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "75 to 255 (+ 2 to 4% of the target's maximum health) (+ 50% AP)"
+    },
+    {
+     "label": "Bonus Monster Damage",
+     "perRank": [
+      150,
+      160,
+      170,
+      180,
+      190
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "150 to 190"
+    },
+    {
+     "label": "Total Monster Damage",
+     "perRank": [
+      225,
+      280,
+      335,
+      390,
+      445
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "maxHealth",
+       "raw": "2 to 4% of the target's maximum health",
+       "perRank": [
+        2,
+        2.5,
+        3,
+        3.5,
+        4
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "75+150 to 255+190 (+ 2 to 4% of the target's maximum health) (+ 50% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Twisted Advance",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "cr 525",
+   "cooldown": [
+    14,
+    13,
+    12,
+    11,
+    10
+   ],
+   "cost": 60,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      85,
+      110,
+      135,
+      160
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "60 to 160 (+ 40% AP)"
+    },
+    {
+     "label": "Root Duration",
+     "perRank": [
+      1,
+      1.1,
+      1.2,
+      1.3,
+      1.4
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1 to 1.4 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Sapling Toss",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "1100",
+   "cooldown": [
+    18,
+    17,
+    16,
+    15,
+    14
+   ],
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      50,
+      75,
+      100,
+      125,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusHealth",
+       "raw": "5% bonus health",
+       "pct": 5
+      },
+      {
+       "stat": "ap",
+       "raw": "25% AP",
+       "pct": 25
+      }
+     ],
+     "text": "50 to 150 (+ 5% bonus health) (+ 25% AP)"
+    },
+    {
+     "label": "Magic Damage per Instance",
+     "perRank": [
+      33.333333,
+      50,
+      66.666667,
+      83.333333,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusHealth",
+       "raw": "5*2/3% bonus health",
+       "perRank": [
+        3.3333333333333335
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "25*2/3% AP",
+       "perRank": [
+        16.666666666666668
+       ]
+      }
+     ],
+     "text": "50*2/3 to 150*2/3 (+ 5*2/3% bonus health) (+ 25*2/3% AP)"
+    },
+    {
+     "label": "Total Attached Sapling Damage",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusHealth",
+       "raw": "(5*2/3)*2% bonus health",
+       "perRank": [
+        6.666666666666667
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "(25*2/3)*2% AP",
+       "perRank": [
+        33.333333333333336
+       ]
+      }
+     ],
+     "text": "(50*2/3 to 150*2/3)*2 (+ (5*2/3)*2% bonus health) (+ (25*2/3)*2% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      100,
+      150,
+      200,
+      250,
+      300
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusHealth",
+       "raw": "5*2% bonus health",
+       "perRank": [
+        10
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "25*2% AP",
+       "perRank": [
+        50
+       ]
+      }
+     ],
+     "text": "50*2 to 150*2 (+ 5*2% bonus health) (+ 25*2% AP)"
+    },
+    {
+     "label": "Minion Damage",
+     "perRank": [
+      50,
+      75,
+      100,
+      125,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusHealth",
+       "raw": "5% bonus health",
+       "pct": 5
+      },
+      {
+       "stat": "ap",
+       "raw": "25% AP",
+       "pct": 25
+      }
+     ],
+     "text": "50 to 150 (+ 5% bonus health) (+ 25% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Nature's Grasp",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.5",
+   "range": "cr 3000",
+   "cooldown": [
+    130,
+    110,
+    90
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      40,
+      50,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 60%"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      150,
+      225,
+      300
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "75% AP",
+       "pct": 75
+      }
+     ],
+     "text": "150 to 300 (+ 75% AP)"
+    }
+   ]
+  }
+ ]
+}

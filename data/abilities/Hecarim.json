@@ -1,0 +1,273 @@
+{
+ "champion": "Hecarim",
+ "abilities": [
+  {
+   "name": "Warpath",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Rampage",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": {
+    "kind": "level",
+    "at1": 4,
+    "at18": -8.75,
+    "formula": "4-0.75*(x-1)"
+   },
+   "cost": [
+    28,
+    26,
+    24,
+    22,
+    20
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      60,
+      90,
+      120,
+      150,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "90% bonus AD",
+       "pct": 90
+      }
+     ],
+     "text": "60 to 180 (+ 90% bonus AD)"
+    },
+    {
+     "label": "Minion damage",
+     "perRank": [
+      36,
+      54,
+      72,
+      90,
+      108
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "90*0.6% bonus AD",
+       "perRank": [
+        54
+       ]
+      }
+     ],
+     "text": "60*0.6 to 180*0.6 (+ 90*0.6% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Spirit of Dread",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 14,
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage Per Tick",
+     "perRank": [
+      20,
+      30,
+      40,
+      50,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "20% AP",
+       "pct": 20
+      }
+     ],
+     "text": "20 to 60 (+ 20% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "20*4% AP",
+       "perRank": [
+        80
+       ]
+      }
+     ],
+     "text": "20*4 to 60*4 (+ 20*4% AP)"
+    },
+    {
+     "label": "Bonus Resistances",
+     "perRank": [
+      5,
+      10,
+      15,
+      20,
+      25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "5 to 25"
+    },
+    {
+     "label": "Capped Healing",
+     "perRank": [
+      120,
+      150,
+      180,
+      210,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "120 to 240"
+    }
+   ]
+  },
+  {
+   "name": "Devastating Charge",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    20,
+    19,
+    18,
+    17,
+    16
+   ],
+   "cost": 60,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Minimum Physical Damage",
+     "perRank": [
+      30,
+      45,
+      60,
+      75,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50% bonus AD",
+       "pct": 50
+      }
+     ],
+     "text": "30 to 90 (+ 50% bonus AD)"
+    },
+    {
+     "label": "Maximum Physical Damage",
+     "perRank": [
+      60,
+      90,
+      120,
+      150,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50*2% bonus AD",
+       "perRank": [
+        100
+       ]
+      }
+     ],
+     "text": "30*2 to 90*2 (+ 50*2% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Onslaught of Shadows",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": null,
+   "castTime": "none",
+   "range": "300 - 1000",
+   "cooldown": [
+    140,
+    120,
+    100
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic damage",
+     "perRank": [
+      150,
+      250,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "150 to 350 (+ 100% AP)"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,161 @@
+{
+ "champion": "Zyra",
+ "abilities": [
+  {
+   "name": "Garden of Thorns",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Deadly Spines",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "800",
+   "cooldown": [
+    7,
+    6.5,
+    6,
+    5.5,
+    5
+   ],
+   "cost": 55,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      100,
+      140,
+      180,
+      220
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "65% AP",
+       "pct": 65
+      }
+     ],
+     "text": "60 to 220 (+ 65% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Rampant Growth",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Location",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": "850",
+   "cooldown": null,
+   "cost": 1,
+   "costType": "Seed",
+   "leveling": []
+  },
+  {
+   "name": "Grasping Roots",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "1100",
+   "cooldown": 11,
+   "cost": [
+    70,
+    75,
+    80,
+    85,
+    90
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      95,
+      130,
+      165,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "60 to 200 (+ 60% AP)"
+    },
+    {
+     "label": "Root Duration",
+     "perRank": [
+      1,
+      1.25,
+      1.5,
+      1.75,
+      2
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1 to 2 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Stranglethorns",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "700",
+   "cooldown": [
+    110,
+    100,
+    90
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      200,
+      300,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "200 to 400 (+ 70% AP)"
+    }
+   ]
+  }
+ ]
+}

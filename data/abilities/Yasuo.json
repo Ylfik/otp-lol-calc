@@ -1,0 +1,270 @@
+{
+ "champion": "Yasuo",
+ "abilities": [
+  {
+   "name": "Way of the Wanderer",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Steel Tempest",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      20,
+      45,
+      70,
+      95,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "105% AD",
+       "pct": 105
+      }
+     ],
+     "text": "20 to 120 (+ 105% AD)"
+    },
+    {
+     "label": "Critical Strike Damage",
+     "perRank": [
+      20,
+      45,
+      70,
+      95,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "{{as|{{critical damage|*1.05|105|mod=}}|critical damage}} AD",
+       "pct": 1.05
+      }
+     ],
+     "text": "20 to 120 {{as|(+ {{as|{{critical damage|*1.05|105|mod=}}|critical damage}} AD)|ad}}"
+    }
+   ]
+  },
+  {
+   "name": "Wind Wall",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Direction",
+   "affects": "None",
+   "castTime": "0.013",
+   "range": null,
+   "cooldown": [
+    25,
+    23,
+    21,
+    19,
+    17
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Wall Width",
+     "perRank": [
+      320,
+      390,
+      460,
+      530,
+      600
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "320 to 600"
+    }
+   ]
+  },
+  {
+   "name": "Sweeping Blade",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": "cr 475",
+   "cooldown": [
+    0.5,
+    0.4,
+    0.3,
+    0.2,
+    0.1
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      85,
+      100,
+      115,
+      130
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "20% bonus AD",
+       "pct": 20
+      },
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "70 to 130 (+ 20% bonus AD) (+ 60% AP)"
+    },
+    {
+     "label": "Bonus Damage per Stack",
+     "perRank": [
+      17.5,
+      21.25,
+      25,
+      28.75,
+      32.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "20*0.25% bonus AD",
+       "perRank": [
+        5
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "60*0.25% AP",
+       "perRank": [
+        15
+       ]
+      }
+     ],
+     "text": "70*0.25 to 130*0.25 (+ 20*0.25% bonus AD) (+ 60*0.25% AP)"
+    },
+    {
+     "label": "Maximum Bonus Damage",
+     "perRank": [
+      70,
+      85,
+      100,
+      115,
+      130
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "20% bonus AD",
+       "pct": 20
+      },
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "70 to 130 (+ 20% bonus AD) (+ 60% AP)"
+    },
+    {
+     "label": "Total Combined Damage",
+     "perRank": [
+      140,
+      170,
+      200,
+      230,
+      260
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "20*2% bonus AD",
+       "perRank": [
+        40
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "60*2% AP",
+       "perRank": [
+        120
+       ]
+      }
+     ],
+     "text": "70*2 to 130*2 (+ 20*2% bonus AD) (+ 60*2% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Last Breath",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Unit / Proximity",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "1400",
+   "cooldown": [
+    70,
+    50,
+    30
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      200,
+      350,
+      500
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "150% bonus AD",
+       "pct": 150
+      }
+     ],
+     "text": "200 (+ 150% bonus AD)"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,431 @@
+{
+ "champion": "Briar",
+ "abilities": [
+  {
+   "name": "Crimson Curse",
+   "slot": "I",
+   "damageType": "Physical",
+   "targeting": "Passive",
+   "affects": "Enemies, Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Head Rush",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Enemies, Self",
+   "castTime": "none",
+   "range": "cr 475",
+   "cooldown": [
+    13,
+    12,
+    11,
+    10,
+    9
+   ],
+   "cost": null,
+   "costType": "current Health",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      60,
+      85,
+      110,
+      135,
+      160
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "80% bonus AD",
+       "pct": 80
+      },
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "60 to 160 (+ 80% bonus AD) (+ 60% AP)"
+    },
+    {
+     "label": "Resistances Reduction",
+     "perRank": [
+      10,
+      12.5,
+      15,
+      17.5,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 20%"
+    }
+   ]
+  },
+  {
+   "name": "Blood Frenzy",
+   "slot": "W",
+   "damageType": "Physical",
+   "targeting": "Location",
+   "affects": "Enemies, Self",
+   "castTime": "none",
+   "range": "75 - 300",
+   "cooldown": [
+    14,
+    13,
+    12,
+    11,
+    10
+   ],
+   "cost": null,
+   "costType": "current Health",
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      55,
+      65,
+      75,
+      85,
+      95
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "55 to 95%"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      24,
+      33,
+      42,
+      51,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "24 to 60%"
+    },
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      60,
+      70,
+      80,
+      90,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "60 to 100% AD"
+    }
+   ]
+  },
+  {
+   "name": "Chilling Scream",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies, Self",
+   "castTime": "None",
+   "range": null,
+   "cooldown": 16,
+   "cost": null,
+   "costType": "current Health",
+   "leveling": [
+    {
+     "label": "Heal Per Tick",
+     "perRank": [
+      2.5,
+      2.875,
+      3.25,
+      3.625,
+      4
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10/4 to 16/4% maximum health"
+    },
+    {
+     "label": "Maximum Heal",
+     "perRank": [
+      10,
+      11.5,
+      13,
+      14.5,
+      16
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 16% maximum health"
+    },
+    {
+     "label": "Maximum Magic Damage",
+     "perRank": [
+      80,
+      115,
+      150,
+      185,
+      220
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      },
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "80 to 220 (+ 100% bonus AD) (+ 100% AP)"
+    },
+    {
+     "label": "Minimum Magic Damage",
+     "perRank": [
+      2,
+      2.875,
+      3.75,
+      4.625,
+      5.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100*0.025% bonus AD",
+       "perRank": [
+        2.5
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "100*0.025% AP",
+       "perRank": [
+        2.5
+       ]
+      }
+     ],
+     "text": "80*0.025 to 220*0.025 (+ 100*0.025% bonus AD) (+ 100*0.025% AP)"
+    },
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      140,
+      215,
+      290,
+      365,
+      440
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "240% bonus AD",
+       "pct": 240
+      },
+      {
+       "stat": "ap",
+       "raw": "240% AP",
+       "pct": 240
+      }
+     ],
+     "text": "140 to 440 (+ 240% bonus AD) (+ 240% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      220,
+      330,
+      440,
+      550,
+      660
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100+240% bonus AD",
+       "perRank": [
+        340
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "100+240% AP",
+       "perRank": [
+        340
+       ]
+      }
+     ],
+     "text": "80+140 to 220+440 (+ 100+240% bonus AD) (+ 100+240% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Certain Death",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies, Self",
+   "castTime": "1",
+   "range": null,
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": null,
+   "costType": "current Health",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      150,
+      250,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "130% AP",
+       "pct": 130
+      }
+     ],
+     "text": "150 to 350 (+ 130% AP)"
+    },
+    {
+     "label": "Life Steal",
+     "perRank": [
+      10,
+      15,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 20%"
+    },
+    {
+     "label": "Additional Bonus Movement Speed",
+     "perRank": [
+      10,
+      20,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 30%"
+    }
+   ]
+  },
+  {
+   "name": "Snack Attack",
+   "slot": "W",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Enemies, Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus Physical Damage",
+     "perRank": [
+      5,
+      20,
+      35,
+      50,
+      65
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "5% AD",
+       "pct": 5
+      },
+      {
+       "stat": "per100BonusAD",
+       "raw": "9% (+ 2.5% per 100 bonus AD) of the target's missing health",
+       "pct": 9
+      }
+     ],
+     "text": "5 to 65 (+ 5% AD) (+ 9% (+ 2.5% per 100 bonus AD) of the target's missing health)"
+    },
+    {
+     "label": "Heal Percentage",
+     "perRank": [
+      24,
+      28,
+      32,
+      36,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "24 to 40%"
+    },
+    {
+     "label": "Non-Champion Bonus Damage",
+     "perRank": [
+      5.5,
+      22,
+      38.5,
+      55,
+      71.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "5*1.1% AD",
+       "perRank": [
+        5.5
+       ]
+      },
+      {
+       "stat": "per100BonusAD",
+       "raw": "9*1.1% (+ 2.5*1.1% per 100 bonus AD) of the target's missing health",
+       "perRank": [
+        9.9
+       ]
+      }
+     ],
+     "text": "5*1.1 to 65*1.1 (+ 5*1.1% AD) (+ 9*1.1% (+ 2.5*1.1% per 100 bonus AD) of the target's missing health)"
+    }
+   ]
+  }
+ ]
+}

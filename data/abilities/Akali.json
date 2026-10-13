@@ -1,0 +1,469 @@
+{
+ "champion": "Akali",
+ "abilities": [
+  {
+   "name": "Assassin's Mark",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Five Point Strike",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies, Self",
+   "castTime": "0.25 to 0.175 for 4",
+   "range": "500",
+   "cooldown": 1.5,
+   "cost": [
+    110,
+    100,
+    90,
+    80,
+    70
+   ],
+   "costType": "Energy",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      45,
+      70,
+      95,
+      120,
+      145
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "65% AD",
+       "pct": 65
+      },
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "45 to 145 (+ 65% AD) (+ 60% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Twilight Shroud",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "0.25",
+   "range": "250",
+   "cooldown": [
+    20,
+    19,
+    18,
+    17,
+    16
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50%"
+    },
+    {
+     "label": "Shroud Duration",
+     "perRank": [
+      5,
+      5.5,
+      6,
+      6.5,
+      7
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "5 to 7 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Shuriken Flip",
+   "slot": "E",
+   "damageType": "magic",
+   "targeting": "Direction",
+   "affects": "Enemies, Self",
+   "castTime": "0.25",
+   "range": "er 825",
+   "cooldown": [
+    16,
+    14.5,
+    13,
+    11.5,
+    10
+   ],
+   "cost": 30,
+   "costType": "energy",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      21,
+      42,
+      63,
+      84,
+      105
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "100*0.3% AD",
+       "perRank": [
+        30
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "110*0.3% AP",
+       "perRank": [
+        33
+       ]
+      }
+     ],
+     "text": "70*0.3 to 350*0.3 (+ 100*0.3% AD) (+ 110*0.3% AP)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      49,
+      98,
+      147,
+      196,
+      245
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "100*0.7% AD",
+       "perRank": [
+        70
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "110*0.7% AP",
+       "perRank": [
+        77
+       ]
+      }
+     ],
+     "text": "70*0.7 to 350*0.7 (+ 100*0.7% AD) (+ 110*0.7% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      70,
+      140,
+      210,
+      280,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "100% AD",
+       "pct": 100
+      },
+      {
+       "stat": "ap",
+       "raw": "110% AP",
+       "pct": 110
+      }
+     ],
+     "text": "70 to 350 (+ 100% AD) (+ 110% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Perfect Execution",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 675",
+   "cooldown": [
+    120,
+    90,
+    60
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      110,
+      220,
+      330
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50% bonus AD",
+       "pct": 50
+      },
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      }
+     ],
+     "text": "110 to 330 (+ 50% bonus AD) (+ 30% AP)"
+    },
+    {
+     "label": "Minimum Magic Damage",
+     "perRank": [
+      70,
+      140,
+      210
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      }
+     ],
+     "text": "70 to 210 (+ 30% AP)"
+    },
+    {
+     "label": "Maximum Magic Damage",
+     "perRank": [
+      210,
+      420,
+      630
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30*3% AP",
+       "perRank": [
+        90
+       ]
+      }
+     ],
+     "text": "70*3 to 210*3 (+ 30*3% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Crescent Slash",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "None",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": [
+    5,
+    4.5,
+    4,
+    3.5,
+    3
+   ],
+   "cost": [
+    60,
+    55,
+    50,
+    45,
+    40
+   ],
+   "costType": "energy",
+   "leveling": [
+    {
+     "label": "Physical damage",
+     "perRank": [
+      70,
+      100,
+      130,
+      160,
+      190
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "80% bonus AD",
+       "pct": 80
+      },
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "70 (+ 80% bonus AD) (+ 60% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Mark of the Assassin",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies, Self",
+   "castTime": null,
+   "range": "600",
+   "cooldown": [
+    6,
+    5.5,
+    5,
+    4.5,
+    4
+   ],
+   "cost": 60,
+   "costType": "energy",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      35,
+      55,
+      75,
+      95,
+      115
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "35 (+ 40% AP)"
+    },
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      45,
+      70,
+      95,
+      120,
+      145
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "45 (+ 50% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      80,
+      125,
+      170,
+      215,
+      260
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90% AP",
+       "pct": 90
+      }
+     ],
+     "text": "80 (+ 90% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Shadow Dance",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": "700",
+   "cooldown": 2,
+   "cost": 1,
+   "costType": "Essence",
+   "leveling": [
+    {
+     "label": "Magic damage",
+     "perRank": [
+      50,
+      100,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "35% AP",
+       "pct": 35
+      }
+     ],
+     "text": "50 (+ 35% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Twin Disciplines",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  }
+ ]
+}

@@ -1,0 +1,240 @@
+{
+ "champion": "Fiora",
+ "abilities": [
+  {
+   "name": "Duelist's Dance",
+   "slot": "I",
+   "damageType": "True",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Lunge",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "50 - 400",
+   "cooldown": [
+    13,
+    11.25,
+    9.5,
+    7.75,
+    6
+   ],
+   "cost": 20,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      70,
+      80,
+      90,
+      100,
+      110
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "90 to 110% bonus AD",
+       "perRank": [
+        90,
+        95,
+        100,
+        105,
+        110
+       ]
+      }
+     ],
+     "text": "70 to 110 (+ 90 to 110% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Riposte",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "900",
+   "cooldown": [
+    24,
+    22,
+    20,
+    18,
+    16
+   ],
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      110,
+      150,
+      190,
+      230,
+      270
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "110 to 270 (+ 100% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Bladework",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    11,
+    10,
+    9,
+    8,
+    7
+   ],
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      50,
+      60,
+      70,
+      80,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "50 to 90%"
+    },
+    {
+     "label": "Critical damage",
+     "perRank": [
+      160,
+      170,
+      180,
+      190,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "160 to 200%"
+    }
+   ]
+  },
+  {
+   "name": "Grand Challenge",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Unit",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": "cr 500",
+   "cooldown": [
+    110,
+    90,
+    70
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Additional Bonus Movement Speed",
+     "perRank": [
+      10,
+      20,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 30%"
+    },
+    {
+     "label": "Heal per Tick",
+     "perRank": [
+      20,
+      26.25,
+      32.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "70/4% bonus AD",
+       "perRank": [
+        17.5
+       ]
+      }
+     ],
+     "text": "80/4 to 130/4 (+ 70/4% bonus AD)"
+    },
+    {
+     "label": "Heal per Second",
+     "perRank": [
+      80,
+      105,
+      130
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "70% bonus AD",
+       "pct": 70
+      }
+     ],
+     "text": "80 to 130 (+ 70% bonus AD)"
+    },
+    {
+     "label": "Maximum Heal",
+     "perRank": [
+      400,
+      525,
+      650
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "70*5% bonus AD",
+       "perRank": [
+        350
+       ]
+      }
+     ],
+     "text": "80*5 to 130*5 (+ 70*5% bonus AD)"
+    }
+   ]
+  }
+ ]
+}

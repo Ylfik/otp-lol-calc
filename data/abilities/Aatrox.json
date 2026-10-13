@@ -1,0 +1,564 @@
+{
+ "champion": "Aatrox",
+ "abilities": [
+  {
+   "name": "Deathbringer Stance",
+   "slot": "I",
+   "damageType": "magic",
+   "targeting": "Passive",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "The Darkin Blade",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.6",
+   "range": null,
+   "cooldown": [
+    14,
+    12,
+    10,
+    8,
+    6
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "First Cast Damage",
+     "perRank": [
+      10,
+      25,
+      40,
+      55,
+      70
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "60 to 90% AD",
+       "perRank": [
+        60,
+        67.5,
+        75,
+        82.5,
+        90
+       ]
+      }
+     ],
+     "text": "10 to 70 (+ 60 to 90% AD)"
+    },
+    {
+     "label": "First Sweetspot Damage",
+     "perRank": [
+      17.5,
+      43.75,
+      70,
+      96.25,
+      122.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "60*1.75 to 90*1.75% AD",
+       "perRank": [
+        105,
+        118.125,
+        131.25,
+        144.375,
+        157.5
+       ]
+      }
+     ],
+     "text": "10*1.75 to 70*1.75 (+ 60*1.75 to 90*1.75% AD)"
+    },
+    {
+     "label": "Second Cast Damage",
+     "perRank": [
+      12.5,
+      31.25,
+      50,
+      68.75,
+      87.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "60*(1+0.25) to 90*(1+0.25)% AD",
+       "perRank": [
+        75,
+        84.375,
+        93.75,
+        103.125,
+        112.5
+       ]
+      }
+     ],
+     "text": "10*(1+0.25) to 70*(1+0.25) (+ 60*(1+0.25) to 90*(1+0.25)% AD)"
+    },
+    {
+     "label": "Second Sweetspot Damage",
+     "perRank": [
+      21.875,
+      54.6875,
+      87.5,
+      120.3125,
+      153.125
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "60*(1+0.25)*1.75 to 90*(1+0.25)*1.75% AD",
+       "perRank": [
+        131.25,
+        147.65625,
+        164.0625,
+        180.46875,
+        196.875
+       ]
+      }
+     ],
+     "text": "10*(1+0.25)*1.75 to 70*(1+0.25)*1.75 (+ 60*(1+0.25)*1.75 to 90*(1+0.25)*1.75% AD)"
+    },
+    {
+     "label": "Third Cast Damage",
+     "perRank": [
+      15,
+      37.5,
+      60,
+      82.5,
+      105
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "60*(1+0.25*2) to 90*(1+0.25*2)% AD",
+       "perRank": [
+        90,
+        101.25,
+        112.5,
+        123.75,
+        135
+       ]
+      }
+     ],
+     "text": "10*(1+0.25*2) to 70*(1+0.25*2) (+ 60*(1+0.25*2) to 90*(1+0.25*2)% AD)"
+    },
+    {
+     "label": "Third Sweetspot Damage",
+     "perRank": [
+      26.25,
+      65.625,
+      105,
+      144.375,
+      183.75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "60*(1+0.25*2)*1.75 to 90*(1+0.25*2)*1.75% AD",
+       "perRank": [
+        157.5,
+        177.1875,
+        196.875,
+        216.5625,
+        236.25
+       ]
+      }
+     ],
+     "text": "10*(1+0.25*2)*1.75 to 70*(1+0.25*2)*1.75 (+ 60*(1+0.25*2)*1.75 to 90*(1+0.25*2)*1.75% AD)"
+    }
+   ]
+  },
+  {
+   "name": "Infernal Chains",
+   "slot": "W",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    18,
+    16.5,
+    15,
+    13.5,
+    12
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      30,
+      40,
+      50,
+      60,
+      70
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "40% AD",
+       "pct": 40
+      }
+     ],
+     "text": "30 to 70 (+ 40% AD)"
+    },
+    {
+     "label": "Minion Damage",
+     "perRank": [
+      60,
+      80,
+      100,
+      120,
+      140
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "80% AD",
+       "pct": 80
+      }
+     ],
+     "text": "30*2 to 70*2 (+ 80% AD)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      25,
+      27.5,
+      30,
+      32.5,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "25 to 35%"
+    },
+    {
+     "label": "Total Damage",
+     "perRank": [
+      60,
+      80,
+      100,
+      120,
+      140
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "80% AD",
+       "pct": 80
+      }
+     ],
+     "text": "30*2 to 70*2 (+ 80% AD)"
+    }
+   ]
+  },
+  {
+   "name": "Umbral Dash",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Location",
+   "affects": "Self",
+   "castTime": "none",
+   "range": "75 - 300",
+   "cooldown": [
+    9,
+    8,
+    7,
+    6,
+    5
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "World Ender",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      60,
+      80,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "60 to 100%"
+    },
+    {
+     "label": "Bonus Attack Damage",
+     "perRank": [
+      20,
+      30,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 40% AD"
+    },
+    {
+     "label": "Increased Healing",
+     "perRank": [
+      50,
+      75,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "50 to 100%"
+    }
+   ]
+  },
+  {
+   "name": "Blades of Torment",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": "1000",
+   "cooldown": [
+    12,
+    11,
+    10,
+    9,
+    8
+   ],
+   "cost": 30,
+   "costType": "health",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "70% bonus AD",
+       "pct": 70
+      }
+     ],
+     "text": "80 (+ 70% bonus AD)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30"
+    }
+   ]
+  },
+  {
+   "name": "Blood Thirst / Blood Price",
+   "slot": "W",
+   "damageType": "Physical",
+   "targeting": "Unit / Self",
+   "affects": "Unit / Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Heal",
+     "perRank": [
+      30,
+      45,
+      60,
+      75,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "missingHealth",
+       "raw": "6.5% missing health",
+       "pct": 6.5
+      }
+     ],
+     "text": "30 (+ 6.5% missing health)"
+    },
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      50,
+      85,
+      120,
+      155,
+      190
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "75% bonus AD",
+       "pct": 75
+      }
+     ],
+     "text": "50 (+ 75% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Blood Well",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Dark Flight",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Ground",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": "650",
+   "cooldown": [
+    13,
+    12.5,
+    12,
+    11.5,
+    11
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      20,
+      50,
+      80,
+      110,
+      140
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "110% AD",
+       "pct": 110
+      }
+     ],
+     "text": "20 (+ 110% AD)"
+    }
+   ]
+  },
+  {
+   "name": "Massacre",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "None",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": [
+    100,
+    85,
+    70
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      200,
+      300,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "200 (+ 100% AP)"
+    },
+    {
+     "label": "Attack Speed",
+     "perRank": [
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40"
+    }
+   ]
+  }
+ ]
+}

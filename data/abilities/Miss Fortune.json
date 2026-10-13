@@ -1,0 +1,273 @@
+{
+ "champion": "Miss Fortune",
+ "abilities": [
+  {
+   "name": "Love Tap",
+   "slot": "I",
+   "damageType": "Physical",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Double Up",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "Basic Attack Timer",
+   "range": "er 550 (+ 100% bonus attack range)",
+   "cooldown": [
+    7,
+    6,
+    5,
+    4,
+    3
+   ],
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      20,
+      45,
+      70,
+      95,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "100% AD",
+       "pct": 100
+      },
+      {
+       "stat": "ap",
+       "raw": "35% AP",
+       "pct": 35
+      }
+     ],
+     "text": "20 to 120 (+ 100% AD) (+ 35% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Strut",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 12,
+   "cost": 45,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50"
+    },
+    {
+     "label": "Increased Bonus Movement Speed",
+     "perRank": [
+      60,
+      70,
+      80,
+      90,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "60 to 100"
+    },
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      40,
+      55,
+      70,
+      85,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 100%"
+    }
+   ]
+  },
+  {
+   "name": "Make It Rain",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "1000",
+   "cooldown": [
+    18,
+    17,
+    16,
+    15,
+    14
+   ],
+   "cost": 80,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage Per Tick",
+     "perRank": [
+      8.75,
+      12.5,
+      16.25,
+      20,
+      23.75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "120/8% AP",
+       "perRank": [
+        15
+       ]
+      }
+     ],
+     "text": "70/8 to 190/8 (+ 120/8% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      70,
+      100,
+      130,
+      160,
+      190
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "120% AP",
+       "pct": 120
+      }
+     ],
+     "text": "70 to 190 (+ 120% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Bullet Time",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.001",
+   "range": null,
+   "cooldown": [
+    120,
+    110,
+    100
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage per Wave",
+     "perRank": [
+      20,
+      30,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "60% AD",
+       "pct": 60
+      },
+      {
+       "stat": "ap",
+       "raw": "25% AP",
+       "pct": 25
+      }
+     ],
+     "text": "20 to 40 (+ 60% AD) (+ 25% AP)"
+    },
+    {
+     "label": "Total Waves",
+     "perRank": [
+      14,
+      16,
+      18
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "14 to 18"
+    },
+    {
+     "label": "Maximum Total Physical Damage",
+     "perRank": [
+      280,
+      500,
+      720
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "60*14 to 60*18% AD",
+       "perRank": [
+        840,
+        960,
+        1080
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "25*14 to 25*18% AP",
+       "perRank": [
+        350,
+        400,
+        450
+       ]
+      }
+     ],
+     "text": "20*14 to 40*18 (+ 60*14 to 60*18% AD) (+ 25*14 to 25*18% AP)"
+    },
+    {
+     "label": "Wave Interval Time",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "2.85/(14 to 18) seconds"
+    }
+   ]
+  }
+ ]
+}

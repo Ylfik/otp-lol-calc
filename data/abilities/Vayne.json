@@ -1,0 +1,248 @@
+{
+ "champion": "Vayne",
+ "abilities": [
+  {
+   "name": "Night Hunter",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Tumble",
+   "slot": "Q",
+   "damageType": "physical",
+   "targeting": "Direction",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    6,
+    5,
+    4,
+    3,
+    2
+   ],
+   "cost": 30,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Physical Damage",
+     "perRank": [
+      75,
+      85,
+      95,
+      105,
+      115
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "75 to 115% AD (+ 50% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Silver Bolts",
+   "slot": "W",
+   "damageType": "true",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus True Damage",
+     "perRank": [
+      4,
+      5.5,
+      7,
+      8.5,
+      10
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "4 to 10% of target's maximum health"
+    },
+    {
+     "label": "Minimum Bonus Damage",
+     "perRank": [
+      40,
+      55,
+      70,
+      85,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 100"
+    },
+    {
+     "label": "Monster Damage",
+     "perRank": [
+      140,
+      155,
+      170,
+      185,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "140 to 200"
+    }
+   ]
+  },
+  {
+   "name": "Condemn",
+   "slot": "E",
+   "damageType": "physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "er 550",
+   "cooldown": [
+    20,
+    18,
+    16,
+    14,
+    12
+   ],
+   "cost": 90,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      50,
+      85,
+      120,
+      155,
+      190
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50% bonus AD",
+       "pct": 50
+      }
+     ],
+     "text": "50 to 190 (+ 50% bonus AD)"
+    },
+    {
+     "label": "Bonus Physical Damage",
+     "perRank": [
+      75,
+      127.5,
+      180,
+      232.5,
+      285
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "75% bonus AD",
+       "pct": 75
+      }
+     ],
+     "text": "50*1.5 to 190*1.5 (+ 75% bonus AD)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      125,
+      212.5,
+      300,
+      387.5,
+      475
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "125% bonus AD",
+       "pct": 125
+      }
+     ],
+     "text": "50*2.5 to 190*2.5 (+ 125% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Final Hour",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    100,
+    85,
+    70
+   ],
+   "cost": 80,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Effect Duration",
+     "perRank": [
+      8,
+      10,
+      12
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "8 to 12 seconds"
+    },
+    {
+     "label": "Bonus Attack Damage",
+     "perRank": [
+      35,
+      50,
+      65
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "35 to 65 3"
+    },
+    {
+     "label": "Tumble Cooldown Reduction",
+     "perRank": [
+      30,
+      40,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50%"
+    }
+   ]
+  }
+ ]
+}

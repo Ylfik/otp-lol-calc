@@ -1,0 +1,289 @@
+{
+ "champion": "Rek'Sai",
+ "abilities": [
+  {
+   "name": "Fury of the Xer'Sai",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Queen's Wrath",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    4,
+    3.5,
+    3,
+    2.5,
+    2
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus Physical Damage",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50% AD"
+    },
+    {
+     "label": "Total Bonus Physical Damage",
+     "perRank": [
+      90,
+      105,
+      120,
+      135,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30*3 to 50*3% AD"
+    }
+   ]
+  },
+  {
+   "name": "Burrow",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 4,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      5,
+      10,
+      15,
+      20,
+      25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "5 to 25"
+    }
+   ]
+  },
+  {
+   "name": "Furious Bite",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "er 225",
+   "cooldown": 6,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      70,
+      95,
+      120,
+      145,
+      170
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "60% bonus AD",
+       "perRank": [
+        60
+       ]
+      }
+     ],
+     "text": "70 to 170 (+ 60% bonus AD)"
+    },
+    {
+     "label": "True Damage",
+     "perRank": [
+      84,
+      114,
+      144,
+      174,
+      204
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "60*1.2% bonus AD",
+       "perRank": [
+        72
+       ]
+      }
+     ],
+     "text": "70*1.2 to 170*1.2 (+ 60*1.2% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Void Rush",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "1500",
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      150,
+      250,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "15 to 25% of target's maximum health",
+       "perRank": [
+        15,
+        20,
+        25
+       ]
+      }
+     ],
+     "text": "150 to 350 (+ 100% bonus AD) (+ 15 to 25% of target's maximum health)"
+    }
+   ]
+  },
+  {
+   "name": "Prey Seeker",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.125",
+   "range": "cr 1500",
+   "cooldown": 10,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      50,
+      80,
+      110,
+      140,
+      170
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "25% bonus AD",
+       "pct": 25
+      },
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "50 to 170 (+ 25% bonus AD) (+ 70% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Tunnel",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Direction",
+   "affects": "Self",
+   "castTime": "none",
+   "range": "850",
+   "cooldown": [
+    18,
+    17,
+    16,
+    15,
+    14
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Unburrow",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Self / Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      30,
+      55,
+      80,
+      105,
+      130
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "30 to 130 (+ 80% AP)"
+    }
+   ]
+  }
+ ]
+}

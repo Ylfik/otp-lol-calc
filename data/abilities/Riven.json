@@ -1,0 +1,233 @@
+{
+ "champion": "Riven",
+ "abilities": [
+  {
+   "name": "Runic Blade",
+   "slot": "I",
+   "damageType": "physical",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Broken Wings",
+   "slot": "Q",
+   "damageType": "physical",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 13,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      45,
+      75,
+      105,
+      135,
+      165
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "60 to 80% bonus AD",
+       "perRank": [
+        60,
+        65,
+        70,
+        75,
+        80
+       ]
+      }
+     ],
+     "text": "45 to 165 (+ 60 to 80% bonus AD)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      135,
+      225,
+      315,
+      405,
+      495
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "60*3 to 80*3% bonus AD",
+       "perRank": [
+        180,
+        195,
+        210,
+        225,
+        240
+       ]
+      }
+     ],
+     "text": "45*3 to 165*3 (+ 60*3 to 80*3% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Ki Burst",
+   "slot": "W",
+   "damageType": "physical",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    11,
+    10,
+    9,
+    8,
+    7
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      65,
+      95,
+      125,
+      155,
+      185
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      }
+     ],
+     "text": "65 to 185 (+ 100% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Valor",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Direction",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    10,
+    9,
+    8,
+    7,
+    6
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      70,
+      95,
+      120,
+      145,
+      170
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "110% bonus AD",
+       "pct": 110
+      }
+     ],
+     "text": "70 to 170 (+ 110% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Blade of the Exile",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    120,
+    90,
+    60
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Wind Slash",
+   "slot": "R",
+   "damageType": "physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 1100",
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Minimum Physical Damage",
+     "perRank": [
+      100,
+      150,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "55% bonus AD",
+       "pct": 55
+      }
+     ],
+     "text": "100 to 200 (+ 55% bonus AD)"
+    },
+    {
+     "label": "Maximum Physical Damage",
+     "perRank": [
+      300,
+      450,
+      600
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "55*3% bonus AD",
+       "perRank": [
+        165
+       ]
+      }
+     ],
+     "text": "100*3 to 200*3 (+ 55*3% bonus AD)"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,305 @@
+{
+ "champion": "Ahri",
+ "abilities": [
+  {
+   "name": "Essence Theft",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Orb of Deception",
+   "slot": "Q",
+   "damageType": "Magic True",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": 7,
+   "cost": [
+    55,
+    65,
+    75,
+    85,
+    95
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Damage Per Pass",
+     "perRank": [
+      35,
+      60,
+      85,
+      110,
+      135
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "35 to 135 (+ 50% AP)"
+    },
+    {
+     "label": "Total Mixed Damage",
+     "perRank": [
+      70,
+      120,
+      170,
+      220,
+      270
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50*2% AP",
+       "perRank": [
+        100
+       ]
+      }
+     ],
+     "text": "35*2 to 135*2 (+ 50*2% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Fox-Fire",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    9,
+    8,
+    7,
+    6,
+    5
+   ],
+   "cost": 30,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Primary Magic Damage",
+     "perRank": [
+      40,
+      60,
+      80,
+      100,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "40 to 120 (+ 40% AP)"
+    },
+    {
+     "label": "Subsequent Magic Damage",
+     "perRank": [
+      16,
+      24,
+      32,
+      40,
+      48
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40*0.4% AP",
+       "perRank": [
+        16
+       ]
+      }
+     ],
+     "text": "40*0.4 to 120*0.4 (+ 40*0.4% AP)"
+    },
+    {
+     "label": "Total Single-Target Damage",
+     "perRank": [
+      72,
+      108,
+      144,
+      180,
+      216
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40*(1+0.4*2)% AP",
+       "perRank": [
+        72
+       ]
+      }
+     ],
+     "text": "40*(1+0.4*2) to 120*(1+0.4*2) (+ 40*(1+0.4*2)% AP)"
+    },
+    {
+     "label": "Primary Minion Damage",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40*2% AP",
+       "perRank": [
+        80
+       ]
+      }
+     ],
+     "text": "40*2 to 120*2 (+ 40*2% AP)"
+    },
+    {
+     "label": "Subsequent Minion Damage",
+     "perRank": [
+      32,
+      48,
+      64,
+      80,
+      96
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40*2*0.4% AP",
+       "perRank": [
+        32
+       ]
+      }
+     ],
+     "text": "40*2*0.4 to 120*2*0.4 (+ 40*2*0.4% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Charm",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": 12,
+   "cost": 60,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "85% AP",
+       "pct": 85
+      }
+     ],
+     "text": "80 to 240 (+ 85% AP)"
+    },
+    {
+     "label": "Disable Duration",
+     "perRank": [
+      1.2,
+      1.35,
+      1.5,
+      1.65,
+      1.8
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1.2 to 1.8 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Spirit Rush",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "500<!--has a minimum dash range, needs to be measured-->",
+   "cooldown": [
+    140,
+    120,
+    100
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      75,
+      125,
+      175
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "35% AP",
+       "pct": 35
+      }
+     ],
+     "text": "75 to 175 (+ 35% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Vastayan Grace",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  }
+ ]
+}

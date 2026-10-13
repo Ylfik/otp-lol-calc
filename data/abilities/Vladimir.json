@@ -1,0 +1,337 @@
+{
+ "champion": "Vladimir",
+ "abilities": [
+  {
+   "name": "Crimson Pact",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Transfusion",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Self, Enemies",
+   "castTime": "0.25",
+   "range": "cr 600",
+   "cooldown": [
+    9,
+    7.9,
+    6.8,
+    5.7,
+    4.6
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      100,
+      120,
+      140,
+      160
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "80 to 160 (+ 60% AP)"
+    },
+    {
+     "label": "Heal",
+     "perRank": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "35% AP",
+       "pct": 35
+      }
+     ],
+     "text": "20 to 40 (+ 35% AP)"
+    },
+    {
+     "label": "Increased Damage",
+     "perRank": [
+      148,
+      185,
+      222,
+      259,
+      296
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "111% AP",
+       "pct": 111
+      }
+     ],
+     "text": "80*1.85 to 160*1.85 (+ 111% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Sanguine Pool",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    28,
+    25,
+    22,
+    19,
+    16
+   ],
+   "cost": null,
+   "costType": "current health",
+   "leveling": [
+    {
+     "label": "Magic Damage Per Tick",
+     "perRank": [
+      20,
+      33.75,
+      47.5,
+      61.25,
+      75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusHealth",
+       "raw": "3.75% bonus health",
+       "pct": 3.75
+      }
+     ],
+     "text": "20 to 75 (+ 3.75% bonus health)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      80,
+      135,
+      190,
+      245,
+      300
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusHealth",
+       "raw": "15% bonus health",
+       "pct": 15
+      }
+     ],
+     "text": "20*4 to 75*4 (+ 15% bonus health)"
+    }
+   ]
+  },
+  {
+   "name": "Tides of Blood",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    13,
+    11,
+    9,
+    7,
+    5
+   ],
+   "cost": {
+    "kind": "level",
+    "at1": 2,
+    "at18": 8,
+    "steps": null
+   },
+   "costType": "maximum health",
+   "leveling": [
+    {
+     "label": "Minimum Magic Damage",
+     "perRank": [
+      30,
+      45,
+      60,
+      75,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "maxHealth",
+       "raw": "1.5% maximum health",
+       "pct": 1.5
+      },
+      {
+       "stat": "ap",
+       "raw": "35% AP",
+       "pct": 35
+      }
+     ],
+     "text": "30 to 90 (+ 1.5% maximum health) (+ 35% AP)"
+    },
+    {
+     "label": "Maximum Magic Damage",
+     "perRank": [
+      60,
+      90,
+      120,
+      150,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "maxHealth",
+       "raw": "6% maximum health",
+       "pct": 6
+      },
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "60 to 180 (+ 6% maximum health) (+ 80% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      40,
+      45,
+      50,
+      55,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 60%"
+    }
+   ]
+  },
+  {
+   "name": "Hemoplague",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": "625",
+   "cooldown": 120,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Magic damage",
+     "perRank": [
+      150,
+      250,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "150 to 350 (+ 70% AP)"
+    },
+    {
+     "label": "Heal",
+     "perRank": [
+      150,
+      250,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "150 to 350 (+ 70% AP)"
+    },
+    {
+     "label": "Reduced Heal",
+     "perRank": [
+      60,
+      100,
+      140
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70*0.4% AP",
+       "perRank": [
+        28
+       ]
+      }
+     ],
+     "text": "150*0.4 to 350*0.4 (+ 70*0.4% AP)"
+    },
+    {
+     "label": "Maximum Total Heal",
+     "perRank": [
+      390,
+      650,
+      910
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70*(1+0.4*4)% AP",
+       "perRank": [
+        182
+       ]
+      }
+     ],
+     "text": "150*(1+0.4*4) to 350*(1+0.4*4) (+ 70*(1+0.4*4)% AP)"
+    }
+   ]
+  }
+ ]
+}

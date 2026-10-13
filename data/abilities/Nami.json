@@ -1,0 +1,266 @@
+{
+ "champion": "Nami",
+ "abilities": [
+  {
+   "name": "Surging Tides",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Allies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Aqua Prison",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "850",
+   "cooldown": [
+    12,
+    11,
+    10,
+    9,
+    8
+   ],
+   "cost": 60,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      90,
+      145,
+      200,
+      255,
+      310
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "90 to 310 (+ 50% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Ebb and Flow",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies, Allies",
+   "castTime": "0.25",
+   "range": "cr 725",
+   "cooldown": 10,
+   "cost": [
+    70,
+    75,
+    80,
+    85,
+    90
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Heal",
+     "perRank": [
+      55,
+      80,
+      105,
+      130,
+      155
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "55 to 155 (+ 40% AP)"
+    },
+    {
+     "label": "Minimum Heal",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40*(1-0.2*2)% AP",
+       "perRank": [
+        24
+       ]
+      }
+     ],
+     "text": "(55 to 155)*(1-0.2*2) (+ 40*(1-0.2*2)% AP)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      95,
+      130,
+      165,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "60 to 200 (+ 50% AP)"
+    },
+    {
+     "label": "Minimum Damage",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50*(1-0.2*2)% AP",
+       "perRank": [
+        30
+       ]
+      }
+     ],
+     "text": "(60 to 200)*(1-0.2*2) (+ 50*(1-0.2*2)% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Tidecaller's Blessing",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Self, Allies",
+   "castTime": "none",
+   "range": "cr 800",
+   "cooldown": 11,
+   "cost": [
+    55,
+    60,
+    65,
+    70,
+    75
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Bonus Magic Damage Per Hit",
+     "perRank": [
+      20,
+      35,
+      50,
+      65,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "20% AP",
+       "pct": 20
+      }
+     ],
+     "text": "20 to 80 (+ 20% AP)"
+    },
+    {
+     "label": "Total Bonus Magic Damage",
+     "perRank": [
+      60,
+      105,
+      150,
+      195,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "20*3 to 80*3 (+ 60% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      15,
+      20,
+      25,
+      30,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "5% per 100 AP",
+       "pct": 5
+      }
+     ],
+     "text": "15 to 35% (+ 5% per 100 AP)"
+    }
+   ]
+  },
+  {
+   "name": "Tidal Wave",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.5",
+   "range": "2750",
+   "cooldown": [
+    120,
+    110,
+    100
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      150,
+      250,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "150 (+ 60% AP)"
+    }
+   ]
+  }
+ ]
+}

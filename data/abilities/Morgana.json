@@ -1,0 +1,398 @@
+{
+ "champion": "Morgana",
+ "abilities": [
+  {
+   "name": "Soul Siphon",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Dark Binding",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": 10,
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      135,
+      190,
+      245,
+      300
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90% AP",
+       "pct": 90
+      }
+     ],
+     "text": "80 (+ 90% AP)"
+    },
+    {
+     "label": "Root Duration",
+     "perRank": [
+      2,
+      2.25,
+      2.5,
+      2.75,
+      3
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "2 to 3 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Tormented Shadow",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "900",
+   "cooldown": 12,
+   "cost": [
+    70,
+    80,
+    90,
+    100,
+    110
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Minimum Damage Per Tick",
+     "perRank": [
+      9,
+      15.5,
+      22,
+      28.5,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "10% AP",
+       "pct": 10
+      }
+     ],
+     "text": "9 to 35 (+ 10% AP)"
+    },
+    {
+     "label": "Maximum Damage Per Tick",
+     "perRank": [
+      18,
+      31,
+      44,
+      57,
+      70
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "10*2% AP",
+       "perRank": [
+        20
+       ]
+      }
+     ],
+     "text": "9*2 to 35*2 (+ 10*2% AP)"
+    },
+    {
+     "label": "Minimum Total Damage",
+     "perRank": [
+      90,
+      155,
+      220,
+      285,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "10*10% AP",
+       "perRank": [
+        100
+       ]
+      }
+     ],
+     "text": "9*10 to 35*10 (+ 10*10% AP)"
+    },
+    {
+     "label": "Maximum Total Damage",
+     "perRank": [
+      180,
+      310,
+      440,
+      570,
+      700
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "10*10*2% AP",
+       "perRank": [
+        200
+       ]
+      }
+     ],
+     "text": "9*10*2 to 35*10*2 (+ 10*10*2% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Black Shield",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Unit",
+   "affects": "Self, Allies",
+   "castTime": "none",
+   "range": "800",
+   "cooldown": [
+    26,
+    23.5,
+    21,
+    18.5,
+    16
+   ],
+   "cost": 80,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Shield Strength",
+     "perRank": [
+      100,
+      155,
+      210,
+      265,
+      320
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "100 to 320 (+ 70% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Soul Shackles",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Proximity",
+   "affects": "Enemies",
+   "castTime": "0.35",
+   "range": null,
+   "cooldown": [
+    120,
+    110,
+    100
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      200,
+      275,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "200 to 350 (+ 80% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      400,
+      550,
+      700
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80*2% AP",
+       "perRank": [
+        160
+       ]
+      }
+     ],
+     "text": "200*2 to 350*2 (+ 80*2% AP)"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      20,
+      40,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 60%"
+    },
+    {
+     "label": "Stun Duration",
+     "perRank": [
+      1.5,
+      1.75,
+      2
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1.5 to 2 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Tormented Soil",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Ground",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": "900",
+   "cooldown": 12,
+   "cost": [
+    70,
+    85,
+    100,
+    115,
+    130
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Minimum Damage Per Half Second",
+     "perRank": [
+      8,
+      16,
+      24,
+      32,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "11% AP",
+       "pct": 11
+      }
+     ],
+     "text": "8 (+ 11% AP)"
+    },
+    {
+     "label": "Maximum Damage Per Half Second",
+     "perRank": [
+      12,
+      24,
+      36,
+      48,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "16.5% AP",
+       "pct": 16.5
+      }
+     ],
+     "text": "12 (+ 16.5% AP)"
+    },
+    {
+     "label": "Minimum Total Damage",
+     "perRank": [
+      80,
+      160,
+      240,
+      320,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "110% AP",
+       "pct": 110
+      }
+     ],
+     "text": "80 (+ 110% AP)"
+    },
+    {
+     "label": "Maximum Total Damage",
+     "perRank": [
+      120,
+      240,
+      360,
+      480,
+      600
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "165% AP",
+       "pct": 165
+      }
+     ],
+     "text": "120 (+ 165% AP)"
+    }
+   ]
+  }
+ ]
+}

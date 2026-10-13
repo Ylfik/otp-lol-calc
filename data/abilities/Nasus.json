@@ -1,0 +1,320 @@
+{
+ "champion": "Nasus",
+ "abilities": [
+  {
+   "name": "Soul Eater",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Siphoning Strike",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    7.5,
+    6.5,
+    5.5,
+    4.5,
+    3.5
+   ],
+   "cost": 20,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Physical Damage",
+     "perRank": [
+      30,
+      50,
+      70,
+      90,
+      110
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": null,
+       "raw": "100% of ''Siphoning Strike'' stacks",
+       "pct": 100
+      }
+     ],
+     "text": "30 to 110 (+ 100% of ''Siphoning Strike'' stacks)"
+    }
+   ]
+  },
+  {
+   "name": "Wither",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 700",
+   "cooldown": [
+    15,
+    14,
+    13,
+    12,
+    11
+   ],
+   "cost": 80,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Maximum Slow",
+     "perRank": [
+      47,
+      59,
+      71,
+      83,
+      95
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "35+3*4 to 35+15*4%"
+    },
+    {
+     "label": "Additional Slow Per Second",
+     "perRank": [
+      3,
+      6,
+      9,
+      12,
+      15
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "3 to 15%"
+    },
+    {
+     "label": "Maximum Cripple",
+     "perRank": [
+      35.25,
+      44.25,
+      53.25,
+      62.25,
+      71.25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "(35+3*4)*0.75 to (35+15*4)*0.75%"
+    },
+    {
+     "label": "Additional Cripple Per Second",
+     "perRank": [
+      2.25,
+      4.5,
+      6.75,
+      9,
+      11.25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "3*0.75 to 15*0.75%"
+    }
+   ]
+  },
+  {
+   "name": "Spirit Fire",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "650",
+   "cooldown": 12,
+   "cost": [
+    60,
+    70,
+    80,
+    90,
+    100
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      50,
+      80,
+      110,
+      140,
+      170
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "50 to 170 (+ 60% AP)"
+    },
+    {
+     "label": "Magic Damage Per Tick",
+     "perRank": [
+      10,
+      16,
+      22,
+      28,
+      34
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "12% AP",
+       "pct": 12
+      }
+     ],
+     "text": "10 to 34 (+ 12% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      100,
+      160,
+      220,
+      280,
+      340
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "120% AP",
+       "pct": 120
+      }
+     ],
+     "text": "10*10 to 34*10 (+ 120% AP)"
+    },
+    {
+     "label": "Armor Reduction",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50% of target's armor"
+    }
+   ]
+  },
+  {
+   "name": "Fury of the Sands",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "0.2",
+   "range": null,
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Health",
+     "perRank": [
+      300,
+      450,
+      600
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "300 to 600"
+    },
+    {
+     "label": "Bonus Resistances",
+     "perRank": [
+      40,
+      55,
+      70
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 70"
+    },
+    {
+     "label": "Increased Size",
+     "perRank": [
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 40%"
+    },
+    {
+     "label": "Magic Damage Per Tick",
+     "perRank": [
+      1.5,
+      2,
+      2.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "0.5% per 100 AP",
+       "pct": 0.5
+      }
+     ],
+     "text": "1.5 to 2.5% (+ 0.5% per 100 AP) of target's maximum health"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      45,
+      60,
+      75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "0.5*30% per 100 AP",
+       "perRank": [
+        15
+       ]
+      }
+     ],
+     "text": "1.5*30 to 2.5*30% (+ 0.5*30% per 100 AP) of target's maximum health"
+    }
+   ]
+  }
+ ]
+}

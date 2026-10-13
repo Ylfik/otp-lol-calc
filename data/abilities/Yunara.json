@@ -1,0 +1,327 @@
+{
+ "champion": "Yunara",
+ "abilities": [
+  {
+   "name": "Vow of the First Lands",
+   "slot": "I",
+   "damageType": "magic",
+   "targeting": "Passive",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Cultivation of Spirit",
+   "slot": "Q",
+   "damageType": "Physical Magic",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": null,
+   "cost": 30,
+   "costType": "Mana + 8 Unleash Stacks",
+   "leveling": [
+    {
+     "label": "Passive Bonus Magic Damage",
+     "perRank": [
+      5,
+      10,
+      15,
+      20,
+      25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "20% AP",
+       "pct": 20
+      }
+     ],
+     "text": "5 to 25 (+ 20% AP)"
+    },
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      20,
+      30,
+      40,
+      50,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 60%"
+    },
+    {
+     "label": "Active Bonus Magic Damage",
+     "perRank": [
+      5,
+      10,
+      15,
+      20,
+      25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "20% AP",
+       "pct": 20
+      }
+     ],
+     "text": "5 to 25 (+ 20% AP)"
+    },
+    {
+     "label": "Combined Bonus Magic Damage",
+     "perRank": [
+      10,
+      20,
+      30,
+      40,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "5+5 to 25+25 (+ 40% AP)"
+    },
+    {
+     "label": "Active Increased Minion Damage",
+     "perRank": [
+      12.5,
+      25,
+      37.5,
+      50,
+      62.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "5*2.5 to 25*2.5 (+ 50% AP)"
+    },
+    {
+     "label": "Combined Increased Minion Damage",
+     "perRank": [
+      25,
+      50,
+      75,
+      100,
+      125
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "(5+5)*2.5 to (25+25)*2.5 (+ 100% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Arc of Judgment",
+   "slot": "W",
+   "damageType": "magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.45 to 0.225 for 11",
+   "range": null,
+   "cooldown": 10,
+   "cost": 60,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Initial Magic Damage",
+     "perRank": [
+      55,
+      95,
+      135,
+      175,
+      215
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "85% bonus AD",
+       "pct": 85
+      },
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "55 to 215 (+ 85% bonus AD) (+ 50% AP)"
+    },
+    {
+     "label": "Linger Magic Damage per Tick",
+     "perRank": [
+      8.25,
+      14.25,
+      20.25,
+      26.25,
+      32.25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "(85*0.6)/4% bonus AD",
+       "perRank": [
+        12.75
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "(50*0.6)/4% AP",
+       "perRank": [
+        7.5
+       ]
+      }
+     ],
+     "text": "(55*0.6)/4 to (215*0.6)/4 (+ (85*0.6)/4% bonus AD) (+ (50*0.6)/4% AP)"
+    },
+    {
+     "label": "Total Expanded Damage",
+     "perRank": [
+      33,
+      57,
+      81,
+      105,
+      129
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "((85*0.6)/4)*4% bonus AD",
+       "perRank": [
+        51
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "((50*0.6)/4)*4% AP",
+       "perRank": [
+        30
+       ]
+      }
+     ],
+     "text": "((55*0.6)/4)*4 to ((215*0.6)/4)*4 (+ ((85*0.6)/4)*4% bonus AD) (+ ((50*0.6)/4)*4% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Kanmei's Steps",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 9,
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Move Speed",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50%"
+    },
+    {
+     "label": "Increased Bonus Move Speed",
+     "perRank": [
+      45,
+      52.5,
+      60,
+      67.5,
+      75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30*1.5 to 50*1.5%"
+    }
+   ]
+  },
+  {
+   "name": "Transcend One's Self",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    100,
+    90,
+    80
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "20px|border|link= Arc of Ruin Base Damage",
+     "perRank": [
+      160,
+      320,
+      480
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "160 to 480"
+    },
+    {
+     "label": "20px|border|link= Untouchable Shadow Dash Speed",
+     "perRank": [
+      1350,
+      1500,
+      1650
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1350 to 1650"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,308 @@
+{
+ "champion": "Olaf",
+ "abilities": [
+  {
+   "name": "Berserker Rage",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Undertow",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 425",
+   "cooldown": 9,
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      70,
+      120,
+      170,
+      220,
+      270
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      }
+     ],
+     "text": "70 to 270 (+ 100% bonus AD)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50%"
+    },
+    {
+     "label": "Monster Bonus Physical Damage",
+     "perRank": [
+      20,
+      45,
+      70,
+      95,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 120"
+    },
+    {
+     "label": "Total Monster Damage",
+     "perRank": [
+      90,
+      165,
+      240,
+      315,
+      390
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      }
+     ],
+     "text": "70+20 to 270+120 (+ 100% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Tough It Out",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    16,
+    15,
+    14,
+    13,
+    12
+   ],
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      40,
+      50,
+      60,
+      70,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 80%"
+    },
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      10,
+      40,
+      70,
+      100,
+      130
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "missingHealth",
+       "raw": "17.5% missing health",
+       "pct": 17.5
+      }
+     ],
+     "text": "10 to 130 (+ 17.5% missing health)"
+    }
+   ]
+  },
+  {
+   "name": "Reckless Swing",
+   "slot": "E",
+   "damageType": "True",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25 to 0.175",
+   "range": "cr 325",
+   "cooldown": [
+    11,
+    10,
+    9,
+    8,
+    7
+   ],
+   "cost": [
+    28,
+    46,
+    64,
+    82,
+    100
+   ],
+   "costType": "Health",
+   "leveling": [
+    {
+     "label": "True Damage",
+     "perRank": [
+      70,
+      115,
+      160,
+      205,
+      250
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "50% AD",
+       "pct": 50
+      }
+     ],
+     "text": "70 to 250 (+ 50% AD)"
+    }
+   ]
+  },
+  {
+   "name": "Ragnarok",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    100,
+    90,
+    80
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Bonus Resistances",
+     "perRank": [
+      10,
+      15,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 20"
+    },
+    {
+     "label": "Bonus Attack Damage",
+     "perRank": [
+      10,
+      20,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "25% AD",
+       "pct": 25
+      }
+     ],
+     "text": "10 to 30 (+ 25% AD)"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      20,
+      45,
+      70
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20%"
+    }
+   ]
+  },
+  {
+   "name": "Vicious Strikes",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 16,
+   "cost": 30,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      50,
+      60,
+      70,
+      80,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "50 to 90%"
+    },
+    {
+     "label": "Life Steal",
+     "perRank": [
+      16,
+      18,
+      20,
+      22,
+      24
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "16 to 24%"
+    }
+   ]
+  }
+ ]
+}

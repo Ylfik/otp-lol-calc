@@ -1,0 +1,18 @@
+{
+ "champion": "Shadow Assassin",
+ "abilities": [
+  {
+   "name": "The Darkin Scythe",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  }
+ ]
+}

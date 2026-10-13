@@ -1,0 +1,261 @@
+{
+ "champion": "Talon",
+ "abilities": [
+  {
+   "name": "Blade's End",
+   "slot": "I",
+   "damageType": "Physical",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Noxian Diplomacy",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "{{dv|None|{{tt|100% of Talon's windup time ({{ap|(1/)*|round=3}} at base attack speed)|Close dash attack}}}}",
+   "range": "cr 575",
+   "cooldown": [
+    8,
+    7.5,
+    7,
+    6.5,
+    6
+   ],
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      65,
+      85,
+      105,
+      125,
+      145
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      }
+     ],
+     "text": "65 to 145 (+ 100% bonus AD)"
+    },
+    {
+     "label": "Critical Physical Damage",
+     "perRank": [
+      97.5,
+      127.5,
+      157.5,
+      187.5,
+      217.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100*1.5% bonus AD",
+       "perRank": [
+        150
+       ]
+      }
+     ],
+     "text": "65*1.5 to 145*1.5 (+ 100*1.5% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Rake",
+   "slot": "W",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    9,
+    8.5,
+    8,
+    7.5,
+    7
+   ],
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      50,
+      60,
+      70,
+      80,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "40% bonus AD",
+       "pct": 40
+      }
+     ],
+     "text": "50 to 90 (+ 40% bonus AD)"
+    },
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      60,
+      90,
+      120,
+      150,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "90% bonus AD",
+       "pct": 90
+      }
+     ],
+     "text": "60 to 180 (+ 90% bonus AD)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      110,
+      150,
+      190,
+      230,
+      270
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "40+90% bonus AD",
+       "perRank": [
+        130
+       ]
+      }
+     ],
+     "text": "50+60 to 90+180 (+ 40+90% bonus AD)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      40,
+      45,
+      50,
+      55,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 60%"
+    }
+   ]
+  },
+  {
+   "name": "Assassin's Path",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Location",
+   "affects": "Self",
+   "castTime": "none",
+   "range": "725",
+   "cooldown": 2,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Shadow Assault",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    100,
+    80,
+    60
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      90,
+      135,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      }
+     ],
+     "text": "90 to 180 (+ 100% bonus AD)"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      40,
+      55,
+      70
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 70%"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      180,
+      270,
+      360
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "200% bonus AD",
+       "pct": 200
+      }
+     ],
+     "text": "90*2 to 180*2 (+ 200% bonus AD)"
+    }
+   ]
+  }
+ ]
+}

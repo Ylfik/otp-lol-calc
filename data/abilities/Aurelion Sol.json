@@ -1,0 +1,613 @@
+{
+ "champion": "Aurelion Sol",
+ "abilities": [
+  {
+   "name": "Cosmic Creator",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Breath of Light",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 3,
+   "cost": [
+    30,
+    35,
+    40,
+    45,
+    50
+   ],
+   "costType": "Mana (+ 30*0.25 to 50*0.25 Mana per 0.25 seconds)",
+   "leveling": [
+    {
+     "label": "Magic Damage per Tick",
+     "perRank": [
+      5.625,
+      7.5,
+      9.375,
+      11.25,
+      13.125
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "55/8% AP",
+       "perRank": [
+        6.875
+       ]
+      }
+     ],
+     "text": "45/8 to 105/8 (+ 55/8% AP)"
+    },
+    {
+     "label": "Magic Damage per Second",
+     "perRank": [
+      45,
+      60,
+      75,
+      90,
+      105
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "55% AP",
+       "pct": 55
+      }
+     ],
+     "text": "45 to 105 (+ 55% AP)"
+    },
+    {
+     "label": "Total Maximum Magic Damage",
+     "perRank": [
+      146.25,
+      195,
+      243.75,
+      292.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "(55/8)*26% AP",
+       "perRank": [
+        178.75
+       ]
+      }
+     ],
+     "text": "(45/8)*26 to ((45+(105-45)*(3/4))/8)*26 4 (+ (55/8)*26% AP)"
+    },
+    {
+     "label": "Secondary Target Damage per Tick",
+     "perRank": [
+      2.8125,
+      3.75,
+      4.6875,
+      5.625,
+      6.5625
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "(55/8)*0.5% AP",
+       "perRank": [
+        3.4375
+       ]
+      }
+     ],
+     "text": "(45/8)*0.5 to (105/8)*0.5 (+ (55/8)*0.5% AP)"
+    },
+    {
+     "label": "Secondary Magic Damage per Second",
+     "perRank": [
+      22.5,
+      30,
+      37.5,
+      45,
+      52.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "55*0.5% AP",
+       "perRank": [
+        27.5
+       ]
+      }
+     ],
+     "text": "45*0.5 to 105*0.5 (+ 55*0.5% AP)"
+    },
+    {
+     "label": "Secondary Target Total Maximum Damage",
+     "perRank": [
+      73.125,
+      97.5,
+      121.875,
+      146.25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "(55/8)*26*0.5% AP",
+       "perRank": [
+        89.375
+       ]
+      }
+     ],
+     "text": "(45/8)*26*0.5 to ((45+(105-45)*(3/4))/8)*26*0.5 4 (+ (55/8)*26*0.5% AP)"
+    },
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      60,
+      70,
+      80,
+      90,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "|hp}} (3.1% Stardust)% of target's maximum health)|hp}}",
+       "pct": 3.1
+      }
+     ],
+     "text": "60 to 100 (+ 30% AP) Cosmic Creator"
+    }
+   ]
+  },
+  {
+   "name": "Astral Flight",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Direction",
+   "affects": "Self",
+   "castTime": "0.4",
+   "range": "1500 (+ 7.5Stardust)",
+   "cooldown": [
+    22,
+    20,
+    18,
+    16,
+    14
+   ],
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Breath of Light Flat Damage Modifier",
+     "perRank": [
+      108,
+      109,
+      110,
+      111,
+      112
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "108 to 112%"
+    }
+   ]
+  },
+  {
+   "name": "Singularity",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.2",
+   "range": "",
+   "cooldown": 12,
+   "cost": 90,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage per Tick",
+     "perRank": [
+      2.5,
+      3.75,
+      5,
+      6.25,
+      7.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "3% AP",
+       "pct": 3
+      }
+     ],
+     "text": "2.5 to 7.5 (+ 3% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      50,
+      75,
+      100,
+      125,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "3*20% AP",
+       "perRank": [
+        60
+       ]
+      }
+     ],
+     "text": "2.5*20 to 7.5*20 (+ 3*20% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Falling Star",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "1250",
+   "cooldown": [
+    120,
+    110,
+    100
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      150,
+      250,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "75% AP",
+       "pct": 75
+      }
+     ],
+     "text": "150 to 350 (+ 75% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Celestial Expansion",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    8,
+    6.5,
+    5,
+    3.5,
+    2
+   ],
+   "cost": [
+    70,
+    80,
+    90,
+    100,
+    110
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Damage",
+     "perRank": [
+      5,
+      10,
+      15,
+      20,
+      25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "5 to 25"
+    },
+    {
+     "label": "Total Damage",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": null,
+       "raw": "5*1.4 to 25*1.4",
+       "perRank": [
+        7,
+        14,
+        21,
+        28,
+        35
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "25*1.4% AP",
+       "perRank": [
+        35
+       ]
+      }
+     ],
+     "text": "(10+2*x)*1.4 for 5; then + 3*1.4*x for 2; then + 6*1.4*x for 4; then + 10*1.4*x (+ 5*1.4 to 25*1.4) (+ 25*1.4% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Center of the Universe",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Self / Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": 1,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Comet of Legend",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Direction / Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    80,
+    75,
+    70,
+    65,
+    60
+   ],
+   "cost": 60,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Static Movement Speed",
+     "perRank": [
+      600,
+      650,
+      700,
+      750,
+      800
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "600 to 800"
+    }
+   ]
+  },
+  {
+   "name": "Starsurge",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction / Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    12,
+    11,
+    10,
+    9,
+    8
+   ],
+   "cost": [
+    60,
+    70,
+    80,
+    90,
+    100
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      110,
+      150,
+      190,
+      230
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "65% AP",
+       "pct": 65
+      }
+     ],
+     "text": "70 to 230 (+ 65% AP)"
+    },
+    {
+     "label": "Minimum Stun Duration",
+     "perRank": [
+      0.55,
+      0.6,
+      0.65,
+      0.7,
+      0.75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "0.55 to 0.75"
+    },
+    {
+     "label": "Maximum Stun Duration",
+     "perRank": [
+      2.2,
+      2.4,
+      2.6,
+      2.8,
+      3
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "2.2 to 3"
+    }
+   ]
+  },
+  {
+   "name": "The Skies Descend",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Empowered Magic Damage",
+     "perRank": [
+      187.5,
+      312.5,
+      437.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "75*1.25% AP",
+       "perRank": [
+        93.75
+       ]
+      }
+     ],
+     "text": "150*1.25 to 350*1.25 (+ 75*1.25% AP)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      135,
+      225,
+      315
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "75*0.9% AP",
+       "perRank": [
+        67.5
+       ]
+      }
+     ],
+     "text": "150*0.9 to 350*0.9 (+ 75*0.9% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Voice of Light",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.35",
+   "range": "1500",
+   "cooldown": [
+    110,
+    90,
+    70
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      150,
+      250,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "150 to 350 (+ 70% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      40,
+      50,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 60%"
+    }
+   ]
+  }
+ ]
+}

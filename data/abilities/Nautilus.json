@@ -1,0 +1,342 @@
+{
+ "champion": "Nautilus",
+ "abilities": [
+  {
+   "name": "Staggering Blow",
+   "slot": "I",
+   "damageType": "Physical",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Dredge Line",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    14,
+    13,
+    12,
+    11,
+    10
+   ],
+   "cost": 60,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      85,
+      125,
+      165,
+      205,
+      245
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90% AP",
+       "pct": 90
+      }
+     ],
+     "text": "85 to 245 (+ 90% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Titan's Wrath",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 12,
+   "cost": 60,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      50,
+      60,
+      70,
+      80,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "maxHealth",
+       "raw": "8 to 12% maximum health",
+       "perRank": [
+        8,
+        9,
+        10,
+        11,
+        12
+       ]
+      }
+     ],
+     "text": "50 to 90 (+ 8 to 12% maximum health)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      30,
+      40,
+      50,
+      60,
+      70
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "30 to 70 (+ 40% AP)"
+    },
+    {
+     "label": "Magic Damage per Instance",
+     "perRank": [
+      15,
+      20,
+      25,
+      30,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40/2% AP",
+       "perRank": [
+        20
+       ]
+      }
+     ],
+     "text": "30/2 to 70/2 (+ 40/2% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Riptide",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    7,
+    6.5,
+    6,
+    5.5,
+    5
+   ],
+   "cost": [
+    50,
+    60,
+    70,
+    80,
+    90
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      55,
+      90,
+      125,
+      160,
+      195
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "55 to 195 (+ 50% AP)"
+    },
+    {
+     "label": "Reduced Damage",
+     "perRank": [
+      27.5,
+      45,
+      62.5,
+      80,
+      97.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50*0.5% AP",
+       "perRank": [
+        25
+       ]
+      }
+     ],
+     "text": "55*0.5 to 195*0.5 (+ 50*0.5% AP)"
+    },
+    {
+     "label": "Maximum Total Damage",
+     "perRank": [
+      110,
+      180,
+      250,
+      320,
+      390
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50*2% AP",
+       "perRank": [
+        100
+       ]
+      }
+     ],
+     "text": "55*2 to 195*2 (+ 50*2% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50%"
+    },
+    {
+     "label": "Monster Bonus Damage",
+     "perRank": [
+      125,
+      165,
+      205,
+      245,
+      285
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "125 to 285 (+ 50% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Depth Charge",
+   "slot": "R",
+   "damageType": "magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.46",
+   "range": "cr 825",
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      125,
+      175,
+      225
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "125 to 225 (+ 40% AP)"
+    },
+    {
+     "label": "Stun Duration",
+     "perRank": [
+      1,
+      1.5,
+      2
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1 to 2 seconds"
+    },
+    {
+     "label": "Increased Damage",
+     "perRank": [
+      150,
+      275,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "150 to 400 (+ 80% AP)"
+    },
+    {
+     "label": "Knock Up Duration",
+     "perRank": [
+      1,
+      1.5,
+      2
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1 to 2 seconds"
+    }
+   ]
+  }
+ ]
+}

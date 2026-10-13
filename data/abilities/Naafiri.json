@@ -1,0 +1,424 @@
+{
+ "champion": "Naafiri",
+ "abilities": [
+  {
+   "name": "We Are More",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Darkin Daggers",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "0.25",
+   "range": "cr 900",
+   "cooldown": [
+    9,
+    8.5,
+    8,
+    7.5,
+    7
+   ],
+   "cost": [
+    50,
+    60,
+    70,
+    80,
+    90
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Initial Physical Damage",
+     "perRank": [
+      35,
+      40,
+      45,
+      50,
+      55
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "20% bonus AD",
+       "pct": 20
+      }
+     ],
+     "text": "35 to 55 (+ 20% bonus AD)"
+    },
+    {
+     "label": "Bleed Physical Damage per Tick",
+     "perRank": [
+      3.5,
+      6,
+      8.5,
+      11,
+      13.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "80/10% bonus AD",
+       "perRank": [
+        8
+       ]
+      }
+     ],
+     "text": "35/10 to 135/10 (+ 80/10% bonus AD)"
+    },
+    {
+     "label": "Total Bleed Physical Damage",
+     "perRank": [
+      35,
+      60,
+      85,
+      110,
+      135
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "80% bonus AD",
+       "pct": 80
+      }
+     ],
+     "text": "35 to 135 (+ 80% bonus AD)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      70,
+      100,
+      130,
+      160,
+      190
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "20+80% bonus AD",
+       "perRank": [
+        100
+       ]
+      }
+     ],
+     "text": "35+35 to 55+135 (+ 20+80% bonus AD)"
+    },
+    {
+     "label": "Minimum Bonus Physical Damage",
+     "perRank": [
+      30,
+      42.5,
+      55,
+      67.5,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "40% bonus AD",
+       "pct": 40
+      }
+     ],
+     "text": "30 to 80 (+ 40% bonus AD)"
+    },
+    {
+     "label": "Maximum Bonus Physical Damage",
+     "perRank": [
+      60,
+      85,
+      110,
+      135,
+      160
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "40*3.5% bonus AD",
+       "perRank": [
+        140
+       ]
+      }
+     ],
+     "text": "30*2 to 80*2 (+ 40*3.5% bonus AD)"
+    },
+    {
+     "label": "Minimum Total Physical Damage",
+     "perRank": [
+      100,
+      142.5,
+      185,
+      227.5,
+      270
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "20+80+40% bonus AD",
+       "perRank": [
+        140
+       ]
+      }
+     ],
+     "text": "35+35+30 to 55+135+80 (+ 20+80+40% bonus AD)"
+    },
+    {
+     "label": "Maximum Total Physical Damage",
+     "perRank": [
+      130,
+      185,
+      240,
+      295,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "20+80+(40*3.5)% bonus AD",
+       "perRank": [
+        240
+       ]
+      }
+     ],
+     "text": "35+35+(30*2) to 55+135+(80*2) (+ 20+80+(40*3.5)% bonus AD)"
+    },
+    {
+     "label": "Heal",
+     "perRank": [
+      45,
+      60,
+      75,
+      90,
+      105
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "40% bonus AD",
+       "pct": 40
+      }
+     ],
+     "text": "45 to 105 (+ 40% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "The Call of the Pack",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "0.75",
+   "range": null,
+   "cooldown": [
+    26,
+    24,
+    22,
+    20,
+    18
+   ],
+   "cost": 60,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      20,
+      22.5,
+      25,
+      27.5,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 30%"
+    }
+   ]
+  },
+  {
+   "name": "Eviscerate",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Location",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": "250 – 450",
+   "cooldown": [
+    11,
+    10,
+    9,
+    8,
+    7
+   ],
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Dash Physical Damage",
+     "perRank": [
+      15,
+      25,
+      35,
+      45,
+      55
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "40% bonus AD",
+       "pct": 40
+      }
+     ],
+     "text": "15 to 55 (+ 40% bonus AD)"
+    },
+    {
+     "label": "Flurry Physical Damage",
+     "perRank": [
+      60,
+      85,
+      110,
+      135,
+      160
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "80% bonus AD",
+       "pct": 80
+      }
+     ],
+     "text": "60 to 160 (+ 80% bonus AD)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      75,
+      110,
+      145,
+      180,
+      215
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "40+80% bonus AD",
+       "perRank": [
+        120
+       ]
+      }
+     ],
+     "text": "15+60 to 55+160 (+ 40+80% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Hounds' Pursuit",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": "cr 900",
+   "cooldown": [
+    110,
+    95,
+    80
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      125,
+      200,
+      275
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      }
+     ],
+     "text": "125 to 275 (+ 100% bonus AD)"
+    },
+    {
+     "label": "Physical Damage per ''We Are More''",
+     "perRank": [
+      12.5,
+      20,
+      27.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "10% bonus AD",
+       "perRank": [
+        10
+       ]
+      }
+     ],
+     "text": "12.5 to 27.5 (+ 10% bonus AD)"
+    },
+    {
+     "label": "Shield",
+     "perRank": [
+      100,
+      150,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "150% bonus AD",
+       "pct": 150
+      }
+     ],
+     "text": "100 to 200 (+ 150% bonus AD)"
+    }
+   ]
+  }
+ ]
+}

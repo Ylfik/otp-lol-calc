@@ -1,0 +1,224 @@
+{
+ "champion": "Zed",
+ "abilities": [
+  {
+   "name": "Contempt for the Weak",
+   "slot": "I",
+   "damageType": "magic",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Razor Shuriken",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 925",
+   "cooldown": 6,
+   "cost": [
+    75,
+    70,
+    65,
+    60,
+    55
+   ],
+   "costType": "energy",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      }
+     ],
+     "text": "80 to 240 (+ 100% bonus AD)"
+    },
+    {
+     "label": "Reduced Damage",
+     "perRank": [
+      48,
+      72,
+      96,
+      120,
+      144
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100*0.6% bonus AD",
+       "perRank": [
+        60
+       ]
+      }
+     ],
+     "text": "80*0.6 to 240*0.6 (+ 100*0.6% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Living Shadow",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Location",
+   "affects": "Self",
+   "castTime": "none",
+   "range": "325 - 650",
+   "cooldown": [
+    20,
+    19,
+    18,
+    17,
+    16
+   ],
+   "cost": [
+    40,
+    35,
+    30,
+    25,
+    20
+   ],
+   "costType": "energy",
+   "leveling": [
+    {
+     "label": "Energy Restored",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50"
+    }
+   ]
+  },
+  {
+   "name": "Shadow Slash",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    5,
+    4.5,
+    4,
+    3.5,
+    3
+   ],
+   "cost": 40,
+   "costType": "energy",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      70,
+      92.5,
+      115,
+      137.5,
+      160
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "70% bonus AD",
+       "pct": 70
+      }
+     ],
+     "text": "70 to 160 (+ 70% bonus AD)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 40%"
+    },
+    {
+     "label": "Enhanced Slow",
+     "perRank": [
+      30,
+      37.5,
+      45,
+      52.5,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20*1.5 to 40*1.5%"
+    }
+   ]
+  },
+  {
+   "name": "Death Mark",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": "625",
+   "cooldown": [
+    120,
+    110,
+    100
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": null,
+       "raw": "25% of damage stored",
+       "perRank": [
+        25,
+        40,
+        55
+       ]
+      }
+     ],
+     "text": "100% AD (+ 25% of damage stored)"
+    }
+   ]
+  }
+ ]
+}

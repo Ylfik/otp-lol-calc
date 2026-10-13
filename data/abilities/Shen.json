@@ -1,0 +1,297 @@
+{
+ "champion": "Shen",
+ "abilities": [
+  {
+   "name": "Ki Barrier",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Twilight Assault",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    8,
+    7.25,
+    6.5,
+    5.75,
+    5
+   ],
+   "cost": [
+    140,
+    130,
+    120,
+    110,
+    100
+   ],
+   "costType": "energy",
+   "leveling": [
+    {
+     "label": "Slow",
+     "perRank": [
+      25,
+      30,
+      35,
+      40,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "25 to 45%"
+    },
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": null,
+     "perLevel": {
+      "kind": "level",
+      "at1": 10,
+      "at18": 40,
+      "steps": 6
+     },
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "2 to 4% (+ 1.5% per 100 AP) of target's maximum health",
+       "perRank": [
+        2,
+        2.5,
+        3,
+        3.5,
+        4
+       ]
+      }
+     ],
+     "text": "10 to 40 for 6 (+ 2 to 4% (+ 1.5% per 100 AP) of target's maximum health)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": null,
+     "perLevel": {
+      "kind": "level",
+      "at1": 30,
+      "at18": 120,
+      "steps": 6
+     },
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "2*3 to 4*3% (+ 4.5% per 100 AP) of target's maximum health",
+       "perRank": [
+        6,
+        7.5,
+        9,
+        10.5,
+        12
+       ]
+      }
+     ],
+     "text": "10*3 to 40*3 for 6 (+ 2*3 to 4*3% (+ 4.5% per 100 AP) of target's maximum health)"
+    },
+    {
+     "label": "Increased Bonus Damage",
+     "perRank": null,
+     "perLevel": {
+      "kind": "level",
+      "at1": 10,
+      "at18": 40,
+      "steps": 6
+     },
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "5 to 7% (+ 2% per 100 AP) of target's maximum health",
+       "perRank": [
+        5,
+        5.5,
+        6,
+        6.5,
+        7
+       ]
+      }
+     ],
+     "text": "10 to 40 for 6 (+ 5 to 7% (+ 2% per 100 AP) of target's maximum health)"
+    },
+    {
+     "label": "Total Increased Damage",
+     "perRank": null,
+     "perLevel": {
+      "kind": "level",
+      "at1": 30,
+      "at18": 120,
+      "steps": 6
+     },
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "5*3 to 7*3% (+ 6% per 100 AP) of target's maximum health",
+       "perRank": [
+        15,
+        16.5,
+        18,
+        19.5,
+        21
+       ]
+      }
+     ],
+     "text": "10*3 to 40*3 for 6 (+ 5*3 to 7*3% (+ 6% per 100 AP) of target's maximum health)"
+    },
+    {
+     "label": "Maximum Monster Damage",
+     "perRank": [
+      100,
+      125,
+      150,
+      175,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "100 to 200"
+    }
+   ]
+  },
+  {
+   "name": "Spirit's Refuge",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self, Allies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    16,
+    14.5,
+    13,
+    11.5,
+    10
+   ],
+   "cost": 40,
+   "costType": "energy",
+   "leveling": []
+  },
+  {
+   "name": "Shadow Dash",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "300 - 600",
+   "cooldown": [
+    18,
+    16,
+    14,
+    12,
+    10
+   ],
+   "cost": 150,
+   "costType": "energy",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      60,
+      85,
+      110,
+      135,
+      160
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusHealth",
+       "raw": "11% bonus health",
+       "pct": 11
+      }
+     ],
+     "text": "60 to 160 (+ 11% bonus health)"
+    }
+   ]
+  },
+  {
+   "name": "Stand United",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Unit",
+   "affects": "Allies",
+   "castTime": "none",
+   "range": "Global",
+   "cooldown": [
+    200,
+    180,
+    160
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Minimum Shield Strength",
+     "perRank": [
+      120,
+      220,
+      320
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "135% AP",
+       "pct": 135
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "15% of his bonus health",
+       "pct": 15
+      }
+     ],
+     "text": "120 to 320 (+ 135% AP) (+ 15% of his bonus health)"
+    },
+    {
+     "label": "Maximum Shield Strength",
+     "perRank": [
+      192,
+      352,
+      512
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "216% AP",
+       "pct": 216
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "15*1.6% of his bonus health",
+       "perRank": [
+        24
+       ]
+      }
+     ],
+     "text": "120*1.6 to 320*1.6 (+ 216% AP) (+ 15*1.6% of his bonus health)"
+    }
+   ]
+  }
+ ]
+}

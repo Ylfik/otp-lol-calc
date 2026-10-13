@@ -1,0 +1,188 @@
+{
+ "champion": "Illaoi",
+ "abilities": [
+  {
+   "name": "Prophet of an Elder God",
+   "slot": "I",
+   "damageType": "Physical",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Tentacle Smash",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.75",
+   "range": null,
+   "cooldown": [
+    10,
+    9,
+    8,
+    7,
+    6
+   ],
+   "cost": [
+    40,
+    45,
+    50,
+    55,
+    60
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Damage Increase",
+     "perRank": [
+      10,
+      15,
+      20,
+      25,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10%"
+    }
+   ]
+  },
+  {
+   "name": "Harsh Lesson",
+   "slot": "W",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 4,
+   "cost": 30,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Additional Physical Damage",
+     "perRank": [
+      3,
+      3.5,
+      4,
+      4.5,
+      5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "3.5% per 100 AD",
+       "pct": 3.5
+      }
+     ],
+     "text": "3 to 5% (+ 3.5% per 100 AD) of target's maximum health"
+    },
+    {
+     "label": "Minimum Physical Damage",
+     "perRank": [
+      20,
+      30,
+      40,
+      50,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 60"
+    }
+   ]
+  },
+  {
+   "name": "Test of Spirit",
+   "slot": "E",
+   "damageType": "Physical damage",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    16,
+    15,
+    14,
+    13,
+    12
+   ],
+   "cost": [
+    35,
+    40,
+    45,
+    50,
+    55
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Damage Transmission",
+     "perRank": [
+      25,
+      30,
+      35,
+      40,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "8% per 100 AD",
+       "pct": 8
+      }
+     ],
+     "text": "25 to 45% (+ 8% per 100 AD)"
+    }
+   ]
+  },
+  {
+   "name": "Leap of Faith",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.5",
+   "range": null,
+   "cooldown": [
+    120,
+    95,
+    70
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      150,
+      250,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50% bonus AD",
+       "pct": 50
+      }
+     ],
+     "text": "150 to 350 (+ 50% bonus AD)"
+    }
+   ]
+  }
+ ]
+}

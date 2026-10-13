@@ -1,0 +1,338 @@
+{
+ "champion": "Malzahar",
+ "abilities": [
+  {
+   "name": "Void Shift",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Call of the Void",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "900",
+   "cooldown": 6,
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      105,
+      140,
+      175,
+      210
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "55% AP",
+       "pct": 55
+      }
+     ],
+     "text": "70 to 210 (+ 55% AP)"
+    },
+    {
+     "label": "Silence Duration",
+     "perRank": [
+      1,
+      1.25,
+      1.5,
+      1.75,
+      2
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1 to 2 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Void Swarm",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "150",
+   "cooldown": 8,
+   "cost": [
+    40,
+    45,
+    50,
+    55,
+    60
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Voidling Duration",
+     "perRank": [
+      8,
+      8,
+      9,
+      9,
+      10
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "8 seconds"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": null,
+     "perLevel": {
+      "kind": "level",
+      "at1": 5,
+      "at18": 64.5,
+      "formula": "5+3.5*(x-1)*(0.7025+0.0175*(x-1))"
+     },
+     "flat": null,
+     "ratios": [
+      {
+       "stat": null,
+       "raw": "12 to 20",
+       "perRank": [
+        12,
+        14,
+        16,
+        18,
+        20
+       ]
+      },
+      {
+       "stat": "bonusAD",
+       "raw": "40% bonus AD",
+       "pct": 40
+      },
+      {
+       "stat": "ap",
+       "raw": "20% AP",
+       "pct": 20
+      }
+     ],
+     "text": "5+3.5*(x-1)*(0.7025+0.0175*(x-1)) (+ 12 to 20) (+ 40% bonus AD) (+ 20% AP)"
+    },
+    {
+     "label": "Minion Damage",
+     "perRank": null,
+     "perLevel": {
+      "kind": "level",
+      "at1": 15,
+      "at18": 193.5,
+      "formula": "(5+3.5*(x-1)*(0.7025+0.0175*(x-1)))*3"
+     },
+     "flat": null,
+     "ratios": [
+      {
+       "stat": null,
+       "raw": "12*3 to 20*3",
+       "perRank": [
+        36,
+        42,
+        48,
+        54,
+        60
+       ]
+      },
+      {
+       "stat": "bonusAD",
+       "raw": "40*3% bonus AD",
+       "perRank": [
+        120
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "20*3% AP",
+       "perRank": [
+        60
+       ]
+      }
+     ],
+     "text": "(5+3.5*(x-1)*(0.7025+0.0175*(x-1)))*3 (+ 12*3 to 20*3) (+ 40*3% bonus AD) (+ 20*3% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Malefic Visions",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 650",
+   "cooldown": [
+    11,
+    10,
+    9,
+    8,
+    7
+   ],
+   "cost": [
+    60,
+    70,
+    80,
+    90,
+    100
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      80,
+      115,
+      150,
+      185,
+      220
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "80 to 220 (+ 80% AP)"
+    },
+    {
+     "label": "Magic Damage Per Tick",
+     "perRank": [
+      5,
+      7.1875,
+      9.375,
+      11.5625,
+      13.75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80/16% AP",
+       "perRank": [
+        5
+       ]
+      }
+     ],
+     "text": "80/16 to 220/16 (+ 80/16% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Nether Grasp",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.005",
+   "range": "700",
+   "cooldown": [
+    140,
+    110,
+    80
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      125,
+      200,
+      275
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "125 to 275 (+ 80% AP)"
+    },
+    {
+     "label": "Magic Damage Per Tick",
+     "perRank": [
+      12.5,
+      20,
+      27.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "8% AP",
+       "pct": 8
+      }
+     ],
+     "text": "125/10 to 275/10 (+ 8% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      10,
+      15,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "2.5% per 100 AP",
+       "pct": 2.5
+      }
+     ],
+     "text": "10 to 20% (+ 2.5% per 100 AP) of target's maximum health"
+    },
+    {
+     "label": "Magic Damage Per Tick",
+     "perRank": [
+      1,
+      1.5,
+      2
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "0.25% per 100 AP",
+       "pct": 0.25
+      }
+     ],
+     "text": "10/10 to 20/10% (+ 0.25% per 100 AP) of target's maximum health"
+    }
+   ]
+  }
+ ]
+}

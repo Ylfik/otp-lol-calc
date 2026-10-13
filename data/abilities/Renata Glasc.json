@@ -1,0 +1,252 @@
+{
+ "champion": "Renata Glasc",
+ "abilities": [
+  {
+   "name": "Leverage",
+   "slot": "I",
+   "damageType": "magic",
+   "targeting": "Passive",
+   "affects": "Allies, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Handshake",
+   "slot": "Q",
+   "damageType": "magic",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": 16,
+   "cost": 80,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      125,
+      170,
+      215,
+      260
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "80 to 260 (+ 80% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Bailout",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Unit",
+   "affects": null,
+   "castTime": "none",
+   "range": "cr 800",
+   "cooldown": [
+    28,
+    27,
+    26,
+    25,
+    24
+   ],
+   "cost": 80,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      10,
+      15,
+      20,
+      25,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "1% per 100 AP",
+       "pct": 1
+      }
+     ],
+     "text": "10 to 30% (+ 1% per 100 AP)"
+    },
+    {
+     "label": "Maximum Bonus Attack Speed",
+     "perRank": [
+      20,
+      30,
+      40,
+      50,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "1*2% per 100 AP",
+       "perRank": [
+        2
+       ]
+      }
+     ],
+     "text": "10*2 to 30*2% (+ 1*2% per 100 AP)"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      10,
+      12.5,
+      15,
+      17.5,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "1% per 100 AP",
+       "pct": 1
+      }
+     ],
+     "text": "10 to 20% (+ 1% per 100 AP)"
+    },
+    {
+     "label": "Maximum Bonus Movement Speed",
+     "perRank": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "1*2% per 100 AP",
+       "perRank": [
+        2
+       ]
+      }
+     ],
+     "text": "10*2 to 20*2% (+ 1*2% per 100 AP)"
+    }
+   ]
+  },
+  {
+   "name": "Loyalty Program",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Allies, Enemies",
+   "castTime": "0.25",
+   "range": "800",
+   "cooldown": [
+    14,
+    13,
+    12,
+    11,
+    10
+   ],
+   "cost": [
+    70,
+    80,
+    90,
+    100,
+    110
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      65,
+      95,
+      125,
+      155,
+      185
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "55% AP",
+       "pct": 55
+      }
+     ],
+     "text": "65 to 185 (+ 55% AP)"
+    },
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      50,
+      65,
+      80,
+      95,
+      110
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "50 to 110 (+ 50% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Hostile Takeover",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.75",
+   "range": null,
+   "cooldown": [
+    150,
+    130,
+    110
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Berserk Duration",
+     "perRank": [
+      1.25,
+      1.75,
+      2.25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1.25 to 2.25 seconds"
+    }
+   ]
+  }
+ ]
+}

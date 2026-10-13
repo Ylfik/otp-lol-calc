@@ -1,0 +1,253 @@
+{
+ "champion": "Azir",
+ "abilities": [
+  {
+   "name": "Shurima's Legacy",
+   "slot": "I",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Turret ruins",
+   "castTime": null,
+   "range": "700",
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Conquering Sands",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "740",
+   "cooldown": [
+    14,
+    12,
+    10,
+    8,
+    6
+   ],
+   "cost": [
+    70,
+    80,
+    90,
+    100,
+    110
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      75,
+      95,
+      115,
+      135,
+      155
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "35 to 55% AP",
+       "perRank": [
+        35,
+        40,
+        45,
+        50,
+        55
+       ]
+      }
+     ],
+     "text": "75 to 155 (+ 35 to 55% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Arise!",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "525",
+   "cooldown": 1.5,
+   "cost": [
+    40,
+    35,
+    30,
+    25,
+    20
+   ],
+   "costType": "mana + 1 Sand Soldier",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": null,
+       "raw": "50 to 110",
+       "perRank": [
+        50,
+        65,
+        80,
+        95,
+        110
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "35 to 65% AP",
+       "perRank": [
+        35,
+        42.5,
+        50,
+        57.5,
+        65
+       ]
+      }
+     ],
+     "text": "(+ 50 to 110) (+ 35 to 65% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Shifting Sands",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": "1100",
+   "cooldown": [
+    22,
+    20.5,
+    19,
+    17.5,
+    16
+   ],
+   "cost": 60,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      70,
+      110,
+      150,
+      190,
+      230
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "70 to 230 (+ 60% AP)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      110,
+      150,
+      190,
+      230
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "70 to 230 (+ 60% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Emperor's Divide",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.5",
+   "range": "cr 400",
+   "cooldown": [
+    120,
+    105,
+    90
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Width",
+     "perRank": [
+      6,
+      7,
+      8
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "6 to 8 soldiers"
+    },
+    {
+     "label": "Width (charge)",
+     "perRank": [
+      620,
+      720,
+      820
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "er 620 to 820"
+    },
+    {
+     "label": "Width (impassable wall)",
+     "perRank": [
+      750,
+      850,
+      950
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "pathing radius 750 to 950"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      200,
+      400,
+      600
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "75% AP",
+       "pct": 75
+      }
+     ],
+     "text": "200 to 600 (+ 75% AP)"
+    }
+   ]
+  }
+ ]
+}

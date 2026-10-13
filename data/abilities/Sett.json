@@ -1,0 +1,242 @@
+{
+ "champion": "Sett",
+ "abilities": [
+  {
+   "name": "Pit Grit",
+   "slot": "I",
+   "damageType": "physical",
+   "targeting": "Passive",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Knuckle Down",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    9,
+    8,
+    7,
+    6,
+    5
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus Physical Damage",
+     "perRank": [
+      10,
+      20,
+      30,
+      40,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "maxHealth",
+       "raw": "1% (+ 1 to 3% per 100 AD) of target's maximum health",
+       "perRank": [
+        1,
+        1.5,
+        2,
+        2.5,
+        3
+       ]
+      }
+     ],
+     "text": "10 to 50 (+ 1% (+ 1 to 3% per 100 AD) of target's maximum health)"
+    },
+    {
+     "label": "Total Bonus Physical Damage",
+     "perRank": [
+      20,
+      40,
+      60,
+      80,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "maxHealth",
+       "raw": "2% (+ 1*2 to 3*2% per 100 AD) of target's maximum health",
+       "perRank": [
+        2,
+        3,
+        4,
+        5,
+        6
+       ]
+      }
+     ],
+     "text": "10*2 to 50*2 (+ 2% (+ 1*2 to 3*2% per 100 AD) of target's maximum health)"
+    }
+   ]
+  },
+  {
+   "name": "Haymaker",
+   "slot": "W",
+   "damageType": "Physical True",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "0.75",
+   "range": null,
+   "cooldown": [
+    18,
+    16.5,
+    15,
+    13.5,
+    12
+   ],
+   "cost": null,
+   "costType": "Current Grit",
+   "leveling": [
+    {
+     "label": "Damage",
+     "perRank": [
+      80,
+      100,
+      120,
+      140,
+      160
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100BonusAD",
+       "raw": "25% (+ 25% per 100 bonus AD) of expended ''Grit''",
+       "pct": 25
+      }
+     ],
+     "text": "80 to 160 (+ 25% (+ 25% per 100 bonus AD) of expended ''Grit'')"
+    }
+   ]
+  },
+  {
+   "name": "Facebreaker",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    16,
+    14.5,
+    13,
+    11.5,
+    10
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      50,
+      70,
+      90,
+      110,
+      130
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "60% AD",
+       "pct": 60
+      }
+     ],
+     "text": "50 to 130 (+ 60% AD)"
+    }
+   ]
+  },
+  {
+   "name": "The Show Stopper",
+   "slot": "R",
+   "damageType": "physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "cr 400",
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      200,
+      300,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "120% bonus AD",
+       "pct": 120
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "40 to 60% of primary target's bonus health",
+       "perRank": [
+        40,
+        50,
+        60
+       ]
+      }
+     ],
+     "text": "200 to 400 (+ 120% bonus AD) (+ 40 to 60% of primary target's bonus health)"
+    },
+    {
+     "label": "Reduced Damage",
+     "perRank": [
+      50,
+      75,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "30% bonus AD",
+       "pct": 30
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "40*0.25 to 60*0.25% of primary target's bonus health",
+       "perRank": [
+        10,
+        12.5,
+        15
+       ]
+      }
+     ],
+     "text": "200*0.25 to 400*0.25 (+ 30% bonus AD) (+ 40*0.25 to 60*0.25% of primary target's bonus health)"
+    }
+   ]
+  }
+ ]
+}

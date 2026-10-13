@@ -1,0 +1,207 @@
+{
+ "champion": "Lucian",
+ "abilities": [
+  {
+   "name": "Lightslinger",
+   "slot": "I",
+   "damageType": "Physical",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Piercing Light",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.4 to 0.25",
+   "range": "er 500",
+   "cooldown": [
+    9,
+    8,
+    7,
+    6,
+    5
+   ],
+   "cost": [
+    48,
+    56,
+    64,
+    72,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      90,
+      130,
+      170,
+      210,
+      250
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      }
+     ],
+     "text": "90 to 250 (+ 100% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Ardent Blaze",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies / Self, Allies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    14,
+    13,
+    12,
+    11,
+    10
+   ],
+   "cost": 60,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      75,
+      110,
+      145,
+      180,
+      215
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90% AP",
+       "pct": 90
+      }
+     ],
+     "text": "75 to 215 (+ 90% AP)"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      60,
+      65,
+      70,
+      75,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "60 to 80"
+    }
+   ]
+  },
+  {
+   "name": "Relentless Pursuit",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Location",
+   "affects": "Self",
+   "castTime": "none",
+   "range": "200 - 425",
+   "cooldown": [
+    16,
+    15.5,
+    15,
+    14.5,
+    14
+   ],
+   "cost": [
+    32,
+    24,
+    16,
+    8,
+    0
+   ],
+   "costType": "Mana",
+   "leveling": []
+  },
+  {
+   "name": "The Culling",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Direction / Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    110,
+    100,
+    90
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage Per Shot",
+     "perRank": [
+      15,
+      30,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "25% AD",
+       "pct": 25
+      },
+      {
+       "stat": "ap",
+       "raw": "15% AP",
+       "pct": 15
+      }
+     ],
+     "text": "15 to 45 (+ 25% AD) (+ 15% AP)"
+    },
+    {
+     "label": "Minion Damage Per Shot",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "25*2.0% AD",
+       "perRank": [
+        50
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "15*2.0% AP",
+       "perRank": [
+        30
+       ]
+      }
+     ],
+     "text": "(15 to 45)*2.0 (+ 25*2.0% AD) (+ 15*2.0% AP)"
+    }
+   ]
+  }
+ ]
+}

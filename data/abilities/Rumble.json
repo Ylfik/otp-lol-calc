@@ -1,0 +1,952 @@
+{
+ "champion": "Rumble",
+ "abilities": [
+  {
+   "name": "Junkyard Titan",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Flamespitter",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    10,
+    9,
+    8,
+    7,
+    6
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Minimum Magic Damage",
+     "perRank": [
+      12.5,
+      18.75,
+      25,
+      31.25,
+      37.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "(105/12)*3% AP",
+       "perRank": [
+        26.25
+       ]
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "(6/12)*3 to (8/12)*3% of target's maximum health",
+       "perRank": [
+        1.5,
+        1.625,
+        1.75,
+        1.875,
+        2
+       ]
+      }
+     ],
+     "text": "(50/12)*3 to (150/12)*3 (+ (105/12)*3% AP) (+ (6/12)*3 to (8/12)*3% of target's maximum health)<!-- -->"
+    },
+    {
+     "label": "Magic Damage per Second",
+     "perRank": [
+      16.666667,
+      25,
+      33.333333,
+      41.666667,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "(105/12)*4% AP",
+       "perRank": [
+        35
+       ]
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "(6/12)*4 to (8/12)*4% of target's maximum health",
+       "perRank": [
+        2,
+        2.166667,
+        2.333333,
+        2.5,
+        2.666667
+       ]
+      }
+     ],
+     "text": "(50/12)*4 to (150/12)*4 (+ (105/12)*4% AP) (+ (6/12)*4 to (8/12)*4% of target's maximum health)<!-- -->"
+    },
+    {
+     "label": "Magic Damage per Tick",
+     "perRank": [
+      4.166667,
+      6.25,
+      8.333333,
+      10.416667,
+      12.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "105/12% AP",
+       "perRank": [
+        8.75
+       ]
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "6/12 to 8/12% of target's maximum health",
+       "perRank": [
+        0.5,
+        0.541667,
+        0.583333,
+        0.625,
+        0.666667
+       ]
+      }
+     ],
+     "text": "50/12 to 150/12 (+ 105/12% AP) (+ 6/12 to 8/12% of target's maximum health)<!-- -->"
+    },
+    {
+     "label": "Maximum Magic Damage",
+     "perRank": [
+      62.5,
+      93.75,
+      125,
+      156.25,
+      187.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "105*(15/12)% AP",
+       "perRank": [
+        131.25
+       ]
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "6*(15/12) to 8*(15/12)% of target's maximum health",
+       "perRank": [
+        7.5,
+        8.125,
+        8.75,
+        9.375,
+        10
+       ]
+      }
+     ],
+     "text": "50*(15/12) to 150*(15/12) (+ 105*(15/12)% AP) (+ 6*(15/12) to 8*(15/12)% of target's maximum health)<!-- -->"
+    },
+    {
+     "label": "Minimum Minion Damage",
+     "perRank": [
+      8.75,
+      13.125,
+      17.5,
+      21.875,
+      26.25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "(105/12)*3*0.7% AP",
+       "perRank": [
+        18.375
+       ]
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "(6/12)*3*0.7 to (8/12)*3*0.7% of target's maximum health",
+       "perRank": [
+        1.05,
+        1.1375,
+        1.225,
+        1.3125,
+        1.4
+       ]
+      }
+     ],
+     "text": "(50/12)*3*0.7 to (150/12)*3*0.7 (+ (105/12)*3*0.7% AP) (+ (6/12)*3*0.7 to (8/12)*3*0.7% of target's maximum health)<!-- -->"
+    },
+    {
+     "label": "Minion Damage per Second",
+     "perRank": [
+      11.666667,
+      17.5,
+      23.333333,
+      29.166667,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "(105/12)*4*0.7% AP",
+       "perRank": [
+        24.5
+       ]
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "(6/12)*4*0.7 to (8/12)*4*0.7% of target's maximum health",
+       "perRank": [
+        1.4,
+        1.516667,
+        1.633333,
+        1.75,
+        1.866667
+       ]
+      }
+     ],
+     "text": "(50/12)*4*0.7 to (150/12)*4*0.7 (+ (105/12)*4*0.7% AP) (+ (6/12)*4*0.7 to (8/12)*4*0.7% of target's maximum health)<!-- -->"
+    },
+    {
+     "label": "Minion Damage per Tick",
+     "perRank": [
+      2.916667,
+      4.375,
+      5.833333,
+      7.291667,
+      8.75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "(105*0.7)/12% AP",
+       "perRank": [
+        6.125
+       ]
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "(6/12)*0.7 to (8/12)*0.7% of target's maximum health",
+       "perRank": [
+        0.35,
+        0.379167,
+        0.408333,
+        0.4375,
+        0.466667
+       ]
+      }
+     ],
+     "text": "(50/12)*0.7 to (150/12)*0.7 (+ (105*0.7)/12% AP) (+ (6/12)*0.7 to (8/12)*0.7% of target's maximum health)<!-- -->"
+    },
+    {
+     "label": "Maximum Minion Damage",
+     "perRank": [
+      43.75,
+      65.625,
+      87.5,
+      109.375,
+      131.25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "105*(15/12)*0.7% AP",
+       "perRank": [
+        91.875
+       ]
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "6*(15/12)*0.7 to 8*(15/12)*0.7% of target's maximum health",
+       "perRank": [
+        5.25,
+        5.6875,
+        6.125,
+        6.5625,
+        7
+       ]
+      }
+     ],
+     "text": "50*(15/12)*0.7 to 150*(15/12)*0.7 (+ 105*(15/12)*0.7% AP) (+ 6*(15/12)*0.7 to 8*(15/12)*0.7% of target's maximum health)<!-- -->"
+    },
+    {
+     "label": "Minimum Enhanced Damage",
+     "perRank": [
+      18.75,
+      28.125,
+      37.5,
+      46.875,
+      56.25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "(105/12)*3*1.5% AP",
+       "perRank": [
+        39.375
+       ]
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "(6/12)*3*1.5 to (8/12)*3*1.5% of target's maximum health",
+       "perRank": [
+        2.25,
+        2.4375,
+        2.625,
+        2.8125,
+        3
+       ]
+      }
+     ],
+     "text": "(50/12)*3*1.5 to (150/12)*3*1.5 (+ (105/12)*3*1.5% AP) (+ (6/12)*3*1.5 to (8/12)*3*1.5% of target's maximum health)<!-- -->"
+    },
+    {
+     "label": "Enhanced Damage per Second",
+     "perRank": [
+      25,
+      37.5,
+      50,
+      62.5,
+      75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "(105/12)*4*1.5% AP",
+       "perRank": [
+        52.5
+       ]
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "(6/12)*4*1.5 to (8/12)*4*1.5% of target's maximum health",
+       "perRank": [
+        3,
+        3.25,
+        3.5,
+        3.75,
+        4
+       ]
+      }
+     ],
+     "text": "(50/12)*4*1.5 to (150/12)*4*1.5 (+ (105/12)*4*1.5% AP) (+ (6/12)*4*1.5 to (8/12)*4*1.5% of target's maximum health)<!-- -->"
+    },
+    {
+     "label": "Enhanced Damage per Tick",
+     "perRank": [
+      6.25,
+      9.375,
+      12.5,
+      15.625,
+      18.75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "(105/12)*1.5% AP",
+       "perRank": [
+        13.125
+       ]
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "(6/12)*1.5 to (8/12)*1.5% of target's maximum health",
+       "perRank": [
+        0.75,
+        0.8125,
+        0.875,
+        0.9375,
+        1
+       ]
+      }
+     ],
+     "text": "(50/12)*1.5 to (150/12)*1.5 (+ (105/12)*1.5% AP) (+ (6/12)*1.5 to (8/12)*1.5% of target's maximum health)<!-- -->"
+    },
+    {
+     "label": "Maximum Enhanced Damage",
+     "perRank": [
+      93.75,
+      140.625,
+      187.5,
+      234.375,
+      281.25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "105*(15/12)*1.5% AP",
+       "perRank": [
+        196.875
+       ]
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "6*(15/12)*1.5 to 8*(15/12)*1.5% of target's maximum health",
+       "perRank": [
+        11.25,
+        12.1875,
+        13.125,
+        14.0625,
+        15
+       ]
+      }
+     ],
+     "text": "50*(15/12)*1.5 to 150*(15/12)*1.5 (+ 105*(15/12)*1.5% AP) (+ 6*(15/12)*1.5 to 8*(15/12)*1.5% of target's maximum health)<!-- -->"
+    },
+    {
+     "label": "Minimum Enhanced Minion Damage",
+     "perRank": [
+      13.125,
+      19.6875,
+      26.25,
+      32.8125,
+      39.375
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "(105/12)*3*0.7*1.5% AP",
+       "perRank": [
+        27.5625
+       ]
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "(6/12)*3*0.7*1.5 to (8/12)*3*0.7*1.5% of target's maximum health",
+       "perRank": [
+        1.575,
+        1.70625,
+        1.8375,
+        1.96875,
+        2.1
+       ]
+      }
+     ],
+     "text": "(50/12)*3*0.7*1.5 to (150/12)*3*0.7*1.5 (+ (105/12)*3*0.7*1.5% AP) (+ (6/12)*3*0.7*1.5 to (8/12)*3*0.7*1.5% of target's maximum health)<!-- -->"
+    },
+    {
+     "label": "Enhanced Minion Damage per Second",
+     "perRank": [
+      17.5,
+      26.25,
+      35,
+      43.75,
+      52.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "(105/12)*4*0.7*1.5% AP",
+       "perRank": [
+        36.75
+       ]
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "(6/12)*4*0.7*1.5 to (8/12)*4*0.7*1.5% of target's maximum health",
+       "perRank": [
+        2.1,
+        2.275,
+        2.45,
+        2.625,
+        2.8
+       ]
+      }
+     ],
+     "text": "(50/12)*4*0.7*1.5 to (150/12)*4*0.7*1.5 (+ (105/12)*4*0.7*1.5% AP) (+ (6/12)*4*0.7*1.5 to (8/12)*4*0.7*1.5% of target's maximum health)<!-- -->"
+    },
+    {
+     "label": "Enhanced Minion Damage per Tick",
+     "perRank": [
+      4.375,
+      6.5625,
+      8.75,
+      10.9375,
+      13.125
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "(105/12)*0.7*1.5% AP",
+       "perRank": [
+        9.1875
+       ]
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "(6/12)*0.7*1.5 to (8/12)*0.7*1.5% of target's maximum health",
+       "perRank": [
+        0.525,
+        0.56875,
+        0.6125,
+        0.65625,
+        0.7
+       ]
+      }
+     ],
+     "text": "(50/12)*0.7*1.5 to (150/12)*0.7*1.5 (+ (105/12)*0.7*1.5% AP) (+ (6/12)*0.7*1.5 to (8/12)*0.7*1.5% of target's maximum health)<!-- -->"
+    },
+    {
+     "label": "Maximum Enhanced Minion Damage",
+     "perRank": [
+      65.625,
+      110.742188,
+      155.859375,
+      200.976563,
+      246.09375
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "105*(15/12)*0.7*1.5% AP",
+       "perRank": [
+        137.8125
+       ]
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "6*(15/12)*0.7*1.5 to 8*(15/12)*0.7*1.5% of target's maximum health",
+       "perRank": [
+        7.875,
+        8.53125,
+        9.1875,
+        9.84375,
+        10.5
+       ]
+      }
+     ],
+     "text": "50*(15/12)*0.7*1.5 to 150*(15/12)*0.7*(15/12)*1.5 (+ 105*(15/12)*0.7*1.5% AP) (+ 6*(15/12)*0.7*1.5 to 8*(15/12)*0.7*1.5% of target's maximum health)<!-- -->"
+    }
+   ]
+  },
+  {
+   "name": "Scrap Shield",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 6,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      25,
+      55,
+      85,
+      115,
+      145
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "4% of maximum health",
+       "pct": 4
+      }
+     ],
+     "text": "25 to 145 (+ 30% AP) (+ 4% of maximum health)"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      10,
+      15,
+      20,
+      25,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 30%"
+    },
+    {
+     "label": "Enhanced Shield Strength",
+     "perRank": [
+      37.5,
+      82.5,
+      127.5,
+      172.5,
+      217.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30*1.5% AP",
+       "perRank": [
+        45
+       ]
+      },
+      {
+       "stat": "maxHealth",
+       "raw": "4*1.5% of maximum health",
+       "perRank": [
+        6
+       ]
+      }
+     ],
+     "text": "25*1.5 to 145*1.5 (+ 30*1.5% AP) (+ 4*1.5% of maximum health)"
+    },
+    {
+     "label": "Enhanced Bonus Movement Speed",
+     "perRank": [
+      15,
+      22.5,
+      30,
+      37.5,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10*1.5 to 30*1.5%"
+    }
+   ]
+  },
+  {
+   "name": "Electro Harpoon",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": 0.5,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      55,
+      80,
+      105,
+      130,
+      155
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "55 to 155 (+ 50% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      110,
+      160,
+      210,
+      260,
+      310
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50*2% AP",
+       "perRank": [
+        100
+       ]
+      }
+     ],
+     "text": "55*2 to 155*2 (+ 50*2% AP)"
+    },
+    {
+     "label": "Magic Resistance Reduction",
+     "perRank": [
+      10,
+      12,
+      14,
+      16,
+      18
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 18%"
+    },
+    {
+     "label": "Total MR Reduction",
+     "perRank": [
+      20,
+      24,
+      28,
+      32,
+      36
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10*2 to 18*2%"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      15,
+      20,
+      25,
+      30,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "15 to 35%"
+    },
+    {
+     "label": "Total Slow",
+     "perRank": [
+      30,
+      40,
+      50,
+      60,
+      70
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "15*2 to 35*2%"
+    },
+    {
+     "label": "Enhanced Damage",
+     "perRank": [
+      82.5,
+      120,
+      157.5,
+      195,
+      232.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50*1.5% AP",
+       "perRank": [
+        75
+       ]
+      }
+     ],
+     "text": "55*1.5 to 155*1.5 (+ 50*1.5% AP)"
+    },
+    {
+     "label": "Total Enhanced Damage",
+     "perRank": [
+      165,
+      240,
+      315,
+      390,
+      465
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50*1.5*2% AP",
+       "perRank": [
+        150
+       ]
+      }
+     ],
+     "text": "55*1.5*2 to 155*1.5*2 (+ 50*1.5*2% AP)"
+    },
+    {
+     "label": "Enhanced Magic Resistance Reduction",
+     "perRank": [
+      15,
+      18,
+      21,
+      24,
+      27
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10*1.5 to 18*1.5%"
+    },
+    {
+     "label": "Total Enhanced MR Reduction",
+     "perRank": [
+      30,
+      36,
+      42,
+      48,
+      54
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10*1.5*2 to 18*1.5*2%"
+    },
+    {
+     "label": "Enhanced Slow",
+     "perRank": [
+      22.5,
+      30,
+      37.5,
+      45,
+      52.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "15*1.5 to 35*1.5%"
+    },
+    {
+     "label": "Total Enhanced Slow",
+     "perRank": [
+      45,
+      60,
+      75,
+      90,
+      105
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "15*1.5*2 to 35*1.5*2%"
+    }
+   ]
+  },
+  {
+   "name": "The Equalizer",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Vector",
+   "affects": "Enemies",
+   "castTime": "None",
+   "range": "1700",
+   "cooldown": [
+    130,
+    105,
+    80
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Magic Damage per Tick",
+     "perRank": [
+      30,
+      50,
+      70
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "35/4% AP",
+       "perRank": [
+        8.75
+       ]
+      }
+     ],
+     "text": "120/4 to 280/4 (+ 35/4% AP)"
+    },
+    {
+     "label": "Magic Damage per Second",
+     "perRank": [
+      120,
+      200,
+      280
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "35% AP",
+       "perRank": [
+        35
+       ]
+      }
+     ],
+     "text": "120 to 280 (+ 35% AP)"
+    },
+    {
+     "label": "Maximum Magic Damage",
+     "perRank": [
+      600,
+      1000,
+      1400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "35*5% AP",
+       "perRank": [
+        175
+       ]
+      }
+     ],
+     "text": "120*5 to 280*5 (+ 35*5% AP)"
+    }
+   ]
+  }
+ ]
+}

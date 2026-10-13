@@ -1,0 +1,242 @@
+{
+ "champion": "Nilah",
+ "abilities": [
+  {
+   "name": "Joy Unending",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self, Allies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Formless Blade",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "type=bonus attack speed",
+   "range": null,
+   "cooldown": 4,
+   "cost": 30,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Minimum Physical Damage",
+     "perRank": [
+      0,
+      10,
+      20,
+      30,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "100% AD",
+       "pct": 100
+      }
+     ],
+     "text": "0 to 40 (+ 100% AD)"
+    },
+    {
+     "label": "Maximum Physical Damage",
+     "perRank": [
+      0,
+      19.1,
+      38.2,
+      57.3,
+      76.4
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "100*1.91% AD",
+       "perRank": [
+        191
+       ]
+      }
+     ],
+     "text": "0*1.91 to 40*1.91 (+ 100*1.91% AD)"
+    }
+   ]
+  },
+  {
+   "name": "Jubilant Veil",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self, Allies",
+   "castTime": "None",
+   "range": null,
+   "cooldown": [
+    26,
+    25,
+    24,
+    23,
+    22
+   ],
+   "cost": [
+    60,
+    45,
+    30,
+    15,
+    0
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      15,
+      17.5,
+      20,
+      22.5,
+      25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "15 to 25%"
+    }
+   ]
+  },
+  {
+   "name": "Slipstream",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "cr 550",
+   "cooldown": null,
+   "cost": 30,
+   "costType": "Mana + 1 Charge",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      60,
+      70,
+      80,
+      90,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "20% bonus AD",
+       "pct": 20
+      }
+     ],
+     "text": "60 to 100 (+ 20% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Apotheosis",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "None",
+   "range": null,
+   "cooldown": [
+    110,
+    95,
+    80
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage per Tick",
+     "perRank": [
+      15,
+      25,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "10% bonus AD",
+       "pct": 10
+      }
+     ],
+     "text": "15 to 35 3 (+ 10% bonus AD)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      60,
+      100,
+      140
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "10*4% bonus AD",
+       "perRank": [
+        40
+       ]
+      }
+     ],
+     "text": "15*4 to 35*4 3 (+ 10*4% bonus AD)"
+    },
+    {
+     "label": "Burst Physical Damage",
+     "perRank": [
+      125,
+      225,
+      325
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      }
+     ],
+     "text": "125 to 325 3 (+ 100% bonus AD)"
+    },
+    {
+     "label": "Maximum Total Physical Damage",
+     "perRank": [
+      185,
+      325,
+      465
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "10*4+100% bonus AD",
+       "perRank": [
+        140
+       ]
+      }
+     ],
+     "text": "15*4+125 to 35*4+325 3 (+ 10*4+100% bonus AD)"
+    }
+   ]
+  }
+ ]
+}

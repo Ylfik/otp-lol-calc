@@ -1,0 +1,253 @@
+{
+ "champion": "Kalista",
+ "abilities": [
+  {
+   "name": "Martial Poise",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Direction",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Pierce",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 1200",
+   "cooldown": 9,
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      10,
+      75,
+      140,
+      205,
+      270
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "105% AD",
+       "pct": 105
+      }
+     ],
+     "text": "10 to 270 (+ 105% AD)"
+    }
+   ]
+  },
+  {
+   "name": "Sentinel",
+   "slot": "W",
+   "damageType": "magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.5",
+   "range": "1400 - 5000",
+   "cooldown": 30,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      10,
+      12,
+      14,
+      16,
+      18
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 18% of target's maximum health"
+    },
+    {
+     "label": "Maximum Non-Champion Damage",
+     "perRank": [
+      100,
+      125,
+      150,
+      175,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "100 to 200"
+    }
+   ]
+  },
+  {
+   "name": "Rend",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Proximity",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    10,
+    9.5,
+    9,
+    8.5,
+    8
+   ],
+   "cost": 30,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      5,
+      15,
+      25,
+      35,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "70% AD",
+       "pct": 70
+      },
+      {
+       "stat": "ap",
+       "raw": "65% AP",
+       "pct": 65
+      }
+     ],
+     "text": "5 to 45 (+ 70% AD) (+ 65% AP)"
+    },
+    {
+     "label": "Bonus Damage per Additional Stack",
+     "perRank": [
+      7,
+      14,
+      21,
+      28,
+      35
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "20 to 50% AD",
+       "perRank": [
+        20,
+        27.5,
+        35,
+        42.5,
+        50
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "7 to 35 (+ 20 to 50% AD) (+ 50% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      10,
+      18,
+      26,
+      34,
+      42
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "5% per 100 AP",
+       "pct": 5
+      }
+     ],
+     "text": "10 to 42% (+ 5% per 100 AP)"
+    },
+    {
+     "label": "Mana Restored",
+     "perRank": [
+      10,
+      15,
+      20,
+      25,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 30"
+    }
+   ]
+  },
+  {
+   "name": "Fate's Call",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Proximity",
+   "affects": "Black Spear Ally / Enemies",
+   "castTime": "none",
+   "range": "1200",
+   "cooldown": [
+    160,
+    140,
+    120
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Airborne Duration",
+     "perRank": [
+      1,
+      1.5,
+      2
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1 to 2 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Basic Attack",
+   "slot": "A",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  }
+ ]
+}

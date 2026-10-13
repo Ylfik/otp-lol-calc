@@ -1,0 +1,140 @@
+{
+ "champion": "Pyke",
+ "abilities": [
+  {
+   "name": "Gift of the Drowned Ones",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Bone Skewer",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "er type=channel time",
+   "cooldown": [
+    10,
+    9.5,
+    9,
+    8.5,
+    8
+   ],
+   "cost": [
+    70,
+    75,
+    80,
+    85,
+    90
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      100,
+      150,
+      200,
+      250,
+      300
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "75% bonus AD",
+       "pct": 75
+      }
+     ],
+     "text": "100 to 300 (+ 75% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Ghostwater Dive",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    14,
+    13,
+    12,
+    11,
+    10
+   ],
+   "cost": 65,
+   "costType": "Mana",
+   "leveling": []
+  },
+  {
+   "name": "Phantom Undertow",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": "550",
+   "cooldown": [
+    15,
+    14,
+    13,
+    12,
+    11
+   ],
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      100,
+      150,
+      200,
+      250,
+      300
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      }
+     ],
+     "text": "100 to 300 (+ 100% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Death from Below",
+   "slot": "R",
+   "damageType": "Physical True",
+   "targeting": "Location",
+   "affects": "Self, Enemies",
+   "castTime": "0.5",
+   "range": "750",
+   "cooldown": [
+    100,
+    85,
+    70
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": []
+  }
+ ]
+}

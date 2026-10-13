@@ -1,0 +1,282 @@
+{
+ "champion": "Vel'Koz",
+ "abilities": [
+  {
+   "name": "Organic Deconstruction",
+   "slot": "I",
+   "damageType": "True",
+   "targeting": "Passive",
+   "affects": "Enemies / Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Plasma Fission",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": 7,
+   "cost": [
+    40,
+    45,
+    50,
+    55,
+    60
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90% AP",
+       "pct": 90
+      }
+     ],
+     "text": "80 to 240 (+ 90% AP)"
+    },
+    {
+     "label": "Slow Duration",
+     "perRank": [
+      1,
+      1.4,
+      1.8,
+      2.2,
+      2.6
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1 to 2.6 seconds"
+    },
+    {
+     "label": "Mana Restored per Kill",
+     "perRank": [
+      20,
+      22.5,
+      25,
+      27.5,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 30"
+    },
+    {
+     "label": "Maximum Mana Restored",
+     "perRank": [
+      60,
+      67.5,
+      75,
+      82.5,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20*3 to 30*3"
+    }
+   ]
+  },
+  {
+   "name": "Void Rift",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": null,
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "Mana + 1 Charge",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      30,
+      50,
+      70,
+      90,
+      110
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "20% AP",
+       "pct": 20
+      }
+     ],
+     "text": "30 to 110 (+ 20% AP)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      45,
+      75,
+      105,
+      135,
+      165
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25% AP",
+       "pct": 25
+      }
+     ],
+     "text": "45 to 165 (+ 25% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      75,
+      125,
+      175,
+      225,
+      275
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "45% AP",
+       "pct": 45
+      }
+     ],
+     "text": "30+45 to 110+165 (+ 45% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Tectonic Disruption",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "800<!-- |missile cast range?= 1100-->",
+   "cooldown": [
+    12,
+    11.5,
+    11,
+    10.5,
+    10
+   ],
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      100,
+      130,
+      160,
+      190
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      }
+     ],
+     "text": "70 to 190 (+ 30% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Life Form Disintegration Ray",
+   "slot": "R",
+   "damageType": "Magic True",
+   "targeting": "Direction / Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    100,
+    90,
+    80
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Damage Per Tick",
+     "perRank": [
+      34.61538461538461,
+      53.84615384615385,
+      71.15384615384615
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "125*0.2/2.6% AP",
+       "perRank": [
+        9.615384615384615
+       ]
+      }
+     ],
+     "text": "(450*0.2)/2.6 (+ 125*0.2/2.6% AP)"
+    },
+    {
+     "label": "Maximum Damage",
+     "perRank": [
+      450,
+      700,
+      925
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "125% AP",
+       "pct": 125
+      }
+     ],
+     "text": "450 (+ 125% AP)"
+    }
+   ]
+  }
+ ]
+}

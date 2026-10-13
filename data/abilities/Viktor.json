@@ -1,0 +1,470 @@
+{
+ "champion": "Viktor",
+ "abilities": [
+  {
+   "name": "Glorious Evolution",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Siphon Power",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies / Self",
+   "castTime": "0.25",
+   "range": "er 600",
+   "cooldown": [
+    9,
+    8,
+    7,
+    6,
+    5
+   ],
+   "cost": [
+    45,
+    50,
+    55,
+    60,
+    65
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      75,
+      90,
+      105,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "60 to 120 (+ 40% AP)"
+    },
+    {
+     "label": "Modified Magic Damage",
+     "perRank": [
+      20,
+      45,
+      70,
+      95,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "100% AD",
+       "pct": 100
+      },
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "20 to 120 (+ 100% AD) (+ 50% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "100% AD",
+       "pct": 100
+      },
+      {
+       "stat": "ap",
+       "raw": "40+50% AP",
+       "perRank": [
+        90
+       ]
+      }
+     ],
+     "text": "60+20 to 120+120 (+ 100% AD) (+ 40+50% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Gravity Field",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "800",
+   "cooldown": [
+    17,
+    16,
+    15,
+    14,
+    13
+   ],
+   "cost": 65,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Slow",
+     "perRank": [
+      33,
+      36,
+      39,
+      42,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "33 to 45%"
+    }
+   ]
+  },
+  {
+   "name": "Hextech Ray",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Vector",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "550",
+   "cooldown": [
+    12,
+    11,
+    10,
+    9,
+    8
+   ],
+   "cost": [
+    60,
+    70,
+    80,
+    90,
+    100
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      110,
+      150,
+      190,
+      230
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "70 to 230 (+ 50% AP)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      20,
+      50,
+      80,
+      110,
+      140
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "20 to 140 (+ 80% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      90,
+      160,
+      230,
+      300,
+      370
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "130% AP",
+       "pct": 130
+      }
+     ],
+     "text": "70+20 to 230+140 (+ 130% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Arcane Storm",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "700",
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      100,
+      175,
+      250
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "100 to 250 (+ 50% AP)"
+    },
+    {
+     "label": "Magic Damage Per Tick",
+     "perRank": [
+      65,
+      105,
+      145
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "35% AP",
+       "pct": 35
+      }
+     ],
+     "text": "65 to 145 (+ 35% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      490,
+      805,
+      1120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50+35*6% AP",
+       "perRank": [
+        260
+       ]
+      }
+     ],
+     "text": "100+65*6 to 250+145*6 (+ 50+35*6% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Chaos Storm",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "700",
+   "cooldown": [
+    120,
+    100,
+    80
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      100,
+      175,
+      250
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "100 to 250 (+ 50% AP)"
+    },
+    {
+     "label": "Magic Damage Per Tick",
+     "perRank": [
+      65,
+      105,
+      145
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "45% AP",
+       "pct": 45
+      }
+     ],
+     "text": "65 to 145 (+ 45% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      490,
+      805,
+      1120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50+45*6% AP",
+       "perRank": [
+        320
+       ]
+      }
+     ],
+     "text": "100+65*6 to 250+145*6 (+ 50+45*6% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Death Ray",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Vector",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "550",
+   "cooldown": [
+    12,
+    11,
+    10,
+    9,
+    8
+   ],
+   "cost": [
+    70,
+    80,
+    90,
+    100,
+    110
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      110,
+      150,
+      190,
+      230
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "70 to 230 (+ 50% AP)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      20,
+      50,
+      80,
+      110,
+      140
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "20 to 140 (+ 80% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      90,
+      160,
+      230,
+      300,
+      370
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "130% AP",
+       "pct": 130
+      }
+     ],
+     "text": "70+20 to 230+140 (+ 130% AP)"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,304 @@
+{
+ "champion": "Corki",
+ "abilities": [
+  {
+   "name": "Hextech Munitions",
+   "slot": "I",
+   "damageType": "Physical True",
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Phosphorus Bomb",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "825",
+   "cooldown": [
+    9,
+    8.5,
+    8,
+    7.5,
+    7
+   ],
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      105,
+      150,
+      195,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "125% bonus AD",
+       "pct": 125
+      },
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "60 to 240 (+ 125% bonus AD) (+ 100% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Valkyrie",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "300 - 600",
+   "cooldown": [
+    20,
+    18,
+    16,
+    14,
+    12
+   ],
+   "cost": [
+    80,
+    85,
+    90,
+    95,
+    100
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage Per Tick",
+     "perRank": [
+      30,
+      45,
+      60,
+      75,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "40% bonus AD",
+       "pct": 40
+      },
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      }
+     ],
+     "text": "30 to 90 (+ 40% bonus AD) (+ 30% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      150,
+      225,
+      300,
+      375,
+      450
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "40*5% bonus AD",
+       "perRank": [
+        200
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "30*5% AP",
+       "perRank": [
+        150
+       ]
+      }
+     ],
+     "text": "30*5 to 90*5 (+ 40*5% bonus AD) (+ 30*5% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Gatling Gun",
+   "slot": "E",
+   "damageType": "physical",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 12,
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Physical Damage Per Tick",
+     "perRank": [
+      5,
+      8.125,
+      11.25,
+      14.375,
+      17.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "240/16% bonus AD",
+       "perRank": [
+        15
+       ]
+      }
+     ],
+     "text": "80/16 to 280/16 (+ 240/16% bonus AD)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      80,
+      130,
+      180,
+      230,
+      280
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "240% bonus AD",
+       "pct": 240
+      }
+     ],
+     "text": "80 to 280 (+ 240% bonus AD)"
+    },
+    {
+     "label": "Resistances Reduction Per Stack",
+     "perRank": [
+      3,
+      3.5,
+      4,
+      4.5,
+      5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "3 to 5"
+    },
+    {
+     "label": "Total Resistances Reduction",
+     "perRank": [
+      12,
+      14,
+      16,
+      18,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "3*4 to 5*4"
+    }
+   ]
+  },
+  {
+   "name": "Missile Barrage",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.175",
+   "range": "cr 1300",
+   "cooldown": 2,
+   "cost": 35,
+   "costType": "mana + 1 Ammo",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      90,
+      170,
+      250
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "85% bonus AD",
+       "pct": 85
+      }
+     ],
+     "text": "90 to 250 (+ 85% bonus AD)"
+    },
+    {
+     "label": "Big One Physical Damage",
+     "perRank": [
+      180,
+      340,
+      500
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "85*2% bonus AD",
+       "perRank": [
+        170
+       ]
+      }
+     ],
+     "text": "90*2 to 250*2 (+ 85*2% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Special Delivery",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "1800",
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  }
+ ]
+}

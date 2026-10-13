@@ -1,0 +1,380 @@
+{
+ "champion": "Zaahen",
+ "abilities": [
+  {
+   "name": "Cultivation of War",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "The Darkin Glaive",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    10,
+    9,
+    8,
+    7,
+    6
+   ],
+   "cost": 25,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      15,
+      30,
+      45,
+      60,
+      75
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "100% AD",
+       "pct": 100
+      },
+      {
+       "stat": "bonusAD",
+       "raw": "20 to 40% bonus AD",
+       "perRank": [
+        20,
+        25,
+        30,
+        35,
+        40
+       ]
+      }
+     ],
+     "text": "15 to 75 (+ 100% AD) (+ 20 to 40% bonus AD)"
+    },
+    {
+     "label": "Physical Damage per Hit",
+     "perRank": [
+      7.5,
+      15,
+      22.5,
+      30,
+      37.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "100/2% AD",
+       "perRank": [
+        50
+       ]
+      },
+      {
+       "stat": "bonusAD",
+       "raw": "20/2 to 40/2% bonus AD",
+       "perRank": [
+        10,
+        12.5,
+        15,
+        17.5,
+        20
+       ]
+      }
+     ],
+     "text": "15/2 to 75/2 (+ 100/2% AD) (+ 20/2 to 40/2% bonus AD)"
+    },
+    {
+     "label": "Champion Healing",
+     "perRank": [
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "5 to 9% of his maximum health"
+    },
+    {
+     "label": "Non-Champion Healing",
+     "perRank": [
+      2.5,
+      3,
+      3.5,
+      4,
+      4.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "5*0.5 to 9*0.5% of his maximum health"
+    },
+    {
+     "label": "Bonus Physical Damage",
+     "perRank": [
+      30,
+      60,
+      90,
+      120,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "20 to 40% bonus AD",
+       "perRank": [
+        20,
+        25,
+        30,
+        35,
+        40
+       ]
+      }
+     ],
+     "text": "30 to 150 (+ 20 to 40% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Dreaded Return",
+   "slot": "W",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.5",
+   "range": "850<!--center or edge range?-->",
+   "cooldown": [
+    14,
+    13.5,
+    13,
+    12.5,
+    12
+   ],
+   "cost": 50,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Initial Physical Damage",
+     "perRank": [
+      40,
+      60,
+      80,
+      100,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50% bonus AD",
+       "pct": 50
+      }
+     ],
+     "text": "40 to 120 (+ 50% bonus AD)"
+    },
+    {
+     "label": "Subsequent Physical Damage",
+     "perRank": [
+      30,
+      50,
+      70,
+      90,
+      110
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "30% bonus AD",
+       "pct": 30
+      }
+     ],
+     "text": "30 to 110 (+ 30% bonus AD)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      70,
+      110,
+      150,
+      190,
+      230
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50+30% bonus AD",
+       "perRank": [
+        80
+       ]
+      }
+     ],
+     "text": "40+30 to 120+110 (+ 50+30% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Aureate Rush",
+   "slot": "E",
+   "damageType": "Physical Magic",
+   "targeting": "Location",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": "350",
+   "cooldown": [
+    10,
+    9.5,
+    9,
+    8.5,
+    8
+   ],
+   "cost": 40,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      40,
+      60,
+      80,
+      100,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50% bonus AD",
+       "pct": 50
+      }
+     ],
+     "text": "40 to 120 (+ 50% bonus AD)"
+    },
+    {
+     "label": "Increased Physical Damage",
+     "perRank": [
+      60,
+      90,
+      120,
+      150,
+      180
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "75% bonus AD",
+       "pct": 75
+      }
+     ],
+     "text": "60 to 180 (+ 75% bonus AD)"
+    },
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      4,
+      4.5,
+      5,
+      5.5,
+      6
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "4 to 6% of the target's maximum health"
+    }
+   ]
+  },
+  {
+   "name": "Grim Deliverance",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Location",
+   "affects": "Self, Enemies",
+   "castTime": "0.5",
+   "range": "10 - 600 <!--X-->",
+   "cooldown": [
+    110,
+    95,
+    80
+   ],
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Armor Penetration",
+     "perRank": [
+      10,
+      20,
+      30
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 30%"
+    },
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      250,
+      400,
+      550
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "200% bonus AD",
+       "pct": 200
+      }
+     ],
+     "text": "250 to 550 (+ 200% bonus AD)"
+    },
+    {
+     "label": "Healing per Champion hit",
+     "perRank": [
+      82.5,
+      132,
+      181.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "200*0.33% bonus AD",
+       "perRank": [
+        66
+       ]
+      }
+     ],
+     "text": "250*0.33 to 550*0.33 (+ 200*0.33% bonus AD)"
+    }
+   ]
+  }
+ ]
+}

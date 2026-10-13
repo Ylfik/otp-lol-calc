@@ -1,0 +1,217 @@
+{
+ "champion": "Ezreal",
+ "abilities": [
+  {
+   "name": "Rising Spell Force",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Mystic Shot",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 1200",
+   "cooldown": [
+    5.5,
+    5.25,
+    5,
+    4.75,
+    4.5
+   ],
+   "cost": [
+    28,
+    31,
+    34,
+    37,
+    40
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      20,
+      45,
+      70,
+      95,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "130% AD",
+       "pct": 130
+      },
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "20 to 120 (+ 130% AD) (+ 40% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Essence Flux",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "1200",
+   "cooldown": 8,
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      80,
+      135,
+      190,
+      245,
+      300
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      },
+      {
+       "stat": "ap",
+       "raw": "90% AP",
+       "pct": 90
+      }
+     ],
+     "text": "80 to 300 (+ 100% bonus AD) (+ 90% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Arcane Shift",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies, Self",
+   "castTime": "0.25",
+   "range": "475",
+   "cooldown": [
+    26,
+    23,
+    20,
+    17,
+    14
+   ],
+   "cost": 70,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      130,
+      180,
+      230,
+      280
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "60% bonus AD",
+       "pct": 60
+      },
+      {
+       "stat": "ap",
+       "raw": "75% AP",
+       "pct": 75
+      }
+     ],
+     "text": "80 to 280 (+ 60% bonus AD) (+ 75% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Trueshot Barrage",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "1",
+   "range": "Global",
+   "cooldown": [
+    120,
+    105,
+    90
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      350,
+      550,
+      750
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      },
+      {
+       "stat": "ap",
+       "raw": "110% AP",
+       "pct": 110
+      }
+     ],
+     "text": "350 to 750 (+ 100% bonus AD) (+ 110% AP)"
+    },
+    {
+     "label": "Modified Damage",
+     "perRank": [
+      150,
+      225,
+      300
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      },
+      {
+       "stat": "ap",
+       "raw": "110% AP",
+       "pct": 110
+      }
+     ],
+     "text": "150 to 300 (+ 100% bonus AD) (+ 110% AP)"
+    }
+   ]
+  }
+ ]
+}

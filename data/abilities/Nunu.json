@@ -1,0 +1,597 @@
+{
+ "champion": "Nunu",
+ "abilities": [
+  {
+   "name": "Call of the Freljord",
+   "slot": "I",
+   "damageType": "Physical",
+   "targeting": "Passive",
+   "affects": "Self, Allies",
+   "castTime": null,
+   "range": "<!--Range behaviour pending for test--> 1000",
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Consume",
+   "slot": "Q",
+   "damageType": "Magic True",
+   "targeting": "Unit",
+   "affects": "Enemies, Self",
+   "castTime": "0.3",
+   "range": "er 125",
+   "cooldown": [
+    13,
+    12,
+    11,
+    10,
+    9
+   ],
+   "cost": 60,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Non-Champion True Damage",
+     "perRank": [
+      400,
+      600,
+      800,
+      1000,
+      1200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "400 to 1200"
+    },
+    {
+     "label": "Base Non-Champion Heal",
+     "perRank": [
+      65,
+      95,
+      125,
+      155,
+      185
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90% AP",
+       "pct": 90
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "10% bonus health",
+       "pct": 10
+      }
+     ],
+     "text": "65 to 185 (+ 90% AP) (+ 10% bonus health)"
+    },
+    {
+     "label": "Empowered Non-Champion Heal",
+     "perRank": [
+      97.5,
+      142.5,
+      187.5,
+      232.5,
+      277.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90*1.5% AP",
+       "perRank": [
+        135
+       ]
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "10*1.5% bonus health",
+       "perRank": [
+        15
+       ]
+      }
+     ],
+     "text": "65*1.5 to 185*1.5 (+ 90*1.5% AP) (+ 10*1.5% bonus health)"
+    },
+    {
+     "label": "Champion Magic Damage",
+     "perRank": [
+      60,
+      100,
+      140,
+      180,
+      220
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "65% AP",
+       "pct": 65
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "5% bonus health",
+       "pct": 5
+      }
+     ],
+     "text": "60 to 220 (+ 65% AP) (+ 5% bonus health)"
+    },
+    {
+     "label": "Base Champion Heal",
+     "perRank": [
+      39,
+      57,
+      75,
+      93,
+      111
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90*0.6% AP",
+       "perRank": [
+        54
+       ]
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "10*0.6% bonus health",
+       "perRank": [
+        6
+       ]
+      }
+     ],
+     "text": "65*0.6 to 185*0.6 (+ 90*0.6% AP) (+ 10*0.6% bonus health)"
+    },
+    {
+     "label": "Empowered Champion Heal",
+     "perRank": [
+      58.5,
+      85.5,
+      112.5,
+      139.5,
+      166.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90*0.6*1.5% AP",
+       "perRank": [
+        81
+       ]
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "10*0.6*1.5% bonus health",
+       "perRank": [
+        9
+       ]
+      }
+     ],
+     "text": "65*0.6*1.5 to 185*0.6*1.5 (+ 90*0.6*1.5% AP) (+ 10*0.6*1.5% bonus health)"
+    }
+   ]
+  },
+  {
+   "name": "Biggest Snowball Ever!",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": "type=charge time",
+   "cooldown": 14,
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Minimum Magic Damage",
+     "perRank": [
+      36,
+      45,
+      54,
+      63,
+      72
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      }
+     ],
+     "text": "36 to 72 (+ 30% AP)"
+    },
+    {
+     "label": "Maximum Magic Damage",
+     "perRank": [
+      180,
+      225,
+      270,
+      315,
+      360
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30*5% AP",
+       "perRank": [
+        150
+       ]
+      }
+     ],
+     "text": "36*5 to 72*5 (+ 30*5% AP)"
+    },
+    {
+     "label": "Minimum Minion/Monster Roll Damage",
+     "perRank": [
+      11.988,
+      14.985,
+      17.982,
+      20.979,
+      23.976
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30*0.333% AP",
+       "perRank": [
+        9.99
+       ]
+      }
+     ],
+     "text": "36*0.333 to 72*0.333 (+ 30*0.333% AP)"
+    },
+    {
+     "label": "Maximum Minion/Monster Roll Damage",
+     "perRank": [
+      59.94,
+      74.925,
+      89.91,
+      104.895,
+      119.88
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30*0.333*5% AP",
+       "perRank": [
+        49.95
+       ]
+      }
+     ],
+     "text": "36*0.333*5 to 72*0.333*5 (+ 30*0.333*5% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Snowball Barrage",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "None",
+   "range": "700",
+   "cooldown": [
+    14,
+    13,
+    12,
+    11,
+    10
+   ],
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage Per Hit",
+     "perRank": [
+      15,
+      22.5,
+      30,
+      37.5,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "12% AP",
+       "pct": 12
+      }
+     ],
+     "text": "15 to 45 (+ 12% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      45,
+      67.5,
+      90,
+      112.5,
+      135
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "12*3% AP",
+       "perRank": [
+        36
+       ]
+      }
+     ],
+     "text": "15*3 to 45*3 (+ 12*3% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50%"
+    },
+    {
+     "label": "Maximum Total Magic Damage",
+     "perRank": [
+      135,
+      202.5,
+      270,
+      337.5,
+      405
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "15*3*3% AP",
+       "perRank": [
+        135
+       ]
+      }
+     ],
+     "text": "15*3*3 to 45*3*3 (+ 15*3*3% AP)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      20,
+      30,
+      40,
+      50,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "20 to 60 (+ 80% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Absolute Zero",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    110,
+    100,
+    90
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      65,
+      75,
+      85
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "150% AP",
+       "pct": 150
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "30 to 50% bonus health",
+       "perRank": [
+        30,
+        40,
+        50
+       ]
+      }
+     ],
+     "text": "65 to 85 (+ 150% AP) (+ 30 to 50% bonus health)"
+    },
+    {
+     "label": "Maximum Magic Damage",
+     "perRank": [
+      625,
+      950,
+      1275
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "300% AP",
+       "pct": 300
+      }
+     ],
+     "text": "625 to 1275 (+ 300% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Blood Boil",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Unit",
+   "affects": "Self, Allies",
+   "castTime": null,
+   "range": "700",
+   "cooldown": 15,
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "5% per 100 AP",
+       "pct": 5
+      }
+     ],
+     "text": "20% (+ 5% per 100 AP)"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      8
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "8%"
+    },
+    {
+     "label": "Maximum Ability Power",
+     "perRank": [
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40"
+    }
+   ]
+  },
+  {
+   "name": "Ice Blast",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": "550",
+   "cooldown": [
+    6,
+    5.5,
+    5,
+    4.5,
+    4
+   ],
+   "cost": [
+    70,
+    75,
+    80,
+    85,
+    90
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90% AP",
+       "pct": 90
+      }
+     ],
+     "text": "80 (+ 90% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40%"
+    }
+   ]
+  },
+  {
+   "name": "Visionary",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "champion": "Lux",
+ "abilities": [
+  {
+   "name": "Illumination",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Light Binding",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": 10,
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      120,
+      160,
+      200,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "75% AP",
+       "pct": 75
+      }
+     ],
+     "text": "80 to 240 (+ 75% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Prismatic Barrier",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Direction",
+   "affects": "Allies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    12,
+    11.5,
+    11,
+    10.5,
+    10
+   ],
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      40,
+      55,
+      70,
+      85,
+      100
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "40 to 100 (+ 40% AP)"
+    },
+    {
+     "label": "Maximum Shield",
+     "perRank": [
+      80,
+      110,
+      140,
+      170,
+      200
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "40*2% AP",
+       "perRank": [
+        80
+       ]
+      }
+     ],
+     "text": "40*2 to 100*2 (+ 40*2% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Lucent Singularity",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "1100",
+   "cooldown": [
+    10,
+    9.5,
+    9,
+    8.5,
+    8
+   ],
+   "cost": [
+    70,
+    80,
+    90,
+    100,
+    110
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Slow",
+     "perRank": [
+      25,
+      30,
+      35,
+      40,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "25 to 45%"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      65,
+      115,
+      165,
+      215,
+      265
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "65 to 265 (+ 80% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Final Spark",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "1",
+   "range": null,
+   "cooldown": [
+    60,
+    50,
+    40
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      300,
+      400,
+      500
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "120% AP",
+       "pct": 120
+      }
+     ],
+     "text": "300 to 500 (+ 120% AP)"
+    }
+   ]
+  }
+ ]
+}

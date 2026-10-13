@@ -1,0 +1,289 @@
+{
+ "champion": "Twisted Fate",
+ "abilities": [
+  {
+   "name": "Loaded Dice",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Wild Cards",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 1450",
+   "cooldown": [
+    6,
+    5.75,
+    5.5,
+    5.25,
+    5
+   ],
+   "cost": [
+    60,
+    70,
+    80,
+    90,
+    100
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      105,
+      150,
+      195,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "50% bonus AD",
+       "pct": 50
+      },
+      {
+       "stat": "ap",
+       "raw": "85% AP",
+       "pct": 85
+      }
+     ],
+     "text": "60 to 240 (+ 50% bonus AD) (+ 85% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Pick a Card",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies, Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 6,
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      40,
+      60,
+      80,
+      100,
+      120
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "100% AD",
+       "pct": 100
+      },
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "40 to 120 (+ 100% AD) (+ 100% AP)"
+    },
+    {
+     "label": "Mana Restored",
+     "perRank": [
+      70,
+      90,
+      110,
+      130,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "70 to 150"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      30,
+      45,
+      60,
+      75,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "100% AD",
+       "pct": 100
+      },
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "30 to 90 (+ 100% AD) (+ 70% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50%"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      15,
+      22.5,
+      30,
+      37.5,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "100% AD",
+       "pct": 100
+      },
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "15 to 45 (+ 100% AD) (+ 50% AP)"
+    },
+    {
+     "label": "Stun Duration",
+     "perRank": [
+      1,
+      1.25,
+      1.5,
+      1.75,
+      2
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1 to 2 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Stacked Deck",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Enemies, Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      15,
+      25,
+      35,
+      45,
+      55
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "15 to 55%"
+    },
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      65,
+      90,
+      115,
+      140,
+      165
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "20% bonus AD",
+       "pct": 20
+      },
+      {
+       "stat": "ap",
+       "raw": "40% AP",
+       "pct": 40
+      }
+     ],
+     "text": "65 to 165 (+ 20% bonus AD) (+ 40% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Destiny",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto / Location",
+   "affects": "Enemies, Allies, Self",
+   "castTime": "none",
+   "range": "5500",
+   "cooldown": [
+    170,
+    140,
+    110
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Effect Duration",
+     "perRank": [
+      6,
+      8,
+      10
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "6 to 10 seconds"
+    }
+   ]
+  }
+ ]
+}

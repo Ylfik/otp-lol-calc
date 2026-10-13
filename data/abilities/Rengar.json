@@ -1,0 +1,200 @@
+{
+ "champion": "Rengar",
+ "abilities": [
+  {
+   "name": "Unseen Predator",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": "cr 50",
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Savagery",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    6,
+    5.5,
+    5,
+    4.5,
+    4
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Additional Physical Damage",
+     "perRank": [
+      20,
+      55,
+      90,
+      125,
+      160
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "5% AD",
+       "pct": 5
+      }
+     ],
+     "text": "20 to 160 (+ 5% AD)"
+    }
+   ]
+  },
+  {
+   "name": "Battle Roar",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    16,
+    14.5,
+    13,
+    11.5,
+    10
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      50,
+      80,
+      110,
+      140,
+      170
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "50 to 170 (+ 80% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Bola Strike",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 1000",
+   "cooldown": 10,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      55,
+      100,
+      145,
+      190,
+      235
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "80% bonus AD",
+       "pct": 80
+      }
+     ],
+     "text": "55 to 235 (+ 80% bonus AD)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      30,
+      45,
+      60,
+      75,
+      90
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 90%"
+    }
+   ]
+  },
+  {
+   "name": "Thrill of the Hunt",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    100,
+    90,
+    80
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Effect Duration",
+     "perRank": [
+      12,
+      16,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "12 to 20 seconds"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      40,
+      50,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 60%"
+    },
+    {
+     "label": "Armor Reduction",
+     "perRank": [
+      15,
+      20,
+      25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "15 to 25"
+    }
+   ]
+  }
+ ]
+}

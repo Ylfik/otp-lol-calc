@@ -1,0 +1,487 @@
+{
+ "champion": "Kled",
+ "abilities": [
+  {
+   "name": "Skaarl the Cowardly Lizard",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Bear Trap on a Rope",
+   "slot": "Q",
+   "damageType": null,
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    11,
+    10,
+    9,
+    8,
+    7
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      30,
+      55,
+      80,
+      105,
+      130
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "60% bonus AD",
+       "pct": 60
+      }
+     ],
+     "text": "30 to 130 (+ 60% bonus AD)"
+    },
+    {
+     "label": "Minion and Small Monster Damage",
+     "perRank": [
+      45,
+      82.5,
+      120,
+      157.5,
+      195
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "90% bonus AD",
+       "pct": 90
+      }
+     ],
+     "text": "30*1.5 to 130*1.5 (+ 90% bonus AD)"
+    },
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      60,
+      110,
+      160,
+      210,
+      260
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "120% bonus AD",
+       "pct": 120
+      }
+     ],
+     "text": "30*2 to 130*2 (+ 120% bonus AD)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      90,
+      165,
+      240,
+      315,
+      390
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "180% bonus AD",
+       "pct": 180
+      }
+     ],
+     "text": "30*3 to 130*3 (+ 180% bonus AD)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50%"
+    }
+   ]
+  },
+  {
+   "name": "Violent Tendencies",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": [
+    13,
+    12,
+    11,
+    10,
+    9
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Additional Physical Damage",
+     "perRank": [
+      20,
+      30,
+      40,
+      50,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100BonusHealth",
+       "raw": "4.5 to 6.5% (+ 2% per 100 bonus AD) (+ 0.4% per 100 bonus health) of target's maximum health",
+       "perRank": [
+        4.5,
+        5,
+        5.5,
+        6,
+        6.5
+       ]
+      }
+     ],
+     "text": "20 to 60 (+ 4.5 to 6.5% (+ 2% per 100 bonus AD) (+ 0.4% per 100 bonus health) of target's maximum health)"
+    },
+    {
+     "label": "Structure Additional Damage",
+     "perRank": null,
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": null,
+       "raw": "0 to 60",
+       "perRank": [
+        0,
+        15,
+        30,
+        45,
+        60
+       ]
+      }
+     ],
+     "text": "(+ 0 to 60)"
+    }
+   ]
+  },
+  {
+   "name": "Jousting",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Direction / Auto",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "550<!--yes, really-->",
+   "cooldown": [
+    13,
+    12,
+    11,
+    10,
+    9
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      35,
+      60,
+      85,
+      110,
+      135
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "55% bonus AD",
+       "pct": 55
+      }
+     ],
+     "text": "35 to 135 (+ 55% bonus AD)"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      70,
+      120,
+      170,
+      220,
+      270
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "55*2% bonus AD",
+       "perRank": [
+        110
+       ]
+      }
+     ],
+     "text": "35*2 to 135*2 (+ 55*2% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Chaaaaaaaarge!!!",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "location",
+   "affects": "Self, Enemies, Allies",
+   "castTime": "none",
+   "range": "500 - (3500 to 4500)",
+   "cooldown": [
+    140,
+    125,
+    110
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Total Shield",
+     "perRank": [
+      200,
+      300,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "300% bonus AD",
+       "pct": 300
+      }
+     ],
+     "text": "20*10 to 40*10 (+ 300% bonus AD)"
+    },
+    {
+     "label": "Initial Shield",
+     "perRank": [
+      40,
+      60,
+      80
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "60% bonus AD",
+       "pct": 60
+      }
+     ],
+     "text": "20*2 to 40*2 (+ 60% bonus AD)"
+    },
+    {
+     "label": "Shield Per Instance",
+     "perRank": [
+      20,
+      30,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "30% bonus AD",
+       "pct": 30
+      }
+     ],
+     "text": "20 to 40 (+ 30% bonus AD)"
+    },
+    {
+     "label": "Minimum Magic Damage",
+     "perRank": [
+      4,
+      6,
+      8
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100BonusAD",
+       "raw": "3% per 100 bonus AD",
+       "pct": 3
+      }
+     ],
+     "text": "4 to 8% (+ 3% per 100 bonus AD) of target's maximum health"
+    },
+    {
+     "label": "Maximum Magic Damage",
+     "perRank": [
+      12,
+      18,
+      24
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100BonusAD",
+       "raw": "3*3% per 100 bonus AD",
+       "perRank": [
+        9
+       ]
+      }
+     ],
+     "text": "4*3 to 8*3% (+ 3*3% per 100 bonus AD) of target's maximum health"
+    }
+   ]
+  },
+  {
+   "name": "Dismounted Chaaaaaaaarge!!!",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "N/A",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Dismounted Jousting",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "N/A",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Dismounted Skaarl the Cowardly Lizard",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Pocket Pistol",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": 3,
+   "cost": 1,
+   "costType": "Charge",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      35,
+      50,
+      65,
+      80,
+      95
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "65% bonus AD",
+       "pct": 65
+      }
+     ],
+     "text": "35 to 95 (+ 65% bonus AD)"
+    },
+    {
+     "label": "Reduced Damage",
+     "perRank": [
+      7,
+      10,
+      13,
+      16,
+      19
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "65*0.2% bonus AD",
+       "perRank": [
+        13
+       ]
+      }
+     ],
+     "text": "35*0.2 to 95*0.2 (+ 65*0.2% bonus AD)"
+    },
+    {
+     "label": "Maximum Damage",
+     "perRank": [
+      63,
+      90,
+      117,
+      144,
+      171
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "65*(1+0.2*4)% bonus AD",
+       "perRank": [
+        117
+       ]
+      }
+     ],
+     "text": "35*(1+0.2*4) to 95*(1+0.2*4) (+ 65*(1+0.2*4)% bonus AD)"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,403 @@
+{
+ "champion": "Bel'Veth",
+ "abilities": [
+  {
+   "name": "Death in Lavender",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Void Surge",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "None",
+   "range": null,
+   "cooldown": [
+    4,
+    3.25,
+    2.5,
+    1.75,
+    1
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      12,
+      14,
+      16,
+      18,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "105% AD",
+       "pct": 105
+      }
+     ],
+     "text": "12 to 20 (+ 105% AD)"
+    }
+   ]
+  },
+  {
+   "name": "Above and Below",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.5",
+   "range": null,
+   "cooldown": [
+    12,
+    11,
+    10,
+    9,
+    8
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      140,
+      200,
+      260,
+      320
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "150% AP",
+       "pct": 150
+      }
+     ],
+     "text": "80 to 320 (+ 150% AP)"
+    },
+    {
+     "label": "Knock Up Duration",
+     "perRank": [
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "0.6 to 1 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Royal Maelstrom",
+   "slot": "E",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "None",
+   "range": null,
+   "cooldown": [
+    24,
+    21,
+    18,
+    15,
+    12
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Damage Reduction",
+     "perRank": [
+      20,
+      30,
+      40,
+      50,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 60%"
+    },
+    {
+     "label": "Life Steal",
+     "perRank": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 40%"
+    },
+    {
+     "label": "Minimum Physical Damage per hit",
+     "perRank": [
+      10,
+      12,
+      14,
+      16,
+      18
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "12% AD",
+       "pct": 12
+      }
+     ],
+     "text": "10 to 18 (+ 12% AD)"
+    },
+    {
+     "label": "Maximum Physical Damage per hit",
+     "perRank": [
+      20,
+      24,
+      28,
+      32,
+      36
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "12*2% AD",
+       "perRank": [
+        24
+       ]
+      }
+     ],
+     "text": "10*2 to 18*2 (+ 12*2% AD)"
+    },
+    {
+     "label": "Minimum Monster Damage per hit",
+     "perRank": [
+      20,
+      24,
+      28,
+      32,
+      36
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "12*2% AD",
+       "perRank": [
+        24
+       ]
+      }
+     ],
+     "text": "10*2 to 18*2 (+ 12*2% AD)"
+    },
+    {
+     "label": "Maximum Monster Damage per hit",
+     "perRank": [
+      40,
+      48,
+      56,
+      64,
+      72
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "12*2*2% AD",
+       "perRank": [
+        48
+       ]
+      }
+     ],
+     "text": "10*2*2 to 18*2*2 (+ 12*2*2% AD)"
+    }
+   ]
+  },
+  {
+   "name": "Endless Banquet",
+   "slot": "R",
+   "damageType": "True",
+   "targeting": "Unit",
+   "affects": "Self, Enemies",
+   "castTime": "1",
+   "range": null,
+   "cooldown": 1,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus True Damage",
+     "perRank": [
+      2,
+      4,
+      6
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "3% bonus AD",
+       "pct": 3
+      }
+     ],
+     "text": "2 to 6 (+ 3% bonus AD)"
+    },
+    {
+     "label": "Maximum Monster Damage",
+     "perRank": [
+      16,
+      32,
+      48
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "3*8% bonus AD",
+       "perRank": [
+        24
+       ]
+      }
+     ],
+     "text": "2*8 to 6*8 (+ 3*8% bonus AD)"
+    },
+    {
+     "label": "True Damage",
+     "perRank": [
+      150,
+      200,
+      250
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "150% AP",
+       "pct": 150
+      },
+      {
+       "stat": "missingHealth",
+       "raw": "20% of target's missing health",
+       "pct": 20
+      }
+     ],
+     "text": "150 to 250 (+ 150% AP) (+ 20% of target's missing health)"
+    },
+    {
+     "label": "Bonus Health",
+     "perRank": [
+      100,
+      250,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "150% bonus AD",
+       "pct": 150
+      },
+      {
+       "stat": "ap",
+       "raw": "150% AP",
+       "pct": 150
+      }
+     ],
+     "text": "100 to 400 (+ 150% bonus AD) (+ 150% AP)"
+    },
+    {
+     "label": "Bonus Attack Range",
+     "perRank": [
+      25,
+      75,
+      125
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "25 to 125"
+    },
+    {
+     "label": "Increased Size",
+     "perRank": [
+      10,
+      15,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 20%"
+    },
+    {
+     "label": "Increased Total Attack Speed",
+     "perRank": [
+      6,
+      13,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "6 to 20%"
+    },
+    {
+     "label": "Heal",
+     "perRank": [
+      100,
+      250,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "150% bonus AD",
+       "pct": 150
+      },
+      {
+       "stat": "ap",
+       "raw": "150% AP",
+       "pct": 150
+      }
+     ],
+     "text": "100 to 400 (+ 150% bonus AD) (+ 150% AP)"
+    }
+   ]
+  }
+ ]
+}

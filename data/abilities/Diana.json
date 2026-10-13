@@ -1,0 +1,306 @@
+{
+ "champion": "Diana",
+ "abilities": [
+  {
+   "name": "Moonsilver Blade",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Self / Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Crescent Strike",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "900",
+   "cooldown": [
+    8,
+    7.5,
+    7,
+    6.5,
+    6
+   ],
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      70,
+      105,
+      140,
+      175,
+      210
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "70 to 210 (+ 70% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Pale Cascade",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    15,
+    13.5,
+    12,
+    10.5,
+    9
+   ],
+   "cost": [
+    40,
+    45,
+    50,
+    55,
+    60
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      45,
+      60,
+      75,
+      90,
+      105
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "14% bonus health",
+       "pct": 14
+      }
+     ],
+     "text": "45 to 105 (+ 30% AP) (+ 14% bonus health)"
+    },
+    {
+     "label": "Magic Damage per Orb",
+     "perRank": [
+      20,
+      32,
+      44,
+      56,
+      68
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "18% AP",
+       "pct": 18
+      }
+     ],
+     "text": "20 to 68 (+ 18% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      60,
+      96,
+      132,
+      168,
+      204
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "54% AP",
+       "pct": 54
+      }
+     ],
+     "text": "20*3 to 68*3 (+ 54% AP)"
+    },
+    {
+     "label": "Maximum Shield Strength",
+     "perRank": [
+      90,
+      120,
+      150,
+      180,
+      210
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      },
+      {
+       "stat": "bonusHealth",
+       "raw": "14*2% bonus health",
+       "perRank": [
+        28
+       ]
+      }
+     ],
+     "text": "45*2 to 105*2 (+ 60% AP) (+ 14*2% bonus health)"
+    }
+   ]
+  },
+  {
+   "name": "Lunar Rush",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": "825",
+   "cooldown": [
+    22,
+    20,
+    18,
+    16,
+    14
+   ],
+   "cost": [
+    40,
+    45,
+    50,
+    55,
+    60
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      50,
+      70,
+      90,
+      110,
+      130
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "50 to 130 (+ 60% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Moonfall",
+   "slot": "R",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    100,
+    90,
+    80
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Slow",
+     "perRank": [
+      40,
+      50,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "40 to 60%"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      200,
+      300,
+      400
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "200 to 400 (+ 60% AP)"
+    },
+    {
+     "label": "Bonus Damage Per Champion",
+     "perRank": [
+      35,
+      60,
+      85
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "15% AP",
+       "pct": 15
+      }
+     ],
+     "text": "35 to 85 (+ 15% AP)"
+    },
+    {
+     "label": "Total Damage Vs. 5 Champions",
+     "perRank": [
+      340,
+      540,
+      740
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "120% AP",
+       "pct": 120
+      }
+     ],
+     "text": "200+35*4 to 400+85*4 (+ 120% AP)"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,230 @@
+{
+ "champion": "Caitlyn",
+ "abilities": [
+  {
+   "name": "Headshot",
+   "slot": "I",
+   "damageType": "Physical",
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Piltover Peacemaker",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.625",
+   "range": null,
+   "cooldown": [
+    10,
+    9,
+    8,
+    7,
+    6
+   ],
+   "cost": [
+    55,
+    60,
+    65,
+    70,
+    75
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      50,
+      90,
+      130,
+      170,
+      210
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "125 to 205% AD",
+       "perRank": [
+        125,
+        145,
+        165,
+        185,
+        205
+       ]
+      }
+     ],
+     "text": "50 to 210 (+ 125 to 205% AD)"
+    },
+    {
+     "label": "Reduced Damage",
+     "perRank": [
+      30,
+      54,
+      78,
+      102,
+      126
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ad",
+       "raw": "125*0.6 to 205*0.6% AD",
+       "perRank": [
+        75,
+        87,
+        99,
+        111,
+        123
+       ]
+      }
+     ],
+     "text": "50*0.6 to 210*0.6 (+ 125*0.6 to 205*0.6% AD)"
+    }
+   ]
+  },
+  {
+   "name": "Yordle Snap Trap",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "800",
+   "cooldown": 0.5,
+   "cost": 20,
+   "costType": "Mana + 1 Charge",
+   "leveling": [
+    {
+     "label": "Trap Duration",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30 to 50 seconds"
+    },
+    {
+     "label": "Maximum Number of Traps",
+     "perRank": [
+      3,
+      3,
+      4,
+      4,
+      5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "3"
+    },
+    {
+     "label": "Headshot Damage Increase",
+     "perRank": [
+      35,
+      80,
+      125,
+      170,
+      215
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "30% bonus AD",
+       "pct": 30
+      }
+     ],
+     "text": "35 to 215 (+ 30% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "90 Caliber Net",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "0.15",
+   "range": null,
+   "cooldown": [
+    16,
+    14,
+    12,
+    10,
+    8
+   ],
+   "cost": 75,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      130,
+      180,
+      230,
+      280
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "80% AP",
+       "pct": 80
+      }
+     ],
+     "text": "80 to 280 (+ 80% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Ace in the Hole",
+   "slot": "R",
+   "damageType": "Physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.375",
+   "range": "cr 3500",
+   "cooldown": 90,
+   "cost": 100,
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Physical damage",
+     "perRank": [
+      300,
+      475,
+      650
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      }
+     ],
+     "text": "300 to 650 (+ 100% bonus AD)"
+    }
+   ]
+  }
+ ]
+}

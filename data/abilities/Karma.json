@@ -1,0 +1,477 @@
+{
+ "champion": "Karma",
+ "abilities": [
+  {
+   "name": "Gathering Fire",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Inner Flame",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "cr 950 / er 890",
+   "cooldown": [
+    9,
+    8,
+    7,
+    6,
+    5
+   ],
+   "cost": [
+    40,
+    50,
+    60,
+    70,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      110,
+      160,
+      210,
+      260
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "60 to 260 (+ 70% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Focused Resolve",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies / Self",
+   "castTime": "0.25",
+   "range": "cr 675",
+   "cooldown": 12,
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      40,
+      65,
+      90,
+      115,
+      140
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "45% AP",
+       "pct": 45
+      }
+     ],
+     "text": "40 to 140 (+ 45% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      80,
+      130,
+      180,
+      230,
+      280
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "90% AP",
+       "pct": 90
+      }
+     ],
+     "text": "40*2 to 140*2 (+ 90% AP)"
+    },
+    {
+     "label": "Root Duration",
+     "perRank": [
+      1.6,
+      1.7,
+      1.8,
+      1.9,
+      2
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "1.6 to 2 seconds"
+    }
+   ]
+  },
+  {
+   "name": "Inspire",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Unit",
+   "affects": "Allies",
+   "castTime": "none",
+   "range": "cr 800",
+   "cooldown": [
+    10,
+    9.5,
+    9,
+    8.5,
+    8
+   ],
+   "cost": [
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      80,
+      130,
+      180,
+      230,
+      280
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "80 to 280 (+ 60% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Mantra",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    40,
+    38,
+    36,
+    34
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Defiance",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Unit",
+   "affects": "Allies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Primary Target Shield",
+     "perRank": [
+      45,
+      85,
+      125,
+      165
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "45% AP",
+       "pct": 45
+      }
+     ],
+     "text": "Mantra (+ 45% AP)"
+    },
+    {
+     "label": "Total Primary Target Shield",
+     "perRank": [
+      80,
+      130,
+      180,
+      230,
+      280
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": null,
+       "raw": "Mantra",
+       "perRank": [
+        45,
+        85,
+        125,
+        165
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "60+45% AP",
+       "perRank": [
+        105
+       ]
+      }
+     ],
+     "text": "80 to 280 (+ Mantra) (+ 60+45% AP)"
+    },
+    {
+     "label": "Secondary Target Shield",
+     "perRank": [
+      45,
+      85,
+      125,
+      165
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "45*1.0% AP",
+       "perRank": [
+        45
+       ]
+      }
+     ],
+     "text": "Mantra (+ 45*1.0% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Renewal",
+   "slot": "W",
+   "damageType": "Magic",
+   "targeting": "Unit",
+   "affects": "Enemies / Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Root Duration Increase",
+     "perRank": [
+      0.5,
+      0.75,
+      1,
+      1.25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "Mantra seconds"
+    },
+    {
+     "label": "Total Root Duration",
+     "perRank": [
+      1.6,
+      1.7,
+      1.8,
+      1.9,
+      2
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": null,
+       "raw": "Mantra",
+       "perRank": [
+        0.5,
+        0.75,
+        1,
+        1.25
+       ]
+      }
+     ],
+     "text": "1.6 to 2 (+ Mantra) seconds"
+    }
+   ]
+  },
+  {
+   "name": "Soulflare",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus Magic Damage",
+     "perRank": [
+      40,
+      100,
+      160,
+      220
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      }
+     ],
+     "text": "Mantra (+ 30% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      60,
+      110,
+      160,
+      210,
+      260
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": null,
+       "raw": "Mantra",
+       "perRank": [
+        40,
+        100,
+        160,
+        220
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "70+30% AP",
+       "perRank": [
+        100
+       ]
+      }
+     ],
+     "text": "60 to 260 5 (+ Mantra) (+ 70+30% AP)"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      40,
+      130,
+      220,
+      310
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "Mantra (+ 50% AP)"
+    },
+    {
+     "label": "Total Bonus Damage",
+     "perRank": [
+      80,
+      230,
+      380,
+      530
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50+30% AP",
+       "perRank": [
+        80
+       ]
+      }
+     ],
+     "text": "Mantra (+ 50+30% AP)"
+    },
+    {
+     "label": "Total Damage",
+     "perRank": [
+      60,
+      110,
+      160,
+      210,
+      260
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": null,
+       "raw": "Mantra",
+       "perRank": [
+        80,
+        230,
+        380,
+        530
+       ]
+      },
+      {
+       "stat": "ap",
+       "raw": "70+50+30% AP",
+       "perRank": [
+        150
+       ]
+      }
+     ],
+     "text": "60 to 260 (+ Mantra) (+ 70+50+30% AP)"
+    }
+   ]
+  }
+ ]
+}

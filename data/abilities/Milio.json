@@ -1,0 +1,250 @@
+{
+ "champion": "Milio",
+ "abilities": [
+  {
+   "name": "Fired Up!",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Allies, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Ultra Mega Fire Kick",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 10,
+   "cost": [
+    50,
+    55,
+    60,
+    65,
+    70
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      80,
+      140,
+      200,
+      260,
+      320
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "120% AP",
+       "pct": 120
+      }
+     ],
+     "text": "80 to 320 (+ 120% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      40,
+      45,
+      50,
+      55,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "per100AP",
+       "raw": "5% per 100 AP",
+       "pct": 5
+      }
+     ],
+     "text": "40 to 60% (+ 5% per 100 AP)"
+    }
+   ]
+  },
+  {
+   "name": "Cozy Campfire",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Location",
+   "affects": "Self, Allies",
+   "castTime": "0.25",
+   "range": "650",
+   "cooldown": [
+    29,
+    27,
+    25,
+    23,
+    21
+   ],
+   "cost": [
+    90,
+    100,
+    110,
+    120,
+    130
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Base Attack Range Scaling",
+     "perRank": [
+      10,
+      12.5,
+      15,
+      17.5,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "10 to 20%"
+    },
+    {
+     "label": "Heal per Tick",
+     "perRank": [
+      2.8,
+      3.6,
+      4.4,
+      5.2,
+      6
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "15/25% AP",
+       "perRank": [
+        0.6
+       ]
+      }
+     ],
+     "text": "70/25 to 150/25 (+ 15/25% AP)"
+    },
+    {
+     "label": "Total Heal",
+     "perRank": [
+      70,
+      90,
+      110,
+      130,
+      150
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "15% AP",
+       "pct": 15
+      }
+     ],
+     "text": "70 to 150 (+ 15% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Warm Hugs",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Unit",
+   "affects": "Self, Allies",
+   "castTime": "none",
+   "range": "cr 650",
+   "cooldown": null,
+   "cost": [
+    50,
+    60,
+    70,
+    80,
+    90
+   ],
+   "costType": "mana",
+   "leveling": [
+    {
+     "label": "Shield Strength",
+     "perRank": [
+      45,
+      75,
+      105,
+      135,
+      165
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "45% AP",
+       "pct": 45
+      }
+     ],
+     "text": "45 to 165 (+ 45% AP)"
+    },
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      12,
+      14,
+      16,
+      18,
+      20
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "12 to 20%"
+    }
+   ]
+  },
+  {
+   "name": "Breath of Life",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self, Allies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    160,
+    145,
+    130
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Heal",
+     "perRank": [
+      150,
+      250,
+      350
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "150 to 350 (+ 50% AP)"
+    }
+   ]
+  }
+ ]
+}

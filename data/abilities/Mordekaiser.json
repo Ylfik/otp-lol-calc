@@ -1,0 +1,192 @@
+{
+ "champion": "Mordekaiser",
+ "abilities": [
+  {
+   "name": "Darkness Rise",
+   "slot": "I",
+   "damageType": "Magic",
+   "targeting": "Passive",
+   "affects": "Self / Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Obliterate",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.5",
+   "range": null,
+   "cooldown": [
+    8,
+    7,
+    6,
+    5,
+    4
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": null,
+     "perLevel": {
+      "kind": "level",
+      "at1": 0,
+      "at18": 85,
+      "formula": "0 + (45-0)/9*(x-1)"
+     },
+     "flat": null,
+     "ratios": [
+      {
+       "stat": null,
+       "raw": "80 to 220",
+       "perRank": [
+        80,
+        115,
+        150,
+        185,
+        220
+       ]
+      },
+      {
+       "stat": "bonusAD",
+       "raw": "120% bonus AD",
+       "pct": 120
+      },
+      {
+       "stat": "ap",
+       "raw": "70% AP",
+       "pct": 70
+      }
+     ],
+     "text": "0 + (45-0)/9*(x-1) for 12 (+ 80 to 220) (+ 120% bonus AD) (+ 70% AP)"
+    },
+    {
+     "label": "Isolated Damage Increase",
+     "perRank": [
+      30,
+      35,
+      40,
+      45,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "30.000000000000004 to 50%"
+    }
+   ]
+  },
+  {
+   "name": "Indestructible",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    12,
+    11,
+    10,
+    9,
+    8
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Shield to Healing",
+     "perRank": [
+      35,
+      37.5,
+      40,
+      42.5,
+      45
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "0.35*100 to 0.45*100%"
+    }
+   ]
+  },
+  {
+   "name": "Death's Grasp",
+   "slot": "E",
+   "damageType": "Magic",
+   "targeting": "Location",
+   "affects": "Self, Enemies",
+   "castTime": "0.25",
+   "range": "700",
+   "cooldown": [
+    16,
+    14,
+    12,
+    10,
+    8
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Magic Penetration",
+     "perRank": [
+      5,
+      7.5,
+      10,
+      12.5,
+      15
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "5 to 15%"
+    },
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      80,
+      100,
+      120,
+      140
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "45% AP",
+       "pct": 45
+      }
+     ],
+     "text": "60 to 140 (+ 45% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Realm of Death",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.5",
+   "range": "650",
+   "cooldown": [
+    140,
+    120,
+    100
+   ],
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  }
+ ]
+}

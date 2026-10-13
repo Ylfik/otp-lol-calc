@@ -1,0 +1,306 @@
+{
+ "champion": "Taliyah",
+ "abilities": [
+  {
+   "name": "Rock Surfing",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Threaded Volley",
+   "slot": "Q",
+   "damageType": "magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": [
+    7,
+    6,
+    5,
+    4,
+    3
+   ],
+   "cost": [
+    55,
+    60,
+    65,
+    70,
+    75
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      55,
+      72.5,
+      90,
+      107.5,
+      125
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "55 to 125 (+ 50% AP)"
+    },
+    {
+     "label": "Reduced Damage",
+     "perRank": [
+      22,
+      29,
+      36,
+      43,
+      50
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50*0.4% AP",
+       "perRank": [
+        20
+       ]
+      }
+     ],
+     "text": "55*0.4 to 125*0.4 (+ 50*0.4% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      143,
+      188.5,
+      234,
+      279.5,
+      325
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "130% AP",
+       "pct": 130
+      }
+     ],
+     "text": "55*2.6 to 125*2.6 (+ 130% AP)"
+    },
+    {
+     "label": "Empowered Damage",
+     "perRank": [
+      99,
+      130.5,
+      162,
+      193.5,
+      225
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50*1.8% AP",
+       "perRank": [
+        90
+       ]
+      }
+     ],
+     "text": "55*1.8 to 125*1.8 (+ 50*1.8% AP)"
+    },
+    {
+     "label": "Secondary Target Damage",
+     "perRank": [
+      55,
+      72.5,
+      90,
+      107.5,
+      125
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "50% AP",
+       "pct": 50
+      }
+     ],
+     "text": "55 to 125 (+ 50% AP)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 40%"
+    },
+    {
+     "label": "Bonus Monster Damage",
+     "perRank": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20 to 40"
+    },
+    {
+     "label": "Boulder Bonus Monster Damage",
+     "perRank": [
+      36,
+      45,
+      54,
+      63,
+      72
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "20*1.8 to 40*1.8"
+    }
+   ]
+  },
+  {
+   "name": "Seismic Shove",
+   "slot": "W",
+   "damageType": "<!--magic-->",
+   "targeting": "Vector",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "900",
+   "cooldown": [
+    14,
+    12.5,
+    11,
+    9.5,
+    8
+   ],
+   "cost": [
+    40,
+    30,
+    20,
+    10,
+    0
+   ],
+   "costType": "Mana",
+   "leveling": []
+  },
+  {
+   "name": "Unraveled Earth",
+   "slot": "E",
+   "damageType": "magic",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": null,
+   "cooldown": 14,
+   "cost": 90,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      60,
+      105,
+      150,
+      195,
+      240
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "60% AP",
+       "pct": 60
+      }
+     ],
+     "text": "60 to 240 (+ 60% AP)"
+    },
+    {
+     "label": "Detonation Magic Damage",
+     "perRank": [
+      25,
+      40,
+      55,
+      70,
+      85
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "30% AP",
+       "pct": 30
+      }
+     ],
+     "text": "25 to 85 (+ 30% AP)"
+    },
+    {
+     "label": "Total Maximum Detonation Damage",
+     "perRank": [
+      62.5,
+      100,
+      137.5,
+      175,
+      212.5
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "75% AP",
+       "pct": 75
+      }
+     ],
+     "text": "25*(1+0.75+0.5+0.25) to 85*(1+0.75+0.5+0.25) (+ 75% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Weaver's Wall",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Direction",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": "2500 to 6500",
+   "cooldown": [
+    180,
+    150,
+    120
+   ],
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": []
+  }
+ ]
+}

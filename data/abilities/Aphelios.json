@@ -1,0 +1,276 @@
+{
+ "champion": "Aphelios",
+ "abilities": [
+  {
+   "name": "The Hitman and the Seer",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": [
+    {
+     "label": "Bonus Attack Damage",
+     "perRank": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "4 to 24 6"
+    },
+    {
+     "label": "Bonus Attack Speed",
+     "perRank": [
+      9,
+      18,
+      27,
+      36,
+      45,
+      54
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "9 to 54 6%"
+    },
+    {
+     "label": "Lethality",
+     "perRank": [
+      4.5,
+      9,
+      13.5,
+      18,
+      22.5,
+      27
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "4.5 to 27 6"
+    }
+   ]
+  },
+  {
+   "name": "Weapons of the Faithful",
+   "slot": "Q",
+   "damageType": null,
+   "targeting": "N/A",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Phase",
+   "slot": "W",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": null,
+   "castTime": "None",
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Weapon Queue System",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": null,
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Moonlight Vigil",
+   "slot": "R",
+   "damageType": "physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.6",
+   "range": "1300",
+   "cooldown": {
+    "kind": "level",
+    "at1": 120,
+    "at18": 100,
+    "steps": 3
+   },
+   "cost": 100,
+   "costType": "Mana",
+   "leveling": []
+  },
+  {
+   "name": "Binding Eclipse",
+   "slot": "Q",
+   "damageType": "Magic",
+   "targeting": "Auto",
+   "affects": "Enemies",
+   "castTime": "0.3",
+   "range": null,
+   "cooldown": {
+    "kind": "level",
+    "at1": 12,
+    "at18": 10,
+    "steps": 7
+   },
+   "cost": null,
+   "costType": "Mana",
+   "leveling": []
+  },
+  {
+   "name": "Calibrum",
+   "slot": "A",
+   "damageType": "Physical",
+   "targeting": "Passive",
+   "affects": "Self, Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": 1,
+   "costType": "Moonlight per attack",
+   "leveling": []
+  },
+  {
+   "name": "Crescendum",
+   "slot": "A",
+   "damageType": "Physical",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": 1,
+   "costType": "Moonlight per attack",
+   "leveling": []
+  },
+  {
+   "name": "Duskwave",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.4",
+   "range": "650",
+   "cooldown": {
+    "kind": "level",
+    "at1": 8,
+    "at18": 5,
+    "steps": 7
+   },
+   "cost": null,
+   "costType": "Mana",
+   "leveling": []
+  },
+  {
+   "name": "Gravitum",
+   "slot": "A",
+   "damageType": "Physical",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": 1,
+   "costType": "Moonlight per attack",
+   "leveling": []
+  },
+  {
+   "name": "Infernum",
+   "slot": "A",
+   "damageType": "Physical",
+   "targeting": "Passive",
+   "affects": "Enemies",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": 1,
+   "costType": "Moonlight per attack",
+   "leveling": []
+  },
+  {
+   "name": "Moonshot",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.4",
+   "range": "1450",
+   "cooldown": {
+    "kind": "level",
+    "at1": 10,
+    "at18": 8,
+    "steps": 7
+   },
+   "cost": null,
+   "costType": "Mana",
+   "leveling": []
+  },
+  {
+   "name": "Onslaught",
+   "slot": "Q",
+   "damageType": "Physical",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": {
+    "kind": "level",
+    "at1": 10,
+    "at18": 8,
+    "steps": 7
+   },
+   "cost": null,
+   "costType": "Mana",
+   "leveling": []
+  },
+  {
+   "name": "Sentry",
+   "slot": "Q",
+   "damageType": "physical",
+   "targeting": "Location",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "475",
+   "cooldown": {
+    "kind": "level",
+    "at1": 9,
+    "at18": 6,
+    "steps": 7
+   },
+   "cost": null,
+   "costType": "Mana",
+   "leveling": []
+  },
+  {
+   "name": "Severum",
+   "slot": "A",
+   "damageType": "Physical",
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": 1,
+   "costType": "Moonlight per attack",
+   "leveling": []
+  }
+ ]
+}

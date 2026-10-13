@@ -1,0 +1,387 @@
+{
+ "champion": "Jayce",
+ "abilities": [
+  {
+   "name": "Hextech Capacitor",
+   "slot": "I",
+   "damageType": null,
+   "targeting": "Passive",
+   "affects": "Self",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "To the Skies!",
+   "slot": "Q",
+   "damageType": "physical",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "None",
+   "range": "cr 600",
+   "cooldown": [
+    16,
+    14,
+    12,
+    10,
+    8,
+    6
+   ],
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      60,
+      110,
+      160,
+      210,
+      260,
+      310
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "135% bonus AD",
+       "pct": 135
+      }
+     ],
+     "text": "60 to 310 6 (+ 135% bonus AD)"
+    },
+    {
+     "label": "Slow",
+     "perRank": [
+      35,
+      40,
+      45,
+      50,
+      55,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "35 to 60 6%"
+    }
+   ]
+  },
+  {
+   "name": "Lightning Field",
+   "slot": "W",
+   "damageType": "magic",
+   "targeting": "Auto",
+   "affects": "Self, Enemies",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 10,
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Mana Restored",
+     "perRank": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "15 to 25 6"
+    },
+    {
+     "label": "Magic Damage Per Tick",
+     "perRank": [
+      35,
+      50,
+      65,
+      80,
+      95,
+      110
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "25% AP",
+       "pct": 25
+      }
+     ],
+     "text": "35 to 110 6 (+ 25% AP)"
+    },
+    {
+     "label": "Total Magic Damage",
+     "perRank": [
+      140,
+      200,
+      260,
+      320,
+      380,
+      440
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "ap",
+       "raw": "100% AP",
+       "pct": 100
+      }
+     ],
+     "text": "35*4 to 110*4 6 (+ 100% AP)"
+    }
+   ]
+  },
+  {
+   "name": "Thundering Blow",
+   "slot": "E",
+   "damageType": "magic",
+   "targeting": "Unit",
+   "affects": "Enemies",
+   "castTime": "0.25",
+   "range": "er 240",
+   "cooldown": [
+    20,
+    18,
+    16,
+    14,
+    12,
+    10
+   ],
+   "cost": 55,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Magic Damage",
+     "perRank": [
+      8,
+      10.8,
+      13.6,
+      16.4,
+      19.2,
+      22
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "100% bonus AD",
+       "pct": 100
+      }
+     ],
+     "text": "8 to 22 6% of target's maximum health (+ 100% bonus AD)"
+    },
+    {
+     "label": "Capped Monster Damage",
+     "perRank": [
+      200,
+      300,
+      400,
+      500,
+      600,
+      700
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "200 to 700 6"
+    }
+   ]
+  },
+  {
+   "name": "Transform Mercury Cannon",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 6,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Acceleration Gate",
+   "slot": "E",
+   "damageType": null,
+   "targeting": "Location",
+   "affects": "Allies",
+   "castTime": "none",
+   "range": "650",
+   "cooldown": 16,
+   "cost": 50,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Bonus Movement Speed",
+     "perRank": [
+      35,
+      40,
+      45,
+      50,
+      55,
+      60
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "35 to 60 6%"
+    }
+   ]
+  },
+  {
+   "name": "Hextech Capacitor 2",
+   "slot": "{{Data Jayce/Hextech Capacitor|pst2|skill}}",
+   "damageType": null,
+   "targeting": "",
+   "affects": "}}",
+   "castTime": null,
+   "range": null,
+   "cooldown": null,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  },
+  {
+   "name": "Hyper Charge",
+   "slot": "W",
+   "damageType": "physical",
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": [
+    13,
+    11.4,
+    9.8,
+    8.2,
+    6.6,
+    5
+   ],
+   "cost": 40,
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      70,
+      78,
+      86,
+      94,
+      102,
+      110
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "70 to 110 6% AD"
+    },
+    {
+     "label": "Total Physical Damage",
+     "perRank": [
+      210,
+      234,
+      258,
+      282,
+      306,
+      330
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [],
+     "text": "70*3 to 110*3 6% AD"
+    }
+   ]
+  },
+  {
+   "name": "Shock Blast",
+   "slot": "Q",
+   "damageType": "physical",
+   "targeting": "Direction",
+   "affects": "Enemies",
+   "castTime": "0.2143",
+   "range": null,
+   "cooldown": 8,
+   "cost": [
+    55,
+    60,
+    65,
+    70,
+    75,
+    80
+   ],
+   "costType": "Mana",
+   "leveling": [
+    {
+     "label": "Physical Damage",
+     "perRank": [
+      80,
+      121,
+      162,
+      203,
+      244,
+      285
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "130% bonus AD",
+       "pct": 130
+      }
+     ],
+     "text": "80 to 285 6 (+ 130% bonus AD)"
+    },
+    {
+     "label": "Increased Damage",
+     "perRank": [
+      112,
+      169.4,
+      226.8,
+      284.2,
+      341.6,
+      399
+     ],
+     "perLevel": null,
+     "flat": null,
+     "ratios": [
+      {
+       "stat": "bonusAD",
+       "raw": "130*1.4% bonus AD",
+       "perRank": [
+        182
+       ]
+      }
+     ],
+     "text": "80*1.4 to 285*1.4 6 (+ 130*1.4% bonus AD)"
+    }
+   ]
+  },
+  {
+   "name": "Transform Mercury Hammer",
+   "slot": "R",
+   "damageType": null,
+   "targeting": "Auto",
+   "affects": "Self",
+   "castTime": "none",
+   "range": null,
+   "cooldown": 6,
+   "cost": null,
+   "costType": null,
+   "leveling": []
+  }
+ ]
+}
