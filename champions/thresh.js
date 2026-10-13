@@ -12,7 +12,7 @@ window.CHAMPION = {
       {k:"r", en:"The Box", fr:"La cage"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultimate: 6, 11, 16 */
     maxRank: 5,
     /* souls are gathered over a game, so the count is a build choice */
     stacks:{max:999, def:100, en:"Souls", fr:"âmes"},

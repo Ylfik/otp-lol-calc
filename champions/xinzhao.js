@@ -11,7 +11,7 @@ window.CHAMPION = {
       {k:"r", en:"Crescent Guard", fr:"Garde circulaire"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultimate: 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[15,30,45,60,75], qBonusAD:0.40,

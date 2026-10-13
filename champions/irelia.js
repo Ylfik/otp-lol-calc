@@ -29,7 +29,7 @@ window.CHAMPION = {
       {k:"r", en:"Vanguard's Edge", fr:"Pointe de l'avant-garde"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultimate: 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[5,25,45,65,85], qAD:0.70, qHealPct:[9,10,11,12,13],

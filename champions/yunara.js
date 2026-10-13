@@ -31,7 +31,7 @@ window.CHAMPION = {
       {k:"r", en:"Arc of Ruin", fr:"Transe"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultimate: 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qPass:[5,10,15,20,25], qAP:0.20, qAS:[20,30,40,50,60],

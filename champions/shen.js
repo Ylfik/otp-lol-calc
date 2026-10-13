@@ -17,7 +17,7 @@ window.CHAMPION = {
       {k:"r", en:"Stand United", fr:"Soutien indéfectible"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultimate: 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[10,16,22,28,34,40], qPct:[2,2.5,3,3.5,4], qPctUp:[5,5.5,6,6.5,7],

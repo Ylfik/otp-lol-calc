@@ -11,7 +11,7 @@ window.CHAMPION = {
       {k:"r", en:"Realm of Death", fr:"Royaume des morts"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultimate: 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[80,115,150,185,220], qAD:1.20, qAP:0.70, qIso:[1.3,1.35,1.4,1.45,1.5],

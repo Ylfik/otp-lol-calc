@@ -11,7 +11,7 @@ window.CHAMPION = {
       {k:"r", en:"Feast", fr:"Festin"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultimate: 6, 11, 16 */
     maxRank: 5,
     /* Feast stacks are a build choice, so they get their own control */
     stacks:{max:99, def:6, en:"Feast stacks", fr:"charges de Festin"},

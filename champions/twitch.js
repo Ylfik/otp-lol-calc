@@ -11,7 +11,7 @@ window.CHAMPION = {
       {k:"r", en:"Spray and Pray", fr:"Panique"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultimate: 6, 11, 16 */
     maxRank: 5,
     /* Deadly Venom stacks on the target, up to six */
     stacks:{max:6, def:6, en:"Venom stacks", fr:"charges de venin"},

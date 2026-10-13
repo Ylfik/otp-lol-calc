@@ -14,7 +14,7 @@ window.CHAMPION = {
       {k:"r", en:"Lilting Lullaby", fr:"Douce berceuse"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultimate: 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[35,45,55,65,75], qAP:0.35, qMs:[3,4,5,6,7], qMsAP:3,
