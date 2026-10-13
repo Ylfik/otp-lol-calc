@@ -1,0 +1,228 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|A Thousand Cuts|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Gwen
+|skill        = I
+|icon         = A Thousand Cuts.png
+|description  = {{sbc|Innate:}} '''Gwen's''' {{tip|basic attacks}} {{tip|on-hit}}, the center of ''{{ai|Snip Snip!|Gwen}}'', and ''{{ai|Needlework|Gwen}}'' deal {{as|'''bonus''' magic damage}} equal to {{as|1% {{as|(+ {{fd|0.6}}% per 100 AP)}} of the target's '''maximum''' health}}.
+|description2 = ''A Thousand Cuts'' is modified based on the target:
+* {{tip|heal|Heals}} '''Gwen''' for 67% of {{tt|post-mitigation damage|Damage calculated after resistances and most modifiers.}} dealt against {{tip|champion|champions}}, capped at {{pplevel|12 to 40}} {{as|(+ 7% AP)}} per instance.
+* Deals an additional {{as|{{pplevel|8 to 30}} '''bonus''' magic damage}} against {{tip|minions}} that are {{as|'''below''' 40% health}}.
+* Deals a maximum of {{as|3 {{as|(+ 5% AP)}} magic damage|magic damage}} against {{tip|monsters}}.
+|blurbicon    = A Thousand Cuts.png
+|blurb        = {{sbc|Innate:}} {{cis|Gwen}} {{tip|basic attacks}} {{tip|on-hit}} and damaging abilities deal {{as|'''bonus''' magic damage}} equal to {{as|a portion of the target's '''maximum''' health}} and {{tip|heal}} her for a portion of this damage dealt against {{tip|champions}}.
+|cooldown     = 
+|cost         = 
+|costtype     = 
+|target range = 
+|effect radius= 
+|width        = 
+|angle        = 
+|cast time    = 
+|speed        = 
+|targeting    = Passive
+|affects      = Self, Enemies
+|damagetype   = magic
+|spellshield  = 
+|spelleffects = proc
+|parry        = true
+|grounded     = 
+|projectile   = 
+|callforhelp  = 
+|notes        = 
+* The attacks do not deal the '''bonus''' damage against {{tip|structures}}.
+}}
+<!--Small snips always deal a percentage of the final snip's damage.-->
+<!--Edit these parameter values when the damage values get changed.
+-->{{#vardefine:s1|10}}<!--Snip's base rank 1 damage.
+-->{{#vardefine:s5|26}}<!--Snip's base rank 5 damage.
+-->{{#vardefine:sr|5}}<!--Snip's AP ratio.
+-->{{#vardefine:fs1|60}}<!--Final snip's base rank 1 damage.
+-->{{#vardefine:fs5|160}}<!--Final snip's base rank 5 damage.
+-->{{#vardefine:fsr|35}}<!--Final snip's AP ratio.
+-->{{#vardefine:sa1|1}}<!--Minimum number of small snips.
+-->{{#vardefine:sa2|5}}<!--Maximum number of small snips.
+-->{{#vardefine:pd1|1}}<!--Passive's base damage (x%).
+-->{{#vardefine:pd2|0.6}}<!--Passive's ratio (x% per 100 AP).
+-->{{{{{1<noinclude>|Ability data</noinclude>}}}|Snip Snip!|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Gwen
+|skill        = Q
+|blurbicon    = Snip Snip!.png
+|blurb        = {{sbc|Passive:}} {{cis|Gwen}} {{tip|basic attacks}} {{tip|on-hit}} generate {{tip|stacks}} of ''Snippy'', up to a cap.
+|blurb2       = {{sbc|Active:}} '''Gwen''' snips in the target direction, dealing {{as|magic damage}} to enemies in a cone. She snips again for each ''Snippy'' stack she has.<br/>
+'''Gwen''' then makes a final snip that deals increased {{as|magic damage}}.
+|blurb3       = The center of each snip converts a portion of the damage into {{as|true damage}}, and applies {{ai|A Thousand Cuts|Gwen}}.
+|icon         = false
+|description  = {{sbc|Passive:}} '''Gwen's''' {{tip|basic attacks}} generate a {{tip|stack}} of ''Snippy'' {{tip|on-hit}} for 6 seconds, stacking up to 4 times and refreshing on subsequent attacks.
+|icon2        = Snip Snip!.png
+|description2 = {{sbc|Active:}} '''Gwen''' snips at least twice with her scissors in a {{tt|cone|see notes}} in the target direction over the cast time, dealing {{as|magic damage}} per snip to all enemies within the area, with the final snip dealing increased damage. The center of each snip converts 50% of the damage to {{ccs|{{sti|{{as|true damage}}}}|true}}, then applies ''{{ai|A Thousand Cuts|Gwen}}''. ''Snip Snip!'' deals 80% damage against {{tip|minions}}, and executes them on the first damage instance if they are {{as|'''below''' 20% health}}.
+|leveling2    =
+{{st|Damage per Snip|{{ap|{{#var:s1}} to {{#var:s5}}}} {{as|(+ {{ap|{{#var:sr}}}}% AP)}}|Center Damage per Snip|{{ap|{{#var:s1}} to {{#var:s5}}}} {{as|(+ {{ap|{{#var:sr}}}}% AP)}}<br />{{ai|A Thousand Cuts|Gwen|{{as|(+ {{#var:pd1}}% {{as|(+ {{fd|{{#var:pd2}}}}% per 100 AP)}} of the target's '''maximum''' health)}}}}}}
+{{st|Final Snip Damage|{{ap|{{#var:fs1}} to {{#var:fs5}}}} {{as|(+ {{#var:fsr}}% AP)}}|Final Snip Center Damage|{{ap|{{#var:fs1}} to {{#var:fs5}}}} {{as|(+ {{#var:fsr}}% AP)}}<br />{{ai|A Thousand Cuts|Gwen|{{as|(+ {{#var:pd1}}% {{as|(+ {{ap|{{#var:pd2}}*1}}% per 100 AP)}} of the target's '''maximum''' health)}}}}}}
+|description3 = If '''Gwen''' has any ''Snippy'' stacks, she consumes them to snip an additional time for each.
+|leveling3    =
+{{st|Minimum Damage|{{ap|{{#var:fs1}}+{{#var:s1}}*{{#var:sa1}} to {{#var:fs5}}+{{#var:s5}}*{{#var:sa1}}}} {{as|(+ {{ap|{{#var:fsr}}+{{#var:sr}}*{{#var:sa1}}}}% AP)}}|Minimum Center Damage|{{ap|{{#var:fs1}}+{{#var:s1}}*{{#var:sa1}} to {{#var:fs5}}+{{#var:s5}}*{{#var:sa1}}}} {{as|(+ {{ap|{{#var:fsr}}+{{#var:sr}}*{{#var:sa1}}}}% AP)}}<br />{{ai|A Thousand Cuts|Gwen|{{as|(+ {{ap|{{#var:pd1}}+{{#var:pd1}}*{{#var:sa1}}}}% {{as|(+ {{ap|{{#var:pd2}}+{{#var:pd2}}*{{#var:sa1}}}}% per 100 AP)}} of the target's '''maximum''' health)}}}}}}
+{{st|Maximum Damage|{{ap|{{#var:fs1}}+{{#var:s1}}*{{#var:sa2}} to {{#var:fs5}}+{{#var:s5}}*{{#var:sa2}}}} {{as|(+ {{ap|{{#var:fsr}}+{{#var:sr}}*{{#var:sa2}}}}% AP)}}|Maximum Center Damage|{{ap|{{#var:fs1}}+{{#var:s1}}*{{#var:sa2}} to {{#var:fs5}}+{{#var:s5}}*{{#var:sa2}}}} {{as|(+ {{ap|{{#var:fsr}}+{{#var:sr}}*{{#var:sa2}}}}% AP)}}<br />{{ai|A Thousand Cuts|Gwen|{{as|(+ {{ap|{{#var:pd1}}+{{#var:pd1}}*{{#var:sa2}}}}% {{as|(+ {{ap|{{#var:pd2}}+{{#var:pd2}}*{{#var:sa2}}}}% per 100 AP)}} of the target's '''maximum''' health)}}}}}}
+|cooldown     = {{ap|6.5 to 3.5}}
+|cost         = 40
+|costtype     = mana
+|effect radius= {{tip|cr|icononly = true}} {{tt|-50 – 465|Trapezoid (and inner rectangle) length, starts behind Gwen; 515 total length}}
+|width        = {{dv|{{tip|er|icononly = true}} {{tt|75|Trapezoid smaller base, close to Gwen}}|{{tt|360|Trapezoid larger base, farther from Gwen}}|{{tip|er|icononly = true}} {{tt|25|Inner true damage rectangle width}}}}
+|customlabel  = Circle Radius
+|custominfo   = {{tt|515 (-50)|the center of the circle is 50 units behind Gwen}}
+<!--|angle        = 64{{degrees}}-->
+|cast time    = {{fd|0.5}}
+|queue time   = {{fd|0.05}}
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = Magic True
+|spellshield  = special
+|spelleffects = aoe
+|grounded     = 
+|projectile   = 
+|callforhelp  = 
+|notes        = 
+* ''Snip Snip!'s'' total hitbox uses the intersection of a trapezoid and a circle. Enemies are hit by ''Snip Snip!'' only when their hitbox overlaps with both of those areas, or with '''Gwen's''' {{tip|gameplay radius}}.
+* Subsequent basic attacks on-hit also refresh the duration of ''Snippy'' stacks.
+* The amount of ''Snippy'' stacks '''Gwen''' has is indicated below her [[health bar]].
+* {{tip|Spell shield}} blocks only one snip.
+{{Effect at cast time end}}
+* The first snip happens at {{tt|{{fd|0.13}} seconds|Measured, should be 0.1 seconds rounded up to 0.132 seconds}}, the last one at the end of the cast time.
+** Bonus snips from ''Snippy'' stacks each happen at {{fd|0.45}}, {{fd|0.4}}, {{fd|0.35}} and {{fd|0.23}} seconds into the cast time.
+|flavorsound  = {{sm2|Gwen_Original_Q_4.ogg}} ''"Snip snip!"''
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Hallowed Mist|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Gwen
+|skill        = W
+|icon         = Hallowed Mist.png
+|blurbicon    = Hallowed Mist.png
+|blurb        = {{sbc|Active:}} {{ci|Gwen}} summons the ''Hallowed Mist'' upon her current location for a few seconds. ''Hallowed Mist'' can be recast within this time, and does so automatically if she attempts to leave the area.
+|blurb2       = While inside the mist, '''Gwen''' becomes {{tip|ghosted}}, gains {{sti|{{as|'''bonus''' armor}}}} and {{sti|{{as|'''bonus''' magic resistance}}}} and is {{tip|untargetable}} to enemies who are outside of it.
+|blurb3       = {{sbc|Recast:}} '''Gwen''' commands the mist to move to her current location.
+|description  = {{sbc|Active:}} '''Gwen''' summons the Hallowed Mist upon her current location, lasting for 4 seconds. ''Hallowed Mist'' can be recast after {{fd|0.5}} seconds, and does so automatically if '''Gwen''' attempts to leave the area.
+|icon2        = Hallowed Mist 2.png
+|description2 = While inside the mist, '''Gwen''' becomes {{tip|ghosted}}, gains {{sti|{{as|'''bonus''' armor}}}} and {{sti|{{as|'''bonus''' magic resistance}}}} and is {{tip|untargetable}} to all enemies (except {{tip|turret|turrets}} and {{tip|monsters}}) outside of the mist.
+|leveling2    = {{st|Bonus Resistances|{{ap|22 to 30}} {{as|(+ 7% AP)}}}}
+|description3 = {{sbc|Recast:}} '''Gwen''' commands the mist to move to her current location.
+|description4 = '''''Gwen''' negates all attacks by {{tip|monsters}} outside of the mist.''
+|cooldown     = {{ap|22 to 18}}
+|cdstart      = post-effect
+|cost         = 60
+|costtype     = mana
+|target range = 
+|effect radius= {{tip|cr|icononly = true}} 480
+|speed        = {{tt|2000|Mist travel speed, teleports to Gwen if she is moving outside the zone faster than it can travel}}
+|width        = 
+|angle        = 
+|cast time    = none
+|queue time   = {{fd|0.5}}
+|targeting    = Auto
+|affects      = Self
+|damagetype   = 
+|spellshield  = 
+|spelleffects = 
+|grounded     = 
+|projectile   = 
+|callforhelp  = 
+|notes        = 
+* ''Hallowed Mist's'' {{tip|untargetability}} does not apply to {{tip|monster|monsters}} nor {{tip|turret|turrets}}, meaning they are allowed to gain aggro against '''Gwen''' and attack her regardless of being in the mist or not.
+** However, '''Gwen''' will not take damage from monsters that hit her and are outside of the mist.
+* ''Hallowed Mist'' does not grant untargetability against enemy {{tip|pet|pets}} inside the zone if their source is outside, but does grant untargetability against enemy ''pets'' outside the zone even if their source is inside.
+* All {{tip|projectile|projectiles}} targeted at '''Gwen''' by enemy champions outside the mist are {{tip|homing projectile destruction|destroyed}} upon attempting to pass through the mist or being inside the mist.
+** Targeted projectiles sourced by minions or monsters will not be destroyed and can still hit '''Gwen''' even if they are outside of the zone.
+* If '''Gwen''' {{tip|dash|dashes}} out of the area, the mist will automatically move to the dash's destination instead of '''Gwen's''' location.
+** The mist will stop moving immediately if the dash is interrupted.
+* The recast will move the mist's center 75 units through '''Gwen's''' location at the time.
+** If she is {{tip|dash|dashing}}, the mist will move 75 units through her dash destination instead.
+* The mist will teleport to '''Gwen's''' location if she {{tip|blink|blinks}} a far distance.
+* Enemy champions outside the mist are indicated with a broken sword.
+* ''Hallowed Mist'' will indicate that '''''Gwen is Immune''''' whenever an effect attempts to hit '''Gwen'''.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Skip 'n Slash|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Gwen
+|skill        = E
+|icon         = Skip 'n Slash.png
+|description  = {{sbc|Active:}} '''Gwen''' {{tip|dash|dashes}} to the target location, then empowers her {{tip|basic attacks}} within the next 4 seconds to deal 15 {{as|(+ 20% AP)}} {{as|'''bonus''' magic damage}} {{tip|on-hit}} and gain {{sti|{{as|'''bonus''' attack speed}}}} and {{sti|75 '''bonus''' attack range}}.
+|leveling     = {{st|Bonus Attack Speed|{{ap|30 to 80}}%}} 
+|description2 = '''Gwen's''' first basic attack within the duration refunds a percentage of ''Skip 'n Slash's'' {{sti|cooldown}}.
+|leveling2    = {{st|Cooldown Refund|{{ap|25 to 65}}%}}
+|description3 = ''Skip 'n Slash {{tip|basic attack reset|resets}} '''Gwen's''' basic attack timer, and can be cast during any of her abilities, and vice versa.''
+|blurbicon    = Skip 'n Slash.png
+|blurb        = {{sbc|Active:}} {{ci|Gwen}} {{tip|dash|dashes}} to the target location, and afterwards empowers her {{tip|basic attacks}} for a duration, gaining {{sti|{{as|'''bonus''' attack speed}}}}, {{as|magic damage}}, and {{sti|range}}.
+|blurb2       = The first basic attack within the duration {{sti|cooldown|refunds}} a potion of the cooldown.
+|cooldown     = {{ap|13 to 11}}
+|cost         = 35
+|costtype     = Mana
+|target range = {{dv|{{tt|350|Dash range}}|{{tt|450|Maximum dash range across terrain}}}}
+|effect radius= 
+|width        = 
+|angle        = 
+|cast time    = none
+|speed        = 
+|queue time   = {{fd|0.5}}
+|targeting    = Location
+|affects      = Self
+|damagetype   = magic
+|spellshield  = 
+|spelleffects = proc
+|grounded     = true
+|knockdown    = true
+|projectile   = 
+|callforhelp  = 
+|outofrange   = cast at max
+|terraingrace = true
+|notes        = 
+* ''Skip 'n Slash'' has no minimum dash range.
+}}
+<!--Edit these parameter values when the damage values get changed.
+-->{{#vardefine:bd1|30}}<!--Base rank 1 damage per needle.
+-->{{#vardefine:bd5|70}}<!--Base rank 5 damage per needle.
+-->{{#vardefine:ar|10}}<!--AP ratio per needle.
+-->{{#vardefine:pd1|1}}<!--Passive's base damage (x%).
+-->{{#vardefine:pd2|0.6}}<!--Passive's ratio (x% per 100 AP).
+-->
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Needlework|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Gwen
+|skill        = R
+|icon         = Gwen Needlework.png
+|blurbicon    = Gwen Needlework.png
+|blurb        = {{sbc|First Cast:}} {{ci|Gwen}} launches a needle in the target direction that deals {{as|magic damage}} and {{tip|slow|slows}} enemies hit. ''Needlework'' can be recast up to two more times.
+|blurb2       = {{sbc|Second Cast:}} '''Gwen''' barrages out 3 needles.
+|blurb3       = {{sbc|Third Cast:}} '''Gwen''' barrages out 5 needles.
+|description  = {{sbc|Active:}} '''Gwen''' launches a needle in the target direction that deals {{as|magic damage}} to enemies hit and {{tip|slow|slows}} them for {{fd|1.5}} seconds.
+|leveling     = {{st|Magic Damage per Needle|{{ap|{{#var:bd1}} to {{#var:bd5}}}} {{as|(+ {{#var:ar}}% AP)}}|Damage with {{ai|A Thousand Cuts|Gwen}}|{{ap|{{#var:bd1}} to {{#var:bd5}}}} {{as|(+ {{#var:ar}}% AP)}} {{as|(+ {{#var:pd1}}% {{as|(+ {{ap|{{#var:pd2}}*1}}% per 100 AP)}} of the target's '''maximum''' health)}}}}
+{{st|Slow|{{ap|30 to 60}}%}}
+|icon2        = Gwen Needlework 2.png
+|description2 = ''Needlework'' can be recast twice more within 8 seconds of the activation at no additional cost, with a 1-second {{tt|static cooldown|Unaffected by ability haste}} between casts. Each subsequent cast refreshes the duration and increases the number of needles launched by 2. Needle hits beyond the first apply a {{tip|slow}} against each individual target.
+|leveling2    = {{st|Subsequent Slow|{{ap|15 to 25}}%}}
+|icon3        = Gwen Needlework 3.png
+|description3 = {{sbc|Recast:}} '''Gwen''' mimics the first cast's effects, while barraging three needles on the second cast and five on the third cast.
+|leveling3    = {{st|Second Cast Total Damage|{{ap|{{#var:bd1}}*3 to {{#var:bd5}}*3}} {{as|(+ {{ap|{{#var:ar}}*3}}% AP)}}<br />{{ai|A Thousand Cuts|Gwen|{{as|(+ {{ap|{{#var:pd1}}*3}}% {{as|(+ {{ap|{{#var:pd2}}*3}}% per 100 AP)}} of the target's '''maximum''' health)}}}}|Third Cast Total Damage|{{ap|{{#var:bd1}}*5 to {{#var:bd5}}*5}} {{as|(+ {{ap|{{#var:ar}}*5}}% AP)}}<br />{{ai|A Thousand Cuts|Gwen|{{as|(+ {{ap|{{#var:pd1}}*5}}% {{as|(+ {{ap|{{#var:pd2}}*5}}% per 100 AP)}} of the target's '''maximum''' health)}}}}|Maximum Total Damage|{{ap|{{#var:bd1}}*9 to {{#var:bd5}}*9}} {{as|(+ {{ap|{{#var:ar}}*9}}% AP)}}<br />{{ai|A Thousand Cuts|Gwen|{{as|(+ {{ap|{{#var:pd1}}*9}}% {{as|(+ {{ap|{{#var:pd2}}*9}}% per 100 AP)}} of the target's '''maximum''' health)}}}}}}
+|description4 = '''''Gwen''' can move during Needlework's cast times.''
+|cooldown     = {{ap|120 to 80}}
+|cdstart      = on-cast
+|cost         = 100
+|costtype     = Mana
+|range        = {{tip|cr|icononly = true}} {{tt|-100 + 1350|Starting 100 units behind Gwen's location, each missile travels 1350 units}}
+|width        = {{tip|er|icononly = true}} {{tt|240 - 30|-140 total width per half-second of travel time}}
+|cast time    = {{dv|{{tt|{{fd|0.25}}|First cast}}|{{tt|{{fd|0.5}}|Second and third casts}}}}
+|speed        = {{tt|1800|Needle missiles speed}}
+|queue time   = {{tt|{{fd|0.5}}|All casts}}
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = magic
+|spellshield  = special
+|spelleffects = aoe
+|grounded     = 
+|projectile   = true
+|callforhelp  = 
+|notes        = 
+* Dying during the cast time will prevent the remaining needles of the cast from being launched.
+* The first cast's cast time is {{fd|0.25}} seconds, and the second and third's cast times are each {{fd|0.5}} seconds. '''Gwen''' launches the needles during the cast times.
+** For the second cast, the first needle launches {{rutngt|0.25}} after the start of the cast, the second needle launches after {{rutngt|0.1}}, and the third needle launches {{rutngt|0.2}} after the first.
+** For the third cast, the first needle launches {{rutngt|0.25}} after the start of the cast. Each additional needle launches {{rutngt|0.0625}} seconds after the previous one.
+* The needles of each cast will fire based on '''Gwen's''' location at {{rutngt|0.25}} into each cast time (in case of the first cast, this is at the end of the cast time).
+** The needles fire from 100 units ''behind'' the cast location.
+** The width of all needle missiles decreases with their distance travelled, forming an approximately triangular missile hitbox.
+** Needles of the same cast all travel the same line at a slight delay after one another. The visual origins are offset (by 70 and 110 units to either side from the center missile spawn location), but the actual hitting missiles all follow the central line.
+* {{tip|Spell shield}} blocks only one needle.
+|flavorsound  = {{sm2|Gwen_Original_R_0.ogg}} ''"Needles out!"''
+}}

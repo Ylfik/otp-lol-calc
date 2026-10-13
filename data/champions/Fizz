@@ -1,0 +1,204 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Nimble Fighter|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Fizz
+|skill        = I
+|icon         = Nimble Fighter.png
+|blurb        = {{sbc|Innate:}} {{ci|Fizz}} becomes permanently {{tip|ghosted}} and takes slightly reduced damage from all hits.
+|description  = {{sbc|Innate:}} '''Fizz''' is permanently {{tip|ghosted}} and reduces every instance of {{tt|pre-mitigation|Damage calculated before modifiers}} damage taken by 4 {{as|(+ 1% AP)}}, up to a maximum of 50% reduction. The damage reduction is increased to 14 {{as|(+ 1% AP)}} against {{tip|monsters}}.
+|targeting    = Passive
+|affects      = Self
+|damagetype   = 
+|spellshield  = 
+|spelleffects = 
+|projectile   = 
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* No additional notes.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Urchin Strike|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Fizz
+|skill        = Q
+|icon         = Urchin Strike.png
+|blurb        = {{sbc|Active:}} {{ci|Fizz}} {{tip|dash|dashes}} through the target enemy, dealing {{as|magic damage}}, {{as|physical damage}}, and applying {{tip|on-hit}} effects.
+|description  = {{sbc|Active:}} '''Fizz''' {{tip|dashes}} a fixed distance in the direction of the target enemy. If they are in range upon arrival, he deals {{as|magic damage}} plus {{as|100% AD}} {{as|physical damage}} and applies {{tip|on-hit}} effects.
+|description2 = ''{{ai|Seastone Trident|Fizz}} and {{ai|Chum the Waters|Fizz}} can be cast during the dash.''
+|leveling     = {{st|Magic Damage|{{ap|10 to 70}} {{as|(+ 55% AP)}}}}
+|target range = {{tip|cr|icononly = true}} 550
+|range        = {{tt|550|Fixed dash distance}}
+|speed        = 
+|collision radius=
+|cooldown     = {{ap|8 to 6}}
+|cost         = 50
+|costtype     = Mana
+|targeting    = Unit
+|cast time    = none
+|affects      = Enemies
+|damagetype   = Physical Magic
+|spellshield  = True
+|spelleffects = spell
+|projectile   = 
+|grounded     = True
+|knockdown    = True
+|callforhelp  = True
+|parry        = true
+|notes        = 
+* ''Urchin Strike'' can only go through walls if the target is on the other side.
+* ''Urchin Strike'' only damages targets if within 200 units of their original location upon completion of the dash.
+* '''Fizz''' will be automatically ordered to {{tip|basic attack}} the target after ''Urchin Strike''.
+* ''Urchin Strike'' does not deal damage if the target is {{tip|untargetable}}.
+* {{as|{{sti|Life steal}}}} applies only on the physical damage component. {{tip|Spell vamp}} applies to both the physical damage and bonus magic damage.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Seastone Trident|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Fizz
+|skill        = W
+|icon         = false
+|blurb        = {{sbc|Passive:}} {{cis|Fizz}} basic attacks bleed his enemies, continually dealing {{as|magic damage}}.
+|blurb2       = {{sbc|Active:}} '''Fizz''' empowers his next basic attack to deal {{as|'''bonus''' magic damage}}, and has an additional effect based on fatality.
+* If this attack kills the target, the cooldown is {{sti|ah|reduced}} and the {{sti|{{as|mana cost}}}} is refunded.
+* If this attack does not kill the target, '''Fizz's''' basic attacks deal {{as|'''bonus''' magic damage}} for a few seconds.
+|description  = {{sbc|Passive:}} '''Fizz's''' basic attacks rend enemies {{tip|on-hit}}, dealing {{as|magic damage}} every {{fd|0.5}} seconds over 3 seconds, refreshing on subsequent hits.
+|leveling     = {{st|Total Passive Magic Damage|{{ap|30 to 90}} {{as|(+ 25% AP)}}|Passive Magic Damage per Tick|{{ap|30/6 to 90/6|round=2}} {{as|(+ {{ap|25/6|round=2}}% AP)}}}}
+|icon2        = Seastone Trident.png
+|description2 = {{sbc|Active:}} '''Fizz''' empowers his next {{tip|basic attack}} within 4 seconds to have an {{tip|uncancellable windup}}, gain {{sti|range|50 '''bonus''' range}}, and deal {{as|'''bonus''' magic damage}}.
+|leveling2    = {{st|Active Magic Damage|{{ap|50 to 150}} {{as|(+ 45% AP)}}}}
+|description3 = If ''Seastone Trident'' kills its target, the {{sti|cooldown}} is reduced to 1 second and the {{sti|{{as|mana cost}}}} is refunded. Otherwise, if the target is not killed, '''Fizz's''' basic attacks deal {{as|'''bonus''' magic damage}} {{tip|on-hit}} for the next 5 seconds. 
+|leveling3    = {{st|Active On-Hit Magic Damage|{{ap|20 to 40}} {{as|(+ 30% AP)}}}}
+|description4 = ''Seastone Trident's'' active damage can be applied against {{tip|structures}} at 50% effectiveness. Active and on-hit damage deal an additional {{as|90 '''bonus''' magic damage}} against {{tip|monsters}}.
+|description5 = ''Seastone Trident {{tip|basic attack reset|resets}} '''Fizz's''' basic attack timer.''
+|cooldown     = {{ap|7 to 3}}
+|cdstart      = post-effect
+|cost         = {{ap|30 to 70}}
+|costtype     = Mana
+|cast time = none
+|targeting    = Auto
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = special
+|occurrence   = On-hit
+|parry        = Special
+|projectile   = 
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* Applies {{tip|spell damage}} on the empowered attack, {{tip|persistent damage}} additionally tagged as {{tip|indirect damage}} on the damage over time effect, and {{tip|proc damage}} on the bonus damage on-hit.
+* ''Seastone Trident's '' interactions with {{tip|dodge|dodging}}, {{tip|block|blocking}}, and {{tip|blind|blinding}} effects.
+** The passive bonus damage gets negated by {{tip|dodge|dodging}} or {{tip|block|blocking}} the attack, or if '''Fizz''' is {{tip|blind|blinded}}.
+** The active:
+*** If the attacked enemy is {{tip|dodge|dodging}} or if '''Fizz''' is {{tip|blind|blinded}}, the empowered attack won't deal any damage, but the empowered attack won't be consumed.
+*** If the attacked enemy is {{tip|block|blocking}}, the empowered attack won't deal any damage despite being consumed. But the attack will apply the passive bonus damage of ''Seastone Trident''.
+* The empowered attack will trigger against {{tip|structures}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Playful|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Fizz
+|skill        = E
+|icon         = Playful.png
+|blurb        = {{sbc|Active:}} {{ci|Fizz}} {{tip|dash|vaults}} in the target direction and balances onto his spear, becoming {{tip|untargetable}}. From this position, Fizz can either slam the ground or choose to jump again with ''{{ai|Trickster|Fizz}}''.
+|blurb2       = Slamming the ground deals {{as|magic damage}} and {{tip|slow|slows}} nearby enemies.
+|post-blurb   = Fizz/Trickster
+|description  = {{sbc|Active:}} '''Fizz''' {{tip|dash|dashes}} to the target location while becoming {{tip|untargetable}}, balancing on his trident for {{fd|0.75}} seconds, during which he can cast ''{{ai|Trickster|Fizz}}'' after {{fd|0.15}} seconds into the duration.
+|description2 = He then begins to hop off of his trident over {{fd|0.5}} seconds, during which he gains {{sti|{{as|50% '''bonus''' movement speed}}}}, and afterwards becoming targetable and landing to create a splash that deals {{as|magic damage}} to nearby enemies and {{tip|slow|slows}} them for 2 seconds.
+|leveling2    = {{st|Magic Damage|{{ap|80 to 280}} {{as|(+ 95% AP)}}}}{{st|Slow|{{ap|40 to 60}}%}}
+|description3 = ''While hopping off of the trident, '''Fizz''' may input movement commands to direct his landing.''
+|target range = {{tt|25 - 400|Minimum and maximum dash distance}}
+|effect radius= {{tip|cr|icononly = true}} 375
+|cast time    = none
+|cooldown     = {{ap|16 to 8}}
+|cdstart      = post-effect
+|cost         = {{ap|75 to 95}}
+|costtype     = Mana
+|targeting    = Location
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spellaoe
+|projectile   = 
+|grounded     = True
+|knockdown    = special
+|outofrange   = cast at max
+|notes        = 
+{{always quickcast}}
+*''Playful'' counts as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and triggering {{ais|Force Pulse|Kassadin}} passive.
+**Detonating the ability early for {{ai|Trickster|Fizz}} does not.
+* The distance covered during ''Playful's'' directed splash is equal to half of '''Fizz's''' movement speed.
+* ''Playful'' cannot be used for approximately {{fd|0.5}} seconds after using {{ai|Urchin Strike|Fizz}}.
+* {{si|Flash}} can be used while hopping off the trident, but not while balanced on it.
+* '''Fizz''' can receive aggro while hopping off the trident, but not while balanced on it
+{{safesubst:unexpected|desc=
+* If the first dash is interrupted, '''Fizz''' initiates the hop immediately, and if the second one is, the splash will not occur.
+** In either cases, '''Fizz''' loses the untargetability. [https://youtu.be/Zjtcee-OvUQ] {{bug|2}}|affectedEffects=Fizz E|estimatedPatchOrigin=V1.0.0.129|<!--added automatically-->wikiUploadTimestamp=1776194123|<!--added automatically-->pagename=Template:Data Fizz/Playful
+}}
+* If ''Playful'' is cast while under the effect of a move block, '''Fizz''' will not become untargetable and will initiate the hop instantly.{{bug}}
+** If {{ai|Trickster|Fizz}} is cast, the splash will not occur.{{bug}}
+* If '''Fizz''' casts ''Playful'' on top of himself after {{tip|blink|blinking}} and not moving from the blinked-to spot, the minimum dash distance of 25 units will not apply (casts at 0 range).{{bug}}
+* If '''Fizz''' enters {{tip|stasis (buff)|stasis}} during either ''Playful'' or {{ai|Trickster|Fizz}}, the splash occurs after the stasis ends.
+}}
+<!-- The following values are defined as parameters. The damage by fish type is a linear interpolation from the minimum values up to a maximum modifier.
+-->{{#vardefine:r_b1|180}}<!-- Rank 1 minimum base damage (Guppy)
+-->{{#vardefine:r_b3|420}}<!-- Rank 3 minimum base damage (Guppy)
+-->{{#vardefine:r_ap|60}}<!-- Minimum AP ratio (Guppy) as a PERCENTAGE
+-->{{#vardefine:r_maxmod|1.5}}<!-- Maximum value modifier (Gigalodon) as a DECIMAL
+-->{{{{{1<noinclude>|Ability data</noinclude>}}}|Chum the Waters|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Fizz
+|skill        = R
+|icon         = Chum the Waters.png
+|blurb        = {{sbc|Active:}} {{ci|Fizz}} tosses a lure in the target direction that lands on the ground, attracting a shark that erupts after a short delay, dealing {{as|magic damage}} to nearby enemies, {{tip|airborne|knocking them back}} and {{tip|slow|slowing}} them.<br/>The farther the lure flies, the larger the shark that is attracted, increasing the effects.
+|blurb2       = The lure attaches to the first enemy champion that touches it, {{tip|slow|slowing}} them. The shark will {{tip|airborne|knockup}} the target instead of knocking them back.
+|description  = {{sbc|Active:}} '''Fizz''' throws down a lure at the target location that attracts a shark, granting {{tip|sight}} of the area before it emerges to chomp at the lure after 2 seconds, dealing {{as|magic damage}} to nearby enemies, {{tip|airborne|knocking them back}}, though not through terrain, and {{tip|slow|slowing}} them for 2 seconds. The further the lure travels in its initial flight, the larger the shark that is attracted; increasing ''Chum the Waters' '' damage, slow, eruption radius and knock back distance.
+|description2 = {{sbc|Guppy (<455):}} 40% slow, 200 eruption radius and 150 unit knock back distance.
+|leveling2    = {{st|Guppy Damage|{{ap|{{#var:r_b1}} to {{#var:r_b3}}}} {{as|(+ {{#var:r_ap}}% AP)}}}}
+|description3 = {{sbc|Chomper (455-910):}} {{ap|(1+({{#var:r_maxmod}}-1)*(1/2))*100}}% damage, 60% slow, 325 eruption radius and 250 unit knock back distance.
+|leveling3    = {{st|Chomper Damage|{{ap|{{#var:r_b1}}*(1+({{#var:r_maxmod}}-1)*(1/2)) to {{#var:r_b3}}*(1+({{#var:r_maxmod}}-1)*(1/2))}} {{as|(+ {{ap|{{#var:r_ap}}*(1+({{#var:r_maxmod}}-1)*(1/2))}}% AP)}}}}
+|description4 = {{sbc|Gigalodon (>910):}} {{ap|{{#var:r_maxmod}}*100}}% damage, 80% slow, 450 eruption radius and 350 unit knock back distance.
+|leveling4    = {{st|Gigalodon Damage|{{ap|{{#var:r_b1}}*{{#var:r_maxmod}} to {{#var:r_b3}}*{{#var:r_maxmod}}}} {{as|(+ {{ap|{{#var:r_ap}}*{{#var:r_maxmod}}}}% AP)}}}}
+|description5 = Enemy {{tip|champion|champions}} can intercept the lure while it is in flight, which attaches to them upon contact and causes the shark to emerge at their position after the same delay. The lure's holder is {{tip|slow|slowed}} and {{tip|true sight|revealed}} for the duration and afterwards is impacted by the eruption but is {{tip|airborne|knocked up}} for 1 second instead of knocked back.
+|target range = 1300
+|speed        = 1300
+|cooldown     = {{ap|120 to 80}}
+|cast time    = {{fd|0.25}}
+|cost         = 100
+|costtype     = Mana
+|targeting    = Location
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = special
+|spelleffects = spellaoe
+|projectile   = special
+|grounded     = 
+|knockdown    = 
+|outofrange   = cast at max
+|notes        = 
+* ''Chum the Waters'' will not attach the lure to an enemy champion if they have a {{tip|spell shield}} as well as against an enemy {{ci|Malzahar}} with his {{ai|Void Shift|Malzahar}} active (mitigation effect is consumed in both cases).
+** The area of effect for the eruption will be at the target's location at the time of the attachment being blocked; the target will intercept the lure without getting attached to it.
+* ''Chum the Waters' '' lure missile will stop its movement upon colliding with {{cai|Blade Whirl|Samira}} or {{cai|Wind Wall|Yasuo}} specifically, creating the area of effect for the eruption prematurely without destroying the missile. Collision with {{cai|Rebuttal|Mel}} will destroy it altogether, however.
+{{Effect at cast time end}}
+** The targeted area does not change unless the ability was cast beyond maximum range.
+* If the lure attaches to an enemy champion, a countdown will appear at their position to signify when the shark is about to emerge. The countdown begins from 4, and ticks down by one every {{fd|0.5}} seconds.
+|flavorsound  = {{sm2|Fizz_Original_R_6.ogg}} ''"Feeding time!"''
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Trickster|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Fizz
+|skill        = E
+|icon         = Trickster.png
+|blurb        = {{sbc|Active:}} {{ci|Fizz}} {{tip|dash|vaults}} in the target direction and slams down, dealing {{as|magic damage}} to nearby enemies.<br/>This area is smaller than ''{{ai|Playful|Fizz}}''.
+|pre-blurb    = Fizz/Playful
+|description  = {{sbc|Active:}} '''Fizz''' {{tip|dash|dashes}} to the target location, hopping down and splashing onto the ground prematurely upon arrival to deal the same {{as|magic damage}} in a smaller radius but not applying the slow.
+|leveling     = {{st|Magic Damage|{{ap|80 to 280}} {{as|(+ 95% AP)}}}}
+|target range = {{tt|75 - 300|Minimum and maximum dash distance}}
+|effect radius= {{tip|cr|icononly = true}} 225
+|targeting    = Location
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spellaoe
+|projectile   = 
+|grounded     = True
+|knockdown    = true
+|outofrange   = cast at max
+|notes        = 
+{{always quickcast}}
+* ''Trickster'' does not count as an ability activation.
+* Both {{ais|Playful|Fizz}} and ''Trickster's'' {{tip|dash|dashes}} may be directed separately.
+* {{si|Flash}} cannot be used during the dash.
+* The splash occurs immediately if '''Fizz''' encounters terrain that cannot be dashed through (he has to be particularly close to the wall).
+}}

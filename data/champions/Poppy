@@ -1,0 +1,260 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Iron Ambassador|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Poppy
+|skill        = I
+|icon = Iron Ambassador.png
+|blurb        = {{sbc|Innate:}} Periodically, {{ci|Poppy}} {{tip|projectile|throws}} her buckler as her next basic attack, which has {{sti|'''bonus''' range}} and deals {{as|'''bonus''' magic damage}}. The buckler then falls nearby and remains for a few seconds, which she and enemy champions can step over to either retrieve or destroy it.
+|blurb2      =  If this attack kills the target, the buckler bounces back to Poppy instead of falling.
+|blurb3      = Upon retrieving the buckler, '''Poppy''' {{tip|shield|shields}} herself for a portion of {{as|her '''maximum''' health}}, lasting a short time.
+|description = {{sbc|Innate:}} Periodically, '''Poppy's''' next {{tip|basic attack}} {{tip|on-attack}} is empowered to throw her buckler, gaining {{sti|350 '''bonus''' range}} and dealing {{pp|20 + (180-20)/17*(x-1) for 20|color=magic damage}} {{as|'''bonus''' magic damage}}. After it hits, the buckler then falls to a location near the target over 1 second, landing and remaining there for up to 4 seconds.
+|icon2 = Iron Ambassador 2.png
+|description2 = '''Poppy''' can move over the buckler to retrieve it, gaining a {{tip|shield}} for {{sti|health|{{as|{{pp|key=%|11 + (20-11)/17*(x-1) for 20}} of her '''maximum''' health}}}} for 3 seconds. If the buckler kills the target, or if the target is already dead when the buckler hits it, the buckler will bounce back to '''Poppy''' instead of falling. Enemy {{tip|champion|champions}} can move over the buckler to destroy it.
+|flavorsound  = {{sm2|Poppy_Original_PAttack_hit_0.ogg}} ''"Shield to the face!"''
+|static       = {{pp|16 to 8 for 3; 6|1 to 13; 19}}
+|speed        = {{tt|1600|Both attack missile and on-kill return missile speeds}}
+|targeting    = Passive
+|affects      = Self
+|damagetype   = Magic
+|spellshield  = False
+|spelleffects = Proc
+|parry        = true
+|projectile   = True
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* '''Poppy''' will not throw the buckler if she begins her {{tip|attack windup}} before ''Iron Ambassador's'' cooldown has elapsed.{{bug|2}}
+* ''Iron Ambassador's'' buckler attack counts as {{tip|melee}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Hammer Shock|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Poppy
+|skill        = Q
+|icon = Hammer Shock.png
+|blurb        = {{sbc|Active:}} {{ci|Poppy}} smashes the area in the target direction, dealing {{as|physical damage}} to enemies hit based on {{as|their '''maximum''' health}}.
+|blurb2      = The impact creates a brief field that {{tip|slow|slows}} enemies within, then ruptures to deal the same {{as|physical damage}} again.
+|description = {{sbc|Active:}} '''Poppy''' smashes the area in the target direction, dealing {{as|physical damage}} to enemies hit. Against {{tip|minions}} and {{tip|monsters}}, the damage based on their health ratio is capped.
+|leveling = {{st|Physical Damage|{{ap|30 to 130}} {{as|(+ 75% '''bonus''' AD)}} {{as|(+ {{ap|7 to 9}}% of target's '''maximum''' health)}}}}
+{{st|Capped Minion/Monster Health Damage|{{ap|70 to 210}}|Maximum Minion/Monster Damage|{{ap|30+70 to 130+210}} {{as|(+ 75% '''bonus''' AD)}}}}
+|description2 = The impact creates a field for 1 second that {{tip|slow|slows}} enemies within, which then ruptures to deal the same {{as|physical damage}}.
+|leveling2    = {{st|Slow|{{ap|20 to 32}}% {{as|(+ {{fd|0.8}}% per 100 '''Poppy's bonus''' health)}}}}
+{{st|Total Physical Damage|{{ap|30*2 to 130*2}} {{as|(+ {{ap|75*2}}% '''bonus''' AD)}} {{as|(+ {{ap|7*2 to 9*2}}% of target's '''maximum''' health)}}|Total Maximum Minion/Monster Damage|{{ap|(30+70)*2 to (130+210)*2}} {{as|(+ {{ap|75*2}}% '''bonus''' AD)}}}}
+|cooldown = {{ap|8 to 4}}
+|cost = {{ap|35 to 55}}
+|costtype = Mana
+|range        = {{dv|{{tt|460|Forward range, considered edge range but behaves weirdly. Value is for targets of 65 radius}}|{{tt|-120|Backward range, considered edge range but behaves weirdly. Value is for targets of 65 radius}}}}
+|width        = {{tip|er|icononly = true}} 160
+|targeting    = Direction
+|cast time    = {{fd|0.3325}}
+|affects      = Enemies
+|damagetype   = Physical
+|spellshield  = Special
+|spelleffects = spellaoe
+|projectile   = False
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* {{tip|Spell shield|Spell shields}} will block only a single instance of damage.
+{{Effect at cast time end}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Steadfast Presence|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Poppy
+|skill        = W
+|icon  = Steadfast Presence 2.png
+|icon2 = Steadfast Presence.png
+|blurbicon    = Steadfast Presence.png
+|blurb        = {{sbc|Passive:}} {{ci|Poppy}} increases her {{sti|armor|{{as|'''total''' armor}}}} and {{sti|mr|{{as|'''total''' magic resist}}}}. This effect is doubled while she is {{as|at low health}}.
+|blurb2       = {{sbc|Active:}} '''Poppy''' gains {{sti|ms|{{as|'''bonus''' movement speed}}}} for a short time and creates an {{tip|aura}} that stops enemy dashes. Enemies that {{tip|dash}} within the aura are dealt {{as|magic damage}} and briefly {{tip|airborne|knocked up}}, they are then {{tip|grounded}} and {{tip|slow|slowed}} for a short time.
+|description  = {{sbc|Passive - Stubborn to a Fault:}} '''Poppy''' increases her {{sti|armor|{{as|'''total''' armor}}}} and {{sti|mr|{{as|'''total''' magic resistance}}}} by 16%, doubled to 32% while she is {{as|below 40% '''maximum''' health}}.
+|description2 = {{sbc|Active:}} '''Poppy''' gains {{sti|ms|{{as|40% '''bonus''' movement speed}}}} and creates an {{tip|aura}} around herself for 2 seconds, causing all enemies who attempt to {{tip|dash}} into or within it to be dealt {{as|magic damage}} and {{tip|airborne|knocked up}} for {{fd|0.5}} seconds. If a target was successfully interrupted, they become {{tip|grounded}} and {{tip|slow|slowed}} by 25% for 2 seconds.
+|leveling2 = {{st|Magic Damage|{{ap|70 to 230}} {{as|(+ 70% AP)}}}}
+|description3 = ''Steadfast Presence'' can only block a single dash per enemy per cast.
+|cooldown = {{ap|20 to 12}}
+|cost = 50
+|costtype = Mana
+|effect radius = 400
+|cast time    = none
+|targeting    = Auto
+|affects      = Self
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = aoe
+|projectile   = 
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* ''Stubborn to a Fault's'' armor amplification stacks with an instance of [[recursion]].
+* ''Steadfast Presence'' does not stop {{tip|dash|dashes}} if the unit is {{tip|cc-immune|crowd control immune}}, {{tip|displacement immune}}, {{tip|untargetable}}, or protected by {{tip|spell shield}} in the process (e.g. {{ai|Death Mark|Zed}}, {{ai|Stormbringer|Volibear}}, {{ai|Unstoppable Force|Malphite}}).
+** Dashes when the unit is {{tip|cc-immune|crowd control immune}} or {{tip|displacement immune}} still trigger the aura and take the damage, but do not get {{tip|airborne|knocked up}} and thus also never become {{tip|ground|grounded}} and {{tip|slow|slowed}}.
+** {{tip|spell shield|Spell shields}} deny all the effects if ''Steadfast Presence'' is triggered by their holder, and are consumed in the process.
+** Being {{tip|untargetable}} prevents ''Steadfast Presence'' from triggering, but this does not prevent it from triggering against another, targetable dash.
+* ''Steadfast Presence'' does not trigger against {{tip|lunge|lunges}}.
+| flavorsound = {{sm2|Poppy_Original_WKnockUp_0.ogg}} ''"No getting through me."''
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Heroic Charge|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Poppy
+|skill        = E
+|icon         = Heroic Charge.png
+|blurb        = {{sbc|Active:}} {{ci|Poppy}} {{tip|dashes}} to the target enemy, dealing {{as|physical damage}} and {{tip|airborne|carrying}} them forward. If the target hits terrain, '''Poppy''' deals the same {{as|physical damage}} again and briefly {{tip|stun|stuns}} them.
+|description  = {{sbc|Active:}} '''Poppy''' {{tip|dashes}} to the target enemy's location. If they are in range upon arrival, she deals {{as|physical damage}} and {{tip|airborne|carries}} them along with her for up to 400 units.
+|leveling     = {{st|Physical Damage|{{ap|40 to 120}} {{as|(+ 60% '''bonus''' AD)}}}}
+|description2 = If the target hits terrain, she stops to deal the same {{as|physical damage}} again and {{tip|stun|stuns}} them for a duration.
+|leveling2    = {{st|Stun Duration|{{ap|1.6 to 2}} seconds}}
+{{st|Total Physical Damage|{{ap|40*2 to 120*2}} {{as|(+ 120% '''bonus''' AD)}}}}
+|cooldown     = {{ap|14 to 10}}
+|cast time = none
+|cost         = 70
+|costtype     = Mana
+|target range = {{tip|er|icononly = true}} 475
+|speed        = 1800
+|targeting    = Unit
+|affects      = Enemies
+|damagetype   = Physical
+|spellshield  = True
+|spelleffects = spell
+|projectile   = 
+|callforhelp  = true
+|grounded     = True
+|knockdown    = True
+|notes        = 
+* '''Poppy''' will be ordered to basic attack the target.
+* ''Heroic Charge'' can apply {{tip|spell effects}} twice (once when '''Poppy''' hits her target and once she stuns them against a wall). 
+** Both instances of damage and crowd control are all the same {{tip|cast instance}}. Effects that only trigger once per spell cast will not trigger twice.
+* '''Poppy''' dashes slightly less far than the distance she pushes the target.
+* ''Heroic Charge'' can interact with [[Terrain#Player-Generated|player-generated terrain]].
+* The {{tip|dash}} does not follow targets. The target's position at the time of ''Heroic Charge's'' cast is the direction '''Poppy''' will dash towards.
+** '''Poppy''' does not {{tip|airborne|carry}} nor deal damage to the target if they have left a certain radius before she collides with them.
+|tips         =
+* ''Heroic Charge'' can traverse terrain, provided that the target is within range.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Keeper's Verdict|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Poppy
+|skill        = R
+|icon         = Keeper's Verdict.png
+|blurb        = {{sbc|Active:}} {{ci|Poppy}} {{tip|channels|charges}} up to a few seconds, increasing the {{sti|range}} and {{tip|airborne|knockback}} distance of her hammer. After a brief period, it becomes empowered with a new effect.
+|blurb2      = {{sbc|Recast:}} '''Poppy''' swings her hammer, dealing {{as|physical damage}} to enemies nearby and in the area in front of her, briefly {{tip|airborne|knocking them up}}.
+|blurb3      = {{sbc|Empowered Recast:}} '''Poppy''' sends a shockwave in the target direction that deals {{as|physical damage}} to enemies hit. Upon hitting an enemy {{tip|champion}}, a hammer erupts dealing {{as|physical damage}} to nearby enemies, {{tip|airborne|knocking them back}} towards their fountain based on how long she charged up.
+|description  = {{sbc|Active:}} '''Poppy''' {{tip|channels|charges}} while being {{tip|slow|slowed}} by 15% for up to 4 seconds to increase ''Keeper's Verdict's'' {{sti|range}} and {{tip|airborne|knock back}} distance over {{fd|0.5}} seconds after the first {{fd|0.5}} seconds of the channel. ''Keeper's Verdict'' can be recast within the duration.
+|description2 = {{sbc|Recast:}} '''Poppy''' releases the charge to launch her hammer upwards, dealing {{as|physical damage}} to enemies nearby and in an area in front of her and {{tip|airborne|knocking them up}} for 1 second.
+|leveling2    = {{st|Physical Damage|{{ap|100 to 200}} {{as|(+ 45% '''bonus''' AD)}}}}
+|description3 = If ''Keeper's Verdict'' was charged for at least {{fd|0.5}} seconds, it deals 100% increased damage and enemies hit are {{tip|airborne|knocked back}} {{tt|up-to 3400 units|Scales up to this value over the first 1 second of the channel}} toward the enemy team's [[Spawn|fountain]], during which they are {{tip|standard sight|revealed}} and rendered {{tip|untargetable}}. Additionally, if no enemies are hit {{tt|in front|Same as uncharged radius}} of '''Poppy''', she sends a shockwave that travels in the target direction until it collides with an enemy champion, which causes a hammer to erupt. Targets hit by the shockwave or the eruption receive the charged effects.
+|leveling3    = {{st|Increased Damage|{{ap|200 to 400}} {{as|(+ 90% '''bonus''' AD)}}}}
+|description4 = If the charge is {{tip|interrupt|interrupted}} or completes without reactivation, ''Keeper's Verdict'' is cancelled and the ability is put on a {{sti|cd|30-second}} cooldown.
+|cooldown     = {{ap|140 to 100}}
+|cdstart      = post-effect
+|cast time = {{dv|{{tt|{{fd|0.25}}|Uncharged release}}|{{tt|{{fd|0.35}}|Charged release}}}}
+|cost         = 100
+|costtype     = Mana
+|range        = {{dv|{{tip|er|icononly = true}} {{tt|500|Uncharged range}}|{{tip|cr|icononly = true}} {{pp|type=channel time|850 to 1200 for 3|0.5 to 1|formula=500 + (175 per 0.25 seconds channeled)|changedisplay = true}}}}<!--This 2nd range still needs to be fact checked/improved-->
+|width        = {{tip|er|icononly = true}} {{tt|180|Both uncharged area and shockwave missile width}}
+|speed        = {{tt|2500|Shockwave missile speed}} <!--/ {{tt|X|Knock back speed}}-->
+|effect radius= {{dv|{{tip|cr|icononly = true}} {{tt|180|Uncharged radius around Poppy}}|{{tt|225|Eruption radius upon missile collision}}}}
+|targeting    = {{dv|[[Auto-targeted|Auto]]|[[Direction-targeted|Direction]]}}
+|affects      = Enemies
+|damagetype   = Physical
+|spellshield  = True
+|spelleffects = Area of effect
+|projectile   = True
+|silence      = true
+|notes        = 
+* The erupting hammer of the charged cast that sends out a missile will be centered on the first champion struck, not at the location the missile collided with them.
+* Enemies within the enemy team's fountain (at least 400 units away from the {{tt|center of the fountain|the respawning point}}) that are hit by a ''Keeper's Verdict'' that would knock them back are instead {{tip|airborne|knocked up}} for {{fd|0.75}} seconds and not rendered {{tip|untargetable}}, like the uncharged effect. They still receive the full damage.
+* ''Keeper's Verdict'' does not destroy in-flight {{tip|projectile|projectiles}} for enemies hit if they are rendered {{tip|untargetable}}.
+* The {{tip|airborne|knock back}} will only displace enemies as far as they can go (e.g. to the furthest current spot available of {{ais|Realm of Death|Mordekaiser}} and {{ais|The Hextech Ultimatum|Camille}} borders and to the corner of the fountain).
+** The displacement's duration will remain unchanged regardless of if the knock back cannot achieve its full distance due to the affected target being restricted by boundaries they are unable to cross. In order for this to be possible, the speed of the knock back is decreased (based on where the actual landing point is) to match the amount of distance covered to time spent displaced.
+* ''Keeper's Verdict's'' {{tip|airborne}} debuff is non-dispellable and thus cannot be removed by {{tip|cleanse|cleansing}} effects.
+** The debuff will remove itself automatically when the forced movement ends.
+* {{iis|Experimental Hexplate}} {{nie|Overdrive}}, {{iis|Fiendhunter Bolts}} {{nie|Opening Barrage}}, and {{iis|Zeke's Convergence}} {{nie|Frostfire Tempest}} activate after {{fd|0.2}} seconds into the cast time of ''Keeper's Verdict's'' recast. They do not activate if the first cast's channel is interrupted or times out.
+* The following table refers for interactions while '''Poppy''' is {{tip|channel|channeling}}:
+{{ct|charge|attack=false|move=true|cast=false|items=interrupts, true,, false|spells=true, true, interrupts, interrupts, recasts}}
+{{ct|cast|spells=true,false,false,false,false}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Devastating Blow|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Poppy
+|skill        = I
+|icon         = Devastating Blow.png
+|blurb        = 
+|name         = Devastating Blow
+|description = {{sbc|Active:}} '''Poppy's''' next [[basic attack]] is enhanced to deal [[magic damage]] up to a cap.
+|description2 = ''Devastating Blow'' resets '''Poppy's''' basic attack timer.
+|leveling = {{st|Magic Damage|{{ap|20|40|60|80|100}} {{as|(+ 8% of target's '''maximum''' health)}} {{as|(+ 100% AD)}} {{as|(+ 60% AP)}}|Maximum Magic Damage|{{ap|75|150|225|300|375}} {{as|(+ 100% AD)}} {{as|(+ 60% AP)}}}}
+|cooldown = {{ap|8|7|6|5|4}}
+|cost = 55
+|costtype = Mana
+|targeting = '''Devastating Blow''' is an [[on-hit effect]].
+|damagetype = magic
+|spelleffects = single
+|onhiteffects = The enhanced attack applies [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal (only the attack damage portion can, the damage will remain magic) but does not affect structures.
+* ''Devastating Blow'' cannot be {{ai|Counter Strike|Jax|dodged}} or {{ai|Riposte|Fiora|parried}} but can be {{ai|Aegis Protection|Pantheon|blocked}} and/or negated if ''Poppy'' is {{tip|blind|blinded}}.
+|spellshield = will block the ability.
+|notes        = 
+* ''Devastating Blow'' has no cast time and does not interrupt ''Poppy's'' previous orders.
+* An enemy target must have a minimum {{as|{{ap|688|1375|2063|2750|3438}} '''maximum''' health}} in order to reach ''Devastating Blow's'' maximum bonus damage ({{ap|55|110|165|220|275}})
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Diplomatic Immunity|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Poppy
+|skill        = I
+|blurb        = 
+|name         = Diplomatic Immunity
+|icon         = Diplomatic Immunity.png
+|description = {{sbc|Active:}} '''Poppy''' focuses the target enemy [[champion]] for the next few seconds, dealing them increased damage and becoming immune to all effects not originating from her target for the duration.
+|leveling = {{st|Duration|{{ap|6|7|8}}}}
+{{st|Increased Damage|{{ap|20|30|40}}%}}
+|cooldown = {{ap|140|120|100}}
+|cost = 100
+|costtype = Mana
+|range = 900
+|targeting = '''Diplomatic Immunity''' is a [[self-targeted]] [[buff]].
+|spellshield = will block the ability.
+|notes        = 
+* ''Diplomatic Immunity'' blocks all damage from all sources (including [[true damage]]) except the [[Nexus Obelisk]], ''Diplomatic Immunity's'' target, and their respective [[Champion summoned units|pets]].
+* ''Diplomatic Immunity'' can target champion clones ({{ai|Mirror Image|LeBlanc}}, {{ai|Children of the Grave|Mordekaiser}}, {{ai|Hallucinate|Shaco}}, {{ai|Decoy|Wukong}}) to turn ''Poppy'' invulnerable to the champion who spawned them (and by extension the entire enemy team)
+* ''Diplomatic Immunity's'' damage amplification can be removed with {{nie|Quicksilver}} (the invulnerability will remain until either ''Poppy'' or her target die)
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Heroic Charge old|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Poppy
+|skill        = I
+|icon         = Heroic Charge old.png
+|blurb        = 
+|name         = Heroic Charge
+|description  = {{sbc|Active:}} '''Poppy''' dashes to the target enemy, dealing them magic damage and {{tip|airborne|carrying}} them along with her. If they collide with terrain, she deals them '''bonus''' magic damage and {{tip|stun|stuns}} them for {{fd|1.5}} seconds.
+|leveling = {{st|Initial Magic Damage|{{ap|50|75|100|125|150}} {{as|(+ 40% AP)}}|Total Magic Damage|{{ap|125|200|275|350|425}} {{as|(+ 80% AP)}}}}
+|cooldown     = {{ap|12|11|10|9|8}}
+|cost         = {{ap|60|65|70|75|80}}
+|costtype     = Mana
+|range        = {{ap|{{tt|525|Cast range}}|{{tt|300|Carry distance}}}}
+|targeting    = '''Heroic Charge''' is a [[unit-targeted]] [[dash]].
+|damagetype   = magic
+|spelleffects = single
+|spellshield  = will block both the displacement and the damage, causing ''Poppy'' to stop short of her target.
+|notes        = 
+* ''Heroic Charge'' applies spell effects twice (once when ''Poppy'' hits her target and once she stuns them against a wall)
+* ''Poppy'' can use ''Heroic Charge'' to go through walls (provided her target is on the opposite side when she casts)
+* ''Heroic Charge'' interacts with impassable player-created terrain ({{ai|Crystallize|Anivia}}, {{ai|Emperor's Divide|Azir}}, {{ai|Cataclysm|Jarvan IV}}, {{ai|Pillar of Ice|Trundle}})
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Paragon of Demacia|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Poppy
+|skill        = I
+|icon         = false
+|icon2        = Paragon of Demacia.png
+|blurb        = 
+|name         = Paragon of Demacia
+|description = {{sbc|Passive:}} '''Poppy''' gains {{as|'''bonus''' attack damage}} and {{as|'''bonus''' armor}} for 5 seconds every time she deals or takes damage, stacking up to 10 times.
+|description2 = {{sbc|Active:}} '''Poppy''' gains maximum ''Paragon of Demacia'' stacks and '''bonus''' [[movement speed]] for 5 seconds.
+|leveling = {{st|Bonuses Per Stack|{{ap|1.5|2|2.5|3|3.5}}|Total Bonuses|{{ap|15|20|25|30|35}}}}
+|leveling2 = {{st|Bonus Movement Speed|{{ap|17|19|21|23|25}}%}}
+|cooldown = 12
+|cost = {{ap|70|75|80|85|90}}
+|costtype = Mana
+|targeting = '''Paragon of Demacia''' is a [[self-targeted]] [[buff]].
+|notes        = 
+* ''Paragon of Demacia'' has no cast time and does not interrupt ''Poppy's'' previous orders.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Valiant Fighter|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Poppy
+|skill        = I
+|icon         = Valiant Fighter.png
+|blurb        = 
+|name         = Valiant Fighter
+|description = {{sbc|Innate:}} When '''Poppy''' takes non-[[turret]] damage higher than {{as|10% '''current''' health}}, she reduces the excess amount by 50%.
+|targeting = '''Valiant Fighter''' is a [[self-targeted]] [[buff]].
+|notes        = 
+* ''Valiant Fighter's'' damage reduction is calculated after resistances.
+}}

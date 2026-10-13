@@ -1,0 +1,256 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Call of the Freljord|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Nunu
+|skill        = I
+|icon         = Call of the Freljord.png
+|blurb        = {{sbc|Innate:}} When {{ci|Nunu}} and {{ui|Willump}} deal damage against an enemy {{tip|champion}}, large {{tip|monster}} or {{tip|turrets|structure}}, they and a nearby allied champion gain ''Call of the Freljord'' for a few seconds, prioritizing the ally with {{sti|{{as|'''highest''' attack speed}}}}.
+|blurb2      = ''Call of the Freljord'' cannot be gained from the same enemy again for some time.
+|blurb4      = {{sbc|Call of the Freljord:}} Gain {{sti|{{as|'''bonus''' attack speed}}}} and {{sti|ms|{{as|'''bonus''' movement speed}}}}. '''Willump's''' {{tip|basic attack|basic attacks}} additionally deal {{as|physical damage}} to secondary targets in a cone in front of him.
+|description  = {{sbc|Innate:}} When '''Nunu''' and '''Willump''' deal damage against an enemy {{tip|champion}}, large {{tip|monster}} or {{tip|turrets|structure}}, they and a nearby allied champion gain ''Call of the Freljord'' for 4 seconds, prioritizing the ally with {{sti|{{as|'''highest''' attack speed}}}}.
+|description2 = {{sbc|Call of the Freljord:}} Gain {{sti|{{as|20% '''bonus''' attack speed}}}} and {{sti|ms|{{as|10% '''bonus''' movement speed}}}}. '''Willump's''' {{tip|basic attack|basic attacks}} additionally deal {{as|30% AD}} {{as|physical damage}} to secondary targets in a cone in front of him.
+|description3 = '''Nunu''' and '''Willump''' cannot trigger ''Call of the Freljord'' from the same enemy again for a time. Successive triggers of ''Call of the Freljord'' while it is active will extend the duration by 4 seconds.
+|ontargetcdstatic= 10
+|target range    = <!--Range behaviour pending for test--> {{dv|{{tt|1000|When damaging champions, epic monsters and structures}}|{{tt|700|When damaging large monsters}}}}
+|effect radius   = <!--{{tip|er|icononly = true}} X-->
+|angle           = <!--{{tip|er|icononly = true}} X{{degree}}-->
+|targeting    = Passive
+|affects      = Self, Allies
+|damagetype   = Physical
+|spellshield  = 
+|spelleffects = special
+|projectile   = 
+|notes        = 
+* Enemies that can trigger ''Call of the Freljord'' have a marker overhead.
+** This marker isn't present on inhibitors or the nexus (because they cannot hold buffs and debuffs including the one that hosts this VFX), but they still trigger ''Call of the Freljord'' when attacked.
+* ''Call of the Freljord'' range to be shared with allies is based on '''Nunu''' and '''Willump's''' location.
+** If no ally is prioritized based on their stats, it will be given to the one closest to them.
+* The cone deals {{tip|area damage|AoE}} {{tip|basic damage}} (though without applying {{tip|spell effects}}).
+* The splash damage will critically strike when the basic attack does, but will not deal any bonus damage.
+* ''Call of the Freljord's'' maximum remaining duration is 44 seconds.
+** The buff has no cap for its maximum total duration.
+}}
+<!-- The following values are defined as parameters.
+-->{{#vardefine:q_mod|1.5}}<!-- Low health healing modifier as a DECIMAL
+-->{{#vardefine:q_min|0.6}}<!-- Champion healing modifier as a DECIMAL
+-->{{{{{1<noinclude>|Ability data</noinclude>}}}|Consume|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Nunu
+|skill        = Q
+|icon         = Consume.png
+|blurb        = {{sbc|Active:}} {{ui|Willump}} takes a bite out of the target enemy, dealing damage and {{tip|healing}} himself. The heal is increased when he is {{as|below half health}}.
+|blurb2      = Against {{tip|minions}} and {{tip|monsters}} he deals {{sti|{{as|true damage}}}}.
+|blurb3      = Against {{tip|champions}} he deals {{as|magic damage}} and the heal is reduced.
+|description  = {{sbc|Active:}} '''Willump''' takes a bite out of the target enemy, dealing damage and {{tip|healing}} himself. The heal is increased by {{ap|({{#var:q_mod}}-1)*100}}% while he is {{as|below 50% '''maximum''' health}}.
+|description2 = Against {{tip|minions}} and {{tip|monsters}}, he deals {{sti|{{as|true damage}}}}. Additionally, if ''Consume'' would kill the target minion or small or medium monster, '''Willump''' devours the target, {{tip|stun|stunning}} and {{tip|airborne|pulling}} them towards him over the cast time.
+|leveling2    = {{st|Non-Champion True Damage|{{ap|400 to 1200}}}}
+{{st|Base Non-Champion Heal|{{ap|65 to 185}} {{as|(+ 90% AP)}} {{as|(+ 10% '''bonus''' health)}}|Empowered Non-Champion Heal|{{ap|65*{{#var:q_mod}} to 185*{{#var:q_mod}}}} {{as|(+ {{ap|90*{{#var:q_mod}}}}% AP)}} {{as|(+ {{ap|10*{{#var:q_mod}}}}% '''bonus''' health)}}}}
+|description3 = Against {{tip|champions}}, he deals {{as|magic damage}} and the heal is reduced to {{ap|{{#var:q_min}}*100}}%.
+|leveling3    = {{st|Champion Magic Damage|{{ap|60 to 220}} {{as|(+ 65% AP)}} {{as|(+ 5% '''bonus''' health)}}}}
+{{st|Base Champion Heal|{{ap|65*{{#var:q_min}} to 185*{{#var:q_min}}}} {{as|(+ {{ap|90*{{#var:q_min}}}}% AP)}} {{as|(+ {{ap|10*{{#var:q_min}}}}% '''bonus''' health)}}|Empowered Champion Heal|{{ap|65*{{#var:q_min}}*{{#var:q_mod}} to 185*{{#var:q_min}}*{{#var:q_mod}}}} {{as|(+ {{ap|90*{{#var:q_min}}*{{#var:q_mod}}}}% AP)}} {{as|(+ {{ap|10*{{#var:q_min}}*{{#var:q_mod}}}}% '''bonus''' health)}}}}
+|target range = {{tip|er|icononly = true}} 125
+|cost         = 60
+|costtype     = Mana
+|cast time    = {{fd|0.3}}
+|cooldown     = {{ap|13 to 9}}
+|targeting    = Unit
+|affects      = Enemies, Self
+|damagetype   = Magic True
+|spellshield  = True
+|spelleffects = spell
+|projectile   = 
+|notes        = 
+* Icon border glows when he is within the maximum healing threshold.
+* {{tip|Spell shield|Spell shields}} will block the damage and the heal.
+* While not on {{sti|cooldown}}, ''Consume's'' ability icon on the HUD can be [[ping|pinged]] to announce its damage to {{tip|monsters}} in the ally chat.
+{{Unit-targeted cancel conditions}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Biggest Snowball Ever!|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Nunu
+|skill        = W
+|icon         = Biggest Snowball Ever!.png
+|blurb        = {{sbc|Active:}} {{ui|Willump}} becomes {{tip|slow-immune}} and {{tip|ghosted}}, and {{tip|channel|channels}} for a long duration to create a {{ccib|Biggest Snowball Ever! Minimap.png||snowball}} that grows in size and speed. '''Willump''' can gradually steer the snowball during this time.
+|blurb2       = When hitting {{tip|minions}} and small {{tip|monsters}}, the snowball rolls over them, dealing {{as|magic damage}}. When hitting an enemy {{tip|champion}}, large {{tip|monster}} or terrain, the snowball instead explodes, dealing {{as|magic damage}} to nearby enemies, and briefly {{tip|airborne|knocking them up}} then {{tip|stun|stunning}} them based on the snowball's size.<br/><br/>''Biggest Snowball Ever!'' can be recast during the channel, and does so automatically afterwards or if {{tip|interrupt|interrupted}}.
+|blurb3       = {{sbc|Recast:}} '''Willump''' ends the channel and manually releases the snowball.
+|description  = {{sbc|Active:}} '''Willump''' {{tip|cleanse|cleanses}} himself from all {{tip|slow|slows}} and {{tip|channel|channels}} for up to 10 seconds, becoming {{tip|ghosted}} and {{tip|slow-immune}} and creating a rolling {{ccib|Biggest Snowball Ever! Minimap.png||snowball}}. '''Willump''' automatically navigates his movement in the direction of the cursor and can steer the snowball at an increasing speed over time, which resets upon changing direction. The duo have their {{sti|{{as|movement speed}}}} reduced by {{as|50%|ms}} for the first 1 second, but after a delay they start gaining {{tt|{{as|14 movement speed}}|Estimated}} every {{fd|0.25}} seconds, {{tt|up to a cap|See notes.}}.
+|description2 = The snowball increases in size and power linearly over the duration. Its size changes from ''small'' to ''medium'' after {{fd|2.5}} seconds, then to ''large'' after 5 seconds into the charge. ''Biggest Snowball Ever!'' can be recast after {{fd|0.5}} seconds during the channel, and does so automatically after the channel or if {{tip|interrupt|interrupted}}.
+|description3 = The snowball explodes upon hitting an enemy {{tip|champion}}, {{tip|pet|large pet}}, medium or large {{tip|monster}}, or terrain, dealing {{as|magic damage}} to nearby enemies, increased by {{pp|type=charge time|key=%|0;0 to 400 for 5|0 to 5|formula=Increases linearly after 1 second into the duration.}}, {{tip|airborne|knocking them up}} for {{pp|type=charge time|0.5;0.5 to 0.75 for 5|0 to 5|formula=Increases linearly after 1 second into the duration.}} seconds and subsequently {{tip|stun|stunning}} them for {{pp|type=charge time|0;0;0;0 to 0.75 for 9|0;1;2;2.33 to 5|formula=Increases linearly after 2.33 seconds into the duration.}} seconds. If the snowball exploded while it was being steered, '''Willump''' becomes {{tip|stun|stunned}} for {{tt|{{rutngt|0.1}}|estimated; 0.1 seconds, but rounded up to the next game tick}}.
+|leveling3    = {{st|Minimum Magic Damage|{{ap|36 to 72}} {{as|(+ 30% AP)}}|Maximum Magic Damage|{{ap|36*5 to 72*5}} {{as|(+ {{ap|30*5}}% AP)}}}}
+|description4 = The snowball rolls over enemy {{tip|minion|minions}} and small monsters hit, dealing {{fd|33.3}}% of the damage as {{as|magic damage}}.
+|leveling4    = {{st|Minimum Minion/Monster Roll Damage|{{ap|36*0.333 to 72*0.333}} {{as|(+ {{ap|30*0.333}}% AP)}}|Maximum Minion/Monster Roll Damage|{{ap|36*0.333*5 to 72*0.333*5}} {{as|(+ {{ap|30*0.333*5}}% AP)}}}}
+|icon5        = Biggest Snowball Ever! 2.png
+|description5 = {{sbc|Recast:}} '''Willump''' releases the snowball, sending it rolling forward up to a maximum distance during which it will not grow any larger and will explode upon hitting any enemy.
+|cost         = {{ap|50 to 70}}
+|costtype     = Mana
+|speed        = ({{dv|{{tt|425|Small snowball missile speed (after being released from the recast)}}|{{tt|435 – 594|Medium snowball missile speed (after being released from the recast)}}|{{tt|595|Big snowball missile speed (after being released from the recast)}}}}){{plus}}{{as|100% '''bonus''' movement speed}}
+|cooldown     = 14
+|cdstart      = post-effect
+|effect radius= {{dv|{{tip|er|icononly = true}} {{tt|130|Small snowball size/explosion radius}}|{{tip|er|icononly = true}} {{tt|260|Medium snowball size/explosion radius}}|{{tip|er|icononly = true}} {{tt|390|Big snowball size/explosion radius}}}}
+|customlabel2 = Steer Speed
+|custominfo2  = {{pp|57.2957;57.2957*1.75;57.2957*2.5;57.2957*3.25|0;1;2;3|key={{degree}}/s|type=charge time|formula=57.2957{{degree}} (1 rad) per second base steer speed, then linearly increases to 175% of the base amount over the first second, then linearly increases to 250% of the base amount over the next 2 seconds, then linearly increases to 325% of the base amount over the next 3 seconds. No ''acceleration'' is explicitly defined.|round=0|changedisplay=true}}
+|target range = {{pp|type=charge time|750;750 to 1750 for 5|0 to 5|formula=Travel distance of the snowball after it gets released. Increases linearly after 1 second into the duration.}}
+|cast time    = none
+|queue time   = {{dv|{{tt|None|Initial cast}}|{{tt|{{fd|0.3}}|Recast}}}}
+|targeting    = Direction
+|affects      = Self, Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spellaoe
+|grounded     = true
+|projectile   = special
+|silence      = true
+|notes        = 
+* The initial cast and the manual recast count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and {{ai|Force Pulse|Kassadin}}.
+* The movement speed reduction the duo receive from initially casting ''Biggest Snowball Ever!'' is not considered a {{tip|slow}}, thus it will not be resisted by their {{tip|slow-immune|slow immunity}}.
+* The time threshold to begin gaining bonus movement speed may be bugged, as Flat Bonus MS increases the time while % Bonus MS decreases the time.
+** The formula appears to be (X ÷ 100) - Y, where:
+*** X = '''Total''' Flat MS after caps
+*** Y = {{fd|0.1}} per 1% %MS 
+** The delay is not modified from its initially calculated value on-cast, even if additional movement speed is gained.
+* '''Nunu and Willump''' keep all increases in {{as|movement speed}} at time of cast for the duration of the charge.
+* '''Nunu and Willump's''' movement speed always increases in increments of ~14, reaching the greater value between {{ft|{{as|'''Total''' MS + {{pp|85 to 255}}|movement speed}}|{{as|'''Total'''|ms}} [[Movement_speed#Movement_speed_caps|Uncapped]] {{as|Flat MS + {{pp|85 to 255}}|movement speed}}}}
+** This takes 6 increments to reach the '''Total''' MS + 85, but may take more to reach the Uncapped Flat + 85. Due to flat bonuses increasing the time threshold, it is possible for the ability's effects to end before reaching the '''total''' uncapped movement speed.
+** The '''bonus''' movement speed ignores the [[Movement_speed#Movement_speed_caps|movement speed cap]].
+* If '''Nunu''' turns continuously he will create a {{tt|600|Estimated}} unit circle, increased with '''bonus''' movement speed, striking the same point up to 3 times, for a maximum of {{as|{{ap|30*5 to 66*5}}|magic damage}} {{as|(+ {{ap|30*5}}% AP)}} {{as|magic damage}}. The damage can be further increased by detonating the snowball, for a '''total''' of {{as|{{ap|30*10 to 66*10}}|magic damage}} {{as|(+ {{ap|30*10}}% AP)}} {{as|magic damage}}.
+* {{cai|Realm Warp|Ryze}} will only teleport '''Nunu and Willump''', leaving the {{ccib|Biggest Snowball Ever! Minimap.png||snowball}} behind.
+* Hovering the cursor on the HUD (e.g [[Map (League of Legends)|mini map]] / champion portraits) does not affect the cast and steering of ''Biggest Snowball Ever!''.
+* '''Nunu''' gains a slightly larger field of view during ''Biggest Snowball Ever!''.
+* {{tip|Projectile|Projectile-interception}} effects will destroy the snowball only after it has been released.
+* ''Biggest Snowball Ever!'' is disabled for the first 15 seconds of the game.
+* {{tip|Displacement immunity}} will not resist the application of the {{tip|stun}}.
+* The following table refers for interactions while '''Nunu & Willump''' are {{tip|channel|channeling}}:
+{{ct|channel|attack=false|move=Allowed, but cannot input movement commands.|cast=false|items=false|consume=false|spells=true,false,false,false,false|interrupts=death, ground, root, silence}}
+|flavorsound = {{sm2|Nunu Original W 2.ogg}} ''"This is gonna be the biggest snowball ever!"''
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Snowball Barrage|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Nunu
+|skill        = E
+|icon         = Snowball Barrage.png
+|blurb        = {{sbc|Active:}} {{ci|Nunu}} throws a volley of 3 snowballs in the target direction that each shatter upon hitting an enemy, dealing {{as|magic damage}} to enemies in a cone. Enemies hit 3 times are briefly {{tip|slow|slowed}}. {{tip|Champions}} and large {{tip|monsters}} hit once are marked ''Snowbound'' for a few seconds. <br/><br/>Shortly after activating ''Snowball Barrage'', ''Snowbound'' enemies near {{ui|Willump}} take {{as|magic damage}} and are briefly {{tip|root|rooted}}.
+|blurb2      = ''Snowball Barrage'' can be recast twice within a short time.
+|blurb3      = {{sbc|Recast:}} '''Nunu''' hurls another volley of snowballs.
+|description  = {{sbc|Active:}} '''Nunu''' throws a volley of 3 snowballs in the target direction over {{fd|0.4}} seconds that each shatter upon hitting an enemy, dealing {{as|magic damage}} to enemies in a cone.
+|leveling     = {{st|Magic Damage Per Hit|{{ap|15 to 45}} {{as|(+ 12% AP)}}|Total Magic Damage|{{ap|15*3 to 45*3}} {{as|(+ {{ap|12*3}}% AP)}}}}
+|description2 = Enemies hit 3 times are {{tip|slow|slowed}} for 1 second. Enemy {{tip|champions}} and large {{tip|monsters}} hit once are marked ''Snowbound'' for 4 seconds, refreshing on subsequent hits. ''Snowball Barrage'' can be recast twice within 3 seconds at no additional cost and with a {{tt|1-second cooldown|Affected by ability haste}} between casts.
+|leveling2 = {{st|Slow|{{ap|30 to 50}}%}}
+|description3 = {{sbc|Recast:}} '''Nunu''' hurls another volley of snowballs, mimicking the first cast's effects. An enemy may be {{tip|slow|slowed}} only once for being hit by snowballs.
+|leveling3    = {{st|Maximum Total Magic Damage|{{ap|15*3*3 to 45*3*3}} {{as|(+ {{ap|15*3*3}}% AP)}}}}
+|description4 = After 3 seconds from the first cast, ''Snowbound'' enemies near '''Willump''' take {{as|magic damage}} and are {{tip|root|rooted}} for {{pp|0.5 + (1.5-0.5)/17*(x-1) for 20}} seconds.
+|leveling4    = {{st|Magic Damage|{{ap|20 to 60}} {{as|(+ 80% AP)}}}}
+|cost         = {{ap|50 to 70}}
+|costtype     = Mana
+|cooldown     = {{ap|14 to 10}}
+|cdstart      = post-effect
+|cast time    = {{dv|{{tt|None|Initial cast}}|{{tt|None|Recasts}}}}
+|queue time   = {{dv|{{tt|{{fd|0.3}}|Initial cast}}|{{tt|{{fd|0.3}}|Recasts}}}}
+|target range = 700
+|targeting    = Direction
+|width        = {{tip|er|icononly = true}} 50
+|speed        = 2000
+|affects      = Enemies
+|damagetype   = Magic
+|projectile   = true
+|spellshield  = True
+|spelleffects = aoe
+|notes        = 
+* Each cast volley of snowballs counts as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and triggering {{ais|Force Pulse|Kassadin}} passive.
+** Each volley of snowballs is also a separate {{tip|cast instance}}, allowing ''Snowball Barrage'' to generate 6 stacks of {{ri|Conqueror}}.
+** ''Snowbound'' consumption does not trigger on-cast effects, neither does it count as a separate {{tip|cast instance}} (e.g. for the purposes of {{ri|Conqueror}}).
+* The three snowballs are thrown independently from one another over the {{fd|0.4}} seconds and their direction is determined from '''Nunu & Willump's''' position at any given moment.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Absolute Zero|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Nunu
+|skill        = R
+|icon         = Absolute Zero.png
+|blurb        = {{sbc|Active:}} {{ci|Nunu}} and {{ui|Willump}} {{tip|channel}} a blizzard for a short time, gaining a {{tip|shield}} and gradually {{tip|slow|slowing}} nearby enemies.
+|blurb2      = ''Absolute Zero'' can be recast during the channel, and does so automatically when the channel ends by any means.
+|blurb3      = {{sbc|Recast:}} '''Nunu''' and '''Willump''' explode, dealing {{as|magic damage}} to nearby enemies. The effect is modified based on the channel time.
+|description  = {{sbc|Active:}} '''Nunu''' and '''Willump''' {{tip|channel}} a blizzard for up to 3 seconds, granting themselves a {{tip|shield}} and {{tip|slow|slowing}} nearby enemies by {{pp|type=channel time|key=%|0;50 to 95 for 11;95|0 to 3|formula=Increases by 4.5% every 0.25 seconds. ''Starts at 0.25 seconds and finishes at 2.75 seconds''}}. 
+|leveling     = {{st|Shield Strength|{{ap|65 to 85}} {{as|(+ 150% AP)}} {{as|(+ {{ap|30 to 50}}% '''bonus''' health)}}}}
+|description2= ''Absolute Zero'' can be recast after {{fd|0.5}} seconds during the channel, and does so automatically when the channel ends by any means.
+|icon3        = Absolute Zero 2.png
+|description3= {{sbc|Recast:}} '''Nunu''' and '''Willump''' cause the blizzard to explode, dealing {{as|magic damage}} to nearby enemies, modified to {{pp|key=%|type=channel time|changedisplay=true|0 to 100|0 to 3 by 1|formula=Increases the damage by 1% of its maximum damage value every 0.03 seconds.}}. Affected enemies will remain {{tip|slow|slowed}} for {{pp|type=channel time|0 to 3 for 13|0 to 3}} seconds and any of the duo's remaining shield will decay over 3 seconds.
+|leveling3    = {{st|Maximum Magic Damage|{{ap|625 to 1275}} {{as|(+ 300% AP)}}}}
+|cooldown     = {{ap|110 to 90}}
+|cdstart      = post-effect
+|cost         = 100
+|costtype     = Mana
+|effect radius= {{tip|cr|icononly = true}} 650
+|cast time    = none
+|queue time   = {{dv|{{tt|None|Initial cast}}|{{tt|{{fd|0.3}}|Recast}}}}
+|targeting    = Auto
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spellaoe
+|silence      = true
+|notes        = 
+*The initial cast and the manual recast count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and {{ai|Force Pulse|Kassadin}}.
+* The affected area is hidden if the duo is not {{tip|sight|visible}} to the enemy team.
+* While it's unlikely to happen normally, it is possible to deal zero damage with ''Absolute Zero'' if canceled as soon as it's started.
+* The following table refers for interactions while '''Nunu & Willump''' are {{tip|channel|channeling}}:
+{{ct|channel|cast=interrupts|items=interrupts,true,,false|spells=true,interrupts,interrupts,interrupts,interrupts}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Blood Boil|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Nunu
+|skill        = W
+|icon         = Blood Boil.png
+|blurb        = Nunu invigorates himself and an allied unit by heating their blood, increasing their Ability Power, as well as movement and attack speeds.
+|description  = {{sbc|Active:}} The heat of '''Nunu''' and target allied [[unit]]'s blood rises, granting {{as|'''bonus''' attack speed}}, '''bonus''' movement speed and 20% {{as|(+ 5% per 100 AP of '''Nunu's''' AP)}} '''bonus''' ability power, up to a cap, for 12 seconds.
+|leveling     = {{st|Bonus Attack Speed|{{ap|20|24|28|32|36|{{tt|40|Visionary}}}}% {{as|(+ 5% per 100 AP)}}}}
+{{st|Bonus Movement Speed|{{ap|8|9|10|11|12|{{tt|13|Visionary}}}}%}}
+{{st|Maximum Ability Power|{{ap|40|60|80|100|120|{{tt|140|Visionary}}}}}}
+|description2 = If '''Nunu''' targets himself, ''Blood Boil'' also affects the nearest allied [[champion]] in range.
+|cooldown     = {{tt|15|Starts on cast.}}
+|cost         = 50
+|costtype     = Mana
+|target range = 700
+|effect radius= 700
+|targeting    = Unit
+|affects      = Self, Allies
+|damagetype   = 
+|spellshield  = 
+|spelleffects = 
+|projectile   = 
+|notes        = 
+* With {{ii|Rabadon's Deathcap}} the {{as|flat AP}} increases by a total of {{fd|118.4}}% ({{tt|56%|Blood Boil}}{{plus}}{{tt|{{fd|62.4%}}|Rabadon's}}). The 56% is still capped to the same amount.
+* The {{as|AP}} gained is calculated on cast and remains static for the full duration.
+* The maximum {{as|AP}} is reached when the target has at least {{ap|200|300|400|500|600|{{tt|700|Visionary}}}} ability power.
+* ''Blood Boil'' can also be used on non-champion units such as [[minion]]s and [[pet]]s.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Ice Blast|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Nunu
+|skill        = E
+|icon         = Ice Blast.png
+|blurb        = Nunu launches a ball of ice at an enemy unit, dealing damage and temporarily slowing their Movement and Attack Speeds.
+|description  = {{sbc|Active:}} '''Nunu''' launches a ball of ice at the targeted enemy, dealing {{tip|magic damage}}, {{tip|cripple|crippling}} by 25%, and {{tip|slow|slowing}} for 2 seconds.
+|leveling     = {{st|Magic Damage|{{ap|80|120|160|200|240|{{tt|280|Visionary}}}} {{as|(+ 90% AP)}}}}<!--
+-->{{st|Slow|{{ap|40|45|50|55|60|{{tt|65|Visionary}}}}%}}
+|cooldown     = {{ap|6|5.5|5|4.5|4}}
+|cost         = {{ap|70|75|80|85|90}}
+|costtype     = Mana
+|target range = 550
+|targeting    = Unit
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = Single target
+|projectile   = True
+|callforhelp  = True
+|notes        = 
+* No additional details.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Visionary|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Nunu
+|skill        = I
+|icon = Visionary.png
+|blurb        = After 5 attacks, Nunu's next spell costs no Mana and is empowered to do its next rank's effects.
+|description = '''Nunu's''' [[basic attack]] grants 1 stack of ''Visionary''. At 5 '''Visionary''' stacks, '''Nunu's''' next [[Champion ability|ability]] has {{as|no mana cost}} and is improved by 1 rank. 
+|description2 = '''Nunu''' starts the game with 5 ''Visionary'' stacks, also granted upon {{si|Recall|recalling}} or upon respawning.
+|targeting    = Passive
+|affects      = Self
+|damagetype   = 
+|spellshield  = 
+|spelleffects = 
+|projectile   = 
+|notes        =
+* '''Nunu''' can use the ability even if he doesn't have the required mana to do so. The mana cost of an ability cast with ''Visionary'' is reduced to 0.
+* Ability casted will not activate {{sbc|{{nie|Eternity}}}} and {{sbc|{{nie|Mana Charge}}}} item effect due to no mana expenditure.
+}}

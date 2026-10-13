@@ -1,0 +1,283 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Colossal Smash|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Galio
+|skill        = I
+|icon         = Colossal Smash.png
+|description  = {{sbc|Innate:}} Periodically, '''Galio's''' next {{tip|basic attack}} is empowered to have an {{tip|uncancellable windup}}, gain {{sti|{{as|40% '''bonus''' attack speed}}}} and deal {{pplevel|15 to 115|color=magic damage}} {{as|(+ 100% AD)}} {{as|(+ 40% AP)}} {{as|(+ 60% '''bonus''' magic resistance)}} {{as|'''modified''' magic damage}} to the target and all enemies near them.
+|description2 = Whenever '''Galio''' hits at least one enemy {{tip|champion}} or epic {{tip|monster}} with an {{tip|ability}}, ''Colossal Smash's'' {{sti|'''current''' cooldown}} is reduced by 3 seconds. This may occur only once per cast.
+|description3 = ''Colossal Smash's'' damage based on its {{as|AD ratio}} can {{tip|critical strike|critically strike}} for {{as|{{critical damage|{{ccd|Galio|crit_base}}|100}}|critical damage}} damage to all targets hit.
+|static       = 5
+|effect radius= {{tip|er|icononly = true}} {{tt|250|pending for confirmation}}
+|targeting    = Passive
+|affects      = Enemies
+|damagetype   = Magic
+|spelleffects = special
+|spellshield  = False
+|occurrence   = On-hit
+|parry        = True
+|projectile   = 
+|grounded     = 
+|knockdown    = 
+|flavorsound  = {{sm2|Galio_Original_PAttack_1.ogg}} ''"Smash!"''
+|notes        = 
+* ''Colossal Smash'' deals {{tip|basic damage}} to the primary target but also triggers spell effects by also being tagged as {{tip|spell damage}}, while dealing {{tip|proc damage}} also tagged as {{tip|area of effect}} to secondary targets.
+* {{tip|Spellblade}} does not get converted to magic damage and it will deal its damage only to the primary target.
+* ''Colossal Smash'' applies {{tip|on-hit}} effects to its primary target twice.{{bug}}
+* The empowered attack will not trigger against {{tip|wards}} and [[jungle plants|plants]].
+* '''Galio''' gains {{as|attack speed}} even on non-empowered attacks as long as the ability is not on cooldown.
+* ''Colossal Smash'' cannot be triggered against allies.
+* Even if the ability hit is {{tip|spell shield|spell shielded}} ''Colossal Smash's'' cooldown will still be reduced.
+|yvideo       = hjhtAM4VXfE
+<!-- Blurb -->
+|blurb        = {{sbc|Innate:}} Every few seconds, {{cis|Galio}} next {{tip|basic attack}} is modified to gain {{sti|as|{{as|attack speed}}}} and deal {{as|magic damage}} in an area, increased based on his {{sti|mr|{{as|'''bonus''' magic resist}}}}.
+|blurb2       = '''Galio's''' {{tip|ability}} hits against enemy {{tip|champions}} or epic {{tip|monsters}} {{sti|ah|reduce}} ''Colossal Smash's'' {{sti|cd|cooldown}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Winds of War|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Galio
+|skill        = Q
+|icon         = Winds of War.png
+|blurb        = {{sbc|Active:}} {{ci|Galio}} fires two windblasts that converge to the target location, dealing {{as|magic damage}} to enemies hit.
+|blurb2       = Upon converging, the blasts form a tornado that continually deals {{as|magic damage}} to enemies within, based on each {{as|target's '''maximum''' health}}.
+|description  = {{sbc|Active:}} '''Galio''' creates two windblasts 250 units to either side of him that arc out before converging to the target location, dealing {{as|magic damage}} to all enemies they pass through.
+|leveling     = {{st|Magic Damage|{{ap|70 to 210}} {{as|(+ 70% AP)}}}}
+|description2 = When the blasts meet, the gusts form a tornado that persists for 2 seconds, slowly moving forward and dealing {{as|magic damage}} equal to{{ft|{{as|2% {{as|(+ 1% per 100 AP)}} of target's '''maximum''' health}} every {{fd|0.5}} seconds|{{as|8% {{as|(+ 4% per 100 AP)}} of target's '''maximum''' health}} over the duration}}to enemies within the area, capped at{{ft|150 per tick|600 total}}against {{tip|monsters}}.
+|target range = 825
+|effect radius= {{tip|cr|icononly = true}} {{tt|150|Tornado radius}}
+|width        = {{tip|er|icononly = true}} {{tt|120|Curving missile width}}
+|speed        = {{dv|{{tt|1400|Curving missile speed}}|{{tt|50|Tornado speed, estimated}}}}
+|cooldown     = {{ap|11 to 7}}
+|cost         = {{ap|60 to 80}}
+|cast time    = {{fd|0.25}}
+|costtype     = Mana
+|targeting    = Location
+|affects      = Enemies
+|damagetype   = Magic
+|spelleffects = special
+|spellshield  = Special
+|parry        = 
+|projectile   = True
+|grounded     = 
+|knockdown    = 
+|outofrange   = cast at max   
+|notes        = 
+* Deals {{tip|area damage}} on the gust, and applies {{tip|persistent area damage}}, additionally tagged as {{tip|indirect damage}} for the tornado. 
+* {{tip|Spell shield}} will block the gusts damage but not the tornado's.
+* {{cai|Wind Wall|Yasuo}} and {{cai|Unbreakable|Braum}} can block each windblast individually.
+** The tornado will not form if only one windblast reaches the target location.
+{{Effect at cast time end}}
+|yvideo       = xMGd9sEvNcE
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Shield of Durand|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Galio
+|skill        = W
+|icon         = Shield of Durand 2.png
+|icon3        = Shield of Durand.png
+|description  = {{sbc|Passive:}} '''Galio''' gains ''Anti-Magic Bulwark'', and restores it after {{pp|12 to 8 for 3|1;6;11}} seconds without taking damage.<br/><br/>{{sbc|Anti-Magic Bulwark:}} Gain a {{tip|shield}} that absorbs {{as|magic damage}}.
+|leveling    = {{st|Magic Shield Strength|{{as|{{ap|7.5 to 13.5}}% of '''maximum''' health}}}}
+|description3 = {{sbc|Active:}} '''Galio''' {{tip|channel|charges}} for up to 2 seconds, {{tip|slow|slowing}} himself by 15%, and gaining {{as|physical|physical damage}} and {{as|magic|magic damage}} damage reduction; charging increases ''Shield of Durand's'' radius, damage and {{tip|taunt}} duration over the first {{fd|1.25}} seconds of the channel.
+|leveling3    = {{st|Physical Damage Reduction|{{ap|25/2 to 45/2}}% {{as|(+ {{ap|1.5}}% per 100 AP)}} {{as|(+ {{ap|8/2}}% per 100 '''bonus''' magic resistance)}} {{as|(+ {{ap|1/2}}% per 100 '''bonus''' health)}}}}
+{{st|Magic Damage Reduction|{{ap|25 to 45}}% {{as|(+ 4% per 100 AP)}} {{as|(+ 8% per 100 '''bonus''' magic resistance)}} {{as|(+ {{ap|1}}% per 100 '''bonus''' health)}}}}
+|description4 = ''Shield of Durand'' can be recast within the duration and does so automatically afterwards or if it is {{tip|interrupt|interrupted}}.
+|description5 = {{sbc|Recast:}} '''Galio''' refreshes the [[damage modifier|damage reduction]] for 2 seconds and deals {{as|magic damage}} to nearby enemy champions, increased by {{pp|type=channel time|key=%|0 to 200 for 9|0 to 1.25|formula=100%+(25% per 0.16 seconds channeled).}}, as well as {{tip|taunt|taunts}} them for {{pp|type=channel time|0.5 to 1.5 for 9|0 to 1.25|formula=0.5+(0.125 per 0.16 seconds channeled).}} seconds and, after a brief delay, sets their {{sti|ms|{{as|movement speed}}}} to a {{as|static 60|ms}} for the same duration but slightly longer.
+|leveling5    = {{st|Minimum Magic Damage|{{ap|20 to 60}} {{as|(+ 30% AP)}}|Maximum Magic Damage|{{ap|20*3 to 60*3}} {{as|(+ 90% AP)}}}}
+|effect radius= {{tip|er|icononly = true}} {{pp|type=channel time|175 to 350 for 9|0 to 1.25|formula=175+(21.875 per 0.16 seconds channeled).}}
+|description6 = '''''Galio''' is {{tip|lockout|unable}} to basic attack or cast abilities for {{fd|0.4}} seconds after the recast.''
+|cooldown     = {{ap|18 to 14}}
+|cdstart      = on-cast
+|cast time    = none
+|cost         = 50
+|costtype     = Mana
+|targeting    = Auto
+|affects      = Self / Enemies
+|damagetype   = Magic
+|spelleffects = spellaoe
+|spellshield  = True
+|silence      = true
+|notes        =
+* The static movement speed modifier overrides the target's base movement speed value to the modified amount, and their bonus movement speed value to 0.
+** The modifier is not applied if the target is {{tip|slow-immune}}.
+* '''Galio''' may still buffer his actions during the recast lockout.
+* The ability key does not need to be held down when buffered in other abilities except {{ai|Winds of War|Galio}}.
+* The following table refers for interactions while '''Galio''' is {{tip|channel|channeling}}:
+{{ct|charge|attack=false|cast=false|move=true|items=interrupts,true,,false|consume=true|spells=true,false,false,interrupts,false|interrupts=death, silence}}
+|tips         = 
+* Since ''Anti-Magic Bulwark'' is instantly granted upon learning the ability, the {{tip|shield}} may be gained once per game while in combat.
+|yvideo       = 4YjYqgG7j48
+<!-- Blurb -->
+|blurbicon    = Shield of Durand.png
+|blurb        = {{sbc|Passive:}} {{ci|Galio}} gains a {{tip|shield}} that absorbs {{as|magic damage}} based on {{as|his '''maximum''' health}}, and restores it while out of combat.
+|blurb2       = {{sbc|Active:}} '''Galio''' {{tip|channel|charges up}} a defensive stance, moving {{tip|slow|slowly}} while gaining damage reduction. ''Shield of Durand'' can be recast within the duration and does so automatically afterward.
+|blurb3       = {{sbc|Recast:}} '''Galio''' {{tip|taunt|taunts}} nearby enemy champions, dealing {{as|magic damage}}. The effects are increased based on charge time.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Justice Punch|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Galio
+|skill        = E
+|icon         = Justice Punch.png
+|description  = {{sbc|Active:}} '''Galio''' {{tip|lunge|steps back}} in the opposite direction over the cast time, then {{tip|dash|dashes}} to the target location until he hits an enemy {{tip|champion}} or [[terrain]].
+|description2 = '''Galio''' deals {{as|magic damage}} to enemies he passes through, reduced to 80% against non-champions, and {{tip|airborne|knocks them up}} for {{fd|0.75}} seconds as well as {{tip|standard sight|reveals}} them for the same duration.
+|leveling2    = {{st|Magic Damage|{{ap|100 to 240}} {{as|(+ 100% AP)}}|Non-Champion Damage|{{ap|100*0.8 to 240*0.8}} {{as|(+ {{ap|100*0.8}}% AP)}}}}
+|target range = {{tt|250 - 650|Minimum and maximum dash distance}}
+|cast time    = {{fd|0.4}}
+|width        = {{tip|cr|icononly = true}} 400
+|speed        = {{tt|2300|dash speed}}
+|cooldown     = {{ap|11 to 7}}
+|cost         = 50
+|costtype     = Mana
+|targeting    = Location
+|affects      = Enemies
+|damagetype   = Magic
+|spelleffects = spellaoe
+|spellshiel   = True
+|parry        = 
+|projectile   = 
+|grounded     = True
+|knockdown    = special
+|outofrange   = cast at max
+|notes        = 
+* '''Galio''' will initiate the {{tip|dash}} even if his step backwards is {{tip|knockdown|knocked down}}.
+* '''Galio's''' second dash will always dash the distance of the target direction. Having the step backwards cut short has no effect on the total distance gained.
+* The following table refers for interactions during ''Justice Punch's'' cast time and {{tip|dash}}:
+{{ct|cast|spells=true,false,false,true,false}}
+|yvideo       = N5NeKZOYBGw
+<!-- Blurb -->
+|blurb        = {{sbc|Active:}} {{ci|Galio}} briefly {{tip|lunge|steps back}} before {{tip|dash|charging}} to the target location. Enemies he passes through are dealt {{as|magic damage}} and {{tip|airborne|knocked up}}. Hitting an enemy {{tip|champion}} or terrain stops his charge.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Hero's Entrance|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Galio
+|skill        = R
+|icon         = Hero's Entrance.png
+|blurb        = {{sbc|Active:}} {{ci|Galio}} guards the target allied champion, {{tip|channels|channelling}} for a short time and granting  {{ai|Shield of Durand|Galio|his}} {{as|magic damage}} {{tip|shield}} to himself and all allied {{tip|champions}} in the area. 
+|blurb2       = After a short delay, '''Galio''' rises {{tip|cc-immune}} and {{tip|untargetable|intangibly}} before {{tip|dash|crashing}} down onto the target's initial location, dealing {{as|magic damage}} to nearby enemies and {{tip|airborne|knocking them back}}.
+|description  = {{sbc|Active:}} '''Galio''' prepares to make an entrance, {{tip|channel|channeling}} for {{fd|2.75}} seconds and designating the target allied {{tip|champion|champion's}} location at the time of cast as his landing spot. Additionally, he resets ''{{ais|Shield of Durand 2|Galio|Shield of Durand}}'' passive shield for himself and grants it to all allied champions within the area for 5 seconds.
+|description2 = After channeling for {{fd|1.25}} seconds, he gains {{tip|cc-immune|crowd control immunity}} for the remaining duration, becomes {{tip|untargetable}}, and leaps into the air for {{tt|{{fd|0.8 seconds}}|Estimated}} before {{tip|dash|dashing}} to his destination over {{tt|{{fd|0.2 seconds}}|Estimated}}. Afterwards, he lands and becomes targetable again, dealing {{as|magic damage}} to all nearby enemies upon impact, {{tip|airborne|knocking them back}} 100 units over {{fd|0.75}} seconds, and remaining in place for {{tt|{{fd|0.5 seconds}}|Estimated}}.
+|leveling2    = {{st|Magic Damage|{{ap|150 to 350}} {{as|(+ 70% AP)}} {{as|(+ 100% '''bonus''' magic resistance)}}}}
+|target range = {{tip|cr|icononly = true}} {{ap|4000|4750|5500}}
+|effect radius= {{tip|er|icononly = true}} 650
+|cooldown     = {{ap|180 to 140}}
+|cdstart      = on-cast
+|cast time    = none
+|cost         = 100
+|costtype     = Mana
+|targeting    = Unit
+|affects      = Allies, Enemies
+|damagetype   = Magic
+|spelleffects = Area of Effect
+|spellshield  = True
+|parry        = 
+|projectile   = 
+|grounded     = True
+|knockdown    = False
+|flavorsound  = {{sm2|Galio_Original_R.ogg}} ''{{tt|"Hi everybody!"|Voice line plays when channel completes}}''
+|notes        = 
+* ''Hero's Entrance'' does not resist allied {{tip|crowd control}}.
+* ''Hero's Entrance'' has a {{tip|forgiveness radius}} of 175 units.
+* '''Galio''' cannot cast ''Hero's Entrance'' on allies he cannot {{tip|sight|see}} while {{tip|Nearsight|nearsighted}}.
+* '''Galio''' will still cause an impact to occur at the destination even if he is unable to travel the full distance with the dash (e.g. by {{ais|The Hextech Ultimatum|Camille}} and {{ais|Realm of Death|Mordekaiser}} borders and terrain). '''Galio''' will dash as far as he can go, and thus, does not end the dash prematurely.
+* '''Galio''' will always dash 100 units minimum, and dash ''over'' his target's location if they are less than 100 units away from him.
+* {{iis|Experimental Hexplate}} {{nie|Overdrive}}, {{iis|Fiendhunter Bolts}} {{nie|Opening Barrage}}, and {{iis|Zeke's Convergence}} {{nie|Frostfire Tempest}} will activate at the end of ''Hero's Entrance's'' {{tip|channel}}.
+* When becoming {{tip|untargetable}}, '''Galio''' {{tip|homing projectile destruction|destroys}} enemy projectiles targeting him.
+* The following table refers for interactions while '''Galio''' is {{tip|channel|channeling}}:
+{{ct|channel|attack=false|cast=false|move=false|items=false, true|spells=true, false, false, false, false|interrupts=death, root, silence, ground}}
+* ''Hero's Entrance's'' channel can only be {{tip|interrupt|interrupted}} by {{tip|crowd control}} in the first {{fd|1.25}} seconds.
+|yvideo       = VpIKl1vDarc
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Bulwark|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Galio
+|skill        = W
+|icon         = Bulwark.png
+|description  = {{sbc|Active:}} '''Galio''' grants the target allied [[champion]] or himself {{as|'''bonus''' armor}} and {{as|'''bonus''' magic resistance}} for 4 seconds, and [[Healing|heals]] himself every time ''Bulwark's'' target takes [[damage]], with each heal being 20% weaker than the last for each subsequent instance of damage.
+|leveling     = {{st|Bonus Resistances|{{ap|30|45|60|75|90}}}}
+{{st|Initial Heal|{{ap|25|40|55|70|85}} {{as|(+ 30% AP)}}|Maximum Heal|{{ap|100|160|220|280|340}} {{as|(+ 120% AP)}}}}
+|range        = 800
+|cooldown     = 13
+|cost         = 60
+|costtype     = Mana
+|targeting    = '''Bulwark''' is a self- and ally-targeted [[buff]] with a self-[[healing]] component.
+|damagetype   = 
+|spelleffects = 
+|onhiteffects = 
+|spellshield  = 
+|notes        = 
+* ''Bulwark'' has no cast time and does not interrupt ''Galio's'' previous orders.
+* When ''Galio'' casts ''Bulwark'' on himself {{ai|Runic Skin|Galio}} will grant him {{ap|15|22.5|30|37.5|45}} ability power.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Idol of Durand|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Galio
+|skill        = R
+|icon         = Idol of Durand.png
+|description  = {{sbc|Active:}} '''Galio''' turns into a statue and [[channel]]s for 2 seconds, halving incoming [[damage]] and {{tip|taunt|taunting}} nearby enemies for the duration, which they cannot mitigate with [[crowd control]] reduction. ''Idol of Durand'' can't be cancelled by movement commands for the first {{fd|0.25}} seconds of its duration if it strikes at least one enemy champion.
+|description2 = When the channel ends, '''Galio''' bursts out of his statue form and deals magic damage to nearby enemies, increased by 10% for each [[basic attack]] he received while channeling, up to a maximum 80% increase.
+|description3 = While channeling, '''Galio''' can cast {{ai|Bulwark|Galio}} and use instant cast actives, such as {{si|Ignite}}.
+|leveling2    = {{st|Minimum Magic Damage|{{ap|200|300|400}} {{as|(+ 60% AP)}}}}
+{{st|Bonus Magic Damage Per Hit|{{ap|20|30|40}} {{as|(+ 6% AP)}}|Maximum Magic Damage|{{ap|360|540|720}} {{as|(+ 108% AP)}}}}
+|range        = {{ap|{{tt|600|Damage radius}}|{{tt|575|Taunt radius}}}}
+|cooldown     = {{ap|150|135|120}}
+|cost         = 100
+|costtype     = Mana
+|targeting    = '''Idol of Durand''' is a point-blank [[area of effect]].
+|damagetype   = magic
+|spelleffects = aoe
+|onhiteffects = 
+|spellshield  = will block the ability.
+|notes        = 
+* The taunt can only be applied once to any given enemy unit.
+** Preventing it or blocking it will not reapply the taunt.
+* Champions whose enhanced basic attacks apply hard crowd control ({{ai|Decisive Strike|Garen}}, {{ai|Bear Stance|Udyr}}, {{ai|Shield of Daybreak|Leona}}) can cancel ''Idol of Durand'' while taunted.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Resolute Smite|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Galio
+|skill        = Q
+|icon         = Resolute Smite.png
+|description  = {{sbc|Active:}} '''Galio''' fires a concussive blast at the target area, dealing [[magic damage]] to enemies hit and {{tip|slow|slowing}} them for {{fd|2.5}} seconds.
+|leveling     = {{st|Magic Damage|{{ap|80|135|190|245|300}} {{as|(+ 60% AP)}}}}
+{{st|Slow|{{ap|24|28|32|36|40}}%}}
+|range        = {{ap|{{tt|940|Cast range}}|{{tt|235|Blast radius}}}}
+|cooldown     = 7
+|cost         = {{ap|60|65|70|75|80}}
+|costtype     = Mana
+|targeting    = '''Resolute Smite''' is a ground-targeted [[area of effect]].
+|damagetype   = magic
+|projectile   = true
+|spelleffects = aoe
+|onhiteffects = 
+|spellshield  = will block the ability.
+|notes        = 
+* No additional details.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Righteous Gust|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Galio
+|skill        = E
+|icon         = Righteous Gust.png
+|description  = {{sbc|Active:}} '''Galio''' unleashes a gust of wind in the target direction, dealing magic damage to enemies hits, and leaving behind a directional draft for 5 seconds which grants allies '''bonus''' [[movement speed]] when they pass through it.
+|leveling     = {{st|Magic Damage|{{ap|60|105|150|195|240}} {{as|(+ 50% AP)}}}}
+{{st|Bonus Movement Speed|{{ap|30|35|40|45|50}}%}}
+|range        = 1180
+|cooldown     = {{ap|13|12|11|10|9}}
+|cost         = {{ap|60|65|70|75|80}}
+|costtype     = Mana
+|targeting    = '''Righteous Gust''' is a linear, pass-through [[skillshot]].
+|damagetype   = magic
+|projectile   = true
+|spelleffects = aoe
+|onhiteffects = 
+|spellshield  = will block the ability.
+|notes        = 
+* ''Righteous Gust's'' bonus movement speed stacks multiplicatively while active.
+** Allies facing opposite the draft will not receive the bonus movement speed.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Runic Skin|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Galio
+|skill        = I
+|icon         = Runic Skin.png
+|description  = {{sbc|Innate:}} '''Galio''' gains {{as|50% of his magic resistance}} as {{as|ability power}}.
+|targeting    = '''Runic Skin''' is a [[self-targeted]] [[buff]].
+|damagetype   = 
+|spelleffects = 
+|onhiteffects = 
+|spellshield  = 
+|notes        = 
+* Magic resistance reduction (such as {{ii|Wit's End}}) will affect ''Runic Skin'' in such a way ''Galio'' will also have his ability power reduced for the duration.
+* Considering his {{as|base magic resistance of {{pp|32.1 to 53.35|formula=30.85 + (1.25{{times}}level)}}}}, '''Galio''' will gain {{as|{{pp|32.1/2 to 53.35/2|formula=15.425 + (0.625{{times}}level)}} '''bonus''' ability power}} from ''Runic Skin''.
+* ''Runic Skin'' is triggered by {{ai|Bulwark|Galio}}, as well as any bonus magic resistance effect, granting '''Galio''' temporary {{as|'''bonus''' ability power}}.
+** {{ii|Rabadon's Deathcap}} will boost ''Runic Skin's'' ratio to {{as|{{fd|{{#expr:50*1.35}}}}% of his magic resistance}}.
+** {{ii|Wooglet's Witchcap}} will boost ''Runic Skin's'' ratio to {{as|{{fd|{{#expr:50*1.25}}}}% of his magic resistance}}.
+}}

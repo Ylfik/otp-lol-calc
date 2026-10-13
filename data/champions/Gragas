@@ -1,0 +1,147 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Happy Hour|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Gragas
+|skill        = I
+|icon         = Happy Hour.png
+|blurb        = {{sbc|Innate:}} Every few seconds, {{ci|Gragas}} will {{tip|heal}} a portion of {{as|his '''maximum''' health}} upon casting an {{tip|ability}}.
+|description  = {{sbc|Innate:}} Periodically, after casting an {{tip|ability}}, '''Gragas''' {{tip|heals}} himself for {{as|{{sti|health|{{fd|5.5}}% of his '''maximum''' health}}}}.
+|static       = {{pp|12 to 6|1;6;11;16}}
+|targeting    = Passive
+|affects      = Self
+|damagetype   = 
+|spellshield  = 
+|spelleffects = 
+|projectile   = 
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* No additional details.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Barrel Roll|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Gragas
+|skill        = Q
+|icon         = Barrel Roll.png
+|blurbicon    = Barrel Roll.png
+|blurb        = {{sbc|Active:}} {{ci|Gragas}} rolls a cask to the target location that lingers for a short time before exploding. ''Barrel Roll'' can be recast within the duration once it fully travels.
+|blurb2       = {{sbc|Recast:}} '''Gragas''' detonates the cast, dealing {{as|magic damage}} and {{tip|slow|slowing}} nearby enemies. The effects are increased based on how long the cask lingered.
+|description  = {{sbc|Active:}} '''Gragas''' rolls a cask to the target location, remaining there for 4 seconds and granting {{tip|sight}} of the area. Upon arrival, the cask starts to ferment over the first 2 seconds of its duration to increase its {{ccs|damage|magic}} and the effectiveness of its {{tip|slow}}, up to a maximum of 150% of their initial values. ''Barrel Roll'' can be recast at any time within its duration after the cask has fully travelled, and does so automatically after its duration ends.
+|icon2        = Barrel Roll 2.png
+|description2 = {{sbc|Recast:}} '''Gragas''' detonates the cask, dealing {{as|magic damage}} to nearby enemies, reduced by 30% against {{tip|minion|minions}}, and {{tip|slow|slowing}} them for 2 seconds.
+|leveling2    = {{st|Minimum Magic Damage|{{ap|80 to 240}} {{as|(+ 80% AP)}}|Maximum Magic Damage|{{ap|80*1.5 to 240*1.5}} {{as|(+ 120% AP)}}}}
+{{st|Minimum Minion Damage|{{ap|80*0.7 to 240*0.7}} {{as|(+ 56% AP)}}|Maximum Minion Damage|{{ap|80*1.5*0.7 to 240*1.5*0.7}} {{as|(+ 84% AP)}}}}
+{{st|Minimum Slow|{{ap|40 to 60}}%|Maximum Slow|{{ap|40*1.5 to 60*1.5}}%}}
+|cooldown     = {{ap|10 to 6}}
+|cdstart      = on-cast
+|cast time    = {{fd|0.25}}
+|cost         = 80
+|costtype     = Mana
+|target range = 850
+|effect radius= 250
+|speed        = 1000
+|targeting    = [[Location-targeted|Location]] / [[Auto-targeted|Auto]]
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = Area of effect
+|projectile   = True
+|grounded     = 
+|knockdown    = 
+|outofrange   = Walk in range of the target location to cast (first cast)
+|notes        = 
+*The initial cast counts as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and triggering {{ais|Force Pulse|Kassadin}} passive.
+**Deactivating the ability manually does not.
+* The cask ignores unit and terrain collision therefore it will only stop once it reaches the target location.
+** On arrival the cask will begin to glow ever brighter as it ferments until it turns bright red.
+* ''Barrel Roll'' has an internal cooldown while traveling so that '''Gragas''' may only make it explode on arrival.
+* The charge-up countdown will only start once the cask stops rolling.
+{{Effect at cast time end}}
+* The ability will not preserve the caster's facing direction when using {{si|Flash}} and similar effects.
+
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Drunken Rage|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Gragas
+|skill        = W
+|icon         = Drunken Rage.png
+|blurbicon         = Drunken Rage.png
+|blurb        = {{sbc|Active:}} {{ci|Gragas}} {{tip|channel|channels}}, then gains damage reduction.
+|blurb2       = His next {{tip|basic attack}} will deal {{as|'''bonus''' magic damage}} to the target and nearby enemies based on each {{as|target's '''maximum''' health}}.
+|description  = {{sbc|Active:}} '''Gragas''' {{tip|channel|channels}} for {{fd|0.75}} seconds, drinking out of his brew, and gains damage reduction for {{fd|2.5}} seconds.
+|leveling     = {{st|Damage Reduction|{{ap|10 to 26}}% {{as|(+ 4% per 100 AP)}}}}
+|icon2        = Drunken Rage 2.png
+|description2 = Upon completing the channel, '''Gragas''' empowers his next [[basic attack]] within 5 seconds to have an {{tip|uncancellable windup}}, gain {{sti|range|50 '''bonus''' range}} and deal {{as|'''bonus''' magic damage}} to the target and nearby enemies, reduced to 50% against [[structures]]. The damage based on the target's health ratio is capped at 300 against {{tip|monsters}}.
+|leveling2    = {{st|Bonus Magic Damage|{{ap|20 to 140}} {{as|(+ 7% of target's '''maximum''' health)}} {{as|(+ 70% AP)}}}}
+|cooldown     = {{tt|5|Starts post-effect}}
+|cost         = 30
+|cast time    = none
+|costtype     = Mana
+|effect radius= 250
+|targeting    = Auto
+|affects      = Enemies, Self
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spellaoe
+|silence      = true
+|parry        = True
+|notes        = 
+* The enhanced attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.
+* The empowered attack will trigger against [[structures]].
+* The empowered attack will trigger against [[ward]]s but not be consumed nor apply its effects against [[ward]]s.
+* The following table refers for interactions while '''Gragas''' is {{tip|channel|channeling}}:
+{{ct|channel|attack=false|cast=false|items=false,true|move=true|spells=true,true,false,false,false}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Body Slam|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Gragas
+|skill        = E
+|icon         = Body Slam.png
+|blurb        = {{sbc|Passive:}} {{ci|Gragas}} {{tip|dash|charges}} in the target direction, stopping upon the first enemy hit, which deals {{as|magic damage}} to nearby enemies, {{tip|airborne|knocks them back}}, and {{tip|stun|stuns}} them.
+|blurb2       = If ''Body Slam'' hits an enemy, the cooldown is {{sti|ah|reduced}}.
+|description  = {{sbc|Active:}} '''Gragas''' {{tip|dash|charges}} in the target direction and stops upon colliding with an enemy, dealing {{as|magic damage}} to all nearby enemies, {{tip|airborne|knocking them back}}, though not through terrain, and {{tip|stun|stunning}} them for 1 second.
+|description2 = ''Body Slam's'' {{sti|'''current''' cooldown}} is reduced by 40% if '''Gragas''' hits an enemy.
+|description3 = ''{{ai|Barrel Roll|Gragas}} and {{ai|Explosive Cask|Gragas}} can be cast during the dash.''
+|leveling     = {{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 60% AP)}}}}
+|cooldown     = {{ap|14 to 12}}
+|cost         = 50
+|cast time    = none
+|costtype     = Mana
+|target range = 600
+|effect radius= {{dv|{{tip|cr|icononly = true}} {{tt|180|Center-to-center collision radius}}|{{tip|er|icononly = true}} {{tt|180|Center-to-edge collision lollipop. This lollipop it located 30 units in front of his dash end location.}}}}
+|speed        = 910
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spellaoe
+|projectile   = 
+|grounded     = True
+|knockdown    = True
+|parry        = 
+|notes        = 
+* {{si|Flash}} can be casted during ''Body Slam'', instantly ending it and affecting enemies at the flash location.
+* Units hit by ''Body Slam'' turn away from '''Gragas'''.
+* {{tip|Displacement immunity}} will not resist the application of the {{tip|stun}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Explosive Cask|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Gragas
+|skill        = R
+|icon         = Explosive Cask.png
+|blurb        = {{sbc|Active:}} {{ci|Gragas}} hurls a cask to the target location that explodes upon impact, dealing {{as|magic damage}} to nearby enemies and {{tip|airborne|knocking them back}}.
+|description  = {{sbc|Active:}} '''Gragas''' hurls a cask that travels to the target location over {{fd|0.5}} seconds, exploding on impact to deal {{as|magic damage}} to all enemies within the area and {{tip|airborne|knock them back}} 900 units, though not through terrain, from the epicenter of the explosion, as well as granting {{tip|sight}} of the area for 1 second.
+|leveling     = {{st|Magic Damage|{{ap|200 to 400}} {{as|(+ 80% AP)}}}}
+|cooldown     = {{ap|100 to 70}}
+|cost         = 100
+|costtype     = Mana
+|cast time = {{fd|0.25}}
+|target range = 1000
+|effect radius= 400
+|targeting    = Location
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = Area of effect
+|projectile   = true
+|grounded     = 
+|knockdown    =
+|parry        = 
+|outofrange   = walk to location
+|notes        =
+{{Effect at cast time end}}
+}}

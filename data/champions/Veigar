@@ -1,0 +1,123 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Phenomenal Evil Power|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Veigar
+|skill        = I
+|icon         = false
+|icon2        = Phenomenal Evil Power.png
+|blurb        = {{sbc|Innate:}} {{ci|Veigar}} generates a {{tip|stack}} of ''Phenomenal Evil'' for each enemy {{tip|champion}} hit by his {{tip|abilities}}, and more stacks when he scores an enemy champion {{tip|takedown}}.
+|blurb4      = {{sbc|Phenomenal Evil:}} For each stack, '''Veigar''' gains {{as|{{sti|ability power}}}}.
+|description  = {{sbc|Innate:}} '''Veigar''' generates a {{tip|stack}} of ''Phenomenal Evil'' for each enemy {{tip|champion}} hit by his {{tip|abilities}}, and 5 stacks whenever he scores an enemy champion {{tip|takedown}}.
+|description2 = {{sbc|Phenomenal Evil:}} For each stack, '''Veigar''' gains {{sti|AP|{{as|1 ability power}}}}.
+|targeting    = Passive
+|affects      = Self
+|notes        =
+* The two effects stack, granting 6 stacks for each enemy champion taken down by an ability, 7 with {{ai|Baleful Strike|Veigar}}.
+* '''Veigar's''' abilities do not have to deal damage nor affect their targets to grant a stack.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Baleful Strike|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Veigar
+|skill        = Q
+|icon         = Baleful Strike.png
+|blurb        = {{sbc|Active:}} {{ci|Veigar}} blasts a dark bolt in the target direction that deals {{as|magic damage}} to the first two enemies hit.
+|blurb2      = If this kills an enemy, it generates a stack of ''{{ai|Phenomenal Evil Power|Veigar|Phenomenal Evil}}''. Large {{tip|minions}} and {{tip|monsters}} generate more stacks.
+|description  = {{sbc|Active:}} '''Veigar''' blasts a dark bolt in the target direction that deals {{as|magic damage}} to the first two enemies hit.
+|leveling     = {{st|Magic Damage|{{ap|80 to 240}} {{as|(+ {{ap|50 to 70}}% AP)}}}}
+|description2 = If this kills an enemy, it generates 1 stack of ''{{ai|Phenomenal Evil Power|Veigar|Phenomenal Evil}}'', tripled against large {{tip|minions}} and {{tip|monsters}}.
+|cooldown     = {{ap|6 to 4}}
+|cost         = {{ap|30 to 50}}
+|cast time    = {{fd|0.25}}
+|costtype     = mana
+|target range = {{dv|{{tip|cr|icononly = true}} 1050|{{tip|er|icononly = true}} 990}}
+|width        = {{tip|er|icononly = true}} 140
+|speed        = 2200
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spellaoe
+|projectile   = True
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* Killing two enemy champions with ''Baleful Strike'' grants {{tt|{{as|+14 AP}}|+12 from Phenomenal Evil Power and +2 from Baleful Strike}}.
+* ''Baleful Strike'' will only grant stacks of {{ai|Phenomenal Evil Power|Veigar|Phenomenal Evil}} from its bolt, and not any additional effect that would kill other units from the same cast.
+* The stacks are added immediately on enemy kill (on next game tick).
+**If the first target was killed, the second hit may deal 1 damage more on enemies further along the missile's flight path.
+{{Effect at cast time end}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Dark Matter|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Veigar
+|skill        = W
+|icon         = Dark Matter.png
+|blurb        = {{sbc|Active:}} {{ci|Veigar}} casts down a mass of dark matter that strikes the target location after a brief delay, dealing {{as|magic damage}} to enemies hit.
+|blurb2      = The cooldown is {{sti|cdr|reduced}} based on stacks of ''{{ai|Phenomenal Evil Power|Veigar|Phenomenal Evil}}''.
+|description  = {{sbc|Active:}} '''Veigar''' casts down a mass of dark matter that strikes the target location after a {{rutngt|1.2}} {{tt|delay|from the start of the cast time}}, granting {{tip|sight}} of the area during the delay and afterwards dealing {{as|magic damage}} to enemies hit.
+|description2 = ''Dark Matter's'' {{sti|cooldown}} is reduced based on stacks of ''{{ai|Phenomenal Evil Power|Veigar|Phenomenal Evil}}''.
+|leveling     = {{st|Magic Damage|{{ap|85 to 305}} {{as|(+ {{ap|70 to 110}}% AP)}}}}
+|cooldown     = {{pp|type=[[File:Phenomenal_Evil_Power.png|20px|link=Veigar#Phenomenal_Evil_Power]] [[Veigar#Phenomenal_Evil_Power|Phenomenal Evil]] stacks|8*0.9^(x-1);...;0|0 to 900 for 19;...;∞|formula=8 * 0.9^N. ''N{{equals}}Number of times that 50 Phenomenal Evil stacks are earned.''}}
+|cost         = {{ap|60 to 80}}
+|cast time    = {{fd|0.25}}
+|costtype     = mana
+|target range = 950
+|effect radius= {{tip|cr|icononly = true}} {{fd|240}}
+|targeting    = Location
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = Area of effect
+|outofrange   = walk to location
+|notes        = 
+* The delay starts at the beginning of the cast time.
+** If '''Veigar''' dies during the cast time, ''Dark Matter'' will still successfully fall from the sky.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Event Horizon|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Veigar
+|skill        = E
+|icon         = Event Horizon.png
+|blurb        = {{sbc|Active:}} After a brief delay, {{ci|Veigar}} erects a cage at the target location that lasts for a short time. Enemies that touch the cage edges are briefly {{tip|knockdown|knocked down}} and {{tip|stun|stunned}}.
+|description  = {{sbc|Active:}} '''Veigar''' forms a cage at the target location that erects after a {{fd|0.5}} second delay, remaining there for 3 seconds. Enemies that collide with the edges of the cage are {{tip|knockdown|knocked down}} and {{tip|stun|stunned}} for a duration.
+|description2 = ''Event Horizon'' can affect enemies only once per cast.
+|leveling     = {{st|Stun Duration|{{ap|1.5 to 2.5}} seconds}}
+|cooldown     = {{ap|20 to 14}}
+|cdstart      = on-cast
+|cost         = {{ap|70 to 90}}
+|cast time    = {{fd|0.25}}
+|costtype     = mana
+|target range = 725
+|effect radius= {{dv|{{tip|cr|icononly = true}} {{tt|411|Outer radius}}|{{tt|290|Safe zone radius}}|{{tt|390|Credit marker radius}}}}
+|targeting    = Location
+|affects      = Enemies
+|damagetype   = 
+|spellshield  = True
+|spelleffects = 
+|outofrange   = walk to location
+|notes        = 
+* The stun and the knockdown are applied to units that are within a certain distance interval from the center of the area of effect.
+* An enemy can be affected by ''Event Horizon'' only once every {{fd|4.5}} seconds.
+* Units that negate the stun will still count as passing through the edges. They will become immune to the effects of ''Event Horizon'' for the period even after negating them.
+* {{tip|Displacement immune}} enemies will still be {{tip|stun|stunned}}, but not {{tip|knockdown|knocked down}}.
+* '''Veigar''' marks enemy {{tip|champions}} in a 390-radius from the zone's center in order to gain [[Kill#Credit|kill/assist credit]], lasting for the standard credit timer.
+* ''Event Horizon'' may fail to catch enemies that move very quickly through the boundary distance.
+** More modern area checks such as {{cai|The Box|Thresh}} or {{cai|Yordle Snap Trap|Caitlyn}} do not have this issue.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Primordial Burst|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Veigar
+|skill        = R
+|icon         = Primordial Burst.png
+|blurb        = {{sbc|Active:}} {{ci|Veigar}} sends a primordial burst at the target enemy champion that deals {{as|magic damage}} based on {{as|their '''missing''' health}}.
+|description  = {{sbc|Active:}} '''Veigar''' sends a primordial burst at the target enemy champion that deals {{as|magic damage}}, increased by {{as|{{pp|type=target's '''missing''' health|key=%|0 to 100 for 11|key1=%|0 to 100*2/3|formula=1.5% per 1% of target's '''missing''' health. ''This is capped at 66.66% '''missing''' health.''}}|health}}.
+|leveling     = {{st|Minimum Magic Damage|{{ap|175 to 325}} {{as|(+ {{ap|65 to 75}}% AP)}}|Maximum Magic Damage|{{ap|175*2 to 325*2}} {{as|(+ {{ap|65*2 to 75*2}}% AP)}}}}
+|cooldown     = {{ap|120 to 60}}
+|cast time    = {{fd|0.25}}
+|cost         = 100
+|costtype     = mana
+|target range = {{tip|cr|icononly = true}} 650
+|targeting    = Unit
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = Single target
+|projectile   = True
+|callforhelp  = True
+|notes        = 
+{{Unit-targeted cancel conditions}}
+}}

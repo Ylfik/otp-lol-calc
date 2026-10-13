@@ -1,0 +1,128 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Surging Tides|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Nami
+|skill        = I
+|icon         = Surging Tides.png
+|blurb        = {{sbc|Innate:}} {{cis|Nami}} {{tip|abilities}} grant a burst of {{sti|ms|{{as|movement speed}}}} to allied champions hit. The bonus is doubled from ''{{ai|Tidal Wave|Nami}}''.
+|description  = {{sbc|Innate:}} '''Nami's''' {{tip|abilities}} grant {{sti|ms|{{as|100|ms}}}} {{as|(+ 25% AP)}} {{as|'''bonus''' movement speed}} to allied {{tip|champions}} hit, decaying over {{fd|1.5}} seconds. The bonus is{{ft|doubled|increased to {{as|200|ms}} {{as|(+ 50% AP)}}}}from ''{{ai|Tidal Wave|Nami}}''.
+|targeting    = Passive
+|affects      = Allies
+|notes        = 
+* ''Tidal Wave'' uses a separate empowered buff that has priority over the normal buff, and it will be used even if the full/current strength of the empowered buff is weaker than the full-strength normal buff.
+** If the normal buff remains ongoing when the empowered buff expires, it will then begin with full strength and completely decay over its '''remaining''' duration.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Aqua Prison|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Nami
+|skill        = Q
+|icon         = Aqua Prison.png
+|blurb        = {{sbc|Active:}} {{ci|Nami}} tosses a bubble that lands at the target location, dealing {{as|magic damage}} to enemies within as well as briefly {{tip|standard sight|revealing}} and {{tip|suspension|suspending}} them.
+|blurb4      = {{sbc|{{tip|Suspension|nolink=true}}}} The target is stunned, but also marked as {{tip|airborne}}. Suspension can be reduced by {{sti|Tenacity}}.
+|description  = {{sbc|Active:}} '''Nami''' launches a bubble at the target location that lands {{tt|after {{rutngt|0.7}}|after the cast time ends}}, dealing {{as|magic damage}} to enemies hit and {{tip|suspension|suspending}} them for {{fd|1.5}} seconds, during which they are {{tip|standard sight|revealed}}.
+|description2 = ''Allied champions are granted {{ai|Surging Tides|Nami}} in a slightly larger area.''
+|leveling     = {{st|Magic Damage|{{ap|90 to 310}} {{as|(+ 50% AP)}}}}
+|target range = 850
+|cooldown     = {{ap|12 to 8}}
+|cast time    = {{fd|0.25}}
+|effect radius= {{dv|{{tip|cr|icononly = true}} {{tt|200|Effect radius for enemies}}|{{tt|225|Effect radius for Surging Tides on allies, could also be 160 + edge radius, this is pending for test}}}}
+|cost         = 60
+|costtype     = mana
+|targeting    = Location
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = Area of effect
+|projectile   = True
+|grounded     = 
+|knockdown    = 
+|outofrange   = walk to location
+|notes        = 
+* The combined time from the start of the cast time to the bubble landing is {{rutngt|0.25}} + {{rutngt|0.7}} = {{fd|0.99}} seconds.
+* ''Aqua Prison'' provides the status effect that allows {{ai|Last Breath|Yasuo}} to be cast.<ref>[http://www.reddit.com/r/leagueoflegends/comments/1s0gkx/were_the_yasuo_team_ama/cdsp1op Yasuo Reddit AMA]</ref>
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Ebb and Flow|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Nami
+|skill        = W
+|icon         = Ebb and Flow.png
+|blurb        = {{sbc|Active:}} {{ci|Nami}} unleashes a stream of water onto the target champion or herself, which then bounces to nearby champions up to twice, alternating between enemies and allies and Nami.
+|blurb2      = ''Ebb and Flow'' {{tip|heal|heals}} allies and deals {{as|magic damage}} to enemies, with subsequent bounces becoming less potent.
+|description  = {{sbc|Active:}} '''Nami''' unleashes a stream of water onto the target champion or herself, which then bounces to nearby unaffected champions up to twice, alternating between enemies and allies and '''Nami'''.
+|description2 = ''Ebb and Flow'' {{tip|Heal|heals}} allies and deals {{as|magic damage}} to enemies, with each bounce modifying the effectiveness of the next by -20% {{as|(+ 15% per 100 AP)}}.
+|leveling2    = {{st|Heal|{{ap|55 to 155}} {{as|(+ 40% AP)}}|Minimum Heal|{{ap|(55 to 155)*(1-0.2*2)}} {{as|(+ {{ap|40*(1-0.2*2)}}% AP)}}}}
+{{st|Magic Damage|{{ap|60 to 200}} {{as|(+ 50% AP)}}|Minimum Damage|{{ap|(60 to 200)*(1-0.2*2)}} {{as|(+ {{ap|50*(1-0.2*2)}}% AP)}}}}
+|target range = {{tip|cr|icononly = true}} 725
+|effect radius= {{tip|cr|icononly = true}} {{tt|800|Bounce range}}
+|speed        = {{dv|{{tt|2500|Initial speed}}|{{tt|1500|Bounce speed}}}}
+|cooldown     = 10
+|cost         = {{ap|70 to 90}}
+|cast time    = {{fd|0.25}}
+|costtype     = mana
+|targeting    = Unit
+|affects = Enemies, Allies
+|damagetype   = Magic
+|projectile   = True
+|callforhelp  = True
+|spelleffects = aoe
+|spellshield  = True
+|notes        = 
+* If cast on an enemy with a {{tip|spell shield}} they will not take damage but ''Ebb and Flow'' will still continue to bounce, and the target who blocked the ability may be targeted again by the final bounce.
+{{Unit-targeted cancel conditions}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Tidecaller's Blessing|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Nami
+|skill        = E
+|icon         = Tidecaller's Blessing.png
+|blurb        = {{sbc|Active:}} {{ci|Nami}} blesses herself or an allied champion for a few seconds, empowering their next three basic attacks or abilities to deal {{as|'''bonus''' magic damage}} and briefly {{tip|slow}} enemies.
+|description  = {{sbc|Active:}} '''Nami''' blesses herself or an allied champion for 6 seconds, empowering their next 3 [[basic attack]]s or [[champion ability|abilities]] to each deal {{as|'''bonus''' magic damage}} and {{tip|slow}} enemies for 1 second.
+|leveling     = {{st|Bonus Magic Damage Per Hit|{{ap|20 to 80}} {{as|(+ 20% AP)}}|Total Bonus Magic Damage|{{ap|20*3 to 80*3}} {{as|(+ 60% AP)}}}}
+{{st|Slow|{{ap|15 to 35}}% {{as|(+ 5% per 100 AP)}}}}
+|description2 = Empowered abilities that apply {{tip|area damage}} only deal {{pp|key=%|33 to 66}} of the '''bonus''' damage to non-champions.
+|target range = {{tip|cr|icononly=true}} 800
+|cooldown     = 11
+|cost         = {{ap|55 to 75}}
+|cast time = none
+|costtype     = mana
+|targeting    = Unit
+|affects = Self, Allies
+|damagetype   = Magic
+|spelleffects = proc
+|spellshield  = False
+|parry = True
+|notes   = 
+* ''Tidecaller's Blessing'' has a {{tip|forgiveness radius}} of 175 units.
+* The effect will not trigger against [[structures]] nor [[ward]]s.
+* The empowerment given to allies respects {{tip|enchantment redirection}}.
+* Damage instances of ''Tidecaller's Blessing'' beyond the first do not count as separate applications for the purposes of {{ri|Electrocute}}.
+|tips =
+* Allied champions can apply {{iis|Imperial Mandate}} {{nie|Coordinated Fire}} and trigger it on subsequent attacks on their own if '''Nami''' owns the item and empowers the ally with ''Tidecaller's Blessing'' .
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Tidal Wave|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Nami
+|skill        = R
+|icon         = Tidal Wave.png
+|blurb        = {{sbc|Active:}} {{ci|Nami}} surges a tidal wave in the target direction that deals {{as|magic damage}} and briefly knocks up enemies hit. The wave also {{tip|slow|slows}} enemies based on the distance traveled.
+|description  = {{sbc|Active:}} '''Nami''' surges a tidal wave in the target direction, granting {{tip|sight}} around its trajectory as it travels, dealing {{as|magic damage}} to enemies hit, {{tip|airborne|knocking them up}} for {{tt|{{fd|0.5}}|Estimated}} seconds, and {{tip|slow|slowing}} them by 70% for {{pp|type=distance traveled|2 to 4 by 0.2|0 to 2750|formula = ''Capped at 2750 range.''}} seconds.
+|leveling     = {{st|Magic Damage|{{ap|150|250|350}} {{as|(+ 60% AP)}}}}
+|target range = 2750
+|speed        = 850
+|width        = {{tip|er|icononly = true}} 500
+|effect radius= {{tt|750|vision radius}}
+|cooldown     = {{ap|120|110|100}}
+|cast time    = {{fd|0.5}}
+|cost         = 100
+|costtype     = mana
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spellaoe
+|projectile   = True
+|grounded     = 
+|knockdown    = 
+|notes        = 
+{{Effect at cast time end}}
+* {{ai|Surging Tides|Nami}} will trigger immediately on '''Nami''' on-cast.
+* The wave travels over {{rutngt|{{#expr:2750 / 850 round 4}}}}.
+<!--* The wave places the caster slightly closer to '''Nami's''' cast position. ''what?''-->
+<!--* {{tip|Suspension}} does not remove ''Tidal Wave's'' {{tip|airborne|knock up}}.{{bug}}-->
+{{ct|cast|spells=true,false,false,false,false}}
+|flavorsound = {{sm2|Nami_Original_R_5.ogg}} ''"Oceans, spill forth!"''
+}}

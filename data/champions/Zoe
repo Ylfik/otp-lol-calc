@@ -1,0 +1,203 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|More Sparkles!|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Zoe
+|skill        = I
+|icon         = More Sparkles!.png
+|blurb        = {{sbc|Innate:}} After casting an ability, {{cis|Zoe}} next basic attack or ''{{ai|Spell Thief|Zoe}}'' bolt within a few seconds will deal {{as|'''bonus''' magic damage}}.
+|description  = {{sbc|Innate:}} After casting an {{tip|ability}}, '''Zoe''' empowers her next {{tip|basic attack}}<!--not on-hit?--> or ''{{ai|Spell Thief|Zoe}}'' bolt within 5 seconds to become {{tip|projectile|non-projectile}} and deal {{pp|16; then +4*x for 5; then +6*x for 5; then +8*x for 3; then +10*x for 6|color=magic damage|formula=16 base, then +4 per level until level 6, then +6 per level until level 11, then +8 per level until level 14, then +10 per level}} {{as|(+ 20% AP)}} {{as|'''bonus''' magic damage}}.
+|targeting    = Passive
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = False
+|spelleffects = Proc
+|projectile   = False
+|parry        = True
+|notes        = 
+* The empowered attack will trigger but not be consumed against {{tip|wards}}.
+|yvideo       = _k94s6IgX1Q
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Paddle Star!|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Zoe
+|skill        = Q
+|icon         = Paddle Star!.png
+|blurb        = {{sbc|Active:}} {{ci|Zoe}} shoots a star in the target direction that explodes upon hitting an enemy, dealing {{as|magic damage}} to nearby enemies hit based on the distance travelled.
+|blurb2      = The star will briefly linger at max range, during which ''Paddle Star!'' can be recast.
+|blurb3      = {{sbc|Recast:}} '''Zoe''' redirects the star in the target path, making it larger and faster. It will fizzle upon flying too far outbound from '''Zoe'''.
+|blurb4      = '''Zoe''' can move during ''Paddle Star!''.
+|description  = {{sbc|Active:}} '''Zoe''' shoots a star in the target direction that explodes upon hitting an enemy, dealing {{as|magic damage}} to nearby enemies hit. The '''total''' damage is increased by {{pp|type=distance traveled|key=%|0 to 150 for 7|800;950;1350;1650;1950;2250;2550}}.
+|leveling     = {{st|Minimum Magic Damage|{{pp|2; then +2*x for 8; then +3*x for 4; then +4*x for 7|formula=2 base, then +2 per level until 9, then +3 per level until 13, then +4 per level}} (+ {{ap|50 to 170}}) {{as|(+ 60% AP)}}|Maximum Magic Damage|{{pp|2*2.5; then +(2*2.5)*x for 8; then +(3*2.5)*x for 4; then +(4*2.5)*x for 7|formula=250% of minimum}} (+ {{ap|50*2.5 to 170*2.5}}) {{as|(+ 150% AP)}}}}
+|description2 = The star lingers at maximum range for 1 second, during which ''Paddle Star!'' can be recast after {{fd|0.25}} seconds in the duration.
+|icon3        = Paddle Star! 2.png
+|description3 = {{sbc|Recast:}} '''Zoe''' redirects the star in the target path, empowering it with increased speed and radius, and resetting its damage modifier on cast. The redirected star can travel until it reaches 800-units outbound from '''Zoe'''.
+|description4 = ''Paddle Star!'s recast can be used while affected by {{tip|cast-inhibiting crowd control}}.''
+|cooldown     = {{ap|8.5 to 6.5}}
+|cdstart      = on-cast
+|cast time    = {{dv|{{tt|{{fd|0.25}}|First cast}}|{{tt|None|Recast}}}}
+|cost         = {{ap|40 to 60}}
+|costtype     = Mana
+|range        = {{dv|{{tip|cr|icononly = true}} {{tt|800|Initial missile}}|{{tip|er|icononly = true}} {{tt|800|Redirected missile range from Zoe, continuously updating as she moves}}|{{tt|Global|Potential redirected missile range}}}}
+|width        = {{dv|{{tip|er|icononly = true}} {{tt|100|Initial width}}|{{tt|140|Width after redirection}}}}
+|speed        = {{dv|{{tt|1200|Initial missile}}|{{tt|2500|Missile speed after redirection}}}}
+|effect radius= {{tip|cr|icononly = true}} {{tt|180|Explosion radius from collision point, for both initial and redirected star (estimated)}}
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = Area of effect
+|projectile   = True
+|notes        = 
+* Both casts count as ability activations for the purposes of on-cast effects such as {{ai|More Sparkles!|Zoe}}, {{tip|Spellblade}} and triggering {{ais|Force Pulse|Kassadin}} passive.
+* The recast radius matches the initial cast radius of the ability, but '''Zoe''' can move any amount of distance away from the projectile before reactivating.
+* ''Paddle Star!'s'' effect radius is centered around the location of the missile as it collides.
+* ''Paddle Star!'s'' total damage will be increased for a maximum of 146,6% instead of the expected 150%.{{bug}} 
+|yvideo       = 9BgkLJKbj3M
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Spell Thief|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Zoe
+|skill        = W
+|icon         = Zoe Spell Thief 2.png
+|icon3        = Spell Thief.png
+|description  = {{sbc|Passive - Wheeeee:}} Whenever '''Zoe''' casts ''Spell Thief'' or a summoner spell, she gains {{sti|ms|{{as|'''bonus''' movement speed}}}} for a duration, and summons three bolts that orbit her for the next 10 seconds.
+|leveling     = {{st|Bonus Movement Speed|{{ap|30 to 70}}%}}
+{{st|Bonus Movement Speed Duration|{{ap|2 to 3}} seconds}}
+|description2 = If '''Zoe''' is not affected by {{tip|complete crowd control}}, she shoots one bolt at a time at the nearest non-{{tip|sleep|sleeping}} enemy in range, prioritizing her attack target, dealing {{as|magic damage}} with each bolt.
+|leveling2    = {{st|Magic Damage Per Bolt|{{ap|15 to 55}} {{as|(+ 10% AP)}}|Total Magic Damage|{{ap|15*3 to 55*3}} {{as|(+ {{ap|10*3}}% AP)}}}}
+|description3 = {{sbc|Passive:}} Whenever an enemy champion casts a {{tt|specific|See notes for applicable spells/item actives}} {{ccib|Summoner spell icon.png|summoner spell}} or {{ccib|Active ability item icon.svg|Active ability items|item active}}, regardless of distance, they drop the corresponding ''{{as|{{ccib|Spell Thief Minimap.png||Spell Shard}}|armor}}'' onto the ground that grants {{tip|sight}} over a 100-radius area and remains for 40 seconds. Enemy {{tip|minions}} have a 10% chance to spawn with a {{tt|random ''{{as|Spell Shard|armor}}''|See notes for applicable spells/actives}} that drops and remains for 20 seconds if '''Zoe''' kills them. Allied champions that kill them will cause the ''{{as|Spell Shard|armor}}'' to drop only if '''Zoe''' is nearby.
+|description4 = '''Zoe''' can collect a ''{{as|Spell Shard|armor}}'' by moving directly onto it, holding it for up to 60 seconds. Collecting a new ''{{as|Spell Shard|armor}}'' replaces the current one.
+|description5 = {{sbc|Active:}} '''Zoe''' mimics the active effect of the collected ''{{as|Spell Shard|armor}}''.
+|cooldown     = {{fd|0.25}}
+|costtype     = Spell Shard
+|cost         = 1
+|effect radius= {{dv|{{tt|Global|Range for enemy champions to drop a Spell Shard with their spell casts}}|{{tt|1500|Maximum distance from Zoe for minions slain by allies to drop a Spell Shard}}|{{tip|er|icononly = true}} {{tt|525|Bolt lock-on range}}}}
+|targeting    = Auto
+|affects      = Self, Enemies
+|damagetype   = magic
+|spellshield  = true
+|spelleffects = spell
+|projectile   = true
+|notes        = 
+* The in-game tooltip for ''Spell Thief'' while '''Zoe''' has a ''{{as|Spell Shard|armor}}'' uses the tooltip of the mimicked spell or item active.
+* '''Zoe''' will cast ''Spell Thief'' in place of her own summoner spells if she has either of them as a collected ''{{as|Spell Shard|armor}}'', even if she tries to cast the summoner spell while it is on cooldown.
+* Minions that can drop ''{{as|Spell Shards|armor}}'' are marked with a tied cosmic balloon that floats above them.
+* '''Zoe''' utilizes an attack-like animation whenever one of the bubbles hurls itself at an enemy, making it look as if she can attack while moving.
+* Minions holding a ''{{as|Spell Shard|armor}}'' will drop their shard if killed by '''Zoe''' regardless of her distance to them at the time of their death.
+* Minions holding a ''{{as|Spell Shard|armor}}'' can drop one of the following summoner spells or item actives:
+** '''Applicable summoner spells:''' {{si|Barrier}}, {{si|Cleanse}}, {{si|Exhaust}}, {{si|Ghost}}, {{si|Heal}}, {{si|Ignite}}, and {{si|Unleashed Smite}}.
+*** All other summoner spells are not applicable for minions to drop, which includes {{si|Clarity}}, {{si|Hexflash}}, {{si|Mark}} / {{si|Dash}}, {{si|Smite}}, {{si|Teleport}} / {{si|Unleashed Teleport}}, and {{si|Primal Smite}}.
+** '''Applicable item actives:''' {{ii|Hextech Rocketbelt}}, {{ii|Locket of the Iron Solari}}, {{ii|Profane Hydra}}, {{ii|Randuin's Omen}}, {{ii|Ravenous Hydra}}, {{ii|Shurelya's Battlesong}}, {{ii|Stridebreaker}}, {{ii|Titanic Hydra}}, and {{ii|Youmuu's Ghostblade}}.
+* All summoner spells except {{si|Dash}} and {{si|Hexflash}} are applicable to drop as a ''{{as|Spell Shard|armor}}'' when an enemy champion uses them.
+* Casting {{si|Teleport}} / {{si|Unleashed Teleport}} acquired through ''Spell Thief'' causes the Top Lane [[Role Quest]] {{si|Unleashed Teleport}} to go on {{sti|cooldown}}.{{bug}}
+* The recast duration of a mimicked {{si|Mark}} cast lasts longer than the mark duration.{{bug}}
+** This allows her to cast {{si|Dash}} while the mark is expired, though the spell will fail to trigger its effects with an attempted cast. ''Spell Thief's'' passive effect is still triggered, however.
+* ''{{as|Spell Shards|armor}}'' may be collected while '''Zoe''' can cast {{si|Dash}} from a mimicked {{si|Mark}} cast. The new shard will replace the ability slot once {{si|Dash}} is used or expires.
+* Prior to an unknown patch, the maximum distance from Zoe for enemy champions to drop a ''{{as|Spell Shard|armor}}'' was 2200.{{bug|2}}
+* The following table lists item actives that can drop as a ''{{as|Spell Shard|armor}}'', as well as those that explicitly do not or are not applicable to drop, when an enemy champion activates them:
+** [[Consumable item|Consumable]] and [[trinket]] items are excluded automatically.
+{{Zoe Spell Thief list}}
+|yvideo       = oyCUeWfaBBk
+|flavorsound  = {{sm2|Zoe_Original_W_15.ogg}} ''"You left a copy of your spell here. I took it. 'Kay thanks."''
+<!-- Blurb -->
+|blurbicon = Spell Thief.png
+|blurb        = {{sbc|Passive - Wheeeee:}} Whenever {{ci|Zoe}} casts ''Spell Thief'' or a summoner spell, she gains {{sti|ms|{{as|'''bonus''' movement speed}}}} for a short time. She also conjures 3 orbiting bolts for a period that will each shoot to the nearest enemy, dealing {{as|magic damage}}.
+|blurb2       = {{sbc|Passive:}} Whenever an enemy champion casts a {{ccib|Summoner spell icon.png|summoner spell}} or {{ccib|Active ability item icon.svg|Active ability items|item active}}, they drop the corresponding ''{{as|{{ccib|Spell Thief Minimap.png||Spell Shard}}|armor}}'' onto the ground for a while. Enemy {{tip|minions}} have a chance to spawn with random ''{{as|Spell Shards|armor}}'' that drop if '''Zoe''' kills them.<br/><br/>'''Zoe''' can collect a ''{{as|Spell Shard|armor}}'' for a while.
+|blurb3       = {{sbc|Active:}} '''Zoe''' mimics the active of the collected ''{{as|Spell Shard|armor}}''.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Sleepy Trouble Bubble|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Zoe
+|skill        = E
+|icon         = Sleepy Trouble Bubble.png
+|blurb        = {{sbc|Active:}} {{ci|Zoe}} kicks a bubble in the target direction that bursts upon the first enemy hit. At max range, it will linger as a trap for a few seconds that bursts upon enemy contact.
+|blurb2      = The burst deals {{as|magic damage}} and briefly inflicts {{tip|drowsy}}, which gradually {{tip|slows}} them. Afterwards, the target falls {{tip|sleep|asleep}} for a short time, during which they cannot act. 
+|blurb3      = If the target is attacked during {{tip|Sleep}} by an enemy {{tip|champion}}, large {{tip|monster}}, or {{tip|turret}}, they wake up and take {{as|'''bonus''' true damage}} equal to the attack, up to a cap.
+|description  = {{sbc|Active:}} '''Zoe''' kicks a bubble in the target direction that bursts upon the first enemy hit, otherwise lingering at maximum range while slightly bouncing forward over 1 second, then becoming a trap for 5 seconds that bursts upon contact with an enemy. The bubble can move through [[terrain]] only once, but travels the entire distance as '''bonus''' range, and will fall short if it would enter terrain again.
+|description2 = The burst deals {{as|magic damage}} to the target and inflicts them with {{tip|drowsy}} for {{fd|1.4}} seconds, which gradually {{tip|slows}} them until they fall {{tip|sleep|asleep}} for {{fd|2.25}} seconds. While the target is {{tip|sleep|asleep}}, they are inflicted with {{sti|magic penetration|{{as|30% magic resistance reduction}}}}.
+|leveling2    = {{st|Magic Damage|{{ap|70 to 230}} {{as|(+ 45% AP)}}}}
+{{st|Maximum Slow|{{ap|10 to 30}}%}}
+|description3 = The next instance of non-{{tip|persistent damage|persistent}} damage from {{tip|champions}}, large {{tip|monsters}} or {{tip|turrets}} against the {{tip|sleep|sleeping}} target consumes the debuff to deal {{sti|{{as|'''bonus''' true damage}}}} equal to the {{tt|post-mitigation damage|Damage calculated after modifiers}} dealt, capped at ''Sleepy Trouble Bubble's'' damage. This '''bonus''' damage may also be applied within 1 second of the {{tip|sleep}} ending, if the debuff was not consumed.
+|leveling3    = {{st|Bonus Damage Cap|{{ap|70 to 230}} {{as|(+ 45% AP)}}|Maximum Mixed Damage|{{ap|140 to 460}} {{as|(+ 90% AP)}}}}
+|description4 = ''Sleepy Trouble Bubble'' refunds a percentage of its {{sti|cd|cooldown}} if the bubble hits an enemy champion.
+|leveling4    = {{st|Cooldown Refund|{{ap|16 to 30}}%}}
+|cooldown     = {{ap|18 to 14}}
+|cast time    = {{fd|0.25}}
+|cost         = 80
+|costtype     = Mana
+|range        = {{tip|cr|icononly = true}} {{tt|800|Initial missile range}} + {{tt|50|Bounce extra travel distance}}
+|speed        = {{tt|1850|Initial missile speed}}
+|width        = {{dv|{{tip|er|icononly = true}} {{tt|100|Initial missile width}}|{{tt|200|Lollipop diameter at end of initial missile trajectory, also edge range}}}}
+|effect radius= {{tip|cr|icononly = true}} {{tt|250|Bubble trap radius}}
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = special
+|spelleffects = special
+|projectile   = True
+|notes        = 
+* {{tip|Spell shield}} will not prevent falling {{tip|sleep|asleep}} nor block the wake-up damage.
+** The bubble's damage and {{tip|drowsy}} application will be blocked.
+* '''Zoe''' will gain {{tip|obscured vision}} of the target while they're {{tip|sleep|asleep}} if they are not {{tip|sight|visible}}.
+* If exceptionally close to terrain, the bubble will pass through without detection and will still be able to pass through a second piece of terrain - although it sacrifices any range its already used going through the first piece.
+* ''Sleepy Trouble Bubble'' can interact with [[Terrain#Player-Generated|player-generated terrain]].
+* At the end of the path of the initial missile, before continuing with the short bounce, ''Sleepy Trouble Bubble'' checks for targets in a {{tip|er|icononly = true}} 100 radius to immediately collide with.
+** This "lollipop" is one of only a few that is larger than the ability's missile width.
+* ''Sleepy Trouble Bubble'' can still be collided with during the short bounce between end of initial missile and the trap being formed.
+** This seems to use a {{tip|er|icononly = true}} very small or negative collision radius, rather than normal missile collision.
+{{Effect at cast time end}}
+** The missile's maximum range location, or end position, is determined at the start of the cast and as such will always be fired to the same spot regardless of where '''Zoe''' is at the end of the cast time.
+*** An applicable example of this can be seen in an interaction with her {{ai|Portal Jump|Zoe}}. If ''Sleepy Trouble Bubble'' is cast right before she blinks back to ''Portal Jump's'' original cast position, the range of the missile will be extended for it to fire to the same end position as if she had not blinked back. This interaction occurs in this manner due to the missile's behavior as explained prior and the fact that '''Zoe''' blinks back with ''Portal Jump'' before the cast time of ''Sleepy Trouble Bubble'' finishes, causing the cast time to finish from ''Portal Jump's'' original cast position.
+{{ct|cast|items=false|consume=false|spells=true,false,false,false,false}}
+<!-- Damage -->
+|damage       = true
+|damageextra  = 
+* The '''bonus''' damage from ''Sleepy Trouble Bubble'' is dealt before '''any''' triggering damage from '''Zoe''' or her allies, and is attributed to '''Zoe''' at all times.
+** If an ally expunges the {{tip|sleep}} and the bonus damage from ''Sleepy Trouble Bubble'' is enough to kill the target, '''Zoe''' will be credited the kill.
+*** Additionally in this case, the allied champion will '''not''' be credited an [[assist]] at all.{{bug}}
+** This will still count as damage dealt by '''Zoe''' in the damage recap.
+|damagedetails=
+{{Infobox damage
+|dtitle      = Zoe - Sleepy Trouble Bubble: Missile/Trap
+|dtype       = m
+|dtags       = ability
+|dproperties = 
+|dnotes      = 
+}}
+{{Infobox damage
+|dtitle      = Zoe - Sleepy Trouble Bubble: Expunge
+|dtype       = t
+|dtags       = proc,indirect
+|dproperties = 
+|dnotes      = 
+* This damage is additionally uniquely tagged [[NonRedirectable]], potentially being excluded from being redirected by certain effects (although no known cases are known), but it can still be echoed by others (e.g {{cai|E|Illaoi}}).
+** {{pft}} {{cai|I|Zac}}?
+}}
+
+
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Portal Jump|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Zoe
+|skill        = R
+|icon         = Portal Jump.png
+|blurb        = {{sbc|Active:}} {{ci|Zoe}} {{tip|blinks}} in the target direction, after which she cannot move for a brief moment.
+|blurb2      = Afterwards, she {{tip|blinks}} back to her starting position.
+|description  = {{sbc|Active:}} After a {{tt|{{fd|0.15}}-second delay|From the end of the cast time, blink occurs after 0.4 seconds from the start of cast}}, '''Zoe''' {{tip|blinks}} in the target direction and remains there for {{tt|{{fd|0.95}} seconds to {{fd|1.25}} seconds|See notes}}, during which she sets her {{as|movement speed}} to a {{as|static 0|ms}} and has {{tip|unobstructed vision}}. Afterwards, she {{tip|blinks}} back to her casting position.
+|description2 = ''Portal Jump {{tip|basic attack reset|resets}} '''Zoe's''' basic attack timer. '''Zoe''' {{tt|briefly|See notes}} becomes {{tip|lockout|unable to act}} after casting Portal Jump as well as after blinking back.''
+|cooldown     = {{ap|11 to 5}}
+|cdstart      = post-effect
+|cast time    = {{fd|0.25}}
+|cost         = 40
+|costtype     = Mana
+|range        = 575
+|targeting    = Direction
+|affects      = Self
+|grounded     = true
+|flavorsound  = {{sm2|Zoe Original R 1.ogg}} ''"Whoop!"'' 
+|notes        = 
+* '''Zoe''' will remain at the blink destination for an inconsistent period of time.{{bug|1}}
+* ''Portal Jump'' causes '''Zoe''' to become unable to perform any actions for a varied ~{{fd|0.55}}-{{fd|0.75}} seconds{{bug|1}} from the start of the cast time and another time for a varied ~{{fd|0.3}}-{{fd|0.5}} seconds{{bug|1}} starting from right before she blinks back.
+* '''Zoe''' is able to perform any action while at the blink destination, except practically being unable to move through normal movement due to having 0 movement speed.
+* ''Portal Jump's'' maximum range location, or end position, is determined at the start of the cast time and as such '''Zoe''' will always blink to the determined destination regardless of where she is at the end of the ability's cast time.
+* ''Portal Jump'' will always cause '''Zoe''' to {{tip|blink}} back to her casting position regardless of where she is moved to while at the destination.
+** She will still be considered to blink even if she fails to move her intended location while {{tip|attach|attached}} (e.g. if she were affected by {{ai|The Show Stopper|Sett}}).
+* Upon reaching her destination, '''Zoe''' will either raspberry at the nearest enemy champion, or lick an ice cream cone when there are no enemy champions in {{tip|sight}}.
+* '''Zoe's''' return position is shifted by 25 units in the target direction from her cast location.
+* The following table refers for interactions while '''Zoe''' is locked out during the cast time and for certain periods of time during the ability:
+{{ct|cast=false|move=false|attack=false|items=false|consume=false|spells=true,false,false,false,false|interrupts=death}}
+}}

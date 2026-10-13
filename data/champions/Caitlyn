@@ -1,0 +1,174 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Headshot|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Caitlyn
+|skill        = I
+|icon         = false
+|blurb        = {{sbc|Innate:}} {{cis|Caitlyn}} {{tip|basic attacks}} generate {{tip|stacks}} of ''Count'' {{tip|on-attack}}. At maximum stacks, her next basic attack will fire a ''Headshot'' dealing {{as|'''bonus''' physical damage}} that scales with her {{sti|{{as|critical strike chance}}}}.
+|blurb2       = On {{ai|Yordle Snap Trap|Caitlyn|trapped}} or {{ai|90 Caliber Net|Caitlyn|netted}} targets, she gains another ''Headshot'' at extra {{sti|range|attack range}}.
+|description  = {{sbc|Innate:}} '''Caitlyn's''' {{tip|basic attacks}} generate a {{tip|stack}} of ''Count'' {{tip|on-attack}}, doubled if she is within {{tip|brush}}. At 5 stacks, or 4 while in ''brush'', her next basic attack consumes all stacks {{tip|on-attack}} to become a ''Headshot''.
+|icon2        = Headshot.png
+|description2 = {{sbc|Headshot:}} '''Caitlyn's''' basic attack is empowered to have an {{tip|uncancellable windup}} and deal {{as|{{pp|key=%|60 to 100 for 3|1 to 13}}|ad}} {{as|(+ {{critical damage|0 to 100|critScaling=true}}) AD}} {{as|'''bonus''' physical damage}}, increased to {{as|110% (+ {{critical damage|0 to 100|critScaling=true}}) AD}} against non-champions.
+|icon3        = Headshot 2.png
+|description3 = Enemies that step over a ''{{ai|Yordle Snap Trap|Caitlyn}}'' or are hit by ''{{ai|90 Caliber Net|Caitlyn}}'' can grant an additional ''Headshot'' against them at {{sti|range|1300 range}} within {{fd|1.8}} seconds, without consuming stacks. Each method grants only one ''Headshot'' at a time.
+|targeting    = Passive
+|speed        = {{tt|3000|Headshots missile speed}}
+|affects      = Self
+|damagetype   = Physical
+|spellshield  = False
+|projectile   = True
+|spelleffects = Basic
+|parry        = True
+|notes        = 
+* If '''Caitlyn's''' current target becomes trapped by {{ai|Yordle Snap Trap|Caitlyn}} or {{ai|90 Caliber Net|Caitlyn}} while her attack is on cooldown, this ongoing cooldown will be refunded partially so that her next attack on them can begin earlier.
+** Swapping the target to an enemy trapped by {{ai|Yordle Snap Trap|Caitlyn}} or {{ai|90 Caliber Net|Caitlyn}} also reduces her ongoing attack cooldown.
+*** {{pending for test}}: The exact attack cooldown refund appears to be 50% of the attack cooldown at current attack speed, but at a minimum amount it lets '''Caitlyn''' start the attack against the trapped target within {{fd|0.5}} seconds of her previous attack windup completing.
+* The bonus range from {{ii|Rapid Firecannon}} will not have any effect during {{ai|Yordle Snap Trap|Caitlyn|trap}} and {{ai|90 Caliber Net|Caitlyn|net}} extended ''Headshot'' attacks.
+* Only the ordinary {{as|100% attack damage}} portion of the attack can critically strike. The bonus from ''Headshot'' is added after the critical strike is rolled.
+** The full damage of ''Headshot'' applies {{as|{{sti|life steal}}}}.
+** ''Headshot'' is a single instance of damage, thus does not trigger {{cais|Tantrum|Amumu}} or {{ii|Warden's Mail}} passives twice.
+* Since '''Caitlyn's''' Art and Sustainability Update, Ability-granted ''Headshots'' are the same as the original ''Headshot'' override attack, though what lets them cast at high range is still relatively special. They trigger {{tip|on-attack}} effects (including stacking ''Headshot'').
+** {{Pending for test}} {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}}, is special cased to search targets with the increased range as well.
+* Because ''Headshot'' stacks are generated {{tip|on-attack}}, {{iis|Runaan's Hurricane}} {{nies|Wind's Fury}} bolts will not generate any.
+* The empowered attack will not trigger against {{tip|ward}}s.
+** Stacks will still be generated towards ''Headshot'' when attacking them.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Piltover Peacemaker|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Caitlyn
+|skill        = Q
+|icon         = Piltover Peacemaker.png
+|blurb        = {{sbc|Active:}} {{ci|Caitlyn}} revs up her rifle to unleash a penetrating shot that deals {{as|physical damage}} to enemies hit.
+|blurb2       = The projectile expands after the first target but also deals less damage.
+|description  = {{sbc|Active:}} '''Caitlyn''' fires a piercing shot in the target direction that deals {{as|physical damage}} to the first enemy it passes through, after which it expands in width but deals only 60% damage to enemies it hits thereafter.
+|leveling     = {{st|Physical Damage|{{ap|50 to 210}} {{as|(+ {{ap|125 to 205}}% AD)}}|Reduced Damage|{{ap|50*0.6 to 210*0.6}} {{as|(+ {{ap|125*0.6 to 205*0.6}}% AD)}}}}
+|description2 = Enemies {{tip|true sight|revealed}} by ''{{ai|Yordle Snap Trap|Caitlyn}}'' always take {{ccs|full damage|physical}} from ''Piltover Peacemaker''.
+|cast time    = {{fd|0.625}}
+|range        = {{dv|{{tip|cr|icononly = true}} 1300|{{tip|er|icononly = true}} 1240}}
+|width        = {{dv|{{tip|er|icononly = true}} {{tt|120|Initial missile}}|{{tt|180|Expanded missile}}}}
+|speed        = 2200
+|cooldown     = {{ap|10 to 6}}
+|cost         = {{ap|55 to 75}}
+|costtype     = mana
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = Physical
+|spellshield  = True
+|spelleffects = Area of effect
+|projectile   = True
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* Upon ''Piltover Peacemaker'' dealing damage to an enemy, '''Caitlyn's''' [[attack timer]] is forcibly {{tip|basic attack reset|reset}}.{{bug}} 
+* Enemies hit while protected by a {{tip|spell shield}} will still be considered a target for calculating damage for subsequent hits.
+{{Effect at cast time start}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Yordle Snap Trap|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Caitlyn
+|skill        = W
+|icon         = Yordle Snap Trap.png
+|blurb        = {{sbc|Active:}} {{ci|Caitlyn}} sets a trap at the target location that lasts for a while. The trap springs when an enemy champion steps on it, {{tip|true sight|revealing}} and {{tip|root|rooting}} them.
+|blurb2       = '''Caitlyn''' periodically [[ammunition|stocks]] a charge of ''Yordle Snap Trap'', up to a cap.
+|blurb3       = The next ''{{ai|Headshot|Caitlyn}}'' against a trapped target will deal {{as|'''bonus''' physical damage}}.
+|description  = {{sbc|Active:}} '''Caitlyn''' sets a visible trap at the target location that is {{tip|untargetable}} and arms after 1 second, lasting for a duration. The trap grants {{tip|sight}} of the area for 1 second after being placed.
+|leveling     = {{st|Trap Duration|{{ap|30 to 50}} seconds}}
+|description2 = '''Caitlyn''' periodically [[ammunition|stocks]] a ''Yordle Snap Trap'' charge, up to a maximum amount. Deploying traps beyond the maximum destroys the oldest one.
+|leveling2    = {{st|Maximum Number of Traps|{{ap|3|3|4|4|5}}}}
+|description3 = The next enemy champion that steps on the trap springs it, causing them to become {{tip|root|rooted}} for {{fd|1.5}} seconds and {{tip|true sight|revealed}} for 3 seconds, as well as take additional damage from the ''{{ai|Headshot|Caitlyn}}'' granted by this ability. Trapped targets become immune to further ''Yordle Snap Traps'' for {{tt|3 seconds|Timer starts upon the target springing the trap}}, preventing them from springing subsequent traps for the duration.
+|leveling3    = {{st|{{ai|Headshot|Caitlyn}} Damage Increase|{{ap|35 to 215}} {{as|(+ 30% '''bonus''' AD)}}}}
+|target range = 800
+|collision radius= {{tip|er|icononly = true}} 15
+|cooldown     = {{fd|0.5}}
+|recharge     = {{ap|26 to 10}}
+|cast time    = {{fd|0.25}}
+|cost         = 20
+|costtype     = Mana + 1 Charge
+|targeting    = Location
+|affects      = Enemies
+|damagetype   = 
+|spellshield  = True
+|spelleffects = 
+|projectile   = 
+|grounded     = 
+|knockdown    = 
+|outofrange   = walk to location
+|notes        = 
+* Multiple armed traps on the same location will spring all at once if an enemy steps on one of them.
+|tips         = 
+* Check the scoreboard occasionally and aim to use ''Yordle Snap Trap'' on top of enemies who want to stay still during {{iis|Zhonya's Hourglass}} Time Stop or {{iis|Guardian Angel}} Rebirth, as the trap is guaranteed the moment they become targetable again.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|90 Caliber Net|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Caitlyn
+|skill        = E
+|icon         = 90 Caliber Net.png
+|blurb        = {{sbc|Active:}} {{ci|Caitlyn}} fires a heavy net that {{tip|slow|slows}} the first target hit and deals {{as|magic damage}} to them.
+|blurb2       = Firing the net causes her to {{tip|dash|recoil}} back.
+|description  = {{sbc|Active:}} '''Caitlyn''' fires a net in the target direction and {{tip|dash|recoils}} 390 units in the opposite direction. The net deals {{as|magic damage}} to the first enemy hit and {{tip|slow|slows}} them by 50% for 1 second.
+|leveling     = {{st|Magic Damage|{{ap|80 to 280}} {{as|(+ 80% AP)}}}}
+|description2 = '''''Caitlyn''' will not recoil after the cast time if she was {{tip|immobilize|immobilized}} or {{tip|ground|grounded}} during it. She can cast any of her [[champion ability|abilities]] during the recoil dash.''
+|range = {{dv|{{tip|cr|icononly = true}} 800|{{tip|er|icononly = true}} 740}}
+|effect radius= {{tip|er|icononly = true}} 140
+|speed        = {{dv|{{tt|1600|Missile speed}}|{{tt|1000|Dash speed}}}}
+|cooldown     = {{ap|16 to 8}}
+|cost         = 75
+|cast time    = {{fd|0.15}}
+|costtype     = mana
+|targeting    = Direction
+|affects      = Self, Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = Single target
+|projectile   = True
+|grounded     = True
+|knockdown    = True
+|notes        = 
+{{Effect at cast time end}}
+* The recoil can be used to pass through terrain. 
+* If '''Caitlyn''' buffers {{ai|Piltover Peacemaker|Caitlyn}} during ''90 Caliber Net's'' cast time, {{ai|Piltover Peacemaker|Caitlyn}} will start after the cast time.
+** If '''Caitlyn''' buffers an ability or [[basic attack]] during this ability's cast time, the buffered ability or basic attack will instead start after the dash ends.
+** Other abilities can be cast while {{tip|dash|dashing}} if they are input after the cast time.
+* ''90 Caliber Net's'' missile will fail to fire if '''Caitlyn''' is {{tip|suppression|suppressed}} during the cast time.{{bug|2}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Ace in the Hole|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Caitlyn
+|skill        = R
+|icon         = Ace in the Hole.png
+|blurb        = {{sbc|Active:}} {{ci|Caitlyn}} targets an enemy champion and takes time to line up the perfect shot, dealing massive {{as|physical damage}} to them at a huge range.
+|blurb2       = The target's allied {{tip|champions}} can intercept the shot for them.
+|description  = {{sbc|Active:}} '''Caitlyn''' locks onto the target enemy champion and {{tip|channel|channels}} for 1 second, {{tip|true sight|revealing}} them as well as {{tip|sight|revealing}} herself.
+|description2 = ''Ace in the Hole'' is placed on a 5-second {{sti|cooldown}} if canceled.
+|description3 = Once '''Caitlyn''' completes the channel, she fires a homing bullet toward the target that deals {{as|physical damage}} to the first enemy champion it hits, increased by {{critical damage|0 to 30|critScaling=true}}.
+|leveling3    = {{st|Physical damage|{{ap|300 to 650}} {{as|(+ 100% '''bonus''' AD)}}}}
+|target range = {{tip|cr|icononly = true}} 3500
+|speed        = 3200
+|width        = {{tip|er|icononly = true}} {{tt|80|Collision width}}
+|cooldown     = 90
+|cdstart      = on-cast
+|cast time    = {{fd|0.375}}
+|cost         = 100
+|costtype     = mana
+|targeting    = Unit
+|affects      = Enemies
+|damagetype   = Physical
+|spellshield  = True
+|spelleffects = spell
+|projectile   = True
+|callforhelp  = true
+|silence      = true
+|notes        = 
+* The following will cancel ''Ace in the Hole's'' channel (mana expenditure is not compensated):
+** '''Caitlyn''' is {{tip|interrupt|interrupted}}.
+** The target becomes {{tip|untargetable}}.
+** '''Caitlyn''' or her target {{tip|death|dies}}.
+* ''Ace in the Hole'' reveals the target and '''Caitlyn''' through a buff that lasts for up to 4 seconds.
+** The buff is applied to the target from the start of the cast time.
+** The buff ends prematurely when the channel is canceled or the bullet hits an enemy.
+*** The target is revealed for 1 second if the buff is ended prematurely.
+*** It is not removed if the cast time is cancelled or the bullet missile is destroyed.{{bug|2}}
+* The bullet missile will fail to hit the primary target if they are {{tip|untargetable}} upon arrival, dealing no damage.
+* The ability also goes on a 5-second {{sti|cooldown}} if '''Caitlyn''' enters {{tip|resurrection}} during the cast time.
+** The cast time does not end prematurely but the channel will be immediately canceled the moment the cast time completes.
+* If the target dies after the bullet has been fired, the shot will continue towards their corpse and may still hit other enemy champions.
+* The bullet has a {{tip|sight}} radius of 1500 attached to it.
+{{Unit-targeted cancel conditions}}** This excludes losing sight of the target.
+* The following table refers for interactions while '''Caitlyn''' is {{tip|channel|channeling}}:
+{{ct|channel|attack=false|move=false|cast=false|items=false,true,false,false,false|spells=true,false,false,false,false}}
+|flavorsound  = {{sm2|Caitlyn Original R 0.ogg}} ''"In my sights."''
+}}

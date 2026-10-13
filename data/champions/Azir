@@ -1,0 +1,183 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Shurima's Legacy|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Azir
+|skill        = I
+|icon         = false
+|blurb        = {{sbc|Innate:}} {{ci|Azir}} periodically can summon the {{as|Disc of the Sun|buzzword2}} from the ruins of allied or enemy {{tip|turret|turrets}}.
+|blurb2       = {{as|Disc of the Sun|buzzword2}} functions as a turret that decays over time, and weakens when '''Azir''' leaves it.
+|description  = {{sbc|Innate:}} Whenever a {{tip|turret}} outside the enemy team's base is destroyed, a marker is placed above its ruins which can be targeted by '''Azir'''.
+|icon2        = Shurima's Legacy.png
+|description2 = {{sbc|Innate - Disc of the Sun:}} '''Azir''' can select a marker to construct the {{as|Sun Disc|buzzword2}} above the ruins after a {{fd|0.5}}-second [[cast time]]. The {{as|Sun Disc|buzzword2}} will activate after being assembled over 5 seconds.<br><br>'''''Azir''' cannot construct a {{as|Sun Disc|buzzword2}} with the marker while he is affected by {{tip|cast-inhibiting crowd control}} or a {{tip|lockout}} that disables abilities.''
+|description3 = The {{as|Sun Disc|buzzword2}} functions the same as a standard [[Turret#Inner_turret|inner turret]] but deals {{as|magic damage}}, gains {{as|40% AP}} {{sti|{{as|'''bonus''' attack damage}}}}, and grants its kill credit to '''Azir'''. The {{as|Sun Disc's|buzzword2}} {{sti|{{as|health}}}} decays over 45 seconds and loses {{sti|armor|{{as|100 armor}}}} and {{sti|magic resistance|{{as|100 magic resistance}}}} while '''Azir''' is not alive or is too far away.
+|description4 = ''See [[Azir#Pets|Pets]] for more details about the {{as|Sun Disc|buzzword2}}.''
+|target range = 700
+|tether radius= 2000
+|static       = {{tt|90|Starts after Sun Disc is destroyed/expired}}
+|targeting    = Unit
+|affects      = Turret ruins
+|damagetype   = Physical
+|spellshield  = False
+|spelleffects = spell
+|projectile   = False
+|grounded     = 
+|knockdown    = 
+|notes        =
+* No additional notes.
+|differences  =
+;{{tip|Ascension}} differences:
+* '''Azir''' can summon a {{as|Sun Disc|buzzword2}} in the center of the map provided the {{ci|Xerath|Ancient Ascended}} is dead. The {{as|Sun Disc|buzzword2}} will be destroyed if the ''Ancient Ascended'' respawns while active.
+|flavorsound  = {{sm2|Azir_Original_P_ObeliskEnemy_0.ogg}} ''"Return!"''
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Conquering Sands|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Azir
+|skill        = Q
+|icon         = Conquering Sands.png
+|blurb        = {{sbc|Active:}} {{ci|Azir}} sends all {{as|Sand Soldiers|buzzword2}} to dash towards a location. They deal {{as|magic damage}} and {{tip|slow}} enemies they pass through.
+|description  = {{sbc|Active:}} '''Azir''' orders all {{as|Sand Soldiers|buzzword2}} to dash toward the target location, dealing {{as|magic damage}} to all enemies they pass through as well as those in front of them upon arrival, and {{tip|slow|slowing}} them by 25% for 1 second.
+|description2 = Enemies hit by subsequent soldiers take no additional damage or {{tip|slow}}.
+|description3 = ''A summoned {{as|Sand Soldier|buzzword2}} is required to cast this ability.''
+|leveling     = {{st|Magic Damage|{{ap|75 to 155}} {{as|(+ {{ap|35 to 55}}% AP)}}}}
+|target range = 740
+|effect radius= {{dv|{{tip|cr|icononly = true}} {{tt|150|Dashing soldier dash collision radius}}|{{tt|325|Spear length}}}}
+|cooldown     = {{ap|14 to 6}}
+|cast time    = {{fd|0.25}}
+|cost         = {{ap|70 to 110}}
+|costtype     = mana
+|targeting    = Location
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spellaoe
+|projectile   = Special
+|grounded     = 
+|knockdown    = 
+|flavorsound  = {{sm2|Azir_Original_Q_1.ogg}} ''"Conquer!"'''
+|outofrange   = cast at max
+|notes        = 
+* {{as|Sand Soldiers|buzzword2}} dash about 50 units further away from Azir than the target location, making them stab targets slightly further away.
+* {{as|Sand Soldiers|buzzword2}} will stop their movement upon colliding with {{ai|Wind Wall|Yasuo}} or {{ai|Rebuttal|Mel}}, but not {{ai|Unbreakable|Braum}}.
+* {{as|Sand Soldiers|buzzword2}} will automatically turn to face nearby enemy champions after the dash.
+** This happens even if they're in {{tip|stealth}}.{{bug}}
+* If there are multiple active {{as|Sand Soldiers|buzzword2}}, rather than all soldiers arriving at the target location they make a formation around it instead.
+** If the number of soldiers is 2, then neither will arrive at the location.
+** If the number of soldiers is greater than 2, then 1 soldier will arrive at the location and the rest will arrive around it.
+** This can produce unexpected results as soldiers arrive at different distances and locations and the determination of the placement is undocumented.
+*** This has gameplay implications for casting at max range.{{bug}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Arise!|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Azir
+|skill        = W
+|icon         = Arise!.png
+|blurb        = {{sbc|Active:}} {{ci|Azir}} summons a {{as|Sand Soldier|buzzword2}} to attack nearby targets for him, replacing his {{tip|basic attack|basic attacks}} against enemies within their range. Their attacks deal {{as|magic damage}} to enemies in a line.
+|blurb2       = {{as|Sand Soldiers|buzzword2}} expire faster near {{tip|turrets}} and instantly when {{ci|Azir}} leaves them.
+|description  = {{sbc|Active:}} '''Azir''' summons a {{as|Sand Soldier|buzzword2}} at the target location that is {{tip|untargetable}}, lasts 10 seconds, and grants {{tip|sight}} of its surroundings. The {{as|Sand Soldier|buzzword2}} expires twice as fast while within range of an enemy {{tip|turret}}, and does so instantly if '''Azir''' is too far away.<br><br>'''Azir''' periodically [[stock]]s a {{as|Sand Soldier|buzzword2}}, up to a maximum of 2.
+|description2 = When '''Azir''' declares a basic attack against an enemy in a soldier's {{sti|attack range}}, the {{as|Sand Soldier|buzzword2}} attacks in his stead, thrusting their spear in the target's direction to deal {{as|magic damage}} to enemies struck in a line. Against the primary target, the {{as|Sand Soldier's|buzzword2}} attack applies both {{tip|on-hit}} and {{tip|on-attack}} effects, the damage of which is reduced to 50% effectiveness. Targets hit beyond the closest take {{pp|20; then +8*x for 10|1;9 to 18|formula=20% at level 1, then +8% per level starting at level 9 and capped at level 18|key=%}}<!--stops at 18--> damage. Subsequent {{as|Sand Soldier|buzzword2}} attacks against the same target deal 25% damage without applying {{tip|on-hit}} and {{tip|on-attack}} effects.
+|leveling2    = {{st|Magic Damage|{{pplevel|0; then +8*x|1;10+(x-1)|formula=0 at level 1, then +8 per level starting at level 10}} (+ {{ap|50 to 110}}) {{as|(+ {{ap|35 to 65}}% AP)}}}}
+|description3 = {{as|Sand Soldiers|buzzword2}} cannot attack {{tip|turret|structures}}, {{tip|ward|wards}}, nor {{tip|stealthed trap|traps}}.
+|description4 = ''See [[Azir#Pets|Pets]] for more details about {{as|Sand Soldiers|buzzword2}}.''
+|target range = 525
+|tether radius= {{tt|660|Soldier command range}}
+|cooldown     = {{fd|1.5}}
+|cast time    = {{fd|0.25}}
+|recharge     = {{ap|12 to 6}}
+|cost         = {{ap|40 to 20}}
+|costtype     = mana + 1 Sand Soldier
+|targeting    = Location
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = false
+|spelleffects = special
+|projectile   = False
+|callforhelp  = True
+|parry        = True
+|grounded     = 
+|knockdown    = 
+|outofrange   = cast at max
+|notes        = 
+* Soldiers' attacks deal {{tip|area damage}}; against the main target, the damage is additionally tagged as {{tip|basic damage}}.
+** If a soldier's attack hits multiple champions, it will deal damage to them in order of their appearance in the pre-game [[Loading Screen]], the order of which may matter for some effects that trigger just once for the first target hit.
+* '''Azir''' must rank ''Arise!'' as his first ability, and will do so automatically if he reaches level 2 before ranking an ability.
+* '''Azir''' can only command his soldiers to attack if he is able to declare [[basic attack]] commands himself, meaning {{tip|crowd control}} effects that disable attacking, such as {{tip|disarm}}, do not allow him to order his soldiers to attack in his stead.
+* {{tip|Nearsight|Nearsighting}} effects will only allow '''Azir''' to perform attacks from soldiers within his own sight radius.
+* Commanding a soldier to attack will trigger {{tip|on-attack}} effects, but will not apply any of these effects to the target hit.
+** The attacks do not apply {{sti|life steal}}.
+** {{tip|Energized}} will stack but not be consumed.
+** {{ii|Sundered Sky}} does not apply.
+*** However it does apply with {{ii|Runaan's Hurricane}} for secondary targets if the main target is a champion.
+* Damage dealt by {{ri|Hail of Blades}} will not be affected by the on-attack damage modifier.{{supNote|This is intended.}}
+* The first soldier attack while '''Azir''' is affected by '''Hail of Blades''' may fail to trigger its {{as|true damage}}.{{bug}}
+* Damage to enemy champions from ''Sand Soldier'' stabs will draw minion aggro even if the enemy champion was not the primary target.{{bug|2}}
+* {{as|Sand Soldiers|buzzword2}} can damage {{ai|Powder Keg|Gangplank|Powder Kegs}}, {{ai|Prophet of an Elder God|Illaoi|Tentacles}}, and {{ai|Sentinel|Kalista|Sentinels}}, but only if they are the main target of the attack.
+* {{as|Sand Soldiers|buzzword2}} will attack the closest enemy to '''Azir''' when using attack move (or {{sbc|A + RMB}} / {{sbc|Shift + RMB}}) or {{tip|acquisition radius|auto-attack}}.
+* If an enemy has {{tip|sight|vision}} of a {{as|Sand Soldier|buzzword2}}, they will also gain vision of '''Azir''' even if he is out of sight.	
+* While {{ii|Navori Flickerblade}} is equipped, if '''Azir''' has 1 ''Arise!'' charge ready, the recharge timer will appear to restart when triggering {{nie|Transcendence}}{{bug}}; the recharge timer is incurred normally.
+[[File:Azir_Sand_Soldier_screenshot.png|thumb|left|250px|An exclamation mark ('''!''') will appear above the {{as|'''Sand Soldier's'''|buzzword2}} head when within the range of an enemy {{tip|turret}}.]]
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Shifting Sands|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Azir
+|skill        = E
+|icon         = Shifting Sands.png
+|blurb        = {{sbc|Active:}} {{ci|Azir}} {{tip|shield|shields}} himself and {{tip|dash|dashes}} to the target {{as|Sand Soldier|buzzword2}}, dealing {{as|magic damage}} to enemies he passes through.
+|blurb2       = He will stop upon hitting an enemy {{tip|champion}}, gaining a charge of ''{{ai|Arise!|Azir}}''.
+|description  = {{sbc|Active:}} '''Azir''' grants himself a {{tip|shield}} for {{fd|1.5}} seconds and {{tip|dashes}} to the {{as|Sand Soldier|buzzword2}} closest to the cursor, dealing {{as|magic damage}} to enemies within his path.
+|leveling     = {{st|Shield Strength|{{ap|70 to 230}} {{as|(+ 60% AP)}}}}
+{{st|Magic Damage|{{ap|70 to 230}} {{as|(+ 60% AP)}}}}
+|description2 = If '''Azir''' dashes into an enemy {{tip|champion}}, he stops and gains a charge of ''{{ai|Arise!|Azir}}''.
+|description3 = ''A summoned {{as|Sand Soldier|buzzword2}} is required to cast this ability. '''Azir''' can cast any of his [[champion ability|abilities]] during the dash.''
+|target range = 1100
+|cooldown     = {{ap|22 to 16}}
+|cost         = 60
+|costtype     = mana
+|cast time    = none
+|targeting    = Unit
+|affects      = Self, Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spellaoe
+|projectile   = 
+|grounded     = True
+|knockdown    = True
+|outofrange   = false
+|notes        = 
+* '''Azir''' will track the {{as|Sand Soldier|buzzword2}} if they change locations, such as by {{ai|Conquering Sands|Azir}}.
+* Movement and attack commands will be canceled upon cast and cannot be issued again until '''Azir''' arrives at his final location.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Emperor's Divide|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Azir
+|skill        = R
+|icon         = Emperor's Divide.png
+|blurb        = {{sbc|Active:}} {{ci|Azir}} summons a wall of soldiers that charges forward, dealing {{as|magic damage}} and {{tip|airborne|knocking back}} enemies hit.
+|blurb2       = The soldiers will linger for a few seconds, acting as terrain against enemies while allowing allies to pass.
+|description  = {{sbc|Active:}} '''Azir''' calls forth a phalanx of soldiers from {{tt|175|See notes}} units behind him, catching enemies from up to {{tt|325|See notes}} units behind him and charging forward {{tt|575|See notes}} units in the target direction.
+|leveling     = {{st|Width|{{ap|6 to 8}} soldiers|Width (charge)|{{tip|er|icononly = true}} {{ap|620 to 820}}|Width (impassable wall)|{{tip|pathing radius|icononly = true}} {{ap|750 to 950}}}}
+|description2 = Enemies impacted by the charge are dealt {{as|magic damage}} and {{tip|airborne|knocked away}} over 1 second to a line 650 units in front of '''Azir'''.
+|leveling2    = {{st|Magic Damage|{{ap|200 to 600}} {{as|(+ 75% AP)}}}}
+|description3 = Upon finishing their charge, the soldiers stand as a wall for 5 seconds, acting as impassible terrain against enemies and granting {{tip|sight}} of their surroundings. '''Azir''' and his allies can move through these soldiers.
+|target range = {{dv|{{tip|cr|icononly = true}} {{tt|400|Charge distance in front of Azir, wall location}}|{{tt|-325|Starting location behind Azir, see notes}}}}
+|effect radius= {{tip|cr|icononly = true}} {{tt|125|Soldier radius, 'lollipop' radius where they come to halt}}
+|speed        = {{dv|{{tt|1000|Knockback missiles speed}}|{{tt|1400|Soldiers dash speed}}}}
+|cooldown     = {{ap|120|105|90}}
+|cost         = 100
+|costtype     = mana
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = Magic
+|cast time    = {{fd|0.5}}
+|spellshield  = True
+|spelleffects = spellaoe
+|projectile   = Special
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* {{tip|Monster|Monsters}} are also {{tip|airborne|knocked back}}.
+* The soldier units are spawned only 175 units behind '''Azir''', but do not control the {{tip|airborne|knock back}} directly. Each comes with a missile that travels the same path and conveys the damage and knockback effect.
+** The furthest area (from 325 to 175 units behind '''Azir''') is covered by a separate set of missiles with the same effects.
+** All of the soldiers and their missiles will end the charge prematurely when one encounters {{ai|Wind Wall|Yasuo}} / {{ai|Unbreakable|Braum}} / {{ai|Blade Whirl|Samira}} / {{ai|Rebuttal|Mel}} or upon colliding with terrain that they cannot charge through.
+* The charge starts at {{fd|0.25}} seconds into the cast time.
+{{Effect at cast time start}}
+* When the dash of the soldiers comes to a halt, all not-yet-affected enemies on top of the soldiers' landing locations (125 radius) are also knocked back.
+* ''Emperor's Divide'' will not be canceled if '''Azir''' dies during the cast time.
+* While the soldiers are charging forward, the wall is not impassable terrain. 
+** This means enemies that are immune to {{tip|airborne}} effects can pass through the wall while its moving.
+* The wall '''will''' count as terrain for the purposes of 'into terrain' effects (e.g. {{ai|Condemn|Vayne}}, {{ai|Dredge Line|Nautilus}}, {{ai|Heroic Charge|Poppy}}). This will only affect enemies, allies will pass through the wall in all circumstances, even if knocked into it by an enemy.
+|flavorsound  = {{sm2|Azir_Original_R_5.ogg}} ''"My soldiers march on!"''
+}}

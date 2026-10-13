@@ -1,0 +1,131 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Night Hunter|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Vayne
+|skill        = I
+|icon         = Night Hunter.png
+|blurb        = {{sbc|Innate:}} {{ci|Vayne}} gains {{sti|ms|{{as|'''bonus''' movement speed}}}} while facing a nearby enemy champion, significantly increased during ''{{ai|Final Hour|Vayne}}''.
+|blurb4       =
+|description  = {{sbc|Innate:}} '''Vayne''' gains {{sti|ms|{{as|30 '''bonus''' movement speed}}}} while facing a nearby {{tip|sight|visible}} enemy {{tip|champion}}, increased to {{as|90|ms}} while under the effects of ''{{ai|Final Hour|Vayne}}''.
+|effect radius= {{tip|cr|icononly = true}} {{tt|2000|Enemy champion check}}
+|targeting    = Passive
+|affects      = Self
+|notes        = 
+* The '''bonus''' movement speed persists for 2 seconds after '''Vayne''' loses {{tip|sight}} of an enemy champion.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Tumble|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Vayne
+|skill        = Q
+|icon         = Tumble.png
+|blurb        = {{sbc|Active:}} {{ci|Vayne}} {{tip|dash|dashes}} in the target direction. Her next {{tip|basic attack}} within a few seconds will deal {{as|'''bonus''' physical damage}}.
+|description  = {{sbc|Active:}} '''Vayne''' {{tip|dash|dashes}} a fixed distance in the target direction, though not through terrain, and empowers her next {{tip|basic attack}} within 3 seconds to have an {{tip|uncancellable windup}} and deal {{as|'''bonus''' physical damage}}.
+|leveling     = {{st|Bonus Physical Damage|{{as|{{ap|75 to 115}}% AD}} {{as|(+ 50% AP)}}}}
+|description2 = ''Tumble {{tip|basic attack reset|resets}} '''Vayne's''' basic attack timer.''
+|range        = {{tt|300|Dash distance}}
+|speed        = {{tt|500 + {{as|100% movement speed}}|Dash speed}}
+|cooldown     = {{ap|6 to 2}}
+|cdstart      = post-effect
+|cost         = 30
+|cast time    = none
+|costtype     = Mana
+|targeting    = Direction
+|affects      = [[Self-targeted|Self]]
+|damagetype   = physical
+|projectile   = 
+|spelleffects = special
+|spellshield  = 
+|grounded = true
+|knockdown = true
+|parry        = True
+|notes        = 
+{{always quickcast}}
+* The basic attack portion of ''Tumble's'' damage is tagged as {{tip|basic damage}} and {{tip|spell damage}}, while the bonus damage is tagged as {{tip|spell damage}}.
+* The bonus damage applies {{as|{{sti|life steal}}}}.
+* Although ''Tumble'' will reset the basic attack timer, '''Vayne''' cannot attack until the animation is complete.
+* '''Vayne''' can cast {{ai|Final Hour|Vayne}} during ''Tumble''. She does not become {{tip|invisible}} during the dash.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Silver Bolts|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Vayne
+|skill        = W
+|icon         = Silver Bolts.png
+|blurb        = {{sbc|Passive:}} {{cis|Vayne}} {{tip|basic attacks}} {{tip|on-hit}} and ''{{ai|Condemn|Vayne}}'' will apply a {{tip|stack}} of ''Silver Bolts'', which expires upon attacking a new enemy.
+|blurb2      = The third stack will consume them all to deal {{as|'''bonus''' true damage}} based on the {{as|target's '''maximum''' health}}.
+|description  = {{sbc|Passive:}} '''Vayne's''' {{tip|basic attacks}} {{tip|on-hit}} and ''{{ai|Condemn|Vayne}}'' apply a {{tip|stack}} of ''Silver Bolts'' for {{fd|3.5}} seconds, refreshing on subsequent applications, expiring upon attacking a new enemy, and stacking up to 3 times. 
+|description2 = The third stack consumes them all to deal {{sti|{{as|'''bonus''' true damage}}}}, with a minimum threshold.
+|leveling2    = {{st|Bonus True Damage|{{as|{{ap|4 to 10}}% of target's '''maximum''' health}}}}
+{{st|Minimum Bonus Damage|{{ap|40 to 100}}}}
+|description3 = ''Silver Bolts'' deals modified damage against {{tip|monsters}}.
+|leveling3    = {{st|Monster Damage|{{ap|140 to 200}}}}
+|targeting    = Passive
+|affects      = Enemies
+|damagetype   = true
+|spelleffects = Proc
+|parry = true
+|spellshield  = False
+|notes        = 
+* {{tip|Stacks}} are not removed if '''Vayne''' switches to attacking a target immune to ''Silver Bolts'' ({{tip|structures}}, {{tip|wards}}).
+* ''Silver Bolts'' do not apply to additional targets with {{ii|Runaan's Hurricane}}.
+* The stacks can be consumed even if the target is in {{tip|stasis}}.
+|flavorsound  = {{sm2|Vayne_Original_LevelUpW_0.ogg}} ''"Purge with silver."''
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Condemn|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Vayne
+|skill        = E
+|icon         = Condemn.png
+|blurb        = {{sbc|Active:}} {{ci|Vayne}} fires a heavy bolt at the target enemy that deals {{as|physical damage}} and {{tip|airborne|knocks them back}}.
+|blurb2      = If the target hits [[terrain]], they are briefly {{tip|stun|stunned}} and dealt {{as|'''bonus''' physical damage}}.
+|description  = {{sbc|Active:}} '''Vayne''' fires a heavy bolt at the target enemy that deals {{as|physical damage}} and {{tip|airborne|knocks them back}} 475 units, though not through terrain.
+|leveling     = {{st|Physical Damage|{{ap|50 to 190}} {{as|(+ 50% '''bonus''' AD)}}}}
+|description2 = If the target collides with [[terrain]], they take {{ccs|{{as|'''bonus''' physical damage}}|physical}} and become {{tip|stun|stunned}} for {{ap|1.5}} seconds.
+|leveling2    = {{st|Bonus Physical Damage|{{ap|50*1.5 to 190*1.5}} {{as|(+ 75% '''bonus''' AD)}}|Total Physical Damage|{{ap|50*2.5 to 190*2.5}} {{as|(+ 125% '''bonus''' AD)}}}}
+|target range = {{tip|er|icononly = true}} 550
+|speed        = {{dv|{{tt|2200|Missile speed}}|{{tt|2000|Knockback speed}}}}
+|cooldown     = {{ap|20 to 12}}
+|cast time    = {{fd|0.25}}
+|cost         = 90
+|costtype     = Mana
+|targeting    = Unit
+|affects      = Enemies
+|damagetype   = physical
+|projectile   = true
+|spelleffects = spell
+|onhiteffects = 
+|spellshield  = True
+|callforhelp  = True
+|notes        = 
+* ''Condemn's'' {{tip|airborne|displacement}} direction is determined at the end of the cast time.
+** Because of this, '''Vayne''' may use {{si|Flash}} during the cast time to create a better angle.
+* {{tip|Cleanse|Cleansing}} the {{tip|airborne|knock back}} will also end the displacement early.
+* The [[spell indicator]] for this ability also displays the direction for the knock back relative to '''Vayne's''' position.
+* ''Condemn's'' {{tip|stun}} duration starts when '''Vayne's''' target collides with a wall (they can be immobilized for up to 2 seconds depending on {{tip|airborne|displacement}} duration based on distance traveled).
+* ''Condemn's'' missile will fail to fire if '''Vayne''' is {{tip|suppression|suppressed}} during the cast time.{{bug|2}}
+* ''Condemn'' can interact with [[Terrain#Player-Generated|player-generated terrain]].
+{{Unit-targeted cancel conditions}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Final Hour|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Vayne
+|skill        = R
+|icon         = Final Hour.png
+|blurb        = {{sbc|Active:}} {{ci|Vayne}} equips her crossbow for a long duration, gaining {{sti|{{as|attack damage}}}}.
+|blurb2       = During ''Final Hour'', ''{{ai|Night Hunter|Vayne}}'' grants increased {{sti|{{as|movement speed}}}}, and {{ai|Tumble|Vayne}} is empowered to have a {{sti|cdr|reduced}} cooldown and grant '''Vayne''' {{tip|invisibility}}.
+|blurb3       = Scoring a {{tip|takedown}} extends ''Final Hour's'' duration.
+|description  = {{sbc|Active:}} '''Vayne''' equips her crossbow, gaining {{sti|{{as|'''bonus''' attack damage}}}} for a duration.
+|leveling     = {{st|Effect Duration|{{ap|8 to 12}} seconds}}
+{{st|Bonus Attack Damage|{{ap|35 to 65 3}}}}
+|description2 = While active, ''Final Hour'' empowers ''{{ai|Night Hunter|Vayne}}'' to have tripled {{as|'''bonus''' movement speed}} and ''{{ai|Tumble|Vayne}}'' to have a reduced {{sti|cooldown}}. Additionally, ''{{ais|Tumble|Vayne}}'' cast grants '''Vayne''' {{tip|invisibility}} for 1 second. Attacking or casting abilities ends the stealth immediately.
+|leveling2    = {{st|{{ai|Tumble|Vayne}} Cooldown Reduction|{{ap|30 to 50}}%}}
+|description3 = Scoring an enemy champion {{tip|takedown}} within 3 seconds of damaging them will extend ''Final Hour's'' duration by 4 seconds, up to its original duration.
+|cooldown     = {{ap|100 to 70}}
+|cdstart      = on-cast
+|cost         = 80
+|costtype     = Mana
+|cast time    = none
+|targeting    = Auto
+|affects      = Self
+|spelleffects = 
+|onhiteffects = 
+|spellshield  = 
+|notes        = 
+* '''Vayne's''' animations and basic attack projectiles change slightly during ''Final Hour''.
+* ''Tumble's'' visual effects can be seen by enemies upon '''Vayne''' becoming invisible.
+* Using a basic attack breaks the stealth at the start of the attack windup.
+|flavorsound  = {{sm2|Vayne_Original_R_1.ogg}} ''"Time for reckoning."''
+}}

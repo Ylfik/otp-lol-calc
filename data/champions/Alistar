@@ -1,0 +1,180 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Triumphant Roar|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Alistar
+|skill        = I
+|icon         = Triumphant Roar.png
+|description  = {{sbc|Innate:}} '''Alistar''' generates a {{tip|stack}} of ''Triumph'' for each enemy {{tip|champion}} he {{tip|stuns}} or {{tip|airborne|displaces}} with his {{tip|abilities}}, and each time a nearby enemy {{tip|minion}} or non-epic {{tip|monster}} dies. He generates 7 stacks if a nearby enemy champion or epic monster dies.
+|description2 = At 7 stacks, '''Alistar''' consumes them all to {{tip|heal}} himself for {{as|5% of his '''maximum''' health}} and nearby allied champions for {{as|7% of his '''maximum''' health}}.
+|description3 = ''Triumphant Roar'' can occur only once every few seconds, though '''Alistar''' may still generate stacks before then.
+|effect radius= {{dv|{{tip|cr|icononly = true}} {{tt|1000|Range for generating stacks from enemy deaths}}|{{tt|950|Heal radius}}}}
+|static       = 3
+|targeting    = Passive
+|affects      = Self, Allies
+|spelleffects = 
+|projectile   = special
+|notes        = 
+* If '''Alistar''' is at 7 stacks when ''Triumphant Roar'' comes off cooldown, he will roar as soon as it elapses.
+* '''Alistar''' does not gain stacks for unsuccessfully trying to apply {{tip|crowd control}}, for instance against a {{tip|cc-immune|crowd control immune}} target.
+* Healing occurs simultaneously for '''Alistar''' and his allies.
+** There is a VFX projectile (700 missile speed) that cannot be destroyed by ''{{ai|Wind Wall|Yasuo}}'' and is unrelated to the actual heal.
+* '''Alistar''' loses all ''Triumph'' stacks upon dying.
+<!-- Blurb -->
+|blurb        = {{sbc|Innate:}} {{ci|Alistar}} generates {{tip|stacks}} of ''Triumph'' from {{tip|stun|stunning}} or {{tip|airborne|displacing}} enemy champions or when a nearby enemy {{tip|death|dies}}.
+|blurb2       = At max stacks or when a nearby enemy {{tip|champion}} or epic {{tip|monster}} dies, he {{as|{{sti|heals}}}} himself and nearby allied champions.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Pulverize|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Alistar
+|skill        = Q
+|icon         = Pulverize.png
+|description  = {{sbc|Active:}} '''Alistar''' smashes the ground beneath him, dealing {{as|magic damage}} to nearby enemies and {{tip|stun|stunning}} and {{tip|airborne|knocking them up}} simultaneously for 1 second.
+|leveling     = {{st|Magic Damage|{{ap|60 to 220}} {{as|(+ 80% AP)}}}}
+|effect radius= {{tip|cr|icononly = true}} 375
+|cooldown     = {{ap|14 to 10}}
+|cost         = {{ap|50 to 70}}
+|cast time    = {{dv|{{tt|{{fd|0.25}}|Standard cast time}}|{{tt|{{fd|0.15}}|Reduced cast time when buffered during Headbutt's dash}}}}
+|costtype     = mana
+|targeting    = Auto
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spellaoe
+|notes        = 
+* ''Pulverize'' can be buffered during {{ai|Headbutt|Alistar}} to cast with reduced cast time when the dash ends.
+* {{tip|Displacement immunity}} will also resist the application of the {{tip|stun}}.
+{{Effect at cast time end}}
+<!-- Damage -->
+|damage       = true
+|damagedetails= 
+{{Infobox damage
+|dtitle      = Alistar - Pulverize: Hit
+|dtype       = m
+|dtags       = ability,area
+|dproperties = 
+|dnotes      = 
+}}
+
+<!-- Blurb -->
+|blurb        = {{sbc|Active:}} {{ci|Alistar}} smashes the ground, dealing {{as|magic damage}} to nearby enemies and briefly {{tip|stun|stunning}} and {{tip|airborne|knocking them up}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Headbutt|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Alistar
+|skill        = W
+|icon         = Headbutt.png
+|description  = {{sbc|Active:}} '''Alistar''' {{tip|dashes}} to the target enemy's location. If they are within 400 units upon arrival, he deals them {{as|magic damage}} and {{tip|airborne|knocks them back}} {{tt|700 units|Reduced to 200 units if Pulverize was buffered during the dash}} over {{fd|0.5 seconds}} while also {{tip|stun|stunning}} them for {{fd|0.75}} seconds.
+|leveling     = {{st|Magic Damage|{{ap|55 to 275}} {{as|(+ 100% AP)}}}}
+|target range = {{tip|cr|icononly = true}} {{tt|650|Target range}}
+|speed        = {{tt|{{dv|1200|1544}}|See notes}}
+|cooldown     = {{ap|14 to 10}}
+|cost         = {{ap|50 to 70}}
+|costtype     = mana
+|targeting    = Unit
+|affects      = Enemies
+|cast time    = none
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spell
+|callforhelp  = True
+|grounded     = True
+|knockdown    = True
+|notes        = 
+* The dash speed depends on the inverse of the distance to the target:
+** If '''Alistar's''' {{tip|size|radius}} overlaps with his target's, he will dash with {{as|1200 speed|movement speed}}.
+** If '''Alistar''' is further from his target than the previous condition, he will dash with (1200 {{times}} dash distance) / (dash distance - sum of radiuses).
+*** At maximum target range, against an enemy with a 65 {{tip|gameplay radius}} (median of all champions), '''Alistar''' will dash with {{as|1544 speed|movement speed}} (reaching his target within {{tt|{{fd|0.429}} seconds|rounded to next game tick}}).
+*** Both the lower the dash distance and the larger '''Alistar''' and/or his target, the faster the dash becomes; this scales hyperbolically (dash speed can theoretically scale up to ∞).
+* When {{ai|Pulverize|Alistar}} is buffered during the dash, the knock back distance is reduced to 200 units.
+* The CC duration of the ability can be reduced by up to {{fd|33.33}}% {{tip|Tenacity}}, due to airborne not being reducible while the stun is.
+* The {{tip|airborne|knockback}} direction is in a straight line from '''Alistar's''' original location at start of cast and the enemy when '''Alistar's''' dash ends.
+* ''Headbutt'' can knock enemies through terrain. The {{tip|airborne|knockback}} stops short on walls that cannot be surpassed but the disable duration is not changed.
+* The [[spell indicator]] for this ability also displays the direction for the knock back relative to '''Alistar's''' position.
+* '''Alistar's''' {{as|{{sti|attack range}}}} is reduced{{ft|to -375|by 500}}during ''Headbutt'', to prevent him from being able to attack the target when he completes the dash.
+* {{tip|Displacement immunity}} will not resist the application of the {{tip|stun}}.
+<!-- Damage -->
+|damage       = true
+|damagedetails=
+{{Infobox damage
+|dtitle      = Alistar - Headbutt: Hit
+|dtype       = m
+|dtags       = ability
+|dproperties = EnableCallForHelp = true,
+|dnotes      = 
+}}
+
+|tips         =
+* ''Headbutt'' may be used as a gap-closer to {{tip|airborne|knock up}} enemies at the target location with {{ai|Pulverize|Alistar}}, additionally overriding ''Headbutt's'' {{tip|airborne|knock back}}.
+<!-- Blurb -->
+|blurb        = {{sbc|Active:}} {{ci|Alistar}} {{tip|dashes}} to the target enemy, dealing {{as|magic damage}}, {{tip|stun|stunning}}, and {{tip|airborne|knocking them back}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Trample|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Alistar
+|skill        = E
+|icon         = Trample.png
+|description  = {{sbc|Active:}} '''Alistar''' tramples the ground around him every {{fd|0.5}} seconds over 5 seconds, becoming {{tip|ghosted}} and dealing {{as|magic damage}} to nearby enemies. Each time this damages at least one enemy champion, he generates a {{tip|stack}} of ''Trample'' that lasts for the remaining duration, stacking up to 5 times.
+|icon2        = Alistar Trample Indicator.png
+|leveling     = {{st|Magic Damage Per Tick|{{ap|80/10 to 200/10}} {{as|(+ {{ap|70/10}}% AP)}}|Total Magic Damage|{{ap|80 to 200}} {{as|(+ 70% AP)}}}}
+|description2 = At 5 stacks, '''Alistar's''' next {{tip|basic attack}} {{tip|on-hit}} against a {{tip|champion}} within 6 seconds ends ''Trample's'' effects to deal {{as|{{pplevel|20 to 275}} '''bonus''' magic damage}} and {{tip|stun}} the target for 1 second.
+|effect radius= {{tip|cr|icononly = true}} 350
+|cooldown     = {{ap|12 to 10}}
+|cdstart      = on-cast
+|cost         = {{ap|50 to 70}}
+|costtype     = mana
+|cast time    = none
+|targeting    = Auto
+|affects      = Self, Enemies
+|damagetype   = Magic
+|spellshield  = Special
+|spelleffects = Special
+|parry        = Special
+|notes        = 
+* The on-hit effect is single-use and '''Alistar's''' buff is removed as soon as it is consumed; it can only be applied once by the triggering attack instance.
+** For example, {{iis|Guinsoo's Rageblade}} Phantom Hit can trigger it if the triggering attack did not, but cannot apply it again if the triggering attack consumed it.
+* The on-hit effect can be blocked by {{tip|spell shield}}, but the attack cannot.
+* The on-hit effect is consumed if the attack is {{tip|blocked}}, but not if it is {{tip|dodged}} or missed while '''Alistar''' is {{tip|blind|blinded}}. In all cases, the attack's effects are negated as normal.
+<!-- Damage -->
+|damage       = true
+|damagedetails=
+{{Infobox damage
+|dtitle      = Alistar - Trample: Shockwave
+|dtype       = m
+|dtags       = ability,area,periodic
+|dproperties = 
+|dnotes      = 
+}}
+{{Infobox damage
+|dtitle      = Alistar - Trample: Attack
+|dtype       = p
+|dtags       = basic
+|dproperties = ApplyLifesteal = true, EnableCallForHelp = true , RespectDodge = true, TriggerOnHitEvents = true,
+|dnotes       = * Refers to this alternative attack's main damage to the primary target, and thus copies all properties of the basic attack.
+** It can {{tip|blind|miss}} if the user is blinded.
+}}
+{{Infobox damage
+|dtitle      = Alistar - Trample: Bonus Damage
+|dtype       = m
+|dtags       = ability
+|dproperties = 
+|dnotes      = * Does not apply if the triggering attack is {{tip|dodge|dodged}}, {{tip|block|blocked}} or {{tip|blind|misses}}.
+}}
+
+<!-- Blurb -->
+|blurb        = {{sbc|Active:}} {{ci|Alistar}} becomes {{tip|ghosted}} and continually deals {{as|magic damage}} to nearby enemies. He generates a stack of ''Trample'' each time this damages at least one {{tip|champion}}.
+|blurb2       = At max stacks, his next {{tip|basic attack}} against a {{tip|champion}} within a few seconds will deal {{as|'''bonus''' magic damage}} and {{tip|stun}} them.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Unbreakable Will|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Alistar
+|skill        = R
+|icon         = Unbreakable Will.png
+|description  = {{sbc|Active:}} '''Alistar''' {{tip|cleanse|cleanses}} himself of all {{tip|crowd control}}. For the next 7 seconds, he reduces incoming damage.
+|leveling     = {{st|Damage Reduction|{{ap|55 to 75}}%}}
+|cooldown     = {{ap|120 to 80}}
+|cdstart      = on-cast
+|cost         = 100
+|costtype     = mana
+|targeting    = Auto
+|affects      = Self
+|cast time    = {{fd|0.25}}
+|notes        = 
+* {{tip|True damage}} cannot be reduced by any means and will deal full damage to '''Alistar''' during ''Unbreakable Will''.
+* ''Unbreakable Will's'' modifier to incoming damage stacks additively with {{cai|Hemoplague|Vladimir}} for a total reduction of 45/55/65%.{{bug|2}}
+<!-- Blurb -->
+|blurb        = {{sbc|Active:}} {{ci|Alistar}} lets out a wild roar, {{tip|cleanse|cleansing}} all {{tip|crowd control}} effects and gaining damage reduction for a few seconds.
+}}

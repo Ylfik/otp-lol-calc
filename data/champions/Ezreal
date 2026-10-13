@@ -1,0 +1,148 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Rising Spell Force|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Ezreal
+|skill        = I
+|icon         = false
+|icon2        = Rising Spell Force.png
+|blurb        = {{sbc|Innate:}} {{cis|Ezreal}} abilities generate {{tip|stacks}} of ''Rising Spell Force'' for each enemy hit, up to a cap.
+|blurb4       = {{sbc|Rising Spell Force:}} For each stack, '''Ezreal''' gains {{sti|as|{{as|'''bonus''' attack speed}}}}.
+|description  = {{sbc|Innate:}} '''Ezreal''' generates a {{tip|stack}} of ''Rising Spell Force'' for each enemy hit by his {{tip|abilities}}, lasting for 6 seconds, refreshing on subsequent hits, and stacking up to 5 times.
+|description2 = {{sbc|Rising Spell Force:}} For each stack, '''Ezreal''' gains {{sti|as|{{as|10% '''bonus''' attack speed}}}}, up to a maximum of {{as|50%|attack speed}}.
+|targeting    = Passive
+|affects      = Self
+|damagetype   = 
+|spellshield  = 
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* ''Rising Spell Force'' will stack even if the abilities hit were blocked by {{tip|spell shield|spell shields}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Mystic Shot|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Ezreal
+|skill        = Q
+|icon         = Mystic Shot.png
+|blurb        = {{sbc|Active:}} {{ci|Ezreal}} fires a bolt of energy that deals {{as|physical damage}} to the first enemy hit.
+|blurb2       = If the bolt hits an enemy, all of '''Ezreal's''' ability cooldowns are {{sti|cdr|reduced}}.
+|blurb4       = ''Mystic Shot'' applies {{tip|on-hit}} and {{tip|on-attack}} effects.
+|description  = {{sbc|Active:}} '''Ezreal''' fires a bolt of energy in the target direction that deals {{as|physical damage}} to the first enemy hit, applying {{tip|on-hit}} effects and triggering {{tip|on-attack}} effects.
+|leveling     = {{st|Physical Damage|{{ap|20 to 120}} {{as|(+ 130% AD)}} {{as|(+ 40% AP)}}}}
+|description2 = If ''Mystic Shot'' successfully hits an enemy, the {{sti|'''current''' cooldowns}} of '''Ezreal's''' abilities, including ''Mystic Shot's'', are reduced by {{fd|1.5}} seconds.
+|cooldown     = {{ap|5.5 to 4.5}}
+|cost         = {{ap|28 to 40}}
+|costtype     = Mana
+|target range = {{tip|cr|icononly = true}} 1200
+|speed        = 2000
+|width        = {{tip|er|icononly = true}} 120
+|cast time    = {{fd|0.25}}
+|queue time   = {{fd|0.05}}
+|targeting    = Location
+|affects      = Enemies
+|damagetype   = Physical
+|spellshield  = special
+|spelleffects = special
+|projectile   = True
+|parry        = True
+|onhiteffects = True
+|callforhelp  = True
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* ''Mystic Shot'' deals {{tip|basic damage}}, but also triggers spell effects by also being tagged as {{tip|spell damage}}.
+* ''Mystic Shot'' benefits from {{as|{{sti|life steal}}}}, {{tip|omnivamp}}, and {{tip|physical vamp}}, but not {{tip|spell vamp}}.
+* Even if the ability is blocked by {{tip|spell shield}} it will still trigger the cooldown reduction.
+{{Effect at cast time end}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Essence Flux|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Ezreal
+|skill        = W
+|icon         = Essence Flux.png
+|blurb        = {{sbc|Active:}} {{ci|Ezreal}} fires an orb that shortly marks the first enemy {{tip|champion}}, epic {{tip|monster}}, or {{tip|turret|structure}} hit.
+|blurb2       = His next attack or ability on the target detonates the mark, dealing {{as|magic damage}}. If the mark was detonated by an ability, '''Ezreal''' restores {{as|{{sti|mana}}}}.
+|description  = {{sbc|Active:}} '''Ezreal''' fires an orb in the target direction that marks the first enemy {{tip|champion}}, epic {{tip|monster}}, or {{tip|structure}} hit for 4 seconds.
+|description2 = His next {{tip|basic attack}}<!--on-hit? on-damage?--> or {{tip|ability}} against the target detonates the mark to deal them {{as|'''bonus''' magic damage}}.
+|leveling2    = {{st|Bonus Magic Damage|{{ap|80 to 300}} {{as|(+ 100% '''bonus''' AD)}} {{as|(+ 90% AP)}}}}
+|description3 = If the mark was detonated with an ability, '''Ezreal''' restores {{sti|mana|{{as|60 mana}}}} plus the {{as|mana cost}} of that ability.
+|cooldown     = 8
+|cost         = 50
+|costtype     = Mana
+|target range = 1200
+|speed        = 1700
+|width        = {{tip|er|icononly=true}} 160
+|cast time    = {{fd|0.25}}
+|queue time   = {{fd|0.5}}
+|targeting    = Location
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = Special
+|spelleffects = spell
+|projectile   = True
+|parry        = Special
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* The application of ''Essence Flux'' deals 0 {{tip|proc damage}}.
+** This triggers [[combat status|in-combat]] effects such as drawing turret aggro and drawing [[Monster#Monster_Behavior|monster aggression]].
+** It also triggers {{ri|Sudden Impact}} and applies {{ii|Elixir of Sorcery}}.
+** For being {{tip|proc damage}}, it does not trigger {{ri|Cheap Shot}}. 
+* {{tip|Block}} and {{tip|Dodge}} prevents the mark from being triggered by a basic attack.
+* {{tip|Spell shield}} prevents the mark from being triggered by an ability. If the mark is triggered by a basic attack, spell shield will prevent ''Essence Flux's'' damage.
+{{Effect at cast time end}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Arcane Shift|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Ezreal
+|skill        = E
+|icon         = Arcane Shift.png
+|blurb        = {{sbc|Active:}} {{ci|Ezreal}} {{tip|blinks}} to the target location and fires a bolt that strikes the nearest enemy, dealing {{as|magic damage}}.
+|description  = {{sbc|Active:}} '''Ezreal''' {{tip|blinks}} from his current location to up to 475 units towards the target location, then fires a homing bolt towards the nearest enemy that deals {{as|magic damage}} and {{tip|standard sight|reveals}} them for 1 second.
+|leveling     = {{st|Magic Damage|{{ap|80 to 280}} {{as|(+ 60% '''bonus''' AD)}} {{as|(+ 75% AP)}}}}
+|description2 = ''Arcane Shift'' prioritizes firing at the nearest enemy marked by ''{{ai|Essence Flux|Ezreal}}''.
+|description3 = ''The target does not have to be {{tip|sight|visible}} to be hit by this ability.''
+|cooldown     = {{ap|26 to 14}}
+|target range = {{tt|475|Maximum blink range}}
+|effect radius= {{tip|cr|icononly = true}} {{tt|750|Homing missile range}}
+|speed        = {{tt|2000|Homing missile speed}}
+|cast time    = {{fd|0.25}}
+|cost         = 70
+|costtype     = Mana
+|queue time   = {{fd|0.5}}
+|targeting    = Location
+|affects      = Enemies, Self
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spell
+|projectile   = True
+|grounded     = True
+|callforhelp  = True
+|outofrange   = cast at max
+|notes        = 
+* If '''Ezreal''' is moved during the cast time, his range to blink will update accordingly. This does not exceed the maximum target range.
+* The target is revealed as soon as '''Ezreal''' fires the missile at them.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Trueshot Barrage|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Ezreal
+|skill        = R
+|icon         = Trueshot Barrage.png
+|blurb        = {{sbc|Active:}} {{ci|Ezreal}} fires a powerful arc of energy that deals {{as|magic damage}} to enemies hit.
+|description  = {{sbc|Active:}} '''Ezreal''' fires a powerful arc of energy in the target direction that briefly grants {{tip|sight}} of its surroundings and deals {{as|magic damage}} to enemies hit.
+|leveling     = {{st|Magic Damage|{{ap|350 to 750}} {{as|(+ 100% '''bonus''' AD)}} {{as|(+ 110% AP)}}}}
+|description2 = {{tip|Minion|Minions}} and non-epic {{tip|monster|monsters}} take modified damage.
+|leveling2    = {{st|Modified Damage|{{ap|150 to 300}} {{as|(+ 100% '''bonus''' AD)}} {{as|(+ 110% AP)}}}}
+|width        = {{tip|er|icononly = true}} {{tt|320|missile width}}
+|cooldown     = {{ap|120 to 90}}
+|cost         = 100
+|costtype     = Mana
+|target range = Global
+|speed        = 2000
+|cast time    = 1
+|queue time   = {{fd|0.5}}
+|targeting    = Direction 
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spellaoe
+|projectile   = True
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* ''Trueshot Barrage's'' projectile has an [[File:Trueshot Barrage Minimap.png|40px|link=]] icon on the mini-map while it is in flight. It can be seen by only '''Ezreal''' and his allies.
+{{Effect at cast time start}}
+}}

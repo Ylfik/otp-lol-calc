@@ -1,0 +1,294 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Demon Shade|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Evelynn
+|skill        = I
+|icon         = Demon Shade.png
+|blurb        = {{sbc|Innate:}} While [[Combat status|out of combat]], {{ci|Evelynn}} gains ''Demon Shade''.
+|blurb4       = {{sbc|Demon Shade:}} '''Evelynn''' rapidly {{tip|heals}} while she is {{as|at low health}}. After level 6, ''Demon Shade'' also grants {{tip|camouflage}}.
+|description  = {{sbc|Innate:}} '''Evelynn''' shrouds herself in ''Demon Shade'' after not performing actions that {{tip|break stealth}} for 4 seconds. Attacking or casting abilities ends ''Demon Shade'' immediately and places it on a 4-second {{tt|static cooldown|Unaffected by ability haste}}, reduced to {{fd|1.25}} seconds from casting ''{{ai|Last Caress|Evelynn}}''. Taking damage from {{tip|champion|champions}} or {{tip|turret|turrets}} interrupts ''Demon Shade'' and places it on a {{fd|1.5}}-second {{tt|static cooldown|Unaffected by ability haste}}.
+|description2 = {{sbc|Demon Shade:}} While below {{as|{{sti|health|{{pplevel|250 to 590}} {{as|(+ 250% AP)}} health}}}}, '''Evelynn''' {{tip|heal|heals}} herself for {{pplevel|15 to 150|color=heal}} every second. From [[Experience (champion)|level]] 6 onward, ''Demon Shade'' also grants {{tip|camouflage}}.
+|customlabel  = Detection Radius
+|custominfo   = 700
+|static       =
+|targeting    = Passive
+|affects      = Self
+|spelleffects = 
+|notes        = 
+* ''Demon Shade'' is also placed on a {{fd|1.5}} second cooldown upon {{tip|death|respawning}}.
+* ''Demon Shade's'' cooldown incurs upon starting the attack windup of the basic attack and upon the cast time of the ability.
+* ''Demon Shade'' activates even if '''Evelynn''' is {{si|Recall|Recalling}}.
+* Upon '''Evelynn's''' transition into the stealth, ''Demon Shade'' will interrupt her in-progress cast commands for {{tip|unit-targeted}} spells, excluding ''{{ai|E|Evelynn}}'' and its ''{{ai|Empowered Whiplash|Evelynn|empowered}}'' cast.
+** If '''Evelynn's''' last issued order was to cast ''{{ai|E|Evelynn}}'', her transition into the stealth will be followed by an automatic command for casting the ability (if no other orders were issued in the meantime).
+* Whenever ''Demon Shade'' activates, a puff of purple smoke will briefly appear around her.
+* Using a basic attack breaks the stealth at the start of the attack windup.
+|yvideo       = 15Ha7pripXk
+|flavorsound  = {{sm2|Evelynn_Original_P_10.ogg}} ''"It's better in the dark."''
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Hate Spike|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Evelynn
+|skill        = Q
+|icon         = Hate Spike.png
+|blurb        = {{sbc|Active:}} {{ci|Evelynn}} fires her Lasher, dealing {{as|magic damage}} to the first enemy hit and marking them. '''Evelynn's '''next few attacks against the marked target will deal {{as|'''bonus''' magic damage}}.
+|blurb2       = {{sbc|Recast:}} '''Evelynn''' shoots a line of spikes toward the target enemy, dealing {{as|magic damage}} to all enemies hit. She may recast up to 3 times.
+|description  = {{sbc|Active:}} '''Evelynn''' launches a dart in the target direction, dealing {{as|magic damage}} to the first enemy hit and marking them for 4 seconds.
+|leveling     = {{st|Magic Damage|{{ap|25 to 45}} {{as|(+ 25% AP)}}}}
+|description2 = '''Evelynn's''' next 3 {{tip|basic attacks}} {{tip|on-hit}} or {{tip|abilities}} against the marked target deal {{as|'''bonus''' magic damage}}.
+|leveling2    = {{st|Bonus Magic Damage|{{ap|15 to 55}} {{as|(+ 25% AP)}}|Total Bonus Damage|{{ap|15*3 to 55*3}} {{as|(+ {{ap|25*3}}% AP)}}}}
+|description3 = ''Hate Spike'' may be recast up to 3 times at no cost until the ability comes off cooldown.
+|icon4        = Hate Spike 2.png
+|description4 = {{sbc|Recast:}} '''Evelynn''' unleashes a line of deadly spikes in the direction of the nearest {{tip|sight|visible}} enemy that deals {{as|magic damage}} to all enemies struck.
+|leveling4    = {{st|Magic Damage|{{ap|25 to 45}} {{as|(+ 25% AP)}}|Maximum Magic Damage|{{ap|25*3 to 45*3}} {{as|(+ {{ap|25*3}}% AP)}}|Total Magic Damage|{{ap|25*4+15*3 to 45*4+55*3}} {{as|(+ {{ap|25*4+25*3}}% AP)}}}}
+|description5 = ''Hate Spike's'' recast prioritizes targeting '''Evelynn's''' attack target, then the nearest enemy champion, then the nearest non-champion.
+|description6 = ''A nearby {{tip|sight|visible}} enemy is required to recast this ability.''
+|cooldown     = 4
+|cdstart      = on-cast
+|customlabel  = {{tt|Barrage Cooldown|Cooldown between each spike cast, affected by ability haste}}
+|custominfo   = {{fd|0.5}}
+|cost         = {{ap|40 to 60}}
+|costtype     = Mana
+|width        = {{dv|{{tt|120|Dart width}}|{{tt|180|Spike width}}}}
+|target range = {{dv|{{tt|800|Dart range}}|{{tt|680|Spike range}}}}
+|effect radius= {{tt|550|Recast range, center to edge}}
+|speed        = {{tt|2400|Dart speed}}
+|cast time    = {{dv|{{tt|{{fd|0.3}}|Initial cast}}|{{tt|None|Recast}}}}
+|queue time   = {{tt|{{fd|0.2}}|Initial cast}}
+|targeting    = {{dv|[[Direction-targeted|Direction]]|[[Proximity-targeted|Proximity]]}}
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = Special
+|projectile   = True
+|outofrange   = The ability will not cast (recast)
+|notes        = 
+* Each cast counts as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and triggering {{ais|Force Pulse|Kassadin}} passive.
+* ''Hate Spike'' prioritizes:
+*# The last champion '''Evelynn''' hit
+*# The last non-champion '''Evelynn''' hit
+*# The lowest-health champion
+*# The lowest-health non-champion
+* The dart applies {{tip|spell damage}} and the spikes deal {{tip|area damage}}.
+{{Effect at cast time start}}
+* Recasts can be buffered up to {{fd|0.5}} seconds before becoming castable at a maximum range of approximately 500 units.
+|yvideo       = hxM0rZD6j1w
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Allure|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Evelynn
+|skill        = W
+|icon         = Allure.png
+|blurb        = {{sbc|Active:}} {{ci|Evelynn}} ''curses'' the target enemy, causing her next {{tip|basic attack}} or {{tip|ability}} against the target to ''expunge'' the ''curse'', {{tip|slow|slowing}} the target and refunding the {{sti|mana|{{as|mana cost}}}}.
+|blurb2       = If the ''curse'' matures long enough, the ''expunge'' will increase the slow, {{tip|charm}} the target, and apply an additional effect based on the target type.
+* {{tip|Champions}} have {{sti|magic penetration|{{as|reduced magic resist}}}} for a few seconds.
+* {{tip|Monsters}} are dealt {{as|'''bonus''' magic damage}} and increased {{tip|charm}} duration.
+|description  = {{sbc|Active:}} '''Evelynn''' marks the target enemy {{tip|champion}} or medium or large {{tip|monster}} with a curse for 5 seconds.
+|description2 = '''Evelynn's''' next {{tip|basic attack}} or {{tip|ability}} hit against the target consumes the mark, {{tip|slow|slowing}} them by 45% for {{fd|0.75}} seconds and refunding ''Allure's'' {{as|{{sti|mana|mana cost}}}}. If the target was marked for at least {{fd|2.5}} seconds, the consumption is empowered.
+|description3 =  {{sbc|Empowered Bonus:}} The target is {{tip|charm|charmed}} for a few seconds and the {{tip|slow}} duration is increased to the same period. Additional effects are also applied based on the target type:
+* Against champions, inflicts a {{sti|magic penetration|{{as|magic resistance reduction}}}} for 4 seconds.
+* Against monsters, the triggering effect deals {{as|'''bonus''' magic damage}} and the duration of the {{tip|charm}} is increased by {{fd|2.25}} seconds.
+|leveling3    = {{st|Charm Duration|{{ap|1.25 to 2.25}} seconds}}
+{{st|Magic Resistance Reduction|{{as|{{ap|35 to 45}}%|magic resistance}}}}
+{{st|Bonus Magic Damage|{{ap|250 to 450}} {{as|(+ 60% AP)}}}}
+{{st|Monster Charm Duration|{{ap|1.25+2.25 to 2.25+2.25}} seconds}}
+|description4 = ''Casting Allure does not break {{ai|Demon Shade|Evelynn}} nor its fade into it.''
+|cooldown     = {{ap|15 to 11}}
+|cdstart      = on-cast
+|cost         = {{ap|60 to 100}}
+|cast time    = {{fd|0.25}}
+|costtype     = Mana
+|target range = {{tip|cr|icononly = true}} {{ap|1200 to 1600}}
+|targeting    = Unit
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = Special
+|spelleffects = Single target
+|occurrence   = On-hit
+|projectile   = 
+|notes        = 
+* The mark fully forming signifies the {{fd|2.5}} seconds have elapsed, meaning the {{tip|charm}} will be applied on the triggering attack or ability.
+** An enemy champion cursed by ''Allure'' is alarmed of her presence and after the mark has fully formed, an arrow will appear next to them pointing towards '''Evelynn's''' direction. This is visible to both teams.
+* The {{sti|magic penetration|{{as|magic resistance reduction}}}} will be applied to the attack or ability that triggers it.
+* ''Allure's'' mark application on a target cannot be blocked by {{tip|spell shield}}.
+** The mark's consumption will not occur if the ability is blocked by a spell shield, causing the mark to remain on the target.
+* The {{sti|magic penetration|{{as|magic resistance reduction}}}} debuff is applied independently of the {{tip|Charm}} debuff when the matured mark is expunged, meaning a target can still have their magic resistance reduced while they are resisting applications of CC debuffs (e.g. {{cai|Black Shield|Morgana}}).
+* If the target becomes {{tip|untargetable}}, {{tip|death|dies}}, or is too far away or no longer in {{tip|sight}} during the cast time, this ability will cancel but still go on {{sti|cooldown}} and pay its cost.{{bug}}
+** ''Allure'' will restart its cooldown whenever the mark debuff is removed.{{bug}}
+|yvideo       = eui_NQ_ZZUo
+|flavorsound  = {{sm2|Evelynn_Original_W_6.ogg|}} ''"Go on, touch me."''
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Whiplash|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Evelynn
+|skill        = E
+|icon         = Whiplash.png
+|icon2        = Whiplash 2.png
+|blurbicon    = Whiplash.png
+|blurb        = {{sbc|Active:}} {{ci|Evelynn}} whips the target enemy, dealing {{as|magic damage}} based on the {{as|target's '''maximum''' health}} and applying {{tip|on-hit}} effects. She then gains {{sti|ms|{{as|'''bonus''' movement speed}}}} for a short time.
+|blurb2       = Whenever '''Evelynn''' enters ''{{ai|Demon Shade|Evelynn}}'', ''Whiplash's'' cooldown will {{sti|ah|reset}} and the next cast is {{ai|Empowered Whiplash|Evelynn|empowered}}.
+|post-blurb   = Evelynn/Empowered Whiplash
+|description  = {{sbc|Active:}} '''Evelynn''' whips the target enemy with her lashers, dealing {{as|magic damage}} and applying {{tip|on-hit}} effects.
+|leveling     = {{st|Magic Damage|{{ap|60 to 180}} {{as|(+ 3% {{as|(+ {{fd|1.5}}% per 100 AP)}} of target's '''maximum''' health)}}}}
+|description2 = '''Evelynn''' also gains {{sti|ms|{{as|'''bonus''' movement speed}}}} for 2 seconds. 
+|leveling2    = {{st|Bonus Movement Speed|{{ap|30 to 50}}%}}
+|description3 = Gaining ''{{ai|Demon Shade|Evelynn}}'' resets ''Whiplash's'' {{sti|cooldown}} and ''{{ai|Empowered Whiplash|Evelynn|empowers}}'' its next cast. The damage based on the target's health ratio for both ''Whiplash'' and its ''{{ai|Empowered Whiplash|Evelynn|empowered}}'' cast deals a minimum of 25 and is capped at 450 against {{tip|monsters}}.
+|cooldown     = 8
+|cost         = {{ap|40 to 60}}
+|cast time    = {{fd|0.25}}
+|costtype     = Mana
+|target range = {{tip|er|icononly = true}} 210
+|targeting    = Unit
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = Spell
+|projectile   = False
+|callforhelp  = true
+|onhiteffects = True
+|parry        = special
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* ''Whiplash'' can be {{tip|dodged}} and {{tip|blocked}} but may not miss if '''Evelynn''' is {{tip|blind|blinded}}.
+{{Unit-targeted cancel conditions}}
+|yvideo       = padYJqLvqM8
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Last Caress|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Evelynn
+|skill        = R
+|icon         = Last Caress.png
+|blurb        = {{sbc|Active:}} {{ci|Evelynn}} briefly goes {{tip|untargetable}} and decimates the area in front of her, dealing {{as|magic damage}} to enemies within, increased against {{as|low-health targets|health}}. She then {{tip|blink|blinks}} backwards over a distance.
+|description  = {{sbc|Active:}} '''Evelynn''' reveals her true form, becoming {{tip|untargetable}} at the start of the cast time and then unleashing her lashers in a cone in the target direction, dealing {{as|magic damage}} to enemies struck within. After {{tt|{{fd|0.5}} seconds|From end of cast time}}, she {{tip|blink|blinks}} 700 units in the opposite direction and becomes targetable again.
+|leveling     = {{st|Magic Damage|{{ap|125 to 375}} {{as|(+ 75% AP)}}}}
+|icon2        = Evelynn Last Caress 2.png
+|description2 = ''Last Caress'' is empowered to deal {{ccs|240% damage|magic}} against enemies below {{as|{{sti|health|30% of their '''maximum''' health}}}}.
+|leveling2    = {{st|Empowered Damage|{{ap|125*2.4 to 375*2.4}} {{as|(+ {{ap|75*2.4}}% AP)}}}}
+|cooldown     = {{ap|120 to 80}}
+|cost         = 100
+|cast time    = {{fd|0.35}}
+|costtype     = Mana
+|effect radius= {{tt|500|Estimated}}
+|angle        = 180{{degree}}
+|targeting    = Direction
+|affects      = Enemies / Self
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = Area of effect
+|projectile   = False
+|grounded     = True
+|notes        = 
+* ''Last Caress'' can be buffered during {{ai|Empowered Whiplash|Evelynn}}.
+* The casting input controls the direction ''Last Caress' '' damage is dealt from, with the movement automatically happening in the reverse direction.
+* Enemy {{tip|champion|champions}} below the health threshold are marked for '''Evelynn''', indicating the target will receive ''Last Caress' '' increased damage.
+* The screen will direct to '''Evelynn's''' position after she {{tip|blink|blinks}}.
+{{ct|cast|spells=true,false,false,false,false}}
+|yvideo       = 33iB97Fvlhs
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Agony's Embrace|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Evelynn
+|skill        = R
+|icon         = Agony's Embrace.png
+|description  = {{sbc|Active:}} '''Evelynn''' impales enemies in target area, dealing magic damage and {{tip|slow|slowing}} them for 2 seconds, capped at 1000 against monsters.
+|leveling     = {{st|Magic Damage|{{as|{{ap|15|20|25}}% {{as|(+ 1% per 100 AP)}} of target's '''current''' health|health}}}}{{st|Slow|{{ap|40|60|80}}%}}
+|description2 = '''Evelynn''' siphons her victims' pain, [[shield]]ing herself for up to 6 seconds for every enemy champion hit by ''Agony's Embrace''.
+|leveling2    = {{st|Shield Strength Per Champion|{{ap|150|225|300}}}}
+|target range = 650
+|effect radius= 250
+|cooldown     = {{ap|120|100|80}}
+|cost         = 100
+|costtype     = Mana
+|targeting    = '''Agony's Embrace''' is a ground-targeted [[area of effect]] with a [[self-targeted]] [[buff]] component.
+|damagetype   = magic
+|spelleffects = aoe
+|onhiteffects = 
+|spellshield  = will block the damage and prevent the shield from growing in strength.
+|notes        = 
+* When casting ''Agony's Embrace'' the damage will be applied after a brief delay (~{{fd|0.25}} seconds)
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Dark Frenzy|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Evelynn
+|skill        = W
+|icon         = Dark Frenzy.png
+|description  = {{sbc|Active:}} '''Evelynn''' enters a frenzy, removing all {{tip|slow|slows}} affecting her. For the next 3 seconds, she gains '''bonus''' [[movement speed]] and is {{tip|ghosted}}.
+|leveling     = {{st|Bonus Movement Speed|{{ap|30|40|50|60|70}}%}}
+|description2 = ''Dark Frenzy's'' [[cooldown]] is reduced by 1 second every time '''Evelynn''' [[damage]]s an enemy champion with an ability, and its [[cooldown]] is refreshed on enemy champion takedowns.
+|cooldown     = 15
+|cost         = 40
+|costtype     = Mana
+|targeting    = '''Dark Frenzy''' is a [[self-targeted]] [[buff]].
+|damagetype   = 
+|spelleffects = 
+|onhiteffects = 
+|spellshield  = 
+|notes        = 
+* ''Dark Frenzy'' has no cast time and does not interrupt ''Evelynn's'' previous orders.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Empowered Whiplash|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Evelynn
+|skill        = E
+|icon         = Empowered Whiplash.png
+|pre-blurb   = Evelynn/Whiplash
+|blurb        = {{sbc|Active:}} {{ci|Evelynn}} casts ''Whiplash'', {{tip|dash|dashing}} to the target enemy and dealing {{ccs|increased damage|magic}} to them and enemies she passes through.
+|description  = {{sbc|Active:}} '''Evelynn''' {{tip|dash|dashes}} toward the target enemy with her lashers, dealing {{ccs|increased damage|magic}} to them upon completion as well as to all enemies within her path.
+|leveling     = {{st|Empowered Magic Damage|{{ap|80 to 240}} {{as|(+ 4% {{as|(+ {{fd|2.5}}% per 100 AP)}} of target's '''maximum''' health)}}}}
+|description2 = ''Empowered Whiplash'' only applies {{tip|on-hit}} effects to the primary target.
+|targeting    = Unit
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spellaoe
+|projectile   = 
+|callforhelp  = true
+|onhiteffects = Special
+|parry        = special
+|grounded     = True
+|knockdown    = True
+|notes        = 
+* '''Evelynn''' will track the target if they change locations.
+** She will dash to the target's previous location if the target moves {{tt|2000|Estimated}} or more units away.
+** She will not stop tracking the target until she reaches them, as there is no maximum tracking distance.
+* There is no time-out period on ''Empowered Whiplash''.
+* ''Empowered Whiplash'' can be {{tip|blocked}} but cannot be {{tip|dodged}} and/or missed if '''Evelynn''' is {{tip|blind|blinded}}.
+{{Unit-targeted cancel conditions}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Ravage|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Evelynn
+|skill        = E
+|icon         = Ravage.png
+|description  = {{sbc|Active:}} '''Evelynn''' slashes her target twice, dealing [[physical damage]] and applying [[on-hit effect]]s with each slash. Additionally, she gains {{as|'''bonus''' attack speed}} for 3 seconds.
+|leveling     = {{st|Physical Damage Per Slash|{{ap|35|55|75|95|115}} {{as|(+ 50% '''bonus''' AD)}} {{as|(+ 50% AP)}}|Total Physical Damage|{{ap|70|110|150|190|230}} {{as|(+ 100% '''bonus''' AD)}} {{as|(+ 100% AP)}}}}{{st|Bonus Attack Speed|{{ap|60|75|90|105|120}}%}}
+|target range = 225
+|cooldown     = 9
+|cost         = {{ap|50|55|60|65|70}}
+|costtype     = Mana
+|targeting    = '''Ravage''' is a single-targeted ability with a [[self-targeted]] [[buff]] component.
+|damagetype   = physical
+|spelleffects = false
+|onhiteffects = Applies [[on-hit effect]]s but cannot {{tip|critical strike|critically strike}} or affect structures.
+|spellshield  = will block one hit's worth of damage.
+|notes        = 
+* If ''Ravage's'' first hit kills its target ''Evelynn'' will strike another nearby target with the second one.
+* If the target dies while ''Ravage'' is being cast its sound and its animation will play but neither buff nor damage will be applied and it will not go on cooldown.
+** If ''Evelynn'' loses sight of her target between the animation's beginning and its end ''Ravage'' will be canceled and will not go on cooldown.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Shadow Walk|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Evelynn
+|skill        = I
+|icon         = Shadow Walk.png
+|description  = {{sbc|Passive:}} '''Evelynn''' becomes {{tip|camouflage|camouflaged}} after being out-of-combat for {{pp|6;5;4;3|1;6;11;16}} seconds, regenerating {{as|2% '''missing''' mana}} every second and ignoring [[unit collision]].
+|description2 = Entering combat or using an [[Champion ability|ability]] ends ''Shadow Walk'', though not being seen by nearby enemy [[champion]]s.
+|effect radius= 700
+|targeting    = '''Shadow Walk''' is a [[self-targeted]] [[buff]].
+|damagetype   = 
+|spelleffects = 
+|onhiteffects = 
+|spellshield  = 
+|notes        = 
+* Whenever ''Shadow Walk'' activates a puff of purple smoke will trigger and a grey circle will appear around ''Evelynn'' and then she will start running differently.
+** The circle indicates the range from which enemies will spot her if she gets too close.
+*** Whenever ''Evelynn'' approaches a visible enemy champion an eye will appear above them (only visible to her) This eye will change colors depending on how close ''Evelynn'' is to them.
+**** {{as|Yellow|energy}} means she is about to be spotted.
+**** {{as|Red|hp}} means she has been.
+***** When spotted, an exclamation mark will appear above ''Evelynn'' (only visible to her and her allies)
+****** She will not be spotted if hiding in [[brush]] or if inside [[Sight|fog of war]].
+****** She will be spotted by an enemy she has no sight of but ''Shadow Walk's'' stealth will not break.
+****** She will be spotted if she runs into an enemy {{ii|Control Ward}}.
+* The following can break ''Shadow Walk's'' stealth:
+** Certain [[summoner spell]]s ({{si|Exhaust}}, {{si|Heal}}, {{si|Ignite}}, {{si|Recall}}, {{si|Smite}}, {{si|Teleport}})
+** ''Evelynn'' herself capturing a neutral or enemy altar in [[Twisted Treeline]] (red eye for neutral and yellow one for enemy but nevertheless she will be seen by enemies)
+}}

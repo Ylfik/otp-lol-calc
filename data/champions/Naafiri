@@ -1,0 +1,178 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|We Are More|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Naafiri
+|skill        = I
+|icon         = Naafiri We Are More.png
+|description  = {{sbc|Innate:}} Periodically, '''Naafiri''' summons a ''Packmate'' that fights alongside her. She may have up to {{pp|2 to 5 for 4|1;9;12;15|formula=2 at level 1, then +1 at level 9, then +1 every 3 levels until 15}} ''Packmates'' at a time. '''Naafiri''' summons the maximum number of ''Packmates'' when the game starts and upon [[death|respawning]].
+|description2 = Hitting {{tip|champions}} or large {{tip|monsters}} with {{tip|abilities}} reduces the {{sti|cooldown}} by 4 seconds. Killing enemies reduces it by 1 second.
+|description3 = ''See [[Naafiri#Pets|Pets]] for full details on Packmates.''
+|static       = {{pp|30 to 10|1;6;9;12;15}}
+|targeting    = Passive
+|affects      = Self, Enemies
+|notes        = 
+* ''Packmates'' do not count as abilities for triggering the cooldown reduction.
+* Only the initial hit of ''{{ai|Darkin Daggers|Naafiri}}'' counts for reducing ''We Are More's'' cooldown; the damage over time will not trigger the cooldown reduction.
+* Both hits of ''{{ai|Eviscerate|Naafiri}}'' will trigger the cooldown reduction.
+|tips         = 
+* Champions who have repeatable [[unit-targeted]] dashes available in their kit (e.g. {{cai|Bladesurge|Irelia}}, {{cai|Sweeping Blade|Yasuo}}) can utilize ''Packmates'' to effectively reach '''Naafiri'''.
+<!--Blurb-->
+|blurb        = {{sbc|Innate:}} {{ci|Naafiri}} periodically summons a ''[[Naafiri#Pets|Packmate]]'' that attacks the target of her attacks and {{tip|abilities}}.
+|blurb2       = Hitting {{tip|champions}} or large {{tip|monsters}} with abilities or killing enemies reduces the {{sti|cooldown}}.
+|flavorsound  = {{sm2|Naafiri_Original_P_2.ogg}} ''"We are more!"''
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Darkin Daggers|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Naafiri
+|skill        = Q
+|icon         = Naafiri Darkin Daggers.png
+|description  = {{sbc|Active:}} '''Naafiri''' hurls a dagger in the target direction that deals {{as|physical damage}} to enemies hit and inflicts them with a {{as|bleed|buzzword3}} that deals {{as|'''bonus''' physical damage}} every {{fd|0.5}} seconds over 5 seconds. The {{as|bleed|buzzword3}} {{tip|execute|executes}} {{tip|minions}} and non-epic {{tip|monsters}} if they would be damaged below {{sti|health|{{as|{{pp|30 to 70 for 11}} health}}}}. ''Darkin Daggers'' can be recast after {{fd|0.5}} seconds and within 4 seconds at no additional cost.
+|leveling     = {{st|Initial Physical Damage|{{ap|35 to 55}} {{as|(+ 20% '''bonus''' AD)}}}}
+{{st|Bleed Physical Damage per Tick|{{ap|35/10 to 135/10}} {{as|(+ {{ap|80/10}}% '''bonus''' AD)}}|Total Bleed Physical Damage|{{ap|35 to 135}} {{as|(+ 80% '''bonus''' AD)}}|Total Physical Damage|{{ap|35+35 to 55+135}} {{as|(+ {{ap|20+80}}% '''bonus''' AD)}}}}
+|icon2        = Darkin Daggers 2.png
+|description2 = If the dagger hits a target that is already {{as|bleeding|buzzword3}}, they are instead {{ccs|dealt|physical}} the remaining {{as|bleed|buzzword3}} damage plus {{as|'''additional bonus''' physical damage|physical damage}}, with the '''base bonus''' damage increased by {{as|{{pp|key=%|key1=%|type=target's '''missing''' health|0 to 100 for 11|0 to 100|formula=1% per 1% of target's '''missing''' health, capped at 100% '''missing''' health}}|health}} and the ''scaling'' for the '''bonus''' damage increased by {{as|{{pp|key=%|key1=%|type=target's '''missing''' health|0 to 250 for 11|0 to 100|formula=2.5% per 1% of target's '''missing''' health, capped at 100% '''missing''' health}}|health}}. If that target is also a {{tip|champion}} or large {{tip|monster}}, '''Naafiri''' {{tip|heal|heals}} herself.
+|leveling2    = {{st|Minimum Bonus Physical Damage|{{ap|30 to 80}} {{as|(+ 40% '''bonus''' AD)}}|Maximum Bonus Physical Damage|{{ap|30*2 to 80*2}} {{as|(+ {{ap|40*3.5}}% '''bonus''' AD)}}}}
+{{st|Minimum Total Physical Damage|{{ap|35+35+30 to 55+135+80}} {{as|(+ {{ap|20+80+40}}% '''bonus''' AD)}}|Maximum Total Physical Damage|{{ap|35+35+(30*2) to 55+135+(80*2)}} {{as|(+ {{ap|20+80+(40*3.5)}}% '''bonus''' AD)}}}}
+{{st|Heal|{{ap|45 to 105}} {{as|(+ 40% '''bonus''' AD)}}}}
+|description3 = {{sbc|Recast:}} '''Naafiri''' mimics the first cast's effects.
+|cooldown     = {{ap|9 to 7}}
+|cdstart    = post-effect
+|cost         = {{ap|50 to 90}}
+|costtype     = Mana
+|cast time    = {{fd|0.25}}
+|target range = {{tip|cr|icononly = true}} 900
+|width        = {{tip|er|icononly = true}} 100
+|speed        = 1700
+|targeting    = Direction
+|affects      = Self, Enemies
+|damagetype   = Physical
+|spellshield  = true
+|spelleffects = Area of effect
+|projectile   = True
+|notes        = 
+{{Effect at cast time end}}
+* ''Darkin Daggers'' calculates its additional damage based on missing health before applying the remaining bleed damage.
+* ''Darkin Daggers' '' {{tip|execute}} against minions considers both the damage of the initial hit of the dagger and any bleed tick for putting the target under the threshold.
+<!-- Blurb -->
+|blurb        = {{sbc|Active:}} {{ci|Naafiri}} hurls a dagger that deals {{as|physical damage}} to enemies hit and inflicts a {{as|bleed|buzzword3}} that deals {{as|'''bonus''' physical damage}} over a short time. ''Darkin Daggers'' can be recast at no additional cost.
+|blurb2       = {{sbc|Recast:}} '''Naafiri''' mimics the first cast's effects.
+|blurb3       = If the target is already {{as|bleeding|buzzword3}}, they are also {{ccs|dealt|physical}} the remaining {{as|bleed|buzzword3}} damage plus {{as|'''additional''' physical damage|physical damage}}. If that target is also a {{tip|champion}}, '''Naafiri''' will {{tip|heal}} herself.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|The Call of the Pack|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Naafiri
+|skill        = W
+|icon         = Naafiri The Call of the Pack.png
+|description  = {{sbc|Active:}} '''Naafiri''' goes on the hunt for the next {{tt|5 seconds|Hunt begins from the start of the cast time}}, becoming {{tip|untargetable}} and {{tip|ghosted}} for the first 1 second and {{tip|vanish|vanishing}} all of her active ''{{ai|We Are More|Naafiri|Packmates}}'' in the first {{fd|0.9}} seconds. Her active ''Packmates'' will {{tip|blink|reappear}} near her after their vanish.
+|description2 = After {{fd|1.25}} seconds into the hunt, '''Naafiri''' summons 2 additional ''Packmates'' that last for the remaining duration and can exceed ''{{ais|We Are More|Naafiri}}'' summon cap.
+|description3 = While on the hunt, '''Naafiri''' gains {{as|20% AD}} {{sti|{{as|'''bonus''' attack damage}}}} and grants herself and all ''Packmates'' {{sti|{{as|'''bonus''' movement speed}}}}.
+|leveling3    = {{st|Bonus Movement Speed|{{ap|20 to 30}}%}}
+|description4 = ''Casting {{ai|Hounds' Pursuit|Naafiri}} extends The Call of the Pack's hunt duration by {{fd|1.75}} seconds, up to its original duration.''
+|description5 = '''''Naafiri''' can move during The Call of the Pack's cast time.''
+|cooldown     = {{ap|26 to 18}}
+|cdstart      = on-cast
+|cost         = 60
+|costtype     = Mana
+|targeting    = Auto
+|affects      = Self
+|cast time    = {{fd|0.75}}
+|notes        = 
+* While ''The Call of the Pack'' is active, it increases ''{{ais|We Are More|Naafiri}}'' summon cap to {{pp|4 to 7 for 4|1;9;12;15|formula=4 at level 1, then +1 at level 9, then +1 every 3 levels until 15}}.
+* The order of additional ''Packmates'' that despawn is predetermined, most likely their internal spawn IDs. The ability does not consider which ''Packmates'' are the closest or healthiest.
+{{Effect at cast time end}}
+<!-- Blurb -->
+|blurb        = {{sbc|Active:}} {{ci|Naafiri}} goes on the hunt for a period, briefly becoming {{tip|untargetable}} and {{tip|vanish|vanishing}} her ''{{ai|We Are More|Naafiri|Packmates}}'', gaining {{sti|{{as|'''bonus''' attack damage}}}} and granting herself and her ''Packmates'' {{sti|{{as|'''bonus''' move speed}}}}. She will also summon extra ''Packmates'' that last for the hunt's duration.
+|blurb2       = ''Casting {{ai|Hounds' Pursuit|Naafiri}} briefly extends The Call of the Pack's hunt duration.''
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Eviscerate|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Naafiri
+|skill        = E
+|icon         = Naafiri Eviscerate.png
+|description  = {{sbc|Active:}} '''Naafiri''' {{tip|dash|dashes}} in the target direction and deals {{as|physical damage}} to enemies she passes through. Upon arrival, she explodes in a flurry of blades to deal {{as|physical damage}} to nearby enemies.
+|leveling     = {{st|Dash Physical Damage|{{ap|15 to 55}} {{as|(+ 40% '''bonus''' AD)}}}}
+{{st|Flurry Physical Damage|{{ap|60 to 160}} {{as|(+ 80% '''bonus''' AD)}}}}
+{{st|Total Physical Damage|{{ap|15+60 to 55+160}} {{as|(+ {{ap|40+80}}% '''bonus''' AD)}}}}
+|description2 = ''{{ai|We Are More|Naafiri|Packmates}}'' {{tip|vanish}} during the dash and {{tip|blink|reappear}} near '''Naafiri''' on her arrival. They are also {{tip|heal|healed}} to full health upon their reappearance.
+|cooldown     = {{ap|11 to 7}}
+|cost         = 40
+|costtype     = Mana
+|target range = {{dv|{{tt|250 – 450|Minimum and maximum dash distance}}|{{tt|{{ap|450+200}}|Maximum extended dash distance across terrain}}}}
+|effect radius= {{tt|230|Flurry radius}}
+|collision radius = {{tip|er|icononly=true}} 50
+|cast time    = none
+|speed        = 900
+|targeting    = Location
+|affects      = Self, Enemies
+|damagetype   = Physical
+|spellshield  = true
+|spelleffects = spellaoe
+|grounded     = true
+|knockdown    = true
+|terraingrace = true
+|outofrange   = cast at max
+|notes        = 
+* ''Packmates'' will not be affected by ''Eviscerate'' while under the effect of ''{{ai|Hounds' Pursuit|Naafiri}}''.
+<!-- Blurb -->
+|blurb        = {{sbc|Active:}} {{ci|Naafiri}} {{tip|dash|dashes}} to deal {{as|physical damage}} to enemies she passes through. Upon arrival, she explodes in a flurry of blades to deal {{as|physical damage}} to nearby enemies.
+|blurb2       = ''{{ai|We Are More|Naafiri|Packmates}}'' briefly {{tip|vanish}} and {{tip|heal}} to full health.
+}}
+<!-- The following values are defined as parameters.
+-->{{#vardefine:rd_b1|125}}<!-- Rank 1 Base Damage
+-->{{#vardefine:rd_b3|275}}<!-- Rank 3 Base Damage
+-->{{#vardefine:rd_ad|100}}<!-- Damage AD ratio as a PERCENTAGE
+-->{{#vardefine:rp|0.1}}<!--  Packmate damage modifier as a DECIMAL
+-->{{#vardefine:rp_b1|{{#expr:{{#var:rd_b1}}*{{#var:rp}}}}}}<!-- Rank 1 packmate damage
+-->{{#vardefine:rp_b3|{{#expr:{{#var:rd_b3}}*{{#var:rp}}}}}}<!-- Rank 3 packmate damage
+-->{{#vardefine:rp_ad|{{#expr:{{#var:rd_ad}}*{{#var:rp}}}}}}<!-- Packmate Damage AD ratio as a PERCENTAGE
+-->{{{{{1<noinclude>|Ability data</noinclude>}}}|Hounds' Pursuit|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Naafiri
+|skill        = R
+|icon         = Naafiri Hounds' Pursuit.png
+|description  = {{sbc|Active:}} '''Naafiri''' and her ''{{ai|We Are More|Naafiri|Packmates}}'' {{tip|channel}} for {{fd|0.75}} seconds to single out the target enemy champion, {{tip|true sight|revealing}} them in the duration. Upon completion of the channel, they {{tip|dash}} to the target; upon arrival '''Naafiri''' deals {{as|physical damage}} and {{tip|slows}} the target by 99% for {{fd|0.25}} seconds, whereas each ''Packmate'' deals {{ap|{{#var:rp}}*100}}% of that damage. ''Packmates'' become {{tip|untargetable}} during their channel and dash.
+|leveling     = {{st|Physical Damage|{{ap|{{#var:rd_b1}} to {{#var:rd_b3}}}} {{as|(+ {{#var:rd_ad}}% '''bonus''' AD)}}}}
+{{st|Physical Damage per ''{{ai|We Are More|Naafiri|link=*none*|Packmate}}''|{{ap|{{#var:rp_b1}} to {{#var:rp_b3}}}} {{as|(+ {{ap|{{#var:rp_ad}}}}% '''bonus''' AD)}}}}
+|icon2        = Hounds' Pursuit 2.png
+|description2 = If '''Naafiri''' scores a champion {{tip|takedown}} within 7 seconds of cast, she triggers a pulse that grants {{tip|sight}} of the {{tt|surrounding area|Can see through terrain}} for 1 second and {{tip|standard sight|reveals}} enemy champions within for 4 seconds. She can also recast ''Hounds' Pursuit'' once from triggering this effect within 12 seconds at no cost.
+|description3 = {{sbc|Recast:}} '''Naafiri''' immediately grants herself a {{tip|shield}} for 3 seconds before mimicking the {{tt|first cast's effects|Excluding the takedown effects, which can trigger only once}}.
+|leveling3    = {{st|Shield|{{ap|100 to 200}} {{as|(+ 150% '''bonus''' AD)}}}}
+|cooldown     = {{ap|110 to 80}}
+|cdstart      = on-cast
+|cost         = 100
+|costtype     = Mana
+|target range = {{tip|cr|icononly = true}} 900
+|effect radius= {{tip|Sight|icononly = true}}{{tt|2100|Sight radius}}
+|width        = 
+|speed        = 1800
+|cast time    = none
+|targeting    = Unit
+|affects      = Self, Enemies
+|damagetype   = Physical
+|spellshield  = special
+|spelleffects = spell
+|grounded     = true
+|knockdown    = true
+|silence      = true
+|notes        = 
+* ''Hounds' Pursuit's'' theoretical {{as|'''total''' physical damage}} from ''{{ai|We Are More|Naafiri|Packmates}}'' '''only''', assuming '''Naafiri''' has the maximum number of them active and ''Hounds' Pursuit'' is always ranked at the earliest {{stil|experience|levels}} permitted (ranks {{ap|1|2|3}} at levels {{ap|6|11|16}}):
+** {{sbc|Levels 6–8:}} {{as|{{ap|{{#var:rp_b1}}*2}}|physical damage}} {{as|(+ {{ap|{{#var:rp_ad}}*2}}% '''bonus''' AD)}}&emsp;/&emsp;''{{ai|The Call of the Pack|Naafiri|icononly=true}}'' {{as|{{ap|{{#var:rp_b1}}*4}}|physical damage}} {{as|(+ {{ap|{{#var:rp_ad}}*4}}% '''bonus''' AD)}}.
+** {{sbc|Levels 9–10:}} {{as|{{ap|{{#var:rp_b1}}*3}}|physical damage}} {{as|(+ {{ap|{{#var:rp_ad}}*3}}% '''bonus''' AD)}}&emsp;/&emsp;''{{ai|The Call of the Pack|Naafiri|icononly=true}}'' {{as|{{ap|{{#var:rp_b1}}*5}}|physical damage}} {{as|(+ {{ap|{{#var:rp_ad}}*5}}% '''bonus''' AD)}}.
+** {{sbc|Level 11:}} {{as|{{ap|({{#var:rp_b1}}+({{#var:rp_b3}}-{{#var:rp_b1}})*(1/2))*3}}|physical damage}} {{as|(+ {{ap|{{#var:rp_ad}}*3}}% '''bonus''' AD)}}&emsp;/&emsp;''{{ai|The Call of the Pack|Naafiri|icononly=true}}'' {{as|{{ap|({{#var:rp_b1}}+({{#var:rp_b3}}-{{#var:rp_b1}})*(1/2))*5}}|physical damage}} {{as|(+ {{ap|{{#var:rp_ad}}*5}}% '''bonus''' AD)}}.
+** {{sbc|Levels 12–14:}} {{as|{{ap|({{#var:rp_b1}}+({{#var:rp_b3}}-{{#var:rp_b1}})*(1/2))*4}}|physical damage}} {{as|(+ {{ap|{{#var:rp_ad}}*4}}% '''bonus''' AD)}}&emsp;/&emsp;''{{ai|The Call of the Pack|Naafiri|icononly=true}}'' {{as|{{ap|({{#var:rp_b1}}+({{#var:rp_b3}}-{{#var:rp_b1}})*(1/2))*6}}|physical damage}} {{as|(+ {{ap|{{#var:rp_ad}}*6}}% '''bonus''' AD)}}.
+** {{sbc|Level 15:}} {{as|{{ap|({{#var:rp_b1}}+({{#var:rp_b3}}-{{#var:rp_b1}})*(1/2))*5}}|physical damage}} {{as|(+ {{ap|{{#var:rp_ad}}*5}}% '''bonus''' AD)}}&emsp;/&emsp;''{{ai|The Call of the Pack|Naafiri|icononly=true}}'' {{as|{{ap|({{#var:rp_b1}}+({{#var:rp_b3}}-{{#var:rp_b1}})*(1/2))*7}}|physical damage}} {{as|(+ {{ap|{{#var:rp_ad}}*7}}% '''bonus''' AD)}}.
+** {{sbc|Levels 16–18:}} {{as|{{ap|{{#var:rp_b3}}*5}}|physical damage}} {{as|(+ {{ap|{{#var:rp_ad}}*5}}% '''bonus''' AD)}}&emsp;/&emsp;''{{ai|The Call of the Pack|Naafiri|icononly=true}}'' {{as|{{ap|{{#var:rp_b3}}*7}}|physical damage}} {{as|(+ {{ap|{{#var:rp_ad}}*7}}% '''bonus''' AD)}}.
+* '''Naafiri''' marks the enemy champion targeted by ''Hounds' Pursuit'' in order to gain [[assist]] credit on them, lasting for the standard credit timer.
+* ''Hound's Pursuit's'' cast and dash do not {{tip|break stealth}}.{{bug|2}}
+* {{tip|Spell shield}} will block '''Naafiri's''' collision damage but cannot prevent collision damage from ''Packmates''.
+* '''Naafiri''' will track the target if they change locations, up to a maximum distance.
+** She will dash to the target's previous location if they move too far away during the dash.
+* '''Naafiri''' lands ~125 units in front of the target.
+* '''Naafiri''' will be ordered to basic attack the target at the end of the dash.
+* '''Naafiri''' will windup a basic attack while dashing.{{bug|2}}
+* ''Packmates'' hitting the same target as '''Naafiri''' will count as dealing "additional" damage.
+* The target is {{tip|standard sight|revealed}} for another {{fd|1.5}} seconds after the channel completes.
+* The following table refers for interactions while '''Naafiri''' is {{tip|channel|channeling}}:
+** If '''Naafiri's''' channel is interrupted, the ''Packmates' '' channels will be canceled as well.
+** The channel is cancelled if the target dies or moves too far away, but not if they become {{tip|untargetable}}.
+{{ct|channel|attack=false|move=false|cast=false|items=false,true,false,false,false|spells=true,false,false,false,false|interrupts=death,ground,silence,root}}
+<!-- Blurb -->
+|blurb        = {{sbc|Active:}} {{ci|Naafiri}} and her ''{{ai|We Are More|Naafiri|Packmates}}'' briefly {{tip|channel}} to single out an enemy. They then {{tip|dash}} together toward the target. Upon colliding with the target, '''Naafiri''' deals {{as|physical damage}} to the target and briefly {{tip|slows}} them, whereas ''Packmates'' deal a small portion of that damage. ''Packmates'' are {{tip|untargetable}} during their windup and dash.
+|blurb2       = If '''Naafiri''' scores a {{tip|champion}} takedown shortly after, she can recast ''Hounds' Pursuit'' once more within a duration at no cost.
+|blurb3       = {{sbc|Recast:}} '''Naafiri''' immediately grants herself a {{tip|shield}}, then performs the first cast's effects again.
+|flavorsound  = <span class="inline-audio" data-vol="0.5">[[File:Naafiri_Original_SFX_W_notif_enemy_0.ogg]]</span> ''{{tt|Target activation alert.|This sound effect plays for Hound's Pursuit's target.}}''<br>{{sm2|Naafiri_Original_SFX_R_vision_recast.ogg}} ''Pulse alert.''
+}}

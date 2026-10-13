@@ -1,0 +1,128 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Salvation|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Soraka
+|skill        = I
+|icon         = Salvation.png
+|blurb        = {{sbc|Innate:}} {{ci|Soraka}} gains tremendous {{sti|ms|{{as|'''bonus''' movement speed}}}} while facing nearby allied {{tip|champions}} that are {{as|at low health}}.
+|description  = {{sbc|Innate:}} '''Soraka''' gains {{sti|ms|{{as|90% '''bonus''' movement speed}}}} while facing nearby allied {{tip|champions}} that are {{as|below 40% of their '''maximum''' health}}.
+|effect radius= 2500
+|targeting    = Passive
+|affects      = Self
+|notes        = 
+* '''Soraka''' will see an arrow indicating the direction in which she can gain the bonus movement speed.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Starcall|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Soraka
+|skill        = Q
+|icon         = Starcall.png
+|description  = {{sbc|Active:}} '''Soraka''' calls down a star upon the target location that grants {{tip|sight}} of the area before landing after {{pp|type=target range|0.25 to 1 for 16|50 to 800}} seconds, dealing {{as|magic damage}} to enemies hit and {{tip|slow|slowing}} them by 30% for {{fd|1.5}} seconds. 
+|leveling     = {{st|Magic Damage|{{ap|85 to 225}} {{as|(+ 35% AP)}}}}
+|description2 = If this hits at least one enemy {{tip|champion}}, star dust returns to '''Soraka''', granting her ''Rejuvenation'' for {{fd|2.5}} seconds. While '''Soraka''' has ''Rejuvenation'', casting ''{{ai|Astral Infusion|Soraka}}'' will also grant ''Rejuvenation'' to the target for the same duration.
+|description3 = {{sbc|Rejuvenation}}: {{tip|Heal}} every {{fd|0.2}} seconds and gain {{sti|ms|{{as|'''bonus''' movement speed}}}} that decays over the duration.
+|leveling3    = {{st|Total Heal|{{ap|60 to 120}} {{as|(+ 30% AP)}}|Heal per Tick|{{ap|60/12 to 120/12}} {{as|(+ {{ap|30/12}}% AP)}}}}
+{{st|Bonus Movement Speed|{{ap|20 to 30}}%}}
+|cooldown     = {{ap|8 to 4}}
+|cost         = {{ap|45 to 65}}
+|cast time    = {{fd|0.25}}
+|costtype     = Mana
+|target range = 800
+|effect radius= {{tip|cr|icononly = true}} 265
+|targeting    = Location
+|damagetype   = Magic
+|affects      = Self, Enemies
+|projectile   = True
+|spelleffects = spellaoe
+|spellshield  = True
+|outofrange   = walk to location
+|notes        = 
+* ''Starcall'' counts as hitting even if it gets blocked by {{tip|spell shield}}, granting ''Rejuvenation''.
+* Both the initial hit and the ''Rejuvenation'' projectile can be {{tip|projectile|intercepted}}.
+* ''Rejuvenation'' heals over 12 ticks, with the first 4 each healing for about 15% of the heal, the next 4 ticks for about {{fd|5.5}}% each, and the last 4 for about {{fd|4.5}}% each.
+* ''Rejuvenation'' won't be granted to '''Soraka''' and she won't be able to make use of the health cost reduction on {{ai|Astral Infusion|Soraka}} until the projectile gets to her, but she is able to ''Rejuvenate'' allies as soon as the target is hit.
+<!-- Blurb -->
+|blurb        = {{sbc|Active:}} {{ci|Soraka}} calls down a star upon the target location that deals {{as|magic damage}} and briefly {{tip|slows}} enemies hit. If this hits at least one enemy {{tip|champion}}, the star dust returns to '''Soraka''' to grant her ''Rejuvenation'' for a short time.
+|blurb2      = While '''Soraka''' has ''Rejuvenation'', ''{{ai|Astral Infusion|Soraka}}'' will also grant ''Rejuvenation'' to the target ally.
+|blurb4      = {{sbc|Rejuvenation}}: The target continually {{tip|heals}} over time and gains {{sti|ms|{{as|'''bonus''' movement speed}}}} that decays over the duration.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Astral Infusion|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Soraka
+|skill        = W
+|icon         = Astral Infusion.png
+|blurb        = {{sbc|Active:}} {{ci|Soraka}} consumes a portion of {{as|her '''maximum''' health}} to {{tip|heal}} the target allied champion.
+|blurb2      = If this is cast while under ''{{ai|Starcall|Soraka|Rejuvenation}}'', the {{as|health cost}} is reduced.
+|blurb4      = ''Astral Infusion'' cannot be cast if '''Soraka's''' {{as|'''current''' health}} is too low.
+|description  = {{sbc|Active:}} '''Soraka''' {{tip|heals}} the target allied champion.
+|leveling     = {{st|Heal|{{ap|90 to 170}} {{as|(+ 50% AP)}}}}
+|description2 =  If cast while under ''{{ai|Starcall|Soraka|Rejuvenation}}'', the {{as|health cost}} will be reduced by a percentage.
+|leveling2    = {{st|Health Cost Reduction|{{ap|80 to 100}}%|Reduced Health Cost|{{as|{{ap|2 to 0}}% of '''maximum''' health}}}}
+|description3 =  ''Astral Infusion'' cannot be cast if '''Soraka''' is below {{as|{{sti|5% of her '''maximum''' health}}}}.
+|cooldown     = {{ap|6 to 2}}
+|cost         = {{as|10%|health}}
+|costtype     = {{as|'''Maximum''' Health}} + {{ap|40 to 60}} Mana
+|cast time    = {{fd|0.25}}
+|target range = {{tip|cr|icononly=true}} 550
+|targeting    = Unit
+|affects      = Allies / Self
+|spelleffects = 
+|projectile   = False
+|notes        = 
+* ''Astral Infusion'' can also be targeted on allied {{tip|clone|decoys}}.
+* ''Astral Infusion'' can be cast even if '''Soraka''' doesn't have the sufficient amount of health to pay for the health cost while above {{as|{{sti|health|5% of her '''maximum''' health}}}}.
+** As with all abilities with health costs, ''Astral Infusion'' will not reduce '''Soraka's''' health below {{as|1|hp}}.
+* {{ii|Spirit Visage}} will only increase the health donated to allies if the target ally possesses it, although owning it ''will'' boost the heal that '''Soraka''' receives from {{ai|Starcall|Soraka}} and {{ai|Wish|Soraka}}.
+* ''Astral Infusion's'' effects occur before the cast time.
+* ''Astral Infusion'' has a {{tip|forgiveness radius}} of 175 units.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Equinox|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Soraka
+|skill        = E
+|icon         = Equinox.png
+|blurb        = {{sbc|Active:}} {{ci|Soraka}} creates a celestial zone at the target location that deals {{as|magic damage}} to enemy champions within upon casting. The zone then persists for a brief moment and {{tip|silence|siliences}} enemies within.
+|blurb2      = Afterwards, the zone erupts to deal {{as|magic damage}} to enemy champions within and briefly {{tip|root}} them.
+|description  = {{sbc|Active:}} '''Soraka''' creates a celestial zone at the target location that deals {{as|magic damage}} to enemy champions within at the time of cast. The zone then persists for {{fd|1.5}} seconds and {{tip|silence|silences}} enemies within.
+|leveling     = {{st|Magic Damage|{{ap|70 to 170}} {{as|(+ 40% AP)}}}}
+|description2 = Afterwards, the zone erupts to deal the same damage to enemy champions within and {{tip|root}} them for a duration.
+|leveling2    = {{st|Total Magic Damage|{{ap|70*2 to 170*2}} {{as|(+ 80% AP)}}}}
+{{st|Root Duration|{{ap|1 to 2}} seconds}}
+|cooldown     = {{ap|20 to 16}}
+|target range = 925
+|effect radius= {{tip|cr|icononly = true}} {{tt|260|Silence field which appears to affect in a very slightly larger radius than the damage and root radius checks cover}}
+|cost         = {{ap|70 to 90}}
+|cast time    = {{fd|0.25}}
+|costtype     = Mana
+|targeting    = Location
+|affects      = Enemies
+|damagetype   = Magic
+|spelleffects = spellaoe
+|spellshield  = special
+|outofrange   = walk to location
+|notes        = 
+* ''Equinox's'' {{tip|silence}} is marked as non-dispellable, so it is not removed by most {{tip|cleanse|cleanses}}. It is however allowed to be removed by cleanses that '''also''' grant immunity to it, such as {{cai|Ragnarok|Olaf}}.
+* {{tip|Spell shield}} will not block the {{tip|silence}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Wish|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Soraka
+|skill        = R
+|icon         = Wish.png
+|blurb        = {{sbc|Active:}} {{ci|Soraka}} calls upon the stars, {{tip|heal|healing}} herself and all allied {{tip|champions}}, regardless of distance. The healing is increased on targets {{as|at low health}}.
+|description  = {{sbc|Active:}} '''Soraka''' calls upon the stars, {{tip|heal|healing}} herself and all allied champions, increased by 50% on targets {{as|below 40% of their '''maximum''' health}}.
+|leveling     = {{st|Heal|{{ap|150 to 350}} {{as|(+ 50% AP)}}|Increased Heal|{{ap|150*1.5 to 350*1.5}} {{as|(+ 75% AP)}}}}
+|cooldown     = {{ap|150 to 120}}
+|cost         = 100
+|costtype     = Mana
+|effect radius= Global
+|targeting    = Auto
+|cast time    = {{fd|0.25}}
+|affects      = Allies
+|damagetype   = 
+|spelleffects = 
+|onhiteffects = 
+|spellshield  = 
+|notes        = 
+* Due to several character stats needing to be recalculated each time a character spawns, casting ''Wish'' immediately upon respawning will cause its cooldown to be unaffected by ability haste, and the healing will not be increased by '''Soraka's''' {{as|ability power}}. {{bug}}
+* {{tip|Untargetable|Untargetability}} does not invalidate the targeting of the heal.
+* ''Wish'' will not credit '''Soraka''' for [[assist]]ing in a [[kill|champion kill]] if the target ally is at full health.
+* ''Wish'' will apply heal effects (such as {{ri|Summon Aery}}) prioritizing targets based on the ''Spawn ID'', which is the order in which units were added to an ongoing game. For {{tip|champions}}, this is the order they appear in from left to right in the loading screen.
+* ''Wish's'' effects occur before the cast time.
+* ''Wish'' will apply to units that are affected by '''Mordekaiser''''s R even if '''Soraka''' is not in the same realm.
+|flavorsound  = {{sm2|Soraka_Original_R_0.ogg}} ''"Stars hear me!"''
+}}

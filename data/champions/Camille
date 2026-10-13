@@ -1,0 +1,215 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Adaptive Defenses|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Camille
+|skill        = I
+|icon         = Adaptive Defenses.png
+|blurb        = {{sbc|Innate:}} Periodically, {{cis|Camille}} next basic attack against a champion will {{tip|on-hit}} grant her a {{tip|shield}} against their damage type ({{as|physical|pdamage}} or {{as|magical|mdamage}}) for a short time.
+|description  = {{sbc|Innate:}} Periodically, '''Camille's''' next {{tip|basic attack}} {{tip|on-hit}} against an enemy champion grants her a {{tip|shield}} equal to {{sti|{{as|{{pplevel|key=%|10 to 25 for 4|1 to 19}} of her '''maximum''' health}}}}, lasting for 2 seconds and absorbing damage from either exclusively {{tip|physical damage|{{as|physical damage}}}} or {{tip|magic damage|{{as|magic damage}}}}, based on which type the target has previously dealt most of against champions as well as on '''Camille's''' '''current''' {{sti|{{as|armor}}}} and {{sti|{{as|magic resistance}}}}.
+|leveling     = 
+|static       = {{pp|14 to 8 for 3|1 to 13}}
+|range        = 
+|targeting    = Passive
+|affects      = Self
+|occurrence   = On-hit
+|spelleffects = 
+|parry        = true
+|flavorsound  = {{sm2|Camille_Original_PReady_0.ogg}} ''"Adapt or perish."''
+|notes        =
+* ''Adaptive Defenses'' goes on cooldown after the shield expires or is destroyed.
+* The shield-typing is determined based on the '''total''' damage the target has dealt to champions that game (as a percentage) versus '''Camille's''' '''current''' {{sti|{{as|armor}}}} and {{sti|{{as|magic resistance}}}}.
+** For example, with little '''bonus''' resistances '''Camille''' would likely gain the most obvious shield-typing - i.e. [[Shield#Physical shields|physical shield]] versus champions primarily dealing {{as|physical damage}} and [[Shield#Magic shields|magic shield]] versus champions primarily dealing {{as|magic damage}}. However, if she has a sufficient amount of {{as|armor}} against a champion dealing both alternates of {{as|physical damage}} and {{as|magic damage}}, she will receive a magic shield as the {{as|physical damage}} threat is already being mitigated by her {{as|armor}}, and vice versa.
+* The type of shield that will be granted to '''Camille''' when she attacks any one enemy champion is shown as an icon beneath their [[health bar]]: {{as|orange|physical damage}} for physical shield and {{as|blue|magic damage}} for magic shield.
+* ''Adaptive Defenses'' takes priority over all other {{tip|shield|shields}} except {{ai|Black Shield|Morgana}}.
+* ''Adaptive Defenses'' will not trigger or go on cooldown if the attack is {{tip|dodge|dodged}}, {{tip|block|blocked}}, or if '''Camille''' is {{tip|blind|blinded}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Precision Protocol|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Camille
+|skill        = Q
+|icon         = Precision Protocol.png
+|blurb        = {{sbc|Active:}} {{cis|Camille}} next basic attack deals {{as|'''bonus''' physical damage}} and grants her {{sti|ms|{{as|'''bonus''' movement speed}}}}.
+|blurb2       = ''Precision Protocol'' can be recast for a short time, dealing significantly increased damage if '''Camille''' delays the recast. A portion of the attack's damage will be dealt as {{as|true damage}}.
+|description  = {{sbc|Active:}} '''Camille''' empowers her next basic attack within 4 seconds to have an {{tip|uncancellable windup}}, gain {{sti|range|50 '''bonus''' range}}, deal {{as|'''bonus''' physical damage}} and grant her {{as|{{sti|movement speed|'''bonus''' movement speed}}}} for 1 second. This attack cannot {{tip|critically strike}}.
+|leveling     = {{st|Bonus Physical Damage|{{as|{{ap|20 to 40}}% AD}}}}
+{{st|Bonus Movement Speed|{{ap|25 to 45}}%}}
+|icon2        = Precision Protocol 2.png
+|description2 = After {{fd|0.25}} seconds of using the empowered attack, ''Precision Protocol'' can then be recast within the next {{fd|3.5}} seconds at no additional cost.
+|icon3        = Precision Protocol 3.png
+|description3 = {{sbc|Recast:}} '''Camille''' mimics the first cast's effects. If ''Precision Protocol'' is recast after {{fd|1.5}} seconds of the first attack, then the '''bonus''' damage is doubled, and {{pp|key=%|40 to 100 for 16|formula=36%+(4%*level). ''Capped at level 16''}} of the attack's '''total''' damage will be dealt as {{as|{{sti|true damage}}}}.
+|leveling3    = {{st|Increased Mixed Damage|{{as|{{ap|20*2 to 40*2}}% AD}}}}
+|description4 = ''Both casts of Precision Protocol {{tip|basic attack reset|reset}} '''Camille's''' basic attack timer. '''Camille''' is able to cast {{ai|Tactical Sweep|Camille}}, {{ai|Hookshot|Camille}}, or {{ai|The Hextech Ultimatum|Camille}} during the windup of Precision Protocol's empowered attack without cancelling it.''
+|cooldown     = {{ap|9 to 5}}
+|cdstart      = Starts on first attack
+|cost         = 25
+|costtype     = Mana
+|targeting    = Auto
+|cast time    = none
+|affects      = Self
+|damagetype   = Physical True
+|spellshield  = false
+|spelleffects = spell
+|occurrence   = On-hit
+|parry        = true
+|notes        = 
+* Both casts count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and triggering {{ais|Force Pulse|Kassadin}} passive.
+* Both enhanced attacks '''cannot''' {{tip|critical strike|critically strike}}.
+* The {{fd|1.5}}-second delay is "fuzzy", meaning it may take up to another {{fd|0.25}} seconds to ready the window for the empowered attack.
+** This syncs up perfectly with {{iis|Sheen}} cooldown between casts at 0 [[Haste#Item_haste|item haste]], which is also "fuzzy".
+* The second attack will also become empowered if it simply starts after the {{fd|1.5}}-second delay, even if the recast was consumed earlier.
+* The empowered {{sbc|recast}}'s {{tip|true damage}}:
+** Has a special case to factor {{tip|Spellblade}} into the true damage conversion of part of her attack's damage.
+** Other [[on-hit]] effects do not interact with the true damage conversion.
+** Randomly dependent on buff order, if (e.g. {{iis|Plated Steelcaps}} {{nie|Plating}}, {{ai|W|K'Sante}}) applies first before the conversion, then the resulting damage will be reduced, otherwise if the conversion happens first, then the damage will not be successfully reduced (both effects are pre-mitigation on-take-damage events).{{bug|1|The intention is for the damage to always be reduced.}}
+** Is dealt just prior to the physical damage portion of the attack.
+* ''Precision Protocol'' applies to [[structures]] but the recast does not convert to true damage.
+* The enhanced attack will still complete and hit the target even if they become {{tip|untargetable}} during the {{tip|attack windup|attack's windup}}.
+* {{iis|Warden's Mail}} flat damage reduction is reduced on the second cast, reducing the physical damage but not the true damage.{{bug|2}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Tactical Sweep|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Camille
+|skill        = W
+|icon         = Tactical Sweep.png
+|blurb        = {{sbc|Active:}} {{ci|Camille}} briefly becomes {{tip|ghosted}} and sweeps her leg after a delay, dealing {{as|physical damage}} to enemies hit in a cone. Enemies in the outer half are slowed and take increased damage, while also {{tip|healing}} her.
+|description  = {{sbc|Active:}} '''Camille''' sweeps her leg in a cone in the target direction over {{fd|1.1}} seconds, during which she is {{tip|ghosted}} and unable to declare basic attacks. Afterwards, she deals {{as|physical damage}} to all enemies within.
+|leveling     = {{st|Physical Damage|{{ap|60 to 160}} {{as|(+ 60% '''bonus''' AD)}}}}
+|description2 = Enemies hit by the outer half of the cone take {{as|'''bonus''' physical damage|physical damage}}, capped at 300 against {{tip|monsters}}, and are {{tip|slow|slowed}} by 80% decaying over 2 seconds. '''Camille''' is {{tip|healing|healed}} for 100% of this '''bonus''' damage {{tt|post-mitigation|After modifiers such as resistances}} against enemy {{tip|champions}} in the outer half.
+|leveling2    = {{st|Outer Cone Bonus Damage|{{as|{{ap|7 to 9}}% {{as|(+ {{fd|2.5}}% per 100 '''bonus''' AD)}} of target's '''maximum''' health}}}}
+|description3 = Non-epic monsters take 50% damage from ''Tactical Sweep''.
+|leveling3    = {{st|Non-Epic Monster Damage|{{ap|60/2 to 160/2}} {{as|(+ 30% '''bonus''' AD)}}}}
+{{st|Bonus Non-Epic Monster Damage|{{as|{{ap|7/2 to 9/2}}% {{as|(+ {{fd|1.25}}% per 100 '''bonus''' AD)}} of target's '''maximum''' health}}}}
+|description4 = ''Other abilities can be cast during the animation without cancelling it.''
+|cooldown     = {{ap|12 to 10}}
+|cost         = {{ap|50 to 70}}
+|costtype     = Mana
+|cast time    = none
+|effect radius= {{dv|{{tip|cr|icononly = true}} {{tt|325|Inner radius}}|{{tt|650|Outer radius}}}}
+|angle        = {{tip|cr|icononly = true}} {{tt|70{{degree}}|Pending for test}}
+|targeting    = Direction
+|affects      = Self, Enemies
+|damagetype   = Physical
+|spellshield  = true
+|spelleffects = spellaoe
+|projectile = False
+|notes        = 
+* '''Camille''' can move during the delay, but the hitbox and '''Camille's''' visuals are fixed to the initial target direction.
+** '''Camille's''' facing-direction, for effects such as {{ai|Petrifying Gaze|Cassiopeia}}, is the direction she is moving, and not the direction the model is facing.
+* The damage modifier against non-epic monsters applies after the cap.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Hookshot|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Camille
+|skill        = E
+|icon         = Hookshot.png
+|blurb        = {{sbc|Active:}} {{ci|Camille}} fires a grapple, {{tip|dash|dashing}} onto any terrain she hits and briefly perching onto it.
+|blurb2       = While perched, she gains the ability to cast ''{{ai|Wall Dive|Camille}}''.
+|post-blurb    = Camille/Wall Dive
+|description  = {{sbc|Active:}} '''Camille''' fires a grapple in the target direction. If the grapple collides with terrain, '''Camille''' will {{tip|dash}} toward and attach to the terrain for {{fd|0.75}} seconds, during which she gains the ability to cast ''{{ai|Wall Dive|Camille}}''.
+|description2 = '''''Camille''' will be {{tip|knockdown|knocked down}} by any {{tip|immobilize|immobilizing}} or {{tip|polymorph|polymorphing}} crowd control during the dash.''
+|description3 = ''Other abilities can be cast during the ability. Casting {{ai|The Hextech Ultimatum|Camille}} will cause the grapple to disappear if it is in flight.''
+|cooldown     = {{ap|16 to 12}}
+|cost         = 70
+|costtype     = Mana
+|cast time    = none
+|target range = 800
+|width        = 100
+|speed        = 1400
+|targeting    = Direction
+|affects      = Terrain, Self
+|projectile   = true
+|grounded     = special
+|knockdown    = true
+|notes        = 
+* '''Camille''' may move while the grapple is in flight.
+* ''Hookshot'' can be cast while {{tip|root|rooted}} but not while {{tip|ground|grounded}}.
+* '''Camille''' will grapple to terrain even if she is {{tip|immobilize|immobilized}}.
+* ''Hookshot'' can interact with [[Terrain#Player-Generated|player-generated terrain]].
+* {{tip|Sleep}} does not count for knocking the dash down.{{bug}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|The Hextech Ultimatum|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Camille
+|skill        = R
+|icon         = The Hextech Ultimatum.png
+|blurb        = {{sbc|Active:}} {{ci|Camille}} {{tip|dash|dives}} onto an enemy champion, creating a zone around the target and {{tip|airborne|knocking away}} all other enemies.
+|blurb2       = While within the zone, the target cannot escape through any means, and '''Camille's''' basic attacks deal {{as|'''bonus''' magic damage}} against them.
+|blurb3       = The zone will disappear if '''Camille''' leaves or dies.
+|description  = {{sbc|Active:}} '''Camille''' becomes {{tip|untargetable}} and {{tip|dash|leaps}} with {{tip|displacement immunity}} towards the target enemy {{tip|champion|champion}} over {{fd|0.5}} seconds, {{tip|standard sight|revealing}} them for the duration and {{tip|disrupt|disrupting}} their ongoing {{tip|channel|channels}}.
+|description2 = Upon landing on the target, she becomes targetable again and creates a hexagonal zone around her current location for a duration, {{tip|airborne|knocking away}} all other nearby enemies on impact to the edge of the zone, though not through terrain.
+|leveling2    = {{st|Zone Duration|{{ap|2.5 to 4}} seconds}}
+|description3 = The target cannot escape the zone through any means. While within the zone, '''Camille's''' basic attacks against the target deal {{as|'''bonus''' magic damage}}.
+|leveling3    = {{st|Bonus Magic Damage|{{as|{{ap|4 to 8}}% of target's '''current''' health}}}}
+|description4 = ''The Hextech Ultimatum'' ends automatically within 1 second if '''Camille''' leaves the area or dies.
+|cooldown     = {{ap|140 to 90}}
+|cost         = 100
+|costtype     = Mana
+|cast time    = none
+|target range = {{tip|cr|icononly = true}} 475
+|effect radius= {{tt|425|Zone radius, estimated}}
+|targeting    = Unit
+|affects      = Enemies, Self
+|damagetype   = Magic
+|spelleffects = Proc
+|spellshield  = true
+|parry        = 
+|grounded     = true
+|flavorsound  = {{sm2|Camille_Original_R_0.ogg}} ''"You will stay where I want you to stay!"''
+|knockdown    = false
+|notes        = 
+* '''Camille''' will attempt to basic attack the target upon landing.
+* '''Camille''' will track the target if they change locations.
+** She will always land and create the zone after {{fd|0.5}} seconds.
+* If the target becomes {{tip|untargetable}}, {{tip|death|dies}}, or moves {{tt|2000|Estimated}} or more units away during the dash, it will be interrupted, causing the ''The Hextech Ultimatum'' to be cancelled.
+** The zone fails to create in this case.
+* {{tip|Airborne|Knockaway}} speed is 1000.
+* If the target manages to be outside of the boundaries, they will immediately be pulled back towards the center of the hexagon.
+* The boundaries are not considered terrain ({{ai|Unstoppable Onslaught|Sion}} exception), and enemies that try to move out of the area will be displaced back inside.
+** {{tip|Dash|Dashes}}, {{tip|blink|blinks}}, {{tip|airborne|displacements}}, and other forms of movement will cap their effect range to the boundary. Targets will stop at the boundary even after it expired.
+** {{cai|Chronobreak|Ekko}} will still deal damage at the hologram's location.
+** An active {{ai|Cease and Desist|Vi}} on a target outside the perimeter will cause {{ci|Vi}} to continue her charge until ''The Hextech Ultimatum'' ends. She can knockback and damage secondary targets multiple times.
+** If the target {{tip|attached|attaches}} to a unit, they will only be displaced back inside once they detach. ''The Hextech Ultimatum'' does not end nor break the bind to the victim. 
+*** {{cai|Umbral Trespass|Kayn}} allows him to cast it even if his target is outside the area, dashing through the borders and attaching despite being unable to escape.
+*** {{cai|You and Me!|Yuumi}} allows her to bypass the borders if the unit she attaches to leaves the area.
+*** {{cai|Rocket Jump|Tristana}} does not allow her to escape, but she applies the {{as|magic damage}} and {{tip|slow}}.
+*** {{cai|The Show Stopper|Sett}} does not allow him to pass through the borders and the dash will end prematurely when he encounters them.
+**** If the target of {{ai|The Show Stopper|Sett}} is also the target of ''The Hextech Ultimatum'', they can go through the borders while attached to him.
+* If '''Camille''' enters {{tip|resurrection}} during the initial cast, the {{tip|dash}} is stopped and the zone is formed immediately.
+** ''The Hextech Ultimatum'' ends if the target enters ''resurrection'', but not if '''Camille''' does.
+* ''The Hextech Ultimatum'' ends immediately if the target is dragged by {{ai|Fear Beyond Death 2|Urgot|Fear Beyond Death}}.
+* The {{tip|disrupt}} is 'wrapped' into a status effect that causes the affected champion to display the "{{tip|silence|Silenced}}" UI on their [[Health bar#Disabled state|health bar]] for {{fd|0.25}} seconds, without actually applying the disabling effects of the {{tip|silence}} crowd control type (functions as an indicator of the target becoming ''disrupted''). This however ensures that the ''disrupt'' is also prevented by effects that would negate {{tip|silence|silences}} (such as {{tip|cc-immune|crowd control immunity}}).
+* The following table refers for interactions while '''Camille''' is dashing.
+{{ct|attack=false|cast=false|move=false|items=false|consume=false|spells=false|interrupts=death}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Wall Dive|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Camille
+|skill        = E
+|icon         = Wall Dive.png
+|blurb        = {{sbc|Active:}} {{ci|Camille}} {{tip|dashes}}, dealing {{as|physical damage}} to enemies near the landing location. Dash range is doubled towards enemy {{tip|champions}}.
+|blurb2       = Upon colliding with an enemy {{tip|champion}}, she {{tip|airborne|knocks back}} and {{tip|stun|stuns}} all nearby enemy champions, gaining {{sti|as|{{as|'''bonus''' attack speed}}}}.
+|pre-blurb    = Camille/Hookshot
+|description  = {{sbc|Active:}} '''Camille''' {{tip|dashes}} in the target direction, dealing {{as|physical damage}} to enemies near the landing location. ''Wall Dive's'' range is doubled towards enemy {{tip|champions}} within 1400 units. '''Camille''' grants {{tip|ghosted|ghosting}} to non-champions she passes through for 4 seconds. After dashing, '''Camillle''' gains {{sti|{{as|'''bonus''' attack speed}}}} for 5 seconds.
+|leveling     = {{st|Physical Damage|{{ap|60 to 180}} {{as|(+ 75% '''bonus''' AD)}}}}
+{{st|Bonus Attack Speed|{{ap|40 to 60}}%}}
+|description2 = '''Camille''' stops prematurely upon colliding with an enemy champion, {{tip|airborne|knocking back}} all nearby enemy champions, though not through terrain, as well as {{tip|stun|stunning}} them for {{fd|0.75}} seconds.
+|description3 = ''Wall Dive may be also cast with movement or attack commands. Other abilities besides {{ai|The Hextech Ultimatum|Camille}} can be cast while grappled or during the dash.''
+|cast time    = none
+|target range = {{dv|{{tt|400|Standard dash range}}|{{tt|800|Increased dash range towards champions}}}}
+|speed        = 1050 + {{as|100% movement speed}}
+|effect radius= 130
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = Physical
+|spellshield  = true
+|spelleffects = spellaoe
+|grounded     = special
+|knockdown    = true
+|terraingrace = true
+|notes        = 
+* ''Wall Dive'' count as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and triggering {{ais|Force Pulse|Kassadin}} passive.
+* Despite what one might assume from a wall-jumping ability, ''Wall Dive'' '''can''' be used to go through terrain (including the terrain she is bound to).
+* Casting {{si|Flash}} during ''Wall Dive's'' dash will interrupt it but '''Camille''' will affect enemies around the new location.
+* ''Wall Dive'' is disabled while {{tip|grounded}} or {{tip|root|rooted}}.
+** ''Wall Dive'' will not automatically cast from movement or attack commands in both cases. While grounded, however, '''Camille''' is able to move while bound. She may still dash away from her current location once the grounding finishes.
+* '''Camille''' will only gain a range indicator towards each valid champion within the extended dash range (800), but will still gain the extended dash range without the indicator against enemies within the 1400 range.
+** She does not have to {{tip|Sight|see}} any enemy champions to gain the range indicator or extended range.
+* {{tip|Displacement immunity}} will not resist the application of the {{tip|stun}}.
+* If {{ai|Tactical Sweep|Camille}} is cast during ''Wall Dive's'' dash on its opposite direction, the target wil be  knockback further and to a different direction.{{bug|1}}
+* The following table refers for interactions while '''Camille''' is bound to terrain:
+** When '''Camille''' is interrupted, she will automatically cast ''Wall Dive''. The only exception is if she was interrupted by casting {{si|Flash}} or {{si|Recall}}, in which case ''Wall Dive'' cancels.
+{{ct|attack=Initiates the dash towards attack target.|move=Initiates the dash towards the commanded location.|cast={{ai|Precision Protocol|Camille}} and {{ai|Tactical Sweep|Camille}} are usable. {{ai|The Hextech Ultimatum|Camille}} is disabled.|items=interrupts|consume=Interrupts|spells=false,interrupts,false,interrupts,false}}
+}}

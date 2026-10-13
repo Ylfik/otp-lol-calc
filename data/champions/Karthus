@@ -1,0 +1,127 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Death Defied|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Karthus
+|skill        = I
+|icon         = Death Defied.png
+|blurb        = {{sbc|Innate:}} Upon {{tip|death|dying}}, {{ci|Karthus}} enters an {{tip|untargetable}} {{tip|Zombie state|spirit form}} for a few seconds that allows him to continue casting spells at no cost but without being able to move.
+|blurb2       = If ''{{ai|Defile|Karthus}}'' has been learned, it will remain toggled on for ''Death Defied's'' entire duration.
+|description  = {{sbc|Innate:}} Upon taking {{tip|death|fatal damage}}, '''Karthus''' enters a '''{{tip|zombie state}}''' for 7 seconds, during which he can cast his abilities at no cost. If ''{{ai|Defile|Karthus}}'' has been learned, it will remain toggled on for ''Death Defied's'' entire duration. ''{{ai|Requiem|Karthus}}'' becomes disabled after 4 seconds of the duration have elapsed.
+|description2 = While under this state, '''Karthus''' becomes {{tip|untargetable}} and {{tip|cc-immune|immune to crowd control}} as well as prevents all incoming damage, but is also rendered unable to move, declare {{tip|basic attacks}}, use [[summoner spell]]s, and [[Active ability items|activate items]].
+|targeting    = Passive
+|affects = Self
+|notes = 
+* ''Death Defied's'' {{tip|untargetability}} does not {{tip|homing projectile destruction|destroy}} in-flight {{tip|projectiles}}.
+* '''Karthus''' cannot be {{tip|execute|executed}} by the {{bi|Aspect of the Dragon}} during ''Death Defied''.
+* At the start of ''Death Defied'', '''Karthus''' is set to {{sti|health|{{as|1 health}}}}.
+** '''Karthus''' can still regenerate his health over the duration, but he will always die at the end of it.
+* After ''Death Defied'' ends, the corpse of '''Karthus''' will retain [[unit collision]] despite being dead on the ground.
+* '''Karthus' ''' [[health bar|mana bar]] drains over the duration of ''Death Defied'' as an indicator of his time remaining in this state.
+{{Zombie state info}}
+|flavorsound  = {{sm2|Karthus_Original_Death_5.ogg}} ''"I am become death!"''
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Lay Waste|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Karthus
+|skill        = Q
+|icon         = Lay Waste.png
+|blurb        = {{sbc|Active:}} {{ci|Karthus}} conjures a delayed blast at the target location that deals {{as|magic damage}} to all enemies within, {{ccs|doubled|magic}} when only one target is struck.
+|description  = {{sbc|Active:}} '''Karthus''' conjures a blast at the target location that detonates after {{tt|{{rutngt|0.5}}{{minus}}{{rutngt|0.75}}|See notes}}, granting {{tip|sight}} of the area and dealing {{as|magic damage}} to all enemies within, {{ccs|doubled|magic}} when only one target is struck.
+|leveling     = {{st|Magic Damage|{{ap|40 to 116}} {{as|(+ 35% AP)}}}}
+{{st|Isolated Enhanced Damage|{{ap|40*2 to 116*2}} {{as|(+ {{ap|35*2}}% AP)}}}}
+|cooldown     = 1
+|cast time    = {{fd|0.25}}
+|cost         = {{ap|20 to 40}}
+|costtype     = Mana
+|target range = 875
+|effect radius= {{tip|cr|icononly = true}} 160
+|targeting    = Location
+|affects      = Enemies
+|damagetype   = Magic
+|spelleffects = Special
+|spellshield  = True
+|outofrange   = Walk in range of the target location to cast<br><br>During ''{{ai|Death Defied|Karthus}}'', target at maximum range (clamped)
+|notes  = 
+{{always quickcast}}
+* The delay between the cast and the detonation is inconsistent, but always matches up with the VFX.{{bug}}
+** {{ais|Defile|Karthus}} ticks beyond the first has a similar issue.
+* Applies {{tip|spell damage}} if it hits a single target and {{tip|area damage}} if it hits multiple targets.
+** ''Lay Waste'' also plays a different sound effect when it only hits one target.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Wall of Pain|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Karthus
+|skill        = W
+|icon         = Wall of Pain.png
+|blurb        = {{sbc|Active:}} {{ci|Karthus}} erects a wall of pain at the target location that lasts a few seconds, enemies that touch it suffer reduced {{sti|magic penetration|{{as|magic resistance}}}} and become {{tip|slow|slowed}} for a few seconds.
+|description  = {{sbc|Active:}} '''Karthus''' erects a wall of pain at the target location perpendicular to his facing that lasts 5 seconds, granting {{tip|sight}} around its pillars and center.
+|leveling     = {{st|Wall Length|{{ap|800 to 1200}} units}}
+|description2 = Enemies that touch the wall are inflicted with {{sti|magic penetration|{{as|25% magic resistance reduction}}}} and become {{tip|slow|slowed}} for 5 seconds, decaying over the duration. This can affect enemies only once per cast.
+|leveling2    = {{st|Slow|{{ap|40 to 80}}%|Reduced Slow|{{ap|40/2 to 80/2}}%}}
+|cast time    = {{fd|0.25}}
+|cooldown     = 15
+|cost         = 70
+|costtype     = Mana
+|target range = 1000
+|targeting    = Location
+|affects      = Enemies
+|spelleffects = 
+|spellshield  = False
+|outofrange   = walk to location
+|notes        = 
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Defile|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Karthus
+|skill        = E
+|icon         = false
+|blurb        = {{sbc|Passive:}} {{ci|Karthus}} restores {{sti|{{as|mana}}}} whenever he kills an enemy.
+|blurb2       = {{sbc|Toggle:}} '''Karthus''' surrounds himself in a necrotic [[aura]] that continually deals {{as|magic damage}} to all nearby enemies, quickly draining his own {{sti|mana}}.
+|description  = {{sbc|Passive:}} '''Karthus''' restores {{sti|{{as|mana}}}} whenever he kills an enemy.
+|leveling     = {{st|Mana Restored|{{as|{{ap|10 to 50}}|mana}}}}
+|icon2        = Defile.png
+|description2 = {{sbc|Toggle:}} '''Karthus''' surrounds himself in a necrotic [[aura]] that deals {{as|magic damage}} every {{fd|0.25}} seconds to all nearby enemies.
+|leveling2    = {{st|Magic Damage Per Tick|{{ap|30/4 to 110/4}} {{as|(+ 5% AP)}}|Damage Per Second|{{ap|30 to 110}} {{as|(+ 20% AP)}}}}
+|description3 = Toggling ''Defile'' off triggers a final tick of damage. ''Defile'' is toggled off automatically if '''Karthus''' becomes unable to pay its {{sti|{{as|mana}}}} cost.
+|description4 = ''Defile cannot be toggled off during {{ai|Death Defied|Karthus}}.''
+|effect radius= {{tip|cr|icononly = true}} 550
+|cost         = {{ap|30 to 78}}
+|costtype     = Mana per second
+|static = {{fd|0.5}}
+|cast time = none
+|targeting    = Auto
+|affects = Self, Enemies
+|damagetype   = Magic
+|spelleffects = aoedot
+|spellshield  = False
+|notes = 
+* Toggled abilities do not count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and triggering {{ais|Force Pulse|Kassadin}} passive.
+* ''Defile'' will restore {{tip|mana}} if '''Karthus''' destroys an enemy structure.
+* ''Defile'' re-calculates its damage with each tick based on changes in '''Karthus's''' {{as|ability power}} or an increase in the rank of ''Defile'' without the need to toggle it off and on again.
+* ''Defile'' will toggle off automatically if '''Karthus''' enters {{tip|resurrection}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Requiem|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Karthus
+|skill        = R
+|icon         = Requiem.png
+|blurb        = {{sbc|Active:}} {{ci|Karthus}} {{tip|channel|channels}} for a short time, then deals {{as|magic damage}} to all targetable enemy champions upon completion.
+|description  = {{sbc|Active:}} '''Karthus''' {{tip|channel|channels}} for 3 seconds, then deals {{as|magic damage}} to all targetable enemy champions upon completion.
+|leveling     = {{st|Magic Damage|{{ap|200 to 500}} {{as|(+ 70% AP)}}}}
+|cooldown     = {{ap|200 to 160}}
+|cdstart      = on-cast
+|cost         = 100
+|cast time = {{fd|0.25}}
+|costtype     = Mana
+|effect radius= Global
+|targeting    = Auto
+|affects = Enemies
+|damagetype   = Magic
+|spelleffects = Aoe
+|spellshield  = True
+|outofrange   = False
+|targetwarning= Auto warning
+|silence      = true
+|notes  = 
+* ''Requiem's'' channel is telegraphed to all enemy champions by a beam of light that descends on all targets, including if they are {{tip|untargetable}} or even {{tip|death|dead}}.
+* ''Requiem'' will affect {{tip|clone|clones}}.
+* The damage will apply [[spell effects]] to targets in order of being spawned. Single target spell effects (such as {{ii|Luden's Echo}}) are thus triggered on the leftmost champion on the loading screen.
+* ''Requiem'' will not affect {{ci|Neeko}} if she's {{ai|I|Neeko|disguised}} as a non-champion if '''Karthus''' is affected by {{ai|Death Defied|Karthus}}.{{bug}}
+* The following table refers for interactions while '''Karthus''' is {{tip|channel|channeling}}:
+{{ct|channel|attack=false|cast=false|items=false,true|move=false|spells=true,interrupts,false,false,false}}
+|flavorsound  = {{sm2|Karthus_Original_R_3.ogg}} ''"Die!"''
+}}

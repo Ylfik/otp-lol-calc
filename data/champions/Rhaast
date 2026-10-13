@@ -1,0 +1,9 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|The Darkin Scythe|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Rhaast
+|skill        = I
+|icon         = The Darkin Scythe R.png
+|description  = {{sbc|Innate:}} '''Rhaast''' {{tip|heals}} for {{pp|key=%|30 to 40}} of the {{tt|post-mitigation|Damage calculated after modifiers}} {{tip|physical damage|{{as|physical damage}}}} that he deals to enemy champions with his [[champion ability|abilities]].
+|targeting    = Passive
+|affects      = Self
+|notes        = 
+}}

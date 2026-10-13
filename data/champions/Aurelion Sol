@@ -1,0 +1,366 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Cosmic Creator|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Aurelion Sol
+|skill        = I
+|icon         = Cosmic Creator.png
+|description  = {{sbc|Innate:}} '''Aurelion Sol's''' damaging [[champion ability|abilities]] against enemies generate him permanent stacks of {{as|Stardust}}, which gradually augments his abilities.
+* ''{{ai|Breath of Light|Aurelion Sol}}'': Bursts deal {{as|'''bonus''' magic damage}} based on the {{as|target's '''maximum''' health}}.
+* ''{{ai|Astral Flight|Aurelion Sol}}'': Range is increased by {{as|{{fd|7.5}} units per Stardust}}.
+* ''{{ai|Singularity|Aurelion Sol}}'': Outer and inner radius increased equal to {{as|15% Stardust}}, and the execution threshold is increased.
+* ''{{ai|Falling Star|Aurelion Sol}} / {{ai|The Skies Descend|Aurelion Sol}}'': Impact radius increased equal to {{as|15% Stardust}}.
+|targeting    = Passive
+|affects      = Self
+|notes        = 
+* {{ais|Singularity|Aurelion Sol}} relative size and ratio stays the same when affected by ''Cosmic Creator's'' size modifier.
+<!-- Blurb -->
+|blurbicon    = Cosmic Creator.png
+|blurb        = {{sbc|Innate:}} {{cis|Aurelion Sol}} damaging abilities against enemies generate him permanent stacks of {{as|Stardust}}, which gradually augments his abilities.
+* ''{{ais|Breath of Light|Aurelion Sol}}'' bursts deal {{as|'''bonus''' magic damage}} based on the {{as|target's '''maximum''' health}}.
+* ''{{ais|Astral Flight|Aurelion Sol}}'' distance is increased.
+* ''{{ais|Singularity|Aurelion Sol}}'' area and execute threshold are increased.
+* ''{{ai|Falling Star|Aurelion Sol}}''/''{{ai|The Skies Descend|Aurelion Sol}}'' has increased impact area.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Breath of Light|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Aurelion Sol
+|skill        = Q
+|icon         = Breath of Light.png
+|description  = {{sbc|Active:}} '''Aurelion Sol''' {{tip|channel|charges}} for up to {{fd|3.25}} seconds to exhale a beam of starfire, during which he can steer the beam in the target direction. The beam collides with the first enemy hit to burn them, {{tip|standard sight|revealing}} them and dealing {{as|magic damage}} to them and surrounding enemies every {{fd|0.125}} seconds. Secondary targets are dealt 50% damage.
+|leveling     = {{st|Magic Damage per Tick|{{ap|45/8 to 105/8}} {{as|(+ {{ap|55/8}}% AP)}}|Magic Damage per Second|{{ap|45 to 105}} {{as|(+ 55% AP)}}|{{tt|Total Maximum Magic Damage|Ranks 1-4}}|{{ap|(45/8)*26 to ((45+(105-45)*(3/4))/8)*26 4}} {{as|(+ {{ap|(55/8)*26}}% AP)}}}}
+{{st|Secondary Target Damage per Tick|{{ap|(45/8)*0.5 to (105/8)*0.5}} {{as|(+ {{ap|(55/8)*0.5}}% AP)}}|Secondary Magic Damage per Second|{{ap|45*0.5 to 105*0.5}} {{as|(+ {{ap|55*0.5}}% AP)}}|{{tt|Secondary Target Total Maximum Damage|Ranks 1-4}}|{{ap|(45/8)*26*0.5 to ((45+(105-45)*(3/4))/8)*26*0.5 4}} {{as|(+ {{ap|(55/8)*26*0.5}}% AP)}}}}
+|description2 = Against the primary target, the beam will deal a burst of {{ccs|{{as|'''bonus''' magic damage}}|magic}} for each full second that it burns them, and additionally generates {{as|2 Stardust}} if they are a {{tip|champion}}. The damage based on the target's health ratio is capped at 300 against {{tip|monsters}}.
+|leveling2    = {{st|Bonus Magic Damage|{{ap|60 to 100}} {{as|(+ 30% AP)}} {{ai|Cosmic Creator|Aurelion Sol|{{as|(+|hp}} {{as|({{fd|3.1}}% Stardust)}}{{as|%|hp}} {{as|of target's '''maximum''' health)}}|hp}}}}
+|description3 = ''Breath of Light'' can be recast within the duration, and does so automatically afterwards.
+|description4 = {{sbc|Recast:}} '''Aurelion Sol''' ends ''Breath of Light'' early.
+|description5 = At rank 5, ''Breath of Light's'' channel duration is increased to 160 seconds.
+|description6 = ''If the channel is cancelled within the first {{fd|0.25}} seconds, Breath of Light is placed on a 1-second {{tip|lockout}} but does not go on cooldown.''
+|cooldown     = 3
+|cdstart      = post-effect
+|customlabel  = Turn rate
+|custominfo   = 180{{degree}}/s
+|cost         = {{ap|30 to 50}}
+|costtype     = Mana {{tt|(+ {{ap|30*0.25 to 50*0.25}} Mana per {{fd|0.25}} seconds)|Cost for mana per 0.25 seconds starts being paid after 1.25 seconds into the channel.}}
+|range        = {{pp|750 to 920}}
+|effect radius= <!--{{tt|X|Secondary target damaging radius around primary target}}-->
+|width        = 
+|angle        = 
+|cast time    = none
+|queue time   = {{fd|0.25}}
+|targeting    = Direction
+|affects      = Self, Enemies
+|damagetype   = Magic
+|spellshield  = special
+|spelleffects = special
+|projectile   = false
+|silence      = true
+|callforhelp  = special
+|notes        = 
+{{always quickcast}}
+* Applies {{tip|persistent damage}} on the burst and {{tip|persistent area damage}} on the beam.
+* ''Breath of Light's'' total mana cost after channeling it for its maximum duration is {{ap|30*3|35*3|40*3|45*3|50*158+50*0.75}}.
+* ''Breath of Light's'' bursts against an enemy champion will aggro nearby enemy minions.
+* ''Breath of Light's'' burn places a timer on the primary target, which ticks in {{fd|0.2}} second intervals. Thus, at{{ft|5 completed intervals,|1 full second,}}the burst damage is triggered.
+** The timer's visuals themselves otherwise serve no other purpose than gameplay clarity.
+** The timer is placed on the initial primary target and any new primary targets that are acquired during the channel.
+*** It falls off and resets to zero if a target is not hit within 1 second of no longer being afflicted by the burn.
+* {{tip|Spell shield}} will only block the burst damage.
+* The following table refers to interactions while '''Aurelion Sol''' is {{tip|channel|channeling}}:
+{{ct|channel|attack=interrupts|cast=interrupts|move=interrupts|items=interrupts,true,,false|spells=true,interrupts,false,interrupts,interrupts}}
+<!-- Blurb -->
+|blurbicon    = Breath of Light.png
+|blurb        = {{sbc|Active:}} {{ci|Aurelion Sol}} {{tip|channel|charges}} up to a short time, exhaling a beam in the target direction that continuously deals {{as|magic damage}} to the first enemy hit and reduced damage to other enemies. {{ci|Aurelion Sol}} can steer the beam in any direction.
+|blurb2       = The beam will deal a burst of {{ccs|{{as|'''bonus''' magic damage}}|magic}} for each full second that it damages the same enemy, and generates {{as|Stardust}} if the target is a {{tip|champion}}.
+|blurb4       = At max rank, ''Breath of Light's'' channel duration may last indefinitely.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Astral Flight|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Aurelion Sol
+|skill        = W
+|icon         = Astral Flight.png
+|description  = {{sbc|Active:}} '''Aurelion Sol''' {{tip|dash|dashes}} in the target direction and resets ''{{ais|Breath of Light|Aurelion Sol}}'' {{sti|cooldown}}. During flight, he has {{tip|unobstructed vision}} and ''{{ai|Breath of Light|Aurelion Sol}}'' has no cooldown and maximum channel duration and its non-burst flat damage is increased, but ''Astral Flight's'' dash speed is reduced by 50% during its channel.
+|leveling     = {{st|{{ai|Breath of Light|Aurelion Sol}} Flat Damage Modifier|{{ap|108 to 112}}%}}
+|description2 = '''''Aurelion Sol''' will be {{tip|knockdown|knocked down}} by any {{tip|immobilize|immobilizing}} crowd control during the dash.''
+|description3 = ''Astral Flight'' can be recast after {{fd|0.5}} seconds during the dash, and does so automatically upon arrival.
+|icon4        = Astral Flight 2.png
+|description4 = {{sbc|Recast:}} '''Aurelion Sol''' ends ''Astral Flight''.
+|description5 = Scoring a champion {{tip|takedown}} within 3 seconds of damaging them reduces ''Astral Flight's'' {{sti|'''current''' cooldown}} by 90% of its '''total''' cooldown.
+|description6 = '''''Aurelion Sol''' will not dash after the cast time if he was {{tip|immobilize|immobilized}} or {{tip|ground|grounded}} during it. He can cast any of his abilities during the dash. {{ais|Breath of Light|Aurelion Sol}} channel will be interrupted if Astral Flight ends or {{ai|Singularity|Aurelion Sol}} or {{ai|Falling Star|Aurelion Sol}} / {{ai|The Skies Descend|Aurelion Sol}} is cast during the flight, but the ability will automatically be cast afterwards.''
+|cooldown     = {{ap|22 to 14}}
+|cdstart      = post-effect
+|cost         = {{ap|50 to 70}}
+|costtype     = Mana
+|target range = 1500 (+ {{fd|7.5}}{{times}}{{as|Stardust}})
+|speed        = {{dv|{{tt|{{ccd|Aurelion Sol|ms}} + {{as|100% movement speed}}|Dash speed}}|{{tt|{{ap|{{ccd|Aurelion Sol|ms}}*0.5}} + {{as|{{ap|100*0.5}}% movement speed}}|Dash speed while channeling Breath of Light}}}}
+|cast time    = {{dv|{{tt|{{fd|0.4}}|Initial cast  (0.375, rounded to the next game tick)}}|{{tt|None|Recast}}}}
+|queue time   = {{dv|{{tt|{{fd|0.35}}|Initial cast}}|{{tt|{{fd|0.35}}|Recast}}}}
+|targeting    = Direction
+|affects      = Self
+|grounded     = true
+|knockdown    = true
+|notes        = 
+* If a {{tip|takedown}} is scored while ''Astral Flight'' is active, the cooldown will be reduced after it ends.
+* ''Astral Flight'' cannot be used in the first 15 seconds of the game.
+* The following table refers for interactions while '''Aurelion Sol''' is {{tip|dash|dashing}}:
+{{ct|attack=interrupts|move=interrupts|cast=true|items=true,,interrupts,interrupts|consume=true|spells=true,interrupts,false,false,true|interrupts=death,root}}
+<!-- Blurb -->
+|blurbicon    = Astral Flight.png
+|blurb        = {{sbc|Active:}} {{ci|Aurelion Sol}} {{tip|dash|flies}} in the target direction. During flight, he can cast any of his abilities, and ''{{ai|Breath of Light|Aurelion Sol}}'' has no {{sti|cooldown}}, no maximum channel duration, and its flat damage is increased. {{ci|Aurelion Sol}} flies at a reduced speed while channeling ''{{ai|Breath of Light|Aurelion Sol}}''.
+|blurb2       = ''Astral Flight'' can be recast during flight, and does so automatically upon arrival.
+|blurb3       = {{sbc|Recast:}} {{ci|Aurelion Sol}} ends ''Astral Flight''.
+|blurb4       = Scoring a champion {{tip|takedown}} within 3 seconds of damaging them refunds a large portion of ''Astral Flight's'' {{sti|cooldown}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Singularity|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Aurelion Sol
+|skill        = E
+|icon         = Singularity.png
+|description  = {{sbc|Active:}} '''Aurelion Sol''' conjures a black hole at the target location after a {{tt|{{fd|0.5}}-second delay|From start of cast time}} that lasts for 5 seconds, granting {{tip|sight}} of the area and dealing {{as|magic damage}} every {{fd|0.25}} seconds to enemies within.
+|leveling     = {{st|Magic Damage per Tick|{{ap|2.5 to 7.5}} {{as|(+ 3% AP)}}|Total Magic Damage|{{ap|2.5*20 to 7.5*20}} {{as|(+ {{ap|3*20}}% AP)}}}}
+|description2 = Enemies in the black hole are {{tip|kinematics|dragged}} inward until they reach the center, and {{tip|minions}} and {{tip|monsters}} also have their {{as|movement speed}} '''reduced''' to a {{as|static 0|ms}}. Enemies within the center are {{tip|execute|executed}} below {{as|5%|hp}} {{as|(+ {{fd|2.6}}% per 100 Stardust)}} {{as|of their '''maximum''' health}}, excluding epic monsters. 
+|description3 = After ''Singularity'' ends, it generates {{as|1 Stardust}} for each full second that enemy champions were inside it, as well as varying amounts for enemy units that were killed while being within the area:
+* Champions and epic monsters grant {{as|2 Stardust}}.
+* Large minions and monsters grant {{as|2 Stardust}}.
+* Small minions and monsters grant {{as|1 Stardust}}.
+|cooldown     = 12
+|cdstart      = post-effect
+|cost         = 90
+|costtype     = Mana
+|target range = {{pplevel|750 to 920}}
+|effect radius= {{tip|er|icononly=true}} √({{tt|275|Radius at 0 Stardust}}² + {{fd|16.93}}² {{times}} {{as|Stardust}})
+|inner radius = {{tip|er|icononly=true}} √({{tt|{{fd|137.5}}|Radius at 0 Stardust}}² + {{fd|8.46}}² {{times}} {{as|Stardust}})
+|cast time    = {{fd|0.2}}
+|queue time   = {{fd|0.35}}
+|targeting    = Location
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = special
+|spelleffects = aoedot
+|callforhelp  = special
+|outofrange   = Target at maximum range (clamped) if cast within 200 units beyond it or during ''{{ai|Astral Flight|Aurelion Sol}}''. Otherwise, walk in range of the target location to cast.
+|notes        = 
+* {{tip|Clones}} are counted as champions for all of this ability's effects and grant stacks of {{as|Stardust}} if they are killed in the area.
+* The damage area hits targets by their {{tip|edge range|edge}}, while the {{tip|kinematics}} area hits targets by their {{tip|centered range|center}}. This makes a slight fringe where targets may be damaged without displacing them.
+* {{tip|Spell shield}} will block a single instance of damage.
+* ''Singularity's'' execute against an enemy champion will aggro nearby enemy minions.
+<!-- Blurb -->
+|blurbicon    = Singularity.png
+|blurb        = {{sbc|Active:}} {{ci|Aurelion Sol}} conjures a black hole at the target location for a few seconds that continually deals {{as|magic damage}} to enemies within. Enemies in the black hole are {{tip|kinematics|dragged}} toward the center. Enemies within the center are {{tip|execute|executed}} {{as|at low health}}.
+|blurb2       = After ''Singularity'' ends, it generates {{as|Stardust}} for each full second that enemy champions were inside, as well as for each enemy {{tip|takedown}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Falling Star|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Aurelion Sol
+|skill        = R
+|icon         = Falling Star.png
+|description  = {{sbc|Active:}} '''Aurelion Sol''' calls down a star that strikes the target location after {{fd|1.25}} seconds, dealing {{as|magic damage}} to enemies hit and {{tip|stun|stunning}} them for 1 second. This generates {{as|5 Stardust}} for each enemy {{tip|champion}} hit.
+|leveling     = {{st|Magic Damage|{{ap|150 to 350}} {{as|(+ 75% AP)}}}}
+|description2 = Once ''Falling Star'' has been learned, gathering {{as|75 Stardust}} causes the next cast of ''Falling Star'' to transform into ''{{ai|The Skies Descend|Aurelion Sol}}'', empowering the impact with new effects.
+|cooldown     = {{ap|120 to 100}}
+|cost         = 100
+|costtype     = Mana
+|target range = 1250
+|effect radius= {{tip|er|icononly=true}} √({{tt|275|Radius at 0 Stardust}}² + {{fd|16.93}}² {{times}} {{as|Stardust}})
+|cast time    = none
+|queue time   = {{fd|0.35}}
+|targeting    = Location
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = true
+|spelleffects = spellaoe
+|projectile   = false
+|callforhelp  = true
+|outofrange   = Target at maximum range (clamped) if cast within 200 units beyond it or during ''{{ai|Astral Flight|Aurelion Sol}}''. Otherwise, walk in range of the target location to cast.
+|notes        = 
+* '''Aurelion Sol''' will transform ''Falling Star'' into ''{{ai|The Skies Descend|Aurelion Sol}}'' each time he gathers {{as|75 Stardust}} from the last time he used the empowered cast, or once he has gathered that amount after learning the ability.
+* {{as|Stardust}} required for transformation is denoted by a progress bar over ''Falling Star'' in the HUD.
+<!-- Blurb -->
+|blurbicon    = Falling Star.png
+|blurb        = {{sbc|Active:}} {{ci|Aurelion Sol}} calls down a star that strikes the target location, dealing {{as|magic damage}} and briefly {{tip|stun|stunning}} enemies hit. This generates {{as|Stardust}} for each enemy champion hit.
+|blurb2       = After gathering enough {{as|Stardust}}, the next cast of ''Falling Star'' transforms into ''{{ai|The Skies Descend|Aurelion Sol}}'', empowering the impact with new effects.
+|post-blurb = Aurelion Sol/The Skies Descend
+|flavorsound = {{sm2|Aurelion_Sol_Original_SFX_R_Announcement_ready_buffactivate_self.ogg}} {{tt|''Transformation alert.''|This sound effect plays when Falling Star has been upgraded to The Skies Descend.}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Celestial Expansion|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Aurelion Sol
+|skill        = W
+|icon         = false
+|blurb        = {{sbc|Passive:}} ''{{ais|Center of the Universe|Aurelion Sol}}'' '''base''' damage is increased.
+|blurb2       = {{sbc|Active:}} {{ci|Aurelion Sol}} temporarily pushes his {{ai|Center of the Universe|Aurelion Sol|stars}} to the {{as|Outer Limit|buzzword}}, increasing their damage and speed.<br/><br/>
+''Celestial Expansion'' can be recast within the duration, and does so automatically after the duration.
+|blurb3       = {{sbc|Recast:}} '''Aurelion Sol''' retracts the stars and gains a burst of {{sti|{{as|movement speed}}}}.
+|description  = {{sbc|Passive:}} {{ais|Center of the Universe|Aurelion Sol|}} '''base''' damage is increased.
+|leveling     = {{st|Bonus Damage|{{ap|5 to 25}}}}
+|icon2        = Celestial Expansion.png
+|description2 = {{sbc|Active:}} '''Aurelion Sol''' expands his ''{{ai|Center of the Universe|Aurelion Sol|Stars}}'' to the {{as|Outer Limit|buzzword}} for 3 seconds, rotating them at a high but decaying speed, and increasing their '''total''' damage by 40%.
+|description3 = ''Celestial Expansion'' can be recast after 1 second within the duration, and does so automatically after the duration or casting ''{{ai|Comet of Legend|Aurelion Sol}}''.
+|leveling2    = {{st|Total Damage|{{pp|(10+2*x)*1.4 for 5; then + 3*1.4*x for 2; then + 6*1.4*x for 4; then + 10*1.4*x}} (+ {{ap|5*1.4 to 25*1.4}}) {{as|(+ {{ap|25*1.4}}% AP)}}}}
+|icon4        = Celestial Expansion 2.png
+|description4 = {{sbc|Recast:}} '''Aurelion Sol''' commands the stars to retract, granting him {{as|40% '''bonus''' movement speed}} that decays over {{fd|1.5}} seconds.
+|cooldown     = {{tt|{{ap|8 to 2}}|Starts post-effect}}
+|description5 = ''Celestial Expansion's recast can be used while affected by {{tip|cast-inhibiting crowd control}}.''
+|cost         = {{ap|70 to 110}}
+|costtype     = Mana
+|range        = 
+|cast time    = none
+|targeting    = Auto
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = aoe
+|projectile   = False
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* The initial cast counts as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and triggering {{ais|Force Pulse|Kassadin}} passive.
+** Deactivating the ability manually does not.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Center of the Universe|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Aurelion Sol
+|skill        = I
+|icon         = Center of the Universe.png
+|blurb        = {{sbc|Innate:}} 3 stars constantly orbit {{ci|Aurelion Sol}} that deal {{as|magic damage}} to enemies hit.
+|blurb2       = Beyond this orbit exists an {{as|Outer Limit|buzzword}} affecting his other abilities.
+|description  = {{sbc|Innate:}} '''Aurelion Sol''' is constantly orbited by three ''Stars'', each doing a full circumference in {{fd|5.25}} seconds, and beyond them exists an {{as|Outer Limit|buzzword}} affecting his damaging [[Champion ability|abilities]].
+|description2 = Each ''Star'' deals {{as|{{pp|10+2*x for 5; then + 3*x for 2; then + 6*x for 4; then + 10*x|formula=10 + 2 per level until lvl 5, then + 3 until lvl 7, then + 6 per level until lvl 11, then + 10 per level}}|magic damage}} {{as|(+ {{pp|type = [[File:Celestial Expansion.png|20px|border|link=]] ''Celestial Expansion's'' Rank|5 to 25 for 5}}|magic damage}} {{as|(+ 25% AP)}} {{as|magic damage}} to enemies that come into contact with them as well as executes enemy {{tip|minions}} that have less than {{sti|health|{{as|25 health}}}}, including if they are brought to or below that threshold.
+|effect radius= 325
+|cooldown     = {{tt|1|The time within which the same star cannot damage the same target twice.}}
+|customlabel  = {{as|Outer Limit|buzzword}}
+|custominfo   = 650
+|targeting    = Passive
+|affects      = Self / Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = aoe
+|projectile   = False
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* The ''Stars'' orbit counterclockwise around '''Aurelion Sol'''.
+* '''Aurelion Sol's''' ''Stars'' have independent {{tip|sight|vision}} hitboxes, meaning that they may remain visible even while he is within a {{tip|brush}}, and must be in the brush themselves in order to be hidden.
+* An individual ''Star'' must complete at least one third of its orbit before it can damage the same target again. 
+* In the event that an enemy orbits around '''Aurelion Sol''' at the same rate as his ''Stars'' without leaving their hitbox, they will take damage once every third of the way around.
+| flavorsound = {{sm2|Aurelion_Sol_Original_KillREmpowered_0.ogg}} ''"Boop."''
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Comet of Legend|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Aurelion Sol
+|skill        = E
+|blurb        = {{sbc|Active:}} {{ci|Aurelion Sol}} pulls in his {{ai|Center of the Universe|Aurelion Sol|Stars}} and takes flight, {{tip|dash|dashing}} in the target direction. While flying, he can see and be seen over walls.
+|blurb2       = ''Comet of Legend'' can be recast during flight, and automatically does so at maximum range or upon taking damage from enemy {{tip|champions}} or {{tip|turrets}}.
+|blurb3       = {{sbc|Recast:}} '''Aurelion Sol''' ends the flight.
+|icon         = Comet of Legend.png
+|description  = {{sbc|Active:}} '''Aurelion Sol''' pulls in his ''{{ai|Center of the Universe|Aurelion Sol|Stars}}'' and takes flight, {{tip|dash|dashing}} in the target direction. While in flight, he has {{tip|unobstructed vision}} and sets his {{as|movement speed}} to a {{tt|static amount|Cannot be modified}}.
+|leveling     = {{st|Static Movement Speed|{{ap|600 to 800}}}}
+|description2 =  '''''Aurelion Sol''' will be {{tip|knockdown|knocked down}} by any {{tip|immobilize|immobilizing}} crowd control during the dash.''
+|description3 = ''Comet of Legend'' can be recast after {{fd|1.5}} seconds during flight, and automatically does so at maximum range or upon taking damage from enemy {{tip|champions}} or {{tip|turrets}}.
+|icon4        = Comet of Legend 2.png
+|description4 = {{sbc|Recast:}} '''Aurelion Sol''' ends ''Comet of Legend'' early.
+|description5 =  Taking champion or turret damage while ''Comet of Legend'' is not active places it on a {{sti|cooldown|4-second {{tt|static cooldown|Unaffected by ability haste}}}}. '''Aurelion Sol''' will be {{tip|sight|revealed}} while he is inside [[terrain]] and is in the line of sight of nearby enemies.
+|description6 = ''{{ai|Starsurge|Aurelion Sol}} can be used during the dash.''
+|cooldown     = {{tt|{{ap|80 to 60}}|Starts post-effect}}
+|cost         = 60
+|costtype     = Mana
+|cast time    = none
+|range        = {{ap|5500 to 7500}}
+|speed        = {{ap|600 to 800}}
+|targeting    = [[Direction-targeted|Direction]] / [[Auto-targeted|Auto]]
+|affects      = Self
+|spellshield  = 
+|projectile   = 
+|grounded     = True
+|knockdown    = True
+|notes        = 
+[[File:Comet_of_Legend_max_range_indicator.png|150px|thumb|right|Max range indicator]]
+* The spot at which the flight will reach maximum range is highlighted to '''Aurelion Sol'''.
+* The following table refers to interactions during ''Comet of Legend'':
+{{ct|attack=Disabled for the first {{fd|1.5}} seconds, interrupts afterwards.|move=Disabled for the first {{fd|1.5}} seconds, interrupts afterwards.|cast={{ai|Starsurge|Aurelion Sol}} is usable. {{ai|Celestial Expansion|Aurelion Sol}} and {{ai|Voice of Light|Aurelion Sol}} are disabled.|items=true,,interrupts,interrupts,interrupts,,interrupts,interrupts|spells=true, interrupts, interrupts, interrupts, false, true, interrupts|interrupts=death, root|damage=true}}
+|flavorsound  = {{sm2|Aurelion_Sol_Original_MoveFirst_4.ogg}} ''"They call me a comet. They call me a dragon. They have no words for my true form."''
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Starsurge|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Aurelion Sol
+|skill        = Q
+|icon         = Starsurge.png
+|blurb        = {{sbc|Active:}} {{ci|Aurelion Sol}} fires a star in the target direction that expands as long as it remains within the {{as|Outer Limit|buzzword}}, which grants him {{sti|ms|{{as|'''bonus''' movement speed}}}} while active.
+|blurb2       = ''Starsurge'' can be recast while the star is in flight, and does so automatically when the star travels beyond the {{as|Outer Limit|buzzword}}.
+|blurb3       = {{sbc|Recast:}} The star explodes to deal {{as|magic damage}} and {{tip|stun}} nearby enemies. The stun duration increases the longer the star has traveled.
+|description  = {{sbc|Active:}} '''Aurelion Sol''' fires a star in the target direction that expands as long as it remains within the {{as|Outer Limit|buzzword}}, granting him {{sti|ms|{{as|20% '''bonus''' movement speed}}}} while active. If he moves faster than the star, the speed of the star will increase to stay within the {{as|Outer Limit|buzzword}}.
+|description2 = ''Starsurge'' can be recast after {{fd|0.25}} seconds while the star is active, and does so automatically when the star travels beyond the {{as|Outer Limit|buzzword}}.
+|icon3        = Starsurge 2.png
+|description3 = {{sbc|Recast:}} '''Aurelion Sol''' detonates the star, dealing {{as|magic damage}} to nearby enemies and {{tip|stun|stunning}} them for a duration, which is increased by {{pp|key=%|type=time traveled|0;25;50;75;100 to 300 for 9|0;0.1875;0.375;0.5625;0.75 to 5}}.
+|leveling3    = {{st|Magic Damage|{{ap|70 to 230}} {{as|(+ 65% AP)}}}}{{st|Minimum Stun Duration|{{ap|0.55 to 0.75}}|Maximum Stun Duration|{{ap|2.2 to 3}}}}
+|cooldown     = {{tt|{{ap|12 to 8}}|Starts post-effect}}
+|cost         = {{ap|60 to 100}}
+|cast time    = none
+|costtype     = Mana
+|effect radius = 75 - {{tt|∞|Infinity}}
+|speed        = {{pp|type=duration|850 to 650 for 5;600|0 to 0.6;0.75+}}
+|targeting    = [[Direction-targeted|Direction]] / [[Auto-targeted|Auto]]
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spellaoe
+|projectile   = True
+|grounded     = 
+|knockdown    = 
+|notes        = 
+*The initial cast count as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and triggering {{ais|Force Pulse|Kassadin}} passive.
+**Detonating the ability manually does not.
+* So long as '''Aurelion Sol''' manages to keep ''Starsurge'' within the {{as|Outer Limit|buzzword}}, it will continue to expand until detonated or out of range.
+* ''Starsurge's'' size grows by {{fd|36.67}} units per second.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|The Skies Descend|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Aurelion Sol
+|skill        = R
+|icon         = The Skies Descend.png
+|description  = {{sbc|Active:}} '''Aurelion Sol''' calls down a giant star that strikes the target location after 2 seconds, dealing {{ccs|25% increased damage|magic}} in a larger area and {{tip|airborne|knocking up}} enemies hit for 1 second.
+|leveling     = {{st|Empowered Magic Damage|{{ap|150*1.25 to 350*1.25}} {{as|(+ {{ap|75*1.25}}% AP)}}}}
+|icon2        = The Skies Descend Minimap.png
+|description2 = Additionally, the impact sends a massive shockwave that rapidly expands from the area over 3 seconds, dealing {{ccs|{{as|magic damage}}|magic}} to enemy champions and epic {{tip|monsters}} hit, {{tip|slow|slowing}} all enemies hit by 50% for 1 second, and {{tip|standard sight|revealing}} them for {{fd|1.5}} seconds.
+|leveling2    = {{st|Magic Damage|{{ap|150*0.9 to 350*0.9}} {{as|(+ {{ap|75*0.9}}% AP)}}}}
+|description3 = ''Enemies hit by the star are immune to the shockwave.''
+|inner radius = <!--{{tip|cr|icononly=true}} -->√({{tt|{{fd|388.91}}|Radius at 0 Stardust}}² + {{fd|21.85}}² {{times}} {{as|Stardust}})
+|effect radius= {{tt|5000|Shockwave radius, pending for test}}
+|cast time    = 
+|queue time   = {{fd|0.35}}
+|targeting    = Location
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = true
+|spelleffects = spellaoe
+|projectile   = false
+|outofrange   = Target at maximum range (clamped) if cast within 200 units beyond it or during ''{{ai|Astral Flight|Aurelion Sol}}''. Otherwise, walk in range of the target location to cast.
+|notes        = 
+* The shockwave radius and path are globally visible on the minimap.
+* The shockwave's radius is fixed.
+** The shockwave is not blocked.
+<!-- Blurb -->
+|blurbicon    = The Skies Descend.png
+|blurb        = {{sbc|Active:}} {{ci|Aurelion Sol}} calls down a giant star that strikes the target location, dealing {{as|{{ccs|increased magic damage|magic}}}} in a larger area and briefly  {{tip|airborne|knocking up}} enemies hit.
+|blurb2       = This sends a massive shockwave that rapidly expands outward, briefly {{tip|slow|slowing}} all enemies hit, and dealing {{as|magic damage}} to enemy champions and epic {{tip|monsters}}.
+|pre-blurb = Aurelion Sol/Falling Star
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Voice of Light|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Aurelion Sol
+|skill        = R
+|icon         = Voice of Light.png
+|blurb        = {{sbc|Active:}} {{ci|Aurelion Sol}} projects a wave of star fire, dealing {{as|magic damage}} and {{tip|slow|slowing}} enemies hit. Close enemies are also {{tip|airborne|knocked back}} to the {{as|Outer Limit|buzzword}}.
+|description  = {{sbc|Active:}} '''Aurelion Sol''' exhales a wave of star fire in the target direction, granting {{tip|sight}} of the area for 2 seconds from the start of the cast time, dealing {{as|magic damage}} to enemies within its path, {{tip|slow|slowing}} them for 2 seconds and, if they are within the {{as|Outer Limit|buzzword}}, {{tip|stun|stunning}} them for {{fd|0.125}} seconds and {{tip|airborne|knocking them back}} to it, though not through terrain.
+|leveling     = {{st|Magic Damage|{{ap|150 to 350}} {{as|(+ 70% AP)}}}}{{st|Slow|{{ap|40 to 60}}%}}
+|description2 = '''''Aurelion Sol''' {{tip|channel|channels}} over {{fd|0.3}} seconds until the star fire reaches maximum range. Voice of Light cannot be {{tip|interrupt|interrupted}} by any {{tip|crowd control}}.''
+|description3 = ''{{ai|Celestial Expansion|Aurelion Sol}} can be cast during Voice of Light.''
+|cooldown     = {{ap|110 to 70}}
+|cost         = 100
+|costtype     = Mana
+|target range = 1500
+|width        = {{tip|er|icononly = true}} 240
+|speed        = 4500
+|cast time    = {{fd|0.35}}
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spellaoe
+|projectile   = False
+|grounded     = 
+|knockdown    = 
+|notes        = 
+{{Effect at cast time end}}
+** The displacement will begin as soon as the target is hit.
+* '''Aurelion Sol''' will {{tip|sight|reveal}} himself during the channel if there is an enemy champion near the area.
+* {{tip|Displacement immunity}} will also resist the application of the {{tip|stun}}.
+{{ct|cast}}
+}}

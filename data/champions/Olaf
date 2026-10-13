@@ -1,0 +1,157 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Berserker Rage|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Olaf
+|skill        = I
+|icon         = Berserker Rage.png
+|blurb        = {{sbc|Innate:}} {{ci|Olaf}} gains {{sti|{{as|'''bonus''' attack speed}}}} and {{as|{{sti|life steal}}}} based on {{as|his '''missing''' health}}.
+|description =  {{sbc|Innate:}} '''Olaf''' gains {{pp|0 to 100 by 5|0 to 70|formula= 1% per 0.7% '''missing''' health. ''This is capped at 70% '''missing''' health.''|label1='''missing''' health|label=Percent of level-scaling value|key=%|key1=%|color=hp}} of {{sti|{{as|{{pp|50+(50/17)*(x-1)*(0.7025+0.0175*(x-1)) for 20|key=%}} '''bonus''' attack speed}}}} and {{sti|{{as|{{pp|8+(17/17)*(x-1)*(0.7025+0.0175*(x-1)) for 20|key=%}} life steal}}}}.
+|targeting = Passive
+|affects   = Self
+|notes     =
+* No additional details. 
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Undertow|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Olaf
+|skill        = Q
+|icon         = Undertow.png
+|blurb        = {{sbc|Active:}} {{ci|Olaf}} throws an axe to the target location that deals {{as|physical damage}} to enemies it passes through, briefly {{tip|slow|slowing}} them based on distance travelled. Enemy {{tip|champions}} hit also have {{sti|armor penetration|{{as|reduced armor}}}} for a few seconds.
+|blurb2      = The axe remains in place during the cooldown, and '''Olaf''' can pick up the axe to reduce the {{sti|cd|'''total''' cooldown}}.
+|description = {{sbc|Active:}} '''Olaf''' throws an axe to the target location that deals {{as|physical damage}} to enemies it passes through and {{tip|slows}} them for {{pp|type=distance traveled|1 to 3 for 9|400 to 1000|formula=1+(0.25 per 75 units traveled)}} seconds. Enemy {{tip|champions}} hit are also inflicted with {{sti|armor penetration|{{as|20% armor reduction}}}} for 4 seconds.
+|leveling = {{st|Physical Damage|{{ap|70 to 270}} {{as|(+ 100% '''bonus''' AD)}}}}
+{{st|Slow|{{ap|30 to 50}}%}}
+|description2 = ''Undertow'' deals {{as|'''bonus''' physical damage}} against {{tip|monsters}}.
+|leveling2    = {{st|Monster Bonus Physical Damage|{{ap|20 to 120}}|Total Monster Damage|{{ap|70+20 to 270+120}} {{as|(+ 100% '''bonus''' AD)}}}}
+|description3 = The axe remains in place for a duration equal to ''Undertow's'' cooldown, granting {{tip|sight}} of its surroundings for {{fd|0.5}} seconds. '''Olaf''' can pick up the axe to reduce ''Undertow's'' {{sti|'''current''' cooldown}} to {{pp|2.5 to 0 for 6|0 to 2.5|type=seconds elapsed since axe landed|formula=2.5 (affected by ability haste) - seconds}}.
+|description4 = ''{{tt|Nearby monsters|100 range estimated}} are granted {{tip|ghosting}} for 5 seconds upon Undertow's cast.''
+|target range = {{dv|{{tip|cr|icononly = true}} {{tt|425|Minimum missile range, estimated}}|{{tt|1000|Maximum missile range}}}}
+|effect radius= {{dv|{{tip|cr|icononly = true}} {{tt|100|Impact additional radius}}|{{tt|250|Axe retrieval radius}}|{{tip|sight|icononly=true}}{{tt|300|Axe landing brief sight radius}}}}
+|width        = {{tip|er|icononly = true}} {{tt|180|Missile width}}
+|speed = 1600
+|cooldown = 9
+|cdstart  = on-cast
+|cast time    = {{fd|0.25}}
+|cost = {{ap|50 to 70}}
+|costtype = Mana
+|targeting = Location
+|affects = Enemies
+|damagetype = Physical
+|projectile = special
+|spelleffects = Aoe
+|spellshield = True
+|outofrange = cast at max
+|notes = 
+* ''Undertow'' may hit additional targets upon landing, but not targets already struck in-flight.
+** The axe will land approximately 50 units further than ''Undertow's'' target range if cast below maximum range.
+* Projectile-intercepting effects (e.g. {{ai|Wind Wall|Yasuo}}, {{ai|Unbreakable|Braum}}) cannot destroy the axe, they will instead cause it to stop prematurely and remain on the ground upon collision.
+* The timer for how long an axe stays on the ground does not begin until it has landed, thus it is possible to throw another axe before retrieving the first.
+* '''Olaf''' cannot pick up an enemy '''Olaf's''' axe on the ground.
+{{Effect at cast time end}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Tough It Out|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Olaf
+|skill        = W
+|icon         = Olaf Tough It Out.png
+|blurb        =  {{sbc|Active:}} {{ci|Olaf}} gains tremendous {{sti|{{as|'''bonus''' attack speed}}}} for a few seconds, and {{tip|shield|shields}} himself based on {{as|his '''missing''' health}} for a short time.
+|description  = {{sbc|Active:}} '''Olaf''' gains {{sti|{{as|'''bonus''' attack speed}}}} for 5 seconds.
+|leveling     = {{st|Bonus Attack Speed|{{ap|40 to 80}}%}}
+|icon2        = Olaf Tough It Out 2.png
+|description2 = He also grants himself a {{tip|shield}} for {{fd|2.5}} seconds for an amount that is capped at {{as|70% '''missing''' health}}.
+|leveling2    = {{st|Shield Strength|{{ap|10 to 130}} {{as|(+ {{fd|17.5}}% '''missing''' health)}}}}
+|description3 = ''Tough It Out {{tip|basic attack reset|resets}} '''Olaf's''' basic attack timer.''
+|cooldown     = {{ap|16 to 12}}
+|cast time    = none
+|cost         = 50
+|costtype     = Mana
+|targeting    = Auto
+|spelleffects = 
+|affects      = Self
+|notes        = 
+* ''Tough It Out's'' {{as|'''bonus''' attack speed}} value is updated when it is cast, even if it was already active.
+* At {{as|70% '''missing''' health}}, the health ratio portion of the shield is capped at the equivalent of {{as|{{fd|12.5}}% '''maximum''' health}}.
+}}
+<!-- Damage values are defined as parameters.
+-->{{#vardefine:b1|70}}<!-- Rank 1 base damage
+-->{{#vardefine:b5|250}}<!-- Rank 5 base damage
+-->{{#vardefine:ad|50}}<!-- Total AD ratio as a PERCENTAGE
+-->
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Reckless Swing|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Olaf
+|skill        = E
+|icon         = Reckless Swing.png
+|blurb        = {{sbc|Active:}} {{ci|Olaf}} consumes {{as|{{sti|health}}}} to strike thunder onto the target enemy, dealing {{as|true damage}}. If this kills the target, '''Olaf''' {{tip|heal|heals}} the {{sti|health|{{as|health cost}}}}.
+|blurb2      = Basic attacks {{sti|cdr|reduce}} ''Reckless Swing's'' cooldown.
+|description  = {{sbc|Active:}} '''Olaf''' strikes thunder onto the target enemy, dealing {{sti|{{as|true damage}}}}.
+|description2 = If ''Reckless Swing'' kills the target, '''Olaf''' {{tip|heals}} himself equal to the {{as|{{sti|health|health cost}}}}.
+|description3 = Basic attacks reduce ''Reckless Swing's'' {{sti|cooldown}} by 1 second, increased to 2 against monsters.
+|leveling     = {{st|True Damage|{{ap|{{#var:b1}} to {{#var:b5}}}} {{as|(+ {{#var:ad}}% AD)}}}}
+|cooldown     = {{ap|11 to 7}}
+|target range = {{tip|cr|icononly = true}} 325
+|cost         = {{as|{{ap|{{#var:b1}}*0.4 to {{#var:b5}}*0.4}} {{as|(+ {{ap|{{#var:ad}}*0.4}}% AD)}}|health}}
+|costtype     = {{as|Health}}
+|cast time    = {{pp|0.25 to 0.175|0 to 125 by 12.5|key1=%|type='''bonus''' attack speed|color=as|round=3}}
+|targeting    = Unit
+|damagetype   = True
+|spelleffects = spell
+|affects      = Enemies
+|spellshield  = True
+|callforhelp  = true
+|notes   = 
+* The health cost is equal to 40% of ''Reckless Swing's'' {{as|true damage}} value.
+* ''Reckless Swing'' can be cast even if '''Olaf''' doesn't have the sufficient amount of health to pay for the health cost.
+** As with all abilities with health costs, ''Reckless Swing'' will not reduce '''Olaf's''' health below {{as|1|hp}}.
+* ''Reckless Swing's'' health refund is considered a {{tip|heal}} therefore it is affected by healing modifiers.
+{{Unit-targeted cancel conditions}}** '''Olaf''' will also not receive the benefits from killing an enemy if this canceling takes place very shortly before the attack hits the invalidated target, but ''Reckless Swing's'' effect will be consumed.{{bug}}
+* The health cost will also be refunded if the target dies shortly after being hit by ''Reckless Swing''.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Ragnarok|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Olaf
+|skill        = R
+|icon         = false
+|blurb        = {{sbc|Passive:}} {{ci|Olaf}} gains {{sti|armor|{{as|'''bonus''' armor}}}} and {{sti|mr|{{as|'''bonus''' magic resist}}}}.
+|blurb2      = {{sbc|Active:}} '''Olaf''' becomes enraged for a short time, {{tip|cleanse|cleansing}} himself and becoming {{tip|cc-immune}}, as well as gaining {{sti|{{as|'''bonus''' attack damage}}}} and increased [[size]]. For a brief moment, he gains {{sti|{{as|'''bonus''' movement speed}}}} while facing nearby enemy {{tip|champions}}.
+|blurb3      = ''Ragnarok's'' duration can be extended by hitting [[basic attack]]s and ''{{ai|Reckless Swing|Olaf}}'' against an enemy {{tip|champion}}.
+|blurb4      = {{sbc|{{tip|cc-immune|Cc-immunity|nolink=true}}}}: {{tip|Crowd control}} cannot be applied during this time.
+|description  = {{sbc|Passive:}} '''Olaf''' gains {{sti|armor|{{as|'''bonus''' armor}}}} and {{sti|mr|{{as|'''bonus''' magic resistance}}}}.
+|leveling     = {{st|Bonus Resistances|{{ap|10 to 20}}}}
+|icon2        = Ragnarok.png
+|description2 = {{sbc|Active:}} '''Olaf''' becomes enraged for 3 seconds, {{tip|cleanse|cleansing}} himself of all {{tip|crowd control}} and becoming {{tip|Cc-immune|immune to them}}, as well as gaining {{sti|{{as|'''bonus''' attack damage}}}} and 10% increased [[size]]. For the first second of ''Ragnarok'', he also gains {{sti|{{as|'''bonus''' movement speed}}}} while facing {{tip|sight|visible}} enemy {{tip|champions}} within 2000 units.
+|leveling2    = {{st|Bonus Attack Damage|{{ap|10 to 30}} {{as|(+ 25% AD)}}}}
+{{st|Bonus Movement Speed|{{ap|20|45|70}}%}}
+|description3 = ''Ragnarok's'' duration is increased by and up to {{fd|2.5}} seconds for each basic attack {{tip|on-hit}} or cast of ''{{ai|Reckless Swing|Olaf}}'' against an enemy {{tip|champion}}.
+|cooldown     = {{ap|100 to 80}}
+|cdstart      = on-cast
+|cast time = none
+|effect radius=
+|cost         = 100
+|costtype     = mana
+|targeting    = Auto
+|affects      = Self
+|notes   = 
+* ''Ragnarok'' removes the underlying {{tip|stun}} from {{tip|airborne}} effects, but not the forced displacement, which requires him to use a {{tip|blink}} or {{tip|dash}} ability to override it.
+* ''Ragnarok'' does not negate any [[debuff]]s other than {{tip|crowd control}} from being applied unless absolutely necessary.
+* The {{as|'''bonus''' attack damage}} updates dynamically over the duration; Increases or reductions in {{as|attack damage}} after the effect has been applied will still be amplified.
+* The {{as|25% attack damage}} scaling amplifies the flat {{as|attack damage '''bonus'''}} as well.
+* ''Ragnarok'' will not expire during {{ais|Reckless Swing|Olaf}} cast time.
+* ''Ragnarok's'' duration will not be increased if the basic attack is {{tip|dodged}}.
+* ''Ragnarok's'' duration will be increased if the basic attack is {{tip|blocked}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Vicious Strikes|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Olaf
+|skill        = W
+|icon         = Olaf Vicious Strikes.png
+|blurbicon    = Olaf Vicious Strikes.png
+|blurb        = Olaf's Attack Speed is increased, he gains Life Steal and has increased healing from all sources based on how much Health he is missing.
+|description  = {{sbc|Active:}} '''Olaf''' empowers his axes for 6 seconds, gaining {{sti|{{as|'''bonus''' attack speed}}}}, '''bonus''' {{stil|life steal}}, and {{as|{{pp|type='''missing''' health|key=%|0 to 33 for 11|key1=%|0 to 100|formula=0.33% per 1% missing health}}|health}} increased {{tip|heal|healing}} from all sources for the duration.
+|leveling     = {{st|Bonus Attack Speed|{{ap|50 to 90}}%}}
+{{st|Life Steal|{{ap|16 to 24}}%}}
+|description2 = ''{{sti|Life steal}} and {{sti|spell vamp}} '''bonuses''' are calculated on-cast and remain static for the full duration.''
+|cooldown     = 16
+|cast time    = none
+|cost         = 30
+|costtype     = Mana
+|targeting    = Auto
+|spelleffects = 
+|affects      = Self
+|notes        = 
+* {{Pending for test}}: Interaction with [[omnivamp]]
+* If the ability is re-casted the duration refreshes without re-calculating the bonuses.
+}}

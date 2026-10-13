@@ -1,0 +1,214 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Flurry|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Lee Sin
+|skill        = I
+|icon         = Flurry.png
+|blurb        = {{sbc|Innate:}} After {{ci|Lee Sin}} casts an ability, his next 2 {{tip|basic attacks}} within a short time gain {{sti|attack speed|{{as|'''bonus''' attack speed}}}} and restore {{sti|{{as|energy}}}}.
+|description  = {{sbc|Innate:}} After casting an {{tip|ability}}, '''Lee Sin's''' next 2 {{tip|basic attacks}} {{tip|on-hit}} within 3 seconds gain {{sti|attack speed|{{as|40% '''bonus''' attack speed}}}} and restore {{sti|{{as|energy}}}}.<br><br>The first attack restores {{as|{{pp|20 to 40 for 3|1 to 13}} energy}} and the second attack restores{{ft|{{as|{{pp|10 to 20 for 3|1 to 13}} energy}}.|half of the previous amount.}}
+|targeting    = Passive
+|affects      = Self
+|damagetype   = 
+|spellshield  = 
+|spelleffects = 
+|grounded     = 
+|knockdown    = 
+|parry        = true
+|notes        = 
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Sonic Wave|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Lee Sin
+|skill        = Q
+|icon         = Sonic Wave.png
+|blurb        = {{sbc|Active:}} {{ci|Lee Sin}} fires a sonic blast in the target direction that deals {{as|physical damage}} to the first enemy hit and marks them for a short time, during which they are {{tip|true sight|revealed}}.
+|blurb2      = While the target is marked, '''Lee Sin''' can cast ''{{ai|Resonating Strike|Lee Sin}}''.
+|post-blurb = Lee Sin/Resonating Strike
+|description  = {{sbc|Active:}} '''Lee Sin''' fires a sonic blast in the target direction that deals {{as|physical damage}} to the first enemy hit and marks them for 3 seconds, during which they are {{tip|true sight|revealed}}.
+|description2 = While the target is marked, '''Lee Sin''' can cast ''{{ai|Resonating Strike|Lee Sin}}''.
+|leveling     = {{st|Physical Damage|{{ap|60 to 180}} {{as|(+ 90% '''bonus''' AD)}}}}
+|cooldown     = {{tt|{{ap|10 to 6}}|Starts on first cast}}
+|cdstart      = on-cast
+|cast time    = {{fd|0.25}}
+|cost         = 50
+|costtype     = Energy
+|target range = {{tip|cr|icononly = true}} 1200
+|width        = {{tip|er|icononly = true}} 120
+|effect radius= {{tip|sight|icononly = true}}{{tt|400|Reveal radius; does not see through terrain or brush}}
+|speed        = 1800
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = Physical
+|spellshield  = True
+|spelleffects = Spell
+|grounded     = 
+|knockdown    = 
+|projectile   = True
+|callforhelp  = 
+|notes        = 
+{{Effect at cast time start}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Safeguard|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Lee Sin
+|skill        = W
+|icon         = Safeguard.png
+|blurb        = {{sbc|Active:}} {{ci|Lee Sin}} {{tip|dashes}} to the target allied unit. If the ally is a {{tip|champion}}, both they and '''Lee Sin''' gain a {{tip|shield}} for a short time upon his arrival and ''Safeguard's'' cooldown is {{sti|cdr|halved}}.<br/>
+'''Lee Sin''' can [[self-targeted|self-cast]] ''Safeguard'' to shield himself.
+|blurb2      = After ''Safeguard'' is cast, '''Lee Sin''' can cast ''{{ai|Iron Will|Lee Sin}}'' within a short time.
+|post-blurb = Lee Sin/Iron Will
+|description  = {{sbc|Active:}} '''Lee Sin''' {{tip|dashes}} to the target allied unit's location. If the ally is a {{tip|champion}} upon arrival, both they and '''Lee Sin''' gain a {{tip|shield}} for 2 seconds.<br/>If the target is a {{tip|minion}} or {{tip|ward}}, '''Lee Sin''' also shields himself.<br/>'''Lee Sin''' can [[self-targeted|self-cast]] ''Safeguard'' to shield himself.
+|leveling     = {{st|Shield Strength|{{ap|60 to 240}} {{as|(+ 80% AP)}}}}
+|description2 = After ''Safeguard'' is cast, '''Lee Sin''' can cast ''{{ai|Iron Will|Lee Sin}}'' within the next 3 seconds.
+|description3 = ''{{ai|Iron Will|Lee Sin}} and {{ai|Cripple|Lee Sin}} can be cast during the dash.''
+|cooldown     = {{tt|7|Starts on first cast}}
+|cdstart      = on-cast
+|cost         = 50
+|costtype     = Energy
+|cast time = none
+|target range = {{tip|cr|icononly = true}} 700
+|speed        = 1350 + {{as|100% movement speed}}
+|targeting    = Unit
+|grounded     = True
+|knockdown    = True
+|notes        = 
+* '''Lee Sin''' cannot self-cast ''Safeguard'' while {{tip|ground|grounded}} or {{tip|root|rooted}}.
+* ''Safeguard'' can be used on any targetable allied unit excluding [[structures]].
+** This includes {{tip|champions}}, {{tip|minions}}, {{tip|ward|wards}}, and [[champion summoned units]] (e.g. {{ai|Noxious Trap|Teemo}}, {{ai|Demacian Standard|Jarvan IV}}, {{ai|Dark Passage|Thresh}}).
+* If no unit is directly targeted, ''Safeguard'' will search for wards in a 100 radius to target.
+** This aids '''Lee Sin''' in performing the dash to a ward he just placed.<!--because-->
+* ''Safeguard'' will not grant its {{tip|shield}} if the dash is interrupted.
+** If the dash overrides or is overridden by {{ai|Resonating Strike|Lee Sin}}, he will grant the shield immediately rather than on arrival.
+* If ''Safeguard's'' dash interrupts another dash, {{ai|Tempest|Lee Sin}} and {{ai|Dragon's Rage|Lee Sin}} can be cast during it (both otherwise cannot be cast).
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Tempest|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Lee Sin
+|skill        = E
+|icon         = Tempest.png
+|blurb        = {{sbc|Active:}} {{ci|Lee Sin}} deals {{as|magic damage}} to nearby enemies, marking them for a few seconds and, if they are not {{tip|invisible}} when struck, {{tip|true sight|revealing}} them.
+|blurb2      = If ''Tempest'' hits an enemy, '''Lee Sin''' can cast'' {{ai|Cripple|Lee Sin}}'' within a short time.
+|post-blurb = Lee Sin/Cripple
+|description  = {{sbc|Active:}} '''Lee Sin''' smashes the ground beneath him, dealing {{as|magic damage}} to nearby enemies, marking them for 4 seconds and, if they are not {{tip|invisible}} when struck, {{tip|true sight|revealing}} them for the same duration.
+|description2 = If ''Tempest'' hits an enemy, '''Lee Sin''' can cast ''{{ai|Cripple|Lee Sin}}'' within the next 3 seconds after a {{fd|0.1}}-second delay.
+|leveling     = {{st|Magic Damage|{{ap|35 to 135}} {{as|(+ 90% AD)}}}}
+|cooldown     = {{tt|8|Starts on first cast}}
+|cdstart      = on-cast
+|cast time    = {{fd|0.25}}
+|cost         = 50
+|costtype     = Energy
+|effect radius= {{tip|cr|icononly = true}} 450
+|targeting    = Auto
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spellaoe
+|grounded     = 
+|knockdown    = 
+|callforhelp  = 
+|notes        = 
+* ''Tempest's'' sight reveal only reveals the affected targets, but visually also lights up the Fog of War in a 400 radius.
+* ''Tempest's'' sight reveal is not removed when ''Lee Sin'' casts ''Cripple'' (unlike {{ais|Sonic Wave|Lee Sin}}).
+{{Effect at cast time end}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Dragon's Rage|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Lee Sin
+|skill        = R
+|icon         = Dragon's Rage.png
+|blurb        = {{sbc|Active:}} {{ci|Lee Sin}} {{tip|root|roots}} the target enemy {{tip|champion}} and roundhouse kicks them, dealing {{as|physical damage}} and {{tip|airborne|knocking them back}}.
+|blurb2      = Enemies that collide with the displaced enemy while it is {{tip|airborne}} are briefly {{tip|airborne|knocked up}} and take {{as|'''bonus''' physical damage}} based on the {{as|primary target's '''bonus''' health}}.
+|blurb4      = ''This technique was taught to him by Jesse Perring, although Lee Sin does not kick players off the map.''
+|description  = {{sbc|Active:}} '''Lee Sin''' {{tip|root|roots}} the target enemy champion over the cast time, then roundhouse kicks them to deal {{as|physical damage}} and {{tip|airborne|knock them back}} {{tt|up to 800 units|see notes}} {{tt|over {{fd|0.8}} seconds|Estimated}}, rendering them {{tip|airborne}} for 1 second.
+|leveling     = {{st|Physical Damage|{{ap|175 to 625}} {{as|(+ 200% '''bonus''' AD)}}}}
+|description2 = Enemies that collide with the displaced enemy while it is {{tip|airborne}} take the same damage plus {{as|'''bonus''' physical damage}} and are {{tip|airborne|knocked up}} for 1 second.
+|leveling2    = {{st|Collision Physical Damage|{{ap|175 to 625}} {{as|(+ 200% '''bonus''' AD)}} {{as|(+ {{ap|12 to 18}}% of primary target's '''bonus''' health)}}}}
+|description3 = If ''Dragon's Rage'' kills the primary target, it will still knock them back, causing the target's corpse to be displaced and collide with enemies it passes through.
+|cooldown     = {{ap|110 to 60}}
+|cast time    = {{fd|0.25}}
+|target range = {{tip|cr|icononly = true}} 375
+|collision radius= {{tip|cr|icononly = true}} {{tt|160|Checks for collision every 0.25 seconds, estimated}}
+|speed        =
+|targeting    = Unit
+|affects      = Enemies
+|damagetype   = Physical
+|spellshield  = True
+|spelleffects = aoe
+|callforhelp  = True
+|notes        = 
+* The [[spell indicator]] for this ability also displays the direction for the knock back relative to '''Lee Sin's''' position.
+* The {{tip|airborne|displacement's}} direction is decided at the moment of impact and not by '''Lee Sin''' and his target's relative locations at the start of the cast (the only way for '''Lee Sin''' to control where his target is displaced is by using {{si|Flash}} before the cast time of ''Dragon's Rage'' ends).
+* If the {{tip|airborne}} debuff is removed from the target, its ability to collide with enemies is removed aswell, even if the target has not come to a stop yet.{{bug|2}}
+** The airborne debuff and with it collision of the target remains for the normal duration even if its trajectory is {{tip|airborne|displaced}} by another source (i.e - {{ai|Headbutt|Alistar}}).
+** The target may still collide with other enemies for the remaining airborne duration after they reach their destination, as the airborne debuff lasts longer than the displacement.
+* The knock back distance is intended to be 800, but due to a bug, this is reduced by up-to the sum of '''Lee Sin's''' and his target's {{tip|gameplay radius}}, depending on how far they are away from one another at the end of the cast time.{{bug}}
+* ''Dragon's Rage'' will not knock back killed champions that enter a {{tip|zombie state}} upon dying, or a {{ci|Yone}} with his {{ai|E|Yone|Spirit Form}} active.
+* ''Dragon's Rage'' will knock back killed champions even if they were immune to the {{tip|airborne|displacement}} at the time of being hit (e.g. with {{tip|displacement immune|displacement immunity}} or {{tip|cc-immune|crowd control immunity}}).
+* If ''Dragon's Rage's'' primary target is slain by the ability, their death timer and animation are deferred until their corpse's displacement ends.
+{{Unit-targeted cancel conditions}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Cripple|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Lee Sin
+|skill        = E
+|icon         = Cripple.png
+|pre-blurb = Lee Sin/Tempest
+|blurb        = {{sbc|Active:}} {{ci|Lee Sin}} sends a wave to nearby enemies marked by ''{{ai|Tempest|Lee Sin}}'', inflicting a decaying {{tip|slow}} that lasts a few seconds.
+|description  = {{sbc|Active:}} '''Lee Sin''' {{tip|slow|slows}} nearby enemies marked by ''{{ai|Tempest|Lee Sin}}'', decaying in strength over 4 seconds.
+|description2 = ''A nearby marked enemy is required to cast this ability.''
+|leveling     = {{st|Slow|{{ap|35 to 75}}%}}
+|cost         = 25
+|costtype     = energy
+|effect radius= {{tip|cr|icononly = true}} 550
+|targeting    = Proximity
+|cast time    = none
+|affects      = Enemies
+|damagetype   = 
+|spellshield  = True
+|spelleffects = 
+|grounded     = 
+|knockdown    = 
+|callforhelp  = 
+|notes        = 
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Iron Will|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Lee Sin
+|skill        = W
+|icon         = Iron Will.png
+|blurb        = {{sbc|Active:}} {{ci|Lee Sin}} gains {{as|{{sti|omnivamp}}}} for a few seconds.
+|pre-blurb = Lee Sin/Safeguard
+|description  = {{sbc|Active:}} '''Lee Sin''' gains {{as|{{sti|omnivamp}}}} for 4 seconds.
+|leveling     = {{st|Omnivamp|{{ap|10 to 26}}%}}
+|cost         = 25
+|costtype     = Energy
+|cast time    = none
+|targeting    = Auto
+|affects      = Self
+|notes        = 
+* No additional details.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Resonating Strike|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Lee Sin
+|skill        = Q
+|icon         = Resonating Strike.png
+|pre-blurb = Lee Sin/Sonic Wave
+|blurb        = {{sbc|Active:}} {{ci|Lee Sin}} {{tip|dashes}} to the nearby enemy marked by ''{{ai|Sonic Wave|Lee Sin}}'', consuming the mark upon arrival to deal {{as|physical damage}} based on the {{as|target's '''missing''' health}}.
+|description  = {{sbc|Active:}} '''Lee Sin''' {{tip|dashes}} to the nearby enemy marked by ''{{ai|Sonic Wave|Lee Sin}}''. Upon arrival, he consumes the mark and deals {{as|physical damage}}, increased by {{pp|key=%|type=target's '''missing''' health|0 to 100 for 11|0 to 100|key1=%|formula=1% per 1% of target's '''missing''' health|color=health}}.
+|leveling     = {{st|Minimum Physical Damage|{{ap|60 to 180}} {{as|(+ 90% '''bonus''' AD)}}|Maximum Physical Damage|{{ap|60*2 to 180*2}} {{as|(+ {{ap|90*2}}% '''bonus''' AD)}}}}
+|description2 = ''The marked enemy must be within range in order to cast this ability. {{ai|Iron Will|Lee Sin}} and {{ai|Cripple|Lee Sin}} can be cast during the dash.''
+|cost         = 25
+|costtype     = Energy
+|target range = {{tip|cr|icononly = true}} {{tt|1250|Cast range}}
+|speed        = {{tt|1350 + {{as|100% movement speed}}|Ideal; bugged at different distances}}
+|cast time    = none
+|targeting    = Proximity
+|affects      = Enemies
+|damagetype   = Physical
+|spellshield  = True
+|spelleffects = Spell
+|grounded     = True
+|callforhelp  = 
+|knockdown    = True
+|notes        =
+* '''Lee Sin''' will track the target if they change locations.
+** He will dash to the target's previous location without consuming the mark if the target is too far away or moves beyond 2000 units.
+* '''Lee Sin''' will attempt to place himself on top of the target upon arrival.
+** The damage dealt by ''Resonating Strike'' can be negated if the target {{tip|blink|blinks}}. Sometimes, '''Lee Sin''' will end the dash at their last location but appear on top of the target after a short delay.
+** Originally, '''Lee Sin''' would land 50 units in front of his target. Since there are no patch notes where this is noted to have changed, landing on top of his target may be a bug.
+* ''Resonating Strike'' cannot be cast without the marked target nearby or if the target is {{tip|untargetable}}.
+* If ''Resonating Strike'' interrupts another dash, {{ai|Tempest|Lee Sin}} and {{ai|Dragon's Rage|Lee Sin}} can be cast during it (both otherwise cannot be cast).
+{{ct|attack=false|move=false|cast=[[File: Safeguard.png|20px|link=]] ''Safeguard'', [[File: Iron Will.png|20px|link=]] ''Iron Will'', and [[File: Cripple.png|20px|link=]] ''Cripple'' can be cast. [[File: Tempest.png|20px|link=]] ''Tempest'' and [[File: Dragon's Rage.png|20px|link=]] ''Dragon's Rage'' are disabled.|items=true,,,interrupts|consume=true|spells=true,interrupts, true, false|interrupts=death}}
+}}

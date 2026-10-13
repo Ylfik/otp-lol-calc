@@ -1,0 +1,127 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Void Stone|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Kassadin
+|skill        = I
+|icon         = Void Stone.png
+|blurb        = {{sbc|Innate:}} {{ci|Kassadin}} is permanently {{tip|ghosted}} and takes reduced {{tip|magic damage|{{as|magic damage}}}}.
+|description  = {{sbc|Innate:}} '''Kassadin''' is permanently {{tip|ghosted}} and takes 10% reduced {{tip|magic damage|{{as|magic damage}}}}.
+|targeting    = Passive
+|affects      = Self
+|notes        = 
+* No additional details.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Null Sphere|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Kassadin
+|skill        = Q
+|icon         = Null Sphere.png
+|blurb        = {{sbc|Active:}} {{ci|Kassadin}} fires an orb of void energy at the target enemy that deals {{as|magic damage}} and {{tip|disrupt|disrupts}} their ongoing {{tip|channel|channels}}.
+|blurb2       = He then gains a brief {{tip|shield}} that absorbs {{as|magic damage}}.
+|description  = {{sbc|Active:}} '''Kassadin''' fires an orb of void energy at the target enemy that deals {{as|magic damage}} and {{tip|disrupt|disrupts}} their ongoing {{tip|channel|channels}}.
+|leveling     = {{st|Magic Damage|{{ap|65 to 185}} {{as|(+ 80% AP)}}}}
+|description2 = He also gains a {{tip|shield}} that absorbs {{as|magic damage}} for {{fd|1.5}} seconds.
+|leveling2    = {{st|Magic Shield Strength|{{ap|80 to 200}} {{as|(+ 30% AP)}}}}
+|cooldown     = {{ap|9 to 7}}
+|cost         = {{ap|60 to 80}}
+|cast time    = {{fd|0.25}}
+|costtype     = Mana
+|target range = {{tip|cr|icononly = true}} 650
+|speed        = 1400
+|targeting    = Unit
+|affects      = Enemies, Self
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spell
+|projectile   = True
+|notes        = 
+* The shield is granted at the start of the cast time.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Nether Blade|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Kassadin
+|skill        = W
+|icon         = false
+|blurb        = {{sbc|Passive:}} {{cis|Kassadin}} {{tip|basic attacks}} deal {{as|'''bonus''' magic damage}}.
+|blurb2       = {{sbc|Active:}} '''Kassadin''' empowers his blade, causing his next basic attack within a few seconds to gain {{sti|range|'''bonus''' range}}, deal increased {{as|'''bonus''' magic damage}}, and restore {{sti|{{as|mana}}}}, with the restoration amount quintupled against {{tip|champion|champions}}.
+|description  = {{sbc|Passive:}} '''Kassadin's''' {{tip|basic attacks}} deal {{as|25|magic damage}} {{as|(+ 10% AP)}} {{as|'''bonus''' magic damage}} {{tip|on-hit}}.
+|icon2        = Nether Blade.png
+|description2 = {{sbc|Active:}} '''Kassadin''' empowers his next basic attack {{tip|on-hit}} within 5 seconds to have an {{tip|uncancellable windup}}, gain {{sti|range|50 '''bonus''' range}}, deal increased {{as|'''bonus''' magic damage}}, and restore {{sti|{{as|mana}}}}, with the restoration amount quintupled against {{tip|champion|champions}}.
+|leveling2    = {{st|Increased Bonus Magic Damage|{{ap|50 to 150}} {{as|(+ 80% AP)}}}}
+{{st|Mana Restored|{{as|{{ap|4 to 6}}% of '''missing''' mana}}|Mana Restored Against Champions|{{as|{{ap|4*5 to 6*5}}% of '''missing''' mana}}}}
+|description3 = ''Nether Blade {{tip|basic attack reset|resets}} '''Kassadin's''' basic attack timer.''
+|cooldown     = 7
+|cdstart      = post-effect
+|cost         = 1
+|costtype     = Mana
+|targeting    = Auto
+|cast time = none
+|affects      = Self
+|damagetype   = Magic
+|spellshield  = Special
+|spelleffects = special
+|grounded     = 
+|knockdown    = 
+|parry        = Special
+|notes        = 
+* The passive damage applies {{tip|proc damage}} and the active damage applies {{tip|spell damage}}.
+* The enhanced attack will apply other {{tip|on-hit}} effects and can {{tip|critical strike|critically strike}} as normal.
+* ''Nether Blade'' will not grant mana if the attack is {{tip|dodge|dodged}} or if it {{tip|blind|misses}}, but will do so if the attack is {{tip|block|blocked}}. In all cases the damage is parried.
+* {{tip|Spell shield}} will block the ''active'' damage but not the ''passive'' one.
+* The passive '''bonus''' damage applies to structures.
+* The empowered attack will trigger but not be consumed nor apply its effects against {{tip|structures}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Force Pulse|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Kassadin
+|skill        = E
+|icon         = false
+|blurb        = {{sbc|Passive:}} Ability casts reduce the cooldown of this ability.
+|blurb2       = {{sbc|Active:}} {{ci|Kassadin}} emits a pulse of void energy in a cone in the target direction that deals {{as|magic damage}} to enemies and briefly {{tip|slow|slows}} them.
+|description  = {{sbc|Passive:}} Each time '''Kassadin''' or a nearby {{tip|champion}} casts an [[champion ability|ability]], ''Force Pulse's'' {{sti|'''current''' cooldown}} is reduced by {{fd|0.75}} seconds.
+|icon2        = Force Pulse.png
+|description2 = {{sbc|Active:}} '''Kassadin''' emits a pulse of void energy in a cone in the target direction that deals {{as|magic damage}} to enemies hit and {{tip|slow|slows}} them for 1 second.
+|leveling2    = {{st|Magic Damage|{{ap|70 to 190}} {{as|(+ 70% AP)}}}}
+{{st|Slow|{{ap|50 to 70}}%}}
+|cooldown     = {{ap|21 to 17}}
+|cost         = {{ap|60 to 80}}
+|cast time    = {{fd|0.25}}
+|costtype     = Mana
+|effect radius= {{dv|{{tip|er|icononly = true}} 600|{{tt|1800|Ability cast detection radius for triggering the cooldown reduction}}}}
+|detection radius= 1800
+|angle        = {{tip|er|icononly = true}} 78{{degree}}
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = Area of effect
+|grounded     = 
+|knockdown    = 
+|projectile   = False
+|notes        = 
+* {{tip|Untargetable}} champions do not reduce ''Force Pulse's'' cooldown upon ability activations.
+*[[Toggle|Toggle abilities]] and transformation abilities do not count as ability activations and '''will not''' reduce ''Force Pulse's'' cooldown.
+{{Effect at cast time end}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Riftwalk|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Kassadin
+|skill        = R
+|icon         = Riftwalk.png
+|blurb        = {{sbc|Active:}} {{ci|Kassadin}} {{tip|blinks}} toward the target location, dealing {{as|magic damage}} to all nearby enemies upon arrival. He then gains a stack of ''Riftwalk'', stacking up to a cap.
+|blurb4       = {{sbc|Riftwalk:}} For each stack, ''Riftwalk'' gains '''bonus''' damage and increased {{sti|{{as|mana cost}}}}.
+|description  = {{sbc|Active:}} '''Kassadin''' {{tip|blinks}} toward the target location, dealing {{as|magic damage}} to all nearby enemies upon arrival. He then gains a stack of ''Riftwalk'' for 15 seconds, refreshing on subsequent casts and stacking up to 4 times.
+|leveling     = {{st|Magic Damage|{{ap|80 to 110}} {{as|(+ 50% AP)}} {{as|(+ 2% '''maximum''' mana)}}}}
+|description2 = {{sbc|Riftwalk:}} For each stack, ''Riftwalk'' deals {{as|'''bonus''' magic damage}} at an increased {{sti|{{as|mana cost}}}}.
+|leveling2    = {{st|Bonus Damage Per Stack|{{ap|35 to 55}} {{as|(+ 7% AP)}} {{as|(+ 1% '''maximum''' mana)}}|Maximum Bonus Damage|{{ap|35*4 to 55*4}} {{as|(+ {{ap|7*4}}% AP)}} {{as|(+ 4% '''maximum''' mana)}}|Maximum Magic Damage|{{ap|80+35*4 to 110+55*4}} {{as|(+ {{ap|50+7*4}}% AP)}} {{as|(+ 6% '''maximum''' mana)}}}}
+|cooldown     = {{ap|5 to 2}}
+|cost         = {{pp|40*2^(x-1)|0 to 4 for 5|type=Stacks|formula=40 {{times}} 2^stacks}}
+|costtype     = Mana
+|cast time    = {{fd|0.25}}
+|target range = {{tt|500|Maximum range, has no minimum range}}
+|effect radius= {{tip|cr|icononly = true}} 270
+|targeting    = Location
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = Area of effect
+|grounded     = True
+|outofrange   = cast at max
+|notes        = 
+* {{si|Flash}} can be used during the cast time, allowing '''Kassadin''' to blink further away.
+* [[Ping]]ing ''Riftwalk'' will additionally display the remaining duration of its stacks.
+}}

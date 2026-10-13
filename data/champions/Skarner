@@ -1,0 +1,355 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Threads of Vibration|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Skarner
+|skill        = I
+|icon         = Skarner Threads of Vibration.png
+|description  = {{sbc|Innate:}} '''Skarner's''' {{tip|basic attacks}} {{tip|on-hit}}, ''{{ai|Shattered Earth|Skarner}}'', ''{{ai|Upheaval|Skarner}}'', and ''{{ai|Impale|Skarner}}'' apply a {{tip|stack}} of ''Quaking'' to enemies hit for 4 seconds, refreshing on subsequent applications and stacking up to 3 times. Enemies afflicted with 3 stacks take {{as|magic damage}} equal to {{ft|{{as|{{pp|5 + (9-5)/17*(x-1) for 20|key=%|defaultDisplayMaxLevel=true}} of their '''maximum''' health}} over the duration, capped at {{pp|100 + (300-100)/17*(x-1) for 20|defaultDisplayMaxLevel=true}} against {{tip|monsters}}.|{{as|{{pp|5*0.125 + (9*0.125-5*0.125)/17*(x-1) for 20|key=%|round=3|defaultDisplayMaxLevel=true}} of their '''maximum''' health}} every {{fd|0.5}} seconds over the duration, capped at {{pp|100/8 + (300/8-100/8)/17*(x-1) for 20|defaultDisplayMaxLevel=true}} per tick against {{tip|monsters}}.}}
+|targeting    = Passive
+|affects      = Enemies
+|damagetype   = Magic
+|spelleffects = proc
+|spellshield  = special
+|parry        = special
+|notes        = 
+* Basic attacks that are {{tip|dodge|dodged}} by the target or missed while '''Skarner''' is {{tip|blind|blinded}} do not apply stacks of ''Quake''. {{tip|Block|Blocked}} attacks will still apply stacks.
+* {{tip|Spell shield}} prevents ''Quaking's'' application from {{ai|Upheaval|Skarner}} and {{ai|Impale|Skarner}} only.
+<!-- Blurb -->
+|blurbicon    = Skarner Threads of Vibration.png
+|blurb        = {{sbc|Innate:}} {{cis|Skarner}} {{tip|basic attacks}} {{tip|on-hit}}, ''{{ai|Shattered Earth|Skarner}}'', ''{{ai|Upheaval|Skarner}}'', and ''{{ai|Impale|Skarner}}'' apply a {{tip|stack}} of ''Quaking'' to enemies hit for 4 seconds, refreshing on subsequent applications and stacking up to 3 times. Enemies afflicted with 3 stacks take {{as|magic damage}} based on {{as|their '''maximum''' health}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Shattered Earth|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Skarner
+|skill        = Q
+|icon         = Skarner Shattered Earth.png
+|description  = {{sbc|Active:}} '''Skarner''' rips a boulder from the ground, empowering up to three of his next {{tip|basic attacks}} within 5 seconds of each other. These attacks gain {{sti|range|25 '''bonus''' range}}, {{sti|{{as|'''bonus''' attack speed}}}}, and deal {{as|'''bonus''' physical damage}} to the target and surrounding enemies, including {{tip|structures}}.
+|leveling     = 
+{{st|Bonus Physical Damage per Hit|{{ap|10 to 50}} {{as|(+ 90% '''bonus''' AD)}} {{as|(+ 3% of his '''bonus''' health)}}|Total Bonus Physical Damage|{{ap|10*3 to 50*3}} {{as|(+{{ap|90*3}}% '''bonus''' AD)}} {{as|(+ {{ap|3*3}}% of his '''bonus''' health)}}}}
+{{st|Bonus Attack Speed|{{ap|20 to 40}}%}}
+|description2 = The final attack slams the boulder, dealing an additional {{as|11% of each target's '''maximum''' health}} {{as|physical damage}} and {{tip|slow|slowing}} afflicted enemies by 40% for 1 second. The additional damage is capped against {{tip|monster|monsters}} and is not applied against structures.
+|leveling2    = {{st|Monster Percent Health Damage Cap|{{ap|150 to 350}}}}
+|description3 = After {{fd|0.5}} seconds of the cast, '''Skarner''' gains the ability to use ''Upheaval'' during ''Shattered Earth''.
+|description4 = ''Casting Shattered Earth {{tip|basic attack reset|resets}} '''Skarner's''' basic attack timer. Shattered Earth's duration is paused during {{ai|Ixtal's Impact|Skarner}}.''
+|range        = 
+|effect radius= {{tip|cr|icononly = true}} {{tt|300|Attack splash radius, centered on target}}
+|cooldown     = {{ap|8 to 3}}
+|cdstart      = Starts on-cast, but restarts each time an empowered attack is used as well as after casting Upheaval
+|cast time    = {{fd|0.35}}
+|cost         = 30
+|costtype     = mana
+|targeting    = Auto
+|affects      = Self, Enemies
+|damagetype   = Physical
+|spelleffects = proc
+|spellshield  = false
+|parry        = true
+|notes        = 
+;General
+* The empowered attacks can be parried and will not trigger the area of effect if either the target {{tip|block|blocks}} or {{tip|dodge|dodges}} the attack, or if the attacks miss while '''Skarner''' is {{tip|blind|blinded}}.
+** The attacks will be still consumed in all cases regardless.
+** Note that if the main target is not blocking or dodging, then the area of effect can still deal damage to those who do.
+* ''Shattered Earth'' ends prematurely if '''Skarner''' initiates a {{si|Recall}} channel.
+* The empowered attacks have an {{tip|uncancellable windup}} against champions, minions, and turrets only.
+** {{Note|1}} Prior to [[V14.9|Patch 14.9]], the windup was uncancellable regardless of the target's type. It is currently unknown if the change was intentional or not, but seems to be partially intentional based on observation.
+** Empowered attacks against other units can be {{tip|interrupted}} by crowd control or casting {{ai|Ixtal's Impact|Skarner}}, but not by issuing [[Controls_and_Hotkeys#Player_Movement|movement commands]].
+* The aforementioned unit types, as well as monsters, inhibitors, and the nexus are considered "valid" for ''Shattered Earth'' and will only trigger its effects when the main target was one of those. This includes:
+** Triggering the damaging area of effect,
+** Refreshing the duration when an empowered attack has begun,
+** and consume empowered attacks only when they landed. (This way the attacks are not consumed when the target died beforehand.)
+* Attacking any other units will cause '''Skarner''' to use his normal basic attacks instead while ''Shattered Earth'' is expiring (but still benefit from the increased attack speed and range).
+* To be more precise about ''Ixtal's Impact's'' duration pause, it adds {{fd|0.25}} seconds to the duration every {{fd|0.25}} seconds, but will set it to an estimated minimum of {{fd|1.5}} seconds if it would have been lower.
+* The {{tip|slow}} applied by ''Shattered Earth'' is a generic slow debuff.<!-- It means that it uses the basic slow buff, not a unique one, which may or may not cause issues in some context (like pre-rework Naafiri W + Stridebreaker bug. - Vita -->
+* ''Shattered Earth'' is special cased to generate a stack of {{iis|Spear of Shojin}} {{nie|Focused Will}}.
+* Only the third hit of ''Shattered Earth'' triggers {{ii|Tear of the Goddess}} and {{iis|Archangel's Staff}} {{nie|manaflow}}.
+;Interactions & Other
+* The attack reset will not save time if '''Skarner''' possesses sufficiently high attack speed because of the ability's {{fd|0.35}} seconds cast time. Starting from around {{sti|{{as|271.4285% '''bonus''' attack speed}}}}, basic attacking is fast enough to match the time with the reset and will be even faster with more, causing ''Shattered Earth'' to actually slow down the user at that point.
+** However, this only takes attack speed into account and ignores various other factors, such as the damage and other bonuses from the ability and the fact that '''Skarner''' generally does not like building such high amounts of attack speed. Additionally, attempting to do the attack reset at such high attack speed is already a hard task, if not requires frame perfect execution to save any [[Tick and updates|ticks]] worth of time.
+;Known issues
+* '''Skarner's''' attack speed is not immediately updated upon casting ''Shattered Earth''. Beginning the first attack shortly after casting results in an attack that does not benefit from the attack speed granted by the ability.
+* If ''Upheaval'' hits an enemy while a new instance of ''Shattered Earth'' is active, ''Shattered Earth's'' effects are immediately lost.
+* While ''Shattered Earth'' is active, it will not benefit from cooldown refund effects such as {{ri|Transcendence}} or {{iis|Navori Flickerblade}} {{nie|Transcendence}}.
+** {{Note|1}} This is not a '''Skarner'''-specific issue. Various abilities, including Ultimates, that grant a different ability in their slot after activation may suffer from this problem (e.g. {{cai|Blood Frenzy|Briar}} and {{ai|Snack Attack|Briar}}) and may be fixed or may have been fixed on a case-by-case basis.
+* The empowered attacks lack spell effects as they deal {{tip|proc damage}}, which does not match with how empowered attacks supposed to behave in general.
+** {{Note|1}} This is possibly a band-aid fix to avoid an issue where ''Shattered Earth'' would trigger various effects twice per attack instead of once, as it could be seen during the first PBE deploy of the rework's release, after which the ability was changed from spell damage to proc.
+* The buff used for ''Shattered Earth'' is fuzzy. Each attack removes 1 stack on a delay of up to {{fd|0.25}} seconds. This has no known side effects currently.
+* The slow is also applied and removed in a fuzzy manner, meaning that sometimes it may last shorter or longer than intended, depending on the ticks.
+|tips=
+* Rather than asking if using the final attack or the throw is worth more, instead think and decide about '''when''' to use the throw.
+* When attempting to engage in from safety with ''Ixtal's Impact'', you should consider pre-emptively casting ''Shattered Earth'' in most situations. Trying to do it after the engage leaves you more vulnerable as you have to wait for the cast time '''WHILE''' in champion combat.
+* Similarly, learning when and how to use ''Shattered Earth'' is the most vital part when you begin to play Skarner. It makes the gameplay experience very punishing when used neglectfully.
+* As already mentioned in ''Impale's'' description, casting ''Impale'' while ''Shattered Earth'' is active will immediately forces ''Upheaval'' to be cast with no cast time. This can be utilised for more efficient damage dealt when optimised or even gaining surprise takedowns against fleeing enemies.
+<!-- Blurb -->
+|blurbicon    = Skarner Shattered Earth.png
+|blurb        = {{sbc|Active:}} {{ci|Skarner}} rips a boulder out of the ground, empowering his next three basic attacks with {{sti|{{as|'''bonus''' attack speed}}}} and {{as|'''bonus''' physical damage}} to the target and surrounding enemies. The final attack slams the boulder, dealing additional damage based on {{as|each target's '''maximum''' health}} and {{tip|slow|slowing}} them.
+|blurb2       = During ''Shattered Earth'', '''Skarner''' may cast:
+|post-blurb   = Skarner/Upheaval
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Seismic Bastion|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Skarner
+|skill        = W
+|icon         = Skarner Seismic Bastion.png
+|description  = {{sbc|Active:}} '''Skarner''' slams his claws into the ground, {{tip|shield|shielding}} himself equal to {{as|8% of his '''maximum''' health}} for {{fd|2.5}} seconds and releasing a shockwave that {{tt|quickly|~0.25 seconds}} expands in a radius around him to deal {{as|magic damage}} to enemies hit and {{tip|slow}} them by 20% for 1 second. 
+|leveling     = {{st|Magic Damage|{{ap|50 to 130}} {{as|(+ 80% AP)}}}}
+|description2 = '''''Skarner''' can move during Seismic Bastion's cast time.''
+|effect radius= {{dv|{{tip|er|icononly = true}} {{tt|600|Radial missile range within an arc forward, increasing towards the edges of this angle}}|{{tt|700|Radial missile range at every other angle}}}}<!--/ {{tt|200|Radial missile width}}-->
+|speed        = {{tt|1650|Radial missile speed}}
+|cooldown     = {{ap|10 to 6}}
+|cost         = {{ap|60 to 80}}
+|costtype     = mana
+|cast time    = {{ap|0.3}}
+|targeting    = Auto
+|affects      = Enemies
+|damagetype   = Magical
+|spelleffects = spellaoe
+|spellshield  = true
+|projectile   = false
+|notes        = 
+* The shield is granted at the start of the cast time.
+* The shield ratio is equal to {{pp|0.08*({{ccd|Skarner|hp_base}}+({{ccd|Skarner|hp_lvl}})*(x-1)*(0.7025+0.0175*(x-1)))}} {{as|(+ 8% of his '''bonus''' health)}}.
+{{Effect at cast time end}}
+<!-- Blurb -->
+|blurbicon    = Skarner Seismic Bastion.png
+|blurb        = {{sbc|Active:}} {{ci|Skarner}} slams his claws into the ground, {{tip|shield|shielding}} himself based on {{as|his '''maximum''' health}} and releasing a shockwave that quickly expands in a radius around him to deal {{as|magic damage}} to enemies hit and briefly {{tip|slow}} them.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Ixtal's Impact|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Skarner
+|skill        = E
+|icon         = Skarner Ixtal's Impact.png
+|icon4        = Skarner Ixtal's Impact 2.png
+|description  = {{sbc|Active:}} '''Skarner''' charges forward in the direction of the cursor for up to {{fd|2.75}} seconds, during which he gains {{tip|slow immunity}}, becomes {{tip|ghosted}}, ignores [[terrain]]  collision, and has {{tip|unobstructed vision}} of the surrounding 650 units. He automatically navigates his movement along the way and is able to steer himself with a slow turn rate that increases over time, resetting upon changing direction. ''Ixtal's Impact'' can be recast after 1 second, and does so automatically after the duration.
+|description2 = '''Skarner''' begins the charge at a {{tt|static amount|Cannot be modified by any means}} of {{sti|{{as|150 movement speed}}}} that increases by {{as|100|ms}} every {{rutngt|0.25}}, up to {{as|950 '''total''' movement speed}} by the end of the duration. If '''Skarner''' collides with an enemy {{tip|champion}} or large {{tip|monster}}, he grabs them with his claws for the time of the remaining charge, {{tip|attach|attaching}} them to himself, {{tip|suppression|suppressing}} them, {{tip|true sight|revealing}} them, increasing the charge's turn rate to the maximum, and gaining {{as|300 '''bonus''' movement speed|ms}}, with a minimum total of {{as|650|ms}} and a maximum total of {{as|1150|ms}}. If a target has been grabbed before the first {{fd|1.75}} seconds of the charge, the remaining duration is set to 1 second, and set to {{fd|0.5}} seconds otherwise. The charge does not ramp up in speed while a target is grabbed.
+|description3 = If '''Skarner's''' attached target collides with terrain, the charge ends, detaching them from him, dealing {{as|physical damage}}, {{tip|stun|stunning}} them for {{fd|1.1}} seconds, and reducing ''Ixtal's Impact's'' {{sti|cooldown}} by 35%.
+|leveling3    = {{st|Physical Damage|{{ap|30 to 150}} {{as|(+ 120% '''bonus''' AD)}} {{as|(+ 6% of his '''maximum''' health)}}}}
+|description4 = {{sbc|Recast:}} '''Skarner''' ends ''Ixtal's Impact''. If a target has been grabbed, he detaches them from himself.
+|description5 = ''Ixtal's Impact ends immediately if '''Skarner''' becomes {{tip|immobilize|immobilized}} or {{tip|ground|grounded}}, or is affected by any form of {{tip|cast-inhibiting crowd control}}, during the charge. The grabbed target is detached if this occurs. While the target is grabbed, they are attached to '''Skarner''' 200 units in front of him.''
+|cooldown     = {{ap|22 to 18}}
+|cdstart      = post-effect
+|cost         = {{ap|50 to 70}}
+|costtype     = mana
+|target range = 
+|collision radius= {{tip|cr|icononly=true}} {{tt|160|Grab range}}
+|speed        = 
+|targeting    = Direction
+|cast time    = none
+|affects      = 
+|damagetype   = Physical
+|spelleffects = spell
+|spellshield  = true
+|grounded     = true
+|knockdown    = false
+|silence      = true
+|flavorsound  = {{sm2|Skarner_Original_EStun_2.ogg}} ''{{tt|"I am calamity!"|Voice line plays upon pushing target into terrain}}''
+|notes        = 
+* While ''Ixtal's Impact'' is active, '''Skarner's''' movement speed is set to a static amount that cannot change by any means other than by the ability itself.
+** Any movement speed modifiers gained before or during the charge are retained however, and will take effect after the charge if the duration permits.
+* The {{as|'''bonus''' movement speed}} from grabbing a target is {{as|300|ms}} only if '''Skarner's''' movement speed was between {{as|350|ms}} and {{as|850|ms}} at the time.
+** If '''Skarner''' was at less than {{as|350 movement speed}} when he grabbed the target, his total movement speed is instead set to {{as|650|ms}}. If he was at {{as|950 movement speed}}, his total movement speed is set to the cap of {{as|1150|ms}}.
+* '''Skarner''' gains a slightly larger field of view during ''Ixtal's Impact's'' charge.
+* ''Ixtal's Impact's'' attachment depends on the application of the {{tip|suppression}}; if the suppression is not applied, neither is the attachment. Similarly, if the suppression is removed, so is the attachment.
+** If the target resists the suppression through {{tip|cc-immune|total crowd control immunity}}, {{tip|displacement immune|displacement immunity}}, or a {{tip|spell shield}}. '''Skarner''' will not attach them to himself, causing the charge to end instantly.
+** If the target removes the suppression by any means, including with an applicable {{tip|cleanse}} effect or {{tip|dispel}}, they will detach themselves from '''Skarner''' immediately which forces the charge to end instantly and not apply any damage.
+* '''Skarner''' can move up to 550 units beyond the outer-edge of the battlefield with the charge.
+** Once he has surpassed this boundary, ''Ixtal's Impact'' ends immediately and '''Skarner''' is moved to the nearest valid space.
+* ''Ixtal's Impact'' can interact with [[Terrain#Player-Generated|player-generated terrain]].
+* If '''Skarner''' is inside terrain when the effect ends, he will be moved to the nearest valid space.
+* Enemies cannot see '''Skarner''' while he is inside terrain, unless they grant sight into the area of terrain he is inside (such as with {{ai|Hawkshot|Ashe}} or {{ai|Heightened Senses|Quinn}}) or have {{tip|unobstructed vision}}.
+** However, enemies will be notified when '''Skarner''' is inside nearby terrain while within a certain distance of him. An indicator will be visible to the enemy player's perspective to represent this.
+* The following table refers for interactions while '''Skarner''' is charging:
+{{ct|attack=false|move=Allowed, but cannot input movement commands.|cast=false|items=false|consume=false|spells=true,false,false,false,false|interrupts=death,root,ground,silence}}
+* A special indicator for ''Ixtal's Impact's'' direction and expected ending location is visible to '''Skarner''' only during his charge.
+<!-- Blurb -->
+|blurbicon    = Skarner Ixtal's Impact.png
+|blurb        = {{sbc|Active:}} {{ci|Skarner}} charges in the target direction for a duration while ignoring terrain collision and gaining {{tip|ghosting}} and {{tip|slow immunity}}. He starts slowly but ramps up in {{sti|movement speed|{{as|movement speed}}}} over the course of the charge, and is able to steer himself increasingly fast when keeping the same direction. ''Ixtal's Impact'' can be recast after 1 second, and does so automatically after the duration.
+|blurb2       = Colliding with an enemy {{tip|champion}} or large {{tip|monster}} causes '''Skarner''' to increase his {{sti|movement speed|{{as|movement speed}}}}, forcibly grab them to {{tip|attach}} them to him, and {{tip|suppression|suppress}} them while dragging them along for the remainder of the charge. If the attached target collides with terrain while grabbed, they are {{tip|stun|stunned}} and dealt {{as|physical damage}}, ending the charge, and reducing ''Ixtal's Impact'' {{sti|cooldown}}.
+|blurb3       = {{sbc|Recast:}} '''Skarner''' ends ''Ixtal's Impact'' early.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Impale|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|disp_name    = Impale
+|champion     = Skarner
+|skill        = R
+|icon         = Skarner Impale.png
+|description  = {{sbc|Active:}} '''Skarner''' winds up his stingers over the cast time, then lashes them forward in an isosceles trapezoid in the target direction, dealing {{as|magic damage}} to enemies hit and impaling up to 3 of the closest enemy champions within the area to {{tip|suppression|suppress}} them for {{fd|1.5}} seconds. While suppressed, the targets are {{tip|true sight|revealed}} and {{tip|attach|attached}} to '''Skarner'''. If he successfully impales at least one enemy champion, '''Skarner''' gains {{as|40% '''bonus''' movement speed}} for the same duration.
+|leveling     = {{st|Magic Damage|{{ap|150 to 350}} {{as|(+ 100% AP)}}}}
+|description2 = ''If Impale is cast during {{ai|Shattered Earth|Skarner}}, '''Skarner''' {{tt|automatically casts|Without incurring Upheaval's cast time}} {{ai|Upheaval|Skarner}} in the direction of Impale's cast. '''Skarner''' is unable to basic attack, cast {{ai|Shattered Earth|Skarner}} or {{ai|Ixtal's Impact|Skarner}}, or use {{si|Flash}} during Impale. While the targets are impaled, they are attached to '''Skarner''' 300 units {{tt|in front of him|In the direction he cast Impale}}. Targets are placed 200 units in the same direction at the end of the effect.''
+|cooldown     = {{ap|120 to 90}}
+|cdstart      = on-cast
+|cost         = 100
+|costtype     = mana
+|range        = {{tip|er|icononly = true}} {{tt|-50 – 625|Height placement relative to Skarner, 675 total length}}
+|width        = {{dv|{{tip|er|icononly = true}} {{tt|350|Larger base}}|{{tt|200|Smaller base}}}}
+|angle        = <!-- {{tt|72{{degree}}|Larger base angles}} (estimated) -->
+|targeting    = Direction
+|affects      = Self, Enemies
+|cast time    = {{fd|0.75}}
+|damagetype   = Magic
+|spelleffects = spellaoe
+|spellshield  = true
+|projectile   = false
+|flavorsound  = {{sm2|Skarner_Original_R_1.ogg}} ''"Feel my sting!"''
+|notes        = 
+* ''Impale's'' attachment depends on the application of the {{tip|suppression}}; if the suppression is not applied, neither is the attachment. Similarly, if the suppression is removed, so is the attachment.
+** If a target resists the suppression by being {{tip|cc-immune|immune to crowd control}}, {{tip|displacement immune}}, or having a {{tip|spell shield}}, '''Skarner''' will not attach them to himself.
+*** If all targets hit resist the suppression, '''Skarner''' will fail to attach any of them to himself and thus will not initiate ''Impale'', causing the ability to behave as if no valid impale targets were hit.
+** If a target removes the suppression by any means, including with an applicable {{tip|cleanse}} effect or {{tip|dispel}}, they will detach themselves from '''Skarner''' immediately.
+*** If all targets remove the suppression, ''Impale'' ends prematurely and is cancelled for '''Skarner'''.
+* If a target would be inside of terrain at the end of the effect, they are moved to the nearest valid space.
+* If a target would be on the other side of a wall, they are moved to the same side as '''Skarner'''.
+* During ''Impale'', '''Skarner''' always faces in the direction of the nearest attached target.
+{{Effect at cast time end}}
+* The following table refers for interactions while '''Skarner''' is in ''Impale's'' cast time:
+{{ct|attack=false|cast=false|move=false|items=false,true|consume=true|spells=true,false,false,false,false|interrupts=revival-false}}
+* The following table refers for interactions while '''Skarner''' is performing ''Impale's'' enemy disable:
+{{ct|attack=false|move=true|cast={{ai|Q|Skarner}} and {{ai|E|Skarner}} are disabled, but can be buffered. {{ai|W|Skarner}} is usable.|items=true|consume=true|spells=true,false,true,false,false|interrupts=death}}
+|tips =
+* Since '''Skarner''' forcibly faces toward his {{tip|suppression|suppressed}} target(s), he will constantly refresh the bonus granted by {{ri|Approach Velocity}} while performing ''Impale'', thus allowing him to drag enemies much further.
+<!-- Blurb -->
+|blurbicon    = Skarner Impale.png
+|blurb        = {{sbc|Active:}} {{ci|Skarner}} winds up his stingers over the cast time with {{tip|displacement immune|displacement immunity}}, then lashes them forward in the target direction, dealing {{as|magic damage}} to enemies hit and impaling up to 3 of the closest enemy champions within the area to briefly {{tip|suppression|suppress}}. While suppressed, the targets are {{tip|true sight|revealed}} and {{tip|attach|attached}} to '''Skarner'''. If he successfully impales at least one enemy champion, '''Skarner''' gains {{sti|movement speed|{{as|'''bonus''' movement speed}}}} for ''Impale's'' duration.
+|blurb2       = '''Skarner''' will automatically cast ''{{ai|Upheaval|Skarner}}'' in the direction of ''Impale's'' cast.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Crystal Slash|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Skarner
+|skill        = Q
+|icon         = Crystal Slash.png
+|description  = {{sbc|Active:}} '''Skarner''' slashes around himself, dealing {{as|physical damage}} to nearby enemies. If at least one enemy is hit, he becomes charged for 5 seconds, empowering subsequent casts of ''Crystal Slash'' to deal {{as|'''bonus''' magic damage}}.
+|leveling     = 
+{{st|Physical Damage|{{as|{{ap|1 to 3}}% of target's '''maximum''' health}} {{as|(+ 20% AD)}}}}
+{{st|Bonus Magic Damage|{{as|{{ap|1 to 3}}% of target's '''maximum''' health}} {{as|(+ 20% AD)}} {{as|(+ 30% AP)}}}}
+<!--{{st|Total Mixed Damage|{{as|{{ap|1*2 to 3*2}}% of target's '''maximum''' health}} {{as|(+ 40% AD)}} {{as|(+ 30% AP)}}}}-->
+|description2 = Each instance of damage is capped at 200 against epic {{tip|monster|monsters}}.
+|description3 = Basic attacks reduce ''Crystal Slash's'' {{sti|'''current''' cooldown}} by {{fd|0.25}} seconds, increased to 1 second against {{tip|champions}}.
+|cooldown     = {{ap|3.5 to 2.5}}
+|cost         = 10
+|costtype     = Mana
+|cast time = none
+|effect radius= {{tip|cr|icononly = true}} 350
+|targeting    = Auto
+|affects      = Enemies, Self
+|damagetype   = Physical Magic
+|spelleffects = spellaoe
+|onhiteffects = 
+|spellshield  = Special
+|notes        = 
+* {{tip|Spell shield}} will block the damage but will not prevent '''Skarner''' from triggering the bonus effect.
+* Basic attacks against structures will not trigger the cooldown reduction.
+* As already noted, each damage instance is capped on its own, meaning that the maximum possible damage against an epic monster with one cast is 400.
+* In order to hit the cap, the target needs to have at least {{as|{{ap|(200 to 200)/((1 to 3)/100)|round=ceil}} health}} (without considering the ratios).
+<!-- Blurb -->
+|blurb        = {{sbc|Active:}} {{ci|Skarner}} slashes around himself, dealing {{as|physical damage}} to nearby enemies based on {{as|their '''maximum''' health}}.
+|blurb2      = If ''Crystal Slash'' hits an enemy, the next cast within a few seconds also deals {{as|'''bonus''' magic damage}} to nearby enemies based on {{as|their '''maximum''' health}}.
+|blurb3      = Basic attacks reduce ''Crystal Slash's'' current cooldown.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Crystal Spires|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Skarner
+|skill        = I
+|icon         = Crystal Spires.png
+|blurb        = {{sbc|Innate:}} {{cis|Skarner}} presence causes [[File:Crystal Spires Minimap.png|16px|link=]] ''Crystal Spires'' to spawn at set locations across the map that can be captured by both teams, which grants {{g|gold}} upon capture. While he is near a ''Crystal Spire'' that is captured by his team, he gains ''Crystal Charge''.
+|blurb2 = {{sbc|Crystal Charge:}} '''Skarner''' gains tremendous {{as|{{sti|'''bonus''' attack speed}}}} and {{as|{{sti|'''bonus''' movement speed}}}}, and continually restores a portion of {{sti|mana|{{as|his '''maximum''' mana}}}}.
+|description  = {{sbc|Innate:}} '''Skarner's''' presence spawns [[File:Crystal Spires Minimap.png|16px|link=]] 6 ''Crystal Spires'' at set points across the [[Summoner's Rift|battlefield]]:
+* One beside {{uis|Baron Nashor}} pit
+* One beside {{uis|Dragon}} pit
+* One near each of the camps for {{ui|Blue Sentinel}} and {{ui|Red Brambleback}}
+|description2 = After {{tip|minions}} have spawned, a ''Crystal Spire'' can be captured by {{tip|champions}} by standing on it for 2 seconds, Once captured, the ''Crystal Spire'' is owned by the team until contested, and the defending team can stand on the spire to prevent the opposing team from capturing it.
+|description3 = Capturing a ''Crystal Spire'' grants {{tip|sight}} of its radius for {{fd|1.5}} seconds and locks it out from capture for 15 seconds. ''Crystal Spires'' grant {{g|30}} split among its captors, or {{g|15}} for a single captor.
+|description4 = '''Skarner''' gains ''Crystal Charge'' while within range of a ''Crystal Spire'' controlled by his team, for {{fd|1.25}} seconds after triggering ''{{ai|Crystal Venom|Skarner}}'', and for {{fd|1.75}} seconds after stinging an enemy champion with ''{{ai|Impale|Skarner}}''.
+|description5 = {{sbc|Crystal Charge:}} '''Skarner''' gains {{sti|ms|{{pp|70;72;74;76;78;80;82;85;88;91;94;97;100;104;108;112;116;120|formula = 68 + 2 per level up to 7, + 3 per level up to 13, and + 4 per level|color=ms}} {{as|'''bonus''' movement speed}}}} and {{sti|{{pp|key=%|43;48;53;58;63;68;73;80;87;94;101;108;115;124;133;142;151;160|formula = 38 + 5 per level up to 7, + 7 per level up to 13, and + 9 per level|color=as}} {{as|'''bonus''' attack speed}}}} and restores {{sti|mana|{{as|1% '''maximum''' mana}}}} every {{fd|0.5}} seconds.
+|description6 = ''Crystal Spires near buff monsters start the game already captured by the side's respective team.''
+|targeting    = Passive
+|affects      = Self
+|effect radius= 1600
+|notes        = 
+* ''Crystal Charge's'' duration refreshes if it was gained by an ability.
+|differences =
+;{{tip|ARAM}}
+* ''Crystal Spires'' appear at:
+** One nearby each inner {{tip|turret}}.
+** One at the center of the map.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Crystalline Exoskeleton|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Skarner
+|skill        = W
+|icon         = Crystalline Exoskeleton.png
+|blurb        = {{sbc|Active:}} {{ci|Skarner}} {{tip|shield|shields}} himself based on {{as|his '''maximum''' health}} and gradually gains {{as|'''bonus''' {{sti|movement speed}}}} while it persists.
+|description  = {{sbc|Active:}} '''Skarner''' grants himself a {{tip|shield}} for up to 6 seconds, and while it holds, he gains {{sti|ms|{{as|'''bonus''' movement speed}}}} that doubles over the first 3 seconds.
+|leveling     = {{st|Shield Strength|{{as|{{ap|9 to 13}}% '''maximum''' health}} {{as|(+ 80% AP)}}}}
+{{st|Bonus Movement Speed|{{ap|8 to 16}}%|Increased Bonus Movement Speed|{{ap|8*2 to 16*2}}%}}
+|cooldown     = {{ap|13 to 11}}
+|cdstart      = on-cast
+|cost         = 60
+|cast time = none
+|costtype     = Mana
+|targeting    = Auto
+|affects      = Self
+|spelleffects = Shield
+|notes        = 
+* No additional notes.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Fracture|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Skarner
+|skill        = E
+|icon         = false
+|blurb = {{sbc|Passive:}} Whenever {{ci|Skarner}} triggers ''Crystal Venom'' or stings an enemy with ''{{ai|Impale|Skarner}}'', ''Fracture's'' cooldown will be {{sti|cdr|reduced}} by the {{tip|crowd control|crowd control's}} duration.
+|blurb2 = {{sbc|Active:}} '''Skarner''' launches a blast of crystalline energy in the target direction that deals {{as|magic damage}} to enemies hit and {{tip|slows}} them for a short time, as well as marking them with ''Crystal Venom'' for a few seconds.
+|blurb3 = {{sbc|{{ai|Crystal Venom|Skarner}}:}} '''Skarner's''' next basic attack against a marked target consumes the mark to deal {{as|'''bonus''' physical damage}} and briefly {{tip|stun}} them.
+|description  = {{sbc|Passive:}} Every time '''Skarner''' triggers ''Crystal Venom'' or stings an enemy with ''{{ai|Impale|Skarner}}'', ''Fracture's'' {{sti|'''current''' cooldown}} is reduced by the corresponding '''base''' duration of the disable.
+|icon2        = Fracture.png
+|description2  = {{sbc|Active:}} '''Skarner''' launches a blast of crystalline energy in the target direction that deals {{as|magic damage}} to enemies hit, {{tip|slows}} them for {{fd|2.5}} seconds, and marks them with ''Crystal Venom'' for 5 seconds.
+|leveling2     = {{st|Magic Damage|{{ap|40 to 140}} {{as|(+ 20% AP)}}}}
+{{st|Slow|{{ap|30 to 50}}%}}
+|icon3        = Crystal Venom.png
+|description3 = {{sbc|Crystal Venom:}} '''Skarner's''' next [[basic attack]] against a marked target is empowered to consume the mark to deal {{as|'''bonus''' physical damage}} and {{tip|stun}} them for {{fd|1.25}} seconds.
+|leveling3    = {{st|Bonus Physical Damage|{{ap|30 to 110}}}}
+|cooldown     = {{ap|14 to 12}}
+|cost         = 55
+|costtype     = Mana
+|cast time    = {{fd|0.25}}
+|target range = {{tip|cr|icononly = true}} 1000
+|width        = {{tip|er|icononly = true}} 140
+|speed        = 1500
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = Physical Magic
+|spellshield  = True
+|spelleffects = special
+|projectile   = True
+|parry        = special
+|notes        = 
+* ''Fracture'' is disabled during {{ai|Impale|Skarner}}.
+{{Effect at cast time start}}
+* ''Fracture's'' projectile deals {{tip|area damage}}, while the ''Crystal Venom'' on-hit effect deals {{tip|proc damage}}.
+* ''Crystal Venom'' triggers even if the attack is {{tip|blocked}} ({{tip|stun}} applies), but not if it's {{tip|dodged}} or he is {{tip|Blind}}. The damage of the entire attack is negated in both cases.
+
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Upheaval|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Skarner
+|skill        = Q
+|icon         = Skarner Upheaval.png
+|description  = {{sbc|Active:}} '''Skarner''' ends ''{{ai|Shattered Earth|Skarner}}'' by throwing his boulder in the target direction. It explodes upon colliding with the first enemy hit, applying the same damage and slow to the target and surrounding enemies as ''Shattered Earth's'' final empowered attack would.
+|leveling     =
+{{st|Physical Damage|{{ap|10 to 50}} {{as|(+ 90% '''bonus''' AD)}} {{as|(+ 3% of his '''bonus''' health)}} {{as|(+ 11% of target's '''maximum''' health)}}}}
+{{st|Maximum Monster Damage|{{ap|150+10 to 350+50}} {{as|(+ 90% '''bonus''' AD)}} {{as|(+ 3% of his '''bonus''' health)}}}}
+|range        = {{tip|cr|icononly = true}} 1050
+|speed        = 1600
+|effect radius= {{tip|cr|icononly = true}} {{tt|300|Boulder splash radius, centered on target}}
+|width        = {{tip|er|icononly = true}} 180
+|cooldown     =
+|cast time    = {{dv|{{tt|{{fd|0.25}}|Normal cast}}|{{tt|none|When cast automatically from Impale's cast}}}}
+|cost         = none
+|costtype     = 
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = Physical
+|spelleffects = spellaoe
+|spellshield  = special
+|projectile   = true
+|notes        = 
+;General
+* While ''Upheaval'' can deal damage to structures, the missile can't directly hit them. They have to be within the radius of the explosion.
+* {{tip|Spell shield}} will not prevent the explosion from occurring.{{Effect at cast time end}}
+** The direction of cast will be updated to go toward the cast location.
+* The {{tip|slow}} applied by ''Shattered Earth'' is a generic slow debuff.
+;Known Issues
+* If ''Upheaval'' hits an enemy while a new instance of ''Shattered Earth'' is active, ''Shattered Earth's'' effects are immediately lost.{{bug}}
+<!-- Blurb -->
+|blurbicon    = Skarner Upheaval.png
+|blurb        = {{sbc|Active:}} '''Skarner''' ends ''Shattered Earth'' by throwing his boulder, which explodes upon colliding with the first enemy hit, mimicking the final attack's damage and effects.
+|pre-blurb    = Skarner/Shattered Earth
+}}

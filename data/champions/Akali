@@ -1,0 +1,351 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Assassin's Mark|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Akali
+|skill        = I
+|icon         = Assassin's Mark.png
+|description  = {{sbc|Innate:}} When '''Akali''' damages an enemy {{tip|champion}} with an {{tip|ability}}, she creates a ring around them for 4 seconds, refreshing on subsequent damaging abilities against champions. For 2 seconds, she gains {{as|{{pp|key=%|30 to 60 for 4|1 to 16}} {{sti|'''bonus''' movement speed}}}} while moving away from the center of the ring. Only one ring may be active at a time.
+|description2 = When '''Akali''' exits the ring, for 2 seconds, she regains the {{as|'''bonus''' movement speed}} while facing nearby enemy champions and becomes empowered with ''Swinging Kama'' for 4 seconds, during which she cannot create another ring.
+|description3 = {{sbc|Swinging Kama:}} '''Akali's''' next {{tip|basic attack}} is empowered to have an {{tip|uncancellable windup}}, gain {{sti|range|{{tt|'''doubled''' range|Not necessarily increased by 125, check notes}}}} and deal {{pplevel|35 to 53 for 7; then + 9*x for 6; then + 15*x|formula=+3 per level until lvl 7; then +9 until lvl 13, then +15|color=magic damage}} {{as|(+ 60% '''bonus''' AD)}} {{as|(+ 55% AP)}} {{as|'''bonus''' magic damage}}.
+|targeting    = Passive
+|affects      = Self, Enemies
+|effect radius= {{tt|500|Ring radius}}
+|customlabel  = Ring Offset
+|custominfo   = {{tt|-120|Ring offset from enemy's center, toward caster (at the time of being triggered)}}
+|damagetype   = Magic
+|spelleffects = spell
+|parry        = true
+|spellshield  = false
+|notes        = 
+* Enemies cannot see the ring, but can see the empower effect.
+* ''Swinging Kama'' gives a static '''bonus''' range which doesn't change if '''Akali's''' range changes during it (i.e {{ii|Rapid Firecannon}}):
+** If ''Rapid Firecannon'' fully charges within ''Swinging Kama's'' duration, '''Akali's''' total range increases to {{tt|337.5|(125 + 125 (which is the bonus range Swinging Kama gives)){{times}}1.35}}.
+** If ''Rapid Firecannon'' fully charges before gaining ''Swinging Kama'', '''Akali's''' total range is increased to {{tt|395|125{{times}}1.35 + 125{{times}}1.35 (which is the bonus range Swinging Kama gives){{times}}1.35 (further increased by Rapid Firecannon)}}.
+* The ring will be created around the last target hit by ''{{ai|Five Point Strike|Akali}}''.
+* The empowered attack will trigger but not be consumed nor apply its effects against {{tip|structures}} and {{tip|wards}}.
+<!-- Blurb -->
+|damage       = true
+|damageextra  =
+* This ability's damage is calculated based on the caster's stats at the time of its application.
+|damagedetails=
+{{Infobox damage
+|dtitle      = Akali - Assassin's Mark: Attack
+|dtype       = p
+|dtags       = basic
+|dproperties = ApplyLifesteal = true, EnableCallForHelp = true , RespectDodge = true, TriggerOnHitEvents = true,
+|dnotes       = * Refers to this alternative attack's main damage to the primary target, and thus copies all properties of the basic attack.
+** It can {{tip|blind|miss}} if the user is blinded.
+}}
+{{Infobox damage
+|dtitle      = Akali - Assassin's Mark: Bonus Damage
+|dtype       = m
+|dtags       = ability
+|dproperties = 
+|dnotes      = * Does not apply if the triggering attack is {{tip|dodge|dodged}}, {{tip|block|blocked}}, or {{tip|blind|misses}}.
+* Applies before the triggering attack's damage, meaning any {{tip|on-hit}} effects will be invalidated if the target dies from this damage.
+}}
+
+|blurb        = {{sbc|Innate:}} {{cis|Akali}} damaging {{tip|abilities}} against a champion create a ring around them for a few seconds, and she gains {{sti|{{as|move speed}}}} while moving away from the ring.
+|blurb2       = Once '''Akali''' exits the ring, she regains the {{sti|{{as|move speed}}}} towards enemy champions and empowers her next {{tip|basic attack}} with {{sti|range|'''bonus''' range}} and {{as|magic damage}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Five Point Strike|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Akali
+|skill        = Q
+|icon         = Five Point Strike.png
+|description  = {{sbc|Active:}} '''Akali''' unleashes kunai in a cone in the target direction, dealing {{as|magic damage}} to enemies hit. Targets beyond a certain range are also {{tip|slow|slowed}} by 50% for {{fd|0.5}} seconds.
+|leveling     = {{st|Magic Damage|{{ap|45 to 145}} {{as|(+ 65% AD)}} {{as|(+ 60% AP)}}}}
+|target range = {{dv|500|{{tt|120|Range offset for applying the slow}}}}
+|width        = {{tt|350|Maximum width. Estimated.}}
+|angle        = 20{{degree}}
+|cooldown     = {{fd|1.5}}
+|cast time    = {{pp|0.25 to 0.175 for 4|1;6;11;16|round=3}}
+|cost         = {{ap|110 to 70}}
+|costtype     = Energy
+|queue time   = {{fd|0.5}}
+|targeting    = Direction
+|affects      = Enemies, Self
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spellaoe
+|projectile   = True
+|notes        = 
+* ''Five Point Strike'' will hit enemies after only {{pp|0.25*0.75 to 0.175*0.75 for 4|1;6;11;16|round=3}} seconds (75% of cast time) into the cast time.
+** Due to [[tick and updates|any actions only starting on integer game ticks]], the effective cast time rounds up to {{pp|0.264;0.231;0.231;0.198|1;6;11;16|round=3}} and the hit will occur at {{pp|0.198;0.198;0.165;0.132|1;6;11;16|round=3}} seconds into it.
+{{Effect at cast time end}}
+|damage       = true
+|damageextra  = 
+* This ability's damage is calculated based on the caster's stats at the time of its initial application and does not change dynamically.
+|damagedetails=
+{{Infobox damage
+|dtitle      = Akali - Five Point Strike: Hit
+|dtype       = m
+|dtags       = ability,area
+|dproperties = 
+|dnotes      = 
+}}
+<!-- Blurb -->
+|blurb        = {{sbc|Active:}} {{ci|Akali}} throws out a cone of kunai that deals {{as|magic damage}} to enemies hit. Targets hit at maximum range are briefly {{tip|slow|slowed}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Twilight Shroud|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Akali
+|skill        = W
+|disp_name    = Twilight Shroud
+|icon         = Twilight Shroud.png
+|description  = {{sbc|Active:}} '''Akali''' restores {{sti|{{as|100 energy}}}} over {{fd|0.4}} seconds and gains {{sti|ms|{{as|'''bonus''' movement speed}}}} that decays over 2 seconds. She also detonates a smoke bomb a fixed distance away in the target direction, creating a circular shroud that expands over the next 5 seconds into a ring. The shroud does not permeate terrain, and will expand toward nearby enemy champions. While the shroud is active, '''Akali's''' {{as|'''maximum''' energy}} is increased by {{as|100|energy}}.
+|leveling     = {{st|Bonus Movement Speed|{{ap|30 to 50}}%}}
+{{st|Shroud Duration|{{ap|5 to 7}} seconds}}
+|description2 = Entering the shroud renders '''Akali''' {{tip|invisibility|invisible}}, unless she is {{tip|dash|dashing}}.
+|description3 = Declaring a basic attack or casting an ability will break the invisibility and prevent '''Akali''' from entering it again for {{pp|changedisplay=true|round=3|1;0.9;0.825;0.725;0.625|1;7;10;13;16}} seconds, refreshing on subsequent attacks and casts.
+|description4 = ''The {{ai|Shuriken Flip|Akali|marked}} section of Twilight Shroud will linger for the mark's duration, even after the shroud ends.''
+|description5 = '''''Akali''' can move during Twilight Shroud's cast time.''
+|target range = 250
+|effect radius= {{dv|{{tt|350|Minimum radius. Estimated.}}|{{tt|1175|Maximum radius. Estimated.}}}}
+|speed        = <!--{{tt|X|Expansion speed}}-->
+|cooldown     = {{ap|20 to 16}}
+|cdstart      = post-effect
+|cast time    = {{fd|0.25}}
+|queue time   = {{fd|0.5}}
+|targeting    = Direction
+|affects      = Self, Enemies
+|notes        = 
+* '''Akali''' will also not gain the {{tip|invisibility}} if she is {{si|Recall|Recalling}}.
+* It is possible for '''Akali''' to detonate the smoke bomb on the far side of terrain from her current location.
+* ''Twilight Shroud's'' effects begin at the start of the cast time.
+* Using a basic attack breaks the stealth at the start of the attack windup.
+<!-- Blurb -->
+|blurb        = {{sbc|Active:}} {{ci|Akali}} restores {{as|{{sti|energy}}}} and gains a brief burst of {{sti|ms|{{as|move speed}}}}. She also drops a smoke shroud that makes her {{tip|invisibility|invisible}}, attacking or using abilities will briefly reveal her.
+|blurb2      = The shroud will expand into a ring over a few seconds, during which '''Akali''' gains increased {{as|energy}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Shuriken Flip|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Akali
+|skill        = E
+|icon         = Shuriken Flip.png
+|description  = {{sbc|Active:}} '''Akali''' {{tip|dash|flips}} backward after {{fd|0.15}} seconds into the cast time, and after the cast time throws a shuriken in the target direction that deals {{as|magic damage}} to the first enemy hit.
+|leveling     = {{st|Magic Damage|{{ap|70*0.3 to 350*0.3}} {{as|(+ {{ap|100*0.3}}% AD)}} {{as|(+ {{ap|110*0.3}}% AP)}}}}
+|description2 = The shuriken ''marks'' and {{tip|true sight|reveals}} the enemy or the last ''{{ai|Twilight Shroud|Akali}}'' smoke section hit for 3 seconds, during which ''Shuriken Flip'' can be recast to consume the mark.
+|icon3        = Shuriken Flip 2.png
+|description3 = {{sbc|Recast:}} '''Akali''' {{tip|dash|dashes}} towards the marked target or smoke section. Against enemies she deals {{as|magic damage}} upon arrival.
+|leveling3    = {{st|Magic Damage|{{ap|70*0.7 to 350*0.7}} {{as|(+ {{ap|100*0.7}}% AD)}} {{as|(+ {{ap|110*0.7}}% AP)}}|Total Magic Damage|{{ap|70 to 350}} {{as|(+ 100% AD)}} {{as|(+ 110% AP)}}}}
+|description4 = '''''Akali''' will not flip backwards if she is {{tip|immobilized}} or {{tip|grounded}} in the first {{fd|0.15}} seconds of the cast time. {{ai|Twilight Shroud|Akali}} and {{ai|Perfect Execution|Akali}} can be cast during the recast's dash.''
+|cooldown     = {{ap|16 to 10}}
+|cdstart      = on-cast
+|cost         = 30
+|costtype     = energy
+|target range = {{tip|er|icononly = true}} {{tt|825|Shuriken range, based off of Akali's original location}}
+|width        = {{tip|er|icononly = true}} {{tt|120|Shuriken missile width}}
+|speed        = {{dv|{{tt|1800|Shuriken missile speed}}|{{tt|1500|First and second dash speed}}}}
+|effect radius= {{tt|Global|Recast range}}
+|cast time    = {{dv|{{tt|{{fd|0.25}}|Initial cast}}|{{tt|{{fd|0.1}}|Recast}}}}
+|queue time   = {{dv|{{tt|{{fd|0.5}}|Initial cast}}|{{tt|{{fd|0.3}}|Recast}}}}
+|targeting    = {{dv|[[Direction-targeted|Direction]]|[[Auto-targeted|Auto]]}}
+|affects      = Enemies, Self
+|damagetype   = magic
+|spellshield  = True
+|spelleffects = spell
+|projectile   = True
+|grounded     = True
+|knockdown    = True
+|notes        = 
+* '''Akali''' will track the target if they change locations.
+** She will not stop tracking the target until she reaches them, as there is no maximum tracking distance.
+* Both casts count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and triggering {{ais|Force Pulse|Kassadin}} passive.
+* ''Shuriken Flip's'' first cast does not interrupt '''Akali's''' previous move or attack orders.
+** The recast does.
+* ''Shuriken Flip'' cannot be recast if the target is {{tip|untargetable}} or is in another realm.
+* '''Akali''' will be ordered to basic attack the target after the recast's dash ends.
+* '''Akali''' will dash backwards up-to 400 units in a straight line. This dash can cross terrain if the end point is beyond it. If she would end the dash inside terrain, she will instead look for a location in either direction left or right that is outside of terrain and dash there. If there is no such location, she will dash only up to the wall at her normal speed, ending the dash early.
+{{Effect at cast time end}}
+** The shuriken missile will fire from wherever '''Akali''' is at the end of the cast time (usually mid-dash), but always towards and reaching the location that was 825 units in front of her at the start of cast. The only exception is if she moves via {{si|Flash}}, in which case the range of the missile is decreased relative to the distance she blinked.
+* Killing an enemy with the shuriken will still mark the last area of the {{ai|Twilight Shroud|Akali|shroud}} hit.
+* Attempting to cast {{ai|Five Point Strike|Akali}} during either dash will buffer it to cast as soon as the dash ends.
+{{ct|attack=false|move=false|cast={{ai|Twilight Shroud|Akali}} is usable. {{ai|Shuriken Flip|Akali}} is disabled for 10 seconds and then interrupts. Both dashes of {{ai|Perfect Execution|Akali}} interrupt.|items=true,,,interrupts|spells=true,interrupts,true,true,false}}
+<!-- Damage -->
+|damage       = true
+|damageextra  = 
+* This ability's damage is calculated based on the caster's stats at the time of its application.
+|damagedetails=
+{{Infobox damage
+|dtitle      = Akali - Shuriken Flip: Mark Application
+|dtype       = m
+|dtags       = ability
+|dproperties = 
+|dnotes      = 
+}}
+{{Infobox damage
+|dtitle      = Akali - Shuriken Flip: Mark Consumption
+|dtype       = m
+|dtags       = ability
+|dproperties = 
+|dnotes      = 
+* EnableCallForHelp is disabled in spite of the damage being single unit-targeted.
+}}
+<!-- Blurb -->
+|blurb        = {{sbc|Active:}} {{ci|Akali}} {{tip|dashes}} backward and throws a shuriken forward that deals {{as|magic damage}} and marks the first enemy or {{ai|Twilight Shroud|Akali|smoke cloud}} hit for a short time.
+|blurb2       = While ''Shuriken Flip'' marks a target, it can be recast.
+|blurb3       = {{sbc|Recast:}} '''Akali''' {{tip|dashes}} to the marked target across any distance, dealing {{as|magic damage}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Perfect Execution|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Akali
+|skill        = R
+|disp_name    = Perfect Execution
+|icon         = Perfect Execution.png
+|description  = {{sbc|Active:}} '''Akali''' {{tip|dash|dashes}} 750 units in the direction of the target enemy {{tip|champion}}, dealing {{as|magic damage}} to enemies she passes through. If this hits an enemy, she flips over them to continue the dash up to the normal range but for at least another 150 units.
+|leveling     = {{st|Magic Damage|{{ap|110 to 330}} {{as|(+ 50% '''bonus''' AD)}} {{as|(+ 30% AP)}}}}
+|description2 = ''Perfect Execution'' can be recast after a {{fd|2.5}}-second {{tt|static cooldown|Unaffected by ability haste}} within 10 seconds of the first activation.
+|icon3        = Perfect Execution 2.png
+|description3 = {{sbc|Recast:}} '''Akali''' {{tip|dash|dashes}} {{tt|800|Estimated}} units in the target direction, dealing {{as|magic damage}} to enemies she passes through, increased by {{as|{{pp|key=%|key1=%|type=target's '''missing''' health|0 to 200 for 11|0 to 70|formula=2.86% per 1% of target's '''missing''' health, capped at 70% '''missing''' health}}|health}}.
+|leveling3    = {{st|Minimum Magic Damage|{{ap|70 to 210}} {{as|(+ 30% AP)}}|Maximum Magic Damage|{{ap|70*3 to 210*3}} {{as|(+ {{ap|30*3}}% AP)}}}}
+|target range = {{tip|cr|icononly = true}} {{tt|675|First cast range}}
+|speed        = {{dv|{{tt|1500|Initial dash speed}}|{{tt|3000|Second dash speed}}}}
+|collision radius= {{tip|er|icononly = true}} {{tt|110|Both casts dash collision, estimated}}
+|cooldown     = {{ap|120 to 60}}
+|cdstart      = post-effect
+|cast time    = {{dv|{{tt|{{fd|0.25}}|Initial cast}}|{{tt|None|Recast}}}}
+|queue time   = {{dv|{{tt|{{fd|0.5}}|Initial cast}}|{{tt|{{fd|0.3}}|Recast}}}}
+|targeting    = {{dv|[[Unit-targeted|Unit]]|[[Direction-targeted|Direction]]}}
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spellaoe
+|grounded     = True
+|knockdown    = True
+|terraingrace = true
+|outofrange   = Walk in range of the target unit to cast (first cast)
+|notes        = 
+* Both casts count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and triggering {{ais|Force Pulse|Kassadin}} passive.
+* With the first cast, '''Akali''' can dash up to a maximum of 900 units if the first enemy she hit was at the maximum dash range.
+* Casting {{si|Flash}} during either dashes will interrupt them, but '''Akali''' will deal damage to any enemies she comes in contact with at the new location.
+** Enemies already hit by either of ''Perfect Execution's'' casts cannot be affected more than once by the same cast.
+* {{ai|Shuriken Flip|Akali}} can be used during the initial dash if it is cast after ''Perfect Execution's'' cast time finishes.
+<!-- Damage -->
+|damage       = true
+|damageextra  = 
+* This ability's damage is calculated based on the caster's stats at the start of cast and does not change dynamically.
+|damagedetails=
+{{Infobox damage
+|dtitle      = Akali - Perfect Execution: First Cast, Target
+|dtype       = m
+|dtags       = ability,area
+|dproperties = 
+|dnotes      = 
+* EnableCallForHelp is disabled in spite of the damage being single unit-targeted.
+}}
+{{Infobox damage
+|dtitle      = Akali - Perfect Execution: First Cast, Area
+|dtype       = m
+|dtags       = ability,area
+|dproperties = 
+|dnotes      = 
+}}
+{{Infobox damage
+|dtitle      = Akali - Perfect Execution: Recast
+|dtype       = m
+|dtags       = ability,area
+|dproperties = 
+|dnotes      = 
+}}
+
+<!-- Blurb -->
+|blurb        = {{sbc|Active:}} {{ci|Akali}} {{tip|dashes}} in the direction of the target enemy champion, dealing {{as|physical damage}} to enemies she passes through.
+|blurb2       = ''Perfect Execution'' can be recast within a period.
+|blurb3       = {{sbc|Recast:}} '''Akali''' {{tip|dashes}} in the target direction, dealing {{as|magic damage}} to enemies she passes through based on {{as|their '''missing''' health}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Crescent Slash|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Akali
+|skill        = E
+|icon         = Crescent Slash.png
+|blurb        = Akali flourishes her kamas, dealing damage based on her bonus Attack Damage and Ability Power. When Crescent Slash kills a unit, it has a shorter cooldown.
+|description  = {{sbc|Active:}} '''Akali''' flourishes her kamas, dealing {{tip|physical damage|{{as|physical damage}}}} to all enemies around her.
+|leveling     = {{st|Physical damage|{{ap|70|100|130|160|190}} {{as|(+ 80% '''bonus''' AD)}} {{as|(+ 60% AP)}}}}
+|description2 = ''Crescent Slash'' {{sti|cooldown}} is reduced by 60% whenever it kills at least one enemy.
+|effect radius=300
+|cooldown     = {{ap|5|4.5|4|3.5|3}}
+|cost         = {{ap|60|55|50|45|40}}
+|costtype     = energy
+|targeting    = None
+|affects      = Enemies
+|damagetype   = Physical
+|spellshield  = True
+|spelleffects = Area of effect
+|projectile   = 
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* No additional details.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Mark of the Assassin|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Akali
+|skill        = Q
+|icon         = Mark of the Assassin.png
+|blurb        = Akali spins her kama at a target enemy to deal Magic Damage and mark the target for 6 seconds. Akali's melee attacks against a marked target will trigger and consume the mark to cause additional damage and restore Energy.
+|description  = {{sbc|Active:}} '''Akali''' throws her kama at the target enemy, dealing {{as|magic damage}} and ''marking'' them for 6 seconds.
+|leveling     = {{st|Magic Damage|{{ap|35|55|75|95|115}} {{as|(+ 40% AP)}}}}
+|description2 = Basic attacks detonate the ''mark'', dealing {{as|'''bonus''' magic damage}} and restoring {{sti|energy|{{as|40 energy}}}}.
+|leveling2    = {{st|Bonus Magic Damage|{{ap|45|70|95|120|145}} {{as|(+ 50% AP)}}|Total Magic Damage|{{ap|80|125|170|215|260}} {{as|(+ 90% AP)}}}}
+|target range = 600
+|cooldown     = {{ap|6|5.5|5|4.5|4}}
+|cost         = 60
+|costtype     = energy
+|targeting    = Unit
+|affects      = Enemies, Self
+|damagetype   = Magic
+|spellshield  = Special
+|spelleffects = Single target
+|projectile   = True
+|callforhelp  = True
+|grounded     = 
+|parry        = True
+|knockdown    = 
+|notes        = 
+* ''Mark of the Assassin'' will apply [[spell effects]] to both the initial missile and the damage dealt when the debuff is detonated. 
+* {{tip|Spell shield}} will block the missile damage but not the debuff detonation.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Shadow Dance|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Akali
+|skill        = R
+|icon         = false
+|blurb        = Akali moves through shadows to quickly strike through her target, dealing damage and consuming an Essence of Shadow charge. Akali recharges Essence of Shadow charges periodically, max 3 stacks.
+|description  = {{sbc|Passive:}} '''Akali''' periodically stores up to 3 charges of ''Essence of Shadow''. Champion {{tip|takedown|takedowns}} grant one charge.
+|description2 = '''Akali''' immediately gains 3 ''Essences of Shadow'' upon learning the ability.
+|icon3         = Shadow Dance.png
+|description3 = {{sbc|Active:}} '''Akali''' {{tip|dashes}} to the target enemy, dealing {{as|magic damage}}. '''Akali''' will land between 100 and 200 units on the far side of her target based on how close they were, halved versus {{ai|Mark of the Assassin|Akali|Marked}} targets.
+|leveling3    = {{st|Magic damage|{{ap|50|100|150}} {{as|(+ 35% AP)}}}}
+|target range = 700
+|speed        = 2000
+|cooldown     = 2
+|recharge     = {{ap|30|22.5|15}}
+|cost         = 1
+|costtype     = Essence
+|targeting    = Unit
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = Single target
+|projectile   = 
+|callforhelp  = True
+|grounded     = True
+|knockdown    = True
+|notes        = 
+* ''Shadow Dance'' will automatically queue a basic attack against her target. 
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Twin Disciplines|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Akali
+|skill        = I
+|icon         = Twin Disciplines.png
+|blurb        = Akali's first two attacks are empowered. The first strike heals her, and the second strike deals bonus magic damage. Twin Disciplines will recharge itself automatically a short while after being used.
+|description  = '''Akali's''' first two basic attacks are empowered.
+|description2 = {{sbc|Discipline of Might:}} '''Akali's''' first basic attack {{sti|heals}} her for {{pp|5;7;9;11;13;15;17;19;21;23;25;30;35;40;45;50;55;60|formula= 3 + 2 per level up to 11, then + 5 per level up to 18}} {{as|(+ 60% '''bonus''' AD)}} {{as|(+ 45% AP)}} {{sti|health|{{As|health}}}}.
+|description3 = {{sbc|Discipline of Force:}} '''Akali's''' second basic attack within 4 seconds deals an additional {{pp|10;12;14;16;18;20;22;24;26;28;30;40;50;60;70;80;90;100|formula=8 + 2 per level up to 11, then + 10 per level.}} {{as|(+ 50% '''bonus''' AD)}} {{as|(+ 75% AP)}} [[on-hit]] {{tip|magic damage|{{as|magic damage}}}}.
+|static       = {{pp|8;7;6;5;4|1;3;5;7;9}}
+|targeting    = Passive
+|affects      = Self
+|damagetype   = Magic
+|spellshield  = False
+|spelleffects = Heal
+|projectile   = 
+|parry        = Special
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* ''Twin Disciplines'' works against structures.
+* Parry effects will not stop ''Twin Disciplines'' to occur.
+** It also won't block the bonus damage from the second attack.
+}}

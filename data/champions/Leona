@@ -1,0 +1,139 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Sunlight|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Leona
+|skill        = I
+|icon         = Sunlight.png
+|blurb        = {{sbc|Innate:}} {{cis|Leona}} abilities briefly mark enemies hit.
+|blurb2      = Allied {{tip|champions|champions'}} damaging attacks and abilities against a marked target will consume the mark to deal {{as|magic damage}}.
+|description  = {{sbc|Innate:}} '''Leona's''' {{tip|abilities}} mark enemies hit for {{fd|2.5}} seconds, refreshing on subsequent hits. <br/><br/>Allied {{tip|champions|champions'}} damaging attacks and abilities against a marked target will consume the mark to deal {{as|{{pplevel|32 to 151}}|magic damage}} {{as|'''bonus''' magic damage}}.
+|targeting    = Passive
+|affects      = Enemies
+|damagetype   = magic
+|spelleffects = spell
+|onhiteffects = 
+|spellshield  = true
+|notes        = 
+* ''Sunlight's'' damage respects {{tip|enchantment redirection}}.
+* {{ci|Zyra}} has a hidden passive that grants her 10% increased size for {{tt|33 seconds|Estimated}} after having ''Sunlight'' applied to her.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Shield of Daybreak|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Leona
+|skill        = Q
+|icon         = Shield of Daybreak.png
+|blurb        = {{sbc|Active:}} {{ci|Leona}} illuminates her shield, causing her next {{tip|basic attack}} within a few seconds to deal {{as|'''bonus''' magic damage}} and briefly {{tip|stun}} the target.
+|description  = {{sbc|Active:}} '''Leona''' illuminates her shield, empowering her next {{tip|basic attack}} within 6 seconds to have an {{tip|uncancellable windup}}, gain {{sti|range|50 '''bonus''' range}}, deal {{as|'''bonus''' magic damage}} and {{tip|stun}} the target for 1 second.
+|leveling     = {{st|Bonus Magic Damage|{{ap|10 to 110}} {{as|(+ 30% AP)}}}}
+|description2 = ''Shield of Daybreak {{tip|basic attack reset|resets}} '''Leona's''' basic attack timer.''
+|cooldown     = 5
+|cdstart      = post-effect
+|cost         = {{ap|30 to 50}}
+|cast time    = none
+|costtype     = Mana
+|targeting    = Auto
+|affects      = Enemies
+|damagetype   = magic
+|spelleffects = spell
+|spellshield  = True
+|parry = unknown
+|notes        = 
+* The enhanced attack will apply other {{tip|on-hit}} effects and can {{tip|critical strike|critically strike}} as normal.
+** {{tip|critical strike|Critical strikes}} do not interact with ''Shield of Daybreak's'' bonus damage.
+* {{Pending for test}}: ''Shield of Daybreak's'' interactions with {{tip|dodge|dodging}}, {{tip|block|blocking}}.
+** ''Shield of Daybreak's'' attack can {{tip|blind|miss}}, nullifying its effects entirely.
+* ''Shield of Daybreak's'' attack does not put '''Leona's''' basic attack on cooldown.
+** This effectively performs a second {{tip|basic attack reset|attack reset}}.
+** This is unlike other empowered attacks (including those which, similar to ''Shield of Daybreak'', use a more unconventional spell cast rather than an attack override).
+** '''Leona''' will wait out ''Shield of Daybreak's'' wind-down before automatically attacking, anyway. The player must issue the next attack themselves to gain the full benefit of the second reset.
+** ''Shield of Daybreak'' shares this feature with {{cai|Thundering Smash|Volibear}} and {{cai|Emberstrike|Shyvana}}.
+* The empowered attack can trigger against {{tip|turrets}} exclusively.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Eclipse|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Leona
+|skill        = W
+|icon         = Eclipse.png
+|blurb        = {{sbc|Active:}} {{ci|Leona}} raises her ''guard'' for a short time, gaining flat damage reduction, {{sti|{{as|'''bonus''' armor}}}} and {{sti|{{as|'''bonus''' magic resistance}}}}.
+|blurb2      = Her shield detonates afterward, dealing {{as|magic damage}} to all nearby enemies. If this hits an enemy, '''Leona's''' ''guard'' is extended for a short time.
+|description  = {{sbc|Active:}} '''Leona''' raises her ''guard'' for 3 seconds, gaining flat {{tt|pre-mitigation|Damage calculated before modifiers}} damage reduction of up to 50% of the damage instance and {{sti|{{as|'''bonus''' armor}}}} and {{sti|{{as|'''bonus''' magic resistance}}}}.
+|leveling     = {{st|Flat Damage Reduction|{{ap|8 to 24}}}}
+{{st|Bonus Armor|{{ap|20 to 50}} {{as|(+ 20% '''bonus''' armor)}}}}
+{{st|Bonus Magic Resistance|{{ap|20 to 50}} {{as|(+ 20% '''bonus''' magic resistance)}}}}
+|description2 = Her shield detonates after the duration, dealing {{as|magic damage}} to nearby enemies. If this hits an enemy, '''Leona's''' ''guard'' is extended for an additional 3 seconds.
+|leveling2    = {{st|Magic Damage|{{ap|55 to 175}} {{as|(+ 40% AP)}}}}
+|cooldown     = {{ap|14 to 10}}
+|cdstart      = on-cast
+|cast time    = none
+|cost         = 60
+|costtype     = Mana
+|effect radius= {{tip|cr|icononly = true}} 450
+|targeting    = Auto
+|affects      = Self, Enemies
+|damagetype   = magic
+|spelleffects = spellaoe
+|onhiteffects = 
+|spellshield  = special
+|notes        = 
+* Neither the cast nor detonation of ''Eclipse'' interrupts any of '''Leona's''' previous orders or ongoing attack windups.
+* The resistance scaling will factor from all other sources, excluding ''Eclipse's'' flat bonus. This will recalculate over the duration.
+* {{tip|Spell shield}} will block the damage but ''Eclipse's'' extended duration will not be prevented.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Zenith Blade|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Leona
+|skill        = E
+|icon         = Zenith Blade.png
+|blurb        = {{sbc|Active:}} {{ci|Leona}} projects her sword in the target direction that deals {{as|magic damage}} to enemies hit.
+|blurb2      = If she hits at least one enemy {{tip|champion}}, she will {{tip|dash}} to the last one struck and briefly {{tip|root}} them.
+|description  = {{sbc|Active:}} '''Leona''' projects her sword in the target direction that deals {{as|magic damage}} to enemies hit.
+|leveling     = {{st|Magic Damage|{{ap|50 to 210}} {{as|(+ 40% AP)}}}}
+|description2 = After reaching its maximum range, if the sword hit an enemy {{tip|champion}} during its flight, '''Leona''' {{tip|dash|dashes}} to 225 units beyond the location of the last champion struck and {{tip|root|roots}} them for {{fd|0.5}} seconds.
+|description3 = '''''Leona''' is {{tip|lockout|unable}} to move or attack while Zenith Blade is in flight. She can cast any of her abilities during the dash.''
+|cooldown     = {{ap|12 to 6}}
+|cast time    = {{fd|0.25}}
+|cost         = {{ap|40 to 60}}
+|costtype     = Mana
+|target range = {{tip|cr|icononly = true}} 900
+|width        = {{tip|er|icononly = true}} 140
+|speed        = 2000
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = magic
+|projectile   = true
+|spelleffects = aoe
+|onhiteffects = 
+|spellshield  = true
+|knockdown    = true
+|grounded     = true
+|notes        = 
+* '''Leona''' will fail to {{tip|dash}} to and {{tip|root}} the last champion struck if they are not within 3000 units of her by the time the sword missile fizzles from reaching maximum range.
+* '''Leona''' will '''not''' track the target if they change locations during her dash.
+** She will only dash to their current location at the time the sword fizzled.
+* The {{tip|root}} application on the last champion struck is applied at an inconsistent timing.{{bug|2}}
+* '''Leona''' will be ordered to basic attack the target she dashed to, after her dash completes.
+* {{tip|Spell shield}} will block the damage, and prevent '''Leona''' from dashing as the last champion struck by her sword.
+{{Effect at cast time end}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Solar Flare|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Leona
+|skill        = R
+|icon         = Solar Flare.png
+|blurb        = {{sbc|Active:}} {{ci|Leona}} calls down a solar flare that strikes upon the target location, dealing {{as|magic damage}} to enemies hit.
+|blurb2      = Enemies hit are briefly {{tip|slow|slowed}}, or {{tip|stun|stunned}} for the same duration if they are hit by the epicenter.
+|description  = {{sbc|Active:}} '''Leona''' calls down a solar flare that strikes upon the target location after {{fd|0.625}} seconds, granting {{tip|sight}} of the area before impact and for another 3 seconds afterwards. Enemies hit are dealt {{as|magic damage}} and {{tip|slow|slowed}} by 80% for {{fd|1.75}} seconds, and are also {{tip|stun|stunned}} for the same duration if they are struck by the epicenter.
+|leveling     = {{st|Magic Damage|{{ap|150 to 300}} {{as|(+ 80% AP)}}}}
+|cooldown     = {{ap|90|75|60}}
+|cast time    = {{fd|0.25}}
+|cost         = 100
+|costtype     = Mana
+|target range = 1200
+|effect radius= {{dv|{{tip|cr|icononly = true}} {{tt|325|Damage radius}}|{{tt|175|Epicenter radius}}|{{tip|sight|icononly=true}}{{tt|800|Area reveal radius}}}}
+|damagetype   = magic
+|inner radius = 100
+|targeting    = Location
+|affects      = Enemies
+|spelleffects = aoe
+|onhiteffects = 
+|spellshield  = True
+|outofrange   = walk to location
+|notes        = 
+* ''Solar Flare's'' visual effects are only visible to enemies if they have {{tip|sight}} of the area it was cast upon.
+* The cast indicator shows 300 radius for the [[area of effect]] and 120 radius for the epicenter, however the actual hitbox radii are larger than those values.
+* The revealed radius is not obstructed by [[terrain]] or {{tip|brush}}.
+}}

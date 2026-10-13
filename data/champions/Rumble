@@ -1,0 +1,195 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Junkyard Titan|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Rumble
+|skill        = I
+|icon         = Junkyard Titan.png
+|blurb        = {{sbc|Innate:}} {{cis|Rumble}} {{tip|ability|basic ability}} casts generate {{tip|Heat}}, which gradually expires after a few seconds without generating Heat. Rumble enters the ''Danger Zone'' while he has at least {{tip|Heat|50 Heat}}, and becomes ''Overheated'' at {{tip|Heat|Max Heat}}.
+|blurb2      = {{sbc|[[File:Junkyard Titan 2.png|24px]] Danger Zone:}} '''Rumble's''' basic abilities are empowered.
+|blurb3        = {{sbc|[[File:Junkyard Titan 3.png|24px]] Overheated:}} '''Rumble's''' abilities are disabled as his {{tip|Heat}} decays over a few seconds. During this time, his basic attacks gain {{sti|as|{{as|'''bonus''' attack speed}}}} and deal {{as|'''bonus''' magic damage}} based on the {{as|target's '''maximum''' health}}.
+|description  = {{sbc|Innate:}} '''Rumble's''' {{tip|ability|basic ability}} casts generate {{tip|Heat}}, which decays by {{tip|Heat|10 Heat}} per second after not using any basic ability within 4 seconds or ''{{ai|The Equalizer|Rumble}}'' within 2 seconds. '''Rumble's''' mech enters the ''Danger Zone'' when at or above {{tip|Heat|50 Heat}}, and becomes ''Overheated'' while at {{tip|Heat|150 Heat}}.
+|icon2        = Junkyard Titan 2.png
+|description2 = {{sbc|Danger Zone:}} '''Rumble's''' mech enters the ''Danger Zone'', empowering his basic abilities.
+|icon3        = Junkyard Titan 3.png
+|description3 = {{sbc|Overheated:}} '''Rumble's''' mech becomes ''Overheated'', disabling his {{tip|abilities}} as his {{tip|Heat}} decays back down to 0 over 4 seconds. During this time, he gains {{sti|{{as|{{pp|30+((100-30)/17)*(x-1)*(0.7025+0.0175*(x-1)) for 20|key=%}} '''bonus''' attack speed}}}} and empowers his {{tip|basic attacks}} to deal {{pp|5 + (40-5)/17*(x-1) for 20|color=magic damage}} {{as|(+ 25% AP)}} {{as|(+ 4% of the target's '''maximum''' health)}} {{as|'''bonus''' magic damage}} {{tip|on-hit}}. The damage based on the target's health ratio is capped at {{pp|90+((175-90)/17)*(x-1)*(0.7025+0.0175*(x-1)) for 20}} against {{tip|monsters}}.
+|targeting    = Passive
+|affects      = Self
+|damagetype   = Magic
+|spelleffects = Proc
+|parry = True
+|spellshield  = 
+|notes = 
+* While '''Rumble''' is ''overheating'', a [[File: Silence icon.png|20px]] ''Silenced'' icon will appear above him to signify he cannot cast {{tip|abilities}}. This is visible to all units.
+* The attacks do not deal the '''bonus''' damage against {{tip|structures}}.
+}}
+<!-- The following values are defined as parameters.
+
+Values are defined OVER 3 SECONDS, even if the debuff's duration allows for a longer effect in total.
+
+-->{{#vardefine:q_b1|50}}<!-- Non-heat-zone, Rank 1 base damage
+-->{{#vardefine:q_b5|150}}<!-- Non-heat-zone, Rank 5 base damage
+-->{{#vardefine:q_h1|6}}<!-- Non-heat-zone, Rank 1 target health ratio as a PERCENTAGE
+-->{{#vardefine:q_h5|8}}<!-- Non-heat-zone, Rank 5 target health ratio as a PERCENTAGE
+-->{{#vardefine:q_r|105}}<!-- Non-heat-zone, AP ratio as a PERCENTAGE
+-->{{#vardefine:q_mmod|0.7}}<!-- Minion damage modifier
+-->{{{{{1<noinclude>|Ability data</noinclude>}}}|Flamespitter|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Rumble
+|skill        = Q
+|icon         = Flamespitter.png
+|blurb        = {{sbc|Active:}} {{ci|Rumble}} activates a flamethrower for a short time that continually deals {{as|magic damage}} in a frontal cone.
+|blurb4       = {{sbc|{{ai|Junkyard Titan 2|Rumble|Danger Zone}} Bonus:}} ''Flamespitter's'' damage is increased.
+|description  = {{sbc|Active:}} '''Rumble''' generates {{tip|Heat|20 Heat}} to activate his flamethrower for 3 seconds, spewing forth flames in a {{tt|frontal|In his facing direction}} cone every {{fd|0.25}} seconds. Enemies hit by the flame are scorched for {{ap|0.5<!-- Primary debuff duration (2 instances) --> + 0.1<!-- Offset -->}} seconds, taking {{as|magic damage}} every {{fd|0.25}} seconds as well as upon being hit if not currently scorched, refreshing on subsequent inflictions.<br><br>''Flamespitter's'' damage is reduced to {{ap|{{#var:q_mmod}}*100}}% against {{tip|minions}}.
+|leveling     = 
+<!------------->
+{{st|Minimum Magic Damage|{{ap|({{#var:q_b1}}/12)*3 to ({{#var:q_b5}}/12)*3|round=2}} {{as|(+ {{ap|({{#var:q_r}}/12)*3|round=2}}% AP)}} {{as|(+ {{ap|({{#var:q_h1}}/12)*3 to ({{#var:q_h5}}/12)*3|round=3}}% of target's '''maximum''' health)}}<!--
+-->|Magic Damage per Second|{{ap|({{#var:q_b1}}/12)*4 to ({{#var:q_b5}}/12)*4|round=2}} {{as|(+ {{ap|({{#var:q_r}}/12)*4|round=2}}% AP)}} {{as|(+ {{ap|({{#var:q_h1}}/12)*4 to ({{#var:q_h5}}/12)*4|round=3}}% of target's '''maximum''' health)}}<!--
+-->|Magic Damage per Tick|{{ap|{{#var:q_b1}}/12 to {{#var:q_b5}}/12|round=3}} {{as|(+ {{ap|{{#var:q_r}}/12|round=3}}% AP)}} {{as|(+ {{ap|{{#var:q_h1}}/12 to {{#var:q_h5}}/12|round=3}}% of target's '''maximum''' health)}}<!--
+-->|Maximum Magic Damage|{{ap|{{#var:q_b1}}*(15/12) to {{#var:q_b5}}*(15/12)|round=2}} {{as|(+ {{ap|{{#var:q_r}}*(15/12)|round=2}}% AP)}} {{as|(+ {{ap|{{#var:q_h1}}*(15/12) to {{#var:q_h5}}*(15/12)|round=2}}% of target's '''maximum''' health)}}<!--
+-->}}
+<!------------->
+{{st|Minimum Minion Damage|{{ap|({{#var:q_b1}}/12)*3*{{#var:q_mmod}} to ({{#var:q_b5}}/12)*3*{{#var:q_mmod}}|round=2}} {{as|(+ {{ap|({{#var:q_r}}/12)*3*{{#var:q_mmod}}|round=2}}% AP)}} {{as|(+ {{ap|({{#var:q_h1}}/12)*3*{{#var:q_mmod}} to ({{#var:q_h5}}/12)*3*{{#var:q_mmod}}|round=2}}% of target's '''maximum''' health)}}<!--
+-->|Minion Damage per Second|{{ap|({{#var:q_b1}}/12)*4*{{#var:q_mmod}} to ({{#var:q_b5}}/12)*4*{{#var:q_mmod}}|round=2}} {{as|(+ {{ap|({{#var:q_r}}/12)*4*{{#var:q_mmod}}|round=2}}% AP)}} {{as|(+ {{ap|({{#var:q_h1}}/12)*4*{{#var:q_mmod}} to ({{#var:q_h5}}/12)*4*{{#var:q_mmod}}|round=2}}% of target's '''maximum''' health)}}<!--
+-->|Minion Damage per Tick|{{ap|({{#var:q_b1}}/12)*{{#var:q_mmod}} to ({{#var:q_b5}}/12)*{{#var:q_mmod}}|round=3}} {{as|(+ {{ap|({{#var:q_r}}*{{#var:q_mmod}})/12|round=3}}% AP)}} {{as|(+ {{ap|({{#var:q_h1}}/12)*{{#var:q_mmod}} to ({{#var:q_h5}}/12)*{{#var:q_mmod}}|round=3}}% of target's '''maximum''' health)}}<!--
+-->|Maximum Minion Damage|{{ap|{{#var:q_b1}}*(15/12)*{{#var:q_mmod}} to {{#var:q_b5}}*(15/12)*{{#var:q_mmod}}|round=2}} {{as|(+ {{ap|{{#var:q_r}}*(15/12)*{{#var:q_mmod}}|round=2}}% AP)}} {{as|(+ {{ap|{{#var:q_h1}}*(15/12)*{{#var:q_mmod}} to {{#var:q_h5}}*(15/12)*{{#var:q_mmod}}|round=2}}% of target's '''maximum''' health)}}<!--
+-->}}
+|description2 = {{sbc|{{ai|Junkyard Titan 2|Rumble|Danger Zone}} Bonus:}} ''Flamespitter's'' damage is increased by 50%.<br><br>''Flamespitter's'' total damage based on the target's health is capped at {{pp|65+((300-65)/17)*(x-1)*(0.7025+0.0175*(x-1)) for 20|formula=Uses stat growth interpolation; 65 base, 300 maximum}} against {{tip|monsters}}.
+|leveling2    = 
+{{st|Minimum Enhanced Damage|{{ap|({{#var:q_b1}}/12)*3*1.5 to ({{#var:q_b5}}/12)*3*1.5|round=3}} {{as|(+ {{ap|({{#var:q_r}}/12)*3*1.5|round=3}}% AP)}} {{as|(+ {{ap|({{#var:q_h1}}/12)*3*1.5 to ({{#var:q_h5}}/12)*3*1.5|round=3}}% of target's '''maximum''' health)}}<!--
+-->|Enhanced Damage per Second|{{ap|({{#var:q_b1}}/12)*4*1.5 to ({{#var:q_b5}}/12)*4*1.5|round=3}} {{as|(+ {{ap|({{#var:q_r}}/12)*4*1.5|round=3}}% AP)}} {{as|(+ {{ap|({{#var:q_h1}}/12)*4*1.5 to ({{#var:q_h5}}/12)*4*1.5|round=3}}% of target's '''maximum''' health)}}<!--
+-->|Enhanced Damage per Tick|{{ap|({{#var:q_b1}}/12)*1.5 to ({{#var:q_b5}}/12)*1.5|round=3}} {{as|(+ {{ap|({{#var:q_r}}/12)*1.5|round=3}}% AP)}} {{as|(+ {{ap|({{#var:q_h1}}/12)*1.5 to ({{#var:q_h5}}/12)*1.5|round=3}}% of target's '''maximum''' health)}}<!--
+-->|Maximum Enhanced Damage|{{ap|{{#var:q_b1}}*(15/12)*1.5 to {{#var:q_b5}}*(15/12)*1.5|round=2}} {{as|(+ {{ap|{{#var:q_r}}*(15/12)*1.5|round=2}}% AP)}} {{as|(+ {{ap|{{#var:q_h1}}*(15/12)*1.5 to {{#var:q_h5}}*(15/12)*1.5|round=2}}% of target's '''maximum''' health)}}<!--
+-->}}
+<!------------->
+{{st|Minimum Enhanced Minion Damage|{{ap|({{#var:q_b1}}/12)*3*{{#var:q_mmod}}*1.5 to ({{#var:q_b5}}/12)*3*{{#var:q_mmod}}*1.5|round=3}} {{as|(+ {{ap|({{#var:q_r}}/12)*3*{{#var:q_mmod}}*1.5|round=3}}% AP)}} {{as|(+ {{ap|({{#var:q_h1}}/12)*3*{{#var:q_mmod}}*1.5 to ({{#var:q_h5}}/12)*3*{{#var:q_mmod}}*1.5|round=3}}% of target's '''maximum''' health)}}<!--
+-->|Enhanced Minion Damage per Second|{{ap|({{#var:q_b1}}/12)*4*{{#var:q_mmod}}*1.5 to ({{#var:q_b5}}/12)*4*{{#var:q_mmod}}*1.5|round=3}} {{as|(+ {{ap|({{#var:q_r}}/12)*4*{{#var:q_mmod}}*1.5|round=3}}% AP)}} {{as|(+ {{ap|({{#var:q_h1}}/12)*4*{{#var:q_mmod}}*1.5 to ({{#var:q_h5}}/12)*4*{{#var:q_mmod}}*1.5|round=3}}% of target's '''maximum''' health)}}<!--
+-->|Enhanced Minion Damage per Tick|{{ap|({{#var:q_b1}}/12)*{{#var:q_mmod}}*1.5 to ({{#var:q_b5}}/12)*{{#var:q_mmod}}*1.5|round=3}} {{as|(+ {{ap|({{#var:q_r}}/12)*{{#var:q_mmod}}*1.5|round=3}}% AP)}} {{as|(+ {{ap|({{#var:q_h1}}/12)*{{#var:q_mmod}}*1.5 to ({{#var:q_h5}}/12)*{{#var:q_mmod}}*1.5|round=3}}% of target's '''maximum''' health)}}<!--
+-->|Maximum Enhanced Minion Damage|{{ap|{{#var:q_b1}}*(15/12)*{{#var:q_mmod}}*1.5 to {{#var:q_b5}}*(15/12)*{{#var:q_mmod}}*(15/12)*1.5|round=2}} {{as|(+ {{ap|{{#var:q_r}}*(15/12)*{{#var:q_mmod}}*1.5|round=2}}% AP)}} {{as|(+ {{ap|{{#var:q_h1}}*(15/12)*{{#var:q_mmod}}*1.5 to {{#var:q_h5}}*(15/12)*{{#var:q_mmod}}*1.5|round=2}}% of target's '''maximum''' health)}}<!--
+-->}}
+|cooldown     = {{ap|10 to 6}}
+|cdstart      = on-cast
+|range        = {{dv|{{tip|er|icononly = true}} {{tt|600|Cone length}}|{{tt|-50|Cone origin point behind Rumble's center}}}}
+|angle        = {{tip|er|icononly = true}} 64{{degree}}
+|cast time    = none
+|targeting    = Auto
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = false
+|spelleffects = AoeDoT
+|grounded     = 
+|knockdown    = 
+|projectile   = False
+|notes        = 
+* ''Flamespitter'' will deal an additional tick of damage to a minion if it would die to its per-tick damage. This is intended.
+* '''Rumble''' will instantly turn to face the cursor if he is not moving when ''Flamespitter'' is cast. He will also instantly turn when issuing an Attack order on an enemy while ''Flamespitter'' is active.
+** Issuing an Attack Move order at a location will not cause '''Rumble''' to instantly turn.{{bug|2}}
+** If '''Rumble''' does not path to a location after an Attack or Attack Move order, and the player issues a Stop or Hold order immediately afterwards, '''Rumble''' will not visually turn completely to face the new direction,{{bug}} but the area will turn to have the correct direction as intended.
+* When ''Flamespitter's'' debuff is applied instead of refreshed, the target is dealt one additional instance of the debuff at the same time as the application. This is done by delaying the actual debuff by {{fd|0.1}} seconds.
+** If the target is already affected by the debuff, its duration is refreshed to the maximum ({{fd|0.6}} seconds).
+}}
+<!-- The following values are defined as parameters
+-->{{#vardefine:w_b1|25}}<!-- Non-heat-zone, Rank 1 base shield
+-->{{#vardefine:w_b5|145}}<!--Non-heat-zone, Rank 5 base shield
+-->{{#vardefine:w_h|4}}<!--   Non-heat-zone, shield health ratio as a PERCENTAGE
+-->{{#vardefine:w_ap|30}}<!-- Non-heat-zone, shield AP ratio as a PERCENTAGE
+-->{{#vardefine:w_ms1|10}}<!--Non-heat-zone, Rank 1 haste as a PERCENTAGE
+-->{{#vardefine:w_ms5|30}}<!--Non-heat-zone, Rank 5 haste as a PERCENTAGE
+-->{{{{{1<noinclude>|Ability data</noinclude>}}}|Scrap Shield|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Rumble
+|skill        = W
+|icon         = Scrap Shield.png
+|blurb        = {{sbc|Active:}} {{ci|Rumble}} briefly {{tip|shields}} himself and gains {{sti|ms|{{as|'''bonus''' movement speed}}}}.
+|blurb4       = {{sbc|{{ai|Junkyard Titan 2|Rumble|Danger Zone}} Bonus:}} ''Scrap Shield's'' effects are increased.
+|description  = {{sbc|Active:}} '''Rumble''' generates {{tip|Heat|20 Heat}} to grant himself a {{tip|shield}} for {{fd|1.5}} seconds.
+|leveling     = {{st|Shield Strength|{{ap|{{#var:w_b1}} to {{#var:w_b5}}}} {{as|(+ {{#var:w_ap}}% AP)}} {{as|(+ {{#var:w_h}}% of '''maximum''' health)}}}}
+|icon2        = Scrap Shield 2.png
+|description2 = '''Rumble''' also gains {{sti|ms|{{as|'''bonus''' movement speed}}}} for {{tt|1 to {{fd|1.32}} seconds.|See notes}}
+|leveling2    = {{st|Bonus Movement Speed|{{ap|{{#var:w_ms1}} to {{#var:w_ms5}}}}%}}
+|description3 = {{sbc|{{ai|Junkyard Titan 2|Rumble|Danger Zone}} Bonus:}} ''Scrap Shield's'' shield strength and {{as|'''bonus''' movement speed}} are increased in effectiveness by 50%.
+|leveling3    = {{st|Enhanced Shield Strength|{{ap|{{#var:w_b1}}*1.5 to {{#var:w_b5}}*1.5}} {{as|(+ {{ap|{{#var:w_ap}}*1.5}}% AP)}} {{as|(+ {{ap|{{#var:w_h}}*1.5}}% of '''maximum''' health)}}}}
+{{st|Enhanced Bonus Movement Speed|{{ap|{{#var:w_ms1}}*1.5 to {{#var:w_ms5}}*1.5}}%}}
+|cooldown     = 6
+|targeting    = Auto
+|cast time = none
+|affects      = Self
+|spelleffects = 
+|notes        = 
+* The movement speed buff is supposed to last for 1 second, but due to a bug may last {{rutngt|0.25}} longer.
+** Like most buffs, the stat bonus is already only gained at the next stat update (every {{rutngt|0.25}}). Despite this, the duration still inconsistent.
+}}
+<!-- The following values are defined as parameters
+-->{{#vardefine:e_b1|55}}<!-- Single harpoon, non-heat-zone, Rank 1 base damage
+-->{{#vardefine:e_b5|155}}<!-- Single harpoon, non-heat-zone, Rank 5 flat damage
+-->{{#vardefine:e_ap|50}}<!-- Single harpoon, non-heat-zone, AP ratio as a PERCENTAGE
+-->{{#vardefine:e_shred1|10}}<!-- Single harpoon, non-heat-zone, Rank 1 magic resistance reduction
+-->{{#vardefine:e_shred5|18}}<!-- Single harpoon, non-heat-zone, Rank 5 magic resistance reduction
+-->{{#vardefine:e_slow1|15}}<!--Single harpoon, non-heat-zone, Rank 1 slow as a PERCENTAGE
+-->{{#vardefine:e_slow5|35}}<!-- Single harpoon, non-heat-zone, Rank 5 slow as a PERCENTAGE
+-->{{{{{1<noinclude>|Ability data</noinclude>}}}|Electro Harpoon|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Rumble
+|skill        = E
+|icon         = Electro Harpoon.png
+|blurb        = {{sbc|Active:}} {{ci|Rumble}} shoots a harpoon in the target direction that deals {{as|magic damage}} and briefly {{tip|slow|slows}} the first enemy hit, reducing their {{sti|mpen|{{as|magic resist}}}} for a few seconds. These effects can stack with multiple harpoons.
+|blurb2       = '''Rumble''' periodically [[stocks]] an ''Electro Harpoon'', up to a cap.
+|blurb3       = {{sbc|{{ai|Junkyard Titan 2|Rumble|Danger Zone}} Bonus:}} ''Electro Harpoon's'' effects are increased.
+|description  = {{sbc|Active:}} '''Rumble''' generates {{tip|Heat|20 Heat}} to shoot a harpoon in the target direction that deals {{as|magic damage}} to the first enemy hit, inflicting them with {{sti|magic penetration|{{as|magic resistance reduction}}}} for 4 seconds and {{tip|slow|slowing}} them for 2 seconds. These effects {{tip|stacks additively|stack additively}} with multiple harpoons, refreshing their duration and stacking up to 2 times.
+|leveling     = {{st|Magic Damage|{{ap|{{#var:e_b1}} to {{#var:e_b5}}}} {{as|(+ {{#var:e_ap}}% AP)}}|Total Magic Damage|{{ap|{{#var:e_b1}}*2 to {{#var:e_b5}}*2}} {{as|(+ {{ap|{{#var:e_ap}}*2}}% AP)}}}}
+{{st|Magic Resistance Reduction|{{ap|{{#var:e_shred1}} to {{#var:e_shred5}}}}%|Total MR Reduction|{{ap|{{#var:e_shred1}}*2 to {{#var:e_shred5}}*2}}%}}
+{{st|Slow|{{ap|{{#var:e_slow1}} to {{#var:e_slow5}}}}%|Total Slow|{{ap|{{#var:e_slow1}}*2 to {{#var:e_slow5}}*2}}%}}
+|description2 =  '''Rumble''' periodically [[stocks]] an ''Electro Harpoon'' charge, up to a maximum of 2.
+|description3 = {{sbc|{{ai|Junkyard Titan 2|Rumble|Danger Zone}} Bonus:}} ''Electro Harpoon's'' effects are increased by 50%.
+|leveling3    = {{st|Enhanced Damage|{{ap|{{#var:e_b1}}*1.5 to {{#var:e_b5}}*1.5}} {{as|(+ {{ap|{{#var:e_ap}}*1.5}}% AP)}}|Total Enhanced Damage|{{ap|{{#var:e_b1}}*1.5*2 to {{#var:e_b5}}*1.5*2}} {{as|(+ {{ap|{{#var:e_ap}}*1.5*2}}% AP)}}}}
+{{st|Enhanced Magic Resistance Reduction|{{ap|{{#var:e_shred1}}*1.5 to {{#var:e_shred5}}*1.5}}%|Total Enhanced MR Reduction|{{ap|{{#var:e_shred1}}*1.5*2 to {{#var:e_shred5}}*1.5*2}}%}}
+{{st|Enhanced Slow|{{ap|{{#var:e_slow1}}*1.5 to {{#var:e_slow5}}*1.5}}%|Total Enhanced Slow|{{ap|{{#var:e_slow1}}*1.5*2 to {{#var:e_slow5}}*1.5*2}}%}}
+|description4 = ''If '''Rumble''' casts Electro Harpoon before his mech becomes {{ai|Junkyard Titan 3|Rumble|Overheated}}, he may still use another charge within 3 seconds of the initial cast.''
+|recharge     = 6
+|range = {{dv|{{tip|cr|icononly = true}} 950|{{tip|er|icononly = true}} 890}}
+|width        = {{tip|er|icononly = true}} 120
+|cast time    = {{fd|0.25}}
+|cooldown     = {{fd|0.5}}
+|speed        = 2000
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spell
+|projectile   = True
+|notes        = 
+* If ''Electro Harpoon'' is empowered with {{ai|Junkyard Titan 2|Rumble|Danger Zone's}} bonus and hits a target that is afflicted with the non-enhanced slow and shred applied by previous, non-empowered ''Electro Harpoon'' casts, the effectiveness of both debuffs on the target are increased to their enhanced values for all stacks of each debuff.
+** This also applies vice versa; a non-empowered ''Electro Harpoon'' cast will reduce the enhanced slow and shred applied by previous, empowered ''Electro Harpoon'' casts back to the non-enhanced values, for all stacks.
+* A buff with the magic resistance reduction tooltip is applied to {{tip|minions}} and {{tip|pets}}, but their magic resistance is unaffected by ''Electro Harpoon''.{{bug}}
+* Each ''Electro Harpoon'' cast triggers {{tip|Spellblade}} and reduces {{ais|Force Pulse|Kassadin}} cooldown.
+* ''Electro Harpoon's'' missile will fail to fire if '''Rumble''' is {{tip|suppression|suppressed}} during the cast time.{{bug|2}}
+{{Effect at cast time end}}
+* '''Rumble''' stocks an ''Electro Harpoon'' charge before the ability is even learned.
+}}
+<!--Edit these numbers when the ability's values change
+-->{{#vardefine:r_b1|120}}<!-- Rank 1 base damage per second
+-->{{#vardefine:r_b5|280}}<!-- Rank 5 base damage per second
+-->{{#vardefine:r_ap|35}}<!-- Damage AP ratio per second
+-->{{{{{1<noinclude>|Ability data</noinclude>}}}|The Equalizer|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Rumble
+|skill        = R
+|icon         = The Equalizer.png
+|blurb        = {{sbc|Active:}} {{ci|Rumble}} deploys a barrage of rockets along the target path that create a field which lingers for a few seconds.
+|blurb2       = Enemies within the area are continually dealt {{as|magic damage}} and {{tip|slow|slowed}}.
+|description  = {{sbc|Active:}} '''Rumble''' deploys a barrage of rockets from the sky along the target path in a line over {{fd|0.75}} seconds. Each rocket impacts the ground to create a field of fire that lasts {{fd|4.5}} seconds.
+|description2 = Enemies struck by the impact or within the field are marked ''Burning'' for 1 second, taking {{as|magic damage}} every {{fd|0.25}} seconds and being {{tip|slow|slowed}} by 35%, refreshing while in the area. Enemies may be ''Burning'' for up to 5 seconds, for a total of 20 instances of its effect.
+|leveling2    = 
+{{st|Magic Damage per Tick|{{ap|{{#var:r_b1}}/4 to {{#var:r_b5}}/4}} {{as|(+ {{ap|{{#var:r_ap}}/4}}% AP)}}|Magic Damage per Second|{{ap|{{#var:r_b1}} to {{#var:r_b5}}}} {{as|(+ {{ap|{{#var:r_ap}}}}% AP)}}|Maximum Magic Damage|{{ap|{{#var:r_b1}}*5 to {{#var:r_b5}}*5}} {{as|(+ {{ap|{{#var:r_ap}}*5}}% AP)}}}}
+|cooldown     = {{ap|130 to 80}}
+|target range = 1700
+|range        = {{dv|{{tip|cr|icononly = true}} {{tt|-175|Damage range behind vector origin}}| {{tt|1135|Maximum damage range forward, estimated}}}}
+|width        = {{tip|cr|icononly = true}} {{tt|410 - {{fd|368.4}}|Widest and thinnest point of the chain of circles, respectively}}
+|speed        = {{tt|1600|Vector deployment speed}}
+|targeting    = Vector
+|cast time    = {{dv|None|{{tt|{{fd|0.5833}}|Starts after the spell is cast}}}}
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = False
+|spelleffects = aoedot
+|projectile   = false
+|outofrange   = walk to location
+|notes        = 
+* ''The Equalizer's'' cumulative hitbox consists of a row of six rockets, each having a circular area of effect with a radius of 205 units. Each rocket drops at an offset of 180 units from the previous in the vector of cast.
+** The missile that manages the rockets being deployed starts 150 units behind the target vector origin, and thus drops the first rocket at 30 units in front of the cast vector origin, which is equivalent to a period of {{rutngt|0.1125}} from the cast point.
+* A given field checks for targets to apply or refresh the debuff on once every {{fd|0.25}} seconds.
+* Due to each field expiring at different points in time, champions moving in the duration of the rockets' launch as they are expiring may sometimes receive 1 more instance of the debuff at most beyond the maximum.{{bug}}
+}}

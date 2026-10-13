@@ -1,0 +1,252 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Ravenous Flock|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Swain
+|skill        = I
+|icon         = Ravenous Flock.png
+|blurb        = {{sbc|Innate:}} Enemy champions that {{tip|death|die}} will leave behind a {{as|Soul Fragment|buzzword3}} for some time. {{ci|Swain}} will collect nearby {{as|Soul Fragments|buzzword3}}, as well as with ''{{ai|Vision of Empire|Swain}}'' and ''{{ai|Nevermove|Swain}}''.
+|blurb4      = {{sbc|Soul Fragment:}} For each stack, '''Swain''' gains {{sti|{{as|'''bonus''' health}}}}. Upon collection, he will {{tip|heal}} for a portion of {{as|his '''maximum''' health}}.
+|description = {{sbc|Innate:}} Enemy champions that {{tip|death|die}} will leave behind a {{as|Soul Fragment|buzzword3}} for 16 seconds. '''Swain's''' ravens will collect nearby dropped {{as|Soul Fragments|buzzword3}}, as well as rip the {{as|Soul Fragments|buzzword3}} out of champions hit by ''{{ai|Vision of Empire|Swain}}'' or ''{{ai|Nevermove 2|Swain|Nevermove's}}'' recast. Once a raven has collected a {{as|Soul Fragment|buzzword3}}, it will fly towards '''Swain''' to grant it to him, while also granting {{tip|sight}} of its surroundings during the travel.<br/><br/>
+{{sbc|Soul Fragment:}} For each stack, '''Swain''' gains {{as|15 '''bonus''' health}} permanently. Upon claiming a fragment, he will {{tip|heal}} for {{as|6% of his '''maximum''' health}}.
+|effect radius= {{dv|{{tt|1100|Nearby Soul Fragment pickup range}}|{{tip|sight|icononly=true}}{{tt|250|Returning raven sight radius}}}}
+|speed        = {{tt|1200|Raven missile speed}}
+|targeting    = Passive
+|affects      = Self, Enemies
+|projectile   = false
+|notes        = 
+* Dropped {{as|Soul Fragments|buzzword3}} can be collected after a 1-second delay.
+* The ravens will only be seen by enemies if they have {{tip|sight|vision}} of '''Swain'''.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Death's Hand|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Swain
+|skill        = Q
+|icon         = Death's Hand.png
+|blurb        = {{sbc|Active:}} {{ci|Swain}} unleashes five bolts of eldritch power over {{rutngt|0.25}} in a cone in the target direction that deal {{as|magic damage}} to enemies hit. Subsequent bolts against an enemy deal {{as|'''bonus''' magic damage}}.
+|description  = {{sbc|Active:}} '''Swain''' unleashes five bolts of eldritch power over {{rutngt|0.25}} in a cone in the target direction that deal {{as|magic damage}} to enemies hit. Subsequent bolts against an enemy deal 25% '''bonus''' damage.
+|description2 = '''''Swain''' {{tip|sight|reveals}} himself during the cast if there is an enemy champion nearby''.
+|leveling     = {{st|Magic Damage|{{ap|60 to 180}} {{as|(+ 45% AP)}}}}
+{{st|Bonus Damage Per Bolt|{{ap|60*0.25 to 180*0.25}} {{as|(+ {{ap|45*0.25}}% AP)}}|Total Damage|{{ap|60*2 to 180*2}} {{as|(+ {{ap|45*2}}% AP)}}}}
+|target range = 
+|effect radius= 725
+|angle        = 32{{degree}}
+|speed        = 
+|cost         = {{ap|40 to 60}}
+|cast time    = {{fd|0.25}}
+|costtype     = Mana
+|cooldown     = {{ap|7 to 3}}
+|queue time   = {{fd|0.3}}
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = Magic
+|spelleffects = Area of effect
+|spellshield  = True
+|parry        = 
+|projectile   = False
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* ''Death's Hand'' will still cast and deal damage if '''Swain''' dies during the cast time. 
+{{Effect at cast time end}}
+* The total damage to a single target will be split evenly among each bolt that hits, meaning that hitting with more bolts will deal less damage per hit (but more overall damage).<!-- this needs to be tested with some flat reduction effect since it doesn't seem to be 100% true. It's likely it deals damage in multiple instances but the first instance should deal more than the others, instead of an even split of the damage-->
+* {{tip|Spell shield}} will block all bolts.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Vision of Empire|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Swain
+|skill        = W
+|icon         = Vision of Empire.png
+|blurb        = {{sbc|Active:}} {{ci|Swain}} summons a demonic eye at the target location that explodes after a brief moment, dealing {{as|magic damage}} and {{tip|slow|slowing}} enemies within for a short time.
+|blurb2      = Enemy {{tip|champions}} hit are also {{tip|standard sight|revealed}} for a few seconds and have a {{as|Soul Fragment|buzzword3}} collected from them.
+|description  = {{sbc|Active:}} '''Swain''' summons a demonic eye at the target location that grants {{tip|sight}} of the area for 2 seconds and explodes after {{fd|1.5}} seconds, dealing {{as|magic damage}} to enemies within, halved against {{tip|minions}}, and {{tip|slow|slowing}} them by 50% for {{fd|1.5}} seconds.
+|leveling     = {{st|Magic Damage|{{ap|70 to 250}} {{as|(+ 60% AP)}}|Minion Damage|{{ap|70/2 to 250/2}} {{as|(+ {{ap|60/2}}% AP)}}}}
+|description2 = Enemy {{tip|champions}} hit are also {{tip|standard sight|revealed}} for 6 seconds and have a {{as|Soul Fragment|buzzword3}} collected from them.
+|target range = {{ap|5500 to 7500}}
+|effect radius= {{tip|cr|icononly = true}} 325
+|cost         = {{ap|60 to 80}}
+|costtype     = Mana
+|cooldown     = {{ap|20 to 16}}
+|cast time    = {{fd|0.25}}
+|queue time   = {{fd|0.3}}
+|targeting    = Location
+|affects      = Enemies
+|damagetype   = Magic
+|spelleffects = spellaoe
+|spellshield  = Special
+|parry        = 
+|projectile   = 
+|grounded     = 
+|knockdown    = 
+|outofrange   = walk to location
+|notes        = 
+* Enemy {{tip|champions}} protected by a {{tip|spell shield}} do not have a {{as|Soul Fragment|buzzword3}} collected from them but are {{tip|standard sight|revealed}} anyway.
+* ''Vision of Empire'' will grant {{as|Soul Fragments|buzzword3}} from hitting {{tip|clone|clones}}.
+* '''Swain''' will not receive the {{as|Soul Fragments|buzzword3}} if ''Vision of Empire'' hits enemy champions while he is dead.
+* ''Vision of Empire'' is visible and audible to enemies through the [[sight|fog of war]].
+* Hitting an enemy champion with ''Vision of Empire'' collects nearby {{as|Soul Fragments|buzzword3}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Nevermove|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Swain
+|skill        = E
+|icon         = Nevermove.png
+|blurb        = {{sbc|Active:}} {{ci|Swain}} launches a demonic wave in the target direction.
+|blurb2      = At max range, the wave homes back to '''Swain''' and detonates upon the first enemy hit, dealing {{as|magic damage}} to nearby enemies as well as briefly {{tip|standard sight|revealing}} and {{tip|root|rooting}} them. ''Nevermove'' can be recast while {{tip|champions}} hit are rooted.
+|blurb3      = {{sbc|Recast:}} '''Swain''' {{tip|airborne|pulls}} the rooted champions and collects a {{as|Soul Fragment|buzzword3}} from each of them.
+|description  = {{sbc|Active:}} '''Swain''' launches a demonic wave in the target direction.
+|description2 = At maximum range, the wave homes back to '''Swain''' and detonates upon the first enemy hit, dealing {{as|magic damage}} to nearby enemies and {{tip|root|rooting}} them for {{fd|1.5}} seconds, during which they are {{tip|standard sight|revealed}}. ''Nevermove'' can be recast while {{tip|champions}} hit are rooted.
+|leveling2    = {{st|Magic Damage|{{ap|90 to 250}} {{as|(+ 70% AP)}}}}
+|icon3        = Nevermove 2.png
+|description3 = {{sbc|Recast:}} '''Swain''' {{tip|airborne|pulls}} the rooted champions over 290 units and collects a {{as|Soul Fragment|buzzword3}} from each of them, {{tip|sight|revealing}} himself for {{tt|{{fd|5 seconds}}|approximate}}. If the targets would be pulled past '''Swain''', they rebound off of him instead, {{tip|airborne|knocking them back}} the excess distance.
+|target range = 850
+|width        = {{tip|er|icononly = true}} 180
+|effect radius= {{dv|{{tt|100|Detonation radius}}|{{tt|Global|Recast range for rooted targets}}}}
+|speed        = {{dv|{{pp|type=seconds in flight|round=3|1125 to 1800|0 to 0.585 for 10|formula=Outgoing missile speed (Acceleration: 1125)}}|{{pp|type=seconds in flight|round=3|2000 to 2800|0 to 0.4 for 5|changedisplay=true|formula=Returning missile speed (Acceleration: -2000)}}}}
+|cost         = {{ap|50 to 70}}
+|costtype     = Mana
+|cooldown     = {{ap|12 to 10}}
+|cdstart      = on-cast
+|cast time    = {{fd|0.25}}
+|queue time   = {{tt|{{fd|0.3}}|Initial cast}}
+|targeting    = {{dv|[[Direction-targeted|Direction]]|[[Auto-targeted|Auto]]}}
+|affects      = Enemies
+|damagetype   = Magic
+|spelleffects = Area of effect
+|spellshield  = special
+|parry        = 
+|projectile   = True
+|callforhelp  = 
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* ''Nevermove's'' missiles have their speed update to accelerate at specific times by the server. The client applies these speed increases after additional specified delays, while the hitbox behaviour itself only uses the timings noted above.
+* ''Nevermove's'' recast can be used during the cast time of other spells.
+* {{tip|Spell shield}} will block either the detonation on the first cast or the pull from the recast.
+** If the recast is blocked, the target will also prevent a {{as|Soul Fragment|buzzword3}} being collected from them.
+* If the root is not applied to, removed or its targets {{tip|blink}} or {{tip|dash}}, the recast becomes unavailable.
+* The pull will interrupt {{tip|channel|channels}} at the very beginning, but does not keep the target stunned for the rest of the movement.
+** {{tip|channel|Channels}} can be started successfully during the pull, provided the previous crowd control does not prevent them still.
+{{Effect at cast time start}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Demonic Ascension|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Swain
+|skill        = R
+|icon         = Demonic Ascension.png
+|blurb        = {{sbc|Active:}} {{ci|Swain}} frees the demon within, gaining ''Demonic Ascension'' and generating {{as|Demonic Energy|azakana}}. ''Demonic Ascension'' is maintained with {{as|Demonic Energy|azakana}} that gradually decays over time.
+|blurb2      = '''Swain''' generates {{as|Demonic Energy|azakana}} while draining from at least one enemy {{tip|champion}}, and fully restores it upon scoring a {{tip|champion}} {{tip|takedown}}.
+|blurb3      = After a short time, '''Swain''' can cast ''{{ai|Demonflare|Swain}}'' and does so automatically when ''Demonic Ascension'' expires.
+|blurb4      = {{sbc|Demonic Ascension:}} '''Swain''' becomes {{tip|ghosted}} and continually drains the lifeforce of nearby enemies, dealing {{as|magic damage}} and {{tip|healing}} himself.
+|post-blurb = Swain/Demonflare
+|description  = {{sbc|Active:}} '''Swain''' frees the demon within himself, gaining ''Demonic Ascension'' and generating {{as|50 Demonic Energy|azakana}}. ''Demonic Ascension'' is maintained with {{as|Demonic Energy|azakana}}, which decays by {{as|5|azakana}} every {{fd|0.5}} seconds, increased to {{as|{{fd|7.5}}|azakana}} after 5 seconds have elapsed. ''Demonic Ascension'' is lost once all {{as|Demonic Energy|azakana}} is depleted to {{as|0|azakana}}. '''Swain''' generates {{as|10 Demonic Energy|azakana}} every {{fd|0.5}} seconds while draining from at least one enemy {{tip|champion}}, and fully restores it to the maximum of {{as|50|azakana}} upon scoring a {{tip|champion}} {{tip|takedown}}.
+|description2 = {{sbc|Demonic Ascension:}} '''Swain''' is {{tip|ghosted}} and drains the lifeforce of nearby enemies, both dealing {{as|magic damage}} and {{tip|healing}} himself every {{fd|0.5}} seconds per target affected. The heal is reduced by 90% against {{tip|minions}} and {{tip|monsters}}.
+|leveling2    = {{st|Magic Damage per Tick|{{ap|15/2 to 35/2}} {{as|(+ {{ap|4/2}}% AP)}}}}
+{{st|Heal per Tick|{{ap|15/2 to 45/2}} {{as|(+ {{ap|5/2}}% AP)}} {{as|(+ {{ap|1.5/2}}% of his '''bonus''' health)}}|Reduced Heal per Tick|{{ap|15*0.5*0.1 to 45*0.5*0.1}} {{as|(+ {{ap|5*0.5*0.1}}% AP)}} {{as|(+ {{ap|1.5*0.5*0.1}}% of his '''bonus''' health)}}}}
+|description3 = After 2 seconds, '''Swain''' gains the ability to cast ''{{ai|Demonflare|Swain}}'', up to 100 times, and does so automatically when ''Demonic Ascension'' expires if ''{{ai|Demonflare|Swain}}'' is not on cooldown at the time of expiration.
+|description4 = ''The targets do not have to be {{tip|sight|visible}} to be hit by this ability.''
+|description5 = '''''Swain''' can move during Demonic Ascension's cast time.''
+|effect radius= 650
+|cost         = 100
+|costtype     = Mana
+|cast time    = {{fd|0.5}}
+|cooldown     = {{tt|120|Starts on cast}}
+|cdstart      = on-cast
+|targeting    = Auto
+|affects      = Self, Enemies
+|damagetype   = Magic
+|spelleffects = aoedot
+|spellshield  = False
+|parry        = 
+|projectile   = False
+|grounded     = 
+|knockdown    = 
+|callforhelp  = 
+|notes        = 
+* {{as|Demonic Energy|azakana}} is displayed in a bar under '''Swain's''' [[health bar]].
+* {{ai|Demonflare|Swain}} will not automatically cast at the end of ''Demonic Ascension'' if it occurs due to '''Swain's''' {{tip|death}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Carrion Renewal|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Swain
+|skill        = I
+|icon         = Carrion Renewal.png
+|blurb        = Swain regenerates Mana each time he kills a unit. This amount increases each level.
+|description  = Whenever '''Swain''' kills an enemy or structure, he restores {{as|{{pp|13;14;15;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30|formula=12 + 1 per level}} mana}}.
+|description2 = On enemy [[champion]] {{tip|takedown|takedowns}}, he instead restores {{as|9% '''maximum''' mana}}.
+|targeting    = '''Carrion Renewal''' is a [[self-targeted]] [[buff]].
+|damagetype   = 
+|spelleffects = 
+|onhiteffects = 
+|spellshield  = 
+|notes        = 
+* ''Carrion Renewal'' will trigger if '''Swain''' lands the final blow on a structure such as a tower.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Decrepify|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Swain
+|skill        = Q
+|icon         = Decrepify.png
+|blurb        = Swain sends Beatrice to cripple enemies within the target area. Crippled targets are slowed and damaged over time.
+|description  = {{sbc|Active:}} '''Swain''' commands  ''{{ui|Beatrice}}'' to fly to the target location, where she remains for 4 seconds. ''Beatrice'' will attack enemies within the area, prioritizing the target of {{ai|Torment|Swain}}, other champions in [[range]] and then any target in range.
+|description2 = ''Beatrice's'' attacks each second, dealing [[magic damage]] and {{tip|slow|slowing}} the target hit.
+|leveling2    = {{st|Magic Damage Per Second|{{ap|30|47.5|65|82.5|100}} {{as|(+ 30% AP)}}|Total Magic Damage|{{ap|120|190|260|330|400}} {{as|(+ 120% AP)}}}}<!--
+-->{{st|Slow|{{ap|20|25|30|35|40}}%}}
+|description3 = ''Beatrice'' deals double [[damage]] against [[minion]]s and executes them {{as|below 10 health}}.
+|leveling3    = {{st|Increased Damage Per Second|{{ap|60|95|130|165|200}} {{as|(+ 60% AP)}}|Total Increased Damage|{{ap|240|380|520|660|800}} {{as|(+ 240% AP)}}}}
+|cooldown     = {{ap|14|13|12|11|10}}
+|cost         = {{ap|60|65|70|75|80}}
+|costtype     = Mana
+|target range = 700
+|effect radius= 325
+|targeting    = '''Decrepify''' is a ground-target ability that construct a static, untargetable autonomous unit.
+|damagetype   = magic
+|spelleffects = false 
+|onhiteffects = 
+|spellshield  = will not block {{ais|Decrepify|Swain}} damage or the slow.
+|notes        = 
+*''Decrepify'' has no cast time and does not interrupt '''Swain's''' previous orders.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Demonflare|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Swain
+|skill        = R
+|icon         = Demonflare.png
+|blurb        = {{sbc|Active:}} '''Swain''' emits a nova of soulfire that deals {{as|magic damage}} to nearby enemies and applies a {{tip|slow}} that decays over a brief moment.
+|pre-blurb    = Swain/Demonic Ascension
+|description  = {{sbc|Active:}} '''Swain''' releases a nova of soulfire that deals {{as|magic damage}} to nearby enemies and {{tip|slows}} them by 50%, decaying over {{fd|1.5}} seconds.
+|description2 = '''''Swain''' can move during Demonflare's cast time.''
+|leveling     = {{st|Magic Damage|{{ap|150 to 350}} {{as|(+ 40% AP)}}}}
+|effect radius= {{tip|cr|icononly = true}} 675
+|speed        = {{tt|3000|Shockwave speed}}
+|width        = {{tip|er|icononly = true}} {{tt|60|Individual missiles}}
+|static       = 8
+|targeting    = Auto
+|affects      = Enemies
+|cast time    = {{fd|0.25}}
+|damagetype   = Magic
+|spelleffects = spellaoe
+|spellshield  = True
+|parry        = 
+|projectile   = True
+|grounded     = 
+|knockdown    = 
+|callforhelp  = 
+|notes        = 
+* '''Swain''' can move during ''Demonflare's'' cast time.
+* ''Demonflare'' counts as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and triggering {{ais|Force Pulse|Kassadin}} passive.
+* ''Demonflare'' passes through champions. Effects like {{cai|Wind Wall|Yasuo}} and {{cai|Unbreakable|Braum}} will block the portion of the nova they intercept.
+* ''Demonflare'' will fire from wherever '''Swain''' is at the end of the cast time.
+{{safesubst:unexpected|desc=* ''Demonflare'' will fire twice if cast moments before the end of ''Demonic Ascension''. [https://youtu.be/bLpvl4_JTq8] {{bug}}|affectedEffects=Swain R|estimatedPatchOrigin=V14.21|<!--added automatically-->wikiUploadTimestamp=1774303868|<!--added automatically-->pagename=Template:Data Swain/Demonflare}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Torment|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Swain
+|skill        = E
+|icon         = Torment.png
+|blurb        = Swain afflicts his target, dealing damage to them over time and causing them to take increased damage from Swain. Enemies afflicted by Torment are focused by Beatrice while Decrepify is active.
+|description  = {{sbc|Active:}} '''Swain''' afflicts the target enemy with a curse that amplifies '''Swain's''' damage against them by 20% for 4 seconds, while also dealing magic damage to them for the duration.
+|leveling     = {{st|Enhanced Magic Damage Per Second|{{ap|15|24|33|42|51}} {{as|(+ 30% AP)}}|Enhanced Total Magic Damage|{{ap|60|96|132|168|204}} {{as|(+ 120% AP)}}}}
+|cooldown     = 10
+|cost         = {{ap|65|70|75|80|85}}
+|costtype     = Mana
+|target range = 625
+|targeting    = '''Torment''' is a single targeted ability.
+|damagetype   = magic
+|projectile   = true
+|callforhelp  = True
+|spelleffects = damage over time
+|onhiteffects = 
+|spellshield  = will block the application of the ability. They will not remove or mitigate a DoT already applied.
+|notes        = 
+* No additional details.
+}}

@@ -1,0 +1,133 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Tailwind|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Janna
+|skill        = I
+|icon         = Tailwind.png
+|blurbicon    = Tailwind.png
+|blurb        = {{sbc|Innate:}} Nearby allied champions gain {{sti|{{as|'''bonus''' movement speed}}}} while moving toward {{ci|Janna}}.
+|blurb2        = Her basic attacks and ''{{ai|Zephyr|Janna}}'' deal {{as|'''bonus''' magic damage}} equal to a portion of her {{as|'''bonus''' movement speed}}.
+|description  = {{sbc|Innate:}} '''Janna''' grants {{sti|ms|{{as|6% '''bonus''' movement speed}}}} to nearby allied {{tip|champions}} that are facing in the direction of her location.
+|description2 = '''Janna's''' {{tip|basic attacks}} {{tip|on-hit}} and ''{{ai|Zephyr|Janna}}'' deal {{as|'''bonus''' magic damage}} equal to {{as|30% of her '''bonus''' movement speed}}.
+|effect radius= {{tip|cr|icononly = true}} 1200
+|targeting    = Passive
+|affects      = Self
+|spelleffects = proc
+|notes        = 
+* No additional notes.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Howling Gale|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Janna
+|skill        = Q
+|icon         = Howling Gale.png
+|blurbicon    = Howling Gale.png
+|blurb        = {{sbc|Active:}} {{ci|Janna}} summons a whirlwind at her current location that matures over a short time, increasing its range, speed, damage, and knock up duration. 
+|blurb2       = ''Howling Gale'' can be recast at any time within the duration, and does so automatically after the duration.
+|blurb3       = {{sbc|Recast:}} The whirlwind flies in the target direction over a short time, dealing {{as|magic damage}} and {{tip|airborne|knocking up}} enemies hit. The effects are increased based on maturity.
+|description  = {{sbc|Active:}} '''Janna''' summons a whirlwind at her current location that charges up over 3 seconds, increasing its range, speed, damage, and {{tip|airborne|knock up}} duration every second over the duration. ''Howling Gale's'' direction is determined by this cast.
+|description2 = ''Howling Gale'' can be recast at any time within the duration, and does so automatically after the duration.
+|leveling     = {{st|Minimum Magic Damage|{{ap|55 to 195}} {{as|(+ 50% AP)}}}}
+{{st|Bonus Damage Per Second|{{ap|10 to 30}} {{as|(+ 10% AP)}}|Maximum Magic Damage|{{ap|55+10*3 to 195+30*3}} {{as|(+ 80% AP)}}}}
+|description3 = {{sbc|Recast:}} '''Janna''' launches the whirlwind in the direction she targeted over {{fd|1.25}} seconds, dealing {{as|magic damage}} to enemies hit and {{tip|airborne|knocking them up}} for {{pp|type=seconds charged|0.5 to 1.25|0 to 1.5 by 0.1}} seconds.
+|cooldown     = 14
+|cdstart      = on-cast
+|cost         = {{ap|90 to 110}}
+|costtype     = mana
+|cast time    = none
+|range        = {{pp|type=seconds charged|1100 to 1000*1.76|0 to 3 by 1|changedisplay=true|formula=Increases by 22 every 0.1 seconds.}}
+|width        = {{tip|er|icononly = true}} 240
+|speed        = {{pp|type=seconds charged|(880 to 1408)|0 to 3 by 1|changedisplay=true|formula  = Always travels for 1.25 seconds.}}
+|targeting    = [[Direction-targeted|Direction]] / [[Auto-targeted|Auto]]
+|affects      = Enemies
+|damagetype   = magic
+|projectile   = true
+|spelleffects = area of effect
+|onhiteffects = 
+|spellshield  = True
+|notes        = 
+* The initial cast and the manual recast count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and triggering {{ais|Force Pulse|Kassadin}} passive.
+* The storm does not interact with enemy units that stand on top of it while it is charging.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Zephyr|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Janna
+|skill        = W
+|icon         = false
+|blurbicon    = Zephyr.png
+|blurb        = {{sbc|Passive:}} {{ci|Janna}} gains {{sti|{{as|'''bonus''' movement speed}}}} and becomes permanently {{tip|ghosted}}.
+|blurb2       = {{sbc|Active:}} '''Janna''' sends an air elemental to the target enemy, dealing {{as|magic damage}} and {{tip|slow|slowing}} them.
+|description  = {{sbc|Passive:}} '''Janna''' is {{tip|ghosting|ghosted}} and gains {{sti|ms|{{as|'''bonus''' movement speed}}}}.
+|leveling     = {{st|Bonus Movement Speed|{{ap|6 to 10}}% {{as|(+ 2% per 100 AP)}}}}
+|icon2        = Zephyr.png
+|description2 = {{sbc|Active:}} '''Janna''' sends an air elemental at the target enemy that deals {{as|magic damage}} and {{tip|slow|slows}} them for 2 seconds, capped at 99%.
+|leveling2    = {{st|Magic Damage|{{ap|55 to 175}} {{as|(+ 50% AP)}} {{as|(+ 30% '''bonus''' movement speed)}}}}
+{{st|Slow|{{ap|20 to 36}}% {{as|(+ 6% per 100 AP)}}}}
+|cooldown     = {{ap|8 to 6}}
+|cost         = {{ap|50 to 70}}
+|cast time    = {{fd|0.245}}
+|costtype     = mana
+|speed        = 1600
+|target range = {{tip|er|icononly = true}} 550
+|targeting    = Unit
+|affects      = Self, Enemies
+|damagetype   = magic
+|projectile   = true
+|spelleffects = spell
+|onhiteffects = 
+|spellshield  = True
+|callforhelp  = True
+|notes        = 
+* The maximum slow (99%) is reached with {{ap|(99-20)*100/6 to (99-36)*100/6|round=2}} ability power.
+{{Unit-targeted cancel conditions}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Eye of the Storm|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Janna
+|skill        = E
+|icon         = false
+|blurbicon    = Eye of the Storm.png
+|blurb        = {{sbc|Passive:}} Whenever {{cis|Janna}} abilities {{tip|slow}} or {{tip|airborne|knock up}} at least one enemy {{tip|champion}}, she {{sti|cdr|refunds}} a portion of {{ais|Eye of the Storm|Janna}} cooldown.
+|blurb2       = {{sbc|Active:}} '''Janna''' can target an allied champion, {{tip|turret}}, or herself to place a {{tip|shield}} that decays over a short time.
+|blurb3       = While the shield holds, the target gains {{sti|{{as|'''bonus''' attack damage}}}}.
+|description  = {{sbc|Passive:}} Whenever '''Janna's''' abilities {{tip|slow}} or {{tip|airborne|knock up}} at least one enemy {{tip|champion}}, 20% of ''Eye of the Storm's'' cooldown is refunded. This may occur once per spell cast.
+|icon2        = Eye of the Storm.png
+|description2 = {{sbc|Active:}} '''Janna''' grants the target allied champion or {{tip|turret}}, or herself, a {{tip|shield}} for 4 seconds.
+|leveling2    = {{st|Shield Strength|{{ap|80 to 240}} {{as|(+ 55% AP)}}}}
+|description3= While the shield holds, the target gains {{sti|attack damage|{{as|'''bonus''' attack damage}}}}.
+|leveling3    = {{st|Bonus Attack Damage|{{ap|10 to 30}} {{as|(+ 10% AP)}}}}
+|cooldown     = {{ap|16 to 12}}
+|cost         = {{ap|70 to 90}}
+|costtype     = mana
+|target range = {{tip|cr|icononly = true}} 800
+|cast time = none
+|targeting    = Unit
+|affects      = Allies, Allied turrets, Self
+|damagetype   = 
+|spelleffects = 
+|onhiteffects = 
+|spellshield  = 
+|notes        = 
+* ''Eye of the Storm'' has a {{tip|forgiveness radius}} of 175 units.
+* '''Janna''' receives kill credit on enemy champions that are killed by turrets shielded by ''Eye of the Storm''.
+* Allied turrets will benefit from the bonus attack damage when targeted by ''Eye of the Storm''.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Monsoon|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Janna
+|skill        = R
+|icon         = Monsoon.png
+|blurbicon    = Monsoon.png
+|blurb        = {{sbc|Active:}} {{ci|Janna}} unleashes a blast that {{tip|airborne|knocks back}} nearby enemies, though not through terrain.
+|blurb2       = She also {{tip|channels}} the winds for a short time, continually {{tip|heal|healing}} nearby allies.
+|description  = {{sbc|Active:}} '''Janna''' unleashes a blast that {{tip|airborne|knocks back}} all nearby enemies to up to 875 units over {{fd|0.5}} seconds based on their proximity, though not through terrain.
+|description2 = '''Janna''' also {{tip|channel|channels}} for up to 3 seconds, {{tip|heal|healing}} herself and nearby allies every {{fd|0.25}} seconds.
+|leveling2    = {{st|Heal Per Tick|{{ap|300/12 to 600/12}} {{as|(+ {{ap|150/12}}% AP)}}|Total Heal|{{ap|300 to 600}} {{as|(+ 150% AP)}}}}
+|cooldown     = {{ap|130 to 100}}
+|cdstart      = on-cast
+|cast time    = none
+|cost         = 100
+|costtype     = mana
+|effect radius= {{tip|cr|icononly = true}} {{tt|700|Both knockback and healing zone radius}}
+|targeting    = Auto
+|affects      = Enemies, Allies
+|spellshield  = true
+|silence      = true
+|notes        = 
+* The following table refers for interactions while '''Janna''' is {{tip|channel|channeling}}:
+{{ct|channel|attack=interrupts|cast=interrupts|move=interrupts|items=interrupts,true,,false|spells=true, interrupts, interrupts, interrupts, interrupts}}
+}}

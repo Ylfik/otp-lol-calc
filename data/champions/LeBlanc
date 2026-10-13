@@ -1,0 +1,214 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Mirror Image|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = LeBlanc
+|skill        = I
+|name         = Mirror Image
+|icon         = Mirror Image.png
+|blurb        = {{sbc|Innate:}} When {{ci|LeBlanc}} reaches low health, she creates a {{tip|clone|clone}} of herself and together they enter brief {{tip|invisibility}}.
+|blurb2      = The clone will run forward to a random location, and lasts for a period.
+|blurb3      = ''Mirror Image'' will go on cooldown upon triggering.
+|description  = {{sbc|Innate:}} Periodically, when '''LeBlanc''' is damaged to {{sti|health|{{as|40% '''maximum''' health}}}}, she creates a {{tip|clone}} of herself, after which they both instantly become {{tip|invisibility|invisible}} for 1 second.
+|description2 = The clone can cast basic attacks with no effect and lasts 8 seconds. Upon spawning, it starts moving up to 1900 units toward a random direction in front of '''LeBlanc's''' movement, determined at the moment of its spawning.
+|description3 = ''See [[LeBlanc#Pets|Pets]] for more details about '''LeBlanc's''' clone.''
+|static       = 60
+|targeting    = Passive
+|affects      = Self
+|damagetype   = 
+|spellshield  = 
+|spelleffects = 
+|projectile   = 
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* The {{tip|clone}} has a [[Pets#Leash ranges|leash range]].
+* If ''Mirror Image'' triggers while '''LeBlanc''' is tethering to a target with {{ai|Ethereal Chains|LeBlanc}} (or its {{ai|Mimic: Ethereal Chains|LeBlanc|Mimicked}} version), her clone will not produce a fake tether, giving away which is the real one. {{Bug|2}}
+* Using a basic attack breaks the stealth at the end of the attack windup.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Sigil of Malice|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = LeBlanc
+|skill        = Q
+|name         = Sigil of Malice
+|icon         = Sigil of Malice.png
+|blurb        = {{sbc|Active:}} {{ci|LeBlanc}} projects an orb at the target enemy, dealing {{as|magic damage}} and marking them for a short time.
+|blurb2       = Her next damaging ability against the marked target will consume the mark to deal {{as|magic damage}}.
+|description  = {{sbc|Active:}} '''LeBlanc''' projects an orb at the target enemy that deals {{as|magic damage}} and marks them for {{fd|3.5}} seconds.
+|leveling     = {{st|Magic Damage|{{ap|65 to 165}} {{as|(+ 40% AP)}}}}
+|description2 = '''LeBlanc's''' next damaging {{tip|champion ability|ability}} against the marked target will consume the mark to deal the {{ccs|same {{as|magic damage}}|magic}} again.
+|leveling2    = {{st|Total Magic Damage|{{ap|65*2 to 165*2}} {{as|(+ {{ap|40*2}}% AP)}}}}
+|description3 = ''Sigil of Malice's'' orb deals {{as|{{pp|10 to 146|formula= 2 + 8 * level, capped at level 18}}<!--stops at 18--> '''bonus''' magic damage}} against {{tip|minion|minions}} and refunds 100% of its {{sti|{{as|mana cost}}}} and 30% of its remaining {{sti|cooldown}} if either the orb or its mark's consumption kills the target.
+|target range = {{tip|cr|icononly = true}} 700
+|speed        = 2000
+|cooldown     = 6
+|cost         = 50
+|cast time    = {{fd|0.25}}
+|costtype     = Mana
+|targeting    = Unit
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = Spell
+|projectile   = True
+|callforhelp  = true
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* ''Sigil of Malice'' and {{ai|Mimic: Sigil of Malice|LeBlanc}} can detonate each other's marks.
+* The floating damage text upon the mark's detonation currently displays a real [[File:Critical strike magic icon.png|20px|link=Critical strike|An icon for magic damage critical strikes]] critical strike icon instead of a success indicator.{{bug}}{{Unit-targeted cancel conditions}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Distortion|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = LeBlanc
+|skill        = W
+|name         = Distortion
+|icon         = Distortion.png
+|blurb        = {{sbc|Active:}} {{ci|LeBlanc}} {{tip|dashes}} to the target location, dealing {{as|magic damage}} to nearby enemies upon arrival. She leaves behind a return pad at her original location that lasts a few seconds, during which she can recast.
+|blurb2      = {{sbc|Recast:}} '''LeBlanc''' {{tip|blinks}} to the return pad.
+|description  = {{sbc|Active:}} '''LeBlanc''' {{tip|dashes}} to the target location, dealing {{as|magic damage}} to all nearby enemies upon arrival and leaving a return pad at the cast location for 4 seconds. ''Distortion'' can be recast after {{fd|0.2}} seconds of the dash ending for the pad's duration.
+|leveling     = {{st|Magic Damage|{{ap|75 to 235}} {{as|(+ 90% AP)}}}}
+|icon2        = Distortion 2.png
+|description2 = {{sbc|Recast:}} '''LeBlanc''' {{tip|blink|blinks}} to ''Distortion's'' return pad, regardless of range.
+|target range = {{dv|{{tt|600|Maximum dash range}}|{{tt|Global|Recast range}}}}
+|effect radius= {{tip|cr|icononly = true}} {{tt|240|Damage radius around dash destination}}
+|speed        = 1450
+|cooldown     = {{ap|15 to 10}}
+|cdstart      = on-cast
+|cost         = {{ap|60 to 100}}
+|costtype     = Mana
+|cast time    = none
+|queue time   = {{tt|{{fd|0.5}}|Initial cast}} / {{tt|{{fd|0.3}}|Recast}}
+|targeting    = {{dv|[[Location-targeted|Location]]|[[Auto-targeted|Auto]]}}
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = spellaoe
+|projectile   = 
+|grounded     = True
+|knockdown    = True
+|outofrange   = Target at maximum range (first cast clamped)
+|notes        = 
+* ''Distortion'' has no minimum dash range.
+* ''Distortion'' will be buffered and cast as soon as the cooldown ends if the player attempts to cast it within {{fd|0.5}} seconds of the cooldown ending.
+** The {{sbc|recast}} will be buffered and cast as soon as it becomes available if the player attempts to cast it within {{fd|0.3}} seconds of it becoming available to cast.
+*The initial cast counts as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and triggering {{ais|Force Pulse|Kassadin}} passive.
+**Recasting the ability does not.
+**{{ai|Mimic: Distortion|LeBlanc}} has the same properties.
+* ''Distortion'' and {{ai|Mimic: Distortion|LeBlanc}} have independent return pads and '''LeBlanc''' can travel to both while they are active.
+* ''Distortion's'' pad duration starts once the dash ends.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Ethereal Chains|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = LeBlanc
+|skill        = E
+|name         = Ethereal Chains
+|icon         = Ethereal Chains.png
+|blurb        = {{sbc|Active:}} {{ci|LeBlanc}} flings an illusory chain in the target direction that deals {{as|magic damage}} and {{tip|tether|tethers}} the first enemy hit, {{tip|true sight|revealing}} them.
+|blurb2      = The tether lasts a brief time, after which the target is dealt {{as|magic damage}}, {{tip|true sight|revealed}}, and briefly {{tip|root|rooted}}.
+|description  = {{sbc|Active:}} '''LeBlanc''' flings an illusory chain in the target direction that deals {{as|magic damage}} to the first enemy it hits and forms a {{tip|tether}} between '''LeBlanc''' and the target for {{fd|1.5}} seconds, during which they are {{tip|true sight|revealed}}.
+|leveling     = {{st|Magic Damage|{{ap|50 to 130}} {{as|(+ 40% AP)}}}}
+|description2 = If the tether is not broken by the end of its duration, it fractures to deal {{as|magic damage}} to the target and {{tip|root}} them for {{fd|1.5}} seconds, during which they are {{tip|true sight|revealed}}.
+|leveling2    = {{st|Fracture Magic Damage|{{ap|80 to 240}} {{as|(+ 85% AP)}}|Total Damage|{{ap|50+80 to 130+240}} {{as|(+ {{ap|40+85}}% AP)}}}}
+|target range = {{tip|cr|icononly = true}} 950
+|width        = {{tip|er|icononly = true}} 110
+|tether radius= {{tip|er|icononly = true}} {{tt|865|Equivalent to 995 center-to-center range against the average enemy champion}}
+|speed        = 1750
+|cooldown     = {{ap|14 to 11}}
+|cast time    = {{fd|0.25}}
+|cost         = 50
+|costtype     = Mana
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = Special
+|spelleffects = spell
+|projectile   = True
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* Both the initial and the delayed damage can detonate {{ai|Sigil of Malice|LeBlanc}}.
+* ''Ethereal Chains'' and {{ai|Mimic: Ethereal Chains|LeBlanc}} are separate debuffs, and can both be tethered to the same target without overriding each other. The {{tip|root}} duration for either one are unchanged.
+* {{tip|Spell shield}} will block the tether's application and initial damage but not the aftereffects of one already applied.
+* The tether remains for a minimum of {{fd|0.25}} seconds regardless of distance. 
+{{Effect at cast time end}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Mimic|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = LeBlanc
+|skill        = R
+|icon         = Mimic.png
+|blurb        = {{sbc|Active:}} {{ci|LeBlanc}} casts a mimicked version of her most recent ability, which deals modified damage.
+|description  = {{sbc|Active:}} '''LeBlanc''' casts a mimicked version of her most recently used basic ability, applying the same effects and dealing {{as|'''modified''' magic damage}}.
+|icon2        = Mimic Sigil of Malice.png
+|description2 = {{sbc|Mimic: Sigil of Malice:}} The orb deals modified damage, while the mark consumption deals double that amount.
+|leveling2    = {{st|Orb Magic Damage|{{ap|70 to 230}} {{as|(+ 40% AP)}}|Mark Magic Damage|{{ap|70*2 to 230*2}} {{as|(+ 80% AP)}}|Total Magic Damage|{{ap|70*3 to 230*3}} {{as|(+ 120% AP)}}}}
+|icon3        = Mimic Distortion.png
+|description3 = {{sbc|Mimic: Distortion:}} Deals modified damage.
+|leveling3    = {{st|Magic Damage|{{ap|150 to 480}} {{as|(+ 90% AP)}}}}
+|icon4        = Mimic Ethereal Chains.png
+|description4 = {{sbc|Mimic: Ethereal Chains:}} The tether's application deals modified damage, while its fracturing deals double that amount.
+|leveling4    = {{st|Application Magic Damage|{{ap|70 to 230}} {{as|(+ 40% AP)}}|Fracture Magic Damage|{{ap|70*2 to 230*2}} {{as|(+ 85% AP)}}|Total Magic Damage|{{ap|70*3 to 230*3}} {{as|(+ {{ap|40+85}}% AP)}}}}
+|cooldown     = {{ap|45 to 25}}
+|queue time   = {{tt|{{fd|0.5}}|Mimic: Distortion initial cast}} / {{tt|{{fd|0.3}}|Mimic: Distortion recast}}
+|targeting    = Varied
+|affects      = Self
+|damagetype   = Magic
+|notes        = 
+* ''Mimic'' will default to {{ai|Mimic: Sigil of Malice|LeBlanc}} if ''LeBlanc'' ranks up ''Mimic'' without having used any abilities beforehand (even if she has not yet learned {{ai|Sigil of Malice|LeBlanc}}).
+* Both {{ai|Mimic: Ethereal Chains|LeBlanc}} and {{ai|Mimic: Sigil of Malice|LeBlanc}} will apply damage twice if the original ability's condition to do so is met.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Mimic Shatter Orb|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = LeBlanc
+|skill        = R
+|icon         = Mimic Shatter Orb.png
+|blurb        = {{Data LeBlanc/Shatter Orb|pst2|blurb}}
+|description  = {{sbc|Active:}} ''Shatter Orb's'' magic damage is modified.
+|leveling     = {{st|Magic Damage|{{ap|150|275|400}} {{as|(+ 60% AP)}}}}
+|cooldown     = {{ap|54|42|30}}
+|targeting    = Unit
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = Special
+|projectile   = True
+|callforhelp  = True
+|grounded     = 
+|knockdown    = 
+|notes        =
+* Apply {{tip|single target}} spell effect to the main target and {{tip|area of effect}} to nearby enemies.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Shadow of the Rose|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = LeBlanc
+|skill        = R
+|icon         = Shadow of the Rose.png
+|blurb        = LeBlanc can send a clone far away, where it casts a fake copy of her most recently cast spell.
+|description  = {{sbc|Active:}} '''LeBlanc''' summons a ''Mimic'' at the target location, refunding ''Mimic's'' cooldown but placing ''Shadow of the Rose'' on its own cooldown. This ''Mimic'' immediately disappears upon casting its selected ability.
+|cooldown     = {{ap|160|140|120}}
+|range        = Global
+|targeting    = Ground
+|affects      = Enemies
+|damagetype   = None
+|notes        =
+* No additional details.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Shatter Orb|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = LeBlanc
+|skill        = Q
+|name         = Shatter Orb
+|icon         = Shatter Orb.png
+|blurb        = LeBlanc projects an orb towards her target, dealing magic damage. When Shatter Orb is empowered by Sigil of Malice, the spell bounces to the nearest ready Sigil of Malice (bounces deal reduced damage to minions).
+|description  = {{sbc|Active:}} '''LeBlanc''' projects an orb towards the target enemy, dealing magic damage.
+|leveling     = {{st|Magic Damage|{{ap|55|90|125|160|195}} {{as|(+ 50% AP)}}}}
+|description2 = If ''Shatter Orb'' triggers '''Sigil of Malice''', the orb bounces to the closest charged ''Sigil'' and damages its next target, dealing 60% damage to [[minion]]s.
+|leveling2    = {{st|Minion Rebound Damage|{{ap|33|54|75|96|117}} {{as|(+ 30% AP)}}}}
+|target range = 700
+|speed        = 2000
+|cooldown     = 6
+|cost         = {{ap|40|45|50|55|60}}
+|costtype     = Mana
+|targeting    = Unit
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = Special
+|projectile   = True
+|callforhelp  = True
+|grounded     = 
+|knockdown    = 
+|notes        =
+* Apply {{tip|Single target}} spell effect to the main target and {{tip|area of effect}} to nearby enemies affected by {{ai|Sigil of Malice|LeBlanc}}.
+}}

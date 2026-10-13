@@ -1,0 +1,9 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|The Darkin Scythe|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Shadow Assassin
+|skill        = I
+|icon         = The Darkin Scythe A.png
+|description  = {{sbc|Innate:}} If '''Kayn''' has been out of [[combat status|combat]] with enemy champions for over 8 seconds, or he casts {{ai|Umbral Trespass|Kayn}}, he deals {{pp|key=%|12 to 44}} of {{tt|post-mitigation damage|Damage calculated after modifiers}} dealt against enemy champions as {{tip|magic damage|{{as|'''bonus''' magic damage}}}}, lasting for 3 seconds upon entering combat and also applying on the first instance of damage dealt. If this effect is ready, it will not go on cooldown by receiving damage.
+|targeting    = Passive
+|affects      = Self
+|notes        = 
+}}

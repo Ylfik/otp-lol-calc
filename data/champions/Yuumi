@@ -1,0 +1,231 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Feline Friendship|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Yuumi
+|skill        = I
+|icon         = Feline Friendship.png
+|description  = {{sbc|Innate:}} Periodically, '''Yuumi's''' next {{tip|basic attack}} against an enemy champion is empowered to have an {{tip|uncancellable windup}}, gain {{as|{{sti|50 '''bonus''' range}}}} and become {{tip|projectile|non-projectile}}. Upon hitting them with the basic attack or ''{{ai|Prowling Projectile|Yuumi}}'', or upon a ''{{ai|Final Chapter|Yuumi}}'' hit on ally champions while ''{{ai|You and Me!|Yuumi|attached}}'', the buff is consumed to {{tip|heal}} her for {{pp|20 + (110-20)/17*(x-1) for 20}} {{as|(+ 30% AP)}}. If she is ''{{ai|You and Me!|Yuumi|attached}}'' to an ally or does so within 4 seconds, they are healed for the same amount.
+|description2 = {{sbc|Innate:}} While ''{{ai|You and Me!|Yuumi|attached}}'' to an ally, '''Yuumi''' grants them 2 <!--PFT:Increased to 3 on champion kills?--> permanent ''Friendship'' stacks whenever they kill enemy champions or minions. The ally with the highest ''Friendship'' stacks becomes '''Yuumi's''' ''Best Friend'', which empowers her abilities with additional effects while she is ''{{ai|You and Me!|Yuumi|attached}}'' to them.
+|static       = {{pp|20 to 8 for 13}}
+|targeting    = Passive
+|parry        = Unknown
+|projectile   = False
+|affects      = Self, Allies, Enemies
+|notes        = 
+* ''Feline Friendship'' will not be consumed if '''Yuumi''' isn't missing health, except when triggered by a basic attack. While {{ai|You and Me!|Yuumi|attached}}, it won't be consumed if both '''Yuumi''' and her anchor aren't missing health.
+* Enemy hits with ''{{ai|Final Chapter|Yuumi}}'' won't trigger ''Feline Friendship''.{{bug|2}}
+* Ability hit against enemy champions while detached can only heal '''Yuumi'''.{{bug|2}}
+* ''Feline Friendship'' will apply to a basic attack already in flight.
+* If there are multiple allies who have equal ''Friendship'' stacks, the one '''Yuumi''' is currently attached to becomes her ''Best Friend''.
+* {{Pending for test}} Empowered attack interaction with parrying effects ({{tip|dodge}}, {{tip|block}}).
+** If '''Yuumi''' is {{tip|blind|blinded}}, ''Feline Friendship'' won't be consumed.
+* {{pending for test}} does '''Yuumi''' generate more friendship stacks from champion kills?
+<!-- Blurb -->
+|blurb        = {{sbc|Innate:}} Periodically, {{cis|Yuumi}} next {{tip|basic attack}} or {{tip|ability}} hit against enemy champions will {{as|{{sti|heal}}}} her. If she is ''{{ai|You and Me!|Yuumi|attached}}'' to an ally within a short time, they are healed as well.
+|blurb2      = {{sbc|Innate:}} While ''{{ai|You and Me!|Yuumi|attached}}'' to an ally, '''Yuumi''' grants them permanent ''Friendship'' stacks for killing enemy champions and minions. The ally with the highest ''Friendship'' stacks becomes '''Yuumi's''' ''Best Friend'', which empowers her abilities while she is ''{{ai|You and Me!|Yuumi|attached}}'' to them.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Prowling Projectile|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Yuumi
+|skill        = Q
+|icon         = Prowling Projectile.png
+|blurb        = {{sbc|Active:}} {{ci|Yuumi}} fires an errant missile in the target direction that deals {{as|magic damage}} to the first enemy hit and briefly {{tip|slow|slows}} the target if they were a champion.
+|blurb4       = {{sbc|{{ai|You and Me!|Yuumi|Attached}} Bonus:}} '''Yuumi''' {{tip|channels}} briefly to steer the missile, after which it accelerates to deal increased damage and apply a stronger slow to champions.<br/>{{sbc|{{ai|Feline Friendship|Yuumi|Best Friend}} Bonus:}} Always applies the stronger {{tip|slow}} and grants her ''Best Friend'' bonus on-hit damage for a few seconds.
+|description  = {{sbc|Active:}} '''Yuumi''' fires an errant missile in the target direction that deals {{as|magic damage}} to the first enemy hit. If the target is a champion, they are also {{tip|standard sight|revealed}} and {{tip|slow|slowed}} by 20% for 1 second.
+|leveling     = {{st|Magic Damage|{{ap|60 to 235 6}} {{as|(+ 20% AP)}}}}
+|icon2        = Prowling Projectile 2.png
+|description2 = {{sbc|{{ai|You and Me!|Yuumi|Attached}} Bonus:}} '''Yuumi''' {{tip|channels}} for up to {{fd|1.35}} seconds to steer the missile at a slower speed. After being in flight for the same duration, the missile accelerates in its current direction for {{fd|0.5}} seconds to deal increased damage and apply a stronger slow against champions that decays to 20% over 2 seconds.
+|leveling2    = {{st|Increased Damage|{{ap|80 to 355 6}} {{as|(+ 30% AP)}}}}
+{{st|Enhanced Slow|{{ap|50 to 65 6}}%}}
+|description3 = {{sbc|{{ai|Feline Friendship|Yuumi|Best Friend}} Bonus:}} ''Prowling Projectile'' always applies its enhanced slow against champions and hitting a champion grants her ''Best Friend'' {{as|'''bonus''' magic damage}} {{tip|on-hit}} for 5 seconds, increased by {{pp|0 to 75 for 11|0 to 100|key=%|key1=%|type=''Anchor's'' critical strike chance|color=critical strike chance}}.
+|leveling3    = {{st|Minimum Bonus Magic Damage On-Hit|{{ap|10 to 20 6}} {{as|(+ 5% AP)}}|Maximum Bonus Magic Damage On-Hit|{{ap|10*1.75 to 20*1.75 6}} {{as|(+ {{ap|5*1.75}}% AP)}}}}
+|target range = 850
+|effect radius= 
+|width        = {{tip|er|icononly=true}} 120
+|speed        = {{dv|{{tt|950|Missile speed}}|{{tt|850|Channeling missile speed}}|{{tt|1650|Accelerated attached missile speed}}}}
+|cost         = {{ap|50 to 75 6}}
+|costtype     = Mana
+|cooldown     = {{fd|6.5}}
+|cdstart      = Starts on-cast when unattached, starts post-effect when attached, starts immediately when detaching
+|cast time    = none
+|queue time   = {{fd|0.5}}
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = Magic
+|spellshield  = True
+|spelleffects = Spell
+|projectile   = True
+|silence      = true
+|notes        = 
+* ''Prowling Projectile'' is able to turn clockwise or counter-clockwise at a rate of 90{{Degree}} per {{fd|0.5}} seconds. The missile can turn a maximum of 243{{Degree}} in both directions combined before accelerating.
+* ''Prowling Projectile'' can be buffered {{fd|0.5}} seconds before it comes off cooldown.
+* The {{sbc|{{ai|Feline Friendship|Yuumi|Best Friend}}}}'s empowerment respects {{tip|enchantment redirection}}.
+* The following table refers for interactions while '''Yuumi''' is {{tip|channel|channeling}}:
+{{ct|channel|move=N/A|cast={{ai|Change of Plan|Yuumi|Detaching}} and {{ai|Final Chapter|Yuumi}} interrupt. {{ai|Zoomies|Yuumi}} is usable.|attack=N/A|items=true|consume=true|spells=true|interrupt=true}}
+|tips         =
+* ''Prowling Projectile'' is slower when {{ai|You and Me!|Yuumi|attached}} (before the acceleration). If '''Yuumi''' {{ai|Change of Plan|Yuumi|Detaches}} after using it, the missile will go back to its normal speed, without losing the acceleration later. This results in the fastest and longest ranged version of this ability.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|You and Me!|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Yuumi
+|skill        = W
+|blurb        = {{sbc|Passive:}} While {{ci|Yuumi}} is {{tip|attached}}, she is {{tip|untargetable}} and casts her abilities from the ''Anchor's'' position, empowering them with additional effects.
+|blurb2      = {{sbc|Active:}} '''Yuumi''' {{tip|dashes}} to the target allied champion to {{tip|attach}} to them. ''You and Me!'' can be recast while attached.
+|blurb3      = {{sbc|Recast:}} '''Yuumi''' detaches from her ''Anchor'' and {{tip|dashes}} to the target allied champion to {{tip|attach}} to them. If this is cast without a target, she will {{tip|dash}} out to detach.
+|blurb4      = ''You and Me!'' is placed on a short {{sti|cooldown}} if '''Yuumi''' becomes {{tip|immobilize|immobilized}} or {{tip|ground|grounded}}.<br/>{{sbc|{{ai|Feline Friendship|Yuumi|Best Friend}} Bonus:}} '''Yuumi''' gains {{as|{{sti|heal and shield power}}}} and her ''Best Friend'' gains {{tip|on-hit}} {{tip|healing}}.
+|icon         = false
+|description  = {{sbc|Passive:}} While '''Yuumi''' is {{tip|attached}}, she is {{tip|untargetable}} (except by {{tip|turrets}} and inbound {{tip|projectile|projectiles}}) and casts her abilities from the ''Anchor's'' position, empowering them with additional effects.
+|icon2        = You and Me!.png
+|description2 = {{sbc|Active:}} '''Yuumi''' {{tip|channels}} for {{fd|0.25}} seconds, then upon completion {{tip|dashes}} to the target allied champion and {{tip|Attached|attaches}} to them upon arrival, designating them as her ''Anchor''. ''You and Me!'' can be recast after {{fd|0.5}} seconds of the attachment.
+|icon3        = Change of Plan.png
+|description3 = {{sbc|Recast - Change of Plan:}} '''Yuumi''' detaches from her ''Anchor'' and {{tip|dashes}} to the target allied champion to {{tip|attach}} to them, refreshing the recast. She will detach automatically if her ''Anchor'' dies or under {{tt|certain circumstances|See notes}}. If recast without a valid target, '''Yuumi''' will detach and {{tip|dash}} 250-units in the target direction, placing ''You and Me!'' on a {{sti|cd|{{fd|0.25}}}}-second cooldown if it is not already on cooldown.
+|description4 = '''''Yuumi''' will be {{tip|knockdown|knocked down}} by any {{tip|immobilize|immobilizing}} or {{tip|polymorph|polymorphing}} crowd control during the dash to the ally.''
+|description5 = '''Yuumi''' starts with a skill point in ''You and Me!'' and ''{{ai|Prowling Projectile|Yuumi}}'' instead has 6 ranks.
+|description6 = {{sbc|{{ai|Feline Friendship|Yuumi|Best Friend}} Bonus:}} '''Yuumi''' gains {{as|{{sti|heal and shield power}}}} and her ''Best Friend'' gains {{tip|heal|healing}} {{tip|on-hit}}.<br><br><br>''You and Me!'' is placed on a {{sti|cd|5-second}} cooldown if '''Yuumi''' becomes {{tip|immobilize|immobilized}}, {{tip|ground|grounded}}, or {{tip|polymorph|polymorphed}}.
+|leveling6    = {{st|Heal and Shield Power|{{ap|4 to 8}}%}}
+{{st|Healing On-Hit|{{ap|3 to 7}} {{as|(+ 3% AP)}}}}
+|target range = 700
+|static       = {{tt|{{pp|10 to 0 for 3|1;6;11}}|Starts after completing the channel}}
+|cdstart      = Special
+|cast time    = none
+|targeting    = [[Unit-targeted|Unit]] / [[Direction-targeted|Direction]]
+|speed        = {{tt|{{ap|1200 to 1600}}|Dash speed}}
+|affects      = Allies
+|grounded     = True
+|knockdown    = True
+|silence      = true
+|flavorsound  = {{sm2|Yuumi_Original_W_3.ogg}} ''"Book, meet new friend!"''
+|outofrange   = Walk in range of the target unit to cast (first cast)<br><br>If targeting an ally with the recast, the ability will not cast
+|notes        = 
+* The ''Best Friend's'' healing on-hit is affected by '''Yuumi's''' heal and shield power.
+* '''Yuumi''' will track the target if they change locations.
+** She will not stop tracking the target until she reaches them, as there is no maximum tracking distance.
+* If the target moves {{tt|2000|Estimated}} or more units away from '''Yuumi''' during the dash, it will be interrupted and ''You and Me!'' will be placed on full cooldown.
+* The {{fd|0.5}}-second cooldown will be incurred whenever '''Yuumi''' attaches to an ''Anchor'', whether by the active or the recast.
+* Attempting to recast ''You and Me!'' on an ally that is out of range will briefly glow a range indicator of the ability and indicate that the target is ''"Out of Range!"''.
+* ''You and Me!'' does not count as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and triggering {{ais|Force Pulse|Kassadin}} passive.
+* ''You and Me!'' does not count as a buff for {{ri|Summon Aery}}.
+* The initial cast and recast of ''You and Me!'' have a {{tip|forgiveness radius}} of 175 units.
+** This behavior can override her direction-targeted {{tip|dash}} to discard any target.
+* '''Yuumi''' can channel the {{ii|Eye of the Herald}} while attached.
+* '''Yuumi''' will automatically detach in the following circumstances:
+** When her ''Anchor'' starts a {{si|Teleport}} channel.
+** After the ''Anchor'' completes a {{si|Recall}} channel.
+** Her ''Anchor'' is sent to the {{ai|Realm of Death|Mordekaiser}}.
+** She is pulled by {{ai|Fate's Call|Kalista}}.
+** When she or her ''Anchor'' enters {{tip|resurrection}}.
+*** If '''Yuumi''' is channeling ''You and Me!'' or already dashing towards an ally who enters {{tip|resurrection}}, then she will successfully attach to the resurrecting ally, and she will be able to heal/shield them during it.
+* '''Yuumi''' doesn't ''detach'' instantly when her ''Anchor'' dies. There's a small grace period in which she can recast ''You and Me!'' to attach to another champion without the {{tip|channel}} or dash in the target direction.
+* '''Yuumi''' can dash to targetable {{tip|zombie state}} allies (currently only {{cai|Glory in Death|Sion}}), but she cannot attach when she reaches them.
+** The same goes for allies channeling {{si|Teleport}}.
+* While attached to the ''Anchor'', '''Yuumi''' is considered in being at her ''Anchor's'' position, regardless of where she is visually placed near them. For example, {{tip|turret}} shots will appear as if they were hitting the ''Anchor'', but in reality they're actually hitting '''Yuumi'''.
+** However, for the purposes of ''You and Me!'', such as casting it or being unattached for other reasons, '''Yuumi''' will be in the position where she visually is. For example, when she is in the blue team, dashing to a north-east ally is considerably slower than dashing to a south-west ally.
+* Her {{tip|monster}} aggression transfers to the ''Anchor''.
+* Enemies are credited an [[assist]] on '''Yuumi''' if they damaged the ''Anchor'' at any point and she dies within the standard credit timer.
+* '''Yuumi''' will '''always''' be {{tip|sight|visible}} if her ''Anchor'' can be seen, and she will '''always''' not be visible if her ''Anchor'' cannot be seen. These rules apply regardless of {{tip|sight|reveal}} effects and {{tip|stealth}}.
+* '''Yuumi''' will not {{tip|vanish}} if her ''Anchor'' does.
+* If '''Yuumi''' is on the blue team, she will remain attached on the southwest side; if '''Yuumi''' is on the red team, she will remain on the northeast. While channeling {{ai|Final Chapter|Yuumi}}, she will be behind her ''Anchor''.
+* The [[Summoner|player's]] screen will briefly flash red if '''Yuumi''' is affected by a {{tip|immobilize|immobilizing}} or {{tip|ground|grounding}} effect, or if she forcibly detaches from her ''Anchor''.
+* {{tip|Sleep}} does not count for knocking the dash down.{{bug}}
+* The ''Anchor's'' [[health bar]] will have a different frame to indicate the ''attached'' status:
+[[File: Yuumi Health Bar.png|200px|center]]
+* The following table refers for interactions while '''Yuumi''' is {{tip|channel|channeling}}:
+{{ct|channel|attack=false|move=false|cast=false|items=false, true|spells=true, interrupts, false, false, false|interrupts=death, ground, root, silence}}
+* The following table refers for interactions while '''Yuumi''' is {{tip|attached}}:
+{{ct|move=false|cast=true|attack=false|items=true, true, true, false|spells=true, false, false, false, false|interrupts=death}}
+;Buffering Interactions
+* All of '''Yuumi's''' abilities can be buffered while channeling and dashing.
+** {{ri|Summon Aery}} and {{ii|Tear of the Goddess}} would not trigger from the heal or shield when buffered.{{bug}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Zoomies|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Yuumi
+|skill        = E
+|icon         = Zoomies.png
+|blurb        = {{sbc|Active:}} {{ci|Yuumi}} {{tip|shields}} herself and gains {{as|{{sti|'''bonus''' movement speed}}}} and {{sti|{{as|'''bonus''' attack speed}}}} for a short time.
+|blurb4      = {{sbc|{{ai|You and Me!|Yuumi|Attached}} Bonus:}} ''Zoomies'' affects the ''Anchor'' instead of '''Yuumi''' and additionally restores {{as|mana}} to the ''Anchor''.
+|description  = {{sbc|Active:}} '''Yuumi''' grants herself a {{tip|shield}} and gains {{sti|{{as|'''bonus''' attack speed}}}} for 3 seconds. She also gains {{sti|ms|{{as|20% '''bonus''' movement speed}}}} while the shield holds.
+|leveling     = {{st|Shield|{{ap|65 to 165}} {{as|(+ 40% AP)}}}}
+{{st|Bonus Attack Speed|{{ap|25 to 35}}% {{as|(+ 8% per 100 AP)}}}}
+|description2 = {{sbc|{{ai|You and Me!|Yuumi|Attached}} Bonus:}} ''Zoomies'' affects the ''Anchor'' instead of '''Yuumi''' and additionally restores {{sti|{{as|mana}}}} to the ''Anchor'', increased by {{as|{{pp|0 to 100 for 11|30 to 80|key=%|key1=%|type=''Anchor's'' '''missing''' mana}}|mana}}.
+|leveling2    = {{st|Minimum Mana Restored|{{as|{{ap|20 to 36}}|mana}}|Maximum Mana Restored|{{as|{{ap|20*2 to 36*2}}|mana}}}}
+|cost         = {{ap|80 to 120}}
+|costtype     = Mana
+|cooldown     = 10
+|cast time    = none
+|targeting    = Auto
+|affects      = Self / Allies
+|damagetype   = 
+|spellshield  = 
+|spelleffects = 
+|occurrence   = 
+|projectile   = 
+|grounded     = 
+|knockdown    = 
+|parry        = 
+|notes        = 
+* The ''Anchor's'' mana bar will briefly become a light blue upon restoring the mana.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Final Chapter|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Yuumi
+|skill        = R
+|icon         = Final Chapter.png
+|blurb        = {{sbc|Active:}} {{ci|Yuumi}} and '''{{ui|Book of Thresholds|Book|nolink=true}}''' {{tip|channel}} for a short time while {{tip|ghosted}} to launch 5 magical waves that deal {{as|magic damage}} to enemies hit and {{tip|heal}} her ''Anchor'' and other allies hit. Excess healing is converted into a {{tip|shield}}.
+|blurb2       = Enemy {{tip|champion|champions}} hit will be briefly {{tip|slow|slowed}}, increasing with each wave that hits them. '''Yuumi''' can move and use {{ai|You and Me!|Yuumi}} and {{ai|Zoomies|Yuumi}} during ''Final Chapter''.
+|blurb4       = {{sbc|{{ai|You and Me!|Yuumi|Attached}} Bonus:}} '''Yuumi''' can steer the direction of the waves with her mouse.<br/>{{sbc|{{ai|Feline Friendship|Yuumi|Best Friend}} Bonus:}} Her ''Best Friend'' receives increased healing from each wave.
+|description  = {{sbc|Active:}} '''Yuumi''' and '''{{ui|Book of Thresholds|Book|nolink=true}}''' {{tip|channel}} for up to {{fd|3.5}} seconds, during which they are {{tip|ghosted}}, to launch 5 magical waves in the target direction.
+|description2 = Allied champions hit by the waves are {{tip|heal|healed}}, with each heal instance beyond {{as|'''maximum''' health}} being converted into a {{tip|shield}} that lasts for {{fd|1.5}} seconds plus the remaining channel duration instead.
+|leveling2    = {{st|Heal per Hit|{{ap|30 to 70}} {{as|(+ 12% AP)}}|Total Heal|{{ap|30*5 to 70*5}} {{as|(+ {{ap|12*5}}% AP)}}}}
+|description3 = Enemies struck by the waves take {{as|magic damage}} and are {{tip|slow|slowed}} by 10% for {{fd|1.25}} seconds. The slow stacks and refreshes on subsequent hits, up to a total strength of 50%. Subsequent waves against enemies hit deal 25% damage.
+|leveling3    = {{st|Magic Damage per Hit|{{ap|75 to 175}} {{as|(+ 25% AP)}}}}
+{{st|Reduced Damage per Hit|{{ap|75*0.25 to 175*0.25}} {{as|(+ {{ap|25*0.25}}% AP)}}|Total Magic Damage|{{ap|75*2 to 175*2}} {{as|(+ {{ap|25*2}}% AP)}}}}
+|description4 = {{sbc|{{ai|You and Me!|Yuumi|Attached}} Bonus:}} '''Yuumi''' can steer the direction of the waves if initially cast while attached. ''{{ai|Change of Plan|Yuumi|Detaching}}'' causes her to lose this bonus for the duration. Additionally, ''{{ai|Feline Friendship|Yuumi}}'' can trigger from also hitting allied champions.
+|description5 = {{sbc|{{ai|Feline Friendship|Yuumi|Best Friend}} Bonus:}} ''Final Chapter's'' heal to the ''Best Friend'' is increased by {{pp|key=%|30 to 60 for 7|6 to 12}}.
+|description6 = ''While not {{ai|You and Me!|Yuumi|attached}}, '''Yuumi''' can move while channeling Final Chapter.''
+|target range = {{tip|cr|icononly = true}} 1100
+|width        = {{tip|er|icononly = true}} 450
+|speed        = 3000
+|cost         = 100
+|costtype     = Mana
+|cooldown     = {{ap|120 to 100}}
+|cdstart      = post-effect
+|cast time    = none
+|targeting    = Direction
+|affects      = Self, Allies, Enemies
+|damagetype   = Magic
+|spellshield  = special
+|spelleffects = spellaoe
+|projectile   = True
+|silence      = true
+|flavorsound  = {{sm2|Yuumi_Original_R_4.ogg}} ''"THIS IS MY FAVORITE CHAPTER!!"''
+|notes        = 
+* '''Yuumi''' becomes {{tip|ghosted}} for the channel and, if not presently attached with {{ai|You and Me!|Yuumi}}, will remain ghosted until she attaches and detaches again.{{bug}}
+* While {{ai|You and Me!|Yuumi|attached}}, {{bi|Cloud Dragon Soul}} will not activate until '''Yuumi''' detaches.
+* {{tip|Spell shield}} will only block a single instance of damage.
+* '''Yuumi's''' facing direction during the channel is considered to be in ''Final Chapter's'' target direction.
+** Using {{si|Hexflash}} during the channel will always cause '''Yuumi''' to {{tip|blink}} in the target direction of ''Final Chapter''.{{bug}}
+* {{ai|Feline Friendship|Yuumi}} will not be triggered if '''Yuumi''' and her anchor aren't missing health '''after''' the wave hit.
+* The VFX will follow '''Yuumi's''' location, but the actual hitbox of each wave won't.
+* The following table refers for interactions while '''Yuumi''' is {{tip|channel|channeling}}:
+{{ct|channel|cast={{ai|Prowling Projectile|Yuumi}} is disabled. {{ai|You and Me!|Yuumi}} and {{ai|Zoomies|Yuumi}} are usable.|attack=false|move=true|items=true,,,false|spells=true, true, true, false, true, true, true, true}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Bop 'n' Block|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Yuumi
+|skill        = I
+|icon         = Bop 'n' Block.png
+|blurb        = {{sbc|Innate:}} Periodically, {{cis|Yuumi}} next basic attack against enemy champions will restore {{as|{{sti|mana}}}} based on {{as|her '''maximum''' mana}}, and generate a {{tip|shield}} that lasts until destroyed.
+|blurb4      = {{sbc|{{ai|You and Me!|Yuumi|Attached}} Bonus:}} The shield transfers to the ''Anchor''.
+|description  = {{sbc|Innate:}} Periodically, '''Yuumi's''' next [[basic attack]] against enemy champions will restore {{sti|mana|{{as|{{pp|25 to 100}}|mana}} {{as|(+ 8% '''maximum''' mana)}} {{as|mana}}}} and grant her a {{tip|shield}} for {{pp|45 to 300}} {{as|(+ 25% AP)}} that lasts until destroyed. <br/>This attack gains {{sti|25 '''bonus''' range}}, has an {{tip|uncancellable windup}}, and becomes {{tip|projectile|non-projectile}}.
+|description2 = {{sbc|{{ai|You and Me!|Yuumi|Attached}} Bonus:}} The shield transfers to the ''Anchor''.
+|static       = {{pp|18 to 6}}
+|targeting    = Passive
+|affects      = Self
+|damagetype   = 
+|spellshield  = 
+|spelleffects = 
+|occurrence   = 
+|projectile   = False
+|grounded     = 
+|knockdown    = 
+|parry        = Special
+|notes        = 
+* This ability will apply to a basic attack already in flight, but will not augment it into a non-projectile.
+* ''Bop 'n' Block'' will not proc if the attack is {{tip|dodged}} or '''Yuumi''' misses the attack while {{tip|blind|blinded}}. It will proc even if the attack is {{tip|blocked}}.
+* Although the shield doesn't expire, it will never stack with itself.
+* Considering '''Yuumi's''' {{as|'''base''' mana}}, ''Bop 'n' Block's ''mana restore is increased by '''at least''' {{as|{{pp|({{ccd|Yuumi|mp_base}}+{{ccd|Yuumi|mp_lvl}}*(x-1)*(0.7025+0.0175*(x-1)))*0.08}}|mana}}.
+}}

@@ -1,0 +1,161 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Staggering Blow|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Nautilus
+|skill        = I
+|icon         = Staggering Blow.png
+|blurb        = {{sbc|Innate:}} {{cis|Nautilus}} basic attacks deal {{as|'''bonus''' physical damage}} and briefly {{tip|root}} the target.
+|blurb2       = This effect cannot occur on the same target more than once every few seconds.
+|description  = {{sbc|Innate:}} '''Nautilus' '''{{tip|basic attacks}} are empowered to deal {{as|{{pp|14 + (116-14)/17*(x-1) for 20}}|physical damage}} {{as|'''bonus''' physical damage}} and {{tip|root}} the target for {{pp|changedisplay=true|0.75 to 1.5 for 4|1 to 16}} seconds.
+|description2 = This effect cannot occur on the same target more than once every few seconds.
+|ontargetcdstatic= 6
+|targeting    = Passive
+|damagetype   = Physical
+|affects      = Enemies
+|spelleffects = Proc
+|spellshield  = Special
+|parry        = true
+|notes        = 
+* {{tip|Spell shield}} will block the {{tip|root}} but not the bonus damage.
+* ''Staggering Blow's'' enhanced attack can be {{tip|blocked}} and {{tip|dodge|dodged}} (the on-target cooldown will still be applied).
+** It will fail to trigger while he is {{tip|blind|blinded}}.
+* The empowered attack will not trigger against {{tip|structures}}.
+*
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Dredge Line|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Nautilus
+|skill        = Q
+|icon         = Dredge Line.png
+|blurb        = {{sbc|Active:}} {{ci|Nautilus}} hurls his anchor in the target direction that stops on the first enemy or terrain hit.
+|blurb2      = If the anchor hits an enemy, it deals {{as|magic damage}} and {{tip|airborne|drags}} them toward '''Nautilus''' while he also {{tip|dash|dashes}} toward them. Afterwards, the target is briefly {{tip|root|rooted}}.
+|blurb3      = If the anchor hits terrain, '''Nautilus''' {{tip|dash|dashes}} to that location and half of the {{sti|cooldown}} and {{sti|mana|{{as|mana cost}}}} are refunded.
+|description  = {{sbc|Active:}} '''Nautilus''' hurls his anchor in the target direction that stops on the first enemy or terrain hit.
+|description2 = If the anchor hits an enemy, it deals {{as|magic damage}}, {{tip|standard sight|reveals}} them for {{fd|1.15}} seconds, {{tip|stun|stuns}} them for 1 second, and {{tip|airborne|drags}} them toward '''Nautilus''' while he also {{tip|dash|dashes}} toward them, both over {{fd|0.9}} seconds.
+|leveling2    = {{st|Magic Damage|{{ap|85 to 245}} {{as|(+ 90% AP)}}}}
+|description3 = If the anchor hits terrain, '''Nautilus''' {{tip|dash|dashes}} to that location and 50% of ''Dredge Line's'' {{sti|cooldown}} and {{sti|mana|{{as|mana cost}}}} are refunded.
+|description4 = '''''Nautilus''' is {{tip|lockout|unable}} to move or attack while Dredge Line is in flight. He can cast any of his abilities during the dash.''
+|cooldown     = {{ap|14 to 10}}
+|cast time    = {{fd|0.25}}
+|cost         = 60
+|costtype     = Mana
+|range        = {{tip|er|icononly = true}} {{tt|1122|The missile is destroyed on the tick it passes 1100 distance, resulting in this unorthodox max-range collision behavior compared to other missiles}}
+|speed        = 2000
+|width        = {{dv|{{tip|er|icononly = true}} {{tt|180|Unit collision}}|{{tip|cr|icononly = true}} {{tt|0|Terrain collision}}}}
+|targeting    = Direction
+|damagetype   = Magic
+|projectile   = true
+|spelleffects = spell
+|grounded     = true
+|affects = [[Self]], Enemies
+|onhiteffects = 
+|spellshield  = Special
+|knockdown = true
+|notes = 
+* ''Dredge Line'' has two hitboxes. The outer hitbox, shown by a visual effect on the ground, will hit champions edge-to-edge. The inner hitbox, shown by the anchor, can hit terrain. Near thinner walls, this can cause the ability to hit a champion on the other side. 
+* ''Dredge Line'' turns '''Nautilus'''' facing direction accordingly upon hitting a valid target.
+* ''Dredge Line'' can interact with [[Terrain#Player-Generated|player-generated terrain]].
+* '''Nautilus''' will {{tip|dash}} all the way to the target's location if ''Dredge Line'' executed them or they negated the {{tip|airborne|displacement}}.
+* ''Dredge Line'' will not interrupt any movement commands '''Nautilus''' was issued pre-cast so long as their directions somewhat correlate (this is intentional to smooth out traveling/escaping).
+* {{tip|Spell shield}} will block the ability but '''Nautilus''' will still dash partway to the target.
+* The anchor projectile will stop if '''Nautilus''' dies while the projectile is traveling. Enemies hit will still be dealt damage. The {{tip|airborne|drag}} and {{tip|root}} are not applied if '''Nautilus''' did not initiate the dash.
+* {{tip|Displacement immunity}} will not resist the application of the {{tip|stun}}.
+{{Effect at cast time start}}
+* The following table refers for interactions during ''Dredge Line's'' cast time.
+{{ct|cast|spells=true,false,false,false,false}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Titan's Wrath|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Nautilus
+|skill        = W
+|icon         = Titan's Wrath.png
+|blurb        = {{sbc|Active:}} {{ci|Nautilus}} {{tip|shields}} himself for a few seconds. While the shield holds, his {{tip|basic attacks}} apply ''Pain of Wrath'' to the target and surrounding enemies.
+|blurb4      = {{sbc|Pain of Wrath:}} The target suffers {{as|magic damage}} over time, half dealt immediately and the other half dealt after a brief time.
+|description  = {{sbc|Active:}} '''Nautilus''' grants himself a {{tip|shield}} for 6 seconds, and while it holds, his {{tip|basic attacks}} are empowered to apply ''Pain of Wrath'' to the target and enemies near them.
+|leveling     = {{st|Shield Strength|{{ap|50 to 90}} {{as|(+ {{ap|8 to 12}}% '''maximum''' health)}}}}
+|description2= {{sbc|Pain of Wrath:}} The target takes {{as|magic damage}} over time, half dealt immediately and the other half dealt after {{fd|1.25}} seconds.
+|leveling2    = {{st|Total Magic Damage|{{ap|30 to 70}} {{as|(+ 40% AP)}}|Magic Damage per Instance|{{ap|30/2 to 70/2}} {{as|(+ {{ap|40/2}}% AP)}}}}
+|description3 = ''Titan's Wrath {{tip|basic attack reset|resets}} '''Nautilus' ''' basic attack timer.''
+|cooldown     = 12
+|cdstart      = on-cast
+|cost         = 60
+|costtype     = Mana
+|cast time = none
+|effect radius= {{tip|cr|icononly = true}} {{tt|250|Centered on target}}
+|targeting    = Auto
+|affects      = Self, Enemies
+|damagetype   = Magic
+|spelleffects = special
+|spellshield  = special
+|parry        = special
+|notes        = 
+* ''Pain of Wrath's'' first damage instance is tagged as {{tip|spell damage}}, while the second damage instance is tagged as {{tip|persistent damage}}.
+* ''Pain of Wrath'' damage over time debuff gains another stack when reapplied to the target, but doesn't restart its tick timer. Additional stacks of ''Pain of Wrath'' expire when the original debuff does and do not deal any additional damage.
+** ''Pain of Wrath'''s debuff can last up to {{fd|0.25}} seconds after dealing the second instance of damage.{{bug}}
+* ''Pain of Wrath'' will be applied by '''Nautilus's''' basic attack if he is affected by ''Titan's Wrath'' at the start of the {{tip|attack windup}}, even if ''Titan's Wrath'' expires during the windup.
+* ''Pain of Wrath'' will not be applied if the basic attack is {{tip|dodged}} or {{tip|blocked}}, but will be applied if it is {{tip|blind|missed}}.
+* {{tip|Spell shield}} will block the ability (but only a single application).
+* The empowered attack does not apply ''Pain of Wrath'' to {{tip|structures}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Riptide|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Nautilus
+|skill        = E
+|icon         = Riptide.png
+|blurb        = {{sbc|Active:}} {{ci|Nautilus}} sends three waves of explosions that radiate from him, each dealing {{as|magic damage}} and briefly {{tip|slow|slowing}} enemies hit.
+|description  = {{sbc|Active:}} '''Nautilus''' sends three waves of explosions that radiate from him {{tt|over {{fd|0.561}} seconds|See notes}}. Each wave deals {{as|magic damage}} to enemies hit, reduced to 50% against those hit by subsequent waves beyond the first, and {{tip|slow|slows}} them by an amount that decays over {{fd|1.5}} seconds.
+|leveling     = {{st|Magic Damage|{{ap|55 to 195}} {{as|(+ 50% AP)}}|Reduced Damage|{{ap|55*0.5 to 195*0.5}} {{as|(+ {{ap|50*0.5}}% AP)}}|Maximum Total Damage|{{ap|55*2 to 195*2}} {{as|(+ {{ap|50*2}}% AP)}}}}
+{{st|Slow|{{ap|30 to 50}}%}}
+|description2 = The first hit against {{tip|monsters}} deals {{as|'''bonus''' magic damage}}.
+|leveling2    = {{st|Monster Bonus Damage|{{ap|125 to 285}} {{as|(+ 50% AP)}}}}
+|cooldown     = {{ap|7 to 5}}
+|cost         = {{ap|50 to 90}}
+|costtype     = Mana
+|effect radius= {{dv|{{tip|cr|icononly = true}} {{tt|0 - 350|First wave}}|{{tt|215 - 465|Second wave, offset by 25 units}}|{{tt|350 - 590|Third wave, offset by 25 units}}}}
+|cast time    = {{fd|0.25}}
+|targeting    = Auto
+|affects      = Enemies
+|damagetype   = Magic
+|spelleffects = spellaoe
+|onhiteffects = 
+|spellshield  = true
+|notes  = 
+{{Effect at cast time end}}
+* The first wave is centered around '''Nautilus''', while the second and third wave are centered at an offset of 25 units in front of '''Nautilus''' at the original cast location.
+** Because of this, there is a zone each in which you can be hit by only 1 wave, or all 3 waves, respectively, without moving.
+* The first wave happens at 0 seconds after the cast time ends, the second wave at {{fd|0.297}} seconds and the third wave at {{fd|0.561}} seconds.
+** The intended timing may be {{fd|0.25}} seconds for each delay, however these are the measured, effective times.
+* The ''explosions'' are only a visual effect. The first wave has 8, the seconds has 9, and the third wave has 10 explosions, equally distributed around the rings, starting with one explosion directly in '''Nautilus'''' facing direction on each.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Depth Charge|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Nautilus
+|skill        = R
+|icon         = Depth Charge.png
+|blurb        = {{sbc|Active:}} {{ci|Nautilus}} sends a ''Depth Charge'' that chases the target enemy champion. It creates eruptions in its wake that deal {{as|magic damage}} to enemies hit, as well as briefly {{tip|airborne|knocking up}} and {{tip|stun|stunning}} them.
+|blurb2      = Upon reaching the target, the ''Depth Charge'' erupts a final time for increased effect against the target.
+|description  = {{sbc|Active:}} '''Nautilus''' sends out a [[File:Depth Charge 2.png|20px|link=]] ''Depth Charge'' that chases the target enemy {{tip|champion}}, accelerating over time and creating eruptions every {{rutngt|0.25}} in its wake that also briefly grant {{tip|sight}} of the area. Enemies hit by the eruptions are dealt {{as|magic damage}}, {{tip|airborne|knocked up}} for 1 second, and {{tip|stun|stunned}} for a duration.
+|leveling     = {{st|Magic Damage|{{ap|125 to 225}} {{as|(+ 40% AP)}}}}
+{{st|Stun Duration|{{ap|1 to 2}} seconds}}
+|icon2        = Depth Charge 2.png
+|description2 = Upon reaching the primary target, the ''Depth Charge'' erupts a final time at their location. The primary target takes increased damage, is {{tip|stun|stunned}} for the same duration, and {{tip|airborne|knocked up}} for a modified duration.
+|leveling2    = {{st|Increased Damage|{{ap|150 to 400}} {{as|(+ 80% AP)}}}}
+{{st|Knock Up Duration|{{ap|1 to 2}} seconds}}
+|cooldown     = {{ap|120 to 80}}
+|cast time    = {{fd|0.46}}
+|cost         = 100
+|costtype     = Mana
+|target range = {{tip|cr|icononly = true}} 825
+|effect radius= {{dv|{{tip|cr|icononly = true}} {{tt|225|Underway eruptions, estimated}}|{{tt|300|Final eruption}}|{{tip|sight|icononly = true}}{{tt|750|Seeking charge sight radius}}}}
+|speed        = 275 + {{fd|466.67}} per second
+|targeting    = Unit
+|affects      = Enemies
+|damagetype   = magic
+|spelleffects = aoe
+|onhiteffects = 
+|spellshield  = true
+|projectile = false
+|notes   =
+* ''Depth Charge'' starts in an offset from whichever direction '''Nautilus''' is facing at the end of the cast time.
+** Since {{ais|Dredge Line|Nautilus}} causes '''Nautilus''' to change his facing direction upon hitting a valid target, ''Depth Charge's'' starting point can be changed with a quick {{ai|Dredge Line|Nautilus}} + ''Depth Charge'' combo.
+* Enemies a certain distance away from the charge / eruption are instead {{tip|airborne|knocked back}}.
+* ''Depth Charge's'' final eruption will occur prematurely if the primary target moves more than 3000 units away from it.
+* ''Depth Charge'' will not stop chasing if the target dies or becomes untargetable.
+* {{ai|Dredge Line|Nautilus}} will not override ''Depth Charge's'' {{tip|airborne|knock up}}.
+* {{tip|Displacement immunity}} will not resist the application of the {{tip|stun}}.
+{{Unit-targeted cancel conditions}}
+}}

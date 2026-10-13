@@ -1,0 +1,247 @@
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Hextech Capacitor|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Jayce
+|skill        = I
+|icon         = Hextech Capacitor.png
+|blurbicon    = Hextech Capacitor.png
+|blurb        = {{sbc|Innate:}} Whenever {{ci|Jayce}} switches between {{sbc|{{ai|Transform Mercury Hammer|Jayce|Hammer Stance}}}} and {{sbc|{{ai|Transform Mercury Cannon|Jayce|Cannon Stance}}}}, he briefly gains {{sti|{{as|'''bonus''' movement speed}}}} and {{tip|ghosting|ignores}} unit collision.
+|description  = {{sbc|Innate:}} Whenever '''Jayce''' switches between either {{sbc|{{ai|Transform Mercury Hammer|Jayce|Hammer Stance}}}} or {{sbc|{{ai|Transform Mercury Cannon|Jayce|Cannon Stance}}}}, he gains {{tip|ghosting}} and {{sti|ms|{{as|30 '''bonus''' movement speed}}}} for {{fd|0.75}} seconds.
+|targeting    = Passive
+|affects      = Self
+|notes        = 
+* No additional details.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|To the Skies!|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Jayce
+|skill        = Q
+|icon         = To the Skies!.png
+|blurbicon    = To the Skies!.png
+|blurb        = {{sbc|Active:}} {{ci|Jayce}} leaps to the target enemy's location and smashes his hammer to the ground, dealing {{as|physical damage}} and {{tip|slow|slowing}} nearby enemies.
+|description  = {{sbc|Active:}} '''Jayce''' {{tip|dash|leaps}} to the target enemy's location over {{fd|0.5}} seconds. Upon arrival, he smashes his hammer to the ground to deal {{as|physical damage}} to all enemies within an area and {{tip|slow}} them for 2 seconds.
+|leveling     = {{st|Physical Damage|{{ap|60 to 310 6}} {{as|(+ 135% '''bonus''' AD)}}}}
+{{st|Slow|{{ap|35 to 60 6}}%}}
+|description2 = ''To the Skies!'' deals {{as|10 '''bonus''' physical damage}} to {{tip|monsters}}. 
+|description3 = ''{{ai|Lightning Field|Jayce}} can be cast during the dash.''
+|target range = {{tip|cr|icononly = true}} 600
+|effect radius= {{tip|cr|icononly = true}} {{tt|300|Damage radius in front of Jayce}}
+|cooldown     = {{ap|16 to 6 6}}
+|cost         = 40
+|costtype     = Mana
+|targeting    = Unit
+|cast time = None
+|affects      = Enemies
+|damagetype   = physical
+|projectile   = 
+|callforhelp  = true
+|spelleffects = spellaoe
+|grounded = true
+|knockdown = true
+|onhiteffects = 
+|spellshield  = True
+|notes        = 
+* ''To The Skies!'' will always direct '''Jayce''' linearly to his target's location.
+|flavorsound = {{sm2|Jayce_Original_QHammer_4.ogg}} ''"To the skies!"''
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Lightning Field|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Jayce
+|skill        = W
+|icon         = false
+|blurbicon    = Lightning Field.png
+|blurb        = {{sbc|Passive:}} {{cis|Jayce}} {{tip|basic attacks}} restore {{sti|{{as|mana}}}} {{tip|on-hit}}.
+|blurb2       = {{sbc|Active:}} '''Jayce''' surrounds himself with an electric field for a few seconds, continually dealing {{as|magic damage}} to nearby enemies.
+|description  = {{sbc|Passive:}} '''Jayce's''' {{tip|basic attacks}} restore {{sti|{{as|mana}}}} {{tip|on-hit}}.
+|leveling     = {{st|Mana Restored|{{as|{{ap|15 to 25 6}}|Mana}}}}
+|icon2        = Lightning Field.png
+|description2 = {{sbc|Active:}} '''Jayce''' surrounds himself with an electric field for 4 seconds that deals {{as|magic damage}} every second to nearby enemies.
+|leveling2    = {{st|Magic Damage Per Tick|{{ap|35 to 110 6}} {{as|(+ 25% AP)}}|Total Magic Damage|{{ap|35*4 to 110*4 6}} {{as|(+ 100% AP)}}}}
+|effect radius= {{tip|cr|icononly = true}} 350
+|cooldown     = 10
+|cdstart      = on-cast
+|cost         = 40
+|costtype     = Mana
+|cast time = none
+|targeting    = Auto
+|affects      = Self, Enemies
+|damagetype   = magic
+|spelleffects = aoedot
+|onhiteffects = 
+|spellshield  = 
+|notes        = 
+* The {{as|{{sti|mana}}}} restore triggers on {{tip|structures}}.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Thundering Blow|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Jayce
+|skill        = E
+|icon         = Thundering Blow.png
+|blurbicon    = Thundering Blow.png
+|blurb        = {{sbc|Active:}} {{ci|Jayce}} swings his hammer at the target enemy, briefly {{tip|root|rooting}} them and dealing {{as|magic damage}} based on the {{as|'''target's''' maximum health}}, then {{tip|airborne|knocks}} them back.
+|description  = {{sbc|Active:}} '''Jayce''' {{tip|root|roots}} the target enemy over the cast time, then swings his hammer at them to deal {{as|magic damage}}, capped against {{tip|monsters}}, and {{tip|airborne|knock them back}} 600 units.
+|leveling     = {{st|Magic Damage|{{as|{{ap|8 to 22 6}}% of target's '''maximum''' health}} {{as|(+ 100% '''bonus''' AD)}}}}
+{{st|Capped Monster Damage|{{ap|200 to 700 6}}}}
+|description3 = '''''Jayce''' is unable to cast {{ai|To the Skies!|Jayce}} or {{ai|Shock Blast|Jayce}} for {{fd|0.4}} seconds after Thundering Blow's cast time.''
+|target range = {{tip|er|icononly = true}} 240
+|cooldown     = {{ap|20 to 10 6}}
+|cast time    = {{fd|0.25}}
+|cost         = 55
+|costtype     = Mana
+|targeting    = Unit
+|affects      = Enemies
+|damagetype   = magic
+|spelleffects = single
+|onhiteffects = 
+|spellshield  = True
+|callforhelp  = True
+|notes        = 
+{{Unit-targeted cancel conditions}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Transform Mercury Cannon|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Jayce
+|skill        = R
+|icon         = Transform Mercury Cannon.png
+|blurbicon    = Transform Mercury Cannon.png
+|blurb        = {{sbc|Active:}} {{ci|Jayce}} transforms into {{cci|Transform Mercury Cannon.png||{{sbc|Cannon Stance}}}}, becoming {{tip|ranged}} with greater {{sti|attack range}} and gaining new {{tip|abilities}}.
+|blurb2       = His next {{tip|basic attack}} will reduce the target's {{sti|lethality|{{as|armor}}}} and {{sti|mpen|{{as|magic resist}}}} for a few seconds.
+|blurb4       = '''Jayce''' begins the game with ''Transform'' but cannot increase its rank. Instead, his basic abilities each have 6 ranks.
+|description  = {{sbc|Active:}} '''Jayce''' transforms into {{cci|Transform Mercury Cannon.png||{{sbc|Cannon Stance}}}}, receiving access to its {{tip|abilities}}, becoming {{tip|ranged}} with {{sti|500 attack range}}, and empowering his next {{tip|basic attack}} to reduce the target's {{sti|armor penetration|{{as|armor}}}} and {{sti|magic penetration|{{as|magic resistance}}}} by {{pp|key=%|20 to 35 for 4|1 to 16}} for 5 seconds.
+|description2  = {{Data Jayce/Transform Mercury Hammer|pst2|description2}}
+|cooldown     = 6
+|targeting    = Auto
+|cast time    = none
+|affects      = Self
+|damagetype   = 
+|spelleffects =
+|parry        = true
+|spellshield  = 
+|notes        = 
+* Transformations do not count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and triggering {{ais|Force Pulse|Kassadin}} passive.
+* The resistance reduction does not apply to structures.
+* Both ''Transform'' on-hit effects have no set duration and will only be consumed when ''Jayce'' either lands a basic attack or switches stances.
+* The enhanced attack will not be consumed if it is parried ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}, and {{ai|Riposte|Fiora}}).
+* The empowered attack will not trigger against {{tip|structures}} nor {{tip|wards}}.
+|flavorsound = {{sm2|Jayce_Original_R_HammerToCannon_1.ogg}} ''"Cannon engaged."''
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Acceleration Gate|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Jayce
+|skill        = E
+|icon         = Acceleration Gate.png
+|blurbicon    = Acceleration Gate.png
+|blurb        = {{sbc|Active:}} {{ci|Jayce}} deploys an energy gate centered at the target location for a few seconds. All allied champions that touch the gate will gain a burst of {{sti|{{as|movement speed}}}}.
+|description  = {{sbc|Active:}} '''Jayce''' deploys an energy gate centered at the target location, lasting for 4 seconds and granting {{tip|sight}} of its surroundings. '''Jayce''' and allied champions can move through the gate to gain {{sti|ms|{{as|'''bonus''' movement speed}}}} that decays over 3 seconds, with the duration refreshing continuously while within the gate.
+|leveling     = {{st|Bonus Movement Speed|{{ap|35 to 60 6}}%}}
+|target range = 650
+|width        = {{tip|er|icononly = true}} 750
+|collision radius = {{tip|er|icononly = true}} 100
+|effect radius= <!--{{tt|X|Sight radius of each section}}-->
+|cooldown     = 16
+|cost         = 50
+|costtype     = Mana
+|cast time    = none
+|targeting    = Location
+|affects      = Allies
+|spelleffects = 
+|onhiteffects = 
+|spellshield  = 
+|outofrange   = cast at max
+|notes        = 
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Hextech Capacitor 2|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|disp_name    = Hextech Capacitor
+|champion     = Jayce
+|skill        = {{Data Jayce/Hextech Capacitor|pst2|skill}}
+|icon         = Hextech Capacitor 2.png
+|blurb        = {{Data Jayce/Hextech Capacitor|pst2|blurb}}
+|description  = {{Data Jayce/Hextech Capacitor|pst2|description}}
+|targeting    = {{Data Jayce/Hextech Capacitor|pst2|targeting}}
+|notes        = {{Data Jayce/Hextech Capacitor|pst2|notes}}
+|affects      = {{Data Jayce/Hextech Capacitor|pst2|affects}}
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Hyper Charge|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Jayce
+|skill        = W
+|icon         = Hyper Charge.png
+|blurbicon    = Hyper Charge.png
+|blurb        = {{sbc|Active:}} {{ci|Jayce}} gains a massive burst of {{sti|{{as|'''bonus''' attack speed}}}} on his next few basic attacks, each one dealing {{as|'''modified''' physical damage}}.
+|description  = {{sbc|Active:}} '''Jayce''' empowers his next 3 [[basic attack]]s within 4 seconds to deal {{as|'''modified''' physical damage}} and gain {{sti|attack speed|{{as|360% '''bonus''' attack speed}}}}.<br><br>''Hyper Charge's'' '''total''' damage is affected by {{tip|critical strike}} modifiers.
+|leveling     = {{st|Physical Damage|{{as|{{ap|70 to 110 6}}% AD}}|Total Physical Damage|{{as|{{ap|70*3 to 110*3 6}}% AD}}}}
+|description2 = ''Hyper Charge {{tip|basic attack reset|resets}} '''Jayce's''' basic attack timer.''
+|cooldown     = {{ap|13 to 5 6}}
+|cdstart      = post-effect
+|cost         = 40
+|costtype     = Mana
+|cast time = none
+|targeting    = Auto
+|affects      = Self
+|damagetype   = physical
+|spelleffects = Proc
+|onhiteffects = Special
+|parry        = True
+|spellshield  = 
+|notes        = 
+* The last basic attack is checked [[on-hit]] rather than [[on-attack]].
+** If {{ii|Runaan's Hurricane}} or {{ii|Guinsoo's Rageblade}} hit the target before the basic attack does, the basic attack damage will not be modified.
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Shock Blast|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Jayce
+|skill        = Q
+|icon         = Shock Blast.png
+|blurbicon    = Shock Blast.png
+|blurb        = {{sbc|Active:}} {{ci|Jayce}} fires an electric bolt in the target direction that detonates upon hitting an enemy or max range, dealing {{as|physical damage}} to nearby enemies.
+|blurb2       = If the bolt passes through ''{{ai|Acceleration Gate|Jayce}}'', it supercharges: instantly increasing its speed, travel distance and detonation.
+|description  = {{sbc|Active:}} '''Jayce''' fires an electric bolt in the target direction that detonates upon hitting an enemy or reaching maximum range, dealing {{as|physical damage}} to nearby enemies and granting {{tip|sight}} of the area for {{fd|1.25}} seconds.
+|leveling     = {{st|Physical Damage|{{ap|80 to 285 6}} {{as|(+ 130% '''bonus''' AD)}}}}
+|description2 = If the bolt passes through ''{{ai|Acceleration Gate|Jayce}}'', it becomes supercharged: increasing its {{ccs|damage by 40%|physical}} as well as its speed, range and explosion radius.
+|leveling2    = {{st|Increased Damage|{{ap|80*1.4 to 285*1.4 6}} {{as|(+ {{ap|130*1.4}}% '''bonus''' AD)}}}}
+|description3 = ''Shock Blast'' deals {{as|10 '''bonus''' physical damage}} to {{tip|monsters}}.
+|range        = {{dv|{{tip|er|icononly = true}} {{tt|1050|Standard missile range}}|{{tt|1600|Enhanced missile total range}}}}
+|width        = {{tip|er|icononly = true}} {{tt|140|Both standard and enhanced missile width}}
+|effect radius= {{dv|{{tip|cr|icononly = true}} {{tt|170|Standard blast radius}}|{{tt|250|Enhanced blast radius}}|{{tip|sight|icononly = true}}{{tt|160|Standard blast sight radius}}|{{tip|sight|icononly = true}}{{tt|250|Enhanced blast sight radius}}}}
+|speed        = {{dv|{{tt|1450|Standard missile speed}}|{{tt|2350|Enhanced missile speed}}}}
+|cooldown     = 8
+|cast time    = {{fd|0.2143}}
+|cost         = {{ap|55 to 80 6}}
+|costtype     = Mana
+|targeting    = Direction
+|affects      = Enemies
+|damagetype   = physical
+|projectile   = true
+|spelleffects = aoe
+|onhiteffects = 
+|spellshield  = true
+|notes        = 
+{{Effect at cast time end}}
+* Upon touching {{ai|Acceleration Gate|Jayce}}, the enhanced missile gains its remaining range equal to [ 1600 units - travelled distance of the standard missile ].
+** This means that the range of the enhanced ''Shock Blast'' is always the same, regardless of how early or late it interacted with ''Acceleration Gate''.
+** Supercharging the ''Shock Blast'' as soon as possible, however, will improve its average speed significantly. 
+*** For this, '''Jayce''' must stand inside or very close to the ''Acceleration Gate'', or place it very close to himself right after ''Shock Blast's'' cast time.
+* ''Shock Blast's'' effect radius is centered around the location of the missile as it collides.
+** ''Shock Blast'' will '''always''' damage the enemy it collided with, even if it is so large that it is outside the effect radius.
+* The non-enhanced ''Shock Blast'' detonation has a slightly smaller sight radius than the radius in which it deals damage.{{bug|2}}
+|flavorsound = {{sm2|Jayce_Original_QCannon_EActivate_Hit_2.ogg}} ''"Feel the thunder!"''
+}}
+{{{{{1<noinclude>|Ability data</noinclude>}}}|Transform Mercury Hammer|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}
+|champion     = Jayce
+|skill        = R
+|icon         = Transform Mercury Hammer.png
+|blurbicon    = Transform Mercury Hammer.png
+|blurb        = {{sbc|Active:}} {{ci|Jayce}} transforms into {{cci|Transform Mercury Hammer.png||{{sbc|Hammer Stance}}}}, becoming {{tip|melee}}, gaining {{Sti|{{As|'''bonus''' armor}}}} and {{Sti|{{As|'''bonus''' magic resist}}}} and gaining new abilities.
+|blurb2       = His next basic attack will deal {{as|'''bonus''' magic damage}}.
+|blurb4       = '''Jayce''' begins the game with ''Transform'' but cannot increase its rank. Instead, his basic abilities each have 6 ranks.
+|description  = {{sbc|Active:}} '''Jayce''' transforms into {{cci|Transform Mercury Hammer.png||{{sbc|Hammer Stance}}}}, receiving access to its {{tip|abilities}}, becoming {{tip|melee}} with {{sti|125 attack range}}, gaining {{pp|5 to 26 for 4|1 to 16}} {{as|(+ {{fd|7.5}}% '''bonus''' AD)}} {{sti|armor|{{as|'''bonus''' armor}}}} and {{sti|mr|{{as|'''bonus''' magic resistance}}}}, and empowering his next basic attack to deal {{as|{{pp|25 to 130 for 4|1 to 16}}|magic damage}} {{as|(+ 30% '''bonus''' AD)}} {{as|'''bonus''' magic damage}}.
+|description2 = '''Jayce''' begins the game with ''Transform'' but cannot increase its rank. Instead, his basic {{tip|abilities}} each have 6 ranks.
+|cooldown     = 6
+|targeting    = Auto
+|affects      = Self
+|cast time    = none
+|damagetype   = 
+|spelleffects = 
+|onhiteffects = Special
+|parry        = true
+|spellshield  = 
+|notes        = 
+*Transformations do not count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and triggering {{ais|Force Pulse|Kassadin}} passive.
+* The enhanced attack will not be consumed if it is parried ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}, and {{ai|Riposte|Fiora}}).
+* The ''Mercury Hammer's'' bonus damage can affect structures.
+* Both ''Transform'' on-hit effects have no set duration and will only be consumed when '''Jayce''' either lands a basic attack or switches stances.
+* The empowered attack will not trigger against {{tip|wards}}.
+* {{as|Armor}} and {{as|magic resist}} gained in {{cci|Transform Mercury Hammer.png||{{sbc|Hammer Stance}}}} do not scale off of the bonus {{as|attack damage}} granted by {{tip|adaptive force}} and [[Role Quests#Quests|mid lane quest's]] {{as|bonus AD}} multiplier.{{bug}}
+|flavorsound = {{sm2|Jayce_Original_R_CannonToHammer_1.ogg}} ''"Hammer time!"''
+}}
