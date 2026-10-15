@@ -3866,7 +3866,7 @@ function lbInit(){
   }catch(err){ lbFail = "client:" + err.message; return; }
   sb.auth.getSession().then(({data}) => {
     me = data.session ? data.session.user : null;
-    if(me) lbTouchProfile();
+    if(me){ lbTouchProfile(); libPull(); }
     lbLoad();
     /* the reply may have been consumed before the listener below was attached */
     acctRender();          /* the shelves carry the block too */
@@ -3876,7 +3876,7 @@ function lbInit(){
   });
   sb.auth.onAuthStateChange((_e, session) => {
     me = session ? session.user : null;
-    if(me) lbTouchProfile();
+    if(me){ lbTouchProfile(); libPull(); }
     lbRender();
     acctRender();          /* the shelves carry the block too */
     let pending = null;
@@ -4074,6 +4074,73 @@ function writeBuilds(obj){
   try{ localStorage.setItem(buildKey(), JSON.stringify(all)); return true; }
   catch(err){ return false; }
 }
+
+/* ------------------------------------------------------------
+   THE LIBRARY, ONCE SIGNED IN
+
+   Saved builds have always lived in this browser and nowhere else, which
+   means another machine — or the overlay app — cannot see them. When a
+   Discord session is open they are mirrored into the `library` table,
+   which only their owner can read.
+
+   The browser stays the working copy: every one of these calls is
+   best-effort, and a save that cannot reach the network still succeeds
+   locally. Nothing here is allowed to lose a build.
+   ------------------------------------------------------------ */
+let libNote = "";
+const libReady = () => !!(sb && me && CHAMP);
+
+async function libPush(name, copy){
+  if(!libReady()) return;
+  try{
+    const {error} = await sb.from("library").upsert(
+      {owner:me.id, champion:CHAMP.key, name, data:copy},
+      {onConflict:"owner,champion,name"});
+    if(error) libNote = error.message;
+  }catch(err){ libNote = String(err && err.message || err); }
+}
+
+async function libDelete(name){
+  if(!libReady()) return;
+  try{
+    await sb.from("library").delete()
+      .eq("owner", me.id).eq("champion", CHAMP.key).eq("name", name);
+  }catch(err){ libNote = String(err && err.message || err); }
+}
+
+/* Brings the two sides together: what the account holds wins for names it
+   knows, and anything saved here before signing in is sent up rather than
+   left behind. */
+async function libPull(){
+  if(!libReady()) return;
+  let rows = null;
+  try{
+    const {data, error} = await sb.from("library")
+      .select("name, data, updated_at")
+      .eq("owner", me.id).eq("champion", CHAMP.key);
+    if(error){ libNote = error.message; return; }
+    rows = data || [];
+  }catch(err){ libNote = String(err && err.message || err); return; }
+
+  const local = readBuilds();
+  const cloudNames = new Set();
+  let changed = false;
+  for(const r of rows){
+    cloudNames.add(r.name);
+    const blank = mk(r.name);
+    const one = restoreBuild(blank, r.data || {});
+    one.champ = CHAMP.key;
+    local[r.name] = one;
+    changed = true;
+  }
+  if(changed) writeBuilds(local);
+
+  /* first sign-in: push up whatever only this browser had */
+  for(const name of Object.keys(local))
+    if(!cloudNames.has(name)) await libPush(name, local[name]);
+
+  if(rows.length || Object.keys(local).length) render();
+}
 /* overwrite the library entry this slot came from */
 function updateOneBuild(bi){
   const name = state.builds[bi].libName;
@@ -4083,6 +4150,7 @@ function updateOneBuild(bi){
   copy.champ = CHAMP.key;               /* a build belongs to the champion it was made for */
   all[name] = copy;
   saveNote = writeBuilds(all) ? TR("savedAs").replace("%s", name) : TR("storageBlocked");
+  libPush(name, copy);
   render();
 }
 function saveOneBuild(bi){
@@ -4096,6 +4164,7 @@ function saveOneBuild(bi){
   copy.champ = CHAMP.key;               /* a build belongs to the champion it was made for */
   all[name] = copy;
   saveNote = writeBuilds(all) ? TR("savedAs").replace("%s", name) : TR("storageBlocked");
+  libPush(name, copy);
   render();
 }
 function loadOneBuild(bi, name){
@@ -4113,6 +4182,7 @@ function deleteOneBuild(name){
   const all = readBuilds();
   delete all[name];
   writeBuilds(all);
+  libDelete(name);
   state.builds.forEach(b => { if(b.libName === name) b.libName = null; });
   saveNote = TR("deleted").replace("%s", name);
   render();
@@ -6805,6 +6875,7 @@ function route(){
       CHAMP = def;
       T = CHAMP.ranks;
       loadMyCombos();
+      libPull();          /* bring down this account's builds, if any */
       /* a build handed over from the shared shelf */
       try{
         const inc = sessionStorage.getItem("otp-incoming");
