@@ -1,0 +1,69 @@
+# Fabrique l'installeur Windows et le publie, sans machine ni commande.
+#
+# Déclenché par une étiquette de version :
+#
+#   git tag overlay-v0.1.0 && git push origin overlay-v0.1.0
+#
+# ou, depuis le site de GitHub : onglet Actions -> "Installeur Windows"
+# -> "Run workflow". GitHub prête une machine Windows, construit le .exe
+# et l'attache à une Release, dont le lien se donne à n'importe qui.
+
+name: Installeur Windows
+
+on:
+  push:
+    tags: ["overlay-v*"]
+  workflow_dispatch:        # bouton manuel, sans étiquette
+
+permissions:
+  contents: write           # nécessaire pour créer la Release
+
+jobs:
+  build:
+    runs-on: windows-latest
+    # l'app vit dans un sous-dossier : le site occupe la racine du depot
+    defaults:
+      run:
+        working-directory: app
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Vérifier que rien n'est cassé
+        run: npm test
+
+      - name: Construire l'installeur
+        run: npm run dist
+
+      # Garde le .exe même sans étiquette, pour un essai manuel
+      - name: Conserver l'installeur
+        uses: actions/upload-artifact@v4
+        with:
+          name: installeur-windows
+          path: app/release/*.exe
+          if-no-files-found: error
+
+      - name: Publier la Release
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" release/*.exe \
+            --title "LoL Overlay ${GITHUB_REF_NAME}" \
+            --notes "Minuteur d'objectifs et builds d'otp-lol-calc.
+
+          Windows peut afficher « Windows a protégé votre ordinateur » :
+          l'installeur n'est pas signé par un certificat payant. Cliquez
+          sur « Informations complémentaires » puis « Exécuter quand
+          même ». Jouez en mode **sans bordure**, aucune fenêtre ne
+          s'affiche par-dessus un plein écran exclusif."

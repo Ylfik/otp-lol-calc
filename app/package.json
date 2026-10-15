@@ -1,0 +1,61 @@
+{
+  "name": "lol-overlay",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Overlay in-game pour League of Legends — minuteur d'objectifs",
+  "main": "dist/src/main/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node tools/copy-assets.mjs",
+    "test": "tsc -p tsconfig.json && node --test dist/test/*.test.js",
+    "mock": "npm run build && node dist/tools/mock-game.js",
+    "start": "npm run build && electron .",
+    "demo": "npm run build && node tools/demo.mjs",
+    "dist": "npm run build && electron-builder --win",
+    "dist:linux": "npm run build && electron-builder --linux AppImage"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "electron": "^44.7.2",
+    "electron-builder": "^26.15.3",
+    "typescript": "^5.9.3"
+  },
+  "build": {
+    "appId": "fr.ylfik.loloverlay",
+    "productName": "LoL Overlay",
+    "artifactName": "${productName}-${version}-${os}.${ext}",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "build/icon.*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "LoL Overlay"
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Game",
+      "icon": "build/icon.png"
+    },
+    "publish": null
+  }
+}

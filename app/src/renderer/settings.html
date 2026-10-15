@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Réglages</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#141b24; --line:#222c38;
+    --ink:#e9eef6; --faint:#8b97a8; --accent:#f0b429;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);padding:18px 20px 24px;
+    font-family:"Segoe UI",system-ui,-apple-system,sans-serif;font-size:13px}
+  h1{font-size:15px;font-weight:600;letter-spacing:.01em;margin-bottom:3px}
+  .sub{color:var(--faint);font-size:11.5px;margin-bottom:16px;line-height:1.5}
+
+  section{background:var(--panel);border:1px solid var(--line);
+    border-radius:8px;padding:13px 14px;margin-bottom:12px}
+  h2{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--faint);margin-bottom:10px}
+
+  .row{display:flex;align-items:center;gap:10px;padding:6px 0}
+  .row + .row{border-top:1px solid rgba(255,255,255,.045)}
+  .row .nm{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .row.off .nm{color:var(--faint)}
+
+  input[type=range]{width:150px;accent-color:var(--accent)}
+  input[type=number]{width:58px;background:#0b1118;color:var(--ink);
+    border:1px solid var(--line);border-radius:5px;padding:4px 6px;font:inherit;
+    font-variant-numeric:tabular-nums}
+  input[type=checkbox]{accent-color:var(--accent);width:15px;height:15px}
+  .btn{background:#1d2735;color:var(--ink);border:1px solid var(--line);
+    border-radius:6px;padding:5px 11px;font:inherit;cursor:pointer}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .btn:disabled{opacity:.5;cursor:default}
+  select{background:#0b1118;color:var(--ink);border:1px solid var(--line);
+    border-radius:5px;padding:4px 6px;font:inherit}
+  .val{min-width:44px;text-align:right;font-variant-numeric:tabular-nums;
+    color:var(--accent);font-weight:600}
+  .hint{color:var(--faint);font-size:11px;margin-top:9px;line-height:1.5}
+  label.inline{display:flex;align-items:center;gap:8px;cursor:pointer}
+  .useGlobal{color:var(--faint);font-size:11px;display:flex;align-items:center;gap:5px;cursor:pointer}
+  #saved{color:var(--accent);font-size:11px;height:14px;margin-top:2px}
+</style>
+</head>
+<body>
+  <h1>Minuteur d'objectifs</h1>
+  <p class="sub">Combien de temps avant la réapparition l'alerte se déclenche.
+     Chaque objectif peut suivre le réglage général ou avoir le sien.</p>
+
+  <section>
+    <h2>Alerte générale</h2>
+    <div class="row">
+      <span class="nm">Prévenir à l'avance</span>
+      <input type="range" id="lead" min="5" max="120" step="1">
+      <span class="val" id="leadVal">30 s</span>
+    </div>
+    <p class="hint">S'applique à tout objectif qui n'a pas son propre délai.</p>
+  </section>
+
+  <section>
+    <h2>Par objectif</h2>
+    <div id="objs"></div>
+    <p class="hint">Décochez pour ne plus être prévenu. Le champ remplace le
+       délai général ; videz-le pour revenir au réglage commun.</p>
+  </section>
+
+  <section>
+    <h2>Builds du site</h2>
+    <div class="row">
+      <label class="inline"><input type="checkbox" id="buildsOn">
+        <span class="nm">Afficher quelle compétence monter</span></label>
+    </div>
+    <div class="row">
+      <span class="nm" id="acct">non connecté</span>
+      <button id="authBtn" class="btn">Connexion Discord</button>
+    </div>
+    <p class="hint" id="authHint">Sans connexion, l'app lit les builds
+      <strong>publiés</strong> sur le site : c'est suffisant pour jouer.
+      Se connecter ajoute vos builds enregistrés, que vous seul voyez.</p>
+  </section>
+
+  <section>
+    <h2>Affichage</h2>
+    <div class="row">
+      <label class="inline"><input type="checkbox" id="showList">
+        <span class="nm">Afficher le décompte en permanence</span></label>
+    </div>
+    <div class="row">
+      <span class="nm">Langue</span>
+      <select id="lang"><option value="fr">Français</option><option value="en">English</option></select>
+    </div>
+  </section>
+
+  <section id="updBox" hidden>
+    <h2>Mise à jour</h2>
+    <div class="row">
+      <span class="nm" id="updTxt"></span>
+      <button id="updBtn" class="btn">Télécharger</button>
+    </div>
+    <p class="hint">La page s'ouvre dans votre navigateur. L'app ne se
+       remplace jamais toute seule.</p>
+  </section>
+
+  <div id="saved"></div>
+<script src="settings.js" type="module"></script>
+</body>
+</html>
