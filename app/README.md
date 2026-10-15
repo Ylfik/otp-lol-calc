@@ -118,6 +118,11 @@ Clic droit sur l'icône dans la barre système → **Réglages**.
   le Baron mérite souvent plus d'avance qu'un camp de larves.
 - **Affichage** : décompte permanent ou alertes seules, et la langue.
 
+L'app dessine **deux** choses à l'écran : un décompte discret dans le coin
+haut droit, et les avertissements de réapparition dans une fenêtre à part,
+centrée en haut. Un coin convient à ce qu'on peut lire ; le milieu à ce
+qu'on ne doit pas manquer.
+
 Tout est enregistré immédiatement, dans le dossier de profil de
 l'application (jamais à côté du programme, pour qu'une mise à jour ne
 l'efface pas). Le menu de la barre système sait l'ouvrir.

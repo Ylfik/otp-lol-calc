@@ -20,7 +20,7 @@ import * as auth from "./auth.js";
 import { checkForUpdate, updateState } from "./updates.js";
 import { championKey, pickBuild, nextSkill, orderSummary, itemNames,
          type PublishedBuild } from "../shared/builds.js";
-import { objectiveStates, dueAlerts, mmss, OBJECTIVES } from "../shared/objectives.js";
+import { objectiveStates, activeAlerts, mmss, OBJECTIVES } from "../shared/objectives.js";
 import { leadFor, LEAD_MIN, LEAD_MAX } from "../shared/settings.js";
 import { loadSettings, saveSettings, settingsPath } from "./store.js";
 
@@ -43,10 +43,10 @@ const SCHEME: "http" | "https" = process.env.OVERLAY_SCHEME === "http" ? "http" 
 const DEBUG = process.env.OVERLAY_DEBUG === "1";
 
 let overlay: BrowserWindow | null = null;
+let alertWin: BrowserWindow | null = null;
 let settingsWin: BrowserWindow | null = null;
 let tray: Tray | null = null;
 let stopPolling: (() => void) | null = null;
-const announced = new Set<string>();
 
 /* what the site says about the champion being played; filled once per
    game, and never allowed to take the timer down with it */
@@ -56,10 +56,18 @@ let siteNote = "";
 
 /* ------------------------------------------------------------------ */
 
+/* shared by both windows: see through, above the game, never clickable */
+function ghost(win: BrowserWindow): void {
+  win.setAlwaysOnTop(true, "screen-saver");
+  win.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
+  win.setIgnoreMouseEvents(true, { forward: true });
+}
+
 function createOverlay(): void {
   const { width } = screen.getPrimaryDisplay().workAreaSize;
+  /* narrow on purpose: it lives over the game for a whole match */
   overlay = new BrowserWindow({
-    width: 320, height: 420, x: width - 340, y: 90,
+    width: 210, height: 300, x: width - 222, y: 86,
     frame: false, transparent: true, resizable: false, movable: false,
     focusable: false, skipTaskbar: true, alwaysOnTop: true, hasShadow: false,
     webPreferences: {
@@ -69,11 +77,30 @@ function createOverlay(): void {
   });
   /* "screen-saver" is the highest ordinary level: it clears borderless
      games, which plain alwaysOnTop does not always manage */
-  overlay.setAlwaysOnTop(true, "screen-saver");
-  overlay.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
-  overlay.setIgnoreMouseEvents(true, { forward: true });
+  ghost(overlay);
   overlay.loadFile(renderer("index.html"));
   overlay.on("closed", () => { overlay = null; });
+}
+
+/* The spawn warnings get a window of their own, centred at the top of the
+   screen. A corner is where you put something you may read; the middle is
+   where you put something you must not miss. It is empty — and so
+   invisible — except in the seconds before an objective returns. */
+function createAlertWindow(): void {
+  const { width } = screen.getPrimaryDisplay().workAreaSize;
+  const w = 420;
+  alertWin = new BrowserWindow({
+    width: w, height: 150, x: Math.round((width - w) / 2), y: 8,
+    frame: false, transparent: true, resizable: false, movable: false,
+    focusable: false, skipTaskbar: true, alwaysOnTop: true, hasShadow: false,
+    webPreferences: {
+      preload: path.join(here, "preload.cjs"),
+      contextIsolation: true, nodeIntegration: false
+    }
+  });
+  ghost(alertWin);
+  alertWin.loadFile(renderer("alert.html"));
+  alertWin.on("closed", () => { alertWin = null; });
 }
 
 function openSettings(): void {
@@ -157,7 +184,7 @@ function startPolling(): void {
         count: siteBuilds.length
       } : null;
       const states = objectiveStates(snap.gameTime, snap.events, teamLookup(snap.players));
-      const alerts = dueAlerts(states, id => leadFor(s, id), announced);
+      const alerts = activeAlerts(states, id => leadFor(s, id));
       if (DEBUG) {
         const names = [...new Set(snap.events.map(e => e.EventName))].join(", ");
         console.log(`[${mmss(snap.gameTime)}]`,
@@ -165,16 +192,20 @@ function startPolling(): void {
           alerts.length ? "| ALERTE " + alerts.map(a => a.id).join(",") : "",
           "| evenements vus:", names || "aucun");
       }
-      send(overlay, "tick", {
+      const payload = {
         gameTime: snap.gameTime, states, alerts, settings: s,
         guide, champion: who ? who.champion : null, siteNote,
         update: updateState().available
-      });
+      };
+      send(overlay, "tick", payload);
+      send(alertWin, "tick", payload);
     },
     (status: Status, detail?: string) => {
       /* a new game starts a fresh set of announcements */
-      if (status === "waiting") { announced.clear(); siteFor = ""; siteBuilds = []; siteNote = ""; }
-      send(overlay, "status", { status, detail, settings: loadSettings() });
+      if (status === "waiting") { siteFor = ""; siteBuilds = []; siteNote = ""; }
+      const st = { status, detail, settings: loadSettings() };
+      send(overlay, "status", st);
+      send(alertWin, "status", st);
     },
     { port: LIVE_PORT, scheme: SCHEME }
   );
@@ -227,15 +258,13 @@ ipcMain.handle("builds:list", async (_e, champ: string) => {
 
 ipcMain.handle("settings:set", (_e, next) => {
   const saved = saveSettings(next);
-  /* a changed warning must be able to fire again for a spawn already
-     passed over, so the record of what has been said is dropped */
-  announced.clear();
   send(overlay, "settings", saved);
   return saved;
 });
 
 app.whenReady().then(() => {
   createOverlay();
+  createAlertWindow();
   buildTray();
   startPolling();
   /* handy while developing, and on a desktop with no system tray */
@@ -248,7 +277,10 @@ app.whenReady().then(() => {
       if (st.available) send(overlay, "update", st);
     });
   }, 4000);
-  app.on("activate", () => { if (BrowserWindow.getAllWindows().length === 0) createOverlay(); });
+  app.on("activate", () => {
+    if (!overlay) createOverlay();
+    if (!alertWin) createAlertWindow();
+  });
 });
 
 /* the tray keeps the app alive: closing the settings window is not quitting */

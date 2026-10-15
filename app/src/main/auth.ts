@@ -124,8 +124,14 @@ export function signIn(): Promise<Session> {
 
     const verifier = b64url(randomBytes(32));
     const challenge = b64url(createHash("sha256").update(verifier).digest());
-    /* guards against anything else on this machine answering in its place */
-    const state = b64url(randomBytes(16));
+
+    /* No `state` of our own is checked on the way back. Supabase mints its
+       own signed state for the provider round trip and does not echo a
+       caller's, so a check on it could never pass — which is exactly how
+       this failed the first time it met a real Discord login.
+       The protection is PKCE: the code is worthless without the verifier,
+       which never leaves this process, and the server below accepts one
+       callback then closes. */
 
     const done = (err: Error | null, s?: Session) => {
       if (pending) { pending.close(); pending = null; }
@@ -148,12 +154,6 @@ export function signIn(): Promise<Session> {
         `display:flex;align-items:center;justify-content:center;height:100vh">` +
         `<p>${msg}</p>`;
 
-      if (u.searchParams.get("state") !== state) {
-        res.writeHead(400, { "content-type": "text/html; charset=utf-8" })
-           .end(page("Réponse inattendue — connexion annulée."));
-        done(new Error("réponse inattendue"));
-        return;
-      }
       const code = u.searchParams.get("code");
       const oauthErr = u.searchParams.get("error_description") || u.searchParams.get("error");
       if (!code) {
@@ -183,8 +183,7 @@ export function signIn(): Promise<Session> {
         provider: "discord",
         redirect_to: REDIRECT_URL,
         code_challenge: challenge,
-        code_challenge_method: "s256",
-        state
+        code_challenge_method: "s256"
       });
       shell.openExternal(`${SITE_URL}/auth/v1/authorize?${q}`);
     });

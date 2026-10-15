@@ -4,7 +4,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
-  objectiveStates, dueAlerts, mmss, OBJECTIVES,
+  objectiveStates, dueAlerts, activeAlerts, mmss, OBJECTIVES,
   type GameEvent, type Side
 } from "../src/shared/objectives.js";
 
@@ -121,4 +121,19 @@ test("affichage minutes secondes", () => {
   assert.equal(mmss(0), "0:00");
   assert.equal(mmss(65), "1:05");
   assert.equal(mmss(600), "10:00");
+});
+
+test("les alertes en cours sont renvoyees a chaque lecture", () => {
+  /* une fenetre qui charge en retard doit pouvoir rattraper une alerte
+     deja declenchee : elles sont donc republiees tant qu'elles durent */
+  const a1 = activeAlerts(objectiveStates(300 - 25, [], teamOf), 30);
+  const a2 = activeAlerts(objectiveStates(300 - 20, [], teamOf), 30);
+  assert.equal(a1.length, 1);
+  assert.equal(a2.length, 1, "toujours presente cinq secondes plus tard");
+  assert.equal(a2[0].inSeconds, 20, "et le decompte a avance");
+});
+
+test("rien en dehors de la fenetre d'alerte", () => {
+  assert.equal(activeAlerts(objectiveStates(300 - 45, [], teamOf), 30).length, 0);
+  assert.equal(activeAlerts(objectiveStates(305, [], teamOf), 30).length, 0, "deja apparu");
 });

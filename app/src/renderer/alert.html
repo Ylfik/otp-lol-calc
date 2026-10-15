@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Alertes</title>
+<style>
+  /* A window of its own, centred at the top of the screen: an objective
+     about to spawn is worth looking up for, and the eye goes to the middle
+     rather than to a corner. It holds nothing else, so it stays empty —
+     and therefore invisible — almost all the time. */
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:transparent;overflow:hidden;
+    font-family:"Segoe UI",system-ui,-apple-system,sans-serif;
+    -webkit-user-select:none;user-select:none}
+  #wrap{display:flex;flex-direction:column;align-items:center;gap:6px;padding-top:6px}
+
+  .alert{
+    background:rgba(12,16,23,.94);border:1px solid #f0b429;border-radius:9px;
+    padding:9px 18px;color:#e9eef6;text-align:center;
+    box-shadow:0 8px 26px rgba(0,0,0,.55);
+    animation:drop .22s ease-out;
+    white-space:nowrap;
+  }
+  .alert .who{font-size:17px;font-weight:700;letter-spacing:.01em}
+  .alert .in{font-size:11px;font-weight:600;color:#f0b429;
+    letter-spacing:.09em;text-transform:uppercase;margin-bottom:1px}
+  @keyframes drop{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+  .fade{opacity:0;transition:opacity .4s ease}
+  @media (prefers-reduced-motion:reduce){.alert{animation:none}.fade{transition:none}}
+</style>
+</head>
+<body><div id="wrap"></div>
+<script src="alert.js" type="module"></script>
+</body>
+</html>

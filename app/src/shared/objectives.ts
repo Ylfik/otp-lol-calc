@@ -237,6 +237,30 @@ export function dueAlerts(
   return out;
 }
 
+/**
+ * Everything currently inside its warning window.
+ *
+ * `dueAlerts` announces each spawn once, which is right for a sound or a
+ * notification but wrong for something drawn on screen: a window that
+ * finishes loading a moment later never learns of a warning already
+ * given, and stays blank through it. This returns the full set every
+ * tick, and the drawing side keeps its own record of what it shows.
+ */
+export function activeAlerts(
+  states: ObjectiveState[],
+  leadSeconds: number | ((id: ObjectiveId) => number)
+): Alert[] {
+  const leadOf = typeof leadSeconds === "function" ? leadSeconds : () => leadSeconds;
+  const out: Alert[] = [];
+  for (const s of states) {
+    if (s.status !== "soon" || s.spawnAt === null || s.inSeconds === null) continue;
+    const lead = leadOf(s.id);
+    if (lead <= 0 || s.inSeconds > lead || s.inSeconds < 0) continue;
+    out.push({ id: s.id, label: s.label, inSeconds: s.inSeconds, spawnAt: s.spawnAt });
+  }
+  return out;
+}
+
 export const mmss = (sec: number): string => {
   const s = Math.max(0, Math.round(sec));
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;

@@ -13,17 +13,19 @@
   html,body{background:transparent;overflow:hidden;
     font-family:"Segoe UI",system-ui,-apple-system,sans-serif;
     -webkit-user-select:none;user-select:none}
-  #wrap{display:flex;flex-direction:column;gap:6px;padding:10px}
+  #wrap{display:flex;flex-direction:column;gap:3px;padding:6px}
 
+  /* deliberately small: this sits over the game all match long, so it
+     has to be readable at a glance and forgettable the rest of the time */
   .card{
-    background:var(--bg);border:1px solid var(--line);border-left-width:3px;
-    border-radius:7px;padding:7px 10px;color:var(--ink);
+    background:var(--bg);border:1px solid var(--line);border-left-width:2px;
+    border-radius:5px;padding:3px 7px;color:var(--ink);
     backdrop-filter:blur(7px);
-    display:flex;align-items:baseline;gap:8px;
+    display:flex;align-items:baseline;gap:6px;
   }
-  .card .name{font-size:13px;font-weight:600;letter-spacing:.01em;flex:1;
+  .card .name{font-size:11px;font-weight:600;letter-spacing:.01em;flex:1;
     white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .card .time{font-size:13px;font-variant-numeric:tabular-nums;color:var(--faint)}
+  .card .time{font-size:11px;font-variant-numeric:tabular-nums;color:var(--faint)}
   .card.up .time{color:var(--up);font-weight:600}
   .card.soon{border-left-color:var(--soon)}
   .card.up{border-left-color:var(--up)}
@@ -45,28 +47,28 @@
   .fade{opacity:0;transition:opacity .4s ease}
 
   /* what the site advises for this champion */
-  #guide{background:var(--bg);border:1px solid var(--line);border-left:3px solid #5b8dd6;
-    border-radius:7px;padding:8px 10px;color:var(--ink);backdrop-filter:blur(7px)}
-  #guide .nxt{font-size:15px;font-weight:700;letter-spacing:.01em;display:flex;
-    align-items:baseline;gap:8px}
-  #guide .nxt b{color:#79a9f0;font-size:19px}
-  #guide .who{font-size:10.5px;color:var(--faint);margin-top:3px;
+  #guide{background:var(--bg);border:1px solid var(--line);border-left:2px solid #5b8dd6;
+    border-radius:5px;padding:4px 7px;color:var(--ink);backdrop-filter:blur(7px);
+    margin-top:3px}
+  #guide .nxt{font-size:12px;font-weight:700;letter-spacing:.01em;display:flex;
+    align-items:baseline;gap:6px}
+  #guide .nxt b{color:#79a9f0;font-size:14px}
+  #guide .who{font-size:9.5px;color:var(--faint);
     white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  #guide .path{font-size:10.5px;color:var(--faint);letter-spacing:.07em;margin-top:1px}
+  #guide .path{font-size:9.5px;color:var(--faint);letter-spacing:.06em}
   #guide.none{display:none}
 
-  #upd{background:rgba(16,21,30,.93);border:1px solid #5b8dd6;border-radius:7px;
-    padding:7px 10px;color:var(--ink);font-size:12px;line-height:1.45}
+  #upd{background:rgba(16,21,30,.93);border:1px solid #5b8dd6;border-radius:5px;
+    padding:4px 7px;color:var(--ink);font-size:10.5px;line-height:1.4;margin-top:3px}
   #upd b{color:#79a9f0}
   #upd.none{display:none}
 
-  #status{font-size:11px;color:var(--faint);padding:2px 4px;letter-spacing:.03em}
+  #status{font-size:9.5px;color:var(--faint);padding:1px 3px;letter-spacing:.03em}
   @media (prefers-reduced-motion:reduce){.alert{animation:none}.fade{transition:none}}
 </style>
 </head>
 <body>
   <div id="wrap">
-    <div id="alerts"></div>
     <div id="list"></div>
     <div id="guide" class="none"></div>
     <div id="upd" class="none"></div>

@@ -17,7 +17,6 @@ const esc = s => String(s).replace(/[&<>"']/g,
   c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
 const listEl = document.getElementById("list");
-const alertsEl = document.getElementById("alerts");
 const statusEl = document.getElementById("status");
 
 function drawList(states) {
@@ -32,47 +31,6 @@ function drawList(states) {
   }).join("");
 }
 
-/* An alert counts down on screen and leaves when the objective lands.
-   Showing a number frozen at the moment it appeared would be worse than
-   showing nothing: a few seconds later it is simply wrong. */
-const live = new Map();   /* key -> {el, spawnAt, label} */
-
-function showAlert(a) {
-  const key = `${a.id}@${Math.round(a.spawnAt)}`;
-  if (live.has(key)) return;
-  const el = document.createElement("div");
-  el.className = "alert";
-  el.innerHTML = `<small></small><span class="who"></span>`;
-  alertsEl.appendChild(el);
-  live.set(key, { el, spawnAt: a.spawnAt, label: a.label });
-  paintAlert(key, a.inSeconds);
-}
-
-function paintAlert(key, left) {
-  const a = live.get(key);
-  if (!a) return;
-  a.el.querySelector("small").textContent = `${T[lang].alert} ${Math.max(0, left)}s`;
-  a.el.querySelector(".who").textContent = a.label[lang] || a.label.en;
-}
-
-function tickAlerts(gameTime) {
-  for (const [key, a] of live) {
-    const left = Math.round(a.spawnAt - gameTime);
-    if (left <= 0) {
-      live.delete(key);
-      a.el.classList.add("fade");
-      setTimeout(() => a.el.remove(), 450);
-      continue;
-    }
-    paintAlert(key, left);
-  }
-}
-
-function clearAlerts() {
-  live.clear();
-  alertsEl.innerHTML = "";
-}
-
 let showList = true;
 
 const applySettings = s => {
@@ -85,8 +43,6 @@ const applySettings = s => {
 window.overlay.onTick(p => {
   applySettings(p.settings);
   if (showList) drawList(p.states);
-  (p.alerts || []).forEach(showAlert);
-  tickAlerts(p.gameTime);
   drawGuide(p.guide, p.siteNote);
   drawUpdate(p.update);
   statusEl.textContent = mmss(p.gameTime);
@@ -96,7 +52,6 @@ window.overlay.onStatus(p => {
   applySettings(p.settings);
   if (p.status !== "running") {
     listEl.innerHTML = "";
-    clearAlerts();
     drawGuide(null);
     statusEl.textContent = T[lang].waiting;
   }
