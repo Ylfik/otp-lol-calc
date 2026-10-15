@@ -58,6 +58,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          # une Release creee a la main depuis le site de GitHub existe
+          # deja quand ce job demarre : on y attache alors le fichier au
+          # lieu d'echouer
           gh release create "${GITHUB_REF_NAME}" release/*.exe \
             --title "LoL Overlay ${GITHUB_REF_NAME}" \
             --notes "Minuteur d'objectifs et builds d'otp-lol-calc.
@@ -66,4 +69,5 @@ jobs:
           l'installeur n'est pas signé par un certificat payant. Cliquez
           sur « Informations complémentaires » puis « Exécuter quand
           même ». Jouez en mode **sans bordure**, aucune fenêtre ne
-          s'affiche par-dessus un plein écran exclusif."
+          s'affiche par-dessus un plein écran exclusif." \
+            || gh release upload "${GITHUB_REF_NAME}" release/*.exe --clobber
