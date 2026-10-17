@@ -29,7 +29,7 @@ npm install
 npm run dist     # fabrique l'installeur Windows dans release/
 ```
 
-`release/` contient alors un `LoL Overlay-0.2.0-win.exe` : c'est lui qu'on
+`release/` contient alors un `LoL-Overlay-0.2.0-win.exe` : c'est lui qu'on
 installe. L'installeur laisse choisir le dossier et pose un raccourci sur
 le bureau.
 
