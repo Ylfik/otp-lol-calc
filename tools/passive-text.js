@@ -45,18 +45,30 @@ function field(block, key) {
 const CLE = /^(key=|color=|formula=|as|ah|ap|ad|cd|hp|mr|ar|ms|range|lvl|heal|shield|true|magic|physical)$/i;
 
 function plain(s) {
-  let t = String(s)
-    .replace(/\{\{pplevel\|([^{}]*)\}\}/g, (_, v) => "«par niveau: " + v.replace(/key=%\|?/, "") + "»");
+  let t = String(s);
+  /* {{pplevel}} d'abord, mais seulement une fois ses propres imbrications
+     résolues — sinon le marqueur avale la suite de la phrase */
+  for (let i = 0; i < 6; i++) {
+    const avant = t;
+    t = t.replace(/\{\{pplevel\|([^{}]*)\}\}/g,
+      (_, v) => "«par niveau: " + v.replace(/\|?(key|color|formula)=[^|]*/g, "").replace(/^\|/, "") + "»");
+    if (t === avant) break;
+  }
   /* de l'intérieur vers l'extérieur : un modèle imbriqué porte souvent la
      valeur, et l'effacer en bloc laisse une phrase sans son chiffre */
   for (let i = 0; i < 10; i++) {
     const avant = t;
     t = t.replace(/\{\{([a-zA-Z#][^{}]*)\}\}/g, (tout, dedans) => {
       if (/^#var:/.test(dedans)) return "<var:" + dedans.slice(5) + ">";
-      const bouts = dedans.split("|");
-      bouts.shift();                                  /* le nom du modèle */
-      const utile = bouts.find(b => b.trim() && !CLE.test(b.trim()));
-      return utile === undefined ? "" : utile;
+      const bouts = dedans.split("|").slice(1)        /* sans le nom du modèle */
+        .filter(b => b.trim() && !/^(key|color|formula)=/.test(b.trim()));
+      if (!bouts.length) return "";
+      /* un chiffre est ce qu'on vient chercher : s'il y en a un, c'est
+         lui le morceau utile, quelle que soit sa place */
+      const chiffre = bouts.find(b => /\d/.test(b));
+      if (chiffre) return chiffre;
+      const mot = bouts.find(b => !CLE.test(b.trim()));
+      return mot === undefined ? bouts[0] : mot;
     });
     if (t === avant) break;
   }

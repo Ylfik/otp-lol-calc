@@ -36,8 +36,55 @@ const ATTENTES = [
       { n: "niveau 1, 100 AP",    build: { L: 1,  ap: 100 }, champ_: "pDmg", attendu: 65 },
       { n: "niveau 18, 200 AP",   build: { L: 18, ap: 200 }, champ_: "pDmg", attendu: 270 }
     ]
+  },
+  {
+    champ: "brand",
+    source: "data/champions/Brand, Blaze : « 2% of their maximum health over 4 seconds » par charge ; détonation « 6 to 12 (par niveau) (+ 2% per 100 AP) of their maximum health »",
+    cas: [
+      /* la charge ne dépend ni du niveau ni de l'AP */
+      { n: "une charge",            build: { L: 1,  ap: 0 },   champ_: "pStackPct",  attendu: 2 },
+      { n: "une charge, niveau 18", build: { L: 18, ap: 300 }, champ_: "pStackPct",  attendu: 2 },
+      { n: "trois charges",         build: { L: 9,  ap: 0 },   champ_: "pStack3Pct", attendu: 6 },
+      /* détonation : 6 % au niveau 1, 12 % au 18, + 2 % par 100 AP */
+      { n: "détonation niveau 1",   build: { L: 1,  ap: 0 },   champ_: "pBoomPct",   attendu: 6 },
+      { n: "détonation niveau 18",  build: { L: 18, ap: 0 },   champ_: "pBoomPct",   attendu: 12 },
+      { n: "détonation, 200 AP",    build: { L: 18, ap: 200 }, champ_: "pBoomPct",   attendu: 16 }
+    ]
+  },
+  {
+    champ: "blitzcrank",
+    source: "data/champions/Blitzcrank, Mana Barrier : « a shield equal to 35% of maximum mana », recharge 90 s",
+    cas: [
+      /* mana de base : 267 au niveau 1, +40 par niveau de croissance */
+      { n: "niveau 1",  build: { L: 1,  ah: 0 },  champ_: "pShield", attendu: 267 * 0.35, pres: 0.5 },
+      { n: "recharge",  build: { L: 1,  ah: 0 },  champ_: "pCd",     attendu: 90 },
+      /* 40 d'accélération : 90 / 1,4 */
+      { n: "recharge avec 40 AH", build: { L: 18, ah: 40 }, champ_: "pCd", attendu: 90 / 1.4, pres: 0.01 }
+    ]
+  },
+  {
+    champ: "rakan",
+    source: "data/champions/Rakan, Fey Feathers : « shield for 30 + (225-30)/17*(x-1) (+ 95% AP) », recharge « 40 to 14.5 for 18 »",
+    cas: [
+      { n: "niveau 1, sans AP",   build: { L: 1,  ap: 0 },   champ_: "pShield", attendu: 30 },
+      { n: "niveau 18, sans AP",  build: { L: 18, ap: 0 },   champ_: "pShield", attendu: 225 },
+      { n: "niveau 18, 200 AP",   build: { L: 18, ap: 200 }, champ_: "pShield", attendu: 225 + 190 },
+      { n: "recharge niveau 1",   build: { L: 1,  ah: 0 },   champ_: "pCd",     attendu: 40 },
+      { n: "recharge niveau 18",  build: { L: 18, ah: 0 },   champ_: "pCd",     attendu: 14.5 }
+    ]
   }
 ];
+
+/* Les passifs qui ne portent aucun chiffre utile au calculateur. Ils sont
+   déclarés ici, avec leur raison, plutôt que laissés dans la liste des
+   non-vérifiés : un avertissement qui liste des cas normaux finit par
+   n'être plus lu. */
+const SANS_CHIFFRES = {
+  draven:  "charges d'Adoration : de l'or à l'élimination",
+  zilean:  "expérience mise de côté pour un allié",
+  neeko:   "déguisement, rompu par tout sort offensif",
+  viego:   "possession : le kit emprunté sort du cadre de la page"
+};
 
 /* ------------------------------------------------------------------ */
 
@@ -79,14 +126,33 @@ for (const bloc of ATTENTES) {
   }
 }
 
+/* Avant tout le reste : tout module publié doit se charger et produire
+   des nombres finis. Un NaN ne lève aucune erreur, il s'affiche. */
+console.log("\n--- tous les modules publiés");
+for (const f of fs.readdirSync(HAND).filter(x => x.endsWith(".js"))) {
+  try {
+    const mod = loadFile(path.join(HAND, f));
+    const A = mod.abilities(context(mod,
+      { L: 18, r: 5, rr: 3, ad: 100, ap: 200, hp: 500, ah: 30, crit: 40, uh: 20 }));
+    const sales = Object.entries(A)
+      .filter(([, v]) => typeof v === "number" && !isFinite(v)).map(([k]) => k);
+    if (sales.length) { console.log(`    RATE  ${f} : ${sales.join(", ")} ne sont pas des nombres`); rates++; }
+  } catch (e) { console.log(`    RATE  ${f} : ${e.message}`); rates++; }
+}
+console.log(`    ${rates ? "" : "ok    "}tous se chargent et calculent`);
+
 /* Un champion publié dont le passif n'est pas ici est un champion dont
    personne n'a vérifié le passif : on le dit. */
 const publies = fs.readdirSync(HAND).filter(f => f.endsWith(".js")).map(f => f.replace(".js", ""));
 const couverts = new Set(ATTENTES.map(a => a.champ));
-const sansControle = publies.filter(k => !couverts.has(k));
+const sansControle = publies.filter(k => !couverts.has(k) && !SANS_CHIFFRES[k]);
 
 console.log(`\n${passes} attentes tenues, ${rates} manquees.`);
 if (manquants.length) console.log("modules absents : " + manquants.join(", "));
+const declares = Object.keys(SANS_CHIFFRES).filter(k => publies.includes(k));
+if (declares.length)
+  console.log(`passifs sans chiffres, declares (${declares.length}) : ` +
+    declares.map(k => k + " — " + SANS_CHIFFRES[k]).join(" ; "));
 if (sansControle.length)
   console.log(`champions publies sans controle de passif (${sansControle.length}) : ` + sansControle.join(", "));
 process.exit(rates ? 1 : 0);
