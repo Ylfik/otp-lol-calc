@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Tidal Wave", fr:"Raz-de-marée"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[90,145,200,255,310], qAP:0.5, qCd:[12,11,10,9,8],

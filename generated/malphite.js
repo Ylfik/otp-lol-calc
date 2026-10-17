@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Unstoppable Force", fr:"Force indomptable"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[70,120,170,220,270], qAP:0.6, qSlow:[20,25,30,35,40], qCd:[8,8,8,8,8],

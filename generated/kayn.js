@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Umbral Trespass", fr:"Intrusion obscure"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[75,105,135,165,195], qBonusAD:0.85, qTotal:[150,210,270,330,390], qTotalBonusAD:1.7, qCd:[7,6.5,6,5.5,5],

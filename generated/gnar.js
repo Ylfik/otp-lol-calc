@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"GNAR!", fr:"GNAR !"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[5,45,85,125,165], qAD:1.25, qSlow:[15,20,25,30,35], qCd:[16,14.5,13,11.5,10],

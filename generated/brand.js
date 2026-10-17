@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Pyroclasm", fr:"Pyrolyse"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[70,100,130,160,190], qAP:0.65, qCd:[8,7.5,7,6.5,6],

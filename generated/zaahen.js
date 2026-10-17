@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Grim Deliverance", fr:"Libération inexorable"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qTotal:[15,30,45,60,75], qTotalAD:1, qTotalBonusAD:[0.2,0.25,0.3,0.35,0.4], qHeal:[5,6,7,8,9], qFlat:[30,60,90,120,150], qBonusAD:[0.2,0.25,0.3,0.35,0.4], qCd:[10,9,8,7,6],

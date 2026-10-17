@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Fate's Call", fr:"Appel du destin"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[10,75,140,205,270], qAD:1.05, qCd:[9,9,9,9,9],

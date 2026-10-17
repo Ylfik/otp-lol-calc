@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Hounds' Pursuit", fr:"Hallali"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[35,40,45,50,55], qBonusAD:0.2, qTotal:[35,60,85,110,135], qTotalBonusAD:0.8, qMin:[30,42.5,55,67.5,80], qMinBonusAD:0.4, qMax:[60,85,110,135,160], qMaxBonusAD:1.4, qHeal:[45,60,75,90,105], qHealBonusAD:0.4, qCd:[9,8.5,8,7.5,7],

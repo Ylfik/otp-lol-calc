@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"The Hextech Ultimatum", fr:"Ultimatum Hextech"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[20,25,30,35,40], qMs:[25,30,35,40,45], qMax:[40,50,60,70,80], qCd:[9,8,7,6,5],

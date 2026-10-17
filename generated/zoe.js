@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Portal Jump", fr:"Bond dimensionnel"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qAdd:[50,80,110,140,170], qAP:0.6, qMaxAP:1.5, qCd:[8.5,8,7.5,7,6.5],

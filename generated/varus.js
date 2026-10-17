@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Chain of Corruption", fr:"Chaîne corruptrice"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[53.333333,100,146.666667,193.333333,240], qBonusAD:0.8, qMax:[80,150,220,290,360], qMaxBonusAD:1.2, qCd:[16,15,14,13,12],

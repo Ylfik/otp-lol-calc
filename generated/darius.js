@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Noxian Guillotine", fr:"Guillotine noxienne"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[50,80,110,140,170], qAD:[1,1.1,1.2,1.3,1.4], qCd:[9,8,7,6,5],

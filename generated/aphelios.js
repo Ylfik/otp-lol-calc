@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Moonlight Vigil", fr:"Veille au clair de lune"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       pDmg:[4,8,12,16,20,24], pAS:[9,18,27,36,45,54]

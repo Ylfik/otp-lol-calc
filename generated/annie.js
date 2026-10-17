@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Summon: Tibbers", fr:"Invocation : Tibbers"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[80,125,170,215,260], qAP:0.8, qCd:[4,4,4,4,4],

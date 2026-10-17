@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Public Execution", fr:"Exécution publique"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[20,30,40,50,60], qBonusAD:0.3, qHpPct:[2,2.25,2.5,2.75,3], qMax:[40,60,80,100,120], qMaxBonusAD:0.6, qMaxHpPct:[4,4.5,5,5.5,6], qCd:[14,13,12,11,10],

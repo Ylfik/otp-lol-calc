@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Living Artillery", fr:"Artillerie vivante"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qAS:[5,10,15,20,25], qFlat:[80,125,170,215,260], qAP:0.9, qCd:[7,7,7,7,7],

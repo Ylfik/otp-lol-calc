@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Tempered Fate", fr:"Destin tempéré"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[80,120,160,200,240], qAP:0.8, qCc:[1,1.2,1.4,1.6,1.8], qCd:[11,10,9,8,7],

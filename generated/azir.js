@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Emperor's Divide", fr:"Partition impériale"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[75,95,115,135,155], qAP:[0.35,0.4,0.45,0.5,0.55], qCd:[14,12,10,8,6],

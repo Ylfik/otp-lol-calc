@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Glacial Prison", fr:"Prison de glace"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[90,140,190,240,290], qAP:0.75, qCd:[18,16.5,15,13.5,12],

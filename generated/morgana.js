@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Soul Shackles", fr:"Chaînes spirituelles"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[80,135,190,245,300], qAP:0.9, qCc:[2,2.25,2.5,2.75,3], qCd:[10,10,10,10,10],

@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Eulogy of the Isles", fr:"Élégie des Îles"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[30,50,70,90,110], qAD:0.5, qHealMissPct:[6,7,8,9,10], qCd:[6,5.5,5,4.5,4],

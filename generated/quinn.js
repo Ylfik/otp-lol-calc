@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Behind Enemy Lines", fr:"En territoire ennemi"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[65,100,135,170,205], qBonusAD:[0.8,0.85,0.9,0.95,1], qAP:0.5, qCd:[11,10.5,10,9.5,9],

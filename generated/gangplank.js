@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Cannon Barrage", fr:"Tir de barrage"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[10,40,70,100,130], qAD:1, qCd:[4.5,4.5,4.5,4.5,4.5],

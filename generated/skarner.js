@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Impale", fr:"Empalement"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[30,60,90,120,150], qBonusAD:2.7, qBonusHp:0.09, qAS:[20,25,30,35,40], qCd:[8,6.75,5.5,4.25,3],

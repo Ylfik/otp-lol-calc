@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Pop Blossom", fr:"Floraison renversante"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qMin:[60,110,160,210,260], qMinAP:0.6, qFlat:[35,60,85,110,135], qAP:0.25, qTotal:[130,230,330,430,530], qTotalAP:1.1, qCd:[9,8.5,8,7.5,7],

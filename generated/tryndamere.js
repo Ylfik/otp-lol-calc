@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Undying Rage", fr:"Rage inépuisable"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[20,35,50,65,80], qHealMin:[30,40,50,60,70], qHealMinAP:0.3, qHealMax:[80,135,190,245,300], qHealMaxAP:1.5, qCd:[12,12,12,12,12],

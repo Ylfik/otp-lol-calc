@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Infinite Duress", fr:"Contrainte infinie"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qHpPct:[6,7,8,9,10], qAD:1.2, qAP:1, qHeal:[25,37.5,50,62.5,75], qCd:[8,7.5,7,6.5,6],

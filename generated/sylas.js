@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Hijack", fr:"Détournement"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[40,60,80,100,120], qAP:0.4, qSlow:[15,20,25,30,35], qTotal:[100,175,250,325,400], qTotalAP:1.2, qCd:[10,9,8,7,6],

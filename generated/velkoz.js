@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Life Form Disintegration Ray", fr:"Désintégrateur de formes de vie"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[80,120,160,200,240], qAP:0.9, qCc:[1,1.4,1.8,2.2,2.6], qCd:[7,7,7,7,7],

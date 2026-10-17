@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Void Assault", fr:"Assaut du Néant"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[80,105,130,155,180], qBonusAD:1.05, qIsolated:[168,220.5,273,325.5,378], qIsolatedBonusAD:2.205, qCd:[4,4,4,4,4],

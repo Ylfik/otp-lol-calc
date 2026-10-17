@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Static Field", fr:"Champ de stase"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[110,160,210,260,310], qAP:1.2, qCd:[20,19,18,17,16],

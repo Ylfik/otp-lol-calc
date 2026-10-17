@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Riftwalk", fr:"Fissure"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[65,95,125,155,185], qAP:0.8, qShield:[80,110,140,170,200], qShieldAP:0.3, qCd:[9,8.5,8,7.5,7],

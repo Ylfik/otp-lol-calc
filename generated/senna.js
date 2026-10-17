@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Dawning Shadow", fr:"Ténèbres aveuglantes"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[30,55,80,105,130], qBonusAD:0.6, qCc:[1,1.25,1.5,1.75,2], qHeal:[40,60,80,100,120], qHealBonusAD:0.4, qHealAP:0.35, qCd:[15,15,15,15,15],

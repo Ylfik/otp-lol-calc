@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"On The Hunt", fr:"En chasse"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[60,85,110,135,160], qBonusAD:0.7, qAP:0.6, qMin:[24,34,44,54,64], qMinBonusAD:0.28, qMinAP:0.24, qTotal:[120,170,220,270,320], qTotalBonusAD:1.4, qTotalAP:1.2, qCd:[10,9.5,9,8.5,8],

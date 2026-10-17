@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Grand Starfall", fr:"Météore"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[70,100,130,160,190], qBonusAD:1.15, qAP:0.5, qMax:[155,230,305,380,455], qMaxBonusAD:2.3, qMaxAP:1, qHurl:[35,50,65,80,95], qHurlBonusAD:0.575, qHurlAP:0.25, qThrust:[70,100,130,160,190], qThrustBonusAD:1.15, qCd:[11,10.25,9.5,8.75,8],

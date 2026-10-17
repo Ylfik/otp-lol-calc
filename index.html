@@ -2422,7 +2422,15 @@ function loadChampion(key){
     tag.onload = () => {
       const def = window.CHAMPION;
       window.CHAMPION = null;
-      if(def){ CHAMPIONS[key] = def; resolve(def); }
+      if(def){
+        /* Un champion apporte ses propres libelles. Sans cela, chaque
+           nouveau champion imposerait une retouche de ce fichier pour
+           deux lignes de texte — et il y en a cent soixante-dix. Les
+           cles existantes ne sont jamais ecrasees : la traduction
+           generale reste maitresse chez elle. */
+        if(def.l10n) for(const k in def.l10n) if(!(k in L10N)) L10N[k] = def.l10n[k];
+        CHAMPIONS[key] = def; resolve(def);
+      }
       else reject(new Error("empty champion file: " + key));
     };
     tag.onerror = () => reject(new Error("cannot load champion: " + key));
@@ -6447,7 +6455,12 @@ document.addEventListener("keydown", e => { if(e.key === "Escape") closeHelp(); 
    calculator, anything else lands on the shelf.
    ============================================================ */
 /* The whole roster, so the shelf shows what is here and what is still to come.
-   Only the three with ready:true have a calculator behind them. */
+   Only those with ready:true have a calculator behind them — the others
+   are greyed out rather than hidden, because a champion that is coming is
+   worth knowing about. A champion is marked ready when champions/<key>.js
+   exists AND tools/check-passives.js vouches for its passive: the passive
+   is the one part no generator writes, and a wrong one still prints a
+   plausible number. */
 const ROSTER = [
   {key:"aatrox", name:"Aatrox", label:"Aatrox"},
   {key:"ahri", name:"Ahri", label:"Ahri"},
@@ -6534,7 +6547,7 @@ const ROSTER = [
   {key:"locke", name:"Locke", label:"Locke"},
   {key:"lucian", name:"Lucian", label:"Lucian"},
   {key:"lulu", name:"Lulu", label:"Lulu"},
-  {key:"lux", name:"Lux", label:"Lux"},
+  {key:"lux", name:"Lux", label:"Lux", ready:true},
   {key:"malphite", name:"Malphite", label:"Malphite"},
   {key:"malzahar", name:"Malzahar", label:"Malzahar"},
   {key:"maokai", name:"Maokai", label:"Maokai"},

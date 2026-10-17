@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Curtain Call", fr:"Rappel de rideau"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[44,69,94,119,144], qAD:[0.44,0.515,0.59,0.665,0.74], qAP:0.6, qMaxAD:0.44, qMaxAP:1.23, qCd:[7,6.5,6,5.5,5],

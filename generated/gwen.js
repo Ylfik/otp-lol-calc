@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Needlework", fr:"Piqûre"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[60,85,110,135,160], qAP:0.35, qFinal:[60,85,110,135,160], qFinalAP:0.35, qFinalHpPct:0.6, qFinalHpPctAP100:1, qMin:[70,99,128,157,186], qMinAP:0.4, qCenter:[70,99,128,157,186], qCenterAP:0.4, qCenterHpPct:2, qCenterHpPctAP100:1, qMax:[110,155,200,245,290], qMaxAP:0.6, qCd:[6.5,5.75,5,4.25,3.5],

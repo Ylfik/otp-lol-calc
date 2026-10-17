@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Crowstorm", fr:"Rafale de corbeaux"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qCc:[1.2,1.4,1.6,1.8,2], qCurPct:[4,4.5,5,5.5,6], qAP100:3, qMin:[40,60,80,100,120], qCcFear:[1.2,1.4,1.6,1.8,2], qMaxCurPct:[8,9,10,11,12], qMaxAP100:6, qMax:[80,120,160,200,240], qCd:[15,14.5,14,13.5,13],

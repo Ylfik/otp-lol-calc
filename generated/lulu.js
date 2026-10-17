@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Wild Growth", fr:"Croissance prodigieuse"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[60,95,130,165,200], qAP:0.5, qTotal:[90,142.5,195,247.5,300], qTotalAP:0.75, qCd:[7,7,7,7,7],

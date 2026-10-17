@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Unstoppable Onslaught", fr:"Assaut inarrêtable"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qIncPctMax:[200,244.444444,266.666667,280,288.888889], qFlat:[30,45,60,75,90], qAD:[0.4,0.5,0.6,0.7,0.8], qMax:[90,155,220,285,350], qMaxAD:[1.2,1.5,1.8,2.1,2.4], qCd:[10,9,8,7,6],

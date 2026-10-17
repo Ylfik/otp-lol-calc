@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Killer Instinct", fr:"Instinct meurtrier"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[90,123.75,157.5,191.25,225], qBonusAD:1.2375, qAP:0.45, qTotal:[150,206.25,262.5,318.75,375], qTotalBonusAD:2.0625, qTotalAP:0.75, qCd:[10,9,8,7,6],

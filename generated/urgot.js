@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Fear Beyond Death", fr:"Règne de la terreur"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[25,70,115,160,205], qAD:0.7, qSlow:[45,50,55,60,65], qCd:[10,9.5,9,8.5,8],

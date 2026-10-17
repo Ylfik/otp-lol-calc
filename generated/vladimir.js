@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Hemoplague", fr:"Peste sanguine"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[80,100,120,140,160], qAP:0.6, qHeal:[20,25,30,35,40], qHealAP:0.35, qMax:[148,185,222,259,296], qMaxAP:1.11, qCd:[9,7.9,6.8,5.7,4.6],

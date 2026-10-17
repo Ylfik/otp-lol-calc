@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Collateral Damage", fr:"Dégâts collatéraux"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[50,75,100,125,150], qBonusAD:0.55, qTotal:[130,200,270,340,410], qTotalBonusAD:[1,1.15,1.3,1.45,1.6], qCd:[13,11.25,9.5,7.75,6],

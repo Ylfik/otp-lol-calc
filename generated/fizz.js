@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Chum the Waters", fr:"Pêche au gros"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[10,25,40,55,70], qAP:0.55, qCd:[8,7.5,7,6.5,6],

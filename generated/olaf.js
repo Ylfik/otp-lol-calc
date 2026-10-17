@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Ragnarok", fr:"Ragnarok"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[70,120,170,220,270], qBonusAD:1, qSlow:[30,35,40,45,50], qCd:[9,9,9,9,9],

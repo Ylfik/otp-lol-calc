@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Noxious Trap", fr:"Piège nocif"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[80,125,170,215,260], qAP:0.7, qCc:[2,2.25,2.5,2.75,3], qCcMax:[4,4.5,5,5.5,6], qCd:[7,7,7,7,7],

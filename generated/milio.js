@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Breath of Life", fr:"Flammes vitales"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[80,140,200,260,320], qAP:1.2, qSlow:[40,45,50,55,60], qSlowAP100:5, qCd:[10,10,10,10,10],

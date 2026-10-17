@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"World Ender", fr:"Fossoyeur des mondes"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[10,25,40,55,70], qAD:[0.6,0.675,0.75,0.825,0.9], qFirst:[17.5,43.75,70,96.25,122.5], qFirstAD:[1.05,1.18125,1.3125,1.44375,1.575], qSecond:[12.5,31.25,50,68.75,87.5], qSecondAD:[0.75,0.84375,0.9375,1.03125,1.125], qThird:[15,37.5,60,82.5,105], qThirdAD:[0.9,1.0125,1.125,1.2375,1.35], qCd:[14,12,10,8,6],

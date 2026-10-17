@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Between Worlds", fr:"Entre les mondes"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[45,70,95,120,145], qAP:0.4, qMin:[45,70,95,120,145], qMinAP:0.4, qMax:[67.5,105,142.5,180,217.5], qMaxAP:0.6, qSubsequent:[9,14,19,24,29], qSubsequentAP:0.08, qCd:[9,8.5,8,7.5,7],

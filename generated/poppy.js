@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Keeper's Verdict", fr:"Verdict de la gardienne"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[30,55,80,105,130], qBonusAD:0.75, qHpPct:[7,7.5,8,8.5,9], qSlow:[20,23,26,29,32], qSlowBonusHp:0.008, qTotal:[60,110,160,210,260], qTotalBonusAD:1.5, qTotalHpPct:[14,15,16,17,18], qCd:[8,7,6,5,4],

@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Weaver's Wall", fr:"Mur de la tisseuse"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[55,72.5,90,107.5,125], qAP:0.5, qTotal:[143,188.5,234,279.5,325], qTotalAP:1.3, qMax:[99,130.5,162,193.5,225], qMaxAP:0.9, qSecondary:[55,72.5,90,107.5,125], qSecondaryAP:0.5, qSlow:[20,25,30,35,40], qCd:[7,6,5,4,3],

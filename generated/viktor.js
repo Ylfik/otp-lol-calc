@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Arcane Storm", fr:"Tempête arcanique"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[60,75,90,105,120], qAP:0.4, qModified:[20,45,70,95,120], qModifiedAD:1, qModifiedAP:0.5, qTotal:[80,120,160,200,240], qTotalAD:1, qTotalAP:0.9, qCd:[9,8,7,6,5],

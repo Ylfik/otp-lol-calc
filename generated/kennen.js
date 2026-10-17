@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Slicing Maelstrom", fr:"Maelström"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[75,125,175,225,275], qAP:0.75, qCd:[7,6.25,5.5,4.75,4],

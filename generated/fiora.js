@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Grand Challenge", fr:"Défi suprême"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[70,80,90,100,110], qBonusAD:[0.9,0.95,1,1.05,1.1], qCd:[13,11.25,9.5,7.75,6],

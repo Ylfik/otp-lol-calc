@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Thrill of the Hunt", fr:"Chasseur-né"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[20,55,90,125,160], qAD:0.05, qCd:[6,5.5,5,4.5,4],

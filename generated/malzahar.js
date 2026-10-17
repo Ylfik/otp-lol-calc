@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Nether Grasp", fr:"Poigne du Néant"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[70,105,140,175,210], qAP:0.55, qCc:[1,1.25,1.5,1.75,2], qCd:[6,6,6,6,6],

@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Final Hour", fr:"Combat ultime"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[75,85,95,105,115], qAP:0.5, qCd:[6,5,4,3,2],

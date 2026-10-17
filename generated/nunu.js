@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Absolute Zero", fr:"Zéro absolu"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[60,100,140,180,220], qAP:0.65, qBonusHp:0.05, qHealMin:[39,57,75,93,111], qHealMinAP:0.54, qHealMinBonusHp:0.06, qHealMax:[58.5,85.5,112.5,139.5,166.5], qHealMaxAP:0.81, qHealMaxBonusHp:0.09, qCd:[13,12,11,10,9],

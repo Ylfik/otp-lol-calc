@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Stormbringer", fr:"Tempête incarnée"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qMs:[12,15.5,19,22.5,26], qMsMax:[24,31,38,45,52], qFlat:[10,20,30,40,50], qBonusAD:1.6, qCd:[12,11.5,11,10.5,10],

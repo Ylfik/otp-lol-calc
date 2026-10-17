@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Chronoshift", fr:"Retour temporel"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[75,115,165,230,300], qAP:0.9, qCc:[1.1,1.2,1.3,1.4,1.5], qCd:[10,9.5,9,8.5,8],

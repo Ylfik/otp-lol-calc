@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Subjugate", fr:"Soumission"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[10,30,50,70,90], qAD:[0.15,0.25,0.35,0.45,0.55], qAttack:[20,25,30,35,40], qCd:[3.5,3.5,3.5,3.5,3.5],

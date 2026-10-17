@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Purgatory", fr:"Purgatoire"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qMax:[120,144,168,192,216], qMaxAP:0.6, qFlat:[18,26,34,42,50], qAP:[0.25,0.275,0.3,0.325,0.35], qTwo:[43.2,62.4,81.6,100.8,120], qTwoAP:[0.6,0.66,0.72,0.78,0.84], qThree:[75.6,109.2,142.8,176.4,210], qThreeAP:[1.05,1.155,1.26,1.365,1.47], qCd:[10,9,8,7,6],

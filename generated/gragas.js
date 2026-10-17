@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Explosive Cask", fr:"Fût explosif"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[80,120,160,200,240], qAP:0.8, qMax:[120,180,240,300,360], qMaxAP:1.2, qSlowMin:[40,45,50,55,60], qSlowMax:[60,67.5,75,82.5,90], qCd:[10,9,8,7,6],

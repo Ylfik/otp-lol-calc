@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Missile Barrage", fr:"Barrage de projectiles"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[60,105,150,195,240], qBonusAD:1.25, qAP:1, qCd:[9,8.5,8,7.5,7],

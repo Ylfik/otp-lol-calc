@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Falling Star / The Skies Descend", fr:"Étoile finale/Apocalypse"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qTotal:[146.25,195,243.75,292.5], qTotalAP:1.7875, qFlat:[73.125,97.5,121.875,146.25], qAP:0.89375, qCd:[3,3,3,3,3],

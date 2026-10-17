@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Death Mark", fr:"Marque de la mort"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[80,120,160,200,240], qBonusAD:1, qCd:[6,6,6,6,6],

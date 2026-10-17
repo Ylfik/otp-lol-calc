@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Aspect Of The Cougar", fr:"Aspect du Couguar"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[70,90,110,130,150], qAP:0.5, qMax:[227.5,292.5,357.5,422.5,487.5], qMaxAP:1.625, qCd:[6,6,6,6,6],

@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Blade of the Exile", fr:"Lame de l'exilée"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[45,75,105,135,165], qBonusAD:[0.6,0.65,0.7,0.75,0.8], qTotal:[135,225,315,405,495], qTotalBonusAD:[1.8,1.95,2.1,2.25,2.4], qCd:[13,13,13,13,13],

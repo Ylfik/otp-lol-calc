@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"The Show Stopper", fr:"Le Clou du spectacle"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[10,20,30,40,50], qHpPct:[1,1.5,2,2.5,3], qTotal:[20,40,60,80,100], qTotalHpPct:[2,3,4,5,6], qCd:[9,8,7,6,5],

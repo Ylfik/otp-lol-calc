@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Soaring Slam", fr:"Frappe ascendante"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[80,120,160,200,240], qAP:1, qSlow:[40,50,60,70,80], qCd:[12,10.5,9,7.5,6],

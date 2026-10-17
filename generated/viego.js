@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Heartbreaker", fr:"Cœur brisé"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qCurPct:[2,3,4,5,6], qCriticalCurPct:[3.4,5.1,6.8,8.5,10.2], qMin:[10,15,20,25,30], qFlat:[25,40,55,70,85], qAD:0.7, qCd:[5,4.5,4,3.5,3],

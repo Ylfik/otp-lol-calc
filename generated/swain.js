@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Demonic Ascension", fr:"Incarnation démoniaque"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[60,90,120,150,180], qAP:0.45, qTotal:[120,180,240,300,360], qTotalAP:0.9, qCd:[7,6,5,4,3],

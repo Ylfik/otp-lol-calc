@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Dominus", fr:"Dominus"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[60,90,120,150,180], qBonusAD:1, qMax:[90,135,180,225,270], qMaxBonusAD:1.4, qHeal:[50,75,100,125,150], qHealMax:[200,300,400,500,600], qHealHealing:[12,20,28,36,44], qHealHealingBonusAD:0.17, qCd:[7,7,7,7,7],

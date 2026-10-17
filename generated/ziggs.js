@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Mega Inferno Bomb", fr:"Méga bombe infernale"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[80,130,180,230,280], qAP:[0.6,0.65,0.7,0.75,0.8], qCd:[6,5.5,5,4.5,4],

@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Grandmaster-at-Arms", fr:"Maître d'armes"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[65,105,145,185,225], qBonusAD:1, qCd:[8,7.5,7,6.5,6],

@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"The Equalizer", fr:"Éradication"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[12.5,18.75,25,31.25,37.5], qAP:0.2625, qHpPct:[1.5,1.625,1.75,1.875,2], qMax:[62.5,93.75,125,156.25,187.5], qMaxAP:1.3125, qMaxHpPct:[7.5,8.125,8.75,9.375,10], qMin:[18.75,28.125,37.5,46.875,56.25], qMinAP:0.39375, qMinHpPct:[2.25,2.4375,2.625,2.8125,3], qCd:[10,9,8,7,6],

@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Maximum Dosage", fr:"Dosage maximal"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qCurPct:[20,22.5,25,27.5,30], qMin:[80,130,180,230,280], qCd:[4,4,4,4,4],

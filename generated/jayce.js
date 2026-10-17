@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Mercury Cannon / Mercury Hammer", fr:"Canon Mercury / Marteau Mercury"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[60,110,160,210,260,310], qBonusAD:1.35, qSlow:[35,40,45,50,55,60], qCd:[16,14,12,10,8,6],

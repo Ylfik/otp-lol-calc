@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Golden Eclipse", fr:"Éclipse dorée"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[60,85,110,135,160], qAP:0.55, qTotal:[85,127,173,223,277], qTotalAP:[0.8,0.85,0.9,0.95,1], qCd:[10,9,8,7,6],

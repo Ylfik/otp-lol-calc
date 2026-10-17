@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Let's Bounce!", fr:"Boing !"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qFlat:[60,90,120,150,180], qAP:0.3, qBonusHp:0.03, qTotal:[120,180,240,300,360], qTotalAP:0.6, qTotalBonusHp:0.06, qCd:[14,12.5,11,9.5,8],

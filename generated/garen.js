@@ -15,7 +15,7 @@ window.CHAMPION = {
       {k:"r", en:"Demacian Justice", fr:"Justice de Demacia"}
     ],
     rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),
-    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),
+    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */
     maxRank: 5,
     ranks:{
       qMs:[1.4,1.95,2.5,3.05,3.6], qFlat:[30,60,90,120,150], qAD:0.5, qCd:[8,8,8,8,8],
