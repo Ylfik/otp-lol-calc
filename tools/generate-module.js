@@ -627,7 +627,11 @@ function render(m){
   p(meta.map(x => `      {k:"${x.k}", en:"${esc(x.en)}", fr:"${esc(x.fr)}"}`).join(",\n"));
   p(`    ],`);
   p(`    rankCap: L => Math.min(5, Math.floor((L + 1) / 2)),`);
-  p(`    rankCapR: L => Math.min(3, Math.floor(L / 5) + 1),`);
+  /* l'ultime s'apprend aux niveaux 6, 11 et 16 — pas au niveau 1. La
+     formule precedente (L/5 + 1) le rendait disponible des le premier
+     niveau et rang 3 au dixieme : c'est le bug corrige a la main dans
+     les seize modules, qui vivait encore ici. */
+  p(`    rankCapR: L => Math.min(3, Math.floor((L - 1) / 5)),   /* ultime : 6, 11, 16 */`);
   p(`    maxRank: 5,`);
 
   /* ranks */
