@@ -44,11 +44,13 @@ function paintPick(builds) {
   if (imp) imp.disabled = !pick;
 }
 
+let signedIn = false;
+
 function drawDraft(d) {
   const box = $("draftBody");
   const state = d || { active: false, champion: "", builds: [] };
   const builds = state.builds || [];
-  const sig = JSON.stringify([state.active, state.champion, builds.map(b => b.id)]);
+  const sig = JSON.stringify([state.active, state.champion, builds.map(b => b.id), !!signedIn]);
   if (sig === lastSig) return;          /* rien de neuf : on ne touche à rien */
   lastSig = sig;
   chosenId = builds.some(b => b.id === chosenId) ? chosenId : ((builds[0] || {}).id || null);
@@ -63,9 +65,15 @@ function drawDraft(d) {
     return;
   }
   if (!builds.length) {
-    box.innerHTML =
-      `<p class="sub"><strong>${esc(state.champion)}</strong> — aucun build publié
-       pour ce champion sur le site.</p>`;
+    /* dire laquelle des deux sources a été consultée : « aucun build »
+       alors qu'on en a enregistré dix est un message qui ment */
+    box.innerHTML = signedIn
+      ? `<p class="sub"><strong>${esc(state.champion)}</strong> — rien pour ce champion,
+         ni dans vos builds enregistrés ni parmi ceux publiés.<br>
+         Vos builds ne montent sur le site qu'une fois connecté : ouvrez
+         otp-lol-calc en étant connecté et ils seront repris.</p>`
+      : `<p class="sub"><strong>${esc(state.champion)}</strong> — aucun build publié
+         pour ce champion.<br>Connectez-vous pour ajouter vos builds enregistrés.</p>`;
     return;
   }
 
@@ -155,6 +163,7 @@ $("hideBtn").addEventListener("click", () => window.overlay.hideHub());
 
 window.overlay.onHub(p => {
   drawState(p.state || {});
+  signedIn = !!p.signedIn;
   drawDraft(p.draft);
   drawUpdate(p.said);
 });

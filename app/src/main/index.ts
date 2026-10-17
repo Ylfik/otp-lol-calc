@@ -15,7 +15,7 @@ import path from "node:path";
 import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { pollGame, teamLookup, activeChampion, type Status } from "./liveClient.js";
-import { buildsFor, fetchLibrary } from "./siteClient.js";
+import { buildsFor, fetchLibrary, forgetBuilds } from "./siteClient.js";
 import * as auth from "./auth.js";
 import { updateState } from "./updates.js";
 import * as autoUp from "./autoUpdate.js";
@@ -350,6 +350,7 @@ function pushHub(): void {
   send(hub, "hub", {
     state: { client: clientSeen, game: gameSeen },
     draft,
+    signedIn: !!auth.who() || auth.canResume(),
     update: autoUp.autoUpdate(),
     said: sayUpdate(autoUp.autoUpdate(), app.getVersion())
   });
@@ -424,6 +425,9 @@ ipcMain.handle("auth:in", async () => {
   try {
     const s = await auth.signIn();
     siteFor = "";                      /* re-read with the account's builds */
+    lastChampId = -1;                  /* et la draft en cours, pas seulement la suivante */
+    forgetBuilds();
+    void watchClient().then(pushHub);
     return { ok: true, name: s.name };
   } catch (e) {
     return { ok: false, error: e instanceof Error ? e.message : String(e) };
@@ -433,6 +437,9 @@ ipcMain.handle("auth:in", async () => {
 ipcMain.handle("auth:out", async () => {
   auth.signOut();
   siteFor = ""; siteBuilds = [];
+  lastChampId = -1; draftBuilds = [];
+  forgetBuilds();
+  void watchClient().then(pushHub);
   return { ok: true };
 });
 

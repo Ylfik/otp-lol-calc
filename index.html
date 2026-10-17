@@ -3866,7 +3866,7 @@ function lbInit(){
   }catch(err){ lbFail = "client:" + err.message; return; }
   sb.auth.getSession().then(({data}) => {
     me = data.session ? data.session.user : null;
-    if(me){ lbTouchProfile(); libPull(); }
+    if(me){ lbTouchProfile(); libSyncAll().then(libPull); }
     lbLoad();
     /* the reply may have been consumed before the listener below was attached */
     acctRender();          /* the shelves carry the block too */
@@ -3876,7 +3876,7 @@ function lbInit(){
   });
   sb.auth.onAuthStateChange((_e, session) => {
     me = session ? session.user : null;
-    if(me){ lbTouchProfile(); libPull(); }
+    if(me){ lbTouchProfile(); libSyncAll().then(libPull); }
     lbRender();
     acctRender();          /* the shelves carry the block too */
     let pending = null;
@@ -4106,6 +4106,73 @@ async function libDelete(name){
     await sb.from("library").delete()
       .eq("owner", me.id).eq("champion", CHAMP.key).eq("name", name);
   }catch(err){ libNote = String(err && err.message || err); }
+}
+
+/* Every champion at once, not only the one on screen.
+
+   libPull below only ever looks at the champion being viewed, which is
+   right for keeping a page fresh and wrong for signing in: builds made
+   for ten other champions stayed in this browser, invisible to the app
+   and to any other machine. This runs once at sign-in and sends up
+   whatever the account does not already have.
+
+   It only ever reads from here and writes up there. Bringing other
+   champions' builds *down* is left to libPull, when their page opens:
+   a build cannot be rebuilt without its champion's abilities loaded,
+   and a half-restored build is worse than a missing one. */
+const LIB_PREFIX = "otp-calc-builds:";
+
+function localBuildsEverywhere(){
+  const out = [];
+  let i = 0;
+  for(; i < localStorage.length; i++){
+    const k = localStorage.key(i);
+    if(!k || k.indexOf(LIB_PREFIX) !== 0) continue;
+    let all = null;
+    try{ all = JSON.parse(localStorage.getItem(k) || "{}"); }catch(err){ continue; }
+    if(!all || typeof all !== "object") continue;
+    /* the bucket name is the fallback for builds saved before a build
+       carried its own champion */
+    const fallback = k.slice(LIB_PREFIX.length) || "udyr";
+    for(const name in all){
+      const one = all[name];
+      if(!one || typeof one !== "object") continue;
+      out.push({champion: one.champ || fallback, name: name, data: one});
+    }
+  }
+  return out;
+}
+
+async function libSyncAll(){
+  if(!sb || !me) return 0;
+  const mine = localBuildsEverywhere();
+  if(!mine.length) return 0;
+
+  const known = new Set();
+  try{
+    const {data, error} = await sb.from("library")
+      .select("champion, name").eq("owner", me.id);
+    if(error){ libNote = error.message; return 0; }
+    for(const r of data || []) known.add(r.champion + "\u0000" + r.name);
+  }catch(err){ libNote = String(err && err.message || err); return 0; }
+
+  const rows = mine
+    .filter(b => !known.has(b.champion + "\u0000" + b.name))
+    .map(b => ({owner: me.id, champion: b.champion, name: b.name, data: b.data}));
+  if(!rows.length) return 0;
+
+  /* par paquets : une bibliotheque peut etre longue, et un seul envoi
+     qui echoue ne doit pas tout emporter */
+  let sent = 0;
+  for(let i = 0; i < rows.length; i += 25){
+    try{
+      const {error} = await sb.from("library")
+        .upsert(rows.slice(i, i + 25), {onConflict:"owner,champion,name"});
+      if(error){ libNote = error.message; break; }
+      sent += Math.min(25, rows.length - i);
+    }catch(err){ libNote = String(err && err.message || err); break; }
+  }
+  return sent;
 }
 
 /* Brings the two sides together: what the account holds wins for names it

@@ -1,6 +1,6 @@
 {
   "name": "lol-overlay",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "description": "Overlay in-game pour League of Legends — minuteur d'objectifs",
   "main": "dist/src/main/index.js",

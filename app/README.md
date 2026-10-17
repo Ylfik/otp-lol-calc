@@ -29,7 +29,7 @@ npm install
 npm run dist     # fabrique l'installeur Windows dans release/
 ```
 
-`release/` contient alors un `LoL-Overlay-0.2.0-win.exe` : c'est lui qu'on
+`release/` contient alors un `LoL-Overlay-0.2.1-win.exe` : c'est lui qu'on
 installe. L'installeur laisse choisir le dossier et pose un raccourci sur
 le bureau.
 
@@ -117,7 +117,7 @@ permanent.
 le code poussé sur GitHub, poser une étiquette suffit —
 
 ```bash
-git tag overlay-v0.2.0 && git push origin overlay-v0.2.0
+git tag overlay-v0.2.1 && git push origin overlay-v0.2.1
 ```
 
 Le préfixe `overlay-` compte : le dépôt est partagé avec le site, et seules
@@ -278,6 +278,13 @@ partage. C'est suffisant pour jouer, et c'est le mode par défaut : quelqu'un
 **Avec une connexion Discord** (Réglages → Builds du site), elle ajoute vos
 builds enregistrés, que vous seul pouvez lire, et les fait passer devant
 ceux des autres. La connexion n'est jamais demandée au démarrage.
+
+Ces builds-là vivent d'abord dans le navigateur, sur le site. Ils ne
+deviennent visibles de l'app qu'une fois montés chez Supabase, ce que le
+site fait **à la connexion, pour tous les champions d'un coup**. Si l'app
+ne voit pas un build que vous avez pourtant enregistré : ouvrez le site en
+étant connecté, et il sera repris. (Jusqu'à la 0.2.1, seul le champion dont
+la page était ouverte montait — d'où des bibliothèques à moitié absentes.)
 
 ### Ce que la connexion demande côté Supabase
 
