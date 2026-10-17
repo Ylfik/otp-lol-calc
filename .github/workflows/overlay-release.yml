@@ -13,7 +13,12 @@ name: Installeur Windows
 on:
   push:
     tags: ["overlay-v*"]
-  workflow_dispatch:        # bouton manuel, sans étiquette
+  workflow_dispatch:        # bouton manuel
+    inputs:
+      tag:
+        description: "Étiquette à (re)remplir, ex. overlay-v0.2.0. Vide : on construit sans rien publier."
+        required: false
+        default: ""
 
 permissions:
   contents: write           # nécessaire pour créer la Release
@@ -67,10 +72,11 @@ jobs:
           if-no-files-found: error
 
       - name: Publier la Release
-        if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/') || inputs.tag != ''
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag || github.ref_name }}
         run: |
           # une Release creee a la main depuis le site de GitHub existe
           # deja quand ce job demarre : on y attache alors le fichier au
@@ -78,9 +84,9 @@ jobs:
           # latest.yml et le .blockmap sont ce que l'app lit pour se
           # mettre a jour toute seule : sans eux, elle retombe sur un
           # simple lien. Ils partent donc avec l'installeur.
-          gh release create "${GITHUB_REF_NAME}" \
+          gh release create "${TAG}" \
             release/*.exe release/latest.yml release/*.blockmap \
-            --title "LoL Overlay ${GITHUB_REF_NAME}" \
+            --title "LoL Overlay ${TAG}" \
             --notes "Minuteur d'objectifs et builds d'otp-lol-calc.
 
           Windows peut afficher « Windows a protégé votre ordinateur » :
@@ -88,5 +94,25 @@ jobs:
           sur « Informations complémentaires » puis « Exécuter quand
           même ». Jouez en mode **sans bordure**, aucune fenêtre ne
           s'affiche par-dessus un plein écran exclusif." \
-            || gh release upload "${GITHUB_REF_NAME}" \
+            || gh release upload "${TAG}" \
                  release/*.exe release/latest.yml release/*.blockmap --clobber
+
+          # GitHub renomme a l'envoi tout fichier dont le nom porte un
+          # espace ; electron-updater, lui, cherche exactement le nom
+          # ecrit dans latest.yml. Un reliquat sous un autre nom laisse
+          # une Release qui a l'air complete et une app qui telecharge
+          # dans le vide. On le retire.
+          want=$(grep -m1 '^path:' release/latest.yml | sed 's/^path: *//' | tr -d '\r')
+          echo "latest.yml annonce : $want"
+          gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${TAG}" -q '.assets[].name' \
+            | grep -E '\.exe(\.blockmap)?$' | grep -vF "$want" \
+            | while read -r vieux; do
+                echo "retrait de l'asset « $vieux »"
+                gh release delete-asset "${TAG}" "$vieux" -y
+              done
+
+          # et on verifie que ce que l'app ira chercher existe vraiment
+          gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${TAG}" -q '.assets[].name' \
+            | grep -qxF "$want" \
+            || { echo "::error::$want absent de la Release : la mise a jour automatique serait morte"; exit 1; }
+          echo "ok : la Release contient bien $want"
