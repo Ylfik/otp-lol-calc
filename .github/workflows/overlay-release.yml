@@ -49,7 +49,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: installeur-windows
-          path: app/release/*.exe
+          path: |
+            app/release/*.exe
+            app/release/latest.yml
           if-no-files-found: error
 
       - name: Publier la Release
@@ -61,7 +63,11 @@ jobs:
           # une Release creee a la main depuis le site de GitHub existe
           # deja quand ce job demarre : on y attache alors le fichier au
           # lieu d'echouer
-          gh release create "${GITHUB_REF_NAME}" release/*.exe \
+          # latest.yml et le .blockmap sont ce que l'app lit pour se
+          # mettre a jour toute seule : sans eux, elle retombe sur un
+          # simple lien. Ils partent donc avec l'installeur.
+          gh release create "${GITHUB_REF_NAME}" \
+            release/*.exe release/latest.yml release/*.blockmap \
             --title "LoL Overlay ${GITHUB_REF_NAME}" \
             --notes "Minuteur d'objectifs et builds d'otp-lol-calc.
 
@@ -70,4 +76,5 @@ jobs:
           sur « Informations complémentaires » puis « Exécuter quand
           même ». Jouez en mode **sans bordure**, aucune fenêtre ne
           s'affiche par-dessus un plein écran exclusif." \
-            || gh release upload "${GITHUB_REF_NAME}" release/*.exe --clobber
+            || gh release upload "${GITHUB_REF_NAME}" \
+                 release/*.exe release/latest.yml release/*.blockmap --clobber

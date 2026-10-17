@@ -17,7 +17,9 @@ import { fileURLToPath } from "node:url";
 import { pollGame, teamLookup, activeChampion, type Status } from "./liveClient.js";
 import { buildsFor, fetchLibrary } from "./siteClient.js";
 import * as auth from "./auth.js";
-import { checkForUpdate, updateState } from "./updates.js";
+import { updateState } from "./updates.js";
+import * as autoUp from "./autoUpdate.js";
+import { describe as sayUpdate } from "../shared/updateState.js";
 import * as lcu from "./lcu.js";
 import { resolveItems } from "./items.js";
 import { toRunePage, treeLookup, pageLooksValid, RuneError } from "../shared/runes.js";
@@ -345,7 +347,12 @@ function httpsGet(u: URL, ok: (v: any) => void, no: (e: Error) => void): void {
 }
 
 function pushHub(): void {
-  send(hub, "hub", { state: { client: clientSeen, game: gameSeen }, draft });
+  send(hub, "hub", {
+    state: { client: clientSeen, game: gameSeen },
+    draft,
+    update: autoUp.autoUpdate(),
+    said: sayUpdate(autoUp.autoUpdate(), app.getVersion())
+  });
 }
 
 ipcMain.handle("hub:info", () => ({
@@ -355,6 +362,7 @@ ipcMain.handle("hub:info", () => ({
 }));
 ipcMain.handle("hub:settings", () => { openSettings(); });
 ipcMain.handle("hub:hide", () => { if (hub) hub.hide(); });
+ipcMain.handle("hub:open", () => { openHub(); });
 
 ipcMain.handle("build:import", async (_e, buildId: string) => {
   const lock = lcu.findLockfile();
@@ -393,6 +401,12 @@ ipcMain.handle("build:import", async (_e, buildId: string) => {
 });
 
 ipcMain.handle("update:state", () => updateState());
+ipcMain.handle("update:auto", () => ({
+  update: autoUp.autoUpdate(),
+  said: sayUpdate(autoUp.autoUpdate(), app.getVersion())
+}));
+ipcMain.handle("update:install", () => autoUp.install());
+ipcMain.handle("update:check", () => autoUp.check());
 ipcMain.handle("update:open", () => {
   const u = updateState().available;
   if (u && u.url) shell.openExternal(u.url);
@@ -449,12 +463,17 @@ app.whenReady().then(() => {
   if (process.env.OVERLAY_SETTINGS === "1") openSettings();
 
   /* one look for a newer version, a moment after start so it never
-     competes with getting the overlay on screen */
-  setTimeout(() => {
-    checkForUpdate(app.getVersion()).then(st => {
-      if (st.available) send(overlay, "update", st);
-    });
-  }, 4000);
+     competes with getting the overlay on screen. It downloads by itself
+     and waits: nothing is installed until the person says so, or until
+     they quit the app themselves. */
+  autoUp.onAutoUpdate(u => {
+    pushHub();
+    /* the overlay only ever shows the fact, never a button */
+    if (u.stage === "ready" || u.stage === "manual")
+      send(overlay, "update", { checked: true, installed: app.getVersion(),
+                                available: { version: u.version, url: u.url } });
+  });
+  setTimeout(() => autoUp.start(), 4000);
   app.on("activate", () => {
     if (!overlay) createOverlay();
     if (!alertWin) createAlertWindow();

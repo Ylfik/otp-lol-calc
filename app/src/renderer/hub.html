@@ -55,6 +55,10 @@
   .b .tag{font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;
     color:var(--blue);border:1px solid #2f5a84;border-radius:4px;padding:1px 5px}
 
+  .bar{height:4px;border-radius:3px;background:#0f1620;border:1px solid var(--line);
+    overflow:hidden;margin-top:9px}
+  .bar i{display:block;height:100%;width:0;background:var(--blue);
+    transition:width .25s linear}
   .note{font-size:10.5px;color:var(--faint);line-height:1.5;margin-top:8px}
   .warn{color:var(--accent)}
   #result{font-size:11.5px;margin-top:8px;min-height:15px}
@@ -95,9 +99,14 @@
   <section id="updBox" hidden>
     <h2>Mise à jour</h2>
     <div class="row">
-      <span class="nm" id="updTxt"></span>
-      <button id="updBtn" class="btn">Télécharger</button>
+      <div class="nm">
+        <div id="updTxt"></div>
+        <div class="sub" id="updSub"></div>
+      </div>
+      <button id="updInstall" class="btn go" hidden>Installer et redémarrer</button>
+      <button id="updBtn" class="btn" hidden>Télécharger</button>
     </div>
+    <div class="bar" id="updBar" hidden><i id="updFill"></i></div>
   </section>
 
   <footer>

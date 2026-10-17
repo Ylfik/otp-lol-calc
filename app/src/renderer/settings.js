@@ -118,14 +118,23 @@ $("buildsOn").addEventListener("change", async () => {
   await push();
 });
 
+/* L'installation se fait depuis la fenêtre principale, et nulle part
+   ailleurs : un même bouton à deux endroits est un bouton de trop. */
+let updateSaid = null;
+
 async function drawUpdate() {
-  const st = await window.overlay.updateState();
-  if (!st || !st.available) return;              /* à jour : on ne dit rien */
+  const { said } = await window.overlay.autoUpdate();
+  updateSaid = said;
+  if (!said || !said.show) return;               /* à jour : on ne dit rien */
   $("updBox").hidden = false;
-  $("updTxt").textContent =
-    "Version " + st.available.version + " disponible (vous avez " + st.installed + ")";
+  $("updTxt").textContent = said.text + (said.detail ? " — " + said.detail : "");
+  $("updBtn").hidden = !(said.canInstall || said.canOpen);
+  $("updBtn").textContent = said.canInstall ? "Ouvrir la fenêtre principale" : "Télécharger";
 }
-$("updBtn").addEventListener("click", () => window.overlay.openUpdate());
+$("updBtn").addEventListener("click", () => {
+  if (updateSaid && updateSaid.canInstall) window.overlay.openHub();
+  else window.overlay.openUpdate();
+});
 
 (async () => {
   const got = await window.overlay.getSettings();

@@ -130,14 +130,24 @@ $("authBtn").addEventListener("click", async () => {
   await drawAuth();
 });
 
-async function drawUpdate() {
-  const st = await window.overlay.updateState();
-  if (!st || !st.available) return;
-  $("updBox").hidden = false;
-  $("updTxt").textContent =
-    "Version " + st.available.version + " disponible (vous avez " + st.installed + ")";
+function drawUpdate(said) {
+  if (!said) return;
+  $("updBox").hidden = !said.show;
+  $("updTxt").textContent = said.text;
+  $("updSub").textContent = said.detail;
+  $("updInstall").hidden = !said.canInstall;
+  $("updBtn").hidden = !said.canOpen;
+  $("updBar").hidden = said.percent === null;
+  if (said.percent !== null) $("updFill").style.width = said.percent + "%";
 }
+
 $("updBtn").addEventListener("click", () => window.overlay.openUpdate());
+$("updInstall").addEventListener("click", async () => {
+  $("updInstall").disabled = true;
+  $("updSub").textContent = "redémarrage…";
+  const r = await window.overlay.installUpdate();
+  if (!r.ok) { $("updSub").textContent = "échec : " + r.error; $("updInstall").disabled = false; }
+});
 $("setBtn").addEventListener("click", () => window.overlay.openSettings());
 $("hideBtn").addEventListener("click", () => window.overlay.hideHub());
 
@@ -146,6 +156,7 @@ $("hideBtn").addEventListener("click", () => window.overlay.hideHub());
 window.overlay.onHub(p => {
   drawState(p.state || {});
   drawDraft(p.draft);
+  drawUpdate(p.said);
 });
 
 (async () => {
@@ -153,5 +164,5 @@ window.overlay.onHub(p => {
   $("ver").textContent = "v" + info.version;
   if (info.icon) $("logo").src = info.icon;
   drawAuth();
-  drawUpdate();
+  drawUpdate((await window.overlay.autoUpdate()).said);
 })();

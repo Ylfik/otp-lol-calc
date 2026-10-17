@@ -49,18 +49,59 @@ s'arrêteront là en croyant à un virus.
 
 ## Les mises à jour
 
-Au lancement, l'app regarde une fois les Releases du dépôt et, si une
-version plus récente existe, le dit — dans l'overlay et dans les réglages,
-avec un bouton qui ouvre la page de téléchargement.
+Au lancement, l'app regarde une fois les Releases du dépôt. S'il en existe
+une plus récente, **elle la télécharge toute seule, en arrière-plan** et le
+dit dans la fenêtre principale, avec une barre d'avancement. Puis elle
+attend.
 
-**Elle ne se remplace jamais toute seule.** L'installeur n'est pas signé :
-une mise à jour silencieuse serait à la fois plus difficile à faire
-confiance et plus facile à casser. Un avertissement et un lien suffisent,
-et ne peuvent abîmer aucune installation.
+**Elle ne s'installe jamais pendant que vous jouez.** Le remplacement n'a
+lieu que de deux façons :
 
-Si GitHub est lent, injoignable ou limite les requêtes, l'app se tait : un
-problème de réseau ne doit jamais déranger une partie. Avec
+- vous cliquez sur **Installer et redémarrer** ;
+- ou vous quittez l'app vous-même, et l'installeur s'exécute à ce
+  moment-là, silencieusement.
+
+C'est le seul compromis raisonnable : une app qui se relance d'autorité au
+milieu d'un Baron est pire que pas de mise à jour du tout.
+
+Elle se réinstalle dans le dossier choisi à la première installation —
+l'installeur silencieux le relit dans le registre. Si ce dossier demande
+des droits administrateur, Windows affichera une demande d'élévation.
+
+### Quand elle ne peut pas
+
+Trois cas, et dans les trois l'app propose simplement le lien plutôt que
+d'échouer :
+
+- une Release publiée **à la main**, sans les fichiers `latest.yml` et
+  `.blockmap` que l'app lit pour se remplacer ;
+- l'app lancée depuis les sources plutôt qu'installée ;
+- GitHub injoignable ou lent — là, elle se tait complètement.
+
+Un problème de réseau ne doit jamais déranger une partie. Avec
 `OVERLAY_DEBUG=1`, la raison s'affiche dans la console.
+
+### Ce que ça garantit, et ce que ça ne garantit pas
+
+Le fichier téléchargé est vérifié contre l'empreinte `sha512` publiée dans
+`latest.yml`, servi par GitHub en HTTPS. Cela attrape un téléchargement
+abîmé ou tronqué.
+
+Cela **ne remplace pas une signature** : l'installeur n'est pas signé par
+un certificat d'éditeur, donc electron-updater n'a rien à comparer et saute
+cette vérification. La confiance repose sur le compte GitHub du dépôt.
+Signer coûte quelques centaines d'euros par an ; tant que ce n'est pas
+fait, c'est la situation, et elle est la même que pour la plupart des
+petits outils de ce genre.
+
+### Une réserve, pour plus tard
+
+L'app lit **la dernière Release du dépôt**, quelle que soit son étiquette —
+le dépôt est partagé avec le site. Tant que seules les versions de
+l'overlay y sont publiées, tout va bien. Le jour où le site publierait une
+Release de son côté, l'app la prendrait pour la sienne et retomberait sur
+le lien. Le préfixe `overlay-v` sert à les distinguer côté construction, pas
+côté lecture.
 
 ## Donner l'app à quelqu'un
 
@@ -91,10 +132,11 @@ est alors déposé en pièce jointe du job.
 ## Développer
 
 ```bash
-npm test           # la logique pure, sans Electron ni League
-npm run demo       # le lecteur réel contre une fausse partie, au terminal
-npm run demo:draft # l'app entière contre un faux client, draft et import compris
-npm start          # l'overlay, sans passer par l'installeur
+npm test            # la logique pure, sans Electron ni League
+npm run demo        # le lecteur réel contre une fausse partie, au terminal
+npm run demo:draft  # l'app entière contre un faux client, draft et import compris
+npm run demo:update # la mise à jour automatique contre un faux dépôt
+npm start           # l'overlay, sans passer par l'installeur
 ```
 
 **League doit tourner en mode sans bordure.** Aucune fenêtre ne peut
@@ -118,6 +160,22 @@ npm run mock:client                                           # un terminal
 OVERLAY_LOCKFILE=/tmp/lol-mock-lockfile \
   OVERLAY_DDRAGON=http://127.0.0.1:2997 npm start             # un autre
 ```
+
+### Éprouver la mise à jour sans rien publier
+
+`npm run demo:update` sert un faux dépôt annonçant une version 9.9.9,
+lance l'app, et la regarde passer par « disponible », « téléchargement »
+et « prête » — puis vérifie que le fichier arrivé dans le cache est bien
+celui qui était annoncé, taille et empreinte comprises, et que **rien ne
+s'est installé tout seul**. C'est le vrai electron-updater qui travaille ;
+seul GitHub est remplacé.
+
+```bash
+DEMO_MODE=manual npm run demo:update    # la Release sans métadonnées
+```
+
+Ce second scénario vérifie l'autre moitié : une Release publiée à la main
+doit donner un lien, pas un message d'erreur.
 
 ### Voir l'overlay sans lancer une partie
 
@@ -160,6 +218,8 @@ développement :
 | `OVERLAY_DEBUG` | — | `1` affiche chaque lecture et **les noms d'événements vus** |
 | `OVERLAY_LOCKFILE` | — | chemin du `lockfile` du client, pour le faux client |
 | `OVERLAY_DDRAGON` | ddragon.leagueoflegends.com | la base des données statiques de Riot |
+| `OVERLAY_GITHUB` | api.github.com | l'API où chercher les Releases |
+| `OVERLAY_UPDATE_DEV` | — | `1` : chercher une mise à jour même non installée |
 | `OVERLAY_SITE` | le vrai Supabase | d'où viennent les builds |
 
 ## La fenêtre principale
@@ -271,13 +331,17 @@ src/main/auth.ts           connexion Discord optionnelle (PKCE, boucle locale)
 src/shared/runes.ts        un build -> une page de runes que le client accepte
 src/main/lcu.ts            dialogue avec le client League (draft, runes, objets)
 src/main/items.ts          les noms d'objets du site -> les numéros de Riot
+src/shared/updateState.ts  où en est une mise à jour, et comment le dire
+src/main/autoUpdate.ts     le téléchargement et le remplacement de l'app
+src/main/updates.ts        le repli : regarder les Releases et donner un lien
 src/main/store.ts          les réglages sur disque
 src/main/index.ts          fenêtre principale, overlay, réglages, barre système
 src/renderer/              ce qui s'affiche
 tools/mock-game.ts         fausse partie, pour tester sans League
 tools/mock-client.ts       faux client League : draft, runes, objets
 tools/draft-demo.mjs       l'app entière contre les deux, et ce qu'elle a envoyé
-test/                      73 cas : minuteur, réglages, builds, runes, client
+tools/update-demo.mjs      un faux dépôt, et la mise à jour jusqu'au bout
+test/                      83 cas : minuteur, réglages, builds, runes, client, maj
 ```
 
 Le calcul ne dépend ni d'Electron ni du réseau : c'est une fonction de
@@ -288,12 +352,18 @@ reviennent jamais, une alerte annoncée une seule fois par apparition).
 
 ## Ce qui a été vérifié, et ce qui ne l'est pas
 
-Vérifié : les 73 tests, la construction du paquet, et l'application
+Vérifié : les 83 tests, la construction du paquet, et l'application
 complète lancée sous écran virtuel — contre la fausse partie (fenêtre
 affichée, alertes au bon moment, décomptes justes, objectifs qui
 disparaissent une fois tués) et contre le faux client (la draft apparaît,
 le build se choisit, l'import part, et la page de runes reçue est la
-bonne).
+bonne) et contre un faux dépôt (la mise à jour se télécharge seule,
+arrive entière, et attend qu'on la demande).
+
+**Le remplacement final n'a pas été joué** : il faudrait qu'une vraie
+version s'installe par-dessus une vraie version, sous Windows. Tout ce qui
+le précède l'a été. La première mise à jour réelle sera donc la 0.2.0 vers
+la suivante — gardez l'installeur sous la main cette fois-là.
 
 **L'import n'a pas encore vu un vrai client League.** Les endpoints et la
 forme des pages de runes viennent de la documentation du LCU ; le faux
