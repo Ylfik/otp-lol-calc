@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>LoL Overlay</title>
+<style>
+  :root{
+    --bg:#0b1118; --panel:#141b24; --line:#222c38;
+    --ink:#e9eef6; --faint:#8b97a8; --accent:#e8a13c; --ok:#49d18a; --blue:#79a9f0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);padding:16px 18px 20px;
+    font-family:"Segoe UI",system-ui,-apple-system,sans-serif;font-size:13px}
+
+  header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  header img{width:30px;height:30px;border-radius:7px}
+  header h1{font-size:15px;font-weight:600;letter-spacing:.01em;flex:1}
+  header .ver{font-size:10.5px;color:var(--faint)}
+
+  /* the one thing the window exists for: is it working right now */
+  #state{display:flex;align-items:center;gap:9px;background:var(--panel);
+    border:1px solid var(--line);border-radius:8px;padding:11px 13px;margin-bottom:11px}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--faint);flex:none}
+  .dot.on{background:var(--ok);box-shadow:0 0 7px rgba(73,209,138,.65)}
+  .dot.warm{background:var(--accent)}
+  #stateTxt{flex:1}
+  #stateSub{font-size:10.5px;color:var(--faint);margin-top:2px}
+
+  section{background:var(--panel);border:1px solid var(--line);
+    border-radius:8px;padding:12px 13px;margin-bottom:11px}
+  h2{font-size:10.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--faint);margin-bottom:9px}
+
+  .row{display:flex;align-items:center;gap:9px;padding:5px 0}
+  .row + .row{border-top:1px solid rgba(255,255,255,.045)}
+  .row .nm{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .sub{font-size:10.5px;color:var(--faint)}
+
+  .btn{background:#1d2735;color:var(--ink);border:1px solid var(--line);
+    border-radius:6px;padding:5px 11px;font:inherit;cursor:pointer;white-space:nowrap}
+  .btn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+  .btn:disabled{opacity:.45;cursor:default}
+  .btn.go{background:#20405f;border-color:#2f5a84;color:#cfe4ff}
+  .btn.go:hover:not(:disabled){border-color:var(--blue);color:#fff}
+
+  .builds{display:flex;flex-direction:column;gap:5px;margin-bottom:9px}
+  .b{display:flex;align-items:center;gap:9px;padding:7px 9px;border-radius:6px;
+    border:1px solid var(--line);background:#0f1620;cursor:pointer}
+  .b:hover{border-color:var(--faint)}
+  .b.sel{border-color:var(--blue);background:#132032}
+  .b .t{flex:1;min-width:0}
+  .b .n{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .b .w{font-size:10.5px;color:var(--faint);white-space:nowrap;overflow:hidden;
+    text-overflow:ellipsis}
+  .b .tag{font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--blue);border:1px solid #2f5a84;border-radius:4px;padding:1px 5px}
+
+  .note{font-size:10.5px;color:var(--faint);line-height:1.5;margin-top:8px}
+  .warn{color:var(--accent)}
+  #result{font-size:11.5px;margin-top:8px;min-height:15px}
+  #result.ok{color:var(--ok)} #result.ko{color:#e0734a}
+  footer{display:flex;gap:8px;margin-top:3px}
+</style>
+</head>
+<body>
+  <header>
+    <img id="logo" alt="">
+    <h1>LoL Overlay</h1>
+    <span class="ver" id="ver"></span>
+  </header>
+
+  <div id="state">
+    <span class="dot" id="dot"></span>
+    <div style="flex:1">
+      <div id="stateTxt">démarrage…</div>
+      <div id="stateSub"></div>
+    </div>
+  </div>
+
+  <section id="draft">
+    <h2>Sélection des champions</h2>
+    <div id="draftBody"><p class="sub">En attente d'une sélection de champions…</p></div>
+  </section>
+
+  <section>
+    <h2>Compte</h2>
+    <div class="row">
+      <span class="nm" id="acct">non connecté</span>
+      <button id="authBtn" class="btn">Connexion Discord</button>
+    </div>
+    <p class="note">Sans connexion, l'app utilise les builds <strong>publiés</strong>
+      sur le site. Se connecter ajoute vos builds enregistrés.</p>
+  </section>
+
+  <section id="updBox" hidden>
+    <h2>Mise à jour</h2>
+    <div class="row">
+      <span class="nm" id="updTxt"></span>
+      <button id="updBtn" class="btn">Télécharger</button>
+    </div>
+  </section>
+
+  <footer>
+    <button id="setBtn" class="btn">Réglages…</button>
+    <button id="hideBtn" class="btn">Réduire dans la barre</button>
+  </footer>
+
+<script src="hub.js" type="module"></script>
+</body>
+</html>

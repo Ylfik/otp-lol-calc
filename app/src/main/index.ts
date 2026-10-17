@@ -18,6 +18,12 @@ import { pollGame, teamLookup, activeChampion, type Status } from "./liveClient.
 import { buildsFor, fetchLibrary } from "./siteClient.js";
 import * as auth from "./auth.js";
 import { checkForUpdate, updateState } from "./updates.js";
+import * as lcu from "./lcu.js";
+import { resolveItems } from "./items.js";
+import { toRunePage, treeLookup, pageLooksValid, RuneError } from "../shared/runes.js";
+import { readFileSync } from "node:fs";
+import nodeHttps from "node:https";
+import nodeHttp from "node:http";
 import { championKey, pickBuild, nextSkill, orderSummary, itemNames,
          type PublishedBuild } from "../shared/builds.js";
 import { objectiveStates, activeAlerts, mmss, OBJECTIVES } from "../shared/objectives.js";
@@ -41,9 +47,25 @@ const SCHEME: "http" | "https" = process.env.OVERLAY_SCHEME === "http" ? "http" 
 /* prints every read to the console — the way to find out what the game
    really calls its events if an alert ever fails to fire */
 const DEBUG = process.env.OVERLAY_DEBUG === "1";
+/* Riot's static data; overridable so the whole draft path can be exercised offline */
+const DDRAGON_BASE = process.env.OVERLAY_DDRAGON || "https://ddragon.leagueoflegends.com";
 
 let overlay: BrowserWindow | null = null;
 let alertWin: BrowserWindow | null = null;
+let hub: BrowserWindow | null = null;
+
+/* what the client is doing, refreshed on its own slower beat */
+let draft: {
+  active: boolean; champion: string; championId: number;
+  builds: { id: string; name: string; author: string; mine: boolean;
+            summary: string; runes: boolean; items: number }[];
+} = { active: false, champion: "", championId: 0, builds: [] };
+/* the draft's own copy: the in-game picker fills siteBuilds for the
+   champion being played, and the two must not overwrite each other */
+let draftBuilds: PublishedBuild[] = [];
+let clientSeen = false;
+let gameSeen = false;
+let runeTrees: ((id: number) => string | undefined) | null = null;
 let settingsWin: BrowserWindow | null = null;
 let tray: Tray | null = null;
 let stopPolling: (() => void) | null = null;
@@ -103,6 +125,24 @@ function createAlertWindow(): void {
   alertWin.on("closed", () => { alertWin = null; });
 }
 
+/* The window that says the app is alive. Tray-only was a mistake: an app
+   you cannot see is an app you assume is not running. */
+function openHub(): void {
+  if (hub && !hub.isDestroyed()) { hub.show(); hub.focus(); return; }
+  hub = new BrowserWindow({
+    width: 430, height: 580, resizable: true, minWidth: 380, minHeight: 460,
+    title: "LoL Overlay", autoHideMenuBar: true, backgroundColor: "#0b1118",
+    icon: iconPath(),
+    webPreferences: {
+      preload: path.join(here, "preload.cjs"),
+      contextIsolation: true, nodeIntegration: false
+    }
+  });
+  hub.loadFile(renderer("hub.html"));
+  hub.webContents.on("did-finish-load", pushHub);
+  hub.on("closed", () => { hub = null; });
+}
+
 function openSettings(): void {
   if (settingsWin && !settingsWin.isDestroyed()) { settingsWin.focus(); return; }
   settingsWin = new BrowserWindow({
@@ -122,15 +162,16 @@ function buildTray(): void {
   /* the site's own icon, so the app and otp-lol-calc look like one thing */
   const img = nativeImage.createFromPath(iconPath());
   tray = new Tray(img.isEmpty() ? nativeImage.createEmpty() : img.resize({ width: 16, height: 16 }));
-  tray.setToolTip("Overlay LoL — minuteur d'objectifs");
+  tray.setToolTip("LoL Overlay — en marche");
   tray.setContextMenu(Menu.buildFromTemplate([
+    { label: "Ouvrir LoL Overlay", click: openHub },
     { label: "Réglages…", click: openSettings },
     { label: "Version " + app.getVersion(), enabled: false },
     { label: "Ouvrir le fichier de réglages", click: () => shell.showItemInFolder(settingsPath()) },
     { type: "separator" },
     { label: "Quitter", click: () => app.quit() }
   ]));
-  tray.on("double-click", openSettings);
+  tray.on("double-click", openHub);
 }
 
 /* ------------------------------------------------------------------ */
@@ -199,6 +240,8 @@ function startPolling(): void {
       };
       send(overlay, "tick", payload);
       send(alertWin, "tick", payload);
+      gameSeen = true;
+      pushHub();
     },
     (status: Status, detail?: string) => {
       /* a new game starts a fresh set of announcements */
@@ -206,6 +249,8 @@ function startPolling(): void {
       const st = { status, detail, settings: loadSettings() };
       send(overlay, "status", st);
       send(alertWin, "status", st);
+      gameSeen = status === "running";
+      pushHub();
     },
     { port: LIVE_PORT, scheme: SCHEME }
   );
@@ -218,6 +263,134 @@ ipcMain.handle("settings:get", () => ({
   objectives: OBJECTIVES.map(o => ({ id: o.id, label: o.label })),
   bounds: { min: LEAD_MIN, max: LEAD_MAX }
 }));
+
+/* ------------------------------------------------------------------
+   Watching the League client: champion select, and what to offer there.
+   Slower than the game poll — a draft lasts a minute, not a second.
+   ------------------------------------------------------------------ */
+let lastChampId = -1;
+
+async function watchClient(): Promise<void> {
+  try {
+    const lock = lcu.findLockfile();
+    clientSeen = !!lock;
+    if (!lock) { draft = { active: false, champion: "", championId: 0, builds: [] }; lastChampId = -1; return; }
+
+    const cs = await lcu.champSelect(lock);
+    if (!cs.active) {
+      draft = { active: false, champion: "", championId: 0, builds: [] };
+      lastChampId = -1;
+      return;
+    }
+    if (cs.championId === lastChampId) { draft.active = true; return; }
+    lastChampId = cs.championId;
+
+    if (!cs.championId) {
+      draft = { active: true, champion: "", championId: 0, builds: [] };
+      return;
+    }
+    const name = await championName(cs.championId);
+    const key = championKey(name);
+    let list = await buildsFor(key);
+    if (auth.canResume()) {
+      const tok = await auth.token();
+      if (tok) { try { list = (await fetchLibrary(key, tok)).concat(list); } catch { /* public only */ } }
+    }
+    draftBuilds = list;
+    draft = {
+      active: true, champion: name, championId: cs.championId,
+      builds: list.map(b => ({
+        id: b.id, name: b.name, author: b.author, mine: !!b.mine,
+        summary: orderSummary(b.data.order),
+        runes: Array.isArray(b.data.runes) && b.data.runes.filter((r: any) => r && r.id != null).length >= 6,
+        items: itemNames(b).length
+      }))
+    };
+  } catch {
+    /* the client closing mid-read is ordinary */
+    draft = { active: false, champion: "", championId: 0, builds: [] };
+    lastChampId = -1;
+  }
+}
+
+/* Riot numbers champions; the site names them. */
+let champById: Map<number, string> | null = null;
+async function championName(id: number): Promise<string> {
+  if (!champById) {
+    const rows = await ddragon("champion.json");
+    champById = new Map();
+    for (const c of Object.values<any>(rows?.data || {}))
+      champById.set(Number(c.key), String(c.id));
+  }
+  return champById.get(id) || "";
+}
+
+function ddragon(file: string): Promise<any> {
+  const base = DDRAGON_BASE;
+  const get = (url: string) => new Promise<any>((ok, no) => httpsGet(new URL(url), ok, no));
+  return get(base + "/api/versions.json")
+    .then(v => get(`${base}/cdn/${v[0]}/data/en_US/${file}`));
+}
+function httpsGet(u: URL, ok: (v: any) => void, no: (e: Error) => void): void {
+  const mod = u.protocol === "http:" ? nodeHttp : nodeHttps;
+  const req = mod.get(
+    { hostname: u.hostname, port: u.port || undefined, path: u.pathname + u.search, timeout: 8000 },
+    res => {
+      let t = ""; res.setEncoding("utf8");
+      res.on("data", c => { t += c; });
+      res.on("end", () => { try { ok(JSON.parse(t)); } catch { no(new Error("ddragon illisible")); } });
+    });
+  req.on("timeout", () => req.destroy(new Error("ddragon injoignable")));
+  req.on("error", no);
+}
+
+function pushHub(): void {
+  send(hub, "hub", { state: { client: clientSeen, game: gameSeen }, draft });
+}
+
+ipcMain.handle("hub:info", () => ({
+  version: app.getVersion(),
+  icon: (() => { try { return "data:image/png;base64," + readFileSync(iconPath()).toString("base64"); }
+                 catch { return null; } })()
+}));
+ipcMain.handle("hub:settings", () => { openSettings(); });
+ipcMain.handle("hub:hide", () => { if (hub) hub.hide(); });
+
+ipcMain.handle("build:import", async (_e, buildId: string) => {
+  const lock = lcu.findLockfile();
+  if (!lock) return { ok: false, error: "client League introuvable" };
+  const b = draftBuilds.find(x => x.id === buildId);
+  if (!b) return { ok: false, error: "build introuvable" };
+
+  const done: string[] = [];
+  try {
+    /* runes first: they are what a draft is short on time for */
+    if (!runeTrees) runeTrees = treeLookup(await ddragon("runesReforged.json"));
+    try {
+      const page = toRunePage("OTP · " + b.name, b.data.runes as any, b.data.shards as any, runeTrees);
+      if (!pageLooksValid(page)) throw new RuneError("page incomplète");
+      await lcu.applyRunePage(lock, page, "OTP · ");
+      done.push("runes");
+    } catch (e) {
+      if (!(e instanceof RuneError)) throw e;
+      /* a build with no runes is common; it must not stop the items */
+    }
+
+    const names = itemNames(b);
+    if (names.length) {
+      const sid = await lcu.summonerId(lock);
+      const { ids, missing } = await resolveItems(names);
+      if (sid && ids.length) {
+        await lcu.applyItemSet(lock, sid, draft.championId, "OTP · " + b.name, ids);
+        done.push(`${ids.length} objets` + (missing.length ? ` (${missing.length} non reconnus)` : ""));
+      }
+    }
+    if (!done.length) return { ok: false, error: "rien à importer dans ce build" };
+    return { ok: true, done };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : String(e) };
+  }
+});
 
 ipcMain.handle("update:state", () => updateState());
 ipcMain.handle("update:open", () => {
@@ -266,7 +439,12 @@ app.whenReady().then(() => {
   createOverlay();
   createAlertWindow();
   buildTray();
+  openHub();                       /* visible at launch: the app announces itself */
   startPolling();
+
+  /* the client beats slower than the game: a draft lasts a minute */
+  const beat = () => watchClient().then(pushHub).finally(() => setTimeout(beat, 3000));
+  beat();
   /* handy while developing, and on a desktop with no system tray */
   if (process.env.OVERLAY_SETTINGS === "1") openSettings();
 

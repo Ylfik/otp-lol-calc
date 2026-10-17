@@ -14,5 +14,10 @@ contextBridge.exposeInMainWorld("overlay", {
   signOut:    () => ipcRenderer.invoke("auth:out"),
   onUpdate:    (fn) => ipcRenderer.on("update", (_e, p) => fn(p)),
   updateState: () => ipcRenderer.invoke("update:state"),
-  openUpdate:  () => ipcRenderer.invoke("update:open")
+  openUpdate:  () => ipcRenderer.invoke("update:open"),
+  onHub:        (fn) => ipcRenderer.on("hub", (_e, p) => fn(p)),
+  hubInfo:      () => ipcRenderer.invoke("hub:info"),
+  openSettings: () => ipcRenderer.invoke("hub:settings"),
+  hideHub:      () => ipcRenderer.invoke("hub:hide"),
+  importBuild:  (id) => ipcRenderer.invoke("build:import", id)
 });

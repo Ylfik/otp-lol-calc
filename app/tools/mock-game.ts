@@ -61,7 +61,10 @@ const published = [{
     level: 18, q: 6, w: 6, e: 1, r: 5,
     order: ["q","w","e","q","q","r","q","w","q","w","r","w","w","r","r","r","q","w"],
     items: [{ name: "ECLIPSE" }, { name: "SUNDERED SKY" }, { name: null }],
-    runes: [], shards: []
+    /* Precision principal, Resolve secondaire — ce que le client attend */
+    runes: [{ id: 8010 }, { id: 9111 }, { id: 9104 }, { id: 8014 },
+            { id: 8446 }, { id: 8473 }],
+    shards: [0, 0, 1]
   }
 }];
 

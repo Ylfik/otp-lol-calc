@@ -1,6 +1,6 @@
 {
   "name": "lol-overlay",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Overlay in-game pour League of Legends — minuteur d'objectifs",
   "main": "dist/src/main/index.js",
@@ -12,7 +12,9 @@
     "start": "npm run build && electron .",
     "demo": "npm run build && node tools/demo.mjs",
     "dist": "npm run build && electron-builder --win",
-    "dist:linux": "npm run build && electron-builder --linux AppImage"
+    "dist:linux": "npm run build && electron-builder --linux AppImage",
+    "mock:client": "npm run build && node dist/tools/mock-client.js",
+    "demo:draft": "npm run build && xvfb-run -a node tools/draft-demo.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.20.5",

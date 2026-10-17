@@ -1,8 +1,13 @@
 # lol-overlay
 
-Overlay in-game pour League of Legends. Première brique : le **minuteur
-d'objectifs**, qui prévient quelques secondes avant que le Baron, un drake,
-le héraut ou les larves ne réapparaissent.
+Overlay in-game pour League of Legends. Trois choses :
+
+- une **fenêtre principale**, qui s'ouvre au lancement et dit d'un coup
+  d'œil si l'app voit le client et la partie ;
+- pendant la **sélection des champions**, le choix d'un build du site et
+  son envoi dans le client — runes et objets, en un bouton ;
+- en jeu, le **minuteur d'objectifs**, qui prévient quelques secondes avant
+  que le Baron, un drake, le héraut ou les larves ne réapparaissent.
 
 ## Pourquoi ça ne demande ni clé API ni autorisation Riot
 
@@ -24,7 +29,7 @@ npm install
 npm run dist     # fabrique l'installeur Windows dans release/
 ```
 
-`release/` contient alors un `LoL Overlay-0.1.0-win.exe` : c'est lui qu'on
+`release/` contient alors un `LoL Overlay-0.2.0-win.exe` : c'est lui qu'on
 installe. L'installeur laisse choisir le dossier et pose un raccourci sur
 le bureau.
 
@@ -71,7 +76,7 @@ permanent.
 le code poussé sur GitHub, poser une étiquette suffit —
 
 ```bash
-git tag overlay-v0.1.0 && git push origin overlay-v0.1.0
+git tag overlay-v0.2.0 && git push origin overlay-v0.2.0
 ```
 
 Le préfixe `overlay-` compte : le dépôt est partagé avec le site, et seules
@@ -86,15 +91,33 @@ est alors déposé en pièce jointe du job.
 ## Développer
 
 ```bash
-npm test        # la logique du minuteur, sans Electron ni League
-npm run demo    # le lecteur réel contre une fausse partie, dans le terminal
-npm start       # l'overlay, sans passer par l'installeur
+npm test           # la logique pure, sans Electron ni League
+npm run demo       # le lecteur réel contre une fausse partie, au terminal
+npm run demo:draft # l'app entière contre un faux client, draft et import compris
+npm start          # l'overlay, sans passer par l'installeur
 ```
 
 **League doit tourner en mode sans bordure.** Aucune fenêtre ne peut
 s'afficher par-dessus un plein écran exclusif : c'est une limite du mode
 d'affichage, pas de l'app. Tous les overlays du marché ont la même
 contrainte.
+
+### Voir la draft sans lancer le client
+
+`npm run demo:draft` lance le faux site, le faux client League et l'app
+sous écran virtuel, attend que la draft s'ouvre, choisit un build, presse
+**Importer** — puis relit ce que le faux client a reçu : les neuf runes
+dans l'ordre que le vrai client attend, les deux arbres, les numéros
+d'objets, et le fait que la page faite à la main a survécu. Un bouton qui
+devient vert ne prouve rien ; ce qui est arrivé au client, si.
+
+Pour le piloter à la main :
+
+```bash
+npm run mock:client                                           # un terminal
+OVERLAY_LOCKFILE=/tmp/lol-mock-lockfile \
+  OVERLAY_DDRAGON=http://127.0.0.1:2997 npm start             # un autre
+```
 
 ### Voir l'overlay sans lancer une partie
 
@@ -135,6 +158,52 @@ développement :
 | `OVERLAY_PORT` | `2999` | port de l'API du jeu |
 | `OVERLAY_SCHEME` | `https` | `http` pour la fausse partie |
 | `OVERLAY_DEBUG` | — | `1` affiche chaque lecture et **les noms d'événements vus** |
+| `OVERLAY_LOCKFILE` | — | chemin du `lockfile` du client, pour le faux client |
+| `OVERLAY_DDRAGON` | ddragon.leagueoflegends.com | la base des données statiques de Riot |
+| `OVERLAY_SITE` | le vrai Supabase | d'où viennent les builds |
+
+## La fenêtre principale
+
+Elle s'ouvre au démarrage, et le bouton **Réduire dans la barre** la range
+sans quitter l'app (l'icône de la barre système la rouvre). Une app qu'on
+ne voit pas est une app qu'on croit éteinte : c'est tout ce que cette
+fenêtre corrige.
+
+Le voyant en haut dit laquelle des trois situations on est dans :
+
+| Voyant | Ce que ça veut dire |
+|---|---|
+| gris | ni client ni partie — l'app tourne, il n'y a rien à faire |
+| orange | le client League est ouvert ; les alertes démarreront avec la partie |
+| vert | une partie est en cours, l'overlay est dessus |
+
+## Importer un build pendant la draft
+
+Dès que la sélection des champions commence et qu'un champion est choisi
+(même seulement survolé), la fenêtre liste les builds disponibles pour lui :
+d'abord les vôtres si vous êtes connecté, puis ceux publiés sur le site.
+On en choisit un, on clique **Importer**, et le client reçoit :
+
+- **la page de runes**, nommée `OTP · <nom du build>` et sélectionnée ;
+- **le set d'objets**, rattaché au champion, visible dans la boutique.
+
+L'app ne supprime jamais une page que vous avez faite à la main : elle
+efface seulement celle qu'elle avait posée la fois d'avant, reconnue à son
+nom. Un build sans runes passe quand même ses objets, et inversement — ce
+qui a été envoyé est écrit sous le bouton.
+
+### Ce que ça demande
+
+Rien de plus. Le client League écrit son port et un mot de passe à usage
+unique dans un fichier `lockfile` à côté de son exécutable ; c'est la clé,
+elle est locale, et elle change à chaque démarrage. Aucune clé API Riot,
+rien qui sorte de la machine. Si l'installation n'est pas à l'emplacement
+habituel, `OVERLAY_LOCKFILE` dit où chercher.
+
+Les noms d'objets du site sont traduits en numéros avec la liste de Riot
+elle-même (Data Dragon), récupérée une fois : pas de table à maintenir à
+chaque patch. Un objet que Riot ne reconnaît pas est compté à part dans le
+compte rendu plutôt que silencieusement oublié.
 
 ## Les builds d'otp-lol-calc
 
@@ -199,11 +268,16 @@ src/main/liveClient.ts     lecture de l'API locale du jeu
 src/shared/builds.ts       un build du site, et quoi monter ensuite
 src/main/siteClient.ts     lecture des builds publies et de la bibliotheque
 src/main/auth.ts           connexion Discord optionnelle (PKCE, boucle locale)
+src/shared/runes.ts        un build -> une page de runes que le client accepte
+src/main/lcu.ts            dialogue avec le client League (draft, runes, objets)
+src/main/items.ts          les noms d'objets du site -> les numéros de Riot
 src/main/store.ts          les réglages sur disque
-src/main/index.ts          overlay, fenêtre de réglages, barre système
+src/main/index.ts          fenêtre principale, overlay, réglages, barre système
 src/renderer/              ce qui s'affiche
 tools/mock-game.ts         fausse partie, pour tester sans League
-test/                      36 cas : minuteur, réglages, builds
+tools/mock-client.ts       faux client League : draft, runes, objets
+tools/draft-demo.mjs       l'app entière contre les deux, et ce qu'elle a envoyé
+test/                      73 cas : minuteur, réglages, builds, runes, client
 ```
 
 Le calcul ne dépend ni d'Electron ni du réseau : c'est une fonction de
@@ -214,10 +288,18 @@ reviennent jamais, une alerte annoncée une seule fois par apparition).
 
 ## Ce qui a été vérifié, et ce qui ne l'est pas
 
-Vérifié : les 36 tests, la construction du paquet, et l'application
-complète lancée sous écran virtuel contre la fausse partie — fenêtre
-affichée, alertes déclenchées au bon moment, décomptes justes, objectifs
-qui disparaissent une fois tués.
+Vérifié : les 73 tests, la construction du paquet, et l'application
+complète lancée sous écran virtuel — contre la fausse partie (fenêtre
+affichée, alertes au bon moment, décomptes justes, objectifs qui
+disparaissent une fois tués) et contre le faux client (la draft apparaît,
+le build se choisit, l'import part, et la page de runes reçue est la
+bonne).
+
+**L'import n'a pas encore vu un vrai client League.** Les endpoints et la
+forme des pages de runes viennent de la documentation du LCU ; le faux
+client les rejoue fidèlement, mais c'est une imitation. Si le client refuse
+quelque chose, le message d'erreur apparaît sous le bouton — il vient du
+client lui-même, avec son code HTTP.
 
 **Pas encore vérifié : une vraie partie.** Les noms d'événements
 (`DragonKill`, `BaronKill`, `HeraldKill`, `HordeKill`) viennent de la
