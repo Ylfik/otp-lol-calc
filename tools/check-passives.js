@@ -72,6 +72,52 @@ const ATTENTES = [
       { n: "recharge niveau 1",   build: { L: 1,  ah: 0 },   champ_: "pCd",     attendu: 40 },
       { n: "recharge niveau 18",  build: { L: 18, ah: 0 },   champ_: "pCd",     attendu: 14.5 }
     ]
+  },
+  {
+    champ: "darius",
+    source: "data/champions/Darius, Hemorrhage : « 13 to 30 (par niveau) (+ 30% bonus AD) » par charge, « 13*5 to 30*5 (+ 150% bonus AD) » à cinq",
+    cas: [
+      { n: "une charge, niveau 1",   build: { L: 1,  ad: 0 },   champ_: "pStack", attendu: 13 },
+      { n: "une charge, niveau 18",  build: { L: 18, ad: 0 },   champ_: "pStack", attendu: 30 },
+      /* 30 % de l'AD bonus, pas de l'AD total */
+      { n: "une charge, 100 AD bonus", build: { L: 1, ad: 100 }, champ_: "pStack", attendu: 43 },
+      { n: "cinq charges, niveau 18",  build: { L: 18, ad: 0 },  champ_: "pFull",  attendu: 150 },
+      /* cinq charges a 100 AD bonus : 5 x 30 + 150 % de 100 */
+      { n: "cinq charges, 100 AD bonus", build: { L: 18, ad: 100 }, champ_: "pFull", attendu: 300 }
+    ]
+  },
+  {
+    champ: "leona",
+    source: "data/champions/Leona, Sunlight : « consume the mark to deal 32 to 151 (par niveau) bonus magic damage »",
+    cas: [
+      { n: "niveau 1",  build: { L: 1 },  champ_: "pDmg", attendu: 32 },
+      { n: "niveau 18", build: { L: 18 }, champ_: "pDmg", attendu: 151 },
+      /* la marque ne profite pas de l'AP de Leona : rien dans la phrase */
+      { n: "niveau 18, 300 AP", build: { L: 18, ap: 300 }, champ_: "pDmg", attendu: 151 }
+    ]
+  },
+  {
+    champ: "lucian",
+    source: "data/champions/Lucian, Lightslinger : « 50 to 60 % AD » par paliers aux niveaux 1, 7 et 13",
+    cas: [
+      /* des paliers, pas une montee continue */
+      { n: "niveau 1",  build: { L: 1 },  champ_: "pPct", attendu: 50 },
+      { n: "niveau 6",  build: { L: 6 },  champ_: "pPct", attendu: 50 },
+      { n: "niveau 7",  build: { L: 7 },  champ_: "pPct", attendu: 55 },
+      { n: "niveau 12", build: { L: 12 }, champ_: "pPct", attendu: 55 },
+      { n: "niveau 13", build: { L: 13 }, champ_: "pPct", attendu: 60 },
+      { n: "niveau 18", build: { L: 18 }, champ_: "pPct", attendu: 60 },
+      /* AD de base au niveau 1 : 60 ; la moitie fait 30 */
+      { n: "le coup au niveau 1", build: { L: 1, ad: 0 }, champ_: "pShot", attendu: 30, pres: 0.5 }
+    ]
+  },
+  {
+    champ: "sejuani",
+    source: "data/champions/Sejuani, Icebreaker : « bonus magic damage equal to 10% of their maximum health »",
+    cas: [
+      { n: "part des PV de la cible",  build: { L: 1 },             champ_: "pPct", attendu: 10 },
+      { n: "ni niveau ni AP n'y changent rien", build: { L: 18, ap: 400 }, champ_: "pPct", attendu: 10 }
+    ]
   }
 ];
 
@@ -83,7 +129,8 @@ const SANS_CHIFFRES = {
   draven:  "charges d'Adoration : de l'or à l'élimination",
   zilean:  "expérience mise de côté pour un allié",
   neeko:   "déguisement, rompu par tout sort offensif",
-  viego:   "possession : le kit emprunté sort du cadre de la page"
+  viego:   "possession : le kit emprunté sort du cadre de la page",
+  garen:   "régénération de vie hors combat, que la page ne compte pas"
 };
 
 /* ------------------------------------------------------------------ */
