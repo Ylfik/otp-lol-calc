@@ -104,12 +104,17 @@ jobs:
           # dans le vide. On le retire.
           want=$(grep -m1 '^path:' release/latest.yml | sed 's/^path: *//' | tr -d '\r')
           echo "latest.yml annonce : $want"
-          gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${TAG}" -q '.assets[].name' \
-            | grep -E '\.exe(\.blockmap)?$' | grep -vF "$want" \
-            | while read -r vieux; do
-                echo "retrait de l'asset « $vieux »"
-                gh release delete-asset "${TAG}" "$vieux" -y
-              done
+          # « rien a nettoyer » est le cas normal, et grep sort alors en
+          # erreur : sous set -o pipefail, ca ferait echouer une
+          # publication parfaitement saine
+          vieux=$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${TAG}" -q '.assets[].name' \
+                  | grep -E '\.exe(\.blockmap)?$' | grep -vF "$want" || true)
+          if [ -n "$vieux" ]; then
+            printf '%s\n' "$vieux" | while read -r nom; do
+              echo "retrait de l'asset « $nom »"
+              gh release delete-asset "${TAG}" "$nom" -y
+            done
+          fi
 
           # et on verifie que ce que l'app ira chercher existe vraiment
           gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${TAG}" -q '.assets[].name' \
