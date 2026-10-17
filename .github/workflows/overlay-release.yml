@@ -44,6 +44,18 @@ jobs:
       - name: Construire l'installeur
         run: npm run dist
 
+      # Sans latest.yml, l'app installee ne sait pas se remplacer : elle
+      # retombe sur un lien. Un build qui l'oublie doit echouer ici,
+      # plutot que de produire un installeur silencieusement diminue.
+      - name: Vérifier les fichiers de mise à jour
+        shell: bash
+        run: |
+          ls -la release/
+          test -f release/latest.yml || { echo "::error::latest.yml manquant"; exit 1; }
+          ls release/*.exe >/dev/null || { echo "::error::aucun installeur"; exit 1; }
+          ls release/*.blockmap >/dev/null || echo "::warning::pas de .blockmap"
+          echo "version annoncee :"; grep '^version:' release/latest.yml
+
       # Garde le .exe même sans étiquette, pour un essai manuel
       - name: Conserver l'installeur
         uses: actions/upload-artifact@v4
