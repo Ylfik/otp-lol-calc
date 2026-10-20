@@ -156,6 +156,37 @@ const ATTENTES = [
       { n: "recharge niveau 13", build: { L: 13, ah: 0 }, champ_: "pCd", attendu: 8 },
       { n: "recharge niveau 18", build: { L: 18, ah: 0 }, champ_: "pCd", attendu: 8 }
     ]
+  },
+  {
+    champ: "braum",
+    source: "data/champions/Braum, Concussive Blows : « the fourth stack ... to deal 26 to 196 (par niveau) magic damage »",
+    cas: [
+      { n: "niveau 1",  build: { L: 1 },  champ_: "pDmg", attendu: 26 },
+      { n: "niveau 18", build: { L: 18 }, champ_: "pDmg", attendu: 196 },
+      { n: "l'AP n'y change rien", build: { L: 18, ap: 400 }, champ_: "pDmg", attendu: 196 }
+    ]
+  },
+  {
+    champ: "fiora",
+    source: "data/champions/Fiora, Duelist's Dance : « 3% (+ 4% per 100 bonus AD) of target's maximum health », soin « 35 to 100 (par niveau) »",
+    cas: [
+      { n: "part sans AD bonus",     build: { L: 1,  ad: 0 },   champ_: "pPct",  attendu: 3 },
+      /* 4 % par tranche de 100 AD bonus : 200 bonus en ajoutent 8 */
+      { n: "part avec 200 AD bonus", build: { L: 1,  ad: 200 }, champ_: "pPct",  attendu: 11 },
+      { n: "soin niveau 1",          build: { L: 1 },           champ_: "pHeal", attendu: 35 },
+      { n: "soin niveau 18",         build: { L: 18 },          champ_: "pHeal", attendu: 100 }
+    ]
+  },
+  {
+    champ: "orianna",
+    source: "data/champions/Orianna, Clockwork Windup : « 10 + (50-10)/17*(x-1) (+ 15% AP) ... increased by 15% per stack » (deux charges)",
+    cas: [
+      { n: "sans charge, niveau 1",  build: { L: 1,  ap: 0 },   champ_: "pHit",    attendu: 10 },
+      { n: "sans charge, niveau 18", build: { L: 18, ap: 0 },   champ_: "pHit",    attendu: 50 },
+      { n: "sans charge, 200 AP",    build: { L: 1,  ap: 200 }, champ_: "pHit",    attendu: 40 },
+      /* deux charges : + 30 % */
+      { n: "deux charges, niveau 18", build: { L: 18, ap: 0 },  champ_: "pHitMax", attendu: 65 }
+    ]
   }
 ];
 
@@ -168,7 +199,8 @@ const SANS_CHIFFRES = {
   zilean:  "expérience mise de côté pour un allié",
   neeko:   "déguisement, rompu par tout sort offensif",
   viego:   "possession : le kit emprunté sort du cadre de la page",
-  garen:   "régénération de vie hors combat, que la page ne compte pas"
+  garen:   "régénération de vie hors combat, que la page ne compte pas",
+  anivia:  "l'œuf : une seconde vie, pas une statistique"
 };
 
 /* ------------------------------------------------------------------ */
