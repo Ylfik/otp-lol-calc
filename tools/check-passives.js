@@ -187,6 +187,18 @@ const ATTENTES = [
       /* deux charges : + 30 % */
       { n: "deux charges, niveau 18", build: { L: 18, ap: 0 },  champ_: "pHitMax", attendu: 65 }
     ]
+  },
+  {
+    champ: "gwen",
+    source: "data/champions/Gwen, A Thousand Cuts : « 1% (+ 0.6% per 100 AP) of the target's maximum health », soin plafonné à « 12 to 40 (par niveau) (+ 7% AP) »",
+    cas: [
+      { n: "part sans AP",      build: { L: 1,  ap: 0 },   champ_: "pPct",     attendu: 1 },
+      /* 0,6 % par tranche de 100 AP : 300 AP en ajoutent 1,8 */
+      { n: "part avec 300 AP",  build: { L: 1,  ap: 300 }, champ_: "pPct",     attendu: 2.8 },
+      { n: "plafond niveau 1",  build: { L: 1,  ap: 0 },   champ_: "pHealCap", attendu: 12 },
+      { n: "plafond niveau 18", build: { L: 18, ap: 0 },   champ_: "pHealCap", attendu: 40 },
+      { n: "plafond, 200 AP",   build: { L: 18, ap: 200 }, champ_: "pHealCap", attendu: 54 }
+    ]
   }
 ];
 
@@ -200,7 +212,8 @@ const SANS_CHIFFRES = {
   neeko:   "déguisement, rompu par tout sort offensif",
   viego:   "possession : le kit emprunté sort du cadre de la page",
   garen:   "régénération de vie hors combat, que la page ne compte pas",
-  anivia:  "l'œuf : une seconde vie, pas une statistique"
+  anivia:  "l'œuf : une seconde vie, pas une statistique",
+  kalista: "un bond à chaque attaque : un déplacement, pas une statistique"
 };
 
 /* ------------------------------------------------------------------ */
@@ -257,6 +270,35 @@ for (const f of fs.readdirSync(HAND).filter(x => x.endsWith(".js"))) {
   } catch (e) { console.log(`    RATE  ${f} : ${e.message}`); rates++; }
 }
 console.log(`    ${rates ? "" : "ok    "}tous se chargent et calculent`);
+
+/* Et chaque entrée du menu doit pouvoir être jouée. abilities() et
+   onStep ne reçoivent pas le même contexte — onStep n'a ni la table des
+   rangs ni le niveau — et une référence à l'un depuis l'autre ne se voit
+   qu'à l'usage, dans une séquence, en pleine page. */
+console.log("\n--- chaque étape jouable");
+for (const f of fs.readdirSync(HAND).filter(x => x.endsWith(".js"))) {
+  let mod;
+  try { mod = loadFile(path.join(HAND, f)); } catch { continue; }   /* déjà signalé plus haut */
+  if (typeof mod.onStep !== "function") continue;
+  const c = context(mod, { L: 18, r: 5, rr: 3, ad: 100, ap: 200, hp: 900, ah: 30, crit: 40, uh: 20 });
+  const A = mod.abilities(c);
+  for (const st of mod.stepMenu || []) {
+    try {
+      const out = mod.onStep(st.id, st, {
+        A, hp: 2000, cur: 2000, a: {}, pMul: 1, mMul: 1,
+        tot: c.tot, memo: {}, onHits: [], charged: false
+      });
+      const nombres = [...(out && out.parts || []).map(p => p.v), out && out.heal, out && out.shield]
+        .filter(v => v !== undefined && v !== null);
+      const sales = nombres.filter(v => typeof v !== "number" || !isFinite(v));
+      if (sales.length) { console.log(`    RATE  ${f} / ${st.id} : ${JSON.stringify(sales)}`); rates++; }
+    } catch (e) {
+      console.log(`    RATE  ${f} / ${st.id} : ${e.message}`);
+      rates++;
+    }
+  }
+}
+console.log(`    ${rates ? "" : "ok    "}toutes les étapes se jouent`);
 
 /* Un champion publié dont le passif n'est pas ici est un champion dont
    personne n'a vérifié le passif : on le dit. */
