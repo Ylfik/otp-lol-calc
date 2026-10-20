@@ -118,6 +118,44 @@ const ATTENTES = [
       { n: "part des PV de la cible",  build: { L: 1 },             champ_: "pPct", attendu: 10 },
       { n: "ni niveau ni AP n'y changent rien", build: { L: 18, ap: 400 }, champ_: "pPct", attendu: 10 }
     ]
+  },
+  {
+    champ: "quinn",
+    source: "data/champions/Quinn, Harrier : « 15 + (120-15)/17*(x-1) (+ 40% bonus AD) bonus physical damage »",
+    cas: [
+      { n: "niveau 1",  build: { L: 1,  ad: 0 }, champ_: "pDmg", attendu: 15 },
+      { n: "niveau 18", build: { L: 18, ad: 0 }, champ_: "pDmg", attendu: 120 },
+      /* 40 % de l'AD BONUS, pas du total */
+      { n: "niveau 1, 200 AD bonus", build: { L: 1, ad: 200 }, champ_: "pDmg", attendu: 95 }
+    ]
+  },
+  {
+    champ: "lulu",
+    source: "data/champions/Lulu, Pix : « Each bolt deals 5 to 39 (par niveau) (+ 5% AP) », « a total of 5*3 to 39*3 (+ 15% AP) »",
+    cas: [
+      { n: "un projectile, niveau 1",  build: { L: 1,  ap: 0 },   champ_: "pBolt", attendu: 5 },
+      { n: "un projectile, niveau 18", build: { L: 18, ap: 0 },   champ_: "pBolt", attendu: 39 },
+      { n: "un projectile, 200 AP",    build: { L: 1,  ap: 200 }, champ_: "pBolt", attendu: 15 },
+      { n: "les trois, niveau 18",     build: { L: 18, ap: 0 },   champ_: "pAll",  attendu: 117 },
+      /* les trois a 200 AP : 3 x 39 + 15 % de 200 */
+      { n: "les trois, 200 AP",        build: { L: 18, ap: 200 }, champ_: "pAll",  attendu: 147 }
+    ]
+  },
+  {
+    champ: "poppy",
+    source: "data/champions/Poppy, Iron Ambassador : dégâts « 20 + (180-20)/17*(x-1) », bouclier « 11 + (20-11)/17*(x-1) of her maximum health », recharge « 16 to 8 for 3 » de 1 à 13",
+    cas: [
+      { n: "dégâts niveau 1",   build: { L: 1 },  champ_: "pDmg", attendu: 20 },
+      { n: "dégâts niveau 18",  build: { L: 18 }, champ_: "pDmg", attendu: 180 },
+      { n: "bouclier niveau 1 (part)",  build: { L: 1 },  champ_: "pShieldPct", attendu: 11 },
+      { n: "bouclier niveau 18 (part)", build: { L: 18 }, champ_: "pShieldPct", attendu: 20 },
+      /* PV de base au niveau 1 : 610 ; 11 % font 67,1 */
+      { n: "bouclier niveau 1", build: { L: 1 }, champ_: "pShield", attendu: 610 * 0.11, pres: 0.5 },
+      /* la recharge se fige au niveau 13 */
+      { n: "recharge niveau 1",  build: { L: 1,  ah: 0 }, champ_: "pCd", attendu: 16 },
+      { n: "recharge niveau 13", build: { L: 13, ah: 0 }, champ_: "pCd", attendu: 8 },
+      { n: "recharge niveau 18", build: { L: 18, ah: 0 }, champ_: "pCd", attendu: 8 }
+    ]
   }
 ];
 
